@@ -1,0 +1,23 @@
+import React from "react";
+import {
+	Switch,
+	Route,
+} from "react-router-dom";
+
+import routes from "./routes";
+
+export default function Routes() {
+	return (
+		<Switch>
+			{
+				routes
+					.map((route, index) => <Route 
+						key={index}
+						path={route.path}
+						render={() => <route.component/>}
+						exact
+					/>)
+			}
+		</Switch>
+	);
+}
