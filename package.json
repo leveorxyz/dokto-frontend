@@ -25,19 +25,56 @@
     "web-vitals": "^0.2.2"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "babel-eslint": "^10.1.0",
+    "babel-preset-react-app": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-flowtype": "^6.1.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.5.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-standard-cra": "^1.0.7",
+    "eslint-webpack-plugin": "^3.0.1",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0",
+    "prettier-eslint-cli": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "prepare": "husky install",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+    "lint:typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.json",
+    "format": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
+    "isready": "npm run format && npm run lint && npm run build"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "airbnb-typescript",
+      "react-app",
+      "prettier",
+      "plugin:jsx-a11y/recommended"
+    ]
   },
   "browserslist": {
     "production": [
@@ -53,13 +90,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
+      "yarn lint",
+      "yarn lint:typecheck"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
-    }
   }
 }
