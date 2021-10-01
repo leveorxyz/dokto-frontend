@@ -21,3 +21,5 @@ export default function Routes() {
 		</Switch>
 	);
 }
+
+export * from "./routes";
