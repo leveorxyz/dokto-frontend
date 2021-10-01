@@ -11,8 +11,8 @@ export default function Routes() {
 		<Switch>
 			{
 				routes
-					.map((route, index) => <Route 
-						key={index}
+					.map((route) => <Route 
+						key={route.path}
 						path={route.path}
 						render={() => <route.component/>}
 						exact
