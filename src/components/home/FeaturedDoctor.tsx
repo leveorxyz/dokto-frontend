@@ -9,11 +9,9 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const FeaturedDoctor = () => {
 
-	const margin_x = {sm: "6",md: "32",lg: "32",xl: "32",base: "6"};
-
 	return (
 		<div>
-			<Box bg='#0099cc' maxW='100%' px={margin_x} py={18}>
+			<Box bg='#0099cc' maxW='100%' px={[6, 6, 32, 32, 32]} py={18}>
 				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='7'>
 						<Box><Heading as='h1' size='lg' alignItems='center' fontWeight='bold' color='white'>Our Featured Doctors</Heading></Box>
