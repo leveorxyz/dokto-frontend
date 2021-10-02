@@ -30,7 +30,7 @@ export function FullWidthContainer({children}: PropTypes) {
 
 export function SpacedContainer({children, ...props}: PropTypes) {
 	return (
-		<Box px="10%" {...props}>
+		<Box px={[3, 3, "10%", "10%"]} {...props}>
 			{children}
 		</Box>
 	);
