@@ -2,23 +2,34 @@ import React from "react";
 
 import {Box} from "@chakra-ui/react";
 
-type PropTypes = {
-  children: React.ReactNode
-	m?: number | string;
-	ml?: number | string;
-	mr?: number | string;
-	mt?: number | string;
-	mb?: number | string;
-	mx?: number | string;
-	my?: number | string;
-	p?: number | string;
-	pr?: number | string;
-	pl?: number | string;
-	pt?: number | string;
-	pb?: number | string;
-	px?: number | string;
-	py?: number | string;
+enum MarginOrPaddingKeyEnum {
+	m,
+	mt,
+	mr,
+	mb,
+	ml,
+	mx,
+	my,
+	p,
+	pt,
+	pr,
+	pb,
+	pl,
+	px,
+	py,
 }
+
+type MarginAndPaddingTypes = {
+	[Key in keyof typeof MarginOrPaddingKeyEnum]?: 
+		number |
+		string |
+		(number | string)[] |
+		Record<string, string | number>;
+}
+
+type PropTypes = {
+	children: React.ReactNode;
+} & MarginAndPaddingTypes;
 
 export function FullWidthContainer({children}: PropTypes) {
 	return (
@@ -30,7 +41,7 @@ export function FullWidthContainer({children}: PropTypes) {
 
 export function SpacedContainer({children, ...props}: PropTypes) {
 	return (
-		<Box px={[3, 3, "10%", "10%"]} {...props}>
+		<Box mx={[3, 3, "10%", "10%"]} {...props}>
 			{children}
 		</Box>
 	);
