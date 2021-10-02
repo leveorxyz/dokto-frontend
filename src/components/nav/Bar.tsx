@@ -67,7 +67,8 @@ export default function Bar() {
 						colorScheme="cyan"
 						icon={isMenuOpen 
 							? <IoClose size="1.5em" />
-							: <IoMenu size="1.5em" />}
+							: <IoMenu size="1.5em" />
+						}
 						onClick={() => setIsMenuOpen((prev) => !prev)}
 					/>
 				</Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link as RouteLink, useLocation } from "react-router-dom";
 import { Link, Center } from "@chakra-ui/react";
 
@@ -11,13 +11,20 @@ type PropTypes = {
 
 export default function NavItem({href, icon, title, setIsMenuOpen}: PropTypes) {
 	const location = useLocation();
+	const isCurrentRoute = useMemo(
+		() => location.pathname === href,
+		[href, location.pathname]
+	);
 
 	return (
 		<Center p={3}>
 			<Link as={RouteLink} 
 				to={href}
 				fontSize={["xl", "xl", "md", "md"]}
-				fontWeight={[800, 800, 600, 600]}
+				fontWeight={isCurrentRoute 
+					? [900, 900, 600, 600]
+					: [800, 800, 500, 500]
+				}
 				position="relative"
 				color="gray.700"
 				style={{
@@ -29,7 +36,7 @@ export default function NavItem({href, icon, title, setIsMenuOpen}: PropTypes) {
 					bottom: "-6px",
 					left: 0,
 					width: "100%",
-					height: location.pathname === href
+					height: isCurrentRoute
 						? "3px"
 						: "0px",
 					backgroundColor: "pink.500",
