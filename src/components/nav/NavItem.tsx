@@ -22,8 +22,8 @@ export default function NavItem({href, icon, title, setIsMenuOpen}: PropTypes) {
 				to={href}
 				fontSize={["xl", "xl", "md", "md"]}
 				fontWeight={isCurrentRoute 
-					? [900, 900, 600, 600]
-					: [800, 800, 500, 500]
+					? [900, 900, 500, 600, 600]
+					: [800, 800, 400, 500, 500]
 				}
 				position="relative"
 				color="gray.700"
