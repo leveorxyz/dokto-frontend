@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
+    "baseUrl": "./",
     "target": "es6",
     "lib": [
       "dom",
@@ -26,6 +26,6 @@
     "outDir": "dist",
     "noImplicitAny": true,
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "./customs.d.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"],
 }
