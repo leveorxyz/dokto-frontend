@@ -16,9 +16,9 @@ type carouselDataType = {
 }
 
 const data: carouselDataType[] = [
-	{ title: "Personal care for healthy living", imgSrc: "https://placeholder.pics/svg/600x400"},
-	{ title: "Lorem ipsum dolor sit amet", imgSrc: "https://placeholder.pics/svg/600x400"},
-	{ title: "Lorem ipsum dolor sit amet", imgSrc: "https://placeholder.pics/svg/600x400"},
+	{ title: "Personal care for healthy living", imgSrc: "https://source.unsplash.com/collection/42413461/500x300"},
+	{ title: "Lorem ipsum dolor sit amet", imgSrc: "https://source.unsplash.com/collection/42413461/500x300"},
+	{ title: "Lorem ipsum dolor sit amet", imgSrc: "https://source.unsplash.com/collection/42413461/500x300"},
 ];
 
 export default function LandingCarousel() {
@@ -32,7 +32,7 @@ export default function LandingCarousel() {
 								direction={["column", "column", "row", "row"]}
 								justify={["center", "center", "space-between", "space-between"]}
 								align="center"
-								minHeight="65vh"
+								height="65vh"
 							>
 								<Box
 									fontSize={["5xl", "5xl", "5xl", "6xl"]}
@@ -41,7 +41,7 @@ export default function LandingCarousel() {
 								>
 									{title}
 								</Box>
-								<Image src={imgSrc} />
+								<Image src={imgSrc} height="80%" fit="contain" />
 							</Flex>
 						</SwiperSlide>
 					))}
