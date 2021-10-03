@@ -15,33 +15,33 @@ const FeaturedDoctorCard = () => {
 					<Box position='relative'>
 						<Image src={Center} objectFit='cover' borderRadius='50%' w='90px' h='90px' display='block' ml='auto' mr='auto' position='absolute' left='50%' transform='translate(-50%, -40%)'></Image>
 					</Box>
-					<Box pt='9' pb='3' textAlign='center' px='2'>
-						<Heading fontSize='xx-small' as='h3' fontWeight='semibold'>
+					<Box pt='70' pb='3' textAlign='center' px='2'>
+						<Heading fontSize='lg' as='h3' fontWeight='semibold'>
                             Dr. Rita Ora, MD
 						</Heading>
-						<Box fontSize='xx-small' fontWeight='hairline'>
+						<Box fontSize='md'>
                             Primary Care Doctor
 						</Box>
 					</Box>
 					<Divider />
 					<Box p='3'>
-						<Box fontSize='xx-small' d='flex' flexDir='row' alignItems='center'>
+						<Box fontSize='md' d='flex' flexDir='row' alignItems='center'>
 							<IconContext.Provider value={{ color: "#00ffff" }}>
 								<IoLocationOutline size={20}/>
 							</IconContext.Provider>
 							<Box>New York,NY</Box>
 						</Box>
-						<Box fontSize='xx-small' d='flex' flexDir='row' alignItems='center'>
+						<Box fontSize='md' d='flex' flexDir='row' alignItems='center'>
 							<IconContext.Provider value={{ color: "#ffbf00" }}>
 								<FaStar />
 							</IconContext.Provider>
-							<Box mr='2' fontWeight='semibold'>4.85</Box>
+							<Box ml='1' mr='2' fontWeight='semibold'>4.85</Box>
 							<Box >1751 reviews</Box>
 						</Box>
 					</Box>
 					<Divider />
 					<Box p='3' d='flex' justifyContent='space-between' flexDir='row' flexWrap='wrap' alignItems='center'>
-						<Box fontSize='xx-small' fontWeight='black'>View Profile</Box>
+						<Box fontSize='md' fontWeight='semibold'>View Profile</Box>
 						<IconContext.Provider value={{ color: "#00ffff" }}>
 							<FaArrowRight size={20}/>
 						</IconContext.Provider>
