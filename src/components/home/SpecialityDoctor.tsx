@@ -5,13 +5,13 @@ import StatSpecialityDoctor from "./StatSpecialityDoctor";
 
 const SpecialityDoctor = () => {
 
-	const margin_x = {sm: "6",md: "24",lg: "24",xl: "24",base: "6"};
+	const margin_x = {sm: "6",md: "32",lg: "32",xl: "32",base: "6"};
 
 	return (
 		<div>
-			<Box maxW='100%' px={margin_x} py={5}>
+			<Box maxW='100%' px={margin_x} py={20}>
 				<Container maxW='container.2xl'>
-					<Grid templateColumns='repeat(2, 1fr)' gap={6}>
+					<Grid templateColumns={{sm: "repeat(1,1fr)",md: "repeat(2, 1fr)",lg: "repeat(2, 1fr)",base: "repeat(1, 1fr)"}} gap={6}>
 						<DescriptionSpecialityDoctor />
 						<StatSpecialityDoctor />
 					</Grid>

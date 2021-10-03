@@ -8,7 +8,7 @@ import Optimum from "../../static/home/optimum.jpg";
 
 const AboutDoctor = () => {
 
-	const margin_x = {sm: "6",md: "24",lg: "24",xl: "24",base: "6"};
+	const margin_x = {sm: "6",md: "32",lg: "32",xl: "32",base: "6"};
 
 	return (
 		<div>

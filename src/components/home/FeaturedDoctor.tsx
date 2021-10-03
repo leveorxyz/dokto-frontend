@@ -13,8 +13,8 @@ const FeaturedDoctor = () => {
 
 	return (
 		<div>
-			<Box bg='#0099cc' maxW='100%' px={margin_x} py={5}>
-				<Container maxW='container.xl'>
+			<Box bg='#0099cc' maxW='100%' px={margin_x} py={18}>
+				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='7'>
 						<Box><Heading as='h4' size='md' alignItems='center' fontWeight='black' color='white'>Our Featured Doctors</Heading></Box>
 						<Box>
@@ -32,15 +32,15 @@ const FeaturedDoctor = () => {
 							</Box>
 						</Box>
 					</Box>
-					<Box py='5'>
-						<Grid templateColumns={{sm: "repeat(1, 1fr)",md: "repeat(4, 1fr)",lg: "repeat(4, 1fr)",base: "repeat(1, 1fr)"}} gap={6}>
+					<Box py={{sm: "12",md: "6",lg: "6",xl: "6",base: "12"}}>
+						<Grid templateColumns={{sm: "repeat(1, 1fr)",md: "repeat(4, 1fr)",lg: "repeat(4, 1fr)",base: "repeat(1, 1fr)"}} gap={{sm: "15",md: "6",lg: "6",xl: "6",base: "16"}}>
 							<FeaturedDoctorCard />
 							<FeaturedDoctorCard />
 							<FeaturedDoctorCard />
 							<FeaturedDoctorCard />
 						</Grid>
 					</Box>
-					<Box textAlign='center' color='white' fontSize='xs' cursor='pointer'>
+					<Box textAlign='center' color='white' fontSize='md' cursor='pointer' fontWeight='bold'>
                         View All Doctors
 					</Box>
 				</Container>

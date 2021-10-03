@@ -8,20 +8,20 @@ import { Grid } from "@chakra-ui/layout";
 
 const LatestPostsDoctor = () => {
 
-	const margin_x = {sm: "6",md: "24",lg: "24",xl: "24",base: "6"};
+	const margin_x = {sm: "6",md: "32",lg: "32",xl: "32",base: "6"};
 
 	return (
 		<div>
-			<Box maxW='100%' px={margin_x} py={5}>
+			<Box maxW='100%' px={margin_x} py={18}>
 				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='5'>
 						<Box>
-							<Heading as='h4' size='md' alignItems='center' fontWeight='black' color='black'>
+							<Heading fontSize='larger' alignItems='center' fontWeight='bold' color='black'>
                                 Latest Posts
 							</Heading>
 						</Box>
 						<Box>
-							<Link fontSize='xx-small' fontWeight='black' color='#00ffff' _hover={{ textDecoration: "none" }}>
+							<Link fontSize='md' fontWeight='black' color='#00ffff' _hover={{ textDecoration: "none" }}>
                                 Visit the Docto Blog
 							</Link>
 						</Box>

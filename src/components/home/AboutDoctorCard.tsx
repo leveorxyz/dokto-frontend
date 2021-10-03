@@ -12,7 +12,7 @@ const AboutDoctorCard = (props:PropTypes) => {
 		<div>
 			<Box w='100%' cursor='pointer' height='100%' d='flex' flexDir='column'>
 				<Image src={props.image} pos='relative' width='100%' height='67%' objectFit='cover' border='1px' borderColor='#e6e6e6'></Image>
-				<Box width='100%' height='31%' fontSize='x-large' py='4'>{props.text}</Box>
+				<Box width='100%' height='31%' fontSize='x-large' py='4' fontWeight='semibold'>{props.text}</Box>
 				<Divider />
 			</Box>
 		</div>
