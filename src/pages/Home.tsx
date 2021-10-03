@@ -8,12 +8,14 @@ import SpecialityDoctor from "src/components/home/SpecialityDoctor";
 import DownloadDoctor from "src/components/home/DownloadDoctor";
 import FooterDoctor from "src/components/home/FooterDoctor";
 import LandingCarousel from "src/components/home/LandingCarousel";
+import LandingSearch from "src/components/home/LandingSearch";
 
 export default function Home() {
 	return (
 		<>
 			<Box minHeight="90vh">
 				<LandingCarousel />
+				<LandingSearch />
 			</Box>
 			<AboutDoctor />
 			<SpecialityDoctor />
