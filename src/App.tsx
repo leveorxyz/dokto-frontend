@@ -5,7 +5,7 @@ import {
 import {
 	BrowserRouter as Router,
 } from "react-router-dom";
-
+import "./app.scss";
 import "swiper/swiper.scss";
 import "swiper/swiper-vars.scss";
 import "swiper/components/navigation/navigation.scss";

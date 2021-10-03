@@ -32,16 +32,16 @@ export default function LandingCarousel() {
 								direction={["column", "column", "row", "row"]}
 								justify={["center", "center", "space-between", "space-between"]}
 								align="center"
-								height="65vh"
+								height={["60vh", "65vh", "65vh", "65vh"]}
 							>
 								<Box
 									fontSize={["5xl", "5xl", "5xl", "6xl"]}
-									width={["100%", "100%", "50%", "45%"]}
+									minWidth={["100%", "100%", "50%", "45%"]}
 									fontWeight={900}
 								>
 									{title}
 								</Box>
-								<Image src={imgSrc} height="80%" fit="contain" />
+								<Image src={imgSrc} height="80%" fit="contain" overflow="hidden" />
 							</Flex>
 						</SwiperSlide>
 					))}

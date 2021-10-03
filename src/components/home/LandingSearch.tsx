@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 
 export default function LandingSearch() {
 	return (
-		<Flex h="25vh">
+		<Flex height={["35vh", "25vh", "25vh", "25vh"]}>
 			<Image 
 				display={["none", "none", "block", "block"]}
 				src="https://source.unsplash.com/collection/42413461"
