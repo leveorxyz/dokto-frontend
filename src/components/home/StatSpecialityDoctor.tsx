@@ -4,11 +4,11 @@ import React from "react";
 const StatSpecialityDoctor = () => {
 	return (
 		<div>
-			<Grid templateColumns='auto auto' p='10' gap={6} w='100%'>
-				<Box textAlign='center' border='1px' borderColor='black' w='50%'>75</Box>
-				<Box textAlign='center' border='1px' borderColor='black' w='50%'>45</Box>
-				<Box textAlign='center' border='1px' borderColor='black' w='50%'>35</Box>
-				<Box textAlign='center' border='1px' borderColor='black' w='50%'>5</Box>
+			<Grid templateColumns='repeat(2, 1fr)' templateRows='repeat(2, 1fr)' gap={6} w='100%'>
+				<Box textAlign='center' border='1px' borderColor='black' p='100'>75</Box>
+				<Box textAlign='center' border='1px' borderColor='black' p='100'>45</Box>
+				<Box textAlign='center' border='1px' borderColor='black' p='100'>35</Box>
+				<Box textAlign='center' border='1px' borderColor='black' p='100'>5</Box>
 			</Grid>
 		</div>
 	);
