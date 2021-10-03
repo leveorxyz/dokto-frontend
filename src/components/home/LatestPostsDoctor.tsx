@@ -7,9 +7,12 @@ import { Box, Container,Heading, Link } from "@chakra-ui/layout";
 import { Grid } from "@chakra-ui/layout";
 
 const LatestPostsDoctor = () => {
+
+	const margin_x = {sm: "6",md: "24",lg: "24",xl: "24",base: "6"};
+
 	return (
 		<div>
-			<Box maxW='100%' px={24} py={5}>
+			<Box maxW='100%' px={margin_x} py={5}>
 				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='5'>
 						<Box>
@@ -24,7 +27,7 @@ const LatestPostsDoctor = () => {
 						</Box>
 					</Box>
 					<Box>
-						<Grid templateColumns='repeat(3, 1fr)' gap={6}>
+						<Grid templateColumns={{sm: "repeat(1, 1fr)",md: "repeat(3, 1fr)",lg: "repeat(3, 1fr)",base: "repeat(1, 1fr)"}} gap={6}>
 							<PostCard image={Image1}/>
 							<PostCard image={Image2}/>
 							<PostCard image={Image3}/>

@@ -8,9 +8,12 @@ import { FaArrowLeft } from "react-icons/fa";
 
 
 const FeaturedDoctor = () => {
+
+	const margin_x = {sm: "6",md: "24",lg: "24",xl: "24",base: "6"};
+
 	return (
 		<div>
-			<Box bg='#0099cc' maxW='100%' px={24} py={5}>
+			<Box bg='#0099cc' maxW='100%' px={margin_x} py={5}>
 				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='7'>
 						<Box><Heading as='h4' size='md' alignItems='center' fontWeight='black' color='white'>Our Featured Doctors</Heading></Box>
@@ -30,7 +33,7 @@ const FeaturedDoctor = () => {
 						</Box>
 					</Box>
 					<Box py='5'>
-						<Grid templateColumns='repeat(4, 1fr)' gap={6}>
+						<Grid templateColumns={{sm: "repeat(1, 1fr)",md: "repeat(4, 1fr)",lg: "repeat(4, 1fr)",base: "repeat(1, 1fr)"}} gap={6}>
 							<FeaturedDoctorCard />
 							<FeaturedDoctorCard />
 							<FeaturedDoctorCard />
