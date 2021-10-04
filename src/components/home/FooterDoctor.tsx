@@ -4,6 +4,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
+import SocialIcons from "../common/SocialIcons";
 
 const FooterDoctor = () => {
 	
@@ -75,7 +76,7 @@ const FooterDoctor = () => {
 									</Box>
 								</ListItem>
 								<ListItem>
-									<Box></Box>
+									<Box><SocialIcons /></Box>
 								</ListItem>
 							</List>
 						</Box>
