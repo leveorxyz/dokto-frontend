@@ -23,7 +23,7 @@ const FooterDoctor = () => {
 	
 	return (
 		<div>
-			<Box color='white' background='#0a001a' px={margin_x} py='20' mt='5'>
+			<Box color='white' background='#0a001a' px={margin_x} py='20' mt='5' borderColor='white'>
 				<Container maxW='container.2xl'>
 					<Box d='flex' flexDir='row'>
 						<Box flex='1'>
