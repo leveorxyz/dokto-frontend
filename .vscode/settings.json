@@ -16,5 +16,7 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": true
 }
