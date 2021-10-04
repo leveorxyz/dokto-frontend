@@ -12,7 +12,7 @@ const DownloadDoctor = () => {
 	return (
 		<div>
 			<Box my='20'>
-				<Container maxWidth='container.xl'>
+				<Container maxWidth='container.2xl'>
 					<Box pos='relative' justifyContent='space-between' d='flex' alignItems='center'> 
 						<Box pos='relative' align='center' mx='auto'>
 							<Heading as='h1' size='lg' fontWeight='bold' my='7' color='#26004d'>
