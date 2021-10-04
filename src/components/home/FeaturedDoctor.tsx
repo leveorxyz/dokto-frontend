@@ -16,7 +16,7 @@ const FeaturedDoctor = () => {
 			<Box bg='#0099cc' maxW='100%' px={margin_x} py={18}>
 				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='7'>
-						<Box><Heading as='h4' size='md' alignItems='center' fontWeight='black' color='white'>Our Featured Doctors</Heading></Box>
+						<Box><Heading as='h1' size='lg' alignItems='center' fontWeight='bold' color='white'>Our Featured Doctors</Heading></Box>
 						<Box>
 							<Box d='flex' flexDir='row'>
 								<Box mr='1'>

@@ -12,11 +12,11 @@ const LatestPostsDoctor = () => {
 
 	return (
 		<div>
-			<Box maxW='100%' px={margin_x} py={18}>
+			<Box maxW='100%' px={margin_x} py={28}>
 				<Container maxW='container.2xl'>
 					<Box d='flex' justifyContent='space-between' alignItems='center' mb='5'>
 						<Box>
-							<Heading fontSize='larger' alignItems='center' fontWeight='bold' color='black'>
+							<Heading as='h1' size='lg' alignItems='center' fontWeight='bold' color='black'>
                                 Latest Posts
 							</Heading>
 						</Box>

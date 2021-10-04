@@ -4,6 +4,7 @@ import FeaturedDoctor from "src/components/home/FeaturedDoctor";
 import LatestPostsDoctor from "src/components/home/LatestPostsDoctor";
 import AboutDoctor from "src/components/home/AboutDoctor";
 import SpecialityDoctor from "src/components/home/SpecialityDoctor";
+import DownloadDoctor from "src/components/home/DownloadDoctor";
 
 export default function Home() {
 	return (
@@ -11,6 +12,7 @@ export default function Home() {
 			<AboutDoctor />
 			<SpecialityDoctor />
 			<FeaturedDoctor />
+			<DownloadDoctor />
 			<LatestPostsDoctor />
 		</>
 	);
