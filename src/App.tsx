@@ -1,9 +1,9 @@
 import * as React from "react";
 import {
-	ChakraProvider,
+  ChakraProvider,
 } from "@chakra-ui/react";
 import {
-	BrowserRouter as Router,
+  BrowserRouter as Router,
 } from "react-router-dom";
 import "./app.scss";
 import "swiper/swiper.scss";
@@ -15,11 +15,13 @@ import Routes from "./router";
 import NavBar from "./components/nav/Bar";
 import theme from "./components/ExtendedTheme";
 
-export const App = () => (
-	<ChakraProvider theme={theme}>
-		<Router>
-			<NavBar />
-			<Routes />
-		</Router>
-	</ChakraProvider>
-);
+export default function App() {
+  return (
+    <ChakraProvider theme={theme}>
+      <Router>
+        <NavBar />
+        <Routes />
+      </Router>
+    </ChakraProvider>
+  );
+}

@@ -1,28 +1,28 @@
 import React from "react";
-import { Box } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/react";
 
-import FeaturedDoctor from "src/components/home/FeaturedDoctor";
-import LatestPostsDoctor from "src/components/home/LatestPostsDoctor";
-import AboutDoctor from "src/components/home/AboutDoctor";
-import SpecialityDoctor from "src/components/home/SpecialityDoctor";
-import DownloadDoctor from "src/components/home/DownloadDoctor";
-import FooterDoctor from "src/components/home/FooterDoctor";
-import LandingCarousel from "src/components/home/LandingCarousel";
-import LandingSearch from "src/components/home/LandingSearch";
+import FeaturedDoctor from "../components/home/FeaturedDoctor";
+import LatestPostsDoctor from "../components/home/LatestPostsDoctor";
+import AboutDoctor from "../components/home/AboutDoctor";
+import SpecialityDoctor from "../components/home/SpecialityDoctor";
+import DownloadDoctor from "../components/home/DownloadDoctor";
+import FooterDoctor from "../components/home/FooterDoctor";
+import LandingCarousel from "../components/home/LandingCarousel";
+import LandingSearch from "../components/home/LandingSearch";
 
 export default function Home() {
-	return (
-		<>
-			<Box minHeight="90vh">
-				<LandingCarousel />
-				<LandingSearch />
-			</Box>
-			<AboutDoctor />
-			<SpecialityDoctor />
-			<FeaturedDoctor />
-			<DownloadDoctor />
-			<LatestPostsDoctor />
-			<FooterDoctor />
-		</>
-	);
+  return (
+    <>
+      <Box minHeight="90vh">
+        <LandingCarousel />
+        <LandingSearch />
+      </Box>
+      <AboutDoctor />
+      <SpecialityDoctor />
+      <FeaturedDoctor />
+      <DownloadDoctor />
+      <LatestPostsDoctor />
+      <FooterDoctor />
+    </>
+  );
 }
