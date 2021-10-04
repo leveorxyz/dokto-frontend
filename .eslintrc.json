@@ -4,10 +4,9 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended",
-        "react-app"
+        "airbnb",
+        "plugin:jsx-a11y/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -55,15 +54,7 @@
         "ignoreRestArgs": true
       }
     ],
-    "max-len": [
-      "warn",
-      {
-        "code": 80,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreComments": true
-      }
-    ],
+    "no-undef": 2,
     "multiline-ternary": 2,
     "no-plusplus": [
       "error",
@@ -71,8 +62,8 @@
         "allowForLoopAfterthoughts": true
       }
     ],
-    "react/jsx-key": "error",
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+      "react/jsx-key": "error",
+      "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+      "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
     }
 }

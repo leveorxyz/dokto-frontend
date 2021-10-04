@@ -68,6 +68,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "prepare": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --color --quiet --fix",
     "lint:typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.json",
     "isready": "npm run format && npm run lint && npm run build"
   },

@@ -3268,7 +3268,7 @@ anymatch@^3.0.3, anymatch@~3.1.1:
 
 anymatch@~3.1.2:
   version "3.1.2"
-  resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
+  resolved "https://registry.npmjs.org/anymatch/-/anymatch-3.1.2.tgz"
   integrity sha512-P43ePfOAIupkguHUycrc4qJ9kz8ZiuOUijaETwX7THt0Y/GNK7v0aa8rY816xWjZ7rJdA5XdMcpVFTKMq+RvWg==
   dependencies:
     normalize-path "^3.0.0"
@@ -4206,7 +4206,7 @@ check-types@^11.1.1:
 
 "chokidar@>=3.0.0 <4.0.0":
   version "3.5.2"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
+  resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.2.tgz"
   integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
   dependencies:
     anymatch "~3.1.2"
@@ -5277,7 +5277,7 @@ dom-serializer@0:
 
 dom7@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/dom7/-/dom7-3.0.0.tgz#b861ce5d67a6becd7aaa3ad02942ff14b1240331"
+  resolved "https://registry.npmjs.org/dom7/-/dom7-3.0.0.tgz"
   integrity sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g==
   dependencies:
     ssr-window "^3.0.0-alpha.1"
@@ -11172,7 +11172,7 @@ react-focus-lock@2.5.0:
 
 react-icons@^4.2.0:
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.2.0.tgz"
   integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
 
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
@@ -11406,7 +11406,7 @@ readdirp@~3.5.0:
 
 readdirp@~3.6.0:
   version "3.6.0"
-  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.6.0.tgz#74a370bd857116e245b29cc97340cd431a02a6c7"
+  resolved "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz"
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
@@ -11896,7 +11896,7 @@ sass-loader@^10.0.5:
 
 sass@^1.42.1:
   version "1.42.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.42.1.tgz#5ab17bebc1cb1881ad2e0c9a932c66ad64e441e2"
+  resolved "https://registry.npmjs.org/sass/-/sass-1.42.1.tgz"
   integrity sha512-/zvGoN8B7dspKc5mC6HlaygyCBRvnyzzgD5khiaCfglWztY99cYoiTUksVx11NlnemrcfH5CEaCpsUKoW0cQqg==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
@@ -12415,7 +12415,7 @@ sshpk@^1.7.0:
 
 ssr-window@^3.0.0, ssr-window@^3.0.0-alpha.1:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-3.0.0.tgz#fd5b82801638943e0cc704c4691801435af7ac37"
+  resolved "https://registry.npmjs.org/ssr-window/-/ssr-window-3.0.0.tgz"
   integrity sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA==
 
 ssri@^6.0.1:
@@ -12787,7 +12787,7 @@ svgo@^1.0.0, svgo@^1.2.2:
 
 swiper@6.8.2:
   version "6.8.2"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.8.2.tgz#1fe3e9b5ef5514d8d7ab2418c8a5ce75abafebec"
+  resolved "https://registry.npmjs.org/swiper/-/swiper-6.8.2.tgz"
   integrity sha512-VwBZ40NQ8vDzIZO9wApJTf4bDu/o3sgURMQ6fvJVSc9T63NoJV0KLC/mjkrl9GepGbmlCQNLR2tL0Kk/r8NSdw==
   dependencies:
     dom7 "^3.0.0"
