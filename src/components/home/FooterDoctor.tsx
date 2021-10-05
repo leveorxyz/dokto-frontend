@@ -26,8 +26,8 @@ const FooterDoctor = () => {
 		<div>
 			<Box color='white' background='#0a001a' px={margin_x} py='20' mt='5' borderColor='white'>
 				<Container maxW='container.2xl'>
-					<Box d='flex' flexDir='row'>
-						<Box flex='1'>
+					<Box d='flex' flexDir={{sm: "column",md: "row",lg: "row",xl: "row",base: "column"}}>
+						<Box flex='1' mb={{sm: "10",md: "0",lg: "0",xl: "0",base: "4"}} pr='100'>
 							<List mt='4' spacing={2}>
 								<ListItem>
 									<Box></Box>
@@ -38,7 +38,7 @@ const FooterDoctor = () => {
 							</List>
 						</Box>
 						<Divider orientation="vertical"/>
-						<Box flex='1' p='4'>
+						<Box flex='1' mb='4'>
 							{links?.map(({ content, url }) => (
 								<List key={url} pb='2'>
 									<Link href={url} color='white' _hover={{ textDecoration: "none", color: "#A2A2A2"}}>
@@ -48,13 +48,13 @@ const FooterDoctor = () => {
 							))}
 						</Box>
 						<Divider dividerColor='white' orientation="vertical"/>
-						<Box flex='1'>
+						<Box flex='1' mb='4'>
 							<Heading size='md'>Connect with Dokto</Heading>
 							<List mt='4' spacing={2} fontSize='sm' color='#df9fbf'>
 								<ListItem>
 									<Box d='flex' flexDir='row'>
 										<IconContext.Provider value={{ color: "#00ffff" }}>
-											<IoLocationOutline size={26}/>
+											<IoLocationOutline size={34}/>
 										</IconContext.Provider>
 										<Box ml='3'>2706 N Buffalo Grove Rd Arlington Heights, Illinois(IL), 60004</Box>
 									</Box>
@@ -81,7 +81,7 @@ const FooterDoctor = () => {
 							</List>
 						</Box>
 					</Box>
-					<Box d='flex' mt='10'>
+					<Box d='flex' mt='10' flexWrap='wrap'>
 						{bottom_links?.map(({ content, url }) => (
 							<List key={url}>
 								<Link href={url} fontSize='sm' mr='5' fontWeight='bold' color='white' _hover={{ textDecoration: "none", color: "#A2A2A2"}}>
