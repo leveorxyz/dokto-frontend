@@ -24,7 +24,7 @@ const FooterDoctor = () => {
 	
 	return (
 		<div>
-			<Box color='white' background='#0a001a' px={margin_x} py='20' mt='5' borderColor='white'>
+			<Box color='white' background='#0a001a' px={margin_x} py='20' mt='5'>
 				<Container maxW='container.2xl'>
 					<Box d='flex' flexDir={{sm: "column",md: "row",lg: "row",xl: "row",base: "column"}}>
 						<Box flex='1' mb={{sm: "10",md: "0",lg: "0",xl: "0",base: "4"}} pr='100'>
@@ -37,7 +37,7 @@ const FooterDoctor = () => {
 								</ListItem>
 							</List>
 						</Box>
-						<Divider orientation="vertical"/>
+						<Divider />
 						<Box flex='1' mb='4'>
 							{links?.map(({ content, url }) => (
 								<List key={url} pb='2'>
@@ -47,7 +47,7 @@ const FooterDoctor = () => {
 								</List>
 							))}
 						</Box>
-						<Divider dividerColor='white' orientation="vertical"/>
+						<Divider orientation="vertical"/>
 						<Box flex='1' mb='4'>
 							<Heading size='md' ml='1'>Connect with Dokto</Heading>
 							<List mt='4' spacing={2} fontSize='sm' color='#df9fbf'>
