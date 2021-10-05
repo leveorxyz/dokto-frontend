@@ -9,6 +9,8 @@ import SocialIcons from "../common/SocialIcons";
 const FooterDoctor = () => {
 	
 	const margin_x = {sm: "6",md: "32",lg: "32",xl: "32",base: "6"};
+	const divider_display = {sm: "none",md: "block",lg: "block",xl: "block",base: "none"};
+	
 	const links = [
 		{ content: "About Us", url: "#" },
 		{ content: "FAQs", url: "#" },
@@ -37,7 +39,7 @@ const FooterDoctor = () => {
 								</ListItem>
 							</List>
 						</Box>
-						<Divider />
+						<Divider orientation='vertical' h='10rem' px='10' display={divider_display}/>
 						<Box flex='1' mb='4'>
 							{links?.map(({ content, url }) => (
 								<List key={url} pb='2'>
@@ -47,7 +49,7 @@ const FooterDoctor = () => {
 								</List>
 							))}
 						</Box>
-						<Divider orientation="vertical"/>
+						<Divider orientation="vertical" h='10rem' px='10' display={divider_display}/>
 						<Box flex='1' mb='4'>
 							<Heading size='md' ml='1'>Connect with Dokto</Heading>
 							<List mt='4' spacing={2} fontSize='sm' color='#df9fbf'>
