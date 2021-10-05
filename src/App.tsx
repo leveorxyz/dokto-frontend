@@ -11,11 +11,6 @@ import "swiper/swiper-vars.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 
-import "swiper/swiper.scss";
-import "swiper/swiper-vars.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-
 import Routes from "./router";
 import NavBar from "./components/nav/Bar";
 import theme from "./components/ExtendedTheme";
