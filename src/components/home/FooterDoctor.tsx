@@ -49,9 +49,9 @@ const FooterDoctor = () => {
 						</Box>
 						<Divider dividerColor='white' orientation="vertical"/>
 						<Box flex='1' mb='4'>
-							<Heading size='md'>Connect with Dokto</Heading>
+							<Heading size='md' ml='1'>Connect with Dokto</Heading>
 							<List mt='4' spacing={2} fontSize='sm' color='#df9fbf'>
-								<ListItem>
+								<ListItem  ml='2'>
 									<Box d='flex' flexDir='row'>
 										<IconContext.Provider value={{ color: "#00ffff" }}>
 											<IoLocationOutline size={34}/>
@@ -59,7 +59,7 @@ const FooterDoctor = () => {
 										<Box ml='3'>2706 N Buffalo Grove Rd Arlington Heights, Illinois(IL), 60004</Box>
 									</Box>
 								</ListItem>
-								<ListItem>
+								<ListItem  ml='2'>
 									<Box d='flex' flexDir='row'>
 										<IconContext.Provider value={{ color: "#00ffff" }}>
 											<FiPhone size={20}/>
@@ -67,7 +67,7 @@ const FooterDoctor = () => {
 										<Box ml='3'>(847)749-0143</Box>
 									</Box>
 								</ListItem>
-								<ListItem>
+								<ListItem  ml='2'>
 									<Box d='flex' flexDir='row'>
 										<IconContext.Provider value={{ color: "#00ffff" }}>
 											<IoMailOutline size={22}/>
@@ -76,7 +76,7 @@ const FooterDoctor = () => {
 									</Box>
 								</ListItem>
 								<ListItem>
-									<Box><SocialIcons /></Box>
+									<Box d='flex'><SocialIcons /></Box>
 								</ListItem>
 							</List>
 						</Box>
