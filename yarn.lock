@@ -2643,6 +2643,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-vertical-timeline-component@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-vertical-timeline-component/-/react-vertical-timeline-component-3.0.1.tgz#52c905b00ea822befb394e0446f0865de8c5e0d5"
+  integrity sha512-0psZ6s08ALy3v3I87fmylolKUweUUC6GIqxgvjAPNadNvnV//DwHk5knbMpHCkci+8vJK+ECPbxic4a0GjoOwg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16", "@types/react@^16.9.0":
   version "16.14.15"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.14.15.tgz"
@@ -13447,10 +13454,15 @@ typedarray@^0.0.6:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.2.1, typescript@^3.9.3, typescript@^3.9.5:
+typescript@^3.2.1, typescript@^3.9.3:
   version "3.9.10"
   resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.10.tgz"
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
+
+typescript@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
+  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
