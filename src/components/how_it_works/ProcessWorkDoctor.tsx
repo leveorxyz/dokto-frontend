@@ -12,7 +12,7 @@ const ProcessWorkDoctor = () => {
       <Box px={marginX} w="100%" py="20">
         <Box>
           <Heading as="h2" fontWeight="bold" fontSize="3xl" mb="4">Our Process</Heading>
-          <Heading as="h4" fontSize="2xl" mb="4" color="skyblue" fontWeight="normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Heading>
+          <Heading as="h4" fontSize="2xl" mb="4" color="#00ffff" fontWeight="normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Heading>
           <TimelineWorkDoctor />
         </Box>
       </Box>

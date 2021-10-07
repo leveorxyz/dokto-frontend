@@ -11,7 +11,8 @@ const TimelineWorkDoctor = () => (
   <div>
     <Timeline>
       {TimelineElement.map((element) => (
-        <TimelineEvent key={element.id} title="">
+        // eslint-disable-next-line object-curly-newline
+        <TimelineEvent key={element.id} title="" icon={element.icon} iconColor="#00ffff" iconStyle={{ backgroundColor: "#00ffff", borderRadius: "100px" }}>
           <Box p={[6, 100, 100, 100, 100]}>
             <Heading as="h6" fontSize="3xl" fontWeight="normal">{element.title}</Heading>
             <Box fontSize="xl">{element.description}</Box>
