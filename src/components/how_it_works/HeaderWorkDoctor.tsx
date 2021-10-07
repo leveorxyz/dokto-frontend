@@ -9,12 +9,12 @@ const HeaderWorkDoctor = () => {
     sm: "6", md: "32", lg: "32", xl: "32", base: "6",
   };
   const marginY = {
-    sm: "20", md: "40", lg: "40", xl: "40", base: "20",
+    sm: "20", md: "44", lg: "44", xl: "44", base: "20",
   };
 
   return (
     <div>
-      <Box w="100%">
+      <Box w="100%" backgroundImage="https://source.unsplash.com/collection/42413461/500x300" backgroundRepeat="no-repeat" backgroundSize="cover" mb="50">
         <Heading fontSize={headingSize} fontWeight="bold" py={marginY} px={marginX}>How it Works</Heading>
       </Box>
     </div>
