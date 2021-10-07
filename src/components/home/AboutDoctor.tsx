@@ -2,9 +2,6 @@ import { Grid, Box, Container } from "@chakra-ui/react";
 import React from "react";
 
 import AboutDoctorCard from "./AboutDoctorCard";
-import Virtual from "../../static/home/virtual.jpg";
-import Pharmacy from "../../static/home/pharmacy.jpg";
-import Optimum from "../../static/home/optimum.jpg";
 
 const AboutDoctor = () => (
   <div>
@@ -16,9 +13,9 @@ const AboutDoctor = () => (
           }}
           gap={6}
         >
-          <AboutDoctorCard image={Virtual} text="Your best virtual healthcare" />
-          <AboutDoctorCard image={Pharmacy} text="World class doctors, hospitals and pharmacies" />
-          <AboutDoctorCard image={Optimum} text="Get optimum treatment" />
+          <AboutDoctorCard image="https://source.unsplash.com/collection/42413461/500x300" text="Your best virtual healthcare" />
+          <AboutDoctorCard image="https://source.unsplash.com/collection/42413461/500x300" text="World class doctors, hospitals and pharmacies" />
+          <AboutDoctorCard image="https://source.unsplash.com/collection/42413461/500x300" text="Get optimum treatment" />
         </Grid>
       </Container>
     </Box>
