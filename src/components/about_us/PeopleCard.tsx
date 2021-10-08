@@ -6,7 +6,7 @@ import { Box } from "@chakra-ui/react";
 const PeopleCard = () => (
   <div>
     <Box w="100%" height="100%" border="1px" borderColor="gray.300" bg="white">
-      <Box d="flex" flexDir="column" alignItems="center" py="120" px="14">
+      <Box d="flex" flexDir="column" alignItems="center" py="120" px="1">
         <IconContext.Provider value={{ color: "#00ffff" }}>
           <IoIosPeople size={200} />
         </IconContext.Provider>
