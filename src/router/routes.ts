@@ -1,5 +1,6 @@
 import Home from "../pages/Home";
 import NotImplemented from "../components/NotImplemented";
+import AboutUs from "../pages/AboutUs";
 
 type routeType = {
     displayName: string;
@@ -25,7 +26,7 @@ const routes: routeType[] = [
   {
     displayName: "Doctors",
     path: "/doctors",
-    component: NotImplemented,
+    component: AboutUs,
     isProtected: false,
   },
   {
