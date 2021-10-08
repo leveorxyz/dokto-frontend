@@ -18,7 +18,7 @@ const CommonHeader = ({ text }:PropTypes) => {
 
   return (
     <div>
-      <Box w="100%" backgroundImage="https://source.unsplash.com/collection/42413461/500x300" backgroundRepeat="no-repeat" backgroundSize="cover" mb="50">
+      <Box w="100%" backgroundImage="https://source.unsplash.com/collection/42413461/500x300" backgroundRepeat="no-repeat" backgroundSize="cover">
         <Heading fontSize={headingSize} fontWeight="bold" py={marginY} px={marginX}>{text}</Heading>
       </Box>
     </div>
