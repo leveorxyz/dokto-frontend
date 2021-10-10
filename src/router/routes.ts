@@ -2,6 +2,7 @@ import Home from "../pages/Home";
 import HowItWorks from "../pages/HowItWorks";
 import NotImplemented from "../components/NotImplemented";
 import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 type routeType = {
     displayName: string;
@@ -37,7 +38,7 @@ const routes: routeType[] = [
   {
     displayName: "Clinics",
     path: "/clinics",
-    component: NotImplemented,
+    component: ContactUs,
     isProtected: false,
     showInNavbar: true,
   },
