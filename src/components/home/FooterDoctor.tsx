@@ -15,14 +15,6 @@ const FooterDoctor = () => {
     sm: "none", md: "block", lg: "block", xl: "block", base: "none",
   };
 
-  /* const links = [
-    { content: "About Us", url: "/" },
-    { content: "FAQs", url: "#" },
-    { content: "T&Cs", url: "#" },
-    { content: "Privacy Policy", url: "#" },
-    { content: "HIPAA Policy", url: "#" },
-  ]; */
-
   const bottomLinks = [
     { content: "Terms & Conditions", url: "#" },
     { content: "Privacy Policy", url: "#" },
