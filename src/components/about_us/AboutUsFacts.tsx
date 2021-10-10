@@ -1,31 +1,67 @@
 import React from "react";
 import { Box, Heading, Grid } from "@chakra-ui/react";
-import PeopleCard from "./PeopleCard";
-import GlobeCard from "./GlobeCard";
-import BusinessCard from "./BusinessCard";
+import { IoBusiness, IoPeople, IoGlobe } from "react-icons/io5";
 
-const AboutUsFacts = () => (
-  <div>
-    <Box maxW="100%" pb="200">
-      <Box w="100%" bg="#0099cc" pt="20">
-        <Box px={[6, 6, 32, 32, 32]} py={5}>
-          <Heading pb="14" color="white" fontSize="4xl">Dokto Facts</Heading>
-          <Box>
-            <Grid
-              templateColumns={{
-                sm: "repeat(1, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(3, 1fr)", base: "repeat(1, 1fr)",
-              }}
-              gap={6}
-            >
-              <PeopleCard />
-              <GlobeCard />
-              <BusinessCard />
-            </Grid>
-          </Box>
-        </Box>
+import IconCard from "../common/IconCard";
+
+const facts = [
+  {
+    id: "people",
+    Icon: IoPeople,
+    title: (
+      <>
+        <b>560,000</b>
+        &nbsp;Members
+      </>
+    ),
+  },
+  {
+    id: "globe",
+    Icon: IoGlobe,
+    title: (
+      <>
+        <b>497</b>
+        &nbsp;
+        Countries across
+        <br />
+        <b>19</b>
+        &nbsp;
+        States
+      </>
+    ),
+  },
+  {
+    id: "business",
+    Icon: IoBusiness,
+    title: (
+      <>
+        <b>3</b>
+        &nbsp;Lines of business
+      </>
+    ),
+  },
+];
+
+export default function AboutUsFacts() {
+  return (
+    <Box bg="cyan.500" py={12}>
+      <Box mx={[3, 3, "10%", "10%"]}>
+        <Heading pb="14" color="white" fontSize="4xl">Dokto Facts</Heading>
+        <Grid
+          templateColumns={{
+            sm: "repeat(1, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(3, 1fr)", base: "repeat(1, 1fr)",
+          }}
+          gap={6}
+        >
+          {facts.map(({ id, Icon, title }) => (
+            <IconCard
+              key={id}
+              icon={<Box as={Icon} size={200} color="cyan.500" />}
+              title={title}
+            />
+          ))}
+        </Grid>
       </Box>
     </Box>
-  </div>
-);
-
-export default AboutUsFacts;
+  );
+}
