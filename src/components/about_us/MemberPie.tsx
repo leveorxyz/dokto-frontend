@@ -7,10 +7,10 @@ import { Text } from "@visx/text";
 const MemberPie = () => {
   const trust = [
     {
-      symbol: "ADA", amount: 68, color: "#ff4dff", ratio: 1.103,
+      symbol: "S", amount: 68, color: "#ff4dff", ratio: 1.103,
     },
     {
-      symbol: "SOL", amount: 32, color: "#bfbfbf", ratio: 0.78125,
+      symbol: "Z", amount: 32, color: "#bfbfbf", ratio: 0.78125,
     },
   ];
   const [active, setActive] = useState(null);
