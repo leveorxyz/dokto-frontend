@@ -7,14 +7,14 @@ import { Text } from "@visx/text";
 const MemberPie = () => {
   const trust = [
     {
-      symbol: "ADA", amount: 75, color: "#ff4dff",
+      symbol: "ADA", amount: 68, color: "#ff4dff", ratio: 1.103,
     },
     {
-      symbol: "SOL", amount: 25, color: "#bfbfbf",
+      symbol: "SOL", amount: 32, color: "#bfbfbf", ratio: 0.78125,
     },
   ];
   const [active, setActive] = useState(null);
-  const width = 150;
+  const width = 140;
   const half = width / 2;
 
   return (
@@ -24,10 +24,10 @@ const MemberPie = () => {
           <Group top={half} left={half}>
             <Pie
               data={trust}
-              pieValue={(data) => data.amount}
+              pieValue={(data) => data.amount * data.ratio}
               outerRadius={half}
               innerRadius={({ data }) => {
-                const size = active && active.symbol === data.symbol ? 25 : 18;
+                const size = active && active.symbol === data.symbol ? 30 : 20;
                 return half - size;
               }}
               padAngle={0.01}
@@ -48,15 +48,16 @@ const MemberPie = () => {
                 <Text
                   textAnchor="middle"
                   fill="black"
-                  fontSize={20}
-                  dy={8}
+                  fontSize={30}
+                  fontWeight="bold"
+                  dy={10}
                 >
-                  {`${active.amount - 7} %`}
+                  {`${active.amount} %`}
                 </Text>
               </>
             ) : (
               <>
-                <Text textAnchor="middle" fill="black" fontSize={20} dy={8}>
+                <Text textAnchor="middle" fill="black" fontSize={30} fontWeight="bold" dy={10}>
                   68 %
                 </Text>
               </>
