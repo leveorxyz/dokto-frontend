@@ -42,14 +42,16 @@ type MobileProps = {
 function MobileMenu({ setIsMenuOpen }: MobileProps) {
   return (
     <Flex direction="column" minHeight="90vh" justifyContent="space-around" display={["flex", "flex", "none", "none"]}>
-      {routes.map((route) => (
-        <NavItem
-          key={route.path}
-          title={route.displayName}
-          href={route.path}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-      ))}
+      {routes
+        .filter((route) => route.showInNavbar)
+        .map((route) => (
+          <NavItem
+            key={route.path}
+            title={route.displayName}
+            href={route.path}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+        ))}
 
       <Center>
         <UpperMenuActions />
@@ -74,13 +76,15 @@ function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
     <Flex justifyContent="space-between" alignItems="center">
       <Logo />
       <Flex direction="row" display={["none", "none", "flex", "flex"]}>
-        {routes.map((route) => (
-          <NavItem
-            key={route.path}
-            title={route.displayName}
-            href={route.path}
-          />
-        ))}
+        {routes
+          .filter((route) => route.showInNavbar)
+          .map((route) => (
+            <NavItem
+              key={route.path}
+              title={route.displayName}
+              href={route.path}
+            />
+          ))}
       </Flex>
       <Box display={["none", "none", "block", "block"]}>
         <AuthButtons />

@@ -24,8 +24,17 @@
     "preserveSymlinks": true,
     "strictNullChecks": true,
     "outDir": "dist",
-    "noImplicitAny": true,
+    "noImplicitAny": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "./customs.d.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "*.scss", "*.css"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "./customs.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "*.scss",
+    "*.css"
+  ]
 }
