@@ -1,16 +1,16 @@
 import React from "react";
 import FooterDoctor from "../components/home/FooterDoctor";
-import AboutUsDescription from "../components/about_us/AboutUsDescription";
+import Description from "../components/about_us/Description";
 import Banner from "../components/common/Banner";
-import AboutUsFacts from "../components/about_us/AboutUsFacts";
-import MemberEngagementDoctor from "../components/about_us/MemberEngagementDoctor";
+import FactSection from "../components/about_us/FactSection";
+import MemberEngagement from "../components/about_us/MemberEngagement";
 
 const AboutUs = () => (
   <div>
     <Banner text="About Us" imgSrc="https://source.unsplash.com/collection/42413461/500x300" />
-    <AboutUsFacts />
-    <MemberEngagementDoctor />
-    <AboutUsDescription />
+    <FactSection />
+    <MemberEngagement />
+    <Description />
     <FooterDoctor />
   </div>
 );
