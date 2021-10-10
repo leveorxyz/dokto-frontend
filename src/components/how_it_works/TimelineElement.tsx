@@ -3,7 +3,7 @@ import { FaSearch, FaRegCalendarAlt, FaHandHoldingHeart } from "react-icons/fa";
 // eslint-disable-next-line import/first
 import { AiOutlineLike } from "react-icons/ai";
 
-const TimelineElement = [
+export default [
   {
     id: 1,
     title: "Browse our providers",
@@ -33,5 +33,3 @@ const TimelineElement = [
     icon: AiOutlineLike,
   },
 ];
-
-export default TimelineElement;
