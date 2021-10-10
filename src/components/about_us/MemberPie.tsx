@@ -14,7 +14,7 @@ const MemberPie = () => {
     },
   ];
   const [active, setActive] = useState(null);
-  const width = 140;
+  const width = 130;
   const half = width / 2;
 
   return (
@@ -27,7 +27,7 @@ const MemberPie = () => {
               pieValue={(data) => data.amount * data.ratio}
               outerRadius={half}
               innerRadius={({ data }) => {
-                const size = active && active.symbol === data.symbol ? 30 : 20;
+                const size = active && active.symbol === data.symbol ? 25 : 19;
                 return half - size;
               }}
               padAngle={0.01}
@@ -48,16 +48,16 @@ const MemberPie = () => {
                 <Text
                   textAnchor="middle"
                   fill="black"
-                  fontSize={30}
+                  fontSize={32}
                   fontWeight="bold"
-                  dy={10}
+                  dy={12}
                 >
                   {`${active.amount} %`}
                 </Text>
               </>
             ) : (
               <>
-                <Text textAnchor="middle" fill="black" fontSize={30} fontWeight="bold" dy={10}>
+                <Text textAnchor="middle" fill="black" fontSize={32} fontWeight="bold" dy={12}>
                   68 %
                 </Text>
               </>
