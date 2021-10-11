@@ -38,7 +38,7 @@ const routes: routeType[] = [
   {
     displayName: "Clinics",
     path: "/clinics",
-    component: ContactUs,
+    component: NotImplemented,
     isProtected: false,
     showInNavbar: true,
   },
@@ -60,6 +60,13 @@ const routes: routeType[] = [
     displayName: "About Us",
     path: "/about",
     component: AboutUs,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Contact Us",
+    path: "/contact",
+    component: ContactUs,
     isProtected: false,
     showInNavbar: false,
   },
