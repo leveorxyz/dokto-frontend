@@ -3,9 +3,6 @@ import {
   Box, Container, Heading, Link, Grid,
 } from "@chakra-ui/react";
 import PostCard from "./PostsDoctorCard";
-import Image1 from "../../static/home/image1.jpg";
-import Image2 from "../../static/home/image2.jpg";
-import Image3 from "../../static/home/image3.jpg";
 
 const LatestPostsDoctor = () => (
   <div>
@@ -30,9 +27,9 @@ const LatestPostsDoctor = () => (
             }}
             gap={6}
           >
-            <PostCard image={Image1} />
-            <PostCard image={Image2} />
-            <PostCard image={Image3} />
+            <PostCard image="https://source.unsplash.com/collection/42413461" />
+            <PostCard image="https://source.unsplash.com/collection/42413461" />
+            <PostCard image="https://source.unsplash.com/collection/42413461" />
           </Grid>
         </Box>
       </Container>

@@ -1,4 +1,5 @@
 import Home from "../pages/Home";
+import HowItWorks from "../pages/HowItWorks";
 import NotImplemented from "../components/NotImplemented";
 import AboutUs from "../pages/AboutUs";
 
@@ -22,7 +23,7 @@ const routes: routeType[] = [
   {
     displayName: "How it works",
     path: "/how",
-    component: NotImplemented,
+    component: HowItWorks,
     isProtected: false,
     showInNavbar: true,
   },
