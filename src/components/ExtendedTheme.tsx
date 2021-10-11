@@ -5,6 +5,11 @@ const theme = extendTheme({
     heading: "Inter",
     body: "Inter",
   },
+  colors: {
+    brand: {
+      dark: "#26004d",
+    },
+  },
 });
 
 export default theme;
