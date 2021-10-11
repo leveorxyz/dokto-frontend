@@ -5,6 +5,9 @@ const theme = extendTheme({
     heading: "Inter",
     body: "Inter",
   },
+  colors: {
+    "special-button-color": "#26004d",
+  },
 });
 
 export default theme;
