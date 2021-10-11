@@ -8,7 +8,7 @@ type PropTypes = {
 
 export default function CustomBulletList({ listData }: PropTypes) {
   return (
-    <List fontWeight="bold" fontSize="2xl">
+    <List fontWeight="bold" fontSize="xl" spacing={3}>
       {
         listData.map((item) => (
           <ListItem key={item}>
