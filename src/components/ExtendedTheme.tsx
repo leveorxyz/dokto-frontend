@@ -6,7 +6,9 @@ const theme = extendTheme({
     body: "Inter",
   },
   colors: {
-    "special-button-color": "#26004d",
+    brand: {
+      dark: "#26004d",
+    },
   },
 });
 

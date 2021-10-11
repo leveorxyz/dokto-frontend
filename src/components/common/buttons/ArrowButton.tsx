@@ -34,6 +34,6 @@ export default function ArrowButton({
 ArrowButton.defaultProps = {
   onClick: () => {},
   color: "white",
-  bgColor: "special-button-color",
+  bgColor: "brand.dark",
   iconColor: "pink.400",
 };
