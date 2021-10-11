@@ -1,5 +1,8 @@
 import Home from "../pages/Home";
+import HowItWorks from "../pages/HowItWorks";
 import NotImplemented from "../components/NotImplemented";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 type routeType = {
     displayName: string;
@@ -7,6 +10,7 @@ type routeType = {
     component: () => JSX.Element;
     isProtected: boolean;
     allowedRoles?: string[];
+    showInNavbar: boolean;
 }
 
 const routes: routeType[] = [
@@ -15,36 +19,56 @@ const routes: routeType[] = [
     path: "/",
     component: Home,
     isProtected: false,
+    showInNavbar: true,
   },
   {
     displayName: "How it works",
     path: "/how",
-    component: NotImplemented,
+    component: HowItWorks,
     isProtected: false,
+    showInNavbar: true,
   },
   {
     displayName: "Doctors",
     path: "/doctors",
     component: NotImplemented,
     isProtected: false,
+    showInNavbar: true,
   },
   {
     displayName: "Clinics",
     path: "/clinics",
     component: NotImplemented,
     isProtected: false,
+    showInNavbar: true,
   },
   {
     displayName: "Pharmacies",
     path: "/pharmacies",
     component: NotImplemented,
     isProtected: false,
+    showInNavbar: true,
   },
   {
     displayName: "Registration",
     path: "/registration",
     component: NotImplemented,
     isProtected: false,
+    showInNavbar: true,
+  },
+  {
+    displayName: "About Us",
+    path: "/about",
+    component: AboutUs,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Contact Us",
+    path: "/contact",
+    component: ContactUs,
+    isProtected: false,
+    showInNavbar: false,
   },
 ];
 

@@ -5,20 +5,15 @@ import {
 import { IoMailOutline, IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
+
+import FooterLinks from "../about_us/FooterLinks";
 import SocialIcons from "../common/SocialIcons";
+import FooterLinkStyle from "../about_us/FooterLinkStyle";
 
 const FooterDoctor = () => {
   const dividerDisplay = {
     sm: "none", md: "block", lg: "block", xl: "block", base: "none",
   };
-
-  const links = [
-    { content: "About Us", url: "#" },
-    { content: "FAQs", url: "#" },
-    { content: "T&Cs", url: "#" },
-    { content: "Privacy Policy", url: "#" },
-    { content: "HIPAA Policy", url: "#" },
-  ];
 
   const bottomLinks = [
     { content: "Terms & Conditions", url: "#" },
@@ -53,12 +48,12 @@ const FooterDoctor = () => {
             </Box>
             <Divider orientation="vertical" h="10rem" px="10" display={dividerDisplay} />
             <Box flex="1" mb="4">
-              {links?.map(({ content, url }) => (
-                <List key={url} pb="2">
-                  <Link href={url} color="white" _hover={{ textDecoration: "none", color: "#A2A2A2" }}>
-                    {content}
-                  </Link>
-                </List>
+              {FooterLinks?.map((links) => (
+                <FooterLinkStyle
+                  key={links.url}
+                  title={links.content}
+                  href={links.url}
+                />
               ))}
             </Box>
             <Divider orientation="vertical" h="10rem" px="10" display={dividerDisplay} />

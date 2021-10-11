@@ -29,11 +29,12 @@ type MarginAndPaddingTypes = {
 
 type PropTypes = {
    children: React.ReactNode;
+   bg?: string;
 } & MarginAndPaddingTypes;
 
-export function FullWidthContainer({ children }: PropTypes) {
+export function FullWidthContainer({ children, ...props }: PropTypes) {
   return (
-    <Box>
+    <Box {...props}>
       {children}
     </Box>
   );
@@ -46,3 +47,11 @@ export function SpacedContainer({ children, ...props }: PropTypes) {
     </Box>
   );
 }
+
+FullWidthContainer.defaultProps = {
+  bg: "",
+};
+
+SpacedContainer.defaultProps = {
+  bg: "",
+};
