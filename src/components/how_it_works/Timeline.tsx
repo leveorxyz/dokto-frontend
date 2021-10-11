@@ -9,12 +9,41 @@ import TimelineElement from "./TimelineElement";
 
 const ProcessTimeline = () => (
   <Timeline>
-    {TimelineElement.map((element) => (
+    {TimelineElement.map(({
+      id, Icon, title, description,
+    }) => (
       // eslint-disable-next-line object-curly-newline
-      <TimelineEvent key={element.id} title="" icon={element.icon} iconColor="#00ffff" iconStyle={{ backgroundColor: "#00ffff", borderRadius: "100px" }}>
-        <Box p={[6, 100, 100, 100, 100]}>
-          <Heading as="h6" fontSize="3xl" fontWeight="normal">{element.title}</Heading>
-          <Box fontSize="xl">{element.description}</Box>
+      <TimelineEvent
+        key={id}
+        title=""
+        icon={(
+          <Box
+            padding={6}
+            bg="cyan.500"
+            rounded="full"
+            style={{
+              borderWidth: "1rem",
+              borderColor: "white",
+              borderStyle: "solid",
+            }}
+          >
+            <Icon size={48} />
+          </Box>
+        )}
+        style={{
+          padding: 0,
+          margin: 0,
+        }}
+        contentStyle={{
+          marginLeft: "3rem",
+          marginTop: 0,
+          paddingTop: 0,
+          boxShadow: "none",
+        }}
+      >
+        <Box pb={[6, 36, 36, 36, 36]}>
+          <Heading as="h6" fontSize="3xl" fontWeight="normal">{title}</Heading>
+          <Box fontSize="xl">{description}</Box>
         </Box>
       </TimelineEvent>
     ))}
