@@ -5,21 +5,26 @@ import { FaArrowRight } from "react-icons/fa";
 type PropTypes = {
   children: React.ReactNode;
   onClick?: () => void;
+  bgColor?: string;
+  iconColor?: string;
+  color?: string;
 };
 
-export default function ArrowButton({ children, onClick }: PropTypes) {
+export default function ArrowButton({
+  children, onClick, bgColor, iconColor, color,
+}: PropTypes) {
   return (
     <Button
       mt="7"
       textTransform="uppercase"
-      bg="special-button-color"
-      color="white"
+      bg={bgColor}
+      color={color}
       fontSize="md"
       p="6"
       onClick={onClick}
       _hover={{ opacity: ".85" }}
       _focus={{ outline: "none", opacity: ".85" }}
-      rightIcon={<Box as={FaArrowRight} color="pink.400" size={20} />}
+      rightIcon={<Box as={FaArrowRight} color={iconColor} size={20} />}
     >
       {children}
     </Button>
@@ -28,4 +33,7 @@ export default function ArrowButton({ children, onClick }: PropTypes) {
 
 ArrowButton.defaultProps = {
   onClick: () => {},
+  color: "white",
+  bgColor: "special-button-color",
+  iconColor: "pink.400",
 };
