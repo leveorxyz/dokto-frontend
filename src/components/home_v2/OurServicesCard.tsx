@@ -9,7 +9,7 @@ type PropTypes = {
 
 const OurServicesCard = ({ icon, title, description }: PropTypes) => (
   <div>
-    <Box w="100%" height="100%">
+    <Box w="100%" height="100%" borderRadius="20" _hover={{ bg: "white" }} p="6" cursor="pointer">
       <Flex direction="column" px="1">
         {icon}
         <Text fontSize="xl" mt="4" mb="2">

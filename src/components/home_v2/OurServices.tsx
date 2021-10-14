@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Box, Heading, Grid, Center,
+  Box, Heading, Grid, Center, Divider,
 } from "@chakra-ui/react";
 import { IoChatbubbleOutline } from "react-icons/io5";
 import { FaRegHospital, FaCapsules, FaStethoscope } from "react-icons/fa";
@@ -85,8 +85,9 @@ export default function OurServices() {
     <div>
       <Box w="100%" bg="gray.100" py="100">
         <SpacedContainer>
-          <Center>
-            <Heading as="h2" fontWeight="bold" fontSize="4xl" mb="4">Lorem ipsum dolor sit amet</Heading>
+          <Center display="flex" flexDir="column" borderColor="plum">
+            <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase">Our Services</Heading>
+            <Divider w="10" h="2" mb="100" />
             <Grid
               templateColumns={{
                 sm: "repeat(1, 1fr)", md: "repeat(4, 1fr)", lg: "repeat(4, 1fr)", base: "repeat(1, 1fr)",
