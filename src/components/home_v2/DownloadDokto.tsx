@@ -9,13 +9,18 @@ import { SpacedContainer } from "../common/Containers";
 
 const DownloadDokto = () => (
   <div>
-    <SpacedContainer py="100">
-      <Center d="flex" flexDir="row">
-        <Box flex="1" d="flex" flexDir="column" alignItems="center" mr="10">
+    <SpacedContainer py="20">
+      <Center
+        d="flex"
+        flexDir={{
+          sm: "column", md: "row", lg: "row", xl: "row", base: "column",
+        }}
+      >
+        <Box flex="1" d="flex" flexDir="column" alignItems="center">
           <Heading as="h1" size="lg" fontWeight="bold" my="7" color="#26004d">
             Download the Dokto App
           </Heading>
-          <Box d="flex">
+          <Box d="flex" pb="12">
             <Link href="https://play.google.com/store/apps/details?id=com.meetup&hl=en-US"><Image cursor="pointer" w="310px" p="3" src={PlayStore} borderRadius="25px" /></Link>
             <Link href="https://apps.apple.com/us/app/meetup/id375990038"><Image cursor="pointer" w="290px" p="3" src={AppStore} /></Link>
           </Box>
