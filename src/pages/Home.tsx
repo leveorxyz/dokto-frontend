@@ -12,6 +12,7 @@ import LandingSearch from "../components/home/LandingSearch";
 import OurServices from "../components/home_v2/OurServices";
 import HowItWorks from "../components/home_v2/HowItWorks";
 import OurDoctors from "../components/home_v2/OurDoctors";
+import DownloadDokto from "../components/home_v2/DownloadDokto";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <OurServices />
       <HowItWorks />
       <OurDoctors />
+      <DownloadDokto />
       <AboutDoctor />
       <SpecialityDoctor />
       <FeaturedDoctor />
