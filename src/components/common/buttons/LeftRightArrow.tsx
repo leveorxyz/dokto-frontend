@@ -1,21 +1,21 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { IconContext } from "react-icons";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const LeftRightArrow = () => (
   <div>
     <Box d="flex" flexDir="row">
-      <Box mr="2">
+      <Button variant="ghost" _hover={{ color: "white" }} _active={{ color: "white" }}>
         <IconContext.Provider value={{ color: "purple" }}>
           <FaArrowLeft size={20} />
         </IconContext.Provider>
-      </Box>
-      <Box>
+      </Button>
+      <Button variant="ghost" _hover={{ color: "white" }} _active={{ color: "white" }}>
         <IconContext.Provider value={{ color: "purple" }}>
           <FaArrowRight size={20} />
         </IconContext.Provider>
-      </Box>
+      </Button>
     </Box>
   </div>
 );
