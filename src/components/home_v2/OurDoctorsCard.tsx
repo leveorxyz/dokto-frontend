@@ -4,33 +4,9 @@ import {
 } from "@chakra-ui/react";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
+import { IconContext } from "react-icons";
 import Profile from "../../static/home/profile.jpg";
 import ArrowButton from "../common/buttons/ArrowButton";
-
-const facts = [
-  {
-    id: "location",
-    Icon: IoLocationOutline,
-    title: (
-      <>
-        &nbsp;
-        New York,NY
-      </>
-    ),
-  },
-  {
-    id: "star",
-    Icon: FaStar,
-    title: (
-      <>
-        &nbsp;
-        <b>4.85</b>
-        &nbsp;
-        1751 reviews
-      </>
-    ),
-  },
-];
 
 const OurDoctorsCard = () => (
   <div>
@@ -43,13 +19,20 @@ const OurDoctorsCard = () => (
             <Box fontSize="md">Primary Care Doctor</Box>
           </Box>
         </Box>
-        <Box>
-          {facts.map(({ id, Icon, title }) => (
-            <Box key={id} d="flex" flexDir="row">
-              <Box>{Icon}</Box>
-              {title}
-            </Box>
-          ))}
+        <Box mt="5">
+          <Box fontSize="md" d="flex" flexDir="row" alignItems="center">
+            <IconContext.Provider value={{ color: "#00ffff" }}>
+              <IoLocationOutline size={20} />
+            </IconContext.Provider>
+            <Box ml="2">New York,NY</Box>
+          </Box>
+          <Box fontSize="md" d="flex" flexDir="row" alignItems="center">
+            <IconContext.Provider value={{ color: "#ffbf00" }}>
+              <FaStar />
+            </IconContext.Provider>
+            <Box ml="2" mr="2" fontWeight="semibold">4.85</Box>
+            <Box>1751 reviews</Box>
+          </Box>
         </Box>
         <ArrowButton bgColor="purple" iconColor="white">View Profile</ArrowButton>
       </Flex>
