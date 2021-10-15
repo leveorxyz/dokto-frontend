@@ -11,6 +11,7 @@ import LandingCarousel from "../components/home/LandingCarousel";
 import LandingSearch from "../components/home/LandingSearch";
 import OurServices from "../components/home_v2/OurServices";
 import HowItWorks from "../components/home_v2/HowItWorks";
+import OurDoctors from "../components/home_v2/OurDoctors";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       </Box>
       <OurServices />
       <HowItWorks />
+      <OurDoctors />
       <AboutDoctor />
       <SpecialityDoctor />
       <FeaturedDoctor />
