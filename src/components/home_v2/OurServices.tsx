@@ -83,7 +83,7 @@ const facts = [
 export default function OurServices() {
   return (
     <div>
-      <Box w="100%" bg="gray.100" py="100">
+      <Box w="100%" py="100">
         <SpacedContainer>
           <Center display="flex" flexDir="column" borderColor="plum">
             <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase">Our Services</Heading>
