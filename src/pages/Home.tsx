@@ -13,6 +13,7 @@ import OurServices from "../components/home_v2/OurServices";
 import HowItWorks from "../components/home_v2/HowItWorks";
 import OurDoctors from "../components/home_v2/OurDoctors";
 import DownloadDokto from "../components/home_v2/DownloadDokto";
+import BenefitsOfDokto from "../components/home_v2/BenefitsOfDokto";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <HowItWorks />
       <OurDoctors />
       <DownloadDokto />
+      <BenefitsOfDokto />
       <AboutDoctor />
       <SpecialityDoctor />
       <FeaturedDoctor />
