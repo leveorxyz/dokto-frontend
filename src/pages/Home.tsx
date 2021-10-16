@@ -14,6 +14,7 @@ import HowItWorks from "../components/home_v2/HowItWorks";
 import OurDoctors from "../components/home_v2/OurDoctors";
 import DownloadDokto from "../components/home_v2/DownloadDokto";
 import BenefitsOfDokto from "../components/home_v2/BenefitsOfDokto";
+import PatientSection from "../components/home_v2/PatientSection";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <OurDoctors />
       <DownloadDokto />
       <BenefitsOfDokto />
+      <PatientSection />
       <AboutDoctor />
       <SpecialityDoctor />
       <FeaturedDoctor />
