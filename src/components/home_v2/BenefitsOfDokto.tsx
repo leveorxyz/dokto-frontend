@@ -14,9 +14,9 @@ const BenefitsOfDokto = () => {
     <div>
       <SpacedContainer py="50">
         <Heading as="h2" fontSize="3xl" fontWeight="bold">Benefits of Dokto</Heading>
-        <ButtonGroup d="flex" flexDir="row" mt="50" border="1px" borderRadius="lg" borderColor="blueviolet" isAttached>
+        <ButtonGroup d="flex" flexDir="row" mt="50" border="1px" borderRadius="lg" borderColor="#0a001a" isAttached>
           {buttons?.map(({ content }) => (
-            <Button key={content} flex="1" py="7" textTransform="uppercase" bgColor="white" color="cyan.700">{content}</Button>
+            <Button key={content} flex="1" py="7" textTransform="uppercase" bgColor="white" color="cyan.700" _hover={{ bgColor: "#0a001a", color: "white" }} _active={{ bgColor: "#0a001a", color: "white" }} _focus={{ bgColor: "#0a001a", color: "white" }}>{content}</Button>
           ))}
         </ButtonGroup>
       </SpacedContainer>
