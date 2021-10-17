@@ -1,5 +1,5 @@
 import React from "react";
-import { SpacedContainer } from "../common/Containers";
+import { Box } from "@chakra-ui/react";
 import PinkBulletList from "../common/PinkBulletList";
 
 const PatientSection = () => {
@@ -13,9 +13,9 @@ const PatientSection = () => {
 
   return (
     <div>
-      <SpacedContainer mb="50">
+      <Box mb="50">
         <PinkBulletList listData={listData} />
-      </SpacedContainer>
+      </Box>
     </div>
   );
 };

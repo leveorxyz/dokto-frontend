@@ -1,12 +1,11 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import React from "react";
-import { SpacedContainer } from "../common/Containers";
 import DoctorSectionCard from "./DoctorSectionCard";
 import DoctorSectionData from "./DoctorSectionData";
 
 const DoctorSection = () => (
   <div>
-    <SpacedContainer>
+    <Box>
       <Flex direction="column" alignItems="center">
         {DoctorSectionData.map(({
           id, description,
@@ -18,7 +17,7 @@ const DoctorSection = () => (
           />
         ))}
       </Flex>
-    </SpacedContainer>
+    </Box>
   </div>
 );
 
