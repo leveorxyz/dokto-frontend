@@ -18,10 +18,10 @@ const BenefitsOfDokto = () => {
     <div>
       <SpacedContainer py="50">
         <Heading as="h2" fontSize="3xl" fontWeight="bold">Benefits of Dokto</Heading>
-        <Tabs my="20" isFitted>
+        <Tabs my="20" variant="unstyled" isFitted>
           <TabList>
             {buttons?.map(({ content }) => (
-              <Tab key={content} py="7" textTransform="uppercase" bgColor="white" color="cyan.700" _hover={{ bgColor: "#0a001a", color: "white" }}>{content}</Tab>
+              <Tab border="1px" borderColor="#0a001a" key={content} py="7" textTransform="uppercase" bgColor="white" color="cyan.700" _hover={{ bgColor: "#0a001a", color: "white" }} _selected={{ color: "white", bg: "#0a001a" }}>{content}</Tab>
             ))}
           </TabList>
           <TabPanels>
