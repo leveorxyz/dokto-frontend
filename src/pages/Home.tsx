@@ -9,6 +9,7 @@ import DownloadDoctor from "../components/home/DownloadDoctor";
 import FooterDoctor from "../components/home/FooterDoctor";
 import LandingCarousel from "../components/home/LandingCarousel";
 import LandingSearch from "../components/home/LandingSearch";
+import AvailableCareHeader from "../components/available_care/AvailableCareHeader";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <LandingCarousel />
         <LandingSearch />
       </Box>
+      <AvailableCareHeader />
       <AboutDoctor />
       <SpecialityDoctor />
       <FeaturedDoctor />
