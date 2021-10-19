@@ -15,7 +15,7 @@ const QualityCare = () => (
           <Box fontSize="md" color="gray" py="1rem" px="4rem">Our board-certified doctors and specialists can diagnose and treat a wide variety of things remotely.</Box>
           <Divider />
         </Box>
-        <Button bg="purple" color="white" rounded="full" py="1.5rem" px="3rem" textTransform="uppercase">See a doctor now</Button>
+        <Button bg="purple" color="white" rounded="full" py="1.5rem" px="3rem" textTransform="uppercase" _hover={{ opacity: ".9" }} _active={{ opacity: ".9" }}>See a doctor now</Button>
       </Flex>
     </SpacedContainer>
   </div>
