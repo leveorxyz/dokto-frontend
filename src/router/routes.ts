@@ -3,6 +3,7 @@ import HowItWorks from "../pages/HowItWorks";
 import NotImplemented from "../components/NotImplemented";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
+import AvailableCare from "../pages/AvailableCare";
 
 type routeType = {
     displayName: string;
@@ -31,7 +32,7 @@ const routes: routeType[] = [
   {
     displayName: "Doctors",
     path: "/doctors",
-    component: NotImplemented,
+    component: AvailableCare,
     isProtected: false,
     showInNavbar: true,
   },
