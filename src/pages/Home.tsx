@@ -14,6 +14,7 @@ import HowItWorks from "../components/home_v2/HowItWorks";
 import OurDoctors from "../components/home_v2/OurDoctors";
 import DownloadDokto from "../components/home_v2/DownloadDokto";
 import BenefitsOfDokto from "../components/home_v2/BenefitsOfDokto";
+import HeaderDokto from "../components/home_v2/HeaderDokto";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <LandingCarousel />
         <LandingSearch />
       </Box>
+      <HeaderDokto />
       <OurServices />
       <HowItWorks />
       <OurDoctors />
