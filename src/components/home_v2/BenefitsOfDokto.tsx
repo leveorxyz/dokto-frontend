@@ -5,6 +5,7 @@ import {
 import { SpacedContainer } from "../common/Containers";
 import PatientSection from "./PatientSection";
 import DoctorSection from "./DoctorSection";
+import HospitalSection from "./HospitalSection";
 
 const BenefitsOfDokto = () => {
   const buttons = [
@@ -30,6 +31,9 @@ const BenefitsOfDokto = () => {
             </TabPanel>
             <TabPanel>
               <DoctorSection />
+            </TabPanel>
+            <TabPanel>
+              <HospitalSection />
             </TabPanel>
           </TabPanels>
         </Tabs>
