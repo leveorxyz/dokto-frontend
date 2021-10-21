@@ -14,7 +14,7 @@ const AvailableCareCarousel = () => (
       <Flex direction="column" alignItems="center" borderColor="cyan.500" bg="gray.100" p="6" mb="100">
         <Heading as="h2" fontWeight="bold" fontSize="2xl">Internal Medicine &amp; Specialist Services</Heading>
         <Divider w="33%" mb="12" />
-        <Carousel>
+        <Carousel wrapAround>
           <InternalMedicineScroll listData={MedicineList.slice(0, 3)} />
           <InternalMedicineScroll listData={MedicineList.slice(3, 6)} />
           <InternalMedicineScroll listData={MedicineList.slice(6, 9)} />
