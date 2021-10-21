@@ -6,7 +6,7 @@ import { SpacedContainer } from "../common/Containers";
 
 const QualityCare = () => (
   <div>
-    <SpacedContainer pb="100">
+    <SpacedContainer py="100">
       <Flex direction="column" alignItems="center">
         <Image src="https://source.unsplash.com/collection/42413461/500x300" height="100%" fit="contain" overflow="hidden" />
         <Heading as="h1" fontWeight="bold" fontSize="7xl" pt="12" color="purple" textAlign="center">Quality care with peace of mind.</Heading>

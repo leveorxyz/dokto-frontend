@@ -14,9 +14,8 @@ const InternalMedicineCard = ({ title, data }: PropTypes) => (
       d="flex"
       p="10"
       flexDir="column"
-      justify="center"
-      align="center"
       maxW="100%"
+      borderRadius="2xl"
     >
       <Box
         d="flex"
@@ -27,7 +26,7 @@ const InternalMedicineCard = ({ title, data }: PropTypes) => (
         <FaRegCircle size="50" />
         <Heading as="h2" ml="2" fontWeight="bold" fontSize="2xl">{title}</Heading>
       </Box>
-      <Box>{data}</Box>
+      <Box color="gray">{data}</Box>
     </Box>
   </div>
 );
