@@ -1,9 +1,16 @@
 import React from "react";
 import { Box, Grid } from "@chakra-ui/react";
-import MedicineList from "./MedicineList";
 import InternalMedicineCard from "./InternalMedicineCard";
 
-const InternalMedicineScroll = () => (
+type PropTypes = {
+  listData: {
+    id: number,
+    title: string,
+    data: string,
+  }[];
+};
+
+const InternalMedicineScroll = ({ listData }: PropTypes) => (
   <div>
     <Box pb="12">
       <Grid
@@ -12,12 +19,14 @@ const InternalMedicineScroll = () => (
         }}
         gap={6}
       >
-        {MedicineList
-          .map((list) => (
+        {listData
+          .map(({
+            id, title, data,
+          }) => (
             <InternalMedicineCard
-              key={list.id}
-              title={list.title}
-              data={list.data}
+              key={id}
+              title={title}
+              data={data}
             />
           ))}
       </Grid>

@@ -13,6 +13,7 @@ const InternalMedicineCard = ({ title, data }: PropTypes) => (
       bg="white"
       d="flex"
       p="10"
+      height="100%"
       flexDir="column"
       maxW="100%"
       borderRadius="2xl"

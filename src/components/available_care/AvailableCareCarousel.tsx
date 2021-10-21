@@ -6,6 +6,7 @@ import Carousel from "nuka-carousel";
 
 import { SpacedContainer } from "../common/Containers";
 import InternalMedicineScroll from "./InternalMedicineScroll";
+import MedicineList from "./MedicineList";
 
 const AvailableCareCarousel = () => (
   <div>
@@ -14,10 +15,10 @@ const AvailableCareCarousel = () => (
         <Heading as="h2" fontWeight="bold" fontSize="2xl">Internal Medicine &amp; Specialist Services</Heading>
         <Divider w="33%" mb="12" />
         <Carousel>
-          <InternalMedicineScroll />
-          <InternalMedicineScroll />
-          <InternalMedicineScroll />
-          <InternalMedicineScroll />
+          <InternalMedicineScroll listData={MedicineList.slice(0, 3)} />
+          <InternalMedicineScroll listData={MedicineList.slice(3, 6)} />
+          <InternalMedicineScroll listData={MedicineList.slice(6, 9)} />
+          <InternalMedicineScroll listData={MedicineList.slice(9, MedicineList.length)} />
         </Carousel>
       </Flex>
     </SpacedContainer>
