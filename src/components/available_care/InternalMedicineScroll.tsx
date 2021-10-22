@@ -11,27 +11,26 @@ type PropTypes = {
 };
 
 const InternalMedicineScroll = ({ listData }: PropTypes) => (
-  <div>
-    <Box pb="12">
-      <Grid
-        templateColumns={{
-          sm: "repeat(1, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(3, 1fr)", base: "repeat(1, 1fr)",
-        }}
-        gap={6}
-      >
-        {listData
-          .map(({
-            id, title, data,
-          }) => (
-            <InternalMedicineCard
-              key={id}
-              title={title}
-              data={data}
-            />
-          ))}
-      </Grid>
-    </Box>
-  </div>
+
+  <Box pb="12">
+    <Grid
+      templateColumns={{
+        sm: "repeat(1, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(3, 1fr)", base: "repeat(1, 1fr)",
+      }}
+      gap={6}
+    >
+      {listData
+        .map(({
+          id, title, data,
+        }) => (
+          <InternalMedicineCard
+            key={id}
+            title={title}
+            data={data}
+          />
+        ))}
+    </Grid>
+  </Box>
 );
 
 export default InternalMedicineScroll;
