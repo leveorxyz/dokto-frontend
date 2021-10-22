@@ -1,8 +1,8 @@
 import {
-  Heading, Divider, Flex, Box, useBreakpointValue,
+  Heading, Divider, Flex, Box, IconButton, useBreakpointValue,
 } from "@chakra-ui/react";
-import React from "react";
-import Carousel from "nuka-carousel";
+import Carousel, { CarouselSlideRenderControlProps as CarouselProps } from "nuka-carousel";
+import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 import { range } from "lodash";
 import { SpacedContainer } from "../common/Containers";
@@ -25,7 +25,35 @@ const AvailableCareCarousel = () => {
           <Heading as="h2" fontWeight="bold" fontSize="2xl">Internal Medicine &amp; Specialist Services</Heading>
           <Divider w="33%" mb="12" />
         </Box>
-        <Box as={Carousel} p={6} wrapAround>
+        <Box
+          as={Carousel}
+          p={6}
+          renderCenterLeftControls={
+            ({ previousSlide }: CarouselProps) => (
+              <IconButton
+                aria-label="Previous slide"
+                icon={<IoArrowBack />}
+                onClick={previousSlide}
+                rounded="full"
+                colorScheme="pink"
+              />
+            )
+          }
+          renderCenterRightControls={
+            ({ nextSlide }: CarouselProps) => (
+              <IconButton
+                aria-label="Next slide"
+                icon={<IoArrowForward />}
+                onClick={nextSlide}
+                rounded="full"
+                colorScheme="pink"
+              />
+            )
+          }
+          wrapAround
+          autoplay
+          enableKeyboardControls
+        >
           {
             range(0, MedicineList.length, numberOfCarouselComponents)
               .map((i) => (
@@ -40,4 +68,5 @@ const AvailableCareCarousel = () => {
     </SpacedContainer>
   );
 };
+
 export default AvailableCareCarousel;
