@@ -6,16 +6,20 @@ import { Text } from "@visx/text";
 
 type PropTypes = {
     title: string,
+    lParcentage: number,
+    sParcentage: number,
     description: string,
 };
 
-const MemberPie = ({ title, description }: PropTypes) => {
+const MemberPie = ({
+  title, lParcentage, sParcentage, description,
+}: PropTypes) => {
   const trust = [
     {
-      symbol: "S", amount: 84, color: "#ff4dff", ratio: 1,
+      symbol: "S", amount: lParcentage, color: "#ff4dff", ratio: 1,
     },
     {
-      symbol: "Z", amount: 16, color: "#bfbfbf", ratio: 1,
+      symbol: "Z", amount: sParcentage, color: "#bfbfbf", ratio: 1,
     },
   ];
 
@@ -78,7 +82,7 @@ const MemberPie = ({ title, description }: PropTypes) => {
             ) : (
               <>
                 <Text textAnchor="middle" fill="black" fontSize={32} fontWeight="bold" dy={12}>
-                  84 %
+                  {lParcentage}
                 </Text>
               </>
             )}

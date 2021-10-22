@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from "react";
 import { Box, Heading, Divider } from "@chakra-ui/react";
 import MemberPie from "./MemberPie";
@@ -27,10 +28,12 @@ const MemberEngagementDoctor = () => (
       borderColor="#bfbfbf"
     >
       {PieDescription.map(
-        ({ title, data }) => (
+        ({
+          title, data, lParcentage, sParcentage,
+        }) => (
           <Box key={title} d="flex" flexDir="row">
             <Box flex="1" mb="4">
-              <MemberPie title={title} description={data} />
+              <MemberPie title={title} lParcentage={lParcentage} sParcentage={sParcentage} description={data} />
             </Box>
             <DividerLine />
           </Box>
