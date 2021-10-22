@@ -82,7 +82,10 @@ const MemberPie = ({
             ) : (
               <>
                 <Text textAnchor="middle" fill="black" fontSize={32} fontWeight="bold" dy={12}>
-                  {lParcentage}
+                  {
+                  // @ts-ignore
+                  `${lParcentage} %`
+                  }
                 </Text>
               </>
             )}
