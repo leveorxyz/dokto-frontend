@@ -10,15 +10,19 @@ const TelephoneContact = () => (
   <Box bg="brand.dark" color="white" p={[6, 6, 8, 8, 8]}>
     <Heading as="h3" fontSize="2xl" pb={6}>Call Support</Heading>
     <Text color="gray.300">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Pellentesque euismod, urna eu tincidunt consectetur, nisl
-      lectus aliquam nisl, eget porttitor nisl nisl eu nisl.
+      Our phone lines are open
+      <br />
+      Mondays 9AM - Fridays 6PM PST
+      <br />
+      Saturdays: 10AM – 4PM PST
+      <br />
+      Sundays: 10AM – 4PM PST
     </Text>
     <br />
     {
       [
         { initial: "Toll Free", desc: "(800) 997-6196" },
-        { initial: "TTY", desc: "771" },
+        { initial: "", desc: "(800) 997-6197" },
       ].map(({ initial, desc }) => (
         <Text key={initial} fontSize="lg">
           <b>{initial}</b>
@@ -36,16 +40,14 @@ const EmailContact = () => (
   <Box bg="cyan.600" color="white" p={[6, 6, 8, 8, 8]}>
     <Heading as="h3" fontSize="2xl" pb={6}>Call Support</Heading>
     <Text color="gray.200">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Pellentesque euismod, urna eu tincidunt consectetur, nisl
-      lectus aliquam nisl, eget porttitor nisl nisl eu nisl.
+      For corporate inquiries, feel free to contact us via email and we will get back to you as soon as possible.
     </Text>
     <br />
     {
       [
-        { initial: "Media inquiries", desc: "press@doctorondeman.com" },
-        { initial: "Sales inquiries", desc: "press@doctorondeman.com" },
-        { initial: "Partnership inquiries", desc: "press@doctorondeman.com" },
+        { initial: "Media inquiries", desc: "press@dokto.com" },
+        { initial: "Partnership inquiries", desc: "corporate@dokto.com" },
+        { initial: "Enterprise inquiries", desc: "corporate@dokto.com" },
       ].map(({ initial, desc }) => (
         <Text key={initial} fontSize="lg">
           <b>{initial}</b>
