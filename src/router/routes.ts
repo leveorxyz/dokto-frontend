@@ -30,8 +30,8 @@ const routes: routeType[] = [
     showInNavbar: true,
   },
   {
-    displayName: "Doctors",
-    path: "/doctors",
+    displayName: "What we treat",
+    path: "/what-we-treat",
     component: AvailableCare,
     isProtected: false,
     showInNavbar: true,
