@@ -2,11 +2,12 @@ import React from "react";
 import { Box, Heading, Divider } from "@chakra-ui/react";
 import MemberPie from "./MemberPie";
 import { SpacedContainer } from "../common/Containers";
+import PieDescription from "./PieDescription";
 
 const DividerLine = () => (
   <Divider
     orientation="vertical"
-    h="20rem"
+    h="30rem"
     px="10"
     display={{
       sm: "none", md: "block", lg: "block", xl: "block", base: "none",
@@ -25,14 +26,14 @@ const MemberEngagementDoctor = () => (
       }}
       borderColor="#bfbfbf"
     >
-      {[...Array(4).keys()].map(
-        (idx) => (
-          <React.Fragment key={idx}>
+      {PieDescription.map(
+        ({ title, data }) => (
+          <Box key={title} d="flex" flexDir="row">
             <Box flex="1" mb="4">
-              <MemberPie />
+              <MemberPie title={title} description={data} />
             </Box>
-            {idx !== 3 && <DividerLine />}
-          </React.Fragment>
+            <DividerLine />
+          </Box>
         ),
       )}
     </Box>

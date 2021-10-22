@@ -4,13 +4,18 @@ import { Group } from "@visx/group";
 import Pie, { PieArcDatum } from "@visx/shape/lib/shapes/Pie";
 import { Text } from "@visx/text";
 
-const MemberPie = () => {
+type PropTypes = {
+    title: string,
+    description: string,
+};
+
+const MemberPie = ({ title, description }: PropTypes) => {
   const trust = [
     {
-      symbol: "S", amount: 68, color: "#ff4dff", ratio: 1.103,
+      symbol: "S", amount: 84, color: "#ff4dff", ratio: 1,
     },
     {
-      symbol: "Z", amount: 32, color: "#bfbfbf", ratio: 0.78125,
+      symbol: "Z", amount: 16, color: "#bfbfbf", ratio: 1,
     },
   ];
 
@@ -28,7 +33,7 @@ const MemberPie = () => {
 
   return (
     <div>
-      <Box>
+      <Box pr="16">
         <svg width={width} height={width}>
           <Group top={half} left={half}>
             <Pie
@@ -73,14 +78,14 @@ const MemberPie = () => {
             ) : (
               <>
                 <Text textAnchor="middle" fill="black" fontSize={32} fontWeight="bold" dy={12}>
-                  68 %
+                  84 %
                 </Text>
               </>
             )}
           </Group>
         </svg>
-        <Heading as="h2" fontWeight="bold" fontSize="2xl" mt="6" mb="8">Trust Dokto</Heading>
-        <Box mb="4" fontSize="lg" color="gray" pr="24">To advise them on how and where to get care.</Box>
+        <Heading as="h2" fontWeight="bold" fontSize="2xl" mt="6" mb="8">{title}</Heading>
+        <Box mb="4" fontSize="lg" color="gray">{description}</Box>
       </Box>
     </div>
   );
