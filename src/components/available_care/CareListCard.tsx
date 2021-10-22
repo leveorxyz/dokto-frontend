@@ -7,7 +7,7 @@ type PropTypes = {
 };
 
 const CareListCard = ({ listData }: PropTypes) => (
-  <List fontSize="md" color="gray" spacing={3} boxShadow="lg" w="100%" p="15%" borderRadius="3xl" cursor="pointer">
+  <List fontSize="md" color="gray" spacing={3} boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)" w="100%" p="15%" borderRadius="3xl" cursor="pointer">
     {
         listData.map((item) => (
           <ListItem key={item}>
