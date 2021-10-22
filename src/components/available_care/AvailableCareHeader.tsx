@@ -1,21 +1,61 @@
-import { Box, Heading } from "@chakra-ui/react";
-import React from "react";
+import { Box } from "@chakra-ui/react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { SpacedContainer } from "../common/Containers";
 
-const AvailableCareHeader = () => (
-  <div>
-    <SpacedContainer py="20">
-      <Heading as="h1" fontWeight="bold" fontSize="8xl">Available Care</Heading>
-      <Heading as="h2" fontWeight="bold" fontSize="2xl" color="purple" mb="4">What We Treat</Heading>
-      <Box fontSize="md" color="gray" mb="2">
-        In the new normal era like now, your health is very important,
-        <br />
-        especially the Covid-19 cases are increasing every day.
-        <br />
-        therefore your health, happiness for medical personnel.
-      </Box>
-    </SpacedContainer>
-  </div>
-);
+const AvailableCareHeader = () => {
+  const animationVariants = {
+    initial: "initial",
+    animate: "animate",
+    exit: "exit",
+    variants: {
+      initial: { y: 100, opacity: 0 },
+      animate: (custom: number) => ({ y: 0, opacity: 1, transition: { delay: custom * 0.1 } }),
+      exit: { y: -100, opacity: 0 },
+    },
+  };
+
+  return (
+    <AnimatePresence>
+      <SpacedContainer py="20">
+        <Box
+          as={motion.h1}
+          fontWeight="bold"
+          fontSize="8xl"
+          {...animationVariants}
+          custom={0}
+        >
+          Available Care
+
+        </Box>
+        <Box
+          as={motion.h2}
+          fontWeight="bold"
+          fontSize="2xl"
+          color="purple"
+          mb={4}
+          {...animationVariants}
+          custom={1}
+        >
+          What We Treat
+        </Box>
+        <Box
+          as={motion.div}
+          fontSize="md"
+          color="gray"
+          mb={2}
+          {...animationVariants}
+          custom={2}
+        >
+          In the new normal era like now, your health is very important,
+          <br />
+          especially the Covid-19 cases are increasing every day.
+          <br />
+          therefore your health, happiness for medical personnel.
+        </Box>
+      </SpacedContainer>
+    </AnimatePresence>
+  );
+};
 
 export default AvailableCareHeader;
