@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from "react";
 import {
   Flex, Box, Heading, Text, Input, Textarea,
@@ -76,9 +77,7 @@ export default function MessageSupport() {
         <Box w={["100%", "50%", "50", "50%"]} p={[6, 6, 8, 8, 8]}>
           <Heading as="h2" color="brand.dark" pb={6}>Message Support</Heading>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque euismod, urna eu tincidunt consectetur, nisl
-            lectus aliquam nisl, eget porttitor nisl nisl eu nisl.
+            Our administrative and support team are on hand to help with all your questions regarding your account or the technical functionality of the site. Please note that our support staff are not medical personnel and cannot help with consultations, diagnoses or medicines.
           </Text>
 
           <ContactForm />
