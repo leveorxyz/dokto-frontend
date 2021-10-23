@@ -4,24 +4,25 @@ import {
 } from "@chakra-ui/react";
 
 import { IoSearch } from "react-icons/io5";
-import { FullWidthContainer } from "../common/Containers";
+import SearchDoctorSVG from "../../static/SearchDoctor.svg";
+import { SpacedContainer } from "../common/Containers";
 
 export default function LandingSearch() {
   return (
-    <FullWidthContainer>
-      <Flex height={["35vh", "25vh", "25vh", "25vh"]}>
-        <Box width="25%" p="5" bg="#0a001a" d="flex" flexDir="row" alignItems="center">
+    <SpacedContainer>
+      <Flex height={["35vh", "25vh", "25vh", "25vh"]} direction={["column", "column", "row", "row"]}>
+        <Box width={["100%", "100%", "35%", "35%"]} p="5" bg="#0a001a" d="flex" flexDir="row" alignItems="center">
           <Heading as="h2" flex="1" mr="5" fontWeight="bold" fontSize="xl" textTransform="uppercase" color="white">Search our doctors</Heading>
           <Image
-            display={["none", "none", "block", "block"]}
-            src="https://source.unsplash.com/collection/42413461"
+            display="block"
+            src={SearchDoctorSVG}
             fit="cover"
             flex="1"
             height="100%"
           />
         </Box>
         <Box
-          width={["100%", "100%", "75%", "75%"]}
+          width={["100%", "100%", "65%", "65%"]}
           backgroundColor="gray.100"
           px={[4, 8, 12, 24]}
           py={[3, 6, 12, 12]}
@@ -93,6 +94,6 @@ export default function LandingSearch() {
           </Link>
         </Box>
       </Flex>
-    </FullWidthContainer>
+    </SpacedContainer>
   );
 }

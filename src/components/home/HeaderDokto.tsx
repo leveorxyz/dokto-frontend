@@ -2,7 +2,7 @@ import { Flex, Image, Box } from "@chakra-ui/react";
 import HeaderDescription from "./HeaderDescription";
 import { SpacedContainer } from "../common/Containers";
 
-import imgSrc from "../../static/LandingDoctor.svg";
+import imgSrc from "../../static/LandingDoctor.png";
 
 const HeaderDokto = () => (
   <SpacedContainer py="20">

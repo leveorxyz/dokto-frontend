@@ -1,34 +1,38 @@
 import React from "react";
 import {
-  Box, Heading, Link, Image, Center,
+  Box, Heading, Link, Image,
 } from "@chakra-ui/react";
 
-import AppStore from "../../static/home/app-store.png";
-import PlayStore from "../../static/home/google-play.png";
+import AppStoreIMG from "../../static/AppStore.png";
+import PlayStoreIMG from "../../static/PlayStore.png";
+import BluePhonesIMG from "../../static/BluePhones.png";
 import { SpacedContainer } from "../common/Containers";
 
 const DownloadDokto = () => (
-  <div>
+  <Box
+    flex="1"
+    d="flex"
+    flexDir="column"
+    justifyContent={["flex-end", "flex-end", "center", "center"]}
+    bgImage={BluePhonesIMG}
+    minHeight={["60vh", "60vh", "60vh", "100vh", "100vh"]}
+    bgRepeat="no-repeat"
+    bgSize="contain"
+  >
     <SpacedContainer py="20">
-      <Center
-        d="flex"
-        flexDir={{
-          sm: "column", md: "row", lg: "row", xl: "row", base: "column",
-        }}
-      >
-        <Box flex="1" d="flex" flexDir="column" alignItems="center">
-          <Heading as="h1" size="lg" fontWeight="bold" my="7" color="#26004d">
-            Download the Dokto App
-          </Heading>
-          <Box d="flex" pb="12">
-            <Link href="https://play.google.com/store/apps/details?id=com.meetup&hl=en-US"><Image cursor="pointer" w="310px" p="3" src={PlayStore} borderRadius="25px" /></Link>
-            <Link href="https://apps.apple.com/us/app/meetup/id375990038"><Image cursor="pointer" w="290px" p="3" src={AppStore} /></Link>
-          </Box>
-        </Box>
-        <Image src="https://source.unsplash.com/collection/42413461/500x300" flex="1" fit="contain" overflow="hidden" />
-      </Center>
+      <Heading as="h1" size="lg" fontWeight="bold" px={6} py={7} color="#26004d">
+        Download the Dokto App
+      </Heading>
+      <Box d="flex" pb="12">
+        <Link href="/">
+          <Image cursor="pointer" w="310px" px={6} py={3} src={PlayStoreIMG} borderRadius="25px" />
+        </Link>
+        <Link href="/">
+          <Image cursor="pointer" w="310px" px={6} py={3} src={AppStoreIMG} />
+        </Link>
+      </Box>
     </SpacedContainer>
-  </div>
+  </Box>
 );
 
 export default DownloadDokto;
