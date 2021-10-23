@@ -8,37 +8,57 @@ import DoctorSection from "./DoctorSection";
 import HospitalSection from "./HospitalSection";
 
 const BenefitsOfDokto = () => {
-  const buttons = [
-    { content: "Patient" },
-    { content: "Doctor" },
-    { content: "Hospital" },
-    { content: "Pharmacy" },
+  const tabs = [
+    { title: "Patient" },
+    { title: "Doctor" },
+    { title: "Hospital" },
+    { title: "Pharmacy" },
   ];
 
   return (
-    <div>
-      <SpacedContainer py="50">
-        <Heading as="h2" fontSize="3xl" fontWeight="bold">Benefits of Dokto</Heading>
-        <Tabs my="20" variant="unstyled" isFitted>
-          <TabList>
-            {buttons?.map(({ content }) => (
-              <Tab border="1px" borderColor="#0a001a" key={content} py="7" textTransform="uppercase" bgColor="white" color="cyan.700" _hover={{ bgColor: "#0a001a", color: "white" }} _selected={{ color: "white", bg: "#0a001a" }}>{content}</Tab>
-            ))}
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <PatientSection />
-            </TabPanel>
-            <TabPanel>
-              <DoctorSection />
-            </TabPanel>
-            <TabPanel>
-              <HospitalSection />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </SpacedContainer>
-    </div>
+    <SpacedContainer py="50">
+      <Heading as="h2" fontSize="3xl" fontWeight="bold">Benefits of Dokto</Heading>
+      <Tabs my="20" variant="unstyled" isFitted>
+        <TabList sx={{
+          borderRadius: "1rem",
+          border: "2px",
+          borderColor: "#0a001a",
+          overflow: "hidden",
+        }}
+        >
+          {tabs?.map(({ title }, idx) => (
+            <Tab
+              key={title}
+              py={[3, 3, 4, 8, 8]}
+              textTransform="uppercase"
+              bgColor="white"
+              color="cyan.700"
+              fontSize={["xs", "sm", "md", "lg", "lg"]}
+              fontWeight="bold"
+              borderRightWidth={idx === tabs.length - 1 ? "0" : "2px"}
+              borderColor="#0a001a"
+              _hover={{ bgColor: "#0a001a", color: "white" }}
+              _selected={{ color: "white", bg: "#0a001a" }}
+            >
+              {title}
+            </Tab>
+          ))}
+        </TabList>
+        <br />
+
+        <TabPanels>
+          <TabPanel>
+            <PatientSection />
+          </TabPanel>
+          <TabPanel>
+            <DoctorSection />
+          </TabPanel>
+          <TabPanel>
+            <HospitalSection />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </SpacedContainer>
   );
 };
 export default BenefitsOfDokto;
