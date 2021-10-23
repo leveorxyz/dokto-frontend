@@ -1,7 +1,6 @@
 import { Box } from "@chakra-ui/react";
 
 import FooterDoctor from "../components/home/FooterDoctor";
-import LandingCarousel from "../components/home/LandingCarousel";
 import LandingSearch from "../components/home/LandingSearch";
 import OurServices from "../components/home/OurServices";
 import HowItWorks from "../components/home/HowItWorks";
@@ -14,10 +13,9 @@ export default function Home() {
   return (
     <>
       <Box minHeight="90vh">
-        <LandingCarousel />
+        <HeaderDokto />
         <LandingSearch />
       </Box>
-      <HeaderDokto />
       <OurServices />
       <HowItWorks />
       <OurDoctors />
