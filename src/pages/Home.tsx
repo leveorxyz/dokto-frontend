@@ -7,6 +7,7 @@ import HowItWorks from "../components/home/HowItWorks";
 import OurDoctors from "../components/home/OurDoctors";
 import DownloadDokto from "../components/home/DownloadDokto";
 import BenefitsOfDokto from "../components/home/BenefitsOfDokto";
+import TestimonialCarousel from "../components/home/TestimonialCarousel";
 import HeaderDokto from "../components/home/HeaderDokto";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <OurDoctors />
       <DownloadDokto />
       <BenefitsOfDokto />
+      <TestimonialCarousel />
       <FooterDoctor />
     </>
   );
