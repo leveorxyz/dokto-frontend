@@ -13,7 +13,7 @@ const OurDoctorsCard = () => (
     <Box w="100%">
       <Flex direction="column">
         <Box w="100%" bgImage={Profile} bgPosition="center" bgSize="cover" bgRepeat="no-repeat" color="white" borderColor="white">
-          <Box mt="120" pb="2" pt="1" px="2" bgColor="rgba(0,0,0, 0.4)">
+          <Box pt={200} pb={4} px={4} bgImage="linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0.5))">
             <Divider />
             <Heading fontSize="lg" as="h3" fontWeight="semibold" pt="2">Dr. Rita Ora, MD</Heading>
             <Box fontSize="md">Primary Care Doctor</Box>
