@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
 import FooterDoctor from "../components/home/FooterDoctor";
 import AvailableCareHeader from "../components/available_care/AvailableCareHeader";
 import CareList from "../components/available_care/CareList";
@@ -10,9 +9,7 @@ const AvailableCare = () => (
   <>
     <AvailableCareHeader />
     <CareList />
-    <Box minHeight="90vh">
-      <AvailableCareCarousel />
-    </Box>
+    <AvailableCareCarousel />
     <QualityCare />
     <FooterDoctor />
   </>
