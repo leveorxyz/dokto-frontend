@@ -4,11 +4,11 @@ import {
 } from "@chakra-ui/react";
 
 import { IoSearch } from "react-icons/io5";
-import { SpacedContainer } from "../common/Containers";
+import { FullWidthContainer } from "../common/Containers";
 
 export default function LandingSearch() {
   return (
-    <SpacedContainer>
+    <FullWidthContainer>
       <Flex height={["35vh", "25vh", "25vh", "25vh"]}>
         <Box width="25%" p="5" bg="#0a001a" d="flex" flexDir="row" alignItems="center">
           <Heading as="h2" flex="1" mr="5" fontWeight="bold" fontSize="xl" textTransform="uppercase" color="white">Search our doctors</Heading>
@@ -59,7 +59,6 @@ export default function LandingSearch() {
                 .map((item:string| number) => (
                   <option key={item} value={item}>
                     Option
-                    {" "}
                     {item}
                   </option>
                 ))}
@@ -94,6 +93,6 @@ export default function LandingSearch() {
           </Link>
         </Box>
       </Flex>
-    </SpacedContainer>
+    </FullWidthContainer>
   );
 }
