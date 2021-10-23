@@ -15,7 +15,7 @@ export default function Routes() {
             <Route
               key={route.path}
               path={route.path}
-              render={() => <route.component />}
+              render={() => route.component}
               exact
             />
           ))
