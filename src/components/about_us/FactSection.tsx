@@ -10,8 +10,8 @@ const facts = [
     Icon: IoPeople,
     title: (
       <>
-        <b>560,000</b>
-        &nbsp;Members
+        <b>5,000+</b>
+        &nbsp;providers offering world-class, professional care
       </>
     ),
   },
@@ -20,13 +20,8 @@ const facts = [
     Icon: IoGlobe,
     title: (
       <>
-        <b>497</b>
-        &nbsp;
-        Countries across
-        <br />
-        <b>19</b>
-        &nbsp;
-        States
+        <b>2,000</b>
+        &nbsp;patients globally trust Dokto for accessible, affordable virtual healthcare
       </>
     ),
   },
@@ -35,8 +30,7 @@ const facts = [
     Icon: IoBusiness,
     title: (
       <>
-        <b>3</b>
-        &nbsp;Lines of business
+        Safe, secure, state-of-the-art technology, compliant with HIPAA requirements
       </>
     ),
   },
