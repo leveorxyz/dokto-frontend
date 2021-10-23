@@ -1,4 +1,4 @@
-export default [
+[
   "Cold & Flu",
   "Cough",
   "Fever",
@@ -36,5 +36,5 @@ export default [
   "Sore throat",
   "Laryngitis",
   "Indigestion",
-  "Blood Disorders (sickle cell, leukemia, hemophilia)",
-];
+  "Blood Disorders (sickle cell, leukemia, hemophilia)"
+]

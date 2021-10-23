@@ -3,7 +3,7 @@ import { range } from "lodash";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { SpacedContainer } from "../common/Containers";
-import CareListData from "./CareListData";
+import CareListData from "./CareListData.json";
 import CareListCard from "./CareListCard";
 
 const CareList = () => {

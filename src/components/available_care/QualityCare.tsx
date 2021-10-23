@@ -7,7 +7,7 @@ import doctorsSVG from "../../static/doctors.svg";
 
 const QualityCare = () => (
   <div>
-    <SpacedContainer py="100">
+    <SpacedContainer py={100}>
       <Flex direction="column" alignItems="center">
         <Image src={doctorsSVG} height="100%" fit="contain" overflow="hidden" />
         <Heading as="h1" fontWeight="bold" fontSize="7xl" pt="12" color="purple" textAlign="center">Quality care with peace of mind.</Heading>

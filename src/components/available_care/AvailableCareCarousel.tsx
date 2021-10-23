@@ -7,7 +7,7 @@ import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import { range } from "lodash";
 import { SpacedContainer } from "../common/Containers";
 import InternalMedicineScroll from "./InternalMedicineScroll";
-import MedicineList from "./MedicineList";
+import MedicineList from "./MedicineList.json";
 
 const AvailableCareCarousel = () => {
   const numberOfCarouselComponents = useBreakpointValue({
@@ -22,7 +22,7 @@ const AvailableCareCarousel = () => {
     <SpacedContainer>
       <Flex direction="column" alignItems="center" borderColor="cyan.500" bg="gray.100" mb="100" rounded="2xl">
         <Box p={6}>
-          <Heading as="h2" fontWeight="bold" fontSize="2xl">Internal Medicine &amp; Specialist Services</Heading>
+          <Heading as="h2" fontWeight="bold" fontSize="4xl">Internal Medicine &amp; Specialist Services</Heading>
           <Divider w="33%" mb="12" />
         </Box>
         <Box
