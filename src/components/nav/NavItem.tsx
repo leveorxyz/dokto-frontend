@@ -40,7 +40,7 @@ export default function NavItem({
           backgroundColor: "pink.500",
         }}
         _hover={{
-          color: "pink.500",
+          color: "brand.darkPink",
         }}
         onClick={() => setIsMenuOpen && setIsMenuOpen(false)}
       >
