@@ -68,7 +68,7 @@ const ContactForm = () => (
     <Input placeholder="Name" mb={3} />
     <Textarea placeholder="Question" resize="vertical" />
     <Text fontSize="sm" fontWeight="bold" color="#170041" textAlign="right">max 2000 characters</Text>
-    <ArrowButton bgColor="#3DE0FF" iconColor="white">Submit</ArrowButton>
+    <ArrowButton bgColor="#3DE0FF" iconColor="white" width="10rem">Submit</ArrowButton>
   </Box>
 );
 
