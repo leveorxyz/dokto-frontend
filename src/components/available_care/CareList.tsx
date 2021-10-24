@@ -3,10 +3,13 @@ import { range } from "lodash";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { SpacedContainer } from "../common/Containers";
-import CareListData from "./CareListData.json";
+import UnfilteredCareListData from "./CareListData.json";
 import CareListCard from "./CareListCard";
 
 const CareList = () => {
+  // temporary hack to cut off the last two items of the list
+  const CareListData = UnfilteredCareListData.slice(0, 36);
+
   const parentAnimationTransition = { transition: { delayChildren: 0.3, staggerChildren: 0.2 } };
   const childAnimationTransition = { transition: { duration: 0.25 } };
   const partentAnimationProps = {
