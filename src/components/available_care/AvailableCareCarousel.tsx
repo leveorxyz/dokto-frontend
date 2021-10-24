@@ -100,7 +100,7 @@ const AvailableCareCarousel = () => {
               padding: 1,
             },
             ".paging-item button": {
-              fill: "rgba(26, 181, 135, 0.3) !important",
+              fill: "rgba(26, 181, 135, 0.7) !important",
             },
             ".paging-item.active button": {
               fill: "#170041 !important",

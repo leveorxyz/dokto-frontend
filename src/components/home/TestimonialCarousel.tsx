@@ -35,7 +35,7 @@ const TestimonialCarousel = () => {
                 icon={<IoArrowBack />}
                 onClick={previousSlide}
                 rounded="full"
-                bgColor="#A42BAD"
+                bgColor="brand.darkPink"
                 color="white"
                 fontSize="1.2rem"
               />
@@ -48,12 +48,23 @@ const TestimonialCarousel = () => {
                 icon={<IoArrowForward />}
                 onClick={nextSlide}
                 rounded="full"
-                bgColor="#A42BAD"
+                bgColor="brand.darkPink"
                 color="white"
                 fontSize="1.2rem"
               />
             )
           }
+          sx={{
+            ".paging-item": {
+              padding: 1,
+            },
+            ".paging-item button": {
+              fill: "rgba(26, 181, 135, 0.7) !important",
+            },
+            ".paging-item.active button": {
+              fill: "#170041 !important",
+            },
+          }}
           wrapAround
           autoplay
           enableKeyboardControls
