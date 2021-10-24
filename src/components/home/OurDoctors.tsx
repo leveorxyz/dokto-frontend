@@ -10,7 +10,7 @@ import OurFeaturedDoctors from "./OurFeaturedDoctors";
 const OurDoctors = () => (
   <Box bg="#F4F4F4">
     <SpacedContainer py="16">
-      <Box d="flex" flexDir="column" alignItems="center" borderColor="darkPink">
+      <Box d="flex" flexDir="column" alignItems="center" borderColor="#170041">
         <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase" color="#333333">Our doctors</Heading>
         <Divider w="14" h="2" mb="12" />
         <Container maxW="100%">
