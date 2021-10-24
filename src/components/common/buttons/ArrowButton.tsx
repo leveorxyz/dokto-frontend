@@ -35,5 +35,5 @@ ArrowButton.defaultProps = {
   onClick: () => {},
   color: "white",
   bgColor: "brand.dark",
-  iconColor: "pink.400",
+  iconColor: "#FF00FF",
 };
