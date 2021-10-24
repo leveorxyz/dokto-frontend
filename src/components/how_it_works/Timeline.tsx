@@ -19,7 +19,7 @@ const ProcessTimeline = () => (
         icon={(
           <Box
             padding={6}
-            bg="cyan.500"
+            bg="#3DE0FF"
             rounded="full"
             style={{
               borderWidth: "1rem",
@@ -43,7 +43,7 @@ const ProcessTimeline = () => (
       >
         <Box pb={[6, 36, 36, 36, 36]}>
           <Heading as="h6" fontSize="3xl" fontWeight="normal">{title}</Heading>
-          <Box fontSize="xl">{description}</Box>
+          <Box fontSize="xl" color="rgba(51, 51, 51, 0.6)">{description}</Box>
         </Box>
       </TimelineEvent>
     ))}
