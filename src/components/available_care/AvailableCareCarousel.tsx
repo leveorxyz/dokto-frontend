@@ -27,7 +27,8 @@ const AvailableCareCarousel = () => {
         </Box>
         <Box
           as={Carousel}
-          p={6}
+          pb={6}
+          px={[3, 3, 8, 24, 24]}
           renderCenterLeftControls={
             ({ previousSlide }: CarouselProps) => (
               <IconButton
@@ -38,6 +39,10 @@ const AvailableCareCarousel = () => {
                 bgColor="#A42BAD"
                 color="white"
                 _hover={{ bgColor: "#A42BAD", color: "white" }}
+                colorScheme="pink"
+                sx={{
+                  transform: "translate(-50%, 0)",
+                }}
               />
             )
           }
@@ -51,9 +56,24 @@ const AvailableCareCarousel = () => {
                 bgColor="#A42BAD"
                 color="white"
                 _hover={{ bgColor: "#A42BAD", color: "white" }}
+                colorScheme="pink"
+                sx={{
+                  transform: "translate(50%, 0)",
+                }}
               />
             )
           }
+          sx={{
+            ".paging-item": {
+              padding: 1,
+            },
+            ".paging-item button": {
+              fill: "rgba(26, 181, 135, 0.3) !important",
+            },
+            ".paging-item.active button": {
+              fill: "#170041 !important",
+            },
+          }}
           wrapAround
           autoplay
           enableKeyboardControls
