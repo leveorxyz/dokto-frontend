@@ -18,7 +18,7 @@ const BenefitsOfDokto = () => {
 
   return (
     <SpacedContainer py="50">
-      <Heading as="h2" fontSize="3xl" fontWeight="bold">Benefits of Dokto</Heading>
+      <Heading as="h2" fontSize="3xl" fontWeight="bold" color="#170041">Benefits of Dokto</Heading>
       <Tabs my="20" variant="unstyled" isFitted>
         <TabList sx={{
           borderRadius: "1rem",

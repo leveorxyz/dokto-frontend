@@ -17,7 +17,7 @@ const HeaderDescription = () => (
         therefore your health, happiness for medical personnel.
       </Box>
       <Flex direction="row" alignItems="center">
-        <Box as="button" mr="4" bg="purple" color="white" rounded="full" py=".5rem" px="3rem" textTransform="uppercase" _hover={{ opacity: ".9" }} _active={{ opacity: ".9" }} d="flex" flexDir="column" alignItems="baseline">
+        <Box as="button" mr="4" bgColor="#A42BAD" color="white" rounded="full" py=".5rem" px="3rem" textTransform="uppercase" _hover={{ opacity: ".9" }} _active={{ opacity: ".9" }} d="flex" flexDir="column" alignItems="baseline">
           <Box fontSize="sm" fontWeight="bold">Talk to a</Box>
           <Box fontSize="lg" fontWeight="bold">Doctor online</Box>
         </Box>

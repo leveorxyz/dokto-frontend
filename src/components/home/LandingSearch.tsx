@@ -11,7 +11,7 @@ export default function LandingSearch() {
   return (
     <SpacedContainer>
       <Flex height={["35vh", "25vh", "25vh", "25vh"]} direction={["column", "column", "row", "row"]}>
-        <Box width={["100%", "100%", "35%", "35%"]} p="5" bg="#0a001a" d="flex" flexDir="row" alignItems="center">
+        <Box width={["100%", "100%", "35%", "35%"]} p="5" bg="#170041" d="flex" flexDir="row" alignItems="center">
           <Heading as="h2" flex="1" mr="5" fontWeight="bold" fontSize="xl" textTransform="uppercase" color="white">Search our doctors</Heading>
           <Image
             display="block"
@@ -65,13 +65,13 @@ export default function LandingSearch() {
                 ))}
             </Select>
 
-            <Link href="/" color="cyan.500" textDecor="underline" display={["inline-block", "inline-block", "none", "none"]}>
+            <Link href="/" color="#3DE0FF" textDecor="underline" display={["inline-block", "inline-block", "none", "none"]}>
               Advanced search
             </Link>
 
             <Button
               variant="solid"
-              colorScheme="cyan"
+              colorScheme="#3DE0FF"
               aria-label="Search doctors, clinics, hospitals, etc."
               leftIcon={<IoSearch />}
               display={["flex", "none", "none", "none"]}

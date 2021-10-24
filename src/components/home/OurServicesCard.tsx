@@ -21,7 +21,7 @@ const OurServicesCard = ({ icon, title, description }: PropTypes) => (
       <Text fontSize="xl" mt="4" mb="2">
         {title}
       </Text>
-      <Text fontSize="md" color="gray">
+      <Text fontSize="md" color="rgba(51, 51, 51, 0.6)">
         {description}
       </Text>
     </Flex>

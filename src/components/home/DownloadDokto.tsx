@@ -20,7 +20,7 @@ const DownloadDokto = () => (
     bgSize="contain"
   >
     <SpacedContainer py="20">
-      <Heading as="h1" size="lg" fontWeight="bold" px={6} py={7} color="#26004d">
+      <Heading as="h1" size="lg" fontWeight="bold" px={6} py={7} color="#170041">
         Download the Dokto App
       </Heading>
       <Box d="flex" pb="12">

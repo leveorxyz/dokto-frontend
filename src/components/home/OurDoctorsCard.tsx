@@ -21,20 +21,20 @@ const OurDoctorsCard = () => (
         </Box>
         <Box mt="5">
           <Box fontSize="md" d="flex" flexDir="row" alignItems="center">
-            <IconContext.Provider value={{ color: "#00ffff" }}>
+            <IconContext.Provider value={{ color: "#3DE0FF" }}>
               <IoLocationOutline size={20} />
             </IconContext.Provider>
             <Box ml="2">New York,NY</Box>
           </Box>
           <Box fontSize="md" d="flex" flexDir="row" alignItems="center">
-            <IconContext.Provider value={{ color: "#ffbf00" }}>
+            <IconContext.Provider value={{ color: "#F1C40F" }}>
               <FaStar />
             </IconContext.Provider>
             <Box ml="2" mr="2" fontWeight="semibold">4.85</Box>
             <Box>1751 reviews</Box>
           </Box>
         </Box>
-        <ArrowButton bgColor="purple" iconColor="white">View Profile</ArrowButton>
+        <ArrowButton bgColor="#A42BAD" iconColor="white">View Profile</ArrowButton>
       </Flex>
     </Box>
   </div>

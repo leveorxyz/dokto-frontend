@@ -22,7 +22,7 @@ const FooterDoctor = () => {
 
   return (
     <div>
-      <Box color="white" background="#0a001a" px={[6, 6, 32, 32, 32]} py="20" mt="5">
+      <Box color="white" background="#170041" borderColor="#433E4A" px={[6, 6, 32, 32, 32]} py="20" mt="5">
         <Container maxW="container.2xl">
           <Box
             d="flex"
@@ -42,7 +42,7 @@ const FooterDoctor = () => {
                   <Box />
                 </ListItem>
                 <ListItem>
-                  <Box fontSize="sm" color="#df9fbf">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lacus mollis, accumsan odio et, porttitor nisl. Aenean in efficitur massa. Donec commodo ex et viverra tincidunt.</Box>
+                  <Box fontSize="sm" color="#847C93">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lacus mollis, accumsan odio et, porttitor nisl. Aenean in efficitur massa. Donec commodo ex et viverra tincidunt.</Box>
                 </ListItem>
               </List>
             </Box>
@@ -59,10 +59,10 @@ const FooterDoctor = () => {
             <Divider orientation="vertical" h="10rem" px="10" display={dividerDisplay} />
             <Box flex="1" mb="4">
               <Heading size="md" ml="1">Connect with Dokto</Heading>
-              <List mt="4" spacing={2} fontSize="sm" color="#df9fbf">
+              <List mt="4" spacing={2} fontSize="sm" color="#847C93">
                 <ListItem ml="2">
                   <Box d="flex" flexDir="row">
-                    <IconContext.Provider value={{ color: "#00ffff" }}>
+                    <IconContext.Provider value={{ color: "#3DE0FF" }}>
                       <IoLocationOutline size={34} />
                     </IconContext.Provider>
                     <Box ml="3">2706 N Buffalo Grove Rd Arlington Heights, Illinois(IL), 60004</Box>
@@ -70,7 +70,7 @@ const FooterDoctor = () => {
                 </ListItem>
                 <ListItem ml="2">
                   <Box d="flex" flexDir="row">
-                    <IconContext.Provider value={{ color: "#00ffff" }}>
+                    <IconContext.Provider value={{ color: "#3DE0FF" }}>
                       <FiPhone size={20} />
                     </IconContext.Provider>
                     <Box ml="3">(847)749-0143</Box>
@@ -78,7 +78,7 @@ const FooterDoctor = () => {
                 </ListItem>
                 <ListItem ml="2">
                   <Box d="flex" flexDir="row">
-                    <IconContext.Provider value={{ color: "#00ffff" }}>
+                    <IconContext.Provider value={{ color: "#3DE0FF" }}>
                       <IoMailOutline size={22} />
                     </IconContext.Provider>
                     <Box ml="3">support@dokto.com</Box>
