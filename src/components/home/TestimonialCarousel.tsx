@@ -27,7 +27,7 @@ const TestimonialCarousel = () => {
         </Box>
         <Box
           as={Carousel}
-          px={[6, 6, 12, 24, 36]}
+          px={[6, 6, 12, 24, 24]}
           renderCenterLeftControls={
             ({ previousSlide }: CarouselProps) => (
               <IconButton
