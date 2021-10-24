@@ -19,7 +19,7 @@ const AvailableCareHeader = () => {
 
   return (
     <AnimatePresence>
-      <SpacedContainer py="20">
+      <SpacedContainer py={[12, 12, 36, 48, 48]}>
         <Box
           as={motion.h1}
           fontWeight="bold"
