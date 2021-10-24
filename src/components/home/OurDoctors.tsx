@@ -22,7 +22,7 @@ const OurDoctors = () => (
           </Box>
           <OurFeaturedDoctors />
         </Container>
-        <Link href="/" color="#170041" mt="14" fontSize="lg" cursor="pointer" fontWeight="bold" _hover={{ outline: "none" }}>View All Doctors</Link>
+        <Link href="/" color="brand.dark" mt="14" fontSize="lg" cursor="pointer" fontWeight="bold" _hover={{ outline: "none" }}>View All Doctors</Link>
       </Box>
     </SpacedContainer>
   </Box>

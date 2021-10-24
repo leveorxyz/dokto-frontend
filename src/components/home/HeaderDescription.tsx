@@ -8,7 +8,7 @@ import { IconContext } from "react-icons";
 const HeaderDescription = () => (
   <div>
     <Flex direction="column">
-      <Heading as="h1" fontWeight="bold" fontSize="6xl" mb="30" color="#170041">Your Health, Our Happiness</Heading>
+      <Heading as="h1" fontWeight="bold" fontSize="6xl" mb="30" color="brand.dark">Your Health, Our Happiness</Heading>
       <Box fontSize="md" color="rgba(51, 51, 51, 0.5)" mb="30">
         In the new normal era like now, your health is very important,
         <br />

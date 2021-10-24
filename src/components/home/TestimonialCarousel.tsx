@@ -20,9 +20,9 @@ const TestimonialCarousel = () => {
 
   return (
     <SpacedContainer>
-      <Flex direction="column" alignItems="center" borderColor="cyan.500" bg="gray.100" mb="100" px={4} rounded="2xl">
+      <Flex direction="column" alignItems="center" borderColor="#A42BAD" bg="rgba(23, 0, 65, 0.1)" mb="100" px={4} rounded="2xl">
         <Box pt={6}>
-          <Heading as="h2" fontWeight="bold" fontSize="4xl">Patient testimonials</Heading>
+          <Heading as="h2" fontWeight="bold" fontSize="4xl" color="#333333">Patient testimonials</Heading>
           <Divider w="33%" mb="12" />
         </Box>
         <Box
@@ -35,7 +35,8 @@ const TestimonialCarousel = () => {
                 icon={<IoArrowBack />}
                 onClick={previousSlide}
                 rounded="full"
-                colorScheme="pink"
+                bgColor="#A42BAD"
+                color="white"
                 fontSize="1.2rem"
               />
             )
@@ -47,7 +48,8 @@ const TestimonialCarousel = () => {
                 icon={<IoArrowForward />}
                 onClick={nextSlide}
                 rounded="full"
-                colorScheme="pink"
+                bgColor="#A42BAD"
+                color="white"
                 fontSize="1.2rem"
               />
             )
