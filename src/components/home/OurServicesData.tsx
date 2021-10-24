@@ -1,10 +1,12 @@
-import { IoChatbubbleOutline } from "react-icons/io5";
-import { FaRegHospital, FaCapsules, FaStethoscope } from "react-icons/fa";
+import Chat from "../../static/Group 129.svg";
+import Hospital from "../../static/Group 131.svg";
+import Capsule from "../../static/Group 133.svg";
+import Stethoscope from "../../static/stethoscope.svg";
 
 export default [
   {
     id: "people",
-    Icon: IoChatbubbleOutline,
+    Icon: Chat,
     title: (
       <>
         <b>Consulation</b>
@@ -20,7 +22,7 @@ export default [
   },
   {
     id: "globe",
-    Icon: FaStethoscope,
+    Icon: Stethoscope,
     title: (
       <>
         <b>Doctor</b>
@@ -38,7 +40,7 @@ export default [
   },
   {
     id: "business",
-    Icon: FaRegHospital,
+    Icon: Hospital,
     title: (
       <>
         <b>Hospital</b>
@@ -56,7 +58,7 @@ export default [
   },
   {
     id: "pharmacy",
-    Icon: FaCapsules,
+    Icon: Capsule,
     title: (
       <>
         <b>Online pharmacy</b>

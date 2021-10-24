@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Box, Heading, Grid, Center, Divider,
+  Box, Heading, Grid, Center, Divider, Image,
 } from "@chakra-ui/react";
 
 import OurServicesCard from "./OurServicesCard";
@@ -27,12 +27,12 @@ export default function OurServices() {
               key={id}
               icon={(
                 <Box
-                  padding={4}
-                  bg="#3DE0FF"
+                  padding={3}
+                  bgColor="#3DE0FF"
                   rounded="full"
-                  w="min-content"
+                  w="max-content"
                 >
-                  <Icon size={28} />
+                  <Image src={Icon} />
                 </Box>
               )}
               title={title}
