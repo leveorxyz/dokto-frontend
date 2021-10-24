@@ -62,7 +62,7 @@ const EmailContact = () => (
 );
 
 const ContactForm = () => (
-  <Box w={["100%", "100%", "85%", "70%", "70%"]} py={[6, 6, 8, 8, 8]}>
+  <Box w="100%" py={[6, 6, 8, 8, 8]}>
     <Input placeholder="Subject" mb={3} />
     <Input placeholder="Email" mb={3} />
     <Input placeholder="Name" mb={3} />
