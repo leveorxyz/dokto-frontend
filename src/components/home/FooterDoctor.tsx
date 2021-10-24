@@ -47,7 +47,7 @@ const FooterDoctor = () => {
                 </ListItem>
               </List>
             </Box>
-            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} />
+            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
               {FooterLinks?.map((links) => (
                 <FooterLinkStyle
@@ -57,7 +57,7 @@ const FooterDoctor = () => {
                 />
               ))}
             </Box>
-            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} />
+            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
               <Heading size="md" ml="1">Connect with Dokto</Heading>
               <List mt="4" spacing={2} fontSize="sm" color="#847C93">
