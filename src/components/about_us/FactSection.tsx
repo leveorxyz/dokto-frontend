@@ -38,7 +38,7 @@ const facts = [
 
 export default function AboutUsFacts() {
   return (
-    <Box bg="cyan.500" py={12}>
+    <Box bg="#008FBA" py={12}>
       <Box mx={[3, 3, "10%", "10%"]}>
         <Heading pb="14" color="white" fontSize="4xl">Dokto Facts</Heading>
         <Grid
@@ -50,7 +50,7 @@ export default function AboutUsFacts() {
           {facts.map(({ id, Icon, title }) => (
             <IconCard
               key={id}
-              icon={<Box as={Icon} size={200} color="cyan.500" />}
+              icon={<Box as={Icon} size={200} color="#3DE0FF" />}
               title={title}
             />
           ))}

@@ -25,9 +25,9 @@ const InternalMedicineCard = ({ title, data }: PropTypes) => (
         mb="2"
       >
         <FaRegCircle size="50" />
-        <Heading as="h2" ml="2" fontWeight="bold" fontSize="2xl">{title}</Heading>
+        <Heading as="h2" ml="2" fontWeight="bold" fontSize="2xl" color="#333333">{title}</Heading>
       </Box>
-      <Box color="gray">{data}</Box>
+      <Box color="rgba(51, 51, 51, 0.6)">{data}</Box>
     </Box>
   </div>
 );

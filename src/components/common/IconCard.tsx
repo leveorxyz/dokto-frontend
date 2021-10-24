@@ -15,7 +15,7 @@ export default function IconCard({ icon, title }: PropTypes) {
     <Box w="100%" height="100%" border="1px" borderColor="gray.300" bg="white">
       <Flex direction="column" alignItems="center" py={marginY} px="1">
         {icon}
-        <Text fontSize="4xl" textAlign="center">
+        <Text fontSize="4xl" textAlign="center" color="#170041">
           {title}
         </Text>
       </Flex>

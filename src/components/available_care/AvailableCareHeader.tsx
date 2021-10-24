@@ -21,6 +21,7 @@ const AvailableCareHeader = () => {
         <Box
           as={motion.h1}
           fontWeight="bold"
+          color="#170041"
           fontSize="8xl"
           {...animationVariants}
           custom={0}
@@ -32,7 +33,7 @@ const AvailableCareHeader = () => {
           as={motion.h2}
           fontWeight="bold"
           fontSize="2xl"
-          color="purple"
+          color="#A42BAD"
           mb={4}
           {...animationVariants}
           custom={1}
@@ -42,7 +43,7 @@ const AvailableCareHeader = () => {
         <Box
           as={motion.div}
           fontSize="md"
-          color="gray"
+          color="rgba(51, 51, 51, 0.5)"
           mb={2}
           {...animationVariants}
           custom={2}

@@ -8,7 +8,7 @@ import { SpacedContainer } from "../common/Containers";
 import OurFeaturedDoctors from "./OurFeaturedDoctors";
 
 const OurDoctors = () => (
-  <Box bg="gray.100">
+  <Box bg="#F4F4F4">
     <SpacedContainer py="16">
       <Box d="flex" flexDir="column" alignItems="center" borderColor="darkPink">
         <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase" color="#333333">Our doctors</Heading>
