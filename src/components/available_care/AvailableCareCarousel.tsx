@@ -36,9 +36,26 @@ const AvailableCareCarousel = () => {
         right={[-10, -10, -16, -16, -16]}
       />
       <Flex direction="column" alignItems="center" w="100%" borderColor="primary.light" bg="rgba(23, 0, 65, 0.03)" mb="100" rounded="2xl">
-        <Box p={6} d="flex" flexDir="column" alignItems="center" borderColor="primary.light">
+        <Box p={6} py={12} d="flex" flexDir="column" alignItems="center" borderColor="primary.light" position="relative">
+          <Box
+            position="absolute"
+            top={0}
+            left="25%"
+            transform="translate(-50%, -10%)"
+            w="2rem"
+            h="2rem"
+            bg="primary.light"
+            rounded="full"
+            display={["none", "none", "block", "block"]}
+          />
           <Heading as="h2" fontWeight="bold" fontSize="3xl" color="primary.dark">Internal Medicine &amp; Specialist Services</Heading>
-          <Divider w="80%" mb="12" />
+          <Divider
+            w="80%"
+            mt={3}
+            sx={{
+              borderBottomWidth: 3,
+            }}
+          />
         </Box>
         <Box
           as={Carousel}
