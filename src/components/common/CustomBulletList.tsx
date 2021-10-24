@@ -8,11 +8,11 @@ type PropTypes = {
 
 export default function CustomBulletList({ listData }: PropTypes) {
   return (
-    <List fontWeight="bold" fontSize="xl" spacing={3}>
+    <List fontWeight="bold" fontSize="xl" spacing={3} color="#170041">
       {
         listData.map((item) => (
           <ListItem key={item}>
-            <ListIcon as={FaDotCircle} color="cyan.500" />
+            <ListIcon as={FaDotCircle} color="#3DE0FF" />
             {item}
           </ListItem>
         ))
