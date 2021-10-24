@@ -17,7 +17,7 @@ const InternalMedicineScroll = ({ listData }: PropTypes) => (
       templateColumns={{
         sm: "repeat(1, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(3, 1fr)", base: "repeat(1, 1fr)",
       }}
-      gap={6}
+      gap={[3, 3, 8, 24, 24]}
     >
       {listData
         .map(({
