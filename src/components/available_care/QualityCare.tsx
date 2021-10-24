@@ -4,7 +4,7 @@ import {
 
 import { SpacedContainer } from "../common/Containers";
 import doctorsSVG from "../../static/doctors.svg";
-import Logo from "../../static/dokto_icon_blue_white.svg";
+import Logo from "../../static/dokto_icon_blue_white.png";
 
 const QualityCare = () => (
   <div>
