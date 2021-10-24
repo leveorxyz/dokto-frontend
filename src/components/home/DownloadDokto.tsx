@@ -25,7 +25,7 @@ const DownloadDokto = () => (
       </Heading>
       <Box d="flex" pb="12">
         <Link href="/">
-          <Image cursor="pointer" w="310px" px={6} py={3} src={PlayStoreIMG} borderRadius="25px" />
+          <Image cursor="pointer" w="310px" px={6} py={3} src={PlayStoreIMG} />
         </Link>
         <Link href="/">
           <Image cursor="pointer" w="310px" px={6} py={3} src={AppStoreIMG} />
