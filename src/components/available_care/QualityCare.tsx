@@ -30,9 +30,17 @@ const QualityCare = () => (
         </Box>
         <Heading as="h1" fontWeight="bold" fontSize="7xl" pt="12" color="brand.darkPink" textAlign="center">Quality care with peace of mind.</Heading>
         <Box p="12" borderColor="brand.light">
-          <Divider />
+          <Divider sx={{
+            borderBottomWidth: 2,
+            borderBottomColor: "primary.light",
+          }}
+          />
           <Box fontSize="md" color="brand.light" py="1rem" px={[0, 0, "3rem", "4rem"]}>Our board-certified doctors and specialists can diagnose and treat a wide variety of things remotely.</Box>
-          <Divider />
+          <Divider sx={{
+            borderBottomWidth: 2,
+            borderBottomColor: "primary.light",
+          }}
+          />
         </Box>
         <Button
           bg="brand.darkPink"
