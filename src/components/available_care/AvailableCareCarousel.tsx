@@ -20,10 +20,10 @@ const AvailableCareCarousel = () => {
 
   return (
     <SpacedContainer>
-      <Flex direction="column" alignItems="center" borderColor="cyan.500" bg="gray.100" mb="100" rounded="2xl">
-        <Box p={6}>
-          <Heading as="h2" fontWeight="bold" fontSize="4xl">Internal Medicine &amp; Specialist Services</Heading>
-          <Divider w="33%" mb="12" />
+      <Flex direction="column" alignItems="center" borderColor="#3DE0FF" bg="rgba(23, 0, 65, 0.03)" mb="100" rounded="2xl">
+        <Box p={6} d="flex" flexDir="column" alignItems="center" borderColor="#3DE0FF">
+          <Heading as="h2" fontWeight="bold" fontSize="3xl" color="#170041">Internal Medicine &amp; Specialist Services</Heading>
+          <Divider w="80%" mb="12" />
         </Box>
         <Box
           as={Carousel}
@@ -35,7 +35,9 @@ const AvailableCareCarousel = () => {
                 icon={<IoArrowBack />}
                 onClick={previousSlide}
                 rounded="full"
-                colorScheme="pink"
+                bgColor="#A42BAD"
+                color="white"
+                _hover={{ bgColor: "#A42BAD", color: "white" }}
               />
             )
           }
@@ -46,7 +48,9 @@ const AvailableCareCarousel = () => {
                 icon={<IoArrowForward />}
                 onClick={nextSlide}
                 rounded="full"
-                colorScheme="pink"
+                bgColor="#A42BAD"
+                color="white"
+                _hover={{ bgColor: "#A42BAD", color: "white" }}
               />
             )
           }

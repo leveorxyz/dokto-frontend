@@ -16,10 +16,10 @@ const MemberPie = ({
 }: PropTypes) => {
   const trust = [
     {
-      symbol: "S", amount: lParcentage, color: "#ff4dff", ratio: 1,
+      symbol: "S", amount: lParcentage, color: "#FF00FF", ratio: 1,
     },
     {
-      symbol: "Z", amount: sParcentage, color: "#bfbfbf", ratio: 1,
+      symbol: "Z", amount: sParcentage, color: "#C5C5C5", ratio: 1,
     },
   ];
 

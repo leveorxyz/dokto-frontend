@@ -9,7 +9,7 @@ import ArrowButton from "../common/buttons/ArrowButton";
 const TelephoneContact = () => (
   <Box bg="brand.dark" color="white" p={[6, 6, 8, 8, 8]}>
     <Heading as="h3" fontSize="2xl" pb={6}>Call Support</Heading>
-    <Text color="gray.300">
+    <Text color="#8472A7">
       Our phone lines are open
       <br />
       Mondays 9AM - Fridays 6PM PST
@@ -26,7 +26,7 @@ const TelephoneContact = () => (
       ].map(({ initial, desc }) => (
         <Text key={initial} fontSize="lg">
           <b>{initial}</b>
-          <Box as="span" color="gray.300">
+          <Box as="span" color="#8472A7">
             &nbsp;
             {desc}
           </Box>
@@ -37,9 +37,9 @@ const TelephoneContact = () => (
 );
 
 const EmailContact = () => (
-  <Box bg="cyan.600" color="white" p={[6, 6, 8, 8, 8]}>
-    <Heading as="h3" fontSize="2xl" pb={6}>Call Support</Heading>
-    <Text color="gray.200">
+  <Box bg="#0095C1" color="white" p={[6, 6, 8, 8, 8]}>
+    <Heading as="h3" fontSize="2xl" pb={6}>Email Us</Heading>
+    <Text color="#65D8FA">
       For corporate inquiries, feel free to contact us via email and we will get back to you as soon as possible.
     </Text>
     <br />
@@ -51,7 +51,7 @@ const EmailContact = () => (
       ].map(({ initial, desc }) => (
         <Text key={initial} fontSize="lg">
           <b>{initial}</b>
-          <Box as="span" color="gray.200">
+          <Box as="span" color="#65D8FA">
             &nbsp;
             {desc}
           </Box>
@@ -67,8 +67,8 @@ const ContactForm = () => (
     <Input placeholder="Email" mb={3} />
     <Input placeholder="Name" mb={3} />
     <Textarea placeholder="Question" resize="vertical" />
-    <Text fontSize="sm" fontWeight="bold" color="gray.500" textAlign="right">max 2000 characters</Text>
-    <ArrowButton bgColor="cyan.500" iconColor="white">Submit</ArrowButton>
+    <Text fontSize="sm" fontWeight="bold" color="#170041" textAlign="right">max 2000 characters</Text>
+    <ArrowButton bgColor="#3DE0FF" iconColor="white">Submit</ArrowButton>
   </Box>
 );
 
@@ -78,7 +78,7 @@ export default function MessageSupport() {
       <Flex wrap="wrap">
         <Box w={["100%", "50%", "50", "50%"]} p={[6, 6, 8, 8, 8]}>
           <Heading as="h2" color="brand.dark" pb={6}>Message Support</Heading>
-          <Text>
+          <Text color="#858585">
             Our administrative and support team are on hand to help with all your questions regarding your account or the technical functionality of the site. Please note that our support staff are not medical personnel and cannot help with consultations, diagnoses or medicines.
           </Text>
 

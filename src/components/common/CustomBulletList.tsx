@@ -12,7 +12,7 @@ export default function CustomBulletList({ listData }: PropTypes) {
       {
         listData.map((item) => (
           <ListItem key={item}>
-            <ListIcon as={FaDotCircle} color="cyan.500" />
+            <ListIcon as={FaDotCircle} color="#3DE0FF" />
             {item}
           </ListItem>
         ))

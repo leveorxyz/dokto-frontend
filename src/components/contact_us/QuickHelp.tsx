@@ -16,10 +16,10 @@ export default function QuickHelp() {
   ];
 
   return (
-    <Box w="100%" bg="gray.100">
+    <Box w="100%" bg="#F4F4F4">
       <SpacedContainer py={[12, 24, 24, 24]}>
-        <Heading as="h2" fontWeight="bold" fontSize="4xl" pb="4">Quick Help</Heading>
-        <Box fontSize="lg" color="gray.500">We are always happy to assist. You can find quick answers for any of the categories below in our Frequently Asked Questions section. If you do not find what you need, you can contact us below.</Box>
+        <Heading as="h2" fontWeight="bold" fontSize="4xl" pb="4" color="#170041">Quick Help</Heading>
+        <Box fontSize="lg" color="#858585">We are always happy to assist. You can find quick answers for any of the categories below in our Frequently Asked Questions section. If you do not find what you need, you can contact us below.</Box>
         <Box py={12}>
           <Grid
             templateColumns={{
@@ -31,7 +31,7 @@ export default function QuickHelp() {
             <CustomBulletList listData={listData.slice(3, listData.length)} />
           </Grid>
         </Box>
-        <ArrowButton>FAQs</ArrowButton>
+        <ArrowButton bgColor="#170041">FAQs</ArrowButton>
       </SpacedContainer>
     </Box>
   );

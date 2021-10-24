@@ -18,12 +18,12 @@ const BenefitsOfDokto = () => {
 
   return (
     <SpacedContainer py="50">
-      <Heading as="h2" fontSize="3xl" fontWeight="bold">Benefits of Dokto</Heading>
+      <Heading as="h2" fontSize="3xl" fontWeight="bold" color="brand.dark">Benefits of Dokto</Heading>
       <Tabs my="20" variant="unstyled" isFitted>
         <TabList sx={{
           borderRadius: "1rem",
           border: "2px",
-          borderColor: "#0a001a",
+          borderColor: "brand.dark",
           overflow: "hidden",
         }}
         >
@@ -33,13 +33,13 @@ const BenefitsOfDokto = () => {
               py={[3, 3, 4, 8, 8]}
               textTransform="uppercase"
               bgColor="white"
-              color="cyan.700"
+              color="#0095C1"
               fontSize={["xs", "sm", "md", "lg", "lg"]}
               fontWeight="bold"
               borderRightWidth={idx === tabs.length - 1 ? "0" : "2px"}
-              borderColor="#0a001a"
-              _hover={{ bgColor: "#0a001a", color: "white" }}
-              _selected={{ color: "white", bg: "#0a001a" }}
+              borderColor="brand.dark"
+              _hover={{ bgColor: "brand.dark", color: "white" }}
+              _selected={{ color: "white", bg: "brand.dark" }}
             >
               {title}
             </Tab>

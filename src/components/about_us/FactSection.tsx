@@ -1,13 +1,17 @@
 import React from "react";
-import { Box, Heading, Grid } from "@chakra-ui/react";
-import { IoBusiness, IoPeople, IoGlobe } from "react-icons/io5";
+import {
+  Box, Heading, Grid, Image,
+} from "@chakra-ui/react";
+import People from "../../static/Group 97.svg";
+import Business from "../../static/office-svgrepo-com 1.svg";
+import Globe from "../../static/globe.svg";
 
 import IconCard from "../common/IconCard";
 
 const facts = [
   {
     id: "people",
-    Icon: IoPeople,
+    Icon: People,
     title: (
       <>
         <b>5,000+</b>
@@ -17,7 +21,7 @@ const facts = [
   },
   {
     id: "globe",
-    Icon: IoGlobe,
+    Icon: Globe,
     title: (
       <>
         <b>2,000</b>
@@ -27,7 +31,7 @@ const facts = [
   },
   {
     id: "business",
-    Icon: IoBusiness,
+    Icon: Business,
     title: (
       <>
         Safe, secure, state-of-the-art technology, compliant with HIPAA requirements
@@ -38,7 +42,7 @@ const facts = [
 
 export default function AboutUsFacts() {
   return (
-    <Box bg="cyan.500" py={12}>
+    <Box bg="#008FBA" py={12}>
       <Box mx={[3, 3, "10%", "10%"]}>
         <Heading pb="14" color="white" fontSize="4xl">Dokto Facts</Heading>
         <Grid
@@ -50,7 +54,7 @@ export default function AboutUsFacts() {
           {facts.map(({ id, Icon, title }) => (
             <IconCard
               key={id}
-              icon={<Box as={Icon} size={200} color="cyan.500" />}
+              icon={<Image src={Icon} />}
               title={title}
             />
           ))}

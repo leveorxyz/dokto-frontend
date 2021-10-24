@@ -18,8 +18,8 @@ const DividerLine = () => (
 
 const MemberEngagementDoctor = () => (
   <SpacedContainer py={24}>
-    <Heading as="h2" fontWeight="bold" fontSize="4xl" mb="4">Putting Our Patients &amp; Providers First</Heading>
-    <Box mb="16" fontSize="lg" color="gray">Dokto is a global Telehealth service that gives patients the opportunity to connect with licensed doctors, therapists, practitioners and specialists for on-demand, online medical consultations. Our aim is to offer convenience and access, providing premium healthcare at a time, location and platform that is suitable for both provider and patient.</Box>
+    <Heading as="h2" color="#170041" fontWeight="bold" fontSize="4xl" mb="4">Putting Our Patients &amp; Providers First</Heading>
+    <Box mb="16" fontSize="lg" color="#858585">Dokto is a global Telehealth service that gives patients the opportunity to connect with licensed doctors, therapists, practitioners and specialists for on-demand, online medical consultations. Our aim is to offer convenience and access, providing premium healthcare at a time, location and platform that is suitable for both provider and patient.</Box>
     <Box
       d="flex"
       flexDir={{
