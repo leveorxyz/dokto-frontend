@@ -35,7 +35,9 @@ const AvailableCareCarousel = () => {
                 icon={<IoArrowBack />}
                 onClick={previousSlide}
                 rounded="full"
-                colorScheme="pink"
+                bgColor="#A42BAD"
+                color="white"
+                _hover={{ bgColor: "#A42BAD", color: "white" }}
               />
             )
           }
@@ -46,7 +48,9 @@ const AvailableCareCarousel = () => {
                 icon={<IoArrowForward />}
                 onClick={nextSlide}
                 rounded="full"
-                colorScheme="pink"
+                bgColor="#A42BAD"
+                color="white"
+                _hover={{ bgColor: "#A42BAD", color: "white" }}
               />
             )
           }
