@@ -8,7 +8,8 @@ const theme = extendTheme({
   colors: {
     brand: {
       pink: "#FF00FF",
-      darkPink: "#B30AB3",
+      darkPink: "#A42BAD",
+      midPink: "#B30AB3",
       darkSky: "#0095C1",
       darkCyan: "#00728A",
       dark: "#26004d",
