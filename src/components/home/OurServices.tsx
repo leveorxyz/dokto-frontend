@@ -11,7 +11,7 @@ export default function OurServices() {
   return (
     <SpacedContainer py={24}>
       <Center display="flex" flexDir="column" borderColor="darkPink">
-        <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase">Our Services</Heading>
+        <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase" color="#333333">Our Services</Heading>
         <Divider w="10" h="2" mb="100" />
         <Grid
           width="100%"

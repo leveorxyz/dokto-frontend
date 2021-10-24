@@ -23,11 +23,11 @@ export default function LandingSearch() {
         </Box>
         <Box
           width={["100%", "100%", "65%", "65%"]}
-          backgroundColor="gray.100"
+          backgroundColor="#F4F4F4"
           px={[4, 8, 12, 24]}
           py={[3, 6, 12, 12]}
         >
-          <Text as="h1" fontSize="lg" fontWeight={600}>Refine Your Search</Text>
+          <Text as="h1" fontSize="lg" fontWeight={600} color="#170041">Refine Your Search</Text>
           <Flex
             my={2}
             justifyContent={["space-between", "space-between", "flex-start", "flex-start"]}
@@ -47,6 +47,7 @@ export default function LandingSearch() {
             />
             <Select
               placeholder="Select a location"
+              color="#4D4C4C"
               variant="filled"
               colorScheme="white"
               width={["100%", "48%", "40%", "35%"]}

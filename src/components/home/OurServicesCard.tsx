@@ -18,7 +18,7 @@ const OurServicesCard = ({ icon, title, description }: PropTypes) => (
   >
     <Flex direction="column" px="1">
       {icon}
-      <Text fontSize="xl" mt="4" mb="2">
+      <Text fontSize="xl" mt="4" mb="2" color="#333333">
         {title}
       </Text>
       <Text fontSize="md" color="rgba(51, 51, 51, 0.6)">

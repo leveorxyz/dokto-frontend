@@ -8,8 +8,8 @@ import { IconContext } from "react-icons";
 const HeaderDescription = () => (
   <div>
     <Flex direction="column">
-      <Heading as="h1" fontWeight="bold" fontSize="6xl" mb="30">Your Health, Our Happiness</Heading>
-      <Box fontSize="md" color="gray" mb="30">
+      <Heading as="h1" fontWeight="bold" fontSize="6xl" mb="30" color="#170041">Your Health, Our Happiness</Heading>
+      <Box fontSize="md" color="rgba(51, 51, 51, 0.5)" mb="30">
         In the new normal era like now, your health is very important,
         <br />
         especially the Covid-19 cases are increasing every day.
@@ -21,8 +21,8 @@ const HeaderDescription = () => (
           <Box fontSize="sm" fontWeight="bold">Talk to a</Box>
           <Box fontSize="lg" fontWeight="bold">Doctor online</Box>
         </Box>
-        <IconContext.Provider value={{ color: "#00ff4b" }}><FaCircle /></IconContext.Provider>
-        <Box ml="2">3560 Doctors Online</Box>
+        <IconContext.Provider value={{ color: "#14FF00" }}><FaCircle /></IconContext.Provider>
+        <Box ml="2" color="#170041">3560 Doctors Online</Box>
       </Flex>
     </Flex>
   </div>
