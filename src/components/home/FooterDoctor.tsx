@@ -1,12 +1,13 @@
 import React from "react";
 import {
-  Box, Container, Divider, Heading, Link, List, ListItem,
+  Box, Container, Divider, Heading, Link, List, ListItem, Image,
 } from "@chakra-ui/react";
 import { IoMailOutline, IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
 
 import FooterLinks from "../about_us/FooterLinks";
+import FooterLogo from "../../static/dokto_png_blue_white1.svg";
 import SocialIcons from "../common/SocialIcons";
 import FooterLinkStyle from "../about_us/FooterLinkStyle";
 
@@ -39,7 +40,7 @@ const FooterDoctor = () => {
             >
               <List mt="4" spacing={2}>
                 <ListItem>
-                  <Box />
+                  <Image src={FooterLogo} />
                 </ListItem>
                 <ListItem>
                   <Box fontSize="sm" color="#847C93">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lacus mollis, accumsan odio et, porttitor nisl. Aenean in efficitur massa. Donec commodo ex et viverra tincidunt.</Box>

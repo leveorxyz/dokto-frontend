@@ -24,10 +24,10 @@ export default function LandingSearch() {
         <Box
           width={["100%", "100%", "65%", "65%"]}
           backgroundColor="#F4F4F4"
-          px={[4, 8, 12, 24]}
-          py={[3, 6, 12, 12]}
+          px={[4, 8, 8, 8]}
+          py={[3, 6, 6, 6]}
         >
-          <Text as="h1" fontSize="lg" fontWeight={600} color="#170041">Refine Your Search</Text>
+          <Text as="h1" fontSize="lg" fontWeight={600} color="brand.dark">Refine Your Search</Text>
           <Flex
             my={2}
             justifyContent={["space-between", "space-between", "flex-start", "flex-start"]}
@@ -38,7 +38,7 @@ export default function LandingSearch() {
               placeholder="Search doctors, clinics, hospitals etc."
               variant="filled"
               colorScheme="white"
-              width={["100%", "48%", "40%", "35%"]}
+              width={["100%", "50%", "50%", "50%"]}
               sx={{
                 backgroundColor: "white",
               }}
@@ -83,14 +83,16 @@ export default function LandingSearch() {
 
             <IconButton
               variant="solid"
-              colorScheme="cyan"
+              bgColor="brand.dark"
               aria-label="Search doctors, clinics, hospitals, etc."
-              icon={<IoSearch size="1.2rem" />}
+              icon={<IoSearch size="1.2rem" color="white" />}
+              _hover={{ opacity: ".85" }}
+              _active={{ opacity: ".85" }}
               display={["none", "flex", "flex", "flex"]}
             />
           </Flex>
 
-          <Link href="/" color="cyan.500" textDecor="underline" display={["none", "none", "block", "block"]}>
+          <Link href="/" color="#3DE0FF" textDecor="underline" display={["none", "none", "block", "block"]}>
             Advanced search
           </Link>
         </Box>
