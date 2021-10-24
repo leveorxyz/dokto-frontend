@@ -1,73 +1,81 @@
-import Home from "../pages/Home";
-import HowItWorks from "../pages/HowItWorks";
-import NotImplemented from "../components/NotImplemented";
-import AboutUs from "../pages/AboutUs";
-import ContactUs from "../pages/ContactUs";
-import AvailableCare from "../pages/AvailableCare";
+import React, { Suspense, lazy } from "react";
+
+const Home = lazy(() => import("../pages/Home"));
+const HowItWorks = lazy(() => import("../pages/HowItWorks"));
+const NotImplemented = lazy(() => import("../components/NotImplemented"));
+const AboutUs = lazy(() => import("../pages/AboutUs"));
+const ContactUs = lazy(() => import("../pages/ContactUs"));
+const AvailableCare = lazy(() => import("../pages/AvailableCare"));
 
 type routeType = {
     displayName: string;
     path: string;
-    component: () => JSX.Element;
+    component: React.ReactNode;
     isProtected: boolean;
     allowedRoles?: string[];
     showInNavbar: boolean;
 }
 
+const LazyLoader = ({ children }: {children: React.ReactChild}) => (
+  <Suspense fallback={<div>loading...</div>}>
+    {children}
+  </Suspense>
+);
+
 const routes: routeType[] = [
   {
     displayName: "Home",
     path: "/",
-    component: Home,
+    component: <LazyLoader><Home /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "How it works",
     path: "/how",
-    component: HowItWorks,
+    component: <LazyLoader><HowItWorks /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "What we treat",
     path: "/what-we-treat",
-    component: AvailableCare,
+    component: <LazyLoader><AvailableCare /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "Clinics",
     path: "/clinics",
-    component: NotImplemented,
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "Pharmacies",
     path: "/pharmacies",
-    component: NotImplemented,
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "Registration",
     path: "/registration",
-    component: NotImplemented,
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "About Us",
     path: "/about",
-    component: AboutUs,
+    component: <LazyLoader><AboutUs /></LazyLoader>,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Contact Us",
     path: "/contact",
-    component: ContactUs,
+    component: <LazyLoader><ContactUs /></LazyLoader>,
     isProtected: false,
     showInNavbar: false,
   },
