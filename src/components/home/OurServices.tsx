@@ -1,18 +1,21 @@
 import React from "react";
 import {
-  Box, Heading, Grid, Center, Divider, Image,
+  Box, Grid, Center, Image,
 } from "@chakra-ui/react";
 
 import OurServicesCard from "./OurServicesCard";
 import { SpacedContainer } from "../common/Containers";
 import OurServicesData from "./OurServicesData";
+import UnderlinedHeader from "../common/UnderlinedHeader";
 
 export default function OurServices() {
   return (
     <SpacedContainer py={24}>
       <Center display="flex" flexDir="column" borderColor="#A42BAD">
-        <Heading as="h2" fontWeight="bold" fontSize="2xl" textTransform="uppercase" color="#333333">Our Services</Heading>
-        <Divider w="10" h="2" mb="100" />
+        <Box mb={24}>
+          <UnderlinedHeader title="Our Services" underlineColor="#A42BAD" />
+        </Box>
+
         <Grid
           width="100%"
           templateColumns={{
