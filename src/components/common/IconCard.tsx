@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
 type PropTypes = {
-  icon: React.ReactNode;
+  icon: string | React.ReactNode;
   title: string | React.ReactNode;
 }
 

@@ -19,7 +19,7 @@ const MemberPie = ({
       symbol: "S", amount: lParcentage, color: "#FF00FF", ratio: 1,
     },
     {
-      symbol: "Z", amount: sParcentage, color: "#C2CACE", ratio: 1,
+      symbol: "Z", amount: sParcentage, color: "#C5C5C5", ratio: 1,
     },
   ];
 

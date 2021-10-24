@@ -10,7 +10,7 @@ const QualityCare = () => (
   <div>
     <SpacedContainer py={100}>
       <Flex direction="column" alignItems="center">
-        <Image src={Logo} height="100%" fit="contain" overflow="hidden" />
+        <Image src={Logo} height="100%" fit="contain" overflow="hidden" w="max-content" />
         <Image src={doctorsSVG} height="100%" fit="contain" overflow="hidden" />
         <Heading as="h1" fontWeight="bold" fontSize="7xl" pt="12" color="#A42BAD" textAlign="center">Quality care with peace of mind.</Heading>
         <Box p="12" borderColor="#3DE0FF">
