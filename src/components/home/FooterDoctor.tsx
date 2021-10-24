@@ -7,7 +7,7 @@ import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
 
 import FooterLinks from "../about_us/FooterLinks";
-import FooterLogo from "../../static/dokto_png_blue_white1.svg";
+import FooterLogo from "../../static/dokto_png_blue_white1.png";
 import SocialIcons from "../common/SocialIcons";
 import FooterLinkStyle from "../about_us/FooterLinkStyle";
 
@@ -38,16 +38,16 @@ const FooterDoctor = () => {
               }}
               pr="100"
             >
-              <List mt="4" spacing={2}>
+              <List mt="1" spacing={2}>
                 <ListItem>
-                  <Image src={FooterLogo} />
+                  <Box pb="6"><Image src={FooterLogo} /></Box>
                 </ListItem>
                 <ListItem>
                   <Box fontSize="sm" color="#847C93">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lacus mollis, accumsan odio et, porttitor nisl. Aenean in efficitur massa. Donec commodo ex et viverra tincidunt.</Box>
                 </ListItem>
               </List>
             </Box>
-            <Divider orientation="vertical" h="10rem" px="10" display={dividerDisplay} />
+            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} />
             <Box flex="1" mb="4">
               {FooterLinks?.map((links) => (
                 <FooterLinkStyle
@@ -57,7 +57,7 @@ const FooterDoctor = () => {
                 />
               ))}
             </Box>
-            <Divider orientation="vertical" h="10rem" px="10" display={dividerDisplay} />
+            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} />
             <Box flex="1" mb="4">
               <Heading size="md" ml="1">Connect with Dokto</Heading>
               <List mt="4" spacing={2} fontSize="sm" color="#847C93">
