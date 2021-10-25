@@ -5,30 +5,30 @@ import {
 export default [
   {
     id: 1,
-    title: "Browse our providers",
+    title: "Register",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis orci ut ante semper feugiat. Maecenas vitae feugiat libero, vitae consectetur felis. Morbi in ullamcorper ante, eget ornare elit. Duis eget dui suscipit, porttitor leo eget, varius leo. Morbi consectetur ex nec nulla scelerisque maximus. Cras dictum, urna eu facilisis rutrum, nisl lacus vehicula ante, a iaculis diam mi in purus.",
+      "Simply register an account with basic information to create a starter profile. Your information is securely stored for all future visits.",
     Icon: IoIosSearch,
   },
   {
     id: 2,
-    title: "Schedule your health appointment",
+    title: "Request",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis orci ut ante semper feugiat. Maecenas vitae feugiat libero, vitae consectetur felis. Morbi in ullamcorper ante, eget ornare elit. Duis eget dui suscipit, porttitor leo eget, varius leo. Morbi consectetur ex nec nulla scelerisque maximus. Cras dictum, urna eu facilisis rutrum, nisl lacus vehicula ante, a iaculis diam mi in purus.",
+      "Search through our network of doctors and providers for a professional with your required specialty. Request a consultation, stating your complaint and your preferred method of communication. Consultations can be carried out through video, phone, SMS text or chat.",
     Icon: IoIosCalendar,
   },
   {
     id: 3,
-    title: "Get great care",
+    title: "Attend",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis orci ut ante semper feugiat. Maecenas vitae feugiat libero, vitae consectetur felis. Morbi in ullamcorper ante, eget ornare elit. Duis eget dui suscipit, porttitor leo eget, varius leo. Morbi consectetur ex nec nulla scelerisque maximus. Cras dictum, urna eu facilisis rutrum, nisl lacus vehicula ante, a iaculis diam mi in purus.",
+      "Your doctor will attend your appointment and provide medical consultation at the scheduled date and time after reviewing your medical history. All encounters are securely stored according to HIPAA requirements to provide other healthcare providers with comprehensive notes on your welfare.",
     Icon: IoIosHeart,
   },
   {
     id: 4,
-    title: "Give feedback!",
+    title: "Treat",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque sagittis tellus, non ultrices lacus tempus vel.",
+      "Our doctors can diagnose and treat numerous non-emergency medical issues. If medically necessary, they can also provide a prescription to your pharmacy of choice. Our aim is to give you access to quality healthcare and get you feeling better as quickly as possible.",
     Icon: IoIosThumbsUp,
   },
 ];

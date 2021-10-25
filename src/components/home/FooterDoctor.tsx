@@ -19,6 +19,8 @@ const FooterDoctor = () => {
   const bottomLinks = [
     { content: "Terms & Conditions", url: "#" },
     { content: "Privacy Policy", url: "#" },
+    { content: "HIPAA", url: "#" },
+    { content: "Contact Us", url: "#" },
   ];
 
   return (
