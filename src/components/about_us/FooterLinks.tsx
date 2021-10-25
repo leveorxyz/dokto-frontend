@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from "react";
 const AboutUs = lazy(() => import("../../pages/AboutUs"));
 const NotImplemented = lazy(() => import("../NotImplemented"));
 const TermsAndConditions = lazy(() => import("../../pages/TermsAndConditions"));
+const PrivacyPolicy = lazy(() => import("../../pages/PrivacyPolicy"));
 
 type linkType = {
     displayName: string;
@@ -44,7 +45,7 @@ const FooterLinks: linkType[] = [
   {
     displayName: "Privacy Policy",
     path: "/privacy_policy",
-    component: <LazyLoader><NotImplemented /></LazyLoader>,
+    component: <LazyLoader><PrivacyPolicy /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
