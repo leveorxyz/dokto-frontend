@@ -1,5 +1,7 @@
 import React from "react";
-import { List, ListItem, ListIcon } from "@chakra-ui/react";
+import {
+  List, ListItem, ListIcon, Box,
+} from "@chakra-ui/react";
 import { FaDotCircle } from "react-icons/fa";
 
 type PropTypes = {
@@ -8,15 +10,19 @@ type PropTypes = {
 
 export default function CustomBulletList({ listData }: PropTypes) {
   return (
-    <List fontWeight="bold" fontSize="xl" spacing={3} color="#170041">
-      {
+    <Box>
+      <List fontWeight="bold" fontSize="xl" spacing={3} color="#170041">
+        {
         listData.map((item) => (
           <ListItem key={item}>
             <ListIcon as={FaDotCircle} color="#3DE0FF" />
             {item}
+            {/* ToDo fix links later */}
+            {/* <Link href="/" _hover={{ outline: "none" }}>{item}</Link> */}
           </ListItem>
         ))
       }
-    </List>
+      </List>
+    </Box>
   );
 }
