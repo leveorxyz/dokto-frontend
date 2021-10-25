@@ -13,9 +13,9 @@ export default function FooterIndex() {
         linkFooter
           .map((route) => (
             <Route
-              key={route.url}
-              path={route.url}
-              render={() => <route.component />}
+              key={route.path}
+              path={route.path}
+              render={() => route.component}
               exact
             />
           ))

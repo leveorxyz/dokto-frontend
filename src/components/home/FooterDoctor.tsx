@@ -49,13 +49,15 @@ const FooterDoctor = () => {
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} />
             <Box flex="1" mb="4">
-              {FooterLinks?.map((links) => (
-                <FooterLinkStyle
-                  key={links.url}
-                  title={links.content}
-                  href={links.url}
-                />
-              ))}
+              {FooterLinks
+                .filter((route) => route.showInNavbar)
+                .map((route) => (
+                  <FooterLinkStyle
+                    key={route.path}
+                    title={route.displayName}
+                    href={route.path}
+                  />
+                ))}
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} />
             <Box flex="1" mb="4">

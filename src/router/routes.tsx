@@ -6,6 +6,7 @@ const NotImplemented = lazy(() => import("../components/NotImplemented"));
 const AboutUs = lazy(() => import("../pages/AboutUs"));
 const ContactUs = lazy(() => import("../pages/ContactUs"));
 const AvailableCare = lazy(() => import("../pages/AvailableCare"));
+const TermsAndConditions = lazy(() => import("../pages/PrivacyPolicy"));
 
 type routeType = {
     displayName: string;
@@ -48,6 +49,13 @@ const routes: routeType[] = [
     displayName: "About Us",
     path: "/about",
     component: <LazyLoader><AboutUs /></LazyLoader>,
+    isProtected: false,
+    showInNavbar: true,
+  },
+  {
+    displayName: "T&Cs",
+    path: "/t&cs",
+    component: <LazyLoader><TermsAndConditions /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },

@@ -1,44 +1,59 @@
-import AboutUs from "../../pages/AboutUs";
-import NotImplemented from "../NotImplemented";
+import React, { Suspense, lazy } from "react";
+
+const AboutUs = lazy(() => import("../../pages/AboutUs"));
+const NotImplemented = lazy(() => import("../NotImplemented"));
+const TermsAndConditions = lazy(() => import("../../pages/TermsAndConditions"));
 
 type linkType = {
-    content: string;
-    url: string;
-    component: () => JSX.Element;
+    displayName: string;
+    path: string;
+    component: React.ReactNode;
     isProtected: boolean;
     allowedRoles?: string[];
+    showInNavbar: boolean;
 }
+
+const LazyLoader = ({ children }: {children: React.ReactChild}) => (
+  <Suspense fallback={<div>loading...</div>}>
+    {children}
+  </Suspense>
+);
 
 const FooterLinks: linkType[] = [
   {
-    content: "About Us",
-    url: "/about",
-    component: AboutUs,
+    displayName: "About Us",
+    path: "/about",
+    component: <LazyLoader><AboutUs /></LazyLoader>,
     isProtected: false,
+    showInNavbar: true,
   },
   {
-    content: "FAQs",
-    url: "/faqs",
-    component: NotImplemented,
+    displayName: "FAQs",
+    path: "/faqs",
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
     isProtected: false,
+    showInNavbar: true,
   },
   {
-    content: "T&Cs",
-    url: "/t&cs",
-    component: NotImplemented,
+    displayName: "T&Cs",
+    path: "/t&cs",
+    component: <LazyLoader><TermsAndConditions /></LazyLoader>,
     isProtected: false,
+    showInNavbar: true,
   },
   {
-    content: "Privacy Policy",
-    url: "/privacy_policy",
-    component: NotImplemented,
+    displayName: "Privacy Policy",
+    path: "/privacy_policy",
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
     isProtected: false,
+    showInNavbar: true,
   },
   {
-    content: "HIPAA Policy",
-    url: "/hipaaa_policy",
-    component: NotImplemented,
+    displayName: "HIPAA Policy",
+    path: "/hipaaa_policy",
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
     isProtected: false,
+    showInNavbar: true,
   },
 ];
 
