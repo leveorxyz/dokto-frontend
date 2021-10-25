@@ -37,14 +37,14 @@ const FooterLinks: linkType[] = [
   },
   {
     displayName: "T&Cs",
-    path: "/t&cs",
+    path: "/terms-and-conditions",
     component: <LazyLoader><TermsAndConditions /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "Privacy Policy",
-    path: "/privacy_policy",
+    path: "/privacy-policy",
     component: <LazyLoader><PrivacyPolicy /></LazyLoader>,
     isProtected: false,
     showInNavbar: true,

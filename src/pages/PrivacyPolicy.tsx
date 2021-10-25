@@ -19,7 +19,7 @@ import ChildrensPrivacy from "../components/privacy_policy/ChildrensPrivacy";
 import ContactingUs from "../components/privacy_policy/ContactingUs";
 
 const PrivacyPolicy = () => (
-  <div>
+  <>
     <Banner text="Privacy Policy" imgSrc={AboutBackground} />
     <TableofContents />
     <ChangesTermsofUse />
@@ -37,7 +37,7 @@ const PrivacyPolicy = () => (
     <ChildrensPrivacy />
     <ContactingUs />
     <FooterDoctor />
-  </div>
+  </>
 );
 
 export default PrivacyPolicy;

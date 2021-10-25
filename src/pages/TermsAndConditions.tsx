@@ -10,7 +10,7 @@ import Disclaimer from "../components/terms_and_conditions/Disclaimer";
 import Surveys from "../components/terms_and_conditions/Surveys";
 
 const TermsAndConditions = () => (
-  <div>
+  <>
     <Banner text="Terms &amp; Conditions" imgSrc={AboutBackground} />
     <DescriptionTermsConditions />
     <DescriptionSecurity />
@@ -19,7 +19,7 @@ const TermsAndConditions = () => (
     <Disclaimer />
     <Surveys />
     <FooterDoctor />
-  </div>
+  </>
 );
 
 export default TermsAndConditions;

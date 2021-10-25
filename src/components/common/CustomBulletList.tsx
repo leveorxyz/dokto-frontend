@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  List, ListItem, ListIcon, Box, Link,
+  List, ListItem, ListIcon, Box,
 } from "@chakra-ui/react";
 import { FaDotCircle } from "react-icons/fa";
 
@@ -16,7 +16,9 @@ export default function CustomBulletList({ listData }: PropTypes) {
         listData.map((item) => (
           <ListItem key={item}>
             <ListIcon as={FaDotCircle} color="#3DE0FF" />
-            <Link href="/" _hover={{ outline: "none" }}>{item}</Link>
+            {item}
+            {/* ToDo fix links later */}
+            {/* <Link href="/" _hover={{ outline: "none" }}>{item}</Link> */}
           </ListItem>
         ))
       }
