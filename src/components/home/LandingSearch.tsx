@@ -22,6 +22,9 @@ export default function LandingSearch() {
           />
         </Box>
         <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
           width={["100%", "100%", "65%", "65%"]}
           backgroundColor="#F4F4F4"
           px={[4, 8, 8, 8]}
@@ -92,9 +95,11 @@ export default function LandingSearch() {
             />
           </Flex>
 
-          <Link href="/" color="#3DE0FF" textDecor="underline" display={["none", "none", "block", "block"]}>
-            Advanced search
-          </Link>
+          <Box>
+            <Link href="/" color="#3DE0FF" textDecor="underline" display={["none", "none", "block", "block"]}>
+              Advanced search
+            </Link>
+          </Box>
         </Box>
       </Flex>
     </SpacedContainer>

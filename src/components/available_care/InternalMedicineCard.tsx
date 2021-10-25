@@ -1,6 +1,4 @@
-import { Heading, Box } from "@chakra-ui/react";
-import { FaRegCircle } from "react-icons/fa";
-import React from "react";
+import { Avatar, Box } from "@chakra-ui/react";
 
 type PropTypes = {
   title: string;
@@ -24,8 +22,9 @@ const InternalMedicineCard = ({ title, data }: PropTypes) => (
         alignItems="center"
         mb="2"
       >
-        <FaRegCircle size="50" />
-        <Heading as="h2" ml="2" fontWeight="bold" fontSize="2xl" color="#333333">{title}</Heading>
+        <Box borderWidth={2} p={1} borderColor="#A42BAD" rounded="full">
+          <Avatar name={title} bg="gray.200" color="gray.700" />
+        </Box>
       </Box>
       <Box color="rgba(51, 51, 51, 0.6)">{data}</Box>
     </Box>

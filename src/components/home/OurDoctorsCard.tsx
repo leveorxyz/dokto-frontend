@@ -34,7 +34,7 @@ const OurDoctorsCard = () => (
             <Box>1751 reviews</Box>
           </Box>
         </Box>
-        <ArrowButton bgColor="#A42BAD" iconColor="white">View Profile</ArrowButton>
+        <ArrowButton bgColor="#A42BAD" iconColor="white" width="100%">View Profile</ArrowButton>
       </Flex>
     </Box>
   </div>

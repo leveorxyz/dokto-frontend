@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import {
   Box, Flex, Button, Input, InputGroup, InputRightElement, Link as ChakraLink, Image,
@@ -6,20 +5,20 @@ import {
 import { IoSearch } from "react-icons/io5";
 
 import SocialIcons from "../common/SocialIcons";
-import { SpacedContainer } from "../common/Containers";
 import StoreIMG from "../../static/Store.png";
 
 export function UpperMenuActions() {
   return (
-    <Flex direction="row" justifyContent="space-between" alignItems="center">
-      <Button size="sm" mx={{ base: 2, md: 0 }} variant="ghost" borderWidth={2} borderColor="brand.dark">Dokto News</Button>
+    <Flex alignItems="center" justifyContent="flex-end" shrink={1} grow={0}>
+      <Button size="sm" mr={{ base: 2, md: 1 }} variant="ghost" borderWidth={2} borderColor="brand.dark">Dokto News</Button>
       <Link to="contact">
-        <Button size="sm" mx={{ base: 2, md: 0 }} variant="ghost" borderWidth={2} borderColor="brand.dark">Contact Us</Button>
+        <Button size="sm" mr={{ base: 2, md: 1 }} variant="ghost" borderWidth={2} borderColor="brand.dark">Contact Us</Button>
       </Link>
       <InputGroup
         size="sm"
-        maxWidth="40%"
+        maxWidth="35%"
         display={["none", "none", "block", "block"]}
+        mr={{ base: 2, md: 1 }}
         sx={{
           ".chakra-input": {
             bg: "brand.dark",
@@ -42,7 +41,7 @@ export function UpperMenuActions() {
       </InputGroup>
       <Box>
         <ChakraLink as={Link} to="/">
-          <Image cursor="pointer" w="160px" px={6} py={3} src={StoreIMG} />
+          <Image cursor="pointer" height="36px" src={StoreIMG} />
         </ChakraLink>
       </Box>
     </Flex>
@@ -51,7 +50,7 @@ export function UpperMenuActions() {
 
 export default function UpperNavBar() {
   return (
-    <SpacedContainer>
+    <Box px={[3, 3, 3, "5%", "5%"]} py={1}>
       <Flex
         w="100%"
         direction="row"
@@ -60,14 +59,14 @@ export default function UpperNavBar() {
         display={["none", "none", "flex", "flex"]}
         wrap="wrap"
       >
-        <Box>
+        <Box w="30%">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </Box>
-        <Flex>
+        <Flex justifyContent="flex-end" alignItems="center">
           <SocialIcons />
           <UpperMenuActions />
         </Flex>
       </Flex>
-    </SpacedContainer>
+    </Box>
   );
 }

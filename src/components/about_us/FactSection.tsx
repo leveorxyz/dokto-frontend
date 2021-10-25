@@ -42,7 +42,10 @@ const facts = [
 
 export default function AboutUsFacts() {
   return (
-    <Box bg="#008FBA" py={12}>
+    <Box py={12} position="relative">
+      <Box position="absolute" top="0" left="0" bg="brand.darkSky" h="80%" w="100%" zIndex={-1} />
+      <Box position="absolute" top="80%" left="0" bg="gray.100" h="20%" w="100%" zIndex={-1} />
+
       <Box mx={[3, 3, "10%", "10%"]}>
         <Heading pb="14" color="white" fontSize="4xl">Dokto Facts</Heading>
         <Grid

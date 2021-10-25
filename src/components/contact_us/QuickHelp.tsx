@@ -31,7 +31,7 @@ export default function QuickHelp() {
             <CustomBulletList listData={listData.slice(3, listData.length)} />
           </Grid>
         </Box>
-        <ArrowButton bgColor="#170041">FAQs</ArrowButton>
+        <ArrowButton bgColor="primary.dark" width="10rem">FAQs</ArrowButton>
       </SpacedContainer>
     </Box>
   );

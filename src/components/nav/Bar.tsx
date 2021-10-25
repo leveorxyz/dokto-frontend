@@ -17,7 +17,7 @@ function NavButtons() {
       direction={["column", "column", "row", "row"]}
       alignItems="center"
       h="100%"
-      py={6}
+      py={4}
       borderLeftWidth={[0, 0, 2, 2, 2]}
       borderLeftColor="black"
     >
@@ -87,7 +87,7 @@ function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
       </GridItem>
 
       <GridItem display="flex" w="100%" h="100%" bg="#3DE0FF" justifyContent="space-between" alignItems="center" pr={[3, 3, 3, "10%", "10%"]}>
-        <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]} py={6}>
+        <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]} py={4}>
           {routes
             .filter((route) => route.showInNavbar)
             .map((route) => (

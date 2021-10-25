@@ -8,25 +8,29 @@ type PropTypes = {
   bgColor?: string;
   iconColor?: string;
   color?: string;
+  rounded?: string;
+  width?: string;
 };
 
 export default function ArrowButton({
-  children, onClick, bgColor, iconColor, color,
+  children, iconColor, ...rest
 }: PropTypes) {
   return (
     <Button
       mt="7"
       textTransform="uppercase"
-      bg={bgColor}
-      color={color}
       fontSize="md"
       p="6"
-      onClick={onClick}
+      display="flex"
+      justifyContent="space-between"
       _hover={{ opacity: ".85" }}
       _focus={{ outline: "none", opacity: ".85" }}
-      rightIcon={<Box as={FaArrowRight} color={iconColor} size={20} />}
+      {...rest}
     >
-      {children}
+      <Box>{children}</Box>
+      <Box>
+        <Box as={FaArrowRight} color={iconColor} size={20} />
+      </Box>
     </Button>
   );
 }
@@ -36,4 +40,6 @@ ArrowButton.defaultProps = {
   color: "white",
   bgColor: "brand.dark",
   iconColor: "#FF00FF",
+  rounded: "md",
+  width: "max-content",
 };

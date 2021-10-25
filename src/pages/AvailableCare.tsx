@@ -6,6 +6,7 @@ import CareList from "../components/available_care/CareList";
 import QualityCare from "../components/available_care/QualityCare";
 import AvailableCareCarousel from "../components/available_care/AvailableCareCarousel";
 import DoktoIconIMG from "../static/DoktoIcon.png";
+import dotsSVG from "../static/dots.svg";
 
 const Blobs = () => (
   <>
@@ -52,6 +53,13 @@ const Blobs = () => (
 
 const AvailableCare = () => (
   <Box overflow="hidden" position="relative">
+    <Image
+      src={dotsSVG}
+      position="absolute"
+      zIndex={-1}
+      top={[12, 12, 12, 20, 20]}
+      left={0}
+    />
     <Blobs />
     <AvailableCareHeader />
     <CareList />

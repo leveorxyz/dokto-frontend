@@ -4,7 +4,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import { SpacedContainer } from "../common/Containers";
 
 const AboutUsDescription = () => (
-  <SpacedContainer>
+  <SpacedContainer py={12}>
     <Heading as="h2" color="#170041" fontWeight="bold" fontSize="4xl" mb="4">Virtual care without boundaries</Heading>
     <Box fontSize="lg" color="#858585" pb="20">
       <Box mb="4">Our aim is to provide patients with immediate access to our vast network of qualified healthcare professionals, providing a secure platform for virtual consultancy at a time that’s convenient for both provider and patient. We are passionate about improving the quality, affordability, and accessibility of healthcare around the world.</Box>

@@ -62,13 +62,13 @@ const EmailContact = () => (
 );
 
 const ContactForm = () => (
-  <Box w={["100%", "100%", "85%", "70%", "70%"]} py={[6, 6, 8, 8, 8]}>
+  <Box w="100%" py={[6, 6, 8, 8, 8]}>
     <Input placeholder="Subject" mb={3} />
     <Input placeholder="Email" mb={3} />
     <Input placeholder="Name" mb={3} />
     <Textarea placeholder="Question" resize="vertical" />
     <Text fontSize="sm" fontWeight="bold" color="#170041" textAlign="right">max 2000 characters</Text>
-    <ArrowButton bgColor="#3DE0FF" iconColor="white">Submit</ArrowButton>
+    <ArrowButton bgColor="#3DE0FF" iconColor="white" width="10rem">Submit</ArrowButton>
   </Box>
 );
 
@@ -76,7 +76,7 @@ export default function MessageSupport() {
   return (
     <SpacedContainer py={[12, 12, 24, 24, 24]}>
       <Flex wrap="wrap">
-        <Box w={["100%", "50%", "50", "50%"]} p={[6, 6, 8, 8, 8]}>
+        <Box w={["100%", "50%", "50", "50%"]} pr={[0, 0, 8, 8, 8]}>
           <Heading as="h2" color="brand.dark" pb={6}>Message Support</Heading>
           <Text color="#858585">
             Our administrative and support team are on hand to help with all your questions regarding your account or the technical functionality of the site. Please note that our support staff are not medical personnel and cannot help with consultations, diagnoses or medicines.
