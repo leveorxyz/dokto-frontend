@@ -3,7 +3,7 @@ import {
   ChakraProvider,
 } from "@chakra-ui/react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
 } from "react-router-dom";
 import "./app.scss";
 import "swiper/swiper.scss";
