@@ -21,8 +21,8 @@ function NavButtons() {
       borderLeftWidth={[0, 0, 2, 2, 2]}
       borderLeftColor="black"
     >
-      <NavItem href="/patient-registation" title="Patient Registration" />
-      <NavItem href="/provider-registation" title="Provider Registration" />
+      <NavItem href="/patient-registration" title="Patient Registration" />
+      <NavItem href="/provider-registration" title="Provider Registration" />
       <Box
         as={Button}
         px={6}
