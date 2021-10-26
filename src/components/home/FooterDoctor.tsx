@@ -1,27 +1,22 @@
 import React from "react";
 import {
-  Box, Container, Divider, Heading, Link, List, ListItem, Image,
+  Box, Container, Divider, Heading, List, ListItem, Image,
 } from "@chakra-ui/react";
 import { IoMailOutline, IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
 
 import FooterLinks from "../about_us/FooterLinks";
+import BottomLinks from "../footer_bottom/BottomLinks";
 import FooterLogo from "../../static/dokto_png_blue_white1.png";
 import SocialIcons from "../common/SocialIcons";
 import FooterLinkStyle from "../about_us/FooterLinkStyle";
+import BottomLinkStyle from "../footer_bottom/BottomLinkStyle";
 
 const FooterDoctor = () => {
   const dividerDisplay = {
     sm: "none", md: "block", lg: "block", xl: "block", base: "none",
   };
-
-  const bottomLinks = [
-    { content: "Terms & Conditions", url: "#" },
-    { content: "Privacy Policy", url: "#" },
-    { content: "HIPAA", url: "#" },
-    { content: "Contact Us", url: "#" },
-  ];
 
   return (
     <div>
@@ -96,13 +91,15 @@ const FooterDoctor = () => {
             </Box>
           </Box>
           <Box d="flex" mt="10" flexWrap="wrap">
-            {bottomLinks?.map(({ content, url }) => (
-              <List key={url}>
-                <Link href={url} fontSize="sm" mr="5" fontWeight="bold" color="white" _hover={{ textDecoration: "none", color: "#A2A2A2" }}>
-                  {content}
-                </Link>
-              </List>
-            ))}
+            {BottomLinks
+              .filter((route) => route.showInNavbar)
+              .map((route) => (
+                <BottomLinkStyle
+                  key={route.path}
+                  title={route.displayName}
+                  href={route.path}
+                />
+              ))}
           </Box>
         </Container>
       </Box>
