@@ -5,12 +5,16 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import InputField from "../../../common/InputField";
+import step1Data from "./step1_data";
+import FormGenerator from "../../../common/FormGenerator";
 
 export default function PersonalDetails() {
   const {
     handleSubmit,
     register,
+    watch,
+    setValue,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -18,34 +22,16 @@ export default function PersonalDetails() {
     console.log(data);
   };
 
-  const emailValidationRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
   return (
     <Box py={12}>
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <InputField
-          name="id"
-          label="Choose your user ID"
-          placeholder="User ID"
-          errors={errors}
+        <FormGenerator
+          data={step1Data(watch)}
           register={register}
-          rules={{
-            required: { value: true, message: "This is required" },
-            minLength: { value: 4, message: "Minimum length should be 4" },
-          }}
-        />
-
-        <InputField
-          name="email"
-          label="Email"
-          placeholder="Email"
           errors={errors}
-          register={register}
-          rules={{
-            required: { value: true, message: "This is required" },
-            pattern: { value: emailValidationRegex, message: "Invalid email" },
-          }}
+          setValue={setValue}
+          setError={setError}
         />
 
         <Flex justifyContent="flex-end" py={6}>
