@@ -10,12 +10,10 @@ export enum FieldTypes {
   COLUMN = "column",
 }
 
-type ruleType = number | boolean | string | RegExp | {
-  value: number | boolean | string | RegExp;
+type RuleType<T> = {
+  value: T;
   message: string;
 };
-
-type validateAction = (value: string) => string | null;
 
 type CommonType = {
   name: string;
@@ -24,9 +22,15 @@ type CommonType = {
   placeholder?: string;
   size?: "xs" | "sm" | "md" | "lg";
   rules?: {
-    validate?: validateAction;
     deps?: string[];
-  } & {[key: string]: ruleType};
+    required?: RuleType<boolean>;
+    minLength?: RuleType<number>;
+    maxLength?: RuleType<number>;
+    min?: RuleType<number>;
+    max?: RuleType<number>;
+    pattern?: RuleType<RegExp>;
+    validate?: (value: any) => string | string[] | null;
+  };
 };
 
 export type InputFieldType = {
