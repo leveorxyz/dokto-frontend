@@ -94,10 +94,14 @@ export type FormFieldType = InputFieldType
 
 export type FormRowType = {
   type: FieldTypes.ROW;
-  fields: FormFieldType[];
+  name: string; // this is just for the keys for mapping
+  fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 
 export type FormColumnType = {
   type: FieldTypes.COLUMN;
-  fields: FormFieldType[];
+  name: string; // this is just for the keys for mapping
+  fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
+
+export type FormDataType = FormFieldType | FormRowType | FormColumnType;
