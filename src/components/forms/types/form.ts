@@ -22,7 +22,6 @@ type CommonType = {
   label: string;
   defaultValue?: string;
   placeholder?: string;
-  required?: boolean;
   size?: "xs" | "sm" | "md" | "lg";
   rules?: {
     validate?: validateAction;
