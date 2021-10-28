@@ -40,6 +40,7 @@ export type InputFieldType = {
   rightAddon?: string | React.ReactNode;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
+  customProperties?: { [key: string]: string };
 } & CommonType;
 
 export type TextareaFieldType = {
