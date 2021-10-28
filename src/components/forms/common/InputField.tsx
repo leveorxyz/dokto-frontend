@@ -5,14 +5,22 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
+import { InputFieldType } from "../types/form";
+
+type DefaultProps = {
+  errors: any;
+  register: any;
+} & Omit<InputFieldType, "type">;
+
 export default function InputField({
-  name, placeholder, label, errors, register, rules,
-}: any) {
+  name, placeholder, inputType, label, errors, register, rules,
+}: DefaultProps) {
   return (
     <FormControl isInvalid={errors[name]}>
       <FormLabel htmlFor="name">{label}</FormLabel>
       <Input
         id={name}
+        type={inputType}
         placeholder={placeholder}
         {...register(name, rules)}
       />
