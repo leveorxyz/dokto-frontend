@@ -1,4 +1,4 @@
-enum FieldTypes {
+export enum FieldTypes {
   INPUT = "input",
   TEXTAREA = "textarea",
   SELECT = "select",
@@ -6,6 +6,8 @@ enum FieldTypes {
   RADIO = "radio",
   FILE = "file",
   CUSTOM = "custom",
+  ROW = "row",
+  COLUMN = "column",
 }
 
 type ruleType = number | boolean | string | RegExp | {
@@ -30,6 +32,7 @@ type CommonType = {
 
 export type InputFieldType = {
   type: FieldTypes.INPUT;
+  inputType?: "text" | "number" | "email" | "password" | "date" | "time" | "datetime-local" | "month" | "week" | "tel" | "url" | "color";
   leftAddon?: string | React.ReactNode;
   rightAddon?: string | React.ReactNode;
   leftElement?: React.ReactNode;
@@ -85,3 +88,13 @@ export type FormFieldType = InputFieldType
                             | RadioFieldType
                             | FileFieldType
                             | CustomFieldType;
+
+export type FormRowType = {
+  type: FieldTypes.ROW;
+  fields: FormFieldType[];
+}
+
+export type FormColumnType = {
+  type: FieldTypes.COLUMN;
+  fields: FormFieldType[];
+}
