@@ -7,12 +7,12 @@ import {
 } from "@chakra-ui/react";
 
 import NotImplemented from "../../../NotImplemented";
-import PersonalDetails from "./steps/PersonalDetails";
+import Step1 from "./steps/Step1";
 
-const IdentificationVerification = NotImplemented;
-const EducationProfile = NotImplemented;
-const ProfessionalProfile = NotImplemented;
-const PracticeLocation = NotImplemented;
+const Step2 = NotImplemented;
+const Step3 = NotImplemented;
+const Step4 = NotImplemented;
+const Step5 = NotImplemented;
 
 export default function Form() {
   const steps = [
@@ -47,11 +47,11 @@ export default function Form() {
       </Breadcrumb>
 
       <Box>
-        {currentStep === 1 && <PersonalDetails />}
-        {currentStep === 2 && <IdentificationVerification />}
-        {currentStep === 3 && <EducationProfile />}
-        {currentStep === 4 && <ProfessionalProfile />}
-        {currentStep === 5 && <PracticeLocation />}
+        {currentStep === 1 && <Step1 />}
+        {currentStep === 2 && <Step2 />}
+        {currentStep === 3 && <Step3 />}
+        {currentStep === 4 && <Step4 />}
+        {currentStep === 5 && <Step5 />}
       </Box>
     </>
   );
