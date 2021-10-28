@@ -31,7 +31,7 @@ export default function PersonalDetails() {
           errors={errors}
           register={register}
           rules={{
-            required: "This is required",
+            required: { value: true, message: "This is required" },
             minLength: { value: 4, message: "Minimum length should be 4" },
           }}
         />
@@ -43,8 +43,8 @@ export default function PersonalDetails() {
           errors={errors}
           register={register}
           rules={{
-            pattern: emailValidationRegex,
-            required: "This is required",
+            required: { value: true, message: "This is required" },
+            pattern: { value: emailValidationRegex, message: "Invalid email" },
           }}
         />
 
