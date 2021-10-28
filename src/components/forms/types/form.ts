@@ -29,7 +29,7 @@ type CommonType = {
     min?: RuleType<number>;
     max?: RuleType<number>;
     pattern?: RuleType<RegExp>;
-    validate?: (value: any) => string | string[] | null;
+    validate?: (value: any) => string | string[] | boolean;
   };
 };
 
