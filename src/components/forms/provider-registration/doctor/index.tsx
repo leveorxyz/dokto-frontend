@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import {
   Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
 } from "@chakra-ui/react";
+import { useRecoilState } from "recoil";
 
+import { currentStepAtom } from "./atoms";
 import NotImplemented from "../../../NotImplemented";
 import Step1 from "./steps/Step1";
 
@@ -14,44 +16,77 @@ const Step3 = NotImplemented;
 const Step4 = NotImplemented;
 const Step5 = NotImplemented;
 
-export default function Form() {
-  const steps = [
-    { id: 1, title: "Personal Details" },
-    { id: 2, title: "Identification Verification" },
-    { id: 3, title: "Education Profile" },
-    { id: 4, title: "Professional Profile" },
-    { id: 5, title: "Practice Location" },
-  ];
+const getStepsData = () => (
+  [
+    {
+      id: 1,
+      title: "Personal Details",
+      component: Step1,
+      showInSteps: true,
+    },
+    {
+      id: 2,
+      title: "Identification Verification",
+      component: Step2,
+      showInSteps: true,
+    },
+    {
+      id: 3,
+      title: "Education Profile",
+      component: Step3,
+      showInSteps: true,
+    },
+    {
+      id: 4,
+      title: "Professional Profile",
+      component: Step4,
+      showInSteps: true,
+    },
+    {
+      id: 5,
+      title: "Practice Location",
+      component: Step5,
+      showInSteps: true,
+    },
+    {
+      id: 6,
+      title: "Confirmation",
+      component: NotImplemented,
+      showInSteps: false,
+    },
+  ]
+);
 
-  const [currentStep, setCurrentStep] = useState(1);
+export default function Form() {
+  const steps = getStepsData();
+  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
+  const CurrentStep = useMemo(() => steps[currentStep - 1].component, [currentStep, steps]);
 
   return (
     <>
       <Breadcrumb spacing="8px" separator="">
-        {steps.map((step) => (
-          <BreadcrumbItem key={step.id}>
-            <Box
-              as={BreadcrumbLink}
-              color={step.id <= currentStep ? "black" : "gray.500"}
-              sx={{
-                _hover: {
-                  textDecoration: "none",
-                },
-              }}
-              onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-            >
-              {step.title}
-            </Box>
-          </BreadcrumbItem>
-        ))}
+        {steps
+          .filter((step) => step.showInSteps)
+          .map((step) => (
+            <BreadcrumbItem key={step.id}>
+              <Box
+                as={BreadcrumbLink}
+                color={step.id <= currentStep ? "black" : "gray.500"}
+                sx={{
+                  _hover: {
+                    textDecoration: "none",
+                  },
+                }}
+                onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
+              >
+                {step.title}
+              </Box>
+            </BreadcrumbItem>
+          ))}
       </Breadcrumb>
 
       <Box>
-        {currentStep === 1 && <Step1 />}
-        {currentStep === 2 && <Step2 />}
-        {currentStep === 3 && <Step3 />}
-        {currentStep === 4 && <Step4 />}
-        {currentStep === 5 && <Step5 />}
+        <CurrentStep />
       </Box>
     </>
   );

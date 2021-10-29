@@ -4,11 +4,14 @@ import {
   Flex,
   Button,
 } from "@chakra-ui/react";
+import { useRecoilState } from "recoil";
 
+import { currentStepAtom } from "../atoms";
 import step1Data from "./step1_data";
 import FormGenerator from "../../../common/FormGenerator";
 
 export default function PersonalDetails() {
+  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
   const {
     handleSubmit,
     register,
@@ -20,6 +23,7 @@ export default function PersonalDetails() {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    setCurrentStep(currentStep + 1);
   };
 
   return (
