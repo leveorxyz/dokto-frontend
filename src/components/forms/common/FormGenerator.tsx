@@ -4,6 +4,7 @@ import {
   FormFieldType, FieldTypes, FormRowType, FormColumnType,
 } from "../types/form";
 import InputField from "./InputField";
+import FileInput from "./FileInput";
 
 type DefaultPropTypes = {
   data: FormFieldType | FormRowType | FormColumnType;
@@ -16,6 +17,10 @@ type DefaultPropTypes = {
 export default function FormGenerator({ data, ...formProps }: DefaultPropTypes) {
   if (data.type === FieldTypes.INPUT) {
     return <InputField {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.FILE) {
+    return <FileInput {...data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.ROW || data.type === FieldTypes.COLUMN) {
