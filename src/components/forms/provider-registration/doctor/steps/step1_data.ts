@@ -38,7 +38,7 @@ const firstColumn = (watch: any) :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "password",
-      label: "Passowrd",
+      label: "Password",
       placeholder: "Enter a new password",
       rules: {
         required: {
@@ -54,7 +54,7 @@ const firstColumn = (watch: any) :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "confirm_password",
-      label: "Confirm Passowrd",
+      label: "Confirm Password",
       placeholder: "Re-enter your new password",
       rules: {
         required: {

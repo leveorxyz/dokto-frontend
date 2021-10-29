@@ -32,7 +32,7 @@ export default function InputField({
 }: PropTypes) {
   return (
     <FormControl isInvalid={errors[name]}>
-      <FormLabel htmlFor="name">{label}</FormLabel>
+      <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <InputGroup>
         {leftAddon && <InputLeftAddon>{leftAddon}</InputLeftAddon>}
         {leftElement && <InputLeftElement>{leftElement}</InputLeftElement>}
@@ -40,6 +40,35 @@ export default function InputField({
           id={name}
           type={inputType}
           placeholder={placeholder}
+          sx={{
+            "&": {
+              color: "brand.dark",
+              borderColor: "brand.darkPink",
+            },
+            "&::placeholder": {
+              color: "#BBCBD8",
+            },
+            _focus: {
+              "&": {
+                bg: "white",
+                color: "brand.dark",
+                borderColor: "brand.darkPink",
+              },
+              "&::placeholder": {
+                color: "#BBCBD8",
+              },
+            },
+            _hover: {
+              "&": {
+                bg: "white",
+                color: "brand.dark",
+                borderColor: "brand.darkPink",
+              },
+              "&::placeholder": {
+                color: "#BBCBD8",
+              },
+            },
+          }}
           {...register(name, rules)}
         />
         {rightAddon && <InputRightAddon>{rightAddon}</InputRightAddon>}
