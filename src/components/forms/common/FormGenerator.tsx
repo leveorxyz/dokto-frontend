@@ -12,6 +12,7 @@ type PropTypes = {
   errors: any;
   setValue: any;
   setError: any;
+  clearErrors: any;
 }
 
 export default function FormGenerator({ data, ...formProps }: PropTypes) {
