@@ -5,6 +5,7 @@ import {
 import {
   HashRouter as Router,
 } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import "./app.scss";
 import "swiper/swiper.scss";
 import "swiper/swiper-vars.scss";
@@ -17,11 +18,13 @@ import theme from "./components/ExtendedTheme";
 
 export default function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Router>
-        <NavBar />
-        <Routes />
-      </Router>
-    </ChakraProvider>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Router>
+          <NavBar />
+          <Routes />
+        </Router>
+      </ChakraProvider>
+    </RecoilRoot>
   );
 }
