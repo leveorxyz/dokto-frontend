@@ -46,6 +46,16 @@ export function UpperMenuActions() {
                 color: "gray.500",
               },
             },
+            _hover: {
+              "&": {
+                bg: "white",
+                color: "brand.dark",
+                borderColor: "brand.dark",
+              },
+              "&::placeholder": {
+                color: "gray.500",
+              },
+            },
           }}
         />
       </InputGroup>
