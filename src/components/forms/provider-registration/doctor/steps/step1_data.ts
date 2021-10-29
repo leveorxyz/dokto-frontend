@@ -22,7 +22,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "name",
       label: "Name",
-      placeholder: "Your Name",
+      placeholder: "",
       leftAddon: "Dr",
       rules: {
         required: {
@@ -38,8 +38,8 @@ const firstColumn = (watch: any) :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "password",
-      label: "Password",
-      placeholder: "Enter a new password",
+      label: "Choose a Password",
+      placeholder: "Password",
       rules: {
         required: {
           value: true,
@@ -55,7 +55,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "confirm_password",
       label: "Confirm Password",
-      placeholder: "Re-enter your new password",
+      placeholder: "Password",
       rules: {
         required: {
           value: true,
@@ -84,7 +84,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "dob",
-      label: "Date of Birth",
+      label: "Date Of Birth",
       placeholder: "YYYY/MM/DD",
       inputType: "date",
       customProperties: {

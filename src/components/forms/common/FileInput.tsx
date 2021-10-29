@@ -39,11 +39,40 @@ export default function FileInput({
 
   return (
     <FormControl isInvalid={errors[shadowFieldName]}>
-      <FormLabel htmlFor={shadowFieldName}>{label}</FormLabel>
+      <FormLabel htmlFor={shadowFieldName} color="brand.dark">{label}</FormLabel>
       <Input
         id={shadowFieldName}
         type="file"
         placeholder={placeholder}
+        sx={{
+          "&": {
+            color: "brand.dark",
+            borderColor: "brand.darkPink",
+          },
+          "&::placeholder": {
+            color: "#BBCBD8",
+          },
+          _focus: {
+            "&": {
+              bg: "white",
+              color: "brand.dark",
+              borderColor: "brand.darkPink",
+            },
+            "&::placeholder": {
+              color: "#BBCBD8",
+            },
+          },
+          _hover: {
+            "&": {
+              bg: "white",
+              color: "brand.dark",
+              borderColor: "brand.darkPink",
+            },
+            "&::placeholder": {
+              color: "#BBCBD8",
+            },
+          },
+        }}
         accept={accept}
         onChange={onChange}
         multiple={multiple ?? false}
