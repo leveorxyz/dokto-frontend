@@ -6,7 +6,7 @@ import {
 import InputField from "./InputField";
 import FileInput from "./FileInput";
 
-type DefaultPropTypes = {
+type PropTypes = {
   data: FormFieldType | FormRowType | FormColumnType;
   register: any;
   errors: any;
@@ -14,7 +14,7 @@ type DefaultPropTypes = {
   setError: any;
 }
 
-export default function FormGenerator({ data, ...formProps }: DefaultPropTypes) {
+export default function FormGenerator({ data, ...formProps }: PropTypes) {
   if (data.type === FieldTypes.INPUT) {
     return <InputField {...data} {...formProps} />;
   }
