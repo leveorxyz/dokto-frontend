@@ -35,7 +35,7 @@ const socialIcons = [
 export default function SocialIcons() {
   return (
     <Flex direction="row" justifyContent="space-around" alignItems="center">
-      {socialIcons.map(({ Icon, color, label }) => <IconButton key={label} aria-label={`Open ${label}`} color={color} variant="ghost" icon={<Icon size="1.5em" />} size="2rem" m={3} />)}
+      {socialIcons.map(({ Icon, color, label }) => <IconButton key={label} aria-label={`Open ${label}`} color={color} variant="ghost" icon={<Icon size="1.5em" />} size="2rem" my={3} mx={2} />)}
     </Flex>
   );
 }

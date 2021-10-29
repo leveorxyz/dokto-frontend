@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
 type PropTypes = {
-  icon: React.ReactNode;
+  icon: string | React.ReactNode;
   title: string | React.ReactNode;
 }
 
@@ -12,10 +12,10 @@ export default function IconCard({ icon, title }: PropTypes) {
   };
 
   return (
-    <Box w="100%" height="100%" border="1px" borderColor="gray.300" bg="white">
+    <Box w="100%" height="100%" bg="white" boxShadow="sm">
       <Flex direction="column" alignItems="center" py={marginY} px="1">
         {icon}
-        <Text fontSize="4xl" textAlign="center">
+        <Text fontSize="4xl" textAlign="center" color="#170041">
           {title}
         </Text>
       </Flex>

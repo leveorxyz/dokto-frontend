@@ -12,14 +12,14 @@ export default function QuickHelp() {
     "Payment, Insurance & Billing",
     "Prescriptions & Pharmacy",
     "Troubleshooting",
-    "Managing my Account",
+    "Managing My Account",
   ];
 
   return (
-    <Box w="100%" bg="gray.100">
+    <Box w="100%" bg="#F4F4F4">
       <SpacedContainer py={[12, 24, 24, 24]}>
-        <Heading as="h2" fontWeight="bold" fontSize="4xl" pb="4">Quick Help</Heading>
-        <Box fontSize="lg" color="gray.500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu enim vitae metus consectetur dictum vitae vel arcu. Nam rhoncus lacus vel fermentum posuere. Donec molestie sodales justo, sed fermentum diam finibus eu. Vestibulum vel ex id justo viverra interdum. Nunc id dictum orci. Morbi efficitur, mi nec pharetra maximus, est ligula finibus urna, vitae condimentum augue libero sed tellus. Nulla facilisi. Curabitur et commodo sapien. Aliquam cursus maximus elementum. Vivamus at interdum massa, non tempus arcu. Praesent elementum in ante a molestie.</Box>
+        <Heading as="h2" fontWeight="bold" fontSize="4xl" pb="4" color="#170041">Quick Help</Heading>
+        <Box fontSize="lg" color="#858585">We are always happy to assist. You can find quick answers for any of the categories below in our Frequently Asked Questions section. If you do not find what you need, you can contact us below.</Box>
         <Box py={12}>
           <Grid
             templateColumns={{
@@ -31,7 +31,7 @@ export default function QuickHelp() {
             <CustomBulletList listData={listData.slice(3, listData.length)} />
           </Grid>
         </Box>
-        <ArrowButton>FAQs</ArrowButton>
+        <ArrowButton bgColor="primary.dark" width="10rem">FAQs</ArrowButton>
       </SpacedContainer>
     </Box>
   );
