@@ -12,7 +12,7 @@ import {
 
 import { InputFieldType } from "../types/form";
 
-type DefaultProps = {
+type PropTypes = {
   errors: any;
   register: any;
 } & Omit<InputFieldType, "type">;
@@ -29,7 +29,7 @@ export default function InputField({
   errors,
   register,
   rules,
-}: DefaultProps) {
+}: PropTypes) {
   return (
     <FormControl isInvalid={errors[name]}>
       <FormLabel htmlFor="name">{label}</FormLabel>

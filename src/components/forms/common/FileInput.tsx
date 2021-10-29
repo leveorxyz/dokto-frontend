@@ -7,7 +7,7 @@ import {
 
 import { FileFieldType } from "../types/form";
 
-type DefaultProps = {
+type PropTypes = {
   errors: any;
   register: any;
 } & Omit<FileFieldType, "type">;
@@ -21,7 +21,7 @@ export default function FileInput({
   errors,
   register,
   rules,
-}: DefaultProps) {
+}: PropTypes) {
   return (
     <FormControl isInvalid={errors[name]}>
       <FormLabel htmlFor="name">{label}</FormLabel>
