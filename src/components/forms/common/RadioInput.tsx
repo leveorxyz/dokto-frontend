@@ -42,6 +42,11 @@ export default function RadioField({
                   color: "brand.darkPink",
                   bg: "brand.darkPink",
                   borderColor: "white",
+                  _hover: {
+                    color: "brand.darkPink",
+                    bg: "brand.darkPink",
+                    borderColor: "gray.300",
+                  },
                 },
               }}
             >
