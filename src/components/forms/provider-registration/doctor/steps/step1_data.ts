@@ -36,6 +36,26 @@ const firstColumn = (watch: any) :FormDataType => ({
       },
     },
     {
+      type: FieldTypes.SELECT,
+      name: "country_code",
+      label: "Mobile Number",
+      options: [{
+        value: "bcd",
+        label: "bcd",
+      },
+      {
+        value: "bcd",
+        label: "bcd",
+      }],
+      placeholder: "",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
       type: FieldTypes.INPUT,
       name: "password",
       label: "Choose a Password",
