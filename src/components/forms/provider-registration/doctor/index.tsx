@@ -11,8 +11,8 @@ import { currentStepAtom } from "./atoms";
 import NotImplemented from "../../../NotImplemented";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
+import Step3 from "./steps/Step3";
 
-const Step3 = NotImplemented;
 const Step4 = NotImplemented;
 const Step5 = NotImplemented;
 
