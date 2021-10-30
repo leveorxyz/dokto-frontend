@@ -5,6 +5,9 @@ import {
 } from "../types/form";
 import InputField from "./InputField";
 import FileInput from "./FileInput";
+import SelectInput from "./SelectInput";
+import RadioInput from "./RadioInput";
+import TextareaField from "./TextareaField";
 
 type PropTypes = {
   data: FormFieldType | FormRowType | FormColumnType;
@@ -18,6 +21,18 @@ type PropTypes = {
 export default function FormGenerator({ data, ...formProps }: PropTypes) {
   if (data.type === FieldTypes.INPUT) {
     return <InputField {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.SELECT) {
+    return <SelectInput {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.RADIO) {
+    return <RadioInput {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.TEXTAREA) {
+    return <TextareaField {...data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.FILE) {

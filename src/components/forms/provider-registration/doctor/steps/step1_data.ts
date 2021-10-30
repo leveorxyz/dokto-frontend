@@ -22,7 +22,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "name",
       label: "Name",
-      placeholder: "Your Name",
+      placeholder: "",
       leftAddon: "Dr",
       rules: {
         required: {
@@ -36,10 +36,34 @@ const firstColumn = (watch: any) :FormDataType => ({
       },
     },
     {
+      type: FieldTypes.SELECT,
+      name: "country_code",
+      label: "Mobile Number",
+      options: [{
+        value: "Nigeria (+234)",
+        label: "nigeria",
+      },
+      {
+        value: "Bangladesh (+880)",
+        label: "bangladesh",
+      },
+      {
+        value: "USA (+1)",
+        label: "usa",
+      }],
+      placeholder: "",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
       type: FieldTypes.INPUT,
       name: "password",
-      label: "Passowrd",
-      placeholder: "Enter a new password",
+      label: "Choose a Password",
+      placeholder: "Password",
       rules: {
         required: {
           value: true,
@@ -54,8 +78,8 @@ const firstColumn = (watch: any) :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "confirm_password",
-      label: "Confirm Passowrd",
-      placeholder: "Re-enter your new password",
+      label: "Confirm Password",
+      placeholder: "Password",
       rules: {
         required: {
           value: true,
@@ -82,9 +106,33 @@ const secondColumn = () :FormDataType => ({
       },
     },
     {
+      type: FieldTypes.RADIO,
+      name: "gender",
+      label: "Gender",
+      options: [{
+        value: "Male",
+        label: "Male",
+      },
+      {
+        value: "Female",
+        label: "Female",
+      },
+      {
+        value: "Third Gender",
+        label: "Third Gender",
+      }],
+      placeholder: "",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
       type: FieldTypes.INPUT,
       name: "dob",
-      label: "Date of Birth",
+      label: "Date Of Birth",
       placeholder: "YYYY/MM/DD",
       inputType: "date",
       customProperties: {
