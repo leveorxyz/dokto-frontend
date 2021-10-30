@@ -37,6 +37,7 @@ export default function InputField({
         "&": {
           color: "brand.dark",
           borderColor: "brand.darkPink",
+          borderRadius: "xl",
         },
         "&::placeholder": {
           color: "#BBCBD8",
@@ -46,6 +47,7 @@ export default function InputField({
             bg: "white",
             color: "brand.dark",
             borderColor: "brand.darkPink",
+            borderWidth: "2px",
           },
           "&::placeholder": {
             color: "#BBCBD8",
@@ -63,8 +65,8 @@ export default function InputField({
         },
       }}
       >
-        {leftAddon && <InputLeftAddon bg="brand.darkPink" color="white">{leftAddon}</InputLeftAddon>}
-        {leftElement && <InputLeftElement>{leftElement}</InputLeftElement>}
+        {leftAddon && <InputLeftAddon bg="brand.darkPink" color="white" borderRadius="xl">{leftAddon}</InputLeftAddon>}
+        {leftElement && <InputLeftElement borderRadius="xl">{leftElement}</InputLeftElement>}
         <Input
           id={name}
           type={inputType}
@@ -73,6 +75,7 @@ export default function InputField({
             "&": {
               color: "brand.dark",
               borderColor: "brand.darkPink",
+              borderRadius: "xl",
             },
             "&::placeholder": {
               color: "#BBCBD8",
@@ -82,6 +85,7 @@ export default function InputField({
                 bg: "white",
                 color: "brand.dark",
                 borderColor: "brand.darkPink",
+                borderWidth: "2px",
               },
               "&::placeholder": {
                 color: "#BBCBD8",
@@ -92,6 +96,7 @@ export default function InputField({
                 bg: "white",
                 color: "brand.dark",
                 borderColor: "brand.darkPink",
+                borderWidth: "2px",
               },
               "&::placeholder": {
                 color: "#BBCBD8",
@@ -100,8 +105,8 @@ export default function InputField({
           }}
           {...register(name, rules)}
         />
-        {rightAddon && <InputRightAddon>{rightAddon}</InputRightAddon>}
-        {rightElement && <InputRightElement>{rightElement}</InputRightElement>}
+        {rightAddon && <InputRightAddon borderRadius="xl">{rightAddon}</InputRightAddon>}
+        {rightElement && <InputRightElement borderRadius="xl">{rightElement}</InputRightElement>}
       </InputGroup>
       <FormErrorMessage>
         {errors[name] && errors[name].message}
