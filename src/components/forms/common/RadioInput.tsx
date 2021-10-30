@@ -1,20 +1,21 @@
 import {
-  Select,
+  Radio,
+  RadioGroup,
+  Stack,
   FormControl,
   FormLabel,
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-import { SelectFieldType } from "../types/form";
+import { RadioFieldType } from "../types/form";
 
 type DefaultProps = {
   errors: any;
   register: any;
-} & Omit<SelectFieldType, "type">;
+} & Omit<RadioFieldType, "type">;
 
-export default function SelectField({
+export default function RadioField({
   name,
-  placeholder,
   options,
   errors,
   label,
@@ -23,13 +24,13 @@ export default function SelectField({
 }: DefaultProps) {
   return (
     <FormControl isInvalid={errors[name]}>
-      <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
-      <Select
-        id={name}
-        placeholder={placeholder}
+      <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
+      <RadioGroup
+        name={name}
+        {...register(name, rules)}
         sx={{
           "&": {
-            color: "#BBCBD8",
+            color: "brand.dark",
             borderColor: "brand.darkPink",
             borderRadius: "xl",
           },
@@ -39,8 +40,9 @@ export default function SelectField({
           _focus: {
             "&": {
               bg: "white",
-              color: "#BBCBD8",
+              color: "brand.dark",
               borderColor: "brand.darkPink",
+              borderWidth: "2px",
             },
             "&::placeholder": {
               color: "#BBCBD8",
@@ -49,7 +51,7 @@ export default function SelectField({
           _hover: {
             "&": {
               bg: "white",
-              color: "#BBCBD8",
+              color: "brand.dark",
               borderColor: "brand.darkPink",
             },
             "&::placeholder": {
@@ -57,18 +59,18 @@ export default function SelectField({
             },
           },
         }}
-        {...register(name, rules)}
       >
-        {options.map(({ value }) => (
-          <option
-            key={value}
-            value={value}
-            placeholder={placeholder}
-          >
-            {value}
-          </option>
-        ))}
-      </Select>
+        <Stack direction="row">
+          {options.map(({ value, label: optionLabel }) => (
+            <Radio
+              key={value}
+              value={value}
+            >
+              {optionLabel}
+            </Radio>
+          ))}
+        </Stack>
+      </RadioGroup>
       <FormErrorMessage>
         {errors[name] && errors[name].message}
       </FormErrorMessage>
