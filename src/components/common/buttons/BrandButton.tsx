@@ -3,11 +3,14 @@ import { Button, Box } from "@chakra-ui/react";
 
 type PropTypes = {
   children: React.ReactNode;
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
   bgColor?: string;
   color?: string;
   rounded?: string;
   width?: string;
+  isLoading?: boolean;
+  isDisabled?: boolean;
 };
 
 export default function RegisterButton({
@@ -33,4 +36,7 @@ RegisterButton.defaultProps = {
   bgColor: "brand.darkPink",
   rounded: "md",
   width: "max-content",
+  type: "button",
+  isLoading: false,
+  isDisabled: false,
 };

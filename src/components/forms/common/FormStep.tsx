@@ -2,15 +2,15 @@ import { useForm } from "react-hook-form";
 import {
   Box,
   Flex,
-  Button,
 } from "@chakra-ui/react";
 import { useRecoilState, RecoilState } from "recoil";
 
 import FormGenerator from "./FieldsGenerator";
 import { FormDataType } from "../types/form";
+import BrandButton from "../../common/buttons/BrandButton";
 
 type PropTypes = {
-  formData: (watch: any) => FormDataType;
+  formData: (watch: any, control: any) => FormDataType;
   currentStepAtom: RecoilState<number>;
   stepDataAtom: RecoilState<any>;
 };
@@ -25,6 +25,7 @@ export default function FormStep({ formData, currentStepAtom, stepDataAtom }: Pr
     setValue,
     setError,
     clearErrors,
+    control,
     formState: { errors, isSubmitting },
   } = useForm({
     mode: "onChange",
@@ -54,7 +55,7 @@ export default function FormStep({ formData, currentStepAtom, stepDataAtom }: Pr
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <FormGenerator
-          data={formData(watch)}
+          data={formData(watch, control)}
           register={register}
           errors={errors}
           setValue={setValue}
@@ -63,9 +64,9 @@ export default function FormStep({ formData, currentStepAtom, stepDataAtom }: Pr
         />
 
         <Flex justifyContent="flex-end" py={6}>
-          <Button type="submit" variantColor="teal" mr={4} isLoading={isSubmitting}>
+          <BrandButton type="submit" isLoading={isSubmitting}>
             Next
-          </Button>
+          </BrandButton>
         </Flex>
       </form>
     </Box>
