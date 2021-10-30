@@ -18,7 +18,7 @@ type PropTypes = {
   clearErrors: any;
 }
 
-export default function FormGenerator({ data, ...formProps }: PropTypes) {
+export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
   if (data.type === FieldTypes.INPUT) {
     return <InputField {...data} {...formProps} />;
   }
@@ -49,7 +49,7 @@ export default function FormGenerator({ data, ...formProps }: PropTypes) {
         spacing={spacing}
       >
         {data.fields.map((field) => (
-          <FormGenerator key={[data.name, field.name].join(".")} data={field} {...formProps} />
+          <FieldsGenerator key={[data.name, field.name].join(".")} data={field} {...formProps} />
         ))}
       </Stack>
     );

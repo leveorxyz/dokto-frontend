@@ -178,3 +178,4 @@ const data = () :FormDataType => ({
 });
 
 export default data;
+export const step4Data = data;

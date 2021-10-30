@@ -4,14 +4,19 @@ import {
   Flex,
   Button,
 } from "@chakra-ui/react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, RecoilState } from "recoil";
 
-import { currentStepAtom, step1Atom } from "../atoms";
-import step1Data from "./step1_data";
-import FormGenerator from "../../../common/FormGenerator";
+import FormGenerator from "./FieldsGenerator";
+import { FormDataType } from "../types/form";
 
-export default function PersonalDetails() {
-  const [step1State, setStep1State] = useRecoilState(step1Atom);
+type PropTypes = {
+  formData: (watch: any) => FormDataType;
+  currentStepAtom: RecoilState<number>;
+  stepDataAtom: RecoilState<any>;
+};
+
+export default function FormStep({ formData, currentStepAtom, stepDataAtom }: PropTypes) {
+  const [step1State, setStep1State] = useRecoilState(stepDataAtom);
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
   const {
     handleSubmit,
@@ -49,7 +54,7 @@ export default function PersonalDetails() {
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <FormGenerator
-          data={step1Data(watch)}
+          data={formData(watch)}
           register={register}
           errors={errors}
           setValue={setValue}

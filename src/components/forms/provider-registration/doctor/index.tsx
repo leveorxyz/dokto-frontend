@@ -5,54 +5,78 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
 } from "@chakra-ui/react";
-import { useRecoilState } from "recoil";
+import { RecoilState, useRecoilState } from "recoil";
 
-import { currentStepAtom } from "./atoms";
+import {
+  step1Atom, step2Atom, step3Atom, step4Atom, step5Atom, currentStepAtom,
+} from "./atoms";
 import NotImplemented from "../../../NotImplemented";
-import Step1 from "./steps/Step4";
-import Step2 from "./steps/Step2";
-import Step3 from "./steps/Step3";
-import Step5 from "./steps/Step5";
+import FormStep from "../../common/FormStep";
+import {
+  step1Data, step2Data, step3Data, step4Data, step5Data,
+} from "./steps";
+import { FormDataType } from "../../types/form";
 
-const Step4 = NotImplemented;
+type CommonStepType = {
+  id: number;
+  title: string;
+};
 
-const getStepsData = () => (
+type FormStepType = {
+  isFormStep: true;
+  data: (watch: any) => FormDataType;
+  atom: RecoilState<any>;
+} & CommonStepType;
+
+type SubmitStepType = {
+  isFormStep: false;
+  component: React.ReactNode;
+} & CommonStepType;
+
+type StepTypes = FormStepType | SubmitStepType
+
+const getStepsData = (): StepTypes[] => (
   [
     {
       id: 1,
       title: "Personal Details",
-      component: Step1,
-      showInSteps: true,
+      data: step1Data,
+      isFormStep: true,
+      atom: step1Atom,
     },
     {
       id: 2,
       title: "Identification Verification",
-      component: Step2,
-      showInSteps: true,
+      data: step2Data,
+      isFormStep: true,
+      atom: step2Atom,
     },
     {
       id: 3,
       title: "Education Profile",
-      component: Step3,
-      showInSteps: true,
+      data: step3Data,
+      isFormStep: true,
+      atom: step3Atom,
     },
     {
       id: 4,
       title: "Professional Profile",
-      component: Step4,
-      showInSteps: true,
+      data: step4Data,
+      isFormStep: true,
+      atom: step4Atom,
     },
     {
       id: 5,
       title: "Practice Location",
-      component: Step5,
-      showInSteps: true,
+      data: step5Data,
+      isFormStep: true,
+      atom: step5Atom,
     },
     {
       id: 6,
       title: "Confirmation",
-      component: NotImplemented,
-      showInSteps: false,
+      component: <NotImplemented />,
+      isFormStep: false,
     },
   ]
 );
@@ -60,13 +84,29 @@ const getStepsData = () => (
 export default function Form() {
   const steps = getStepsData();
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
-  const CurrentStep = useMemo(() => steps[currentStep - 1].component, [currentStep, steps]);
+
+  const CurrentStep = useMemo(
+    () => {
+      if (steps[currentStep - 1].isFormStep) {
+        const step = steps[currentStep - 1] as FormStepType;
+        return (
+          <FormStep
+            formData={step.data}
+            stepDataAtom={step.atom}
+            currentStepAtom={currentStepAtom}
+          />
+        );
+      }
+      return (steps[currentStep - 1] as SubmitStepType).component;
+    },
+    [currentStep, steps],
+  );
 
   return (
     <>
       <Breadcrumb spacing="8px" separator="">
         {steps
-          .filter((step) => step.showInSteps)
+          .filter((step) => step.isFormStep)
           .map((step) => (
             <BreadcrumbItem key={step.id}>
               <Box
@@ -86,7 +126,7 @@ export default function Form() {
       </Breadcrumb>
 
       <Box>
-        <CurrentStep />
+        {CurrentStep}
       </Box>
     </>
   );
