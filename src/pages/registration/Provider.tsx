@@ -13,32 +13,54 @@ export default function Provider() {
 
       <SpacedContainer py={12}>
         <Tabs>
-          <Flex justifyContent="space-between">
-            <Box>
+          <Flex justifyContent="flex-start" alignItems="center" mb={[3, 3, 6, 12, 12]}>
+            <Box as="h2" fontSize="lg" mr={[3, 3, 6, 12, 12]} color="primary.dark">
               Register as a:
             </Box>
-            <TabList>
-              <Tab>Doctor</Tab>
-              <Tab>Hospital</Tab>
-              <Tab>Clinic</Tab>
-              <Tab>Pharmacy</Tab>
+            <TabList borderBottomWidth={0}>
+              {["Doctor", "Hospital", "Clinic", "Pharmacy"].map(
+                (title) => (
+                  <Tab
+                    key={title}
+                    borderBottomWidth={0}
+                    color="gray.300"
+                    position="relative"
+                    pr={0}
+                    mr={4}
+                    _selected={{
+                      color: "brand.darkPink",
+                      _after: {
+                        content: "''",
+                        bg: "primary.dark",
+                        position: "absolute",
+                        bottom: 1,
+                        right: 0,
+                        width: "50%",
+                        height: "2px",
+                      },
+                    }}
+                  >
+                    {title}
+                  </Tab>
+                ),
+              )}
             </TabList>
           </Flex>
 
           <TabPanels>
-            <TabPanel>
+            <TabPanel p={0}>
               <DoctorRegistration />
             </TabPanel>
 
-            <TabPanel>
+            <TabPanel p={0}>
               <NotImplemented />
             </TabPanel>
 
-            <TabPanel>
+            <TabPanel p={0}>
               <NotImplemented />
             </TabPanel>
 
-            <TabPanel>
+            <TabPanel p={0}>
               <NotImplemented />
             </TabPanel>
           </TabPanels>
