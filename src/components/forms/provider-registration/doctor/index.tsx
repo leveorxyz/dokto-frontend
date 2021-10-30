@@ -104,22 +104,52 @@ export default function Form() {
 
   return (
     <>
-      <Breadcrumb spacing="8px" separator="">
+      <Breadcrumb
+        spacing="8px"
+        separator=""
+        sx={{
+          ".chakra-breadcrumb__list": {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            w: "100%",
+          },
+        }}
+      >
         {steps
           .filter((step) => step.isFormStep)
           .map((step) => (
             <BreadcrumbItem key={step.id}>
               <Box
                 as={BreadcrumbLink}
+                display="flex"
+                alignItems="center"
                 color={step.id <= currentStep ? "black" : "gray.500"}
                 sx={{
                   _hover: {
                     textDecoration: "none",
+                    cursor: step.id <= currentStep ? "pointer" : "default",
                   },
                 }}
                 onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
               >
-                {step.title}
+                <Box
+                  display="inline-block flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  justifyContent="center"
+                  rounded="full"
+                  bg={step.id <= currentStep ? "brand.darkPink" : "gray.300"}
+                  color="white"
+                  fontSize="sm"
+                  w="2rem"
+                  h="2rem"
+                  textAlign="center"
+                  mr={2}
+                >
+                  {step.id}
+                </Box>
+                <span>{step.title}</span>
               </Box>
             </BreadcrumbItem>
           ))}
