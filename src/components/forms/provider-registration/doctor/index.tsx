@@ -10,8 +10,8 @@ import { useRecoilState } from "recoil";
 import { currentStepAtom } from "./atoms";
 import NotImplemented from "../../../NotImplemented";
 import Step1 from "./steps/Step1";
+import Step2 from "./steps/Step2";
 
-const Step2 = NotImplemented;
 const Step3 = NotImplemented;
 const Step4 = NotImplemented;
 const Step5 = NotImplemented;
