@@ -22,38 +22,31 @@ export default function SelectField({
   rules,
 }: DefaultProps) {
   return (
-    <FormControl isInvalid={errors[name]}>
+    <FormControl isInvalid={errors[name]} py={6}>
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <Select
         id={name}
         placeholder={placeholder}
         sx={{
           "&": {
-            color: "#BBCBD8",
+            color: "brand.dark",
             borderColor: "brand.darkPink",
             borderRadius: "xl",
           },
           "&::placeholder": {
             color: "#BBCBD8",
           },
-          _focus: {
-            "&": {
-              bg: "white",
-              color: "#BBCBD8",
-              borderColor: "brand.darkPink",
-            },
-            "&::placeholder": {
-              color: "#BBCBD8",
-            },
-          },
           _hover: {
             "&": {
-              bg: "white",
-              color: "#BBCBD8",
+              color: "brand.dark",
               borderColor: "brand.darkPink",
             },
-            "&::placeholder": {
-              color: "#BBCBD8",
+          },
+          _focus: {
+            "&": {
+              color: "brand.dark",
+              borderColor: "brand.darkPink",
+              borderWidth: "2px",
             },
           },
         }}

@@ -21,7 +21,7 @@ export default function InputField({
   rules,
 }: DefaultProps) {
   return (
-    <FormControl isInvalid={errors[name]}>
+    <FormControl isInvalid={errors[name]} py={6}>
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <Textarea
         id={name}
@@ -31,29 +31,22 @@ export default function InputField({
           "&": {
             color: "brand.dark",
             borderColor: "brand.darkPink",
+            borderRadius: 0,
           },
           "&::placeholder": {
             color: "#BBCBD8",
           },
+          _hover: {
+            "&": {
+              color: "brand.dark",
+              borderColor: "brand.darkPink",
+            },
+          },
           _focus: {
             "&": {
-              bg: "white",
               color: "brand.dark",
               borderColor: "brand.darkPink",
               borderWidth: "2px",
-            },
-            "&::placeholder": {
-              color: "#BBCBD8",
-            },
-          },
-          _hover: {
-            "&": {
-              bg: "white",
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-            },
-            "&::placeholder": {
-              color: "#BBCBD8",
             },
           },
         }}

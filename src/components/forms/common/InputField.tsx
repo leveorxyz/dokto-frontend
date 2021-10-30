@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Input,
   InputGroup,
@@ -30,41 +31,26 @@ export default function InputField({
   register,
   rules,
 }: PropTypes) {
+  const borderStyles = useMemo(() => {
+    if (leftAddon || leftElement) {
+      return {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+      };
+    }
+    if (rightAddon || rightElement) {
+      return {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+      };
+    }
+    return {};
+  }, [leftAddon, rightAddon, leftElement, rightElement]);
+
   return (
-    <FormControl isInvalid={errors[name]}>
+    <FormControl id={name} isInvalid={errors[name]} py={6}>
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
-      <InputGroup sx={{
-        "&": {
-          color: "brand.dark",
-          borderColor: "brand.darkPink",
-          borderRadius: "xl",
-        },
-        "&::placeholder": {
-          color: "#BBCBD8",
-        },
-        _focus: {
-          "&": {
-            bg: "white",
-            color: "brand.dark",
-            borderColor: "brand.darkPink",
-            borderWidth: "2px",
-          },
-          "&::placeholder": {
-            color: "#BBCBD8",
-          },
-        },
-        _hover: {
-          "&": {
-            bg: "white",
-            color: "brand.dark",
-            borderColor: "brand.darkPink",
-          },
-          "&::placeholder": {
-            color: "#BBCBD8",
-          },
-        },
-      }}
-      >
+      <InputGroup>
         {leftAddon && <InputLeftAddon bg="brand.darkPink" color="white" borderRadius="xl">{leftAddon}</InputLeftAddon>}
         {leftElement && <InputLeftElement borderRadius="xl">{leftElement}</InputLeftElement>}
         <Input
@@ -76,30 +62,22 @@ export default function InputField({
               color: "brand.dark",
               borderColor: "brand.darkPink",
               borderRadius: "xl",
+              ...borderStyles,
             },
             "&::placeholder": {
               color: "#BBCBD8",
             },
-            _focus: {
-              "&": {
-                bg: "white",
-                color: "brand.dark",
-                borderColor: "brand.darkPink",
-                borderWidth: "2px",
-              },
-              "&::placeholder": {
-                color: "#BBCBD8",
-              },
-            },
             _hover: {
               "&": {
-                bg: "white",
+                color: "brand.dark",
+                borderColor: "brand.darkPink",
+              },
+            },
+            _focus: {
+              "&": {
                 color: "brand.dark",
                 borderColor: "brand.darkPink",
                 borderWidth: "2px",
-              },
-              "&::placeholder": {
-                color: "#BBCBD8",
               },
             },
           }}

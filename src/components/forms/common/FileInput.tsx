@@ -38,7 +38,7 @@ export default function FileInput({
   };
 
   return (
-    <FormControl isInvalid={errors[shadowFieldName]}>
+    <FormControl isInvalid={errors[shadowFieldName]} py={6}>
       <FormLabel htmlFor={shadowFieldName} color="brand.dark">{label}</FormLabel>
       <Input
         id={shadowFieldName}
@@ -48,28 +48,22 @@ export default function FileInput({
           "&": {
             color: "brand.dark",
             borderColor: "brand.darkPink",
+            borderRadius: 0,
           },
           "&::placeholder": {
             color: "#BBCBD8",
           },
-          _focus: {
-            "&": {
-              bg: "white",
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-            },
-            "&::placeholder": {
-              color: "#BBCBD8",
-            },
-          },
           _hover: {
             "&": {
-              bg: "white",
               color: "brand.dark",
               borderColor: "brand.darkPink",
             },
-            "&::placeholder": {
-              color: "#BBCBD8",
+          },
+          _focus: {
+            "&": {
+              color: "brand.dark",
+              borderColor: "brand.darkPink",
+              borderWidth: "2px",
             },
           },
         }}

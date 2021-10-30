@@ -23,7 +23,7 @@ export default function RadioField({
   rules,
 }: DefaultProps) {
   return (
-    <FormControl isInvalid={errors[name]}>
+    <FormControl id={name} isInvalid={errors[name]} py={6}>
       <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
       <RadioGroup id={name}>
         <Stack direction="row">
@@ -32,6 +32,18 @@ export default function RadioField({
               key={value}
               value={value}
               {...register(name, rules)}
+              sx={{
+                "&": {
+                  color: "gray.300",
+                  bg: "gray.300",
+                  borderColor: "white",
+                },
+                "&[data-checked]": {
+                  color: "brand.darkPink",
+                  bg: "brand.darkPink",
+                  borderColor: "white",
+                },
+              }}
             >
               {optionLabel}
             </Radio>
