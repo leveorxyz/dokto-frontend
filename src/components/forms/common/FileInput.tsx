@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 
 import { FileFieldType } from "../types/form";
+import getBase64 from "../../../utils/getBase64";
 
 type PropTypes = {
   errors: any;
@@ -28,7 +29,7 @@ export default function FileInput({
   const shadowFieldName = `${name}_shadow`;
 
   const onChange = (e: any) => {
-    setValue(name, e.target.files ? Array.from(e.target.files)[0] : null);
+    setValue(name, e.target.files ? getBase64(Array.from(e.target.files)[0] as File) : null);
 
     if (!e.target.files || e.target.files.length === 0) {
       setError(shadowFieldName, { type: "required", message: "This field is required" });
