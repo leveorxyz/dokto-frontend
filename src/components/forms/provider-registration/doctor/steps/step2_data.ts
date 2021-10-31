@@ -1,3 +1,4 @@
+import { Country, State, City } from "country-state-city";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
@@ -8,20 +9,12 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.SELECT,
-      name: "identity_verification",
-      label: "Identity Verification",
-      options: [{
-        value: "Identity Verification",
-        label: "nigeria",
-      },
-      {
-        value: "Bangladesh (+880)",
-        label: "bangladesh",
-      },
-      {
-        value: "USA (+1)",
-        label: "usa",
-      }],
+      name: "country",
+      label: "Country",
+      options: Country.getAllCountries().map((country) => ({
+        label: country.isoCode,
+        value: country.name,
+      })),
       placeholder: "",
       rules: {
         required: {
@@ -45,7 +38,7 @@ const firstColumn = () :FormDataType => ({
   ],
 });
 
-const secondColumn = () :FormDataType => ({
+const secondColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
   fields: [
@@ -74,59 +67,45 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.SELECT,
       name: "state",
       label: "State",
-      options: [{
-        value: "State",
-        label: "state",
-      },
-      {
-        value: "Bangladesh (+880)",
-        label: "bangladesh",
-      },
-      {
-        value: "USA (+1)",
-        label: "usa",
-      }],
+      options: State.getStatesOfCountry(watch("country")).map((state) => ({
+        label: state.isoCode,
+        value: state.name,
+      })),
       placeholder: "",
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
+        deps: ["country"],
       },
     },
     {
       type: FieldTypes.SELECT,
       name: "city",
       label: "City",
-      options: [{
-        value: "City",
-        label: "city",
-      },
-      {
-        value: "Bangladesh (+880)",
-        label: "bangladesh",
-      },
-      {
-        value: "USA (+1)",
-        label: "usa",
-      }],
+      options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
+        label: city.stateCode,
+        value: city.name,
+      })),
       placeholder: "",
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
+        deps: ["state"],
       },
     },
   ],
 });
 
-const data = () :FormDataType => ({
+const data = (watch: any) :FormDataType => ({
   type: FieldTypes.ROW,
   name: "step1",
   fields: [
     firstColumn(),
-    secondColumn(),
+    secondColumn(watch),
   ],
 });
 
