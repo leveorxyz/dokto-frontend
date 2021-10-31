@@ -18,9 +18,7 @@ export default function RegisterButton({
 }: PropTypes) {
   return (
     <Button
-      mt="7"
       fontSize="sm"
-      p="6"
       _hover={{ opacity: ".85" }}
       _focus={{ outline: "none", opacity: ".85" }}
       {...rest}
