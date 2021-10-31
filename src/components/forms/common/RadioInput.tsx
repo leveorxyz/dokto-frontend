@@ -12,6 +12,7 @@ import { RadioFieldType } from "../types/form";
 type DefaultProps = {
   errors: any;
   register: any;
+  watch: any;
 } & Omit<RadioFieldType, "type">;
 
 export default function RadioField({
@@ -21,11 +22,12 @@ export default function RadioField({
   label,
   register,
   rules,
+  watch,
 }: DefaultProps) {
   return (
     <FormControl id={name} isInvalid={errors[name]} py={6}>
       <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
-      <RadioGroup id={name}>
+      <RadioGroup id={name} value={watch(name)}>
         <Stack direction="row">
           {options.map(({ value, label: optionLabel }) => (
             <Radio
