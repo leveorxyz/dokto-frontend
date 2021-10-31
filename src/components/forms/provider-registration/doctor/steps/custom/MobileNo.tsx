@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useController } from "react-hook-form";
 import { useRecoilValue } from "recoil";
+import { Country } from "country-state-city";
 
 import { CustomFieldType } from "../../../../types/form";
 import { step1Atom } from "../../atoms";
@@ -50,11 +51,8 @@ export default function MobileNo({
       <Flex wrap="nowrap">
         <Select ref={selectRef} {...selectProps} w="30%" mr={3}>
           {
-            [
-              { country: "Nigeria", prefix: "+234" },
-              { country: "Bangladesh", prefix: "+880" },
-            ].map(
-              ({ country, prefix }) => <option key={prefix} value={prefix}>{`${country}`}</option>,
+            Country.getAllCountries().map(
+              ({ name: countryName, phonecode }) => <option key={phonecode} value={phonecode}>{`${countryName}(${phonecode})`}</option>,
             )
           }
         </Select>
