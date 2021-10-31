@@ -40,10 +40,6 @@ const firstColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
-        },
       },
     },
   ],
@@ -71,10 +67,6 @@ const secondColumn = () :FormDataType => ({
         required: {
           value: true,
           message: "This field is required",
-        },
-        pattern: {
-          value: /^\w+$/,
-          message: "Only letters and underscore allowed",
         },
       },
     },
