@@ -23,12 +23,8 @@ const firstColumn = () :FormDataType => ({
         label: "Andrology",
       },
       {
-        value: "Anesthesiologist/Chronic",
-        label: "Anesthesiologist/Chronic",
-      },
-      {
-        value: "Pain Specialist",
-        label: "Pain Specialist",
+        value: "Anesthesiologist/Chronic Pain Specialist",
+        label: "Anesthesiologist/Chronic Pain Specialist",
       },
       {
         value: "Anesthesiology",
@@ -345,12 +341,8 @@ const thirdColumn = () :FormDataType => ({
         label: "Physiotherapy",
       },
       {
-        value: "Plastic Surgery – Reconstructive",
-        label: "Plastic Surgery – Reconstructive",
-      },
-      {
-        value: "And Cosmetic",
-        label: "And Cosmetic",
+        value: "Plastic Surgery – Reconstructive And Cosmetic",
+        label: "Plastic Surgery – Reconstructive And Cosmetic",
       }],
       placeholder: "",
       rules: {
