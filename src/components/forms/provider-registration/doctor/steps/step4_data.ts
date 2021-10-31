@@ -363,6 +363,145 @@ const thirdColumn = () :FormDataType => ({
   ],
 });
 
+const fourthColumn = () :FormDataType => ({
+  type: FieldTypes.ROW,
+  name: "fourth",
+  fields: [
+    {
+      type: FieldTypes.RADIO,
+      name: "specialitiesColumm1",
+      label: "",
+      options: [{
+        value: "Preventive Medicine",
+        label: "Preventive Medicine",
+      },
+      {
+        value: "Psychiatry",
+        label: "Psychiatry",
+      },
+      {
+        value: "Psychologist/ Counsellor",
+        label: "Psychologist/ Counsellor",
+      },
+      {
+        value: "Psychotherapy",
+        label: "Psychotherapy",
+      },
+      {
+        value: "Pulmonology (Asthma Doctors)",
+        label: "Pulmonology (Asthma Doctors)",
+      },
+      {
+        value: "Radiation Oncologist",
+        label: "Radiation Oncologist",
+      },
+      {
+        value: "Radiation Oncology",
+        label: "Radiation Oncology",
+      },
+      {
+        value: "Radiodiagnosis",
+        label: "Radiodiagnosis",
+      },
+      {
+        value: "Radiology",
+        label: "Radiology",
+      },
+      {
+        value: "Radiotherapy",
+        label: "Radiotherapy",
+      },
+      {
+        value: "Rheumatology",
+        label: "Rheumatology",
+      },
+      {
+        value: "Sexology",
+        label: "Sexology",
+      },
+      {
+        value: "Siddha Medicine",
+        label: "Siddha Medicine",
+      },
+      {
+        value: "Sleep Medicine",
+        label: "Sleep Medicine",
+      },
+      {
+        value: "Sonologist",
+        label: "Sonologist",
+      },
+      {
+        value: "Speech Therapist",
+        label: "Speech Therapist",
+      },
+      {
+        value: "Spine Health",
+        label: "Spine Health",
+      },
+      {
+        value: "Spine Surgery",
+        label: "Spine Surgery",
+      },
+      {
+        value: "Stem Cell Therapy",
+        label: "Stem Cell Therapy",
+      },
+      {
+        value: "Surgeon",
+        label: "Surgeon",
+      },
+      {
+        value: "Surgical Gastroenterology",
+        label: "Surgical Gastroenterology",
+      },
+      {
+        value: "Surgical Oncology",
+        label: "Surgical Oncology",
+      },
+      {
+        value: "Test Cancer Type",
+        label: "Test Cancer Type",
+      },
+      {
+        value: "Toxicology",
+        label: "Toxicology",
+      },
+      {
+        value: "Unani Medicine",
+        label: "FUnani Medicine",
+      },
+      {
+        value: "Urology",
+        label: "Urology",
+      },
+      {
+        value: "Vascular Surgery",
+        label: "Vascular Surgery",
+      },
+      {
+        value: "Venereology",
+        label: "Venereology",
+      },
+      {
+        value: "Wellness Medicine",
+        label: "Wellness Medicine",
+      },
+      {
+        value: "Yoga",
+        label: "Yoga",
+      }],
+      placeholder: "",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+  ],
+});
+
 const data = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "step1",
@@ -370,6 +509,7 @@ const data = () :FormDataType => ({
     firstColumn(),
     secondColumn(),
     thirdColumn(),
+    fourthColumn(),
   ],
 });
 
