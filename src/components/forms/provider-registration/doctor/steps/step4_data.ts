@@ -20,6 +20,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
+      inputType: "number",
       name: "clinical_experience",
       label: "Years Of Clinincal Experience",
       placeholder: "Years Of Clinincal Experience",
@@ -27,6 +28,7 @@ const firstColumn = () :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "consulted",
+      inputType: "number",
       label: "Numbers Of Patient consulted so far?",
       placeholder: "",
     },
@@ -40,6 +42,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "avg_consulted",
+      inputType: "number",
       label: "Average Number of Patient you can consult in a week",
       placeholder: "",
     },

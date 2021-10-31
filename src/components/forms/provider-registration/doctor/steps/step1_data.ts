@@ -66,6 +66,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       name: "password",
       label: "Choose a Password",
       placeholder: "Password",
+      inputType: "password",
       rules: {
         required: {
           value: true,
@@ -81,6 +82,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "confirm_password",
       label: "Confirm Password",
+      inputType: "password",
       placeholder: "Password",
       rules: {
         required: {
