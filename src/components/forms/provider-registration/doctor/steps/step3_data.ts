@@ -8,7 +8,7 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.RADIO,
-      name: "languages",
+      name: "language",
       label: "Languages",
       options: [{
         value: "English",
@@ -72,7 +72,7 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "specialties",
+      name: "specialty",
       label: "Specialties",
       options: [{
         value: "Specialties",

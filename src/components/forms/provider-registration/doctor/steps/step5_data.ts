@@ -8,7 +8,7 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.TEXTAREA,
-      name: "addBio",
+      name: "professional_bio",
       label: "Add Professional Bio",
       resize: "both",
       rules: {

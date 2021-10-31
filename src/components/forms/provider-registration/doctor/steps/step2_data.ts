@@ -53,7 +53,7 @@ const secondColumn = (watch: any) :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "address",
+      name: "street",
       label: "Address",
       placeholder: "Address",
       rules: {
