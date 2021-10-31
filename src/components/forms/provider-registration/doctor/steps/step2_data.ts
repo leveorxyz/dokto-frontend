@@ -12,8 +12,8 @@ const firstColumn = () :FormDataType => ({
       name: "country",
       label: "Country",
       options: Country.getAllCountries().map((country) => ({
-        label: country.isoCode,
-        value: country.name,
+        label: country.name,
+        value: country.isoCode,
       })),
       placeholder: "",
       rules: {
@@ -68,8 +68,8 @@ const secondColumn = (watch: any) :FormDataType => ({
       name: "state",
       label: "State",
       options: State.getStatesOfCountry(watch("country")).map((state) => ({
-        label: state.isoCode,
-        value: state.name,
+        label: state.name,
+        value: state.isoCode,
       })),
       placeholder: "",
       rules: {
@@ -85,7 +85,7 @@ const secondColumn = (watch: any) :FormDataType => ({
       name: "city",
       label: "City",
       options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
-        label: city.stateCode,
+        label: city.name,
         value: city.name,
       })),
       placeholder: "",

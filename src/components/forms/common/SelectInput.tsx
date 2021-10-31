@@ -29,13 +29,13 @@ export default function SelectField({
         placeholder={placeholder}
         {...register(name, rules)}
       >
-        {options.map(({ value }) => (
+        {options.map(({ label: optionLabel, value }) => (
           <option
             key={value}
             value={value}
             placeholder={placeholder}
           >
-            {value}
+            {optionLabel}
           </option>
         ))}
       </Select>
