@@ -102,7 +102,7 @@ const secondColumn = (watch: any) :FormDataType => ({
 
 const data = (watch: any) :FormDataType => ({
   type: FieldTypes.ROW,
-  name: "step1",
+  name: "step2",
   fields: [
     firstColumn(),
     secondColumn(watch),
