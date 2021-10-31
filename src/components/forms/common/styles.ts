@@ -1,8 +1,14 @@
+const addonStyles = {
+  minHeight: "50px",
+  borderColor: "brand.darkPink",
+};
+
 export default {
   ".chakra-input": {
     color: "brand.dark",
     borderColor: "brand.darkPink",
     borderRadius: "xl",
+    minHeight: 50,
     _hover: {
       color: "brand.dark",
       borderColor: "brand.darkPink",
@@ -13,6 +19,21 @@ export default {
       borderColor: "brand.darkPink",
       borderWidth: "2px",
     },
+  },
+  ".chakra-input__left-element": {
+    ...addonStyles,
+  },
+  ".chakra-input__left-addon": {
+    ...addonStyles,
+  },
+  ".chakra-input__right-element": {
+    ...addonStyles,
+  },
+  ".chakra-input__right-addon": {
+    ...addonStyles,
+  },
+  ".chakra-input__group": {
+    alignItems: "center",
   },
   ".chakra-input::placeholder": {
     color: "#BBCBD8",
@@ -39,6 +60,7 @@ export default {
     color: "brand.dark",
     borderColor: "brand.darkPink",
     borderRadius: "xl",
+    minHeight: 50,
     _hover: {
       color: "brand.dark",
       borderColor: "brand.darkPink",
