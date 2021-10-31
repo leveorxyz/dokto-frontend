@@ -45,32 +45,10 @@ export default function FileInput({
         id={shadowFieldName}
         type="file"
         placeholder={placeholder}
-        sx={{
-          "&": {
-            color: "brand.dark",
-            borderColor: "brand.darkPink",
-            borderRadius: 0,
-          },
-          "&::placeholder": {
-            color: "#BBCBD8",
-          },
-          _hover: {
-            "&": {
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-            },
-          },
-          _focus: {
-            "&": {
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-              borderWidth: "2px",
-            },
-          },
-        }}
         accept={accept}
         onChange={onChange}
         multiple={multiple ?? false}
+        borderRadius="0 !important"
       />
       <FormErrorMessage>
         {errors[shadowFieldName] && errors[shadowFieldName].message}

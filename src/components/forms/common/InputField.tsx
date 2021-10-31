@@ -34,14 +34,14 @@ export default function InputField({
   const borderStyles = useMemo(() => {
     if (leftAddon || leftElement) {
       return {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0,
+        borderTopLeftRadius: "0 !important",
+        borderBottomLeftRadius: "0 !important",
       };
     }
     if (rightAddon || rightElement) {
       return {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0,
+        borderTopRightRadius: "0 !important",
+        borderBottomRightRadius: "0 !important",
       };
     }
     return {};
@@ -59,26 +59,7 @@ export default function InputField({
           placeholder={placeholder}
           sx={{
             "&": {
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-              borderRadius: "xl",
               ...borderStyles,
-            },
-            "&::placeholder": {
-              color: "#BBCBD8",
-            },
-            _hover: {
-              "&": {
-                color: "brand.dark",
-                borderColor: "brand.darkPink",
-              },
-            },
-            _focus: {
-              "&": {
-                color: "brand.dark",
-                borderColor: "brand.darkPink",
-                borderWidth: "2px",
-              },
             },
           }}
           {...register(name, rules)}

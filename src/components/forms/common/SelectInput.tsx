@@ -27,29 +27,6 @@ export default function SelectField({
       <Select
         id={name}
         placeholder={placeholder}
-        sx={{
-          "&": {
-            color: "brand.dark",
-            borderColor: "brand.darkPink",
-            borderRadius: "xl",
-          },
-          "&::placeholder": {
-            color: "#BBCBD8",
-          },
-          _hover: {
-            "&": {
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-            },
-          },
-          _focus: {
-            "&": {
-              color: "brand.dark",
-              borderColor: "brand.darkPink",
-              borderWidth: "2px",
-            },
-          },
-        }}
         {...register(name, rules)}
       >
         {options.map(({ value }) => (
