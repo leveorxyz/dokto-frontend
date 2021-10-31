@@ -146,16 +146,100 @@ const secondColumn = () :FormDataType => ({
       name: "specialitiesColumm2",
       label: "",
       options: [{
-        value: "English",
-        label: "English",
+        value: "General Practitioner",
+        label: "General Practitioner",
       },
       {
-        value: "Spanish",
-        label: "Spanish",
+        value: "General Surgery",
+        label: "General Surgery",
       },
       {
-        value: "French",
-        label: "French",
+        value: "Geriatrics",
+        label: "Geriatrics",
+      },
+      {
+        value: "Hair Transplant Surgeon",
+        label: "Hair Transplant Surgeon",
+      },
+      {
+        value: "Hematology",
+        label: "Hematology",
+      },
+      {
+        value: "HIV/AIDS Specialist",
+        label: "HIV/AIDS Specialist",
+      },
+      {
+        value: "Homeopathy",
+        label: "Homeopathy",
+      },
+      {
+        value: "Human Anatomy Specialist",
+        label: "Human Anatomy Specialist",
+      },
+      {
+        value: "Infectious Diseases",
+        label: "Infectious Diseases",
+      },
+      {
+        value: "Infertility",
+        label: "Infertility",
+      },
+      {
+        value: "Integrative Medicine",
+        label: "Integrative Medicine",
+      },
+      {
+        value: "Internal Medicine",
+        label: "Internal Medicine",
+      },
+      {
+        value: "Interventional Radiology",
+        label: "Interventional Radiology",
+      },
+      {
+        value: "Lactation Counselor",
+        label: "Lactation Counselor",
+      },
+      {
+        value: "Maxillofacial Prosthodontist",
+        label: "Maxillofacial Prosthodontist",
+      },
+      {
+        value: "Medical Gastroenterology",
+        label: "Medical Gastroenterology",
+      },
+      {
+        value: "Medical Oncologist",
+        label: "Medical Oncologist",
+      },
+      {
+        value: "Medical Oncology",
+        label: "Medical Oncology",
+      },
+      {
+        value: "Metabolic Surgery",
+        label: "Metabolic Surgery",
+      },
+      {
+        value: "Microbiology",
+        label: "Microbiology",
+      },
+      {
+        value: "Naturopathy",
+        label: "Naturopathy",
+      },
+      {
+        value: "Nephrology",
+        label: "Nephrology",
+      },
+      {
+        value: "Neuro Surgery",
+        label: "Neuro Surgery",
+      },
+      {
+        value: "Neurology",
+        label: "Neurology",
       }],
       placeholder: "",
       rules: {
