@@ -35,4 +35,22 @@ export default {
   ".chakra-textarea::placeholder": {
     color: "#BBCBD8",
   },
+  ".chakra-select": {
+    color: "brand.dark",
+    borderColor: "brand.darkPink",
+    borderRadius: "xl",
+    _hover: {
+      color: "brand.dark",
+      borderColor: "brand.darkPink",
+    },
+    _focus: {
+      boxShadow: "none",
+      color: "brand.dark",
+      borderColor: "brand.darkPink",
+      borderWidth: "2px",
+    },
+  },
+  ".chakra-select::placeholder": {
+    color: "#BBCBD8",
+  },
 };
