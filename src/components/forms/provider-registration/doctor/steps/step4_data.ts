@@ -252,12 +252,124 @@ const secondColumn = () :FormDataType => ({
   ],
 });
 
+const thirdColumn = () :FormDataType => ({
+  type: FieldTypes.ROW,
+  name: "third",
+  fields: [
+    {
+      type: FieldTypes.RADIO,
+      name: "specialitiesColumm2",
+      label: "",
+      options: [{
+        value: "Nuclear Medicine",
+        label: "Nuclear Medicine",
+      },
+      {
+        value: "Nutritionist",
+        label: "Nutritionist",
+      },
+      {
+        value: "Obstetrics And Gynaecology",
+        label: "Obstetrics And Gynaecology",
+      },
+      {
+        value: "Occupational Therapy",
+        label: "Occupational Therapy",
+      },
+      {
+        value: "Ophthalmology (Eye Care)",
+        label: "Ophthalmology (Eye Care)",
+      },
+      {
+        value: "Oral And Maxillofacial Surgery",
+        label: "Oral And Maxillofacial Surgery",
+      },
+      {
+        value: "Oral Implantologist",
+        label: "Oral Implantologist",
+      },
+      {
+        value: "Orthodontist",
+        label: "Orthodontist",
+      },
+      {
+        value: "Orthopedics And Traumatology",
+        label: "Orthopedics And Traumatology",
+      },
+      {
+        value: "Osteopathy Specialist",
+        label: "Osteopathy Specialist",
+      },
+      {
+        value: "Otolaryngology (E.N.T)",
+        label: "Otolaryngology (E.N.T)",
+      },
+      {
+        value: "Paediatric Dentistry",
+        label: "Paediatric Dentistry",
+      },
+      {
+        value: "Paediatric Surgery",
+        label: "Paediatric Surgery",
+      },
+      {
+        value: "Paediatrics",
+        label: "Paediatrics",
+      },
+      {
+        value: "Pain Medicine",
+        label: "Pain Medicine",
+      },
+      {
+        value: "Pathology",
+        label: "Pathology",
+      },
+      {
+        value: "Pediatric Allergy/Asthma Specialist",
+        label: "Pediatric Allergy/Asthma Specialist",
+      },
+      {
+        value: "Pediatric Cardiology",
+        label: "Pediatric Cardiology",
+      },
+      {
+        value: "Periodontist",
+        label: "Periodontist",
+      },
+      {
+        value: "Pharmacology",
+        label: "Pharmacology",
+      },
+      {
+        value: "Physiotherapy",
+        label: "Physiotherapy",
+      },
+      {
+        value: "Plastic Surgery – Reconstructive",
+        label: "Plastic Surgery – Reconstructive",
+      },
+      {
+        value: "And Cosmetic",
+        label: "And Cosmetic",
+      }],
+      placeholder: "",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+  ],
+});
+
 const data = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "step1",
   fields: [
     firstColumn(),
     secondColumn(),
+    thirdColumn(),
   ],
 });
 
