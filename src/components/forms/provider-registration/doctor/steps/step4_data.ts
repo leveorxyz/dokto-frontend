@@ -121,27 +121,8 @@ const firstColumn = () :FormDataType => ({
       {
         value: "General Medicine",
         label: "General Medicine",
-      }],
-      placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
       },
-    },
-  ],
-});
-
-const secondColumn = () :FormDataType => ({
-  type: FieldTypes.ROW,
-  name: "second",
-  fields: [
-    {
-      type: FieldTypes.RADIO,
-      name: "specialitiesColumm2",
-      label: "",
-      options: [{
+      {
         value: "General Practitioner",
         label: "General Practitioner",
       },
@@ -236,27 +217,8 @@ const secondColumn = () :FormDataType => ({
       {
         value: "Neurology",
         label: "Neurology",
-      }],
-      placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
       },
-    },
-  ],
-});
-
-const thirdColumn = () :FormDataType => ({
-  type: FieldTypes.ROW,
-  name: "third",
-  fields: [
-    {
-      type: FieldTypes.RADIO,
-      name: "specialitiesColumm2",
-      label: "",
-      options: [{
+      {
         value: "Nuclear Medicine",
         label: "Nuclear Medicine",
       },
@@ -343,27 +305,8 @@ const thirdColumn = () :FormDataType => ({
       {
         value: "Plastic Surgery – Reconstructive And Cosmetic",
         label: "Plastic Surgery – Reconstructive And Cosmetic",
-      }],
-      placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
       },
-    },
-  ],
-});
-
-const fourthColumn = () :FormDataType => ({
-  type: FieldTypes.ROW,
-  name: "fourth",
-  fields: [
-    {
-      type: FieldTypes.RADIO,
-      name: "specialitiesColumm1",
-      label: "",
-      options: [{
+      {
         value: "Preventive Medicine",
         label: "Preventive Medicine",
       },
@@ -499,9 +442,6 @@ const data = () :FormDataType => ({
   name: "step1",
   fields: [
     firstColumn(),
-    secondColumn(),
-    thirdColumn(),
-    fourthColumn(),
   ],
 });
 
