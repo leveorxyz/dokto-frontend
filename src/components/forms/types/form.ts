@@ -5,6 +5,7 @@ export enum FieldTypes {
   CHECKBOX = "checkbox",
   RADIO = "radio",
   FILE = "file",
+  ARRAY = "array",
   CUSTOM = "custom",
   ROW = "row",
   COLUMN = "column",
@@ -96,13 +97,20 @@ export type CustomFieldType = {
   component: (props: PropTypes) => JSX.Element;
 } & CommonType;
 
+export type ArrayFieldType = {
+  type: FieldTypes.ARRAY;
+  fields: FormFieldType[];
+  addButtonText: string;
+} & CommonType;
+
 export type FormFieldType = InputFieldType
                             | TextareaFieldType
                             | SelectFieldType
                             | CheckboxFieldType
                             | RadioFieldType
                             | FileFieldType
-                            | CustomFieldType;
+                            | CustomFieldType
+                            | ArrayFieldType;
 
 export type FormRowType = {
   type: FieldTypes.ROW;
