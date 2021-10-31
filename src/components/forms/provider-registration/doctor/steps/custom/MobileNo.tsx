@@ -1,17 +1,16 @@
 import {
   Input,
+  Select,
   FormControl,
   FormLabel,
   FormErrorMessage,
   Flex,
-  Box,
 } from "@chakra-ui/react";
 import { useController } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 
 import { CustomFieldType } from "../../../../types/form";
 import { step1Atom } from "../../atoms";
-import BrandButton from "../../../../../common/buttons/BrandButton";
 
 type PropTypes = {
   data: CustomFieldType;
@@ -24,34 +23,53 @@ export default function MobileNo({
   }, control,
 }: PropTypes) {
   const step1Data = useRecoilValue(step1Atom);
+
   const {
-    field: { ref, ...inputProps },
-    fieldState: { error, invalid },
+    field: { ref: selectRef, ...selectProps },
+    fieldState: { error: selectError, invalid: isSelectInvalid },
   } = useController({
-    name,
+    name: `${name}.prefix`,
     control,
     rules,
-    defaultValue: (step1Data as any)[name] ?? "",
+    defaultValue: (step1Data as any)[name]?.prefix ?? "",
+  });
+  const {
+    field: { ref: inputRef, ...inputProps },
+    fieldState: { error: inputError, invalid: isInputInvalid },
+  } = useController({
+    name: `${name}.value`,
+    control,
+    rules,
+    defaultValue: (step1Data as any)[name]?.value ?? "",
   });
 
   return (
-    <FormControl isInvalid={invalid}>
-      <FormLabel htmlFor="name">{label}</FormLabel>
+    <FormControl isInvalid={isInputInvalid || isSelectInvalid}>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
+
       <Flex wrap="nowrap">
+        <Select ref={selectRef} {...selectProps} w="30%" mr={3}>
+          {
+            [
+              { country: "Nigeria", prefix: "+234" },
+              { country: "Bangladesh", prefix: "+880" },
+            ].map(
+              ({ country, prefix }) => <option key={prefix} value={prefix}>{`${country}`}</option>,
+            )
+          }
+        </Select>
+
         <Input
-          id={name}
           placeholder={placeholder}
-          ref={ref}
+          ref={inputRef}
           {...inputProps}
           mr={2}
-          w="30%"
+          w="70%"
         />
-        <Box>
-          <BrandButton>Check Availability</BrandButton>
-        </Box>
       </Flex>
       <FormErrorMessage>
-        {error && error.message}
+        {inputError && inputError.message}
+        {selectError && selectError.message}
       </FormErrorMessage>
     </FormControl>
   );

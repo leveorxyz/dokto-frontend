@@ -2,6 +2,7 @@ import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
 import UserID from "./custom/UserID";
+import MobileNo from "./custom/MobileNo";
 
 const firstColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
@@ -32,28 +33,16 @@ const firstColumn = (watch: any) :FormDataType => ({
           message: "This field is required",
         },
         pattern: {
-          value: /^\w+$/,
+          value: /^[\w\s]+$/,
           message: "Only letters and underscore allowed",
         },
       },
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.CUSTOM,
       name: "contact_no",
       label: "Mobile Number",
-      options: [{
-        value: "Nigeria (+234)",
-        label: "nigeria",
-      },
-      {
-        value: "Bangladesh (+880)",
-        label: "bangladesh",
-      },
-      {
-        value: "USA (+1)",
-        label: "usa",
-      }],
-      placeholder: "",
+      component: MobileNo,
       rules: {
         required: {
           value: true,
