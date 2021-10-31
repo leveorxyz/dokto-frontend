@@ -8,7 +8,7 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.RADIO,
-      name: "languages",
+      name: "language",
       label: "Languages",
       options: [{
         value: "English",
@@ -40,10 +40,6 @@ const firstColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
-        },
       },
     },
     {
@@ -55,10 +51,6 @@ const firstColumn = () :FormDataType => ({
         required: {
           value: true,
           message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
         },
       },
     },
@@ -80,7 +72,7 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "specialties",
+      name: "specialty",
       label: "Specialties",
       options: [{
         value: "Specialties",

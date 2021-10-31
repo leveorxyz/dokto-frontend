@@ -8,7 +8,7 @@ const firstColumn = (watch: any) :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "user_id",
+      name: "username",
       label: "Choose your User ID",
       placeholder: "User ID",
       rules: {
@@ -20,7 +20,7 @@ const firstColumn = (watch: any) :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "name",
+      name: "full_name",
       label: "Name",
       placeholder: "",
       leftAddon: "Dr",
@@ -37,7 +37,7 @@ const firstColumn = (watch: any) :FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "country_code",
+      name: "contact_no",
       label: "Mobile Number",
       options: [{
         value: "Nigeria (+234)",
@@ -131,7 +131,7 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "dob",
+      name: "date_of_birth",
       label: "Date Of Birth",
       placeholder: "YYYY/MM/DD",
       inputType: "date",

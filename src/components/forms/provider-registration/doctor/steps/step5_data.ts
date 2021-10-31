@@ -8,17 +8,13 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.TEXTAREA,
-      name: "addBio",
+      name: "professional_bio",
       label: "Add Professional Bio",
       resize: "both",
       rules: {
         required: {
           value: true,
           message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
         },
       },
     },
@@ -27,32 +23,12 @@ const firstColumn = () :FormDataType => ({
       name: "clinical_experience",
       label: "Years Of Clinincal Experience",
       placeholder: "Years Of Clinincal Experience",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
-        },
-      },
     },
     {
       type: FieldTypes.INPUT,
       name: "consulted",
       label: "Numbers Of Patient consulted so far?",
       placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
-        },
-      },
     },
   ],
 });
@@ -66,32 +42,12 @@ const secondColumn = () :FormDataType => ({
       name: "avg_consulted",
       label: "Average Number of Patient you can consult in a week",
       placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
-        },
-      },
     },
     {
       type: FieldTypes.TEXTAREA,
       name: "awardsAndPublications",
       label: "Awards/Publications if any",
       resize: "both",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Maximum eight characters",
-        },
-      },
     },
   ],
 });

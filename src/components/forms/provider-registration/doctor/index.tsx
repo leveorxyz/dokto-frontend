@@ -8,12 +8,12 @@ import {
 import { RecoilState, useRecoilState } from "recoil";
 
 import {
-  step1Atom, step2Atom, step3Atom, step4Atom, step5Atom, currentStepAtom,
+  step2Atom, step3Atom, step4Atom, step5Atom, currentStepAtom, step1Atom,
 } from "./atoms";
 import NotImplemented from "../../../NotImplemented";
 import FormStep from "../../common/FormStep";
 import {
-  step1Data, step2Data, step3Data, step4Data, step5Data,
+  step2Data, step3Data, step4Data, step5Data, step1Data,
 } from "./steps";
 import { FormDataType } from "../../types/form";
 
