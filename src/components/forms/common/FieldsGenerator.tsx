@@ -16,6 +16,8 @@ type PropTypes = {
   setValue: any;
   setError: any;
   clearErrors: any;
+  watch: any;
+  control: any;
 }
 
 export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
@@ -37,6 +39,11 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
 
   if (data.type === FieldTypes.FILE) {
     return <FileInput {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.CUSTOM) {
+    const Component = data.component;
+    return <Component data={data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.ROW || data.type === FieldTypes.COLUMN) {

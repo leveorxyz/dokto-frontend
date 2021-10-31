@@ -61,6 +61,8 @@ export default function FormStep({ formData, currentStepAtom, stepDataAtom }: Pr
           setValue={setValue}
           setError={setError}
           clearErrors={clearErrors}
+          watch={watch}
+          control={control}
         />
 
         <Flex justifyContent="flex-end" py={6}>

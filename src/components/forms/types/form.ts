@@ -80,9 +80,20 @@ export type FileFieldType = {
   multiple?: boolean;
 } & CommonType;
 
+type PropTypes = {
+  data: FormDataType;
+  register: any;
+  errors: any;
+  setValue: any;
+  setError: any;
+  clearErrors: any;
+  watch: any;
+  control: any;
+}
+
 export type CustomFieldType = {
   type: FieldTypes.CUSTOM;
-  component: React.ReactNode;
+  component: (props: PropTypes) => JSX.Element;
 } & CommonType;
 
 export type FormFieldType = InputFieldType
