@@ -81,7 +81,7 @@ export type FileFieldType = {
 } & CommonType;
 
 type PropTypes = {
-  data: FormDataType;
+  data: CustomFieldType;
   register: any;
   errors: any;
   setValue: any;
