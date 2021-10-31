@@ -23,12 +23,6 @@ const firstColumn = () :FormDataType => ({
       name: "clinical_experience",
       label: "Years Of Clinincal Experience",
       placeholder: "Years Of Clinincal Experience",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
     {
       type: FieldTypes.INPUT,
