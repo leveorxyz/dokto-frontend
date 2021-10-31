@@ -9,16 +9,16 @@ import {
 import { useController } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 
-import { CustomFieldType } from "../../../types/form";
-import { step1Atom } from "../atoms";
-import BrandButton from "../../../../common/buttons/BrandButton";
+import { CustomFieldType } from "../../../../types/form";
+import { step1Atom } from "../../atoms";
+import BrandButton from "../../../../../common/buttons/BrandButton";
 
 type PropTypes = {
   data: CustomFieldType;
   control: any;
 };
 
-export default function UserID({
+export default function MobileNo({
   data: {
     name, placeholder, label, rules,
   }, control,
@@ -37,14 +37,14 @@ export default function UserID({
   return (
     <FormControl isInvalid={invalid}>
       <FormLabel htmlFor="name">{label}</FormLabel>
-      <Flex>
+      <Flex wrap="nowrap">
         <Input
-          flexGrow={1}
           id={name}
           placeholder={placeholder}
           ref={ref}
           {...inputProps}
           mr={2}
+          w="30%"
         />
         <Box>
           <BrandButton>Check Availability</BrandButton>

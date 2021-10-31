@@ -1,7 +1,7 @@
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
-import UserID from "./UserID";
+import UserID from "./custom/UserID";
 
 const firstColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
