@@ -1,13 +1,15 @@
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
+import UserID from "./UserID";
 
 const firstColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
   fields: [
     {
-      type: FieldTypes.INPUT,
+      type: FieldTypes.CUSTOM,
+      component: UserID,
       name: "username",
       label: "Choose your User ID",
       placeholder: "User ID",
