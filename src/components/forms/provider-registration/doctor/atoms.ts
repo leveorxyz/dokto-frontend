@@ -8,7 +8,6 @@ export const currentStepAtom = atom<number>({
 export const step1Atom = atom({
   key: "step_1",
   default: {},
-  dangerouslyAllowMutability: true,
 });
 
 export const step2Atom = atom({
