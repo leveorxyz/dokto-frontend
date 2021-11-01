@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { Country, State } from "country-state-city";
 
 import { stepAtom } from "../atoms";
+import useDoctorReg from "../../../../../hooks/register/useDoctorReg";
 
 export default function Submit() {
   const stepData = useRecoilValue(stepAtom);
+  const [isLoading, setIsLoading] = useState(true);
 
   const data = useMemo(
     () => ({
@@ -18,12 +20,15 @@ export default function Submit() {
             return { ...prev, contact_no: prev.contact_no + (stepData as any)[curr] };
           }
           if (curr === "country") {
-            return { ...prev, [curr]: Country.getCountryByCode((stepData as any)[curr]) };
+            return { ...prev, [curr]: Country.getCountryByCode((stepData as any)[curr])?.name };
           }
           if (curr === "state") {
-            return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr]) };
+            return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
           }
           if (curr === "specialty" && typeof (stepData as any)[curr] === "string") {
+            return { ...prev, [curr]: [(stepData as any)[curr]] };
+          }
+          if (curr === "language" && typeof (stepData as any)[curr] === "string") {
             return { ...prev, [curr]: [(stepData as any)[curr]] };
           }
           return { ...prev, [curr]: (stepData as any)[curr] };
@@ -34,5 +39,24 @@ export default function Submit() {
     [stepData],
   );
 
-  return <>{console.log(data)}</>;
+  const {
+    status, data: response, error, isFetching,
+  } = useDoctorReg(data);
+
+  useEffect(() => {
+    setIsLoading(() => isFetching);
+    console.log(status, response, error);
+  }, [status, error, isFetching, response]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <>
+      {
+        error ? <>{(error as any).message}</> : <>Success</>
+      }
+    </>
+  );
 }
