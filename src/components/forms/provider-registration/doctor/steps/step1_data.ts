@@ -19,6 +19,10 @@ const firstColumn = (watch: any) :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+        pattern: {
+          value: /^\w+$/,
+          message: "Only letters and underscore allowed",
+        },
       },
     },
     {
