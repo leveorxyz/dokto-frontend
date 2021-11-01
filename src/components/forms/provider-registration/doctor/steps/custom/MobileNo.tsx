@@ -6,50 +6,27 @@ import {
   FormErrorMessage,
   Flex,
 } from "@chakra-ui/react";
-import { useController } from "react-hook-form";
-import { useRecoilValue } from "recoil";
 import { Country } from "country-state-city";
 
 import { CustomFieldType } from "../../../../types/form";
-import { step1Atom } from "../../atoms";
 
 type PropTypes = {
   data: CustomFieldType;
-  control: any;
+  errors: any;
+  register: any;
 };
 
 export default function MobileNo({
   data: {
     name, placeholder, label, rules,
-  }, control,
+  }, register, errors,
 }: PropTypes) {
-  const step1Data = useRecoilValue(step1Atom);
-
-  const {
-    field: { ref: selectRef, ...selectProps },
-    fieldState: { error: selectError, invalid: isSelectInvalid },
-  } = useController({
-    name: `${name}.prefix`,
-    control,
-    rules,
-    defaultValue: (step1Data as any)[name]?.prefix ?? "",
-  });
-  const {
-    field: { ref: inputRef, ...inputProps },
-    fieldState: { error: inputError, invalid: isInputInvalid },
-  } = useController({
-    name: `${name}.value`,
-    control,
-    rules,
-    defaultValue: (step1Data as any)[name]?.value ?? "",
-  });
-
   return (
-    <FormControl isInvalid={isInputInvalid || isSelectInvalid}>
+    <FormControl isInvalid={errors[`${name}-prefix`] || errors[`${name}-value`]}>
       <FormLabel htmlFor={name}>{label}</FormLabel>
 
       <Flex wrap="nowrap">
-        <Select ref={selectRef} {...selectProps} w="30%" mr={3} placeholder="Select">
+        <Select {...register(`${name}-prefix`, rules)} w="30%" mr={3} placeholder="Select">
           {
             Country.getAllCountries()
               .filter(({ phonecode }) => !!phonecode)
@@ -65,15 +42,14 @@ export default function MobileNo({
 
         <Input
           placeholder={placeholder}
-          ref={inputRef}
-          {...inputProps}
+          {...register(`${name}-value`, rules)}
           mr={2}
           w="70%"
         />
       </Flex>
       <FormErrorMessage>
-        {inputError && inputError.message}
-        {selectError && selectError.message}
+        {errors[`${name}-predix`]?.message}
+        {errors[`${name}-value`]?.message}
       </FormErrorMessage>
     </FormControl>
   );
