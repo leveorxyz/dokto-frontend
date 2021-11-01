@@ -8,6 +8,7 @@ import FileInput from "./FileInput";
 import SelectInput from "./SelectInput";
 import RadioInput from "./RadioInput";
 import TextareaField from "./TextareaField";
+import ArrayField from "./ArrayField";
 import formStyles from "./styles";
 
 type PropTypes = {
@@ -45,6 +46,10 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
   if (data.type === FieldTypes.CUSTOM) {
     const Component = data.component;
     return <Component data={data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.ARRAY) {
+    return <ArrayField data={data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.ROW || data.type === FieldTypes.COLUMN) {
