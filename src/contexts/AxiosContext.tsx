@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useMemo, createContext } from "react";
 import axios, { AxiosInstance } from "axios";
 import { useRecoilValue } from "recoil";
 
@@ -7,14 +7,18 @@ import authAtom from "../atoms/auth.atom";
 export const AxiosContext = createContext<AxiosInstance | null>(null);
 
 export default function AxiosContextProvider({ children }: { children: React.ReactNode }) {
-  const [axiosInstance, setAxiosInstance] = useState<AxiosInstance | null>(null);
   const authState = useRecoilValue(authAtom);
 
-  useEffect(() => {
-    const headers = {
+  const axiosInstance = useMemo(() => {
+    type HeaderType = {
+      Authorization?: string;
+      "Content-Type"?: string;
+      Accept: string;
+    };
+
+    const headers: HeaderType = {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: "",
     };
 
     if (authState.isLoggedIn) {
@@ -25,7 +29,8 @@ export default function AxiosContextProvider({ children }: { children: React.Rea
       baseURL: process.env.REACT_APP_API_URL,
       headers,
     });
-    setAxiosInstance(ax);
+
+    return ax;
   }, [authState]);
 
   return (
