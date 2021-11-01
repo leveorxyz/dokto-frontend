@@ -5,6 +5,7 @@ import {
   HashRouter as Router,
 } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { QueryClient, QueryClientProvider } from "react-query";
 import "./app.scss";
 import "swiper/swiper.scss";
 import "swiper/swiper-vars.scss";
@@ -16,12 +17,14 @@ import NavBar from "./components/nav/Bar";
 import theme from "./components/ExtendedTheme";
 import AxiosContextProvider from "./contexts/AxiosContext";
 
+const queryClient = new QueryClient();
+
 function AppContent() {
   return (
-    <AxiosContextProvider>
+    <>
       <NavBar />
       <Routes />
-    </AxiosContextProvider>
+    </>
   );
 }
 
@@ -30,7 +33,13 @@ export default function App() {
     <RecoilRoot>
       <ChakraProvider theme={theme}>
         <Router>
-          <AppContent />
+          <AxiosContextProvider>
+            <QueryClientProvider client={queryClient}>
+
+              <AppContent />
+
+            </QueryClientProvider>
+          </AxiosContextProvider>
         </Router>
       </ChakraProvider>
     </RecoilRoot>
