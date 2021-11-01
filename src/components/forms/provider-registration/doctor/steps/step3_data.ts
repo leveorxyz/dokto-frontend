@@ -35,6 +35,12 @@ const firstColumn = () :FormDataType => ({
       name: "eduaction_profile",
       label: "EducationProfile",
       addButtonText: "Add Education Profile +",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
       fields: [
         {
           type: FieldTypes.INPUT,
