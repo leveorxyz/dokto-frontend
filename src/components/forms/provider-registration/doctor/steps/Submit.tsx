@@ -23,6 +23,9 @@ export default function Submit() {
           if (curr === "state") {
             return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr]) };
           }
+          if (curr === "specialty" && typeof (stepData as any)[curr] === "string") {
+            return { ...prev, [curr]: [(stepData as any)[curr]] };
+          }
           return { ...prev, [curr]: (stepData as any)[curr] };
         },
         { contact_no: "" },
