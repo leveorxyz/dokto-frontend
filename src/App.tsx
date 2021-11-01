@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   ChakraProvider,
 } from "@chakra-ui/react";
@@ -15,14 +14,23 @@ import "swiper/components/pagination/pagination.scss";
 import Routes from "./router";
 import NavBar from "./components/nav/Bar";
 import theme from "./components/ExtendedTheme";
+import AxiosContextProvider from "./contexts/AxiosContext";
+
+function AppContent() {
+  return (
+    <AxiosContextProvider>
+      <NavBar />
+      <Routes />
+    </AxiosContextProvider>
+  );
+}
 
 export default function App() {
   return (
     <RecoilRoot>
       <ChakraProvider theme={theme}>
         <Router>
-          <NavBar />
-          <Routes />
+          <AppContent />
         </Router>
       </ChakraProvider>
     </RecoilRoot>
