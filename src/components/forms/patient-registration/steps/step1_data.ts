@@ -99,7 +99,7 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "phone_no",
+      name: "contact_no",
       label: "Phone",
       placeholder: "Phone",
       rules: {
