@@ -8,9 +8,9 @@ import {
 import { RecoilState, useRecoilState } from "recoil";
 
 import {
-  step2Atom, step3Atom, step4Atom, currentStepAtom, step1Atom,
+  currentStepAtom, stepAtom,
 } from "./atoms";
-import NotImplemented from "../../../NotImplemented";
+import Submit from "./steps/Submit";
 import FormStep from "../../common/FormStep";
 import {
   step1Data, step2Data, step3Data, step4Data,
@@ -42,33 +42,33 @@ const getStepsData = (): StepTypes[] => (
       title: "Personal Details",
       data: step1Data,
       isFormStep: true,
-      atom: step1Atom,
+      atom: stepAtom,
     },
     {
       id: 2,
       title: "Identification Verification",
       data: step2Data,
       isFormStep: true,
-      atom: step2Atom,
+      atom: stepAtom,
     },
     {
       id: 3,
       title: "Education Profile",
       data: step3Data,
       isFormStep: true,
-      atom: step3Atom,
+      atom: stepAtom,
     },
     {
       id: 4,
       title: "Professional Profile",
       data: step4Data,
       isFormStep: true,
-      atom: step4Atom,
+      atom: stepAtom,
     },
     {
       id: 5,
       title: "Confirmation",
-      component: <NotImplemented />,
+      component: <Submit />,
       isFormStep: false,
     },
   ]

@@ -10,7 +10,7 @@ import { useController } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 
 import { CustomFieldType } from "../../../../types/form";
-import { step1Atom } from "../../atoms";
+import { stepAtom } from "../../atoms";
 import BrandButton from "../../../../../common/buttons/BrandButton";
 
 type PropTypes = {
@@ -23,7 +23,7 @@ export default function UserID({
     name, placeholder, label, rules,
   }, control,
 }: PropTypes) {
-  const step1Data = useRecoilValue(step1Atom);
+  const step1Data = useRecoilValue(stepAtom);
   const {
     field: { ref, ...inputProps },
     fieldState: { error, invalid },
