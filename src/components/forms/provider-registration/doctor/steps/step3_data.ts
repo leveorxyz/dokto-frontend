@@ -31,28 +31,45 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.INPUT,
-      name: "college",
-      label: "College",
-      placeholder: "College",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
+      type: FieldTypes.ARRAY,
+      name: "eduaction_profile",
+      label: "EducationProfile",
+      addButtonText: "Add Education Profile +",
+      fields: [
+        {
+          type: FieldTypes.INPUT,
+          name: "college",
+          label: "College",
+          placeholder: "College",
+          rules: {
+            required: {
+              value: true,
+              message: "This field is required",
+            },
+          },
         },
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "course_studied",
-      label: "Course Studied",
-      placeholder: "Course Studied",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
+        {
+          type: FieldTypes.INPUT,
+          name: "course_studied",
+          label: "Course Studied",
+          placeholder: "Course Studied",
+          rules: {
+            required: {
+              value: true,
+              message: "This field is required",
+            },
+          },
         },
-      },
+        {
+          type: FieldTypes.FILE,
+          name: "certificate_upload",
+          label: "Certificate Upload",
+          accept: "image/*",
+          rules: {
+            validate: (v: FileList) => (v?.length ? true : "This field is required"),
+          },
+        },
+      ],
     },
   ],
 });
@@ -61,15 +78,6 @@ const secondColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
   fields: [
-    {
-      type: FieldTypes.FILE,
-      name: "certificate_upload",
-      label: "Certificate Upload",
-      accept: "image/*",
-      rules: {
-        validate: (v: FileList) => (v?.length ? true : "This field is required"),
-      },
-    },
     {
       type: FieldTypes.SELECT,
       name: "specialty",
