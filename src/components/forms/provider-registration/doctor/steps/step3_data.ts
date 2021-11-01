@@ -52,6 +52,10 @@ const firstColumn = () :FormDataType => ({
               value: true,
               message: "This field is required",
             },
+            maxLength: {
+              value: 60,
+              message: "Must be less than 60 characters",
+            },
           },
         },
         {
@@ -59,6 +63,22 @@ const firstColumn = () :FormDataType => ({
           name: "course_studied",
           label: "Course Studied",
           placeholder: "Course Studied",
+          rules: {
+            required: {
+              value: true,
+              message: "This field is required",
+            },
+            maxLength: {
+              value: 50,
+              message: "Must be less than 50 characters",
+            },
+          },
+        },
+        {
+          type: FieldTypes.INPUT,
+          name: "year",
+          label: "Year Graduated",
+          inputType: "date",
           rules: {
             required: {
               value: true,
