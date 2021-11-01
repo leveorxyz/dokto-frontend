@@ -88,7 +88,7 @@ const secondColumn = () :FormDataType => ({
   name: "second",
   fields: [
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.MULTISELECT,
       name: "specialty",
       label: "Specialties",
       options: [{

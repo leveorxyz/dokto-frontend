@@ -2,6 +2,7 @@ export enum FieldTypes {
   INPUT = "input",
   TEXTAREA = "textarea",
   SELECT = "select",
+  MULTISELECT = "multiselect",
   CHECKBOX = "checkbox",
   RADIO = "radio",
   FILE = "file",
@@ -57,6 +58,14 @@ export type SelectFieldType = {
   }[];
 } & CommonType;
 
+export type MultiSelectFieldType = {
+  type: FieldTypes.MULTISELECT;
+  options: {
+    value: string;
+    label: string;
+  }[];
+} & CommonType;
+
 export type CheckboxFieldType = {
   type: FieldTypes.CHECKBOX;
   options?: {
@@ -106,6 +115,7 @@ export type ArrayFieldType = {
 export type FormFieldType = InputFieldType
                             | TextareaFieldType
                             | SelectFieldType
+                            | MultiSelectFieldType
                             | CheckboxFieldType
                             | RadioFieldType
                             | FileFieldType

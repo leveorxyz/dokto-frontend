@@ -9,6 +9,7 @@ import SelectInput from "./SelectInput";
 import RadioInput from "./RadioInput";
 import TextareaField from "./TextareaField";
 import ArrayField from "./ArrayField";
+import MultiSelect from "./MultiSelect";
 import formStyles from "./styles";
 
 type PropTypes = {
@@ -30,6 +31,10 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
 
   if (data.type === FieldTypes.SELECT) {
     return <SelectInput {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.MULTISELECT) {
+    return <MultiSelect {...data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.RADIO) {
