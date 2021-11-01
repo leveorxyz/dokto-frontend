@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Flex, Heading, Button, Box, IconButton,
 } from "@chakra-ui/react";
@@ -53,10 +54,8 @@ export default function ArrayField({
       </>
       )}
 
-      {console.log(fields)}
-
       {fields.map((field, index) => (
-        <>
+        <React.Fragment key={field.id}>
           <Flex justifyContent="space-between">
             <Box>{index + 1}</Box>
             <IconButton
@@ -74,7 +73,7 @@ export default function ArrayField({
               {...rest}
             />
           ))}
-        </>
+        </React.Fragment>
       ))}
 
       <Button
