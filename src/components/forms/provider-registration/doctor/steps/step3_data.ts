@@ -72,7 +72,10 @@ const firstColumn = () :FormDataType => ({
           label: "Certificate Upload",
           accept: "image/*",
           rules: {
-            validate: (v: FileList) => (v?.length ? true : "This field is required"),
+            required: {
+              value: true,
+              message: "This field is required",
+            },
           },
         },
       ],

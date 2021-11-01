@@ -17,6 +17,7 @@ type PropTypes = {
   clearErrors: any;
   watch: any;
   control: any;
+  isDirty: boolean;
 };
 
 export default function ArrayField({

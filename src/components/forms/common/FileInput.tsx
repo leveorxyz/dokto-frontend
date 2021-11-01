@@ -1,3 +1,4 @@
+import { useMemo, useEffect } from "react";
 import {
   Input,
   FormControl,
@@ -13,11 +14,14 @@ type PropTypes = {
   setValue: any;
   setError: any;
   clearErrors: any;
+  watch: any;
+  isDirty: boolean;
 } & Omit<FileFieldType, "type">;
 
 export default function FileInput({
   name,
   placeholder,
+  rules,
   label,
   accept,
   multiple,
@@ -25,6 +29,8 @@ export default function FileInput({
   setValue,
   setError,
   clearErrors,
+  watch,
+  isDirty,
 }: PropTypes) {
   const shadowFieldName = `${name}_shadow`;
 
@@ -36,6 +42,13 @@ export default function FileInput({
       clearErrors(shadowFieldName, null);
     }
   };
+
+  const isRequired = useMemo(() => rules?.required?.value ?? false, [rules]);
+  const currentValue = useMemo(() => watch(name), [watch, name]);
+
+  useEffect(() => {
+    if (isDirty && !currentValue && isRequired) setError(shadowFieldName, { type: "required", message: "This field is required" });
+  }, [currentValue, isRequired, setError, shadowFieldName, isDirty]);
 
   return (
     <FormControl isInvalid={errors[shadowFieldName]} py={6}>

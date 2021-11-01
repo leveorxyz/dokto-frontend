@@ -26,7 +26,7 @@ export default function FormStep({ formData, currentStepAtom, stepDataAtom }: Pr
     setError,
     clearErrors,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
   } = useForm({
     mode: "onChange",
     defaultValues: Object.keys(step1State)
@@ -61,6 +61,7 @@ export default function FormStep({ formData, currentStepAtom, stepDataAtom }: Pr
           setValue={setValue}
           setError={setError}
           clearErrors={clearErrors}
+          isDirty={isDirty}
           watch={watch}
           control={control}
         />
