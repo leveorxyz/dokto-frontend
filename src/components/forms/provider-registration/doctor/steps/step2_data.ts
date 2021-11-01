@@ -9,18 +9,37 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.SELECT,
-      name: "country",
-      label: "Country",
-      options: Country.getAllCountries().map((country) => ({
-        label: country.name,
-        value: country.isoCode,
-      })),
-      placeholder: "",
+      name: "identification_type",
+      label: "Identification type",
+      options: [
+        {
+          label: "Passport",
+          value: "passport",
+        },
+        {
+          label: "Driver's license",
+          value: "driving_license",
+        },
+        {
+          label: "National ID",
+          value: "national_id",
+        },
+      ],
+      placeholder: "Select",
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
+      },
+    },
+    {
+      type: FieldTypes.FILE,
+      name: "identity_number",
+      label: "Identity Verification Number",
+      accept: "image/*",
+      rules: {
+        validate: (v: FileList) => (v?.length ? true : "This field is required"),
       },
     },
     {
@@ -43,18 +62,25 @@ const secondColumn = (watch: any) :FormDataType => ({
   name: "second",
   fields: [
     {
-      type: FieldTypes.FILE,
-      name: "profile_photo",
-      label: "Profile Photo",
-      accept: "image/*",
+      type: FieldTypes.SELECT,
+      name: "country",
+      label: "Country",
+      options: Country.getAllCountries().map((country) => ({
+        label: country.name,
+        value: country.isoCode,
+      })),
+      placeholder: "Select",
       rules: {
-        validate: (v: FileList) => (v?.length ? true : "This field is required"),
+        required: {
+          value: true,
+          message: "This field is required",
+        },
       },
     },
     {
       type: FieldTypes.INPUT,
       name: "street",
-      label: "Address",
+      label: "Street Address",
       placeholder: "Address",
       rules: {
         required: {
@@ -67,14 +93,14 @@ const secondColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.SELECT,
       name: "state",
       label: "State",
+      placeholder: "Select",
       options: State.getStatesOfCountry(watch("country")).map((state) => ({
         label: state.name,
         value: state.isoCode,
       })),
-      placeholder: "",
       rules: {
         required: {
-          value: true,
+          value: State.getStatesOfCountry(watch("country")).length > 0,
           message: "This field is required",
         },
         deps: ["country"],
@@ -84,14 +110,14 @@ const secondColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.SELECT,
       name: "city",
       label: "City",
+      placeholder: "Select",
       options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
         label: city.name,
         value: city.name,
       })),
-      placeholder: "",
       rules: {
         required: {
-          value: true,
+          value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
           message: "This field is required",
         },
         deps: ["state"],
