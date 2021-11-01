@@ -35,7 +35,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.FILE,
-      name: "identity_number",
+      name: "identification_photo",
       label: "Identity Verification Number",
       accept: "image/*",
       rules: {
