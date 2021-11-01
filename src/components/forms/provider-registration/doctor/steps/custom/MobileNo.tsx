@@ -49,7 +49,7 @@ export default function MobileNo({
       <FormLabel htmlFor={name}>{label}</FormLabel>
 
       <Flex wrap="nowrap">
-        <Select ref={selectRef} {...selectProps} w="30%" mr={3}>
+        <Select ref={selectRef} {...selectProps} w="30%" mr={3} placeholder="Select">
           {
             Country.getAllCountries().map(
               ({ name: countryName, phonecode }) => <option key={phonecode} value={phonecode}>{`${countryName}(${phonecode})`}</option>,
