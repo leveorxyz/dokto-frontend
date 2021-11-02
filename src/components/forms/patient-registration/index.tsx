@@ -10,12 +10,12 @@ import { RecoilState, useRecoilState } from "recoil";
 import {
   stepAtom, currentStepAtom,
 } from "./atoms";
-import NotImplemented from "../../NotImplemented";
 import FormStep from "../common/FormStep";
 import {
   step1Data, step2Data, step3Data, step4Data,
 } from "./steps";
 import { FormDataType } from "../types/form";
+import Submit from "./steps/Submit";
 
 type CommonStepType = {
   id: number;
@@ -68,7 +68,7 @@ const getStepsData = (): StepTypes[] => (
     {
       id: 5,
       title: "Confirmation",
-      component: <NotImplemented />,
+      component: <Submit />,
       isFormStep: false,
     },
   ]
