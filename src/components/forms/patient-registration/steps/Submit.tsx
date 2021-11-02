@@ -1,11 +1,14 @@
 import { useMemo } from "react";
+import { Redirect } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Country, State } from "country-state-city";
 
 import { stepAtom } from "../atoms";
+import usePatientReg from "../../../../hooks/login/usePatientReg";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
+
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
@@ -31,5 +34,17 @@ export default function Submit() {
     ),
   }), [stepData]);
 
-  return <>{console.log(data)}</>;
+  const {
+    error, isFetching,
+  } = usePatientReg(data);
+
+  if (isFetching) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <>{(error as any).message}</>;
+  }
+
+  return <Redirect to="/" />;
 }
