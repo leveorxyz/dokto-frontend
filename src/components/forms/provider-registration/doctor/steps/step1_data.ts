@@ -110,16 +110,16 @@ const secondColumn = () :FormDataType => ({
       name: "gender",
       label: "Gender",
       options: [{
-        value: "Male",
+        value: "MALE",
         label: "Male",
       },
       {
-        value: "Female",
+        value: "FEMALE",
         label: "Female",
       },
       {
-        value: "Third Gender",
-        label: "Third Gender",
+        value: "OTHER",
+        label: "OTHER",
       }],
       placeholder: "",
       rules: {

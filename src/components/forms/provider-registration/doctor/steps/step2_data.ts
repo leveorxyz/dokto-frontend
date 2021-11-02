@@ -14,15 +14,15 @@ const firstColumn = () :FormDataType => ({
       options: [
         {
           label: "Passport",
-          value: "passport",
+          value: "PASSPORT",
         },
         {
           label: "Driver's license",
-          value: "driving_license",
+          value: "DRIVER'S LICENSE",
         },
         {
           label: "National ID",
-          value: "national_id",
+          value: "STATE ID",
         },
       ],
       placeholder: "Select",

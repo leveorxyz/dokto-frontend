@@ -32,7 +32,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.ARRAY,
-      name: "eduaction_profile",
+      name: "eduaction",
       label: "EducationProfile",
       addButtonText: "Add Education Profile +",
       rules: {
@@ -60,7 +60,7 @@ const firstColumn = () :FormDataType => ({
         },
         {
           type: FieldTypes.INPUT,
-          name: "course_studied",
+          name: "course",
           label: "Course Studied",
           placeholder: "Course Studied",
           rules: {
@@ -88,7 +88,7 @@ const firstColumn = () :FormDataType => ({
         },
         {
           type: FieldTypes.FILE,
-          name: "certificate_upload",
+          name: "certificate",
           label: "Certificate Upload",
           accept: "image/*",
           rules: {
