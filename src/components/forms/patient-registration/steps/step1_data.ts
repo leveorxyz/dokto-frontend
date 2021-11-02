@@ -55,7 +55,7 @@ const firstColumn = (watch: any) :FormDataType => ({
         value: "OTHER",
         label: "Other",
       }],
-      placeholder: "",
+      placeholder: "Select",
       rules: {
         required: {
           value: true,
