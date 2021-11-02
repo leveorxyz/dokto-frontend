@@ -7,7 +7,7 @@ import { AxiosContext } from "../../contexts/AxiosContext";
 import authAtom from "../../atoms/auth.atom";
 
 const registerDoctor = async (axios: AxiosInstance, data: any) => {
-  const response = await axios.post("user/doctor-signup", data);
+  const response = await axios.post("user/doctor-signup/", data);
   return response;
 };
 
