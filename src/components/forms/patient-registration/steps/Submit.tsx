@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { Country, State } from "country-state-city";
 
 import { stepAtom } from "../atoms";
-import usePatientReg from "../../../../hooks/login/usePatientReg";
+import usePatientReg from "../../../../hooks/register/usePatientReg";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
