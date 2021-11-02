@@ -34,12 +34,18 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.FILE,
-      name: "identity_number",
-      label: "",
+      name: "profile_photo",
+      label: "Profile Photo",
       accept: "image/*",
       rules: {
         validate: (v: FileList) => (v?.length ? true : "This field is required"),
       },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "social_security_number",
+      label: "Social Security Number",
+      placeholder: "Enter your social security Number",
     },
   ],
 });

@@ -19,13 +19,16 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.FILE,
-      name: "certificate_upload",
-      label: "",
-      accept: "image/*",
-      rules: {
-        validate: (v: FileList) => (v?.length ? true : "This field is required"),
-      },
+      type: FieldTypes.INPUT,
+      name: "referring_doctor_full_name",
+      label: "Referring Doctor Full Name",
+      placeholder: "Referring Doctor Full Name",
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "referring_doctor_phone_number",
+      label: "Referring Doctor Phone Number",
+      placeholder: "Referring Doctor Phone Number",
     },
   ],
 });
@@ -48,27 +51,9 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "blood_group",
-      label: "Blood Group",
-      placeholder: "Blood Group",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "blood_group",
-      label: "Blood Group",
-      placeholder: "Blood Group",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
+      name: "referring_doctor_address",
+      label: "Referring Doctor Address",
+      placeholder: "Referring Doctor Address",
     },
   ],
 });

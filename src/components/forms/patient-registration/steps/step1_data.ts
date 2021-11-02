@@ -133,6 +133,22 @@ const secondColumn = () :FormDataType => ({
         },
       },
     },
+    {
+      type: FieldTypes.INPUT,
+      name: "date_of_birth",
+      label: "Date Of Birth",
+      placeholder: "YYYY/MM/DD",
+      inputType: "date",
+      customProperties: {
+        format: "yyyy/MM/dd",
+      },
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
   ],
 });
 

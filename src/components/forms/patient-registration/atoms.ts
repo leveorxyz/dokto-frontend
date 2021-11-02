@@ -21,6 +21,11 @@ export const step3Atom = atom({
   default: {},
 });
 
+export const step4Atom = atom({
+  key: "step_4",
+  default: {},
+});
+
 export default {
-  currentStepAtom, step1Atom, step2Atom, step3Atom,
+  currentStepAtom, step1Atom, step2Atom, step3Atom, step4Atom,
 };
