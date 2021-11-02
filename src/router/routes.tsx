@@ -9,6 +9,7 @@ const AvailableCare = lazy(() => import("../pages/AvailableCare"));
 const TermsAndConditions = lazy(() => import("../pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
 const ProviderRegistration = lazy(() => import("../pages/registration/Provider"));
+const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 
 type routeType = {
     displayName: string;
@@ -79,6 +80,13 @@ const routes: routeType[] = [
     displayName: "Privacy Policy",
     path: "/privacy-policy",
     component: <LazyLoader><PrivacyPolicy /></LazyLoader>,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Patient Registration",
+    path: "/patient-registration",
+    component: <LazyLoader><PatientRegistration /></LazyLoader>,
     isProtected: false,
     showInNavbar: false,
   },

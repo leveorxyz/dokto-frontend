@@ -23,6 +23,10 @@ type CommonType = {
   defaultValue?: string;
   placeholder?: string;
   size?: "xs" | "sm" | "md" | "lg";
+  visibilityDependencies?: {
+    name: string;
+    value: string;
+  }[];
   rules?: {
     deps?: string[];
     required?: RuleType<boolean>;

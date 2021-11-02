@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
 import { Redirect } from "react-router-dom";
 import { Country, State } from "country-state-city";
@@ -8,7 +8,6 @@ import useDoctorReg from "../../../../../hooks/register/useDoctorReg";
 
 export default function Submit() {
   const stepData = useRecoilValue(stepAtom);
-  const [isLoading, setIsLoading] = useState(true);
 
   const data = useMemo(
     () => ({
@@ -27,9 +26,6 @@ export default function Submit() {
             if ((stepData as any)[curr] === "") return prev;
             return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
           }
-          if (curr === "city") {
-            return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
-          }
           if (curr === "specialty" && typeof (stepData as any)[curr] === "string") {
             return { ...prev, [curr]: [(stepData as any)[curr]] };
           }
@@ -45,23 +41,16 @@ export default function Submit() {
   );
 
   const {
-    status, data: response, error, isFetching,
+    error, isFetching,
   } = useDoctorReg(data);
 
-  useEffect(() => {
-    setIsLoading(() => isFetching);
-    console.log(status, response, error);
-  }, [status, error, isFetching, response]);
-
-  if (isLoading) {
+  if (isFetching) {
     return <div>Loading...</div>;
   }
 
-  return (
-    <>
-      {
-        error ? <>{(error as any).message}</> : <Redirect to="/" />
-      }
-    </>
-  );
+  if (error) {
+    return <>{(error as any).message}</>;
+  }
+
+  return <Redirect to="/" />;
 }

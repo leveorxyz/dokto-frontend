@@ -1,12 +1,12 @@
 import { atom } from "recoil";
 
 export const currentStepAtom = atom<number>({
-  key: "doctorRegistrationStep",
+  key: "patientRegistrationStep",
   default: 1,
 });
 
 export const stepAtom = atom({
-  key: "doctor_reg_data",
+  key: "patient_reg_data",
   default: {},
 });
 
