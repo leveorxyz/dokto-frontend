@@ -25,6 +25,18 @@ type PropTypes = {
 }
 
 export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
+  const FormFieldData = data as FormFieldType;
+  if (FormFieldData.visibilityDependencies) {
+    const shouldDisplayComponent = FormFieldData.visibilityDependencies.reduce(
+      (prev, current) => (prev && formProps.watch(current.name) === current.value),
+      true,
+    );
+
+    if (!shouldDisplayComponent) {
+      return <></>;
+    }
+  }
+
   if (data.type === FieldTypes.INPUT) {
     return <InputField {...data} {...formProps} />;
   }
