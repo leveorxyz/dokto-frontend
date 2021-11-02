@@ -23,6 +23,10 @@ export default function Submit() {
             return { ...prev, [curr]: Country.getCountryByCode((stepData as any)[curr])?.name };
           }
           if (curr === "state") {
+            if ((stepData as any)[curr] === "") return prev;
+            return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
+          }
+          if (curr === "city") {
             return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
           }
           if (curr === "specialty" && typeof (stepData as any)[curr] === "string") {

@@ -32,8 +32,8 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.ARRAY,
-      name: "eduaction",
-      label: "EducationProfile",
+      name: "education",
+      label: "Education Profile",
       addButtonText: "Add Education Profile +",
       rules: {
         required: {
