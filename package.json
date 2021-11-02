@@ -1,7 +1,6 @@
 {
   "name": "dokto",
   "version": "0.1.0",
-  "homepage": "http://dokto.toybethdev.net/",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.0.0",
