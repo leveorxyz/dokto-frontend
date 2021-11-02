@@ -21,18 +21,34 @@ export default function useDoctorReg(data: any) {
     ["doctor_reg", data],
     () => registerDoctor(axios as AxiosInstance, data),
     {
-      onSuccess: ({ data: response }) => {
+      retry: 2,
+      onSuccess: ({
+        data: {
+          result: {
+            token,
+            id,
+            profile_photo: profilePhoto,
+            email,
+          },
+        },
+      }) => {
         setAuthState({
           isLoggedIn: true,
           user: {
-            id: response.id,
-            email: response.email,
-            token: response.token,
-            profilePhoto: response.profile_photo ?? "",
+            id,
+            email,
+            token,
+            profilePhoto,
           },
         });
       },
-      onError: (err) => Promise.reject(err),
+      onError: ({
+        response: {
+          data: {
+            message,
+          },
+        },
+      }) => Promise.reject(message),
     },
   );
 }
