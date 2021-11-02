@@ -27,9 +27,6 @@ export default function Submit() {
             if ((stepData as any)[curr] === "") return prev;
             return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
           }
-          if (curr === "city") {
-            return { ...prev, [curr]: State.getStateByCode((stepData as any)[curr])?.name };
-          }
           if (curr === "specialty" && typeof (stepData as any)[curr] === "string") {
             return { ...prev, [curr]: [(stepData as any)[curr]] };
           }
