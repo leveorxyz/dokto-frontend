@@ -88,7 +88,7 @@
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --color --quiet --fix",
     "lint:typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.json",
     "isready": "npm run format && npm run lint && npm run build",
-    "postbuild": "mv build /var/www/dokto/html"
+    "postbuild": "mv build/* /var/www/dokto/html/"
   },
   "eslintConfig": {
     "extends": [
