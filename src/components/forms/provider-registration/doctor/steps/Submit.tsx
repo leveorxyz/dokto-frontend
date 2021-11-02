@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
+import { Redirect } from "react-router-dom";
 import { Country, State } from "country-state-city";
 
 import { stepAtom } from "../atoms";
@@ -59,7 +60,7 @@ export default function Submit() {
   return (
     <>
       {
-        error ? <>{(error as any).message}</> : <>Success</>
+        error ? <>{(error as any).message}</> : <Redirect to="/" />
       }
     </>
   );
