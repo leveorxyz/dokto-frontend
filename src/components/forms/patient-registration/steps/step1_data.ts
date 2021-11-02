@@ -53,7 +53,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       },
       {
         value: "OTHER",
-        label: "OTHER",
+        label: "Other",
       }],
       placeholder: "",
       rules: {
