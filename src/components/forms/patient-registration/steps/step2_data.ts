@@ -38,7 +38,10 @@ const firstColumn = () :FormDataType => ({
       label: "Profile Photo",
       accept: "image/*",
       rules: {
-        validate: (v: FileList) => (v?.length ? true : "This field is required"),
+        required: {
+          value: true,
+          message: "This field is required",
+        },
       },
     },
     {

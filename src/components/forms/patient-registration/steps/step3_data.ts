@@ -7,9 +7,43 @@ const firstColumn = () :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.INPUT,
+      type: FieldTypes.SELECT,
       name: "blood_group",
       label: "Blood Group",
+      options: [
+        {
+          label: "A+",
+          value: "A+",
+        },
+        {
+          label: "A-",
+          value: "A-",
+        },
+        {
+          label: "B+",
+          value: "B+",
+        },
+        {
+          label: "B-",
+          value: "B-",
+        },
+        {
+          label: "AB+",
+          value: "AB+",
+        },
+        {
+          label: "AB-",
+          value: "AB-",
+        },
+        {
+          label: "O+",
+          value: "O+",
+        },
+        {
+          label: "O-",
+          value: "O-",
+        },
+      ],
       placeholder: "Blood Group",
       rules: {
         required: {
