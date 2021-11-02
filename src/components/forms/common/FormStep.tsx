@@ -1,0 +1,77 @@
+import { useForm } from "react-hook-form";
+import {
+  Box,
+  Flex,
+} from "@chakra-ui/react";
+import { useRecoilState, RecoilState } from "recoil";
+
+import FormGenerator from "./FieldsGenerator";
+import { FormDataType } from "../types/form";
+import BrandButton from "../../common/buttons/BrandButton";
+
+type PropTypes = {
+  formData: (watch: any, control: any) => FormDataType;
+  currentStepAtom: RecoilState<number>;
+  stepDataAtom: RecoilState<any>;
+};
+
+export default function FormStep({ formData, currentStepAtom, stepDataAtom }: PropTypes) {
+  const [step1State, setStep1State] = useRecoilState(stepDataAtom);
+  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
+  const {
+    handleSubmit,
+    register,
+    watch,
+    setValue,
+    setError,
+    clearErrors,
+    control,
+    formState: { errors, isSubmitting, isDirty },
+  } = useForm({
+    mode: "onChange",
+    defaultValues: Object.keys(step1State)
+      .reduce(
+        (prev, curr) => (
+          // WARNING: This is a hack to get around the fact that we can't
+          // use default values with file inputs for security reasons.
+          // Normally we wouldn't need this but auto generating the form
+          // and maintaining the state of a multi-page form at the same time
+          // will break if we use the state of a file input as default value.
+
+          // eslint-disable-next-line
+          (step1State as any)[curr] instanceof File ? prev : { ...prev, [curr]: (step1State as any)[curr] }
+        ),
+        {},
+      ),
+  });
+
+  const onSubmit = (data: any) => {
+    setStep1State(data);
+    setCurrentStep(currentStep + 1);
+  };
+
+  return (
+    <Box py={12}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+
+        <FormGenerator
+          data={formData(watch, control)}
+          register={register}
+          errors={errors}
+          setValue={setValue}
+          setError={setError}
+          clearErrors={clearErrors}
+          isDirty={isDirty}
+          watch={watch}
+          control={control}
+        />
+
+        <Flex justifyContent="flex-end" py={6}>
+          <BrandButton type="submit" isLoading={isSubmitting}>
+            Next
+          </BrandButton>
+        </Flex>
+      </form>
+    </Box>
+  );
+}

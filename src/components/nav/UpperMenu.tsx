@@ -19,16 +19,6 @@ export function UpperMenuActions() {
         maxWidth="35%"
         display={["none", "none", "block", "block"]}
         mr={{ base: 2, md: 1 }}
-        sx={{
-          ".chakra-input": {
-            bg: "brand.dark",
-            color: "white",
-            borderColor: "brand.dark",
-          },
-          ".chakra-input::placeholder": {
-            color: "gray.100",
-          },
-        }}
       >
         <InputRightElement pointerEvents="none">
           <Box as={IoSearch} size="1rem" color="gray.100" />
@@ -37,6 +27,36 @@ export function UpperMenuActions() {
           rounded="md"
           variant="filled"
           placeholder="Search Doctors"
+          sx={{
+            "&": {
+              bg: "brand.dark",
+              color: "white",
+              borderColor: "brand.dark",
+            },
+            "&::placeholder": {
+              color: "gray.100",
+            },
+            _focus: {
+              "&": {
+                bg: "white",
+                color: "brand.dark",
+                borderColor: "brand.dark",
+              },
+              "&::placeholder": {
+                color: "gray.500",
+              },
+            },
+            _hover: {
+              "&": {
+                bg: "white",
+                color: "brand.dark",
+                borderColor: "brand.dark",
+              },
+              "&::placeholder": {
+                color: "gray.500",
+              },
+            },
+          }}
         />
       </InputGroup>
       <Box>

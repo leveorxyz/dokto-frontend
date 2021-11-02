@@ -3,6 +3,7 @@ import {
   Flex, Grid, GridItem, Box, Image, Button, IconButton, Center, Icon,
 } from "@chakra-ui/react";
 import { IoMenu, IoClose, IoPersonCircleOutline } from "react-icons/io5";
+import { useRecoilValue } from "recoil";
 
 import routes from "../../router/routes";
 import NavItem from "./NavItem";
@@ -10,8 +11,11 @@ import logoSVG from "../../static/Dokto.png";
 import { FullWidthContainer } from "../common/Containers";
 import SocialIcons from "../common/SocialIcons";
 import UpperMenu, { UpperMenuActions } from "./UpperMenu";
+import authAtom, { AuthStateType } from "../../atoms/auth.atom";
 
 function NavButtons() {
+  const authState = useRecoilValue<AuthStateType>(authAtom);
+
   return (
     <Flex
       direction={["column", "column", "row", "row"]}
@@ -21,8 +25,8 @@ function NavButtons() {
       borderLeftWidth={[0, 0, 2, 2, 2]}
       borderLeftColor="black"
     >
-      <NavItem href="/patient-registation" title="Patient Registration" />
-      <NavItem href="/provider-registation" title="Provider Registration" />
+      <NavItem href="/patient-registration" title="Patient Registration" />
+      <NavItem href="/provider-registration" title="Provider Registration" />
       <Box
         as={Button}
         px={6}
@@ -32,7 +36,7 @@ function NavButtons() {
         _hover={{ bg: "brand.pink", color: "black" }}
       >
         <Box mr={6}>
-          Login
+          {authState.isLoggedIn ? authState.user.email : "Login"}
         </Box>
 
         <Box>
