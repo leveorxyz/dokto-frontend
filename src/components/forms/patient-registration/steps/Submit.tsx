@@ -12,6 +12,12 @@ export default function Submit() {
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
+        if (curr === "contact_no-prefix") {
+          return { ...prev, contact_no: (stepData as any)[curr] + prev.contact_no ?? "" };
+        }
+        if (curr === "contact_no-value") {
+          return { ...prev, contact_no: (prev.contact_no ?? "") + (stepData as any)[curr] };
+        }
         if (curr === "country") {
           return { ...prev, [curr]: Country.getCountryByCode(stepData[curr])?.name };
         }
@@ -29,6 +35,7 @@ export default function Submit() {
         return { ...prev, [curr]: stepData[curr] };
       },
       {
+        contact_no: "",
         full_name: "",
       },
     ),

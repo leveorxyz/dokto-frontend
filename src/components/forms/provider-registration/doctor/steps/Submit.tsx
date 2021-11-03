@@ -14,10 +14,10 @@ export default function Submit() {
       ...Object.keys(stepData).reduce(
         (prev, curr) => {
           if (curr === "contact_no-prefix") {
-            return { ...prev, contact_no: (stepData as any)[curr] + prev.contact_no };
+            return { ...prev, contact_no: (stepData as any)[curr] + prev.contact_no ?? "" };
           }
           if (curr === "contact_no-value") {
-            return { ...prev, contact_no: prev.contact_no + (stepData as any)[curr] };
+            return { ...prev, contact_no: (prev.contact_no ?? "") + (stepData as any)[curr] };
           }
           if (curr === "country") {
             return { ...prev, [curr]: Country.getCountryByCode((stepData as any)[curr])?.name };
@@ -32,7 +32,7 @@ export default function Submit() {
           if (curr === "language" && typeof (stepData as any)[curr] === "string") {
             return { ...prev, [curr]: [(stepData as any)[curr]] };
           }
-          if (!stepData[curr] || stepData[curr] === "") return prev;
+          if (stepData[curr] === "") return prev;
           return { ...prev, [curr]: (stepData as any)[curr] };
         },
         { contact_no: "" },
