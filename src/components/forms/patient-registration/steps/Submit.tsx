@@ -13,10 +13,10 @@ export default function Submit() {
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
         if (curr === "contact_no-prefix") {
-          return { ...prev, contact_no: (stepData as any)[curr] + prev.contact_no ?? "" };
+          return { ...prev, contact_no: stepData[curr] + prev.contact_no ?? "" };
         }
         if (curr === "contact_no-value") {
-          return { ...prev, contact_no: (prev.contact_no ?? "") + (stepData as any)[curr] };
+          return { ...prev, contact_no: (prev.contact_no ?? "") + stepData[curr] };
         }
         if (curr === "country") {
           return { ...prev, [curr]: Country.getCountryByCode(stepData[curr])?.name };
