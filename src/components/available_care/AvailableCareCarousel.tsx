@@ -6,7 +6,7 @@ import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 import { SpacedContainer } from "../common/Containers";
 import InternalMedicineCard from "./InternalMedicineCard";
-import MedicineList from "./MedicineList.json";
+import MedicineList from "./MedicineList";
 import dotsSVG from "../../static/dots.svg";
 
 const AvailableCareCarousel = () => {
