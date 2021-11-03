@@ -4,10 +4,9 @@ import {
 import Carousel, { CarouselSlideRenderControlProps as CarouselProps } from "nuka-carousel";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
-import { range } from "lodash";
 import { SpacedContainer } from "../common/Containers";
-import InternalMedicineScroll from "./InternalMedicineScroll";
-import MedicineList from "./MedicineList.json";
+import InternalMedicineCard from "./InternalMedicineCard";
+import MedicineList from "./MedicineList";
 import dotsSVG from "../../static/dots.svg";
 
 const AvailableCareCarousel = () => {
@@ -106,16 +105,23 @@ const AvailableCareCarousel = () => {
               fill: "#170041 !important",
             },
           }}
+          heightMode="max"
+          cellSpacing={48}
+          slidesToShow={numberOfCarouselComponents}
           wrapAround
           autoplay
           enableKeyboardControls
         >
           {
-            range(0, MedicineList.length, numberOfCarouselComponents)
-              .map((i) => (
-                <InternalMedicineScroll
-                  key={i}
-                  listData={MedicineList.slice(i, i + (numberOfCarouselComponents as number) ?? 0)}
+            MedicineList
+              .map(({
+                id, title, data, icon,
+              }) => (
+                <InternalMedicineCard
+                  key={id}
+                  title={title}
+                  data={data}
+                  icon={icon}
                 />
               ))
           }
