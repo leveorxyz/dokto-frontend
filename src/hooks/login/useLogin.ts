@@ -22,7 +22,8 @@ export default function useLogin() {
   return useMutation(
     (data: Data) => login(axios as AxiosInstance, data),
     {
-      retry: 2,
+      mutationKey: "login",
+      retry: false,
       onSuccess: ({
         token,
         id,
@@ -39,9 +40,6 @@ export default function useLogin() {
           },
         });
       },
-      onError: ({
-        message,
-      }) => Promise.reject(message),
     },
   );
 }
