@@ -7,7 +7,7 @@ import { stepAtom } from "../atoms";
 import useDoctorReg from "../../../../../hooks/register/useDoctorReg";
 
 export default function Submit() {
-  const stepData = useRecoilValue(stepAtom);
+  const stepData = useRecoilValue<any>(stepAtom);
 
   const data = useMemo(
     () => ({
@@ -32,6 +32,7 @@ export default function Submit() {
           if (curr === "language" && typeof (stepData as any)[curr] === "string") {
             return { ...prev, [curr]: [(stepData as any)[curr]] };
           }
+          if (!stepData[curr] || stepData[curr] === "") return prev;
           return { ...prev, [curr]: (stepData as any)[curr] };
         },
         { contact_no: "" },
