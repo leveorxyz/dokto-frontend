@@ -15,8 +15,6 @@ export default function useDoctorReg(data: any) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAuthState = useSetRecoilState(authAtom);
 
-  console.log({ data, axios, setAuthState });
-
   return useQuery(
     ["doctor_reg", data],
     () => registerDoctor(axios as AxiosInstance, data),

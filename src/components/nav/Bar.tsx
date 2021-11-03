@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import {
   Flex, Grid, GridItem, Box, Image, Button, IconButton, Center, Icon,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { IoMenu, IoClose, IoPersonCircleOutline } from "react-icons/io5";
-import { useRecoilValue } from "recoil";
+import {
+  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut,
+} from "react-icons/io5";
+import { useRecoilState } from "recoil";
 
 import routes from "../../router/routes";
 import NavItem from "./NavItem";
@@ -12,9 +15,10 @@ import { FullWidthContainer } from "../common/Containers";
 import SocialIcons from "../common/SocialIcons";
 import UpperMenu, { UpperMenuActions } from "./UpperMenu";
 import authAtom, { AuthStateType } from "../../atoms/auth.atom";
+import LoginModal from "../login/LoginModal";
 
-function NavButtons() {
-  const authState = useRecoilValue<AuthStateType>(authAtom);
+function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
+  const [authState, setAuthState] = useRecoilState<AuthStateType>(authAtom);
 
   return (
     <Flex
@@ -25,8 +29,12 @@ function NavButtons() {
       borderLeftWidth={[0, 0, 2, 2, 2]}
       borderLeftColor="black"
     >
-      <NavItem href="/patient-registration" title="Patient Registration" />
-      <NavItem href="/provider-registration" title="Provider Registration" />
+      {!authState.isLoggedIn && (
+        <>
+          <NavItem href="/patient-registration" title="Patient Registration" />
+          <NavItem href="/provider-registration" title="Provider Registration" />
+        </>
+      )}
       <Box
         as={Button}
         px={6}
@@ -34,6 +42,7 @@ function NavButtons() {
         color="white"
         rounded="full"
         _hover={{ bg: "brand.pink", color: "black" }}
+        onClick={openLoginModal}
       >
         <Box mr={6}>
           {authState.isLoggedIn ? authState.user.email : "Login"}
@@ -43,15 +52,35 @@ function NavButtons() {
           <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
         </Box>
       </Box>
+      {authState.isLoggedIn && (
+      <Box
+        as={Button}
+        px={6}
+        bg="brand.darkPink"
+        color="white"
+        rounded="full"
+        _hover={{ bg: "brand.pink", color: "black" }}
+        onClick={() => setAuthState({ isLoggedIn: false, user: null })}
+      >
+        <Box mr={6}>
+          Logout
+        </Box>
+
+        <Box>
+          <Icon as={IoLogOut} fontSize="1.2rem" />
+        </Box>
+      </Box>
+      )}
     </Flex>
   );
 }
 
 type MobileProps = {
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  openLoginModal: () => void;
 }
 
-function MobileMenu({ setIsMenuOpen }: MobileProps) {
+function MobileMenu({ setIsMenuOpen, openLoginModal }: MobileProps) {
   return (
     <Flex direction="column" minHeight="90vh" justifyContent="space-around" display={["flex", "flex", "none", "none"]}>
       {routes
@@ -73,7 +102,7 @@ function MobileMenu({ setIsMenuOpen }: MobileProps) {
       </Center>
 
       <Center>
-        <NavButtons />
+        <NavButtons openLoginModal={openLoginModal} />
       </Center>
     </Flex>
   );
@@ -83,7 +112,7 @@ type MenuProps = {
   isMenuOpen: boolean;
 } & MobileProps;
 
-function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
+function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
   return (
     <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
       <GridItem display="flex" bg="#7002C7" h="100%" w="100%" pr={3} alignItems="center" justifyContent="flex-end">
@@ -104,7 +133,7 @@ function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
         </Flex>
 
         <Box display={["none", "none", "block", "block"]}>
-          <NavButtons />
+          <NavButtons openLoginModal={openLoginModal} />
         </Box>
 
         <Box display={["flex", "flex", "none", "none"]}>
@@ -122,11 +151,18 @@ function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
 
 export default function MenuBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {
+    isOpen: isLoginModalOpen,
+    onOpen: openLoginModal,
+    onClose: closeLoginModal,
+  } = useDisclosure();
+
   return (
     <FullWidthContainer py={{ base: 2 }}>
       <UpperMenu />
-      <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
-      {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} />}
+      <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} openLoginModal={openLoginModal} />
+      {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}
+      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </FullWidthContainer>
   );
 }

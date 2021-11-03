@@ -6,7 +6,7 @@ import { useSetRecoilState } from "recoil";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import authAtom from "../../atoms/auth.atom";
 
-const registerDoctor = async (axios: AxiosInstance, data: any) => {
+const registerPatient = async (axios: AxiosInstance, data: any) => {
   const response = await axios.post("user/patient-signup/", data);
   return response;
 };
@@ -15,11 +15,9 @@ export default function usePatientReg(data: any) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAuthState = useSetRecoilState(authAtom);
 
-  console.log({ data, axios, setAuthState });
-
   return useQuery(
     ["patient_reg", data],
-    () => registerDoctor(axios as AxiosInstance, data),
+    () => registerPatient(axios as AxiosInstance, data),
     {
       retry: 2,
       onSuccess: ({
