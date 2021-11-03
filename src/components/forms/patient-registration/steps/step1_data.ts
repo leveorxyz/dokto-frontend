@@ -2,6 +2,7 @@ import { Country, State, City } from "country-state-city";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
+import MobileNo from "../../provider-registration/doctor/steps/custom/MobileNo";
 
 const firstColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
@@ -40,7 +41,7 @@ const firstColumn = (watch: any) :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.RADIO,
       name: "gender",
       label: "Gender",
       options: [{
@@ -137,10 +138,10 @@ const secondColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.INPUT,
+      type: FieldTypes.CUSTOM,
       name: "contact_no",
-      label: "Phone",
-      placeholder: "Phone",
+      label: "Mobile Number",
+      component: MobileNo,
       rules: {
         required: {
           value: true,
