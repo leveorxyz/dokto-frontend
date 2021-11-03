@@ -3,9 +3,10 @@ import { Avatar, Box } from "@chakra-ui/react";
 type PropTypes = {
   title: string;
   data: string;
+  icon: string;
 };
 
-const InternalMedicineCard = ({ title, data }: PropTypes) => (
+const InternalMedicineCard = ({ title, data, icon }: PropTypes) => (
 
   <Box
     bg="white"
@@ -23,7 +24,18 @@ const InternalMedicineCard = ({ title, data }: PropTypes) => (
       mb="2"
     >
       <Box borderWidth={2} p={1} borderColor="#A42BAD" rounded="full">
-        <Avatar name={title} bg="gray.200" color="primary.dark" />
+        <Avatar
+          src={icon}
+          bg="gray.200"
+          color="primary.dark"
+          sx={{
+            img: {
+              objectFit: "contain",
+              height: "65%",
+              width: "65%",
+            },
+          }}
+        />
       </Box>
       <Box as="h3" ml="2" fontSize="lg" fontWeight="semibold" color="primary.dark">
         {title}

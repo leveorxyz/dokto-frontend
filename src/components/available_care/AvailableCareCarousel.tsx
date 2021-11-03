@@ -115,12 +115,13 @@ const AvailableCareCarousel = () => {
           {
             MedicineList
               .map(({
-                id, title, data,
+                id, title, data, icon,
               }) => (
                 <InternalMedicineCard
                   key={id}
                   title={title}
                   data={data}
+                  icon={icon}
                 />
               ))
           }
