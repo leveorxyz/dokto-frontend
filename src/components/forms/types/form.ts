@@ -129,12 +129,14 @@ export type FormFieldType = InputFieldType
 export type FormRowType = {
   type: FieldTypes.ROW;
   name: string; // this is just for the keys for mapping
+  label?: string;
   fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 
 export type FormColumnType = {
   type: FieldTypes.COLUMN;
   name: string; // this is just for the keys for mapping
+  label?: string;
   fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 
