@@ -3,7 +3,7 @@ import {
   Flex, Heading, Button, Box, IconButton,
 } from "@chakra-ui/react";
 import { useFieldArray } from "react-hook-form";
-import { IoRemoveCircle } from "react-icons/io5";
+import { IoTrash } from "react-icons/io5";
 
 import { ArrayFieldType } from "../types/form";
 import FieldsGenerator from "./FieldsGenerator";
@@ -61,7 +61,7 @@ export default function ArrayField({
             <Box>{index + 1}</Box>
             <IconButton
               aria-label={`Remove ${index + 1}`}
-              icon={<IoRemoveCircle />}
+              icon={<Box as={IoTrash} size={24} />}
               onClick={() => remove(index)}
             />
           </Flex>

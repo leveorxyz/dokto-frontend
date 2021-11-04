@@ -20,6 +20,7 @@ import { FormDataType } from "../../types/form";
 type CommonStepType = {
   id: number;
   title: string;
+  submitButtonText: string;
 };
 
 type FormStepType = {
@@ -43,6 +44,7 @@ const getStepsData = (): StepTypes[] => (
       data: step1Data,
       isFormStep: true,
       atom: stepAtom,
+      submitButtonText: "Next",
     },
     {
       id: 2,
@@ -50,6 +52,7 @@ const getStepsData = (): StepTypes[] => (
       data: step2Data,
       isFormStep: true,
       atom: stepAtom,
+      submitButtonText: "Next",
     },
     {
       id: 3,
@@ -57,6 +60,7 @@ const getStepsData = (): StepTypes[] => (
       data: step3Data,
       isFormStep: true,
       atom: stepAtom,
+      submitButtonText: "Next",
     },
     {
       id: 4,
@@ -64,12 +68,14 @@ const getStepsData = (): StepTypes[] => (
       data: step4Data,
       isFormStep: true,
       atom: stepAtom,
+      submitButtonText: "Submit",
     },
     {
       id: 5,
       title: "Confirmation",
       component: <Submit />,
       isFormStep: false,
+      submitButtonText: "Submit",
     },
   ]
 );
@@ -87,6 +93,7 @@ export default function Form() {
             formData={step.data}
             stepDataAtom={step.atom}
             currentStepAtom={currentStepAtom}
+            submitButtonText={step.submitButtonText}
           />
         );
       }

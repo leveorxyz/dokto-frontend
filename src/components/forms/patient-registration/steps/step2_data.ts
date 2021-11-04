@@ -1,3 +1,4 @@
+import { Country, State, City } from "country-state-city";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
@@ -5,6 +6,7 @@ import {
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
+  label: "Identification Verification",
   fields: [
     {
       type: FieldTypes.SELECT,
@@ -13,15 +15,15 @@ const firstColumn = () :FormDataType => ({
       options: [
         {
           label: "Passport",
-          value: "passport",
+          value: "PASSPORT",
         },
         {
           label: "Driver's license",
-          value: "driving_license",
+          value: "DRIVER'S LICENSE",
         },
         {
-          label: "National ID",
-          value: "national_id",
+          label: "State ID",
+          value: "STATE ID",
         },
       ],
       placeholder: "Select Identification type",
@@ -33,9 +35,20 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
+      type: FieldTypes.INPUT,
+      name: "identification_number",
+      label: "Identity Verification Number",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
       type: FieldTypes.FILE,
-      name: "profile_photo",
-      label: "Profile Photo",
+      name: "identification_photo",
+      label: "Enter your passport, driver's license or State ID number",
       accept: "image/*",
       rules: {
         required: {
@@ -56,12 +69,17 @@ const firstColumn = () :FormDataType => ({
 const secondColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
+  label: "Address",
   fields: [
     {
-      type: FieldTypes.INPUT,
-      name: "identification_number",
-      label: "Identification Number",
-      placeholder: "Enter your identification Number",
+      type: FieldTypes.SELECT,
+      name: "country",
+      label: "Country",
+      options: Country.getAllCountries().map((country) => ({
+        label: country.name,
+        value: country.isoCode,
+      })),
+      placeholder: "Select",
       rules: {
         required: {
           value: true,
@@ -71,34 +89,60 @@ const secondColumn = (watch: any) :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "password",
-      label: "Choose a Password",
-      placeholder: "Password",
-      inputType: "password",
+      name: "street",
+      label: "Address",
+      placeholder: "Address",
       rules: {
         required: {
           value: true,
           message: "This field is required",
-        },
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Minimum eight characters, at least one letter and one number",
         },
       },
     },
     {
+      type: FieldTypes.SELECT,
+      name: "state",
+      label: "State",
+      placeholder: "Select",
+      options: State.getStatesOfCountry(watch("country")).map((state) => ({
+        label: state.name,
+        value: state.isoCode,
+      })),
+      rules: {
+        required: {
+          value: State.getStatesOfCountry(watch("country")).length > 0,
+          message: "This field is required",
+        },
+        deps: ["country"],
+      },
+    },
+    {
+      type: FieldTypes.SELECT,
+      name: "city",
+      label: "City",
+      placeholder: "Select",
+      options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
+        label: city.name,
+        value: city.name,
+      })),
+      rules: {
+        required: {
+          value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
+          message: "This field is required",
+        },
+        deps: ["state"],
+      },
+    },
+    {
       type: FieldTypes.INPUT,
-      name: "confirm_password",
-      label: "Confirm Password",
-      inputType: "password",
-      placeholder: "Password",
+      name: "zip_code",
+      label: "Zip Code",
+      placeholder: "Code",
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
-        validate: (v) => (v === watch("password") ? true : "Passwords do not match"),
-        deps: ["password"],
       },
     },
   ],
