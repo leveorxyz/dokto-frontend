@@ -5,52 +5,13 @@ import {
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
+  label: "Referring Physician Details",
   fields: [
     {
-      type: FieldTypes.SELECT,
-      name: "blood_group",
-      label: "Blood Group",
-      options: [
-        {
-          label: "A+",
-          value: "A+",
-        },
-        {
-          label: "A-",
-          value: "A-",
-        },
-        {
-          label: "B+",
-          value: "B+",
-        },
-        {
-          label: "B-",
-          value: "B-",
-        },
-        {
-          label: "AB+",
-          value: "AB+",
-        },
-        {
-          label: "AB-",
-          value: "AB-",
-        },
-        {
-          label: "O+",
-          value: "O+",
-        },
-        {
-          label: "O-",
-          value: "O-",
-        },
-      ],
-      placeholder: "Blood Group",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
+      type: FieldTypes.INPUT,
+      name: "referring_doctor_address",
+      label: "Referring Doctor Address",
+      placeholder: "Referring Doctor Address",
     },
     {
       type: FieldTypes.INPUT,
@@ -67,15 +28,26 @@ const firstColumn = () :FormDataType => ({
   ],
 });
 
-const secondColumn = () :FormDataType => ({
+const secondColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
+  label: "Insurance Details",
   fields: [
     {
-      type: FieldTypes.INPUT,
-      name: "genotype",
-      label: "Genotype",
-      placeholder: "Genotype",
+      type: FieldTypes.SELECT,
+      name: "insurance_type",
+      label: "Insurance Type",
+      placeholder: "Select type",
+      options: [
+        {
+          label: "Self paid",
+          value: "SELF_PAID",
+        },
+        {
+          label: "Insurance verified",
+          value: "INSURANCE_VERIFIED",
+        },
+      ],
       rules: {
         required: {
           value: true,
@@ -85,19 +57,61 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "referring_doctor_address",
-      label: "Referring Doctor Address",
-      placeholder: "Referring Doctor Address",
+      name: "insurance_name",
+      label: "Insurance Name",
+      placeholder: "Insurance Name",
+      visibilityDependencies: [
+        {
+          name: "insurance_type",
+          value: "INSURANCE_VERIFIED",
+        },
+      ],
+      rules: {
+        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        deps: ["insurance_type"],
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "insurance_number",
+      label: "Insurance Number",
+      placeholder: "Insurance Number",
+      visibilityDependencies: [
+        {
+          name: "insurance_type",
+          value: "INSURANCE_VERIFIED",
+        },
+      ],
+      rules: {
+        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        deps: ["insurance_type"],
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "insurance_policy_holder_name",
+      label: "Insurance Policy Holder Name",
+      placeholder: "Insurance Policy Holder Name",
+      visibilityDependencies: [
+        {
+          name: "insurance_type",
+          value: "INSURANCE_VERIFIED",
+        },
+      ],
+      rules: {
+        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        deps: ["insurance_type"],
+      },
     },
   ],
 });
 
-const data = () :FormDataType => ({
+const data = (watch: any) :FormDataType => ({
   type: FieldTypes.ROW,
   name: "step3",
   fields: [
     firstColumn(),
-    secondColumn(),
+    secondColumn(watch),
   ],
 });
 

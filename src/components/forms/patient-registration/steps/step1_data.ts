@@ -1,10 +1,9 @@
-import { Country, State, City } from "country-state-city";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
 import MobileNo from "../../provider-registration/doctor/steps/custom/MobileNo";
 
-const firstColumn = (watch: any) :FormDataType => ({
+const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
   fields: [
@@ -13,6 +12,22 @@ const firstColumn = (watch: any) :FormDataType => ({
       name: "first_name",
       label: "First Name",
       placeholder: "Enter Your First Name",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+        pattern: {
+          value: /^[\w\s]+$/,
+          message: "Only letters and underscore allowed",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "last_name",
+      label: "Last Name",
+      placeholder: "Enter Your Last Name",
       rules: {
         required: {
           value: true,
@@ -41,131 +56,10 @@ const firstColumn = (watch: any) :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.RADIO,
-      name: "gender",
-      label: "Gender",
-      options: [{
-        value: "MALE",
-        label: "Male",
-      },
-      {
-        value: "FEMALE",
-        label: "Female",
-      },
-      {
-        value: "OTHER",
-        label: "Other",
-      }],
-      placeholder: "Select",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.SELECT,
-      name: "country",
-      label: "Country",
-      options: Country.getAllCountries().map((country) => ({
-        label: country.name,
-        value: country.isoCode,
-      })),
-      placeholder: "Select",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.SELECT,
-      name: "state",
-      label: "State",
-      placeholder: "Select",
-      options: State.getStatesOfCountry(watch("country")).map((state) => ({
-        label: state.name,
-        value: state.isoCode,
-      })),
-      rules: {
-        required: {
-          value: State.getStatesOfCountry(watch("country")).length > 0,
-          message: "This field is required",
-        },
-        deps: ["country"],
-      },
-    },
-    {
-      type: FieldTypes.SELECT,
-      name: "city",
-      label: "City",
-      placeholder: "Select",
-      options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
-        label: city.name,
-        value: city.name,
-      })),
-      rules: {
-        required: {
-          value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
-          message: "This field is required",
-        },
-        deps: ["state"],
-      },
-    },
-  ],
-});
-
-const secondColumn = () :FormDataType => ({
-  type: FieldTypes.COLUMN,
-  name: "second",
-  fields: [
-    {
-      type: FieldTypes.INPUT,
-      name: "last_name",
-      label: "Last Name",
-      placeholder: "Enter Your Last Name",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        pattern: {
-          value: /^[\w\s]+$/,
-          message: "Only letters and underscore allowed",
-        },
-      },
-    },
-    {
       type: FieldTypes.CUSTOM,
       name: "contact_no",
       label: "Mobile Number",
       component: MobileNo,
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "street",
-      label: "Address",
-      placeholder: "Address",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "zip_code",
-      label: "Zip Code",
-      placeholder: "Code",
       rules: {
         required: {
           value: true,
@@ -189,6 +83,85 @@ const secondColumn = () :FormDataType => ({
         },
       },
     },
+    {
+      type: FieldTypes.RADIO,
+      name: "gender",
+      label: "Gender",
+      options: [{
+        value: "MALE",
+        label: "Male",
+      },
+      {
+        value: "FEMALE",
+        label: "Female",
+      },
+      {
+        value: "OTHER",
+        label: "Other",
+      },
+      {
+        value: "Prefer not to say",
+        label: "PREFER NOT TO SAY",
+      }],
+      placeholder: "Select",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+  ],
+});
+
+const secondColumn = (watch: any) :FormDataType => ({
+  type: FieldTypes.COLUMN,
+  name: "second",
+  fields: [
+    {
+      type: FieldTypes.INPUT,
+      name: "password",
+      label: "Choose a Password",
+      placeholder: "Password",
+      inputType: "password",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+        pattern: {
+          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
+          message: "Minimum eight characters, at least one letter and one number",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "confirm_password",
+      label: "Confirm Password",
+      inputType: "password",
+      placeholder: "Password",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+        validate: (v) => (v === watch("password") ? true : "Passwords do not match"),
+        deps: ["password"],
+      },
+    },
+    {
+      type: FieldTypes.FILE,
+      name: "profile_photo",
+      label: "Profile Photo",
+      accept: "image/*",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
   ],
 });
 
@@ -196,8 +169,8 @@ const data = (watch: any) :FormDataType => ({
   type: FieldTypes.ROW,
   name: "step1",
   fields: [
-    firstColumn(watch),
-    secondColumn(),
+    firstColumn(),
+    secondColumn(watch),
   ],
 });
 
