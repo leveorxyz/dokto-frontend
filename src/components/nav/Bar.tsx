@@ -42,7 +42,7 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
         color="white"
         rounded="full"
         _hover={{ bg: "brand.pink", color: "black" }}
-        onClick={openLoginModal}
+        onClick={authState.isLoggedIn ? () => {} : openLoginModal}
       >
         <Box mr={6}>
           {authState.isLoggedIn ? authState.user.email : "Login"}
