@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 
 import {
   FormFieldType, FieldTypes, FormRowType, FormColumnType,
@@ -80,6 +80,11 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
         spacing={spacing}
         sx={formStyles}
       >
+        {data.label && data.label !== "" && (
+        <Heading as="h2" size="lg" fontWeight="600" mb={4} color="brand.dark">
+          {data.label}
+        </Heading>
+        )}
         {data.fields.map((field) => (
           <FieldsGenerator key={[data.name, field.name].join(".")} data={field} {...formProps} />
         ))}
