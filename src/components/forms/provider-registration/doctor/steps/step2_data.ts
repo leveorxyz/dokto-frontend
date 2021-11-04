@@ -5,6 +5,7 @@ import {
 
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
+  label: "Identification Verification",
   name: "first",
   fields: [
     {
@@ -21,7 +22,7 @@ const firstColumn = () :FormDataType => ({
           value: "DRIVER'S LICENSE",
         },
         {
-          label: "National ID",
+          label: "State ID",
           value: "STATE ID",
         },
       ],
@@ -34,10 +35,9 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.FILE,
-      name: "identification_photo",
+      type: FieldTypes.INPUT,
+      name: "identification_number",
       label: "Identity Verification Number",
-      accept: "image/*",
       rules: {
         required: {
           value: true,
@@ -46,10 +46,10 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.INPUT,
-      name: "zip_code",
-      label: "Zip Code",
-      placeholder: "Zip Code",
+      type: FieldTypes.FILE,
+      name: "identification_photo",
+      label: "Enter your passport, driver's license or State ID number",
+      accept: "image/*",
       rules: {
         required: {
           value: true,
@@ -63,7 +63,20 @@ const firstColumn = () :FormDataType => ({
 const secondColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
+  label: "Address",
   fields: [
+    {
+      type: FieldTypes.INPUT,
+      name: "street",
+      label: "Street Address",
+      placeholder: "Address",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
     {
       type: FieldTypes.SELECT,
       name: "country",
@@ -73,18 +86,6 @@ const secondColumn = (watch: any) :FormDataType => ({
         value: country.isoCode,
       })),
       placeholder: "Select",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "street",
-      label: "Street Address",
-      placeholder: "Address",
       rules: {
         required: {
           value: true,
@@ -124,6 +125,18 @@ const secondColumn = (watch: any) :FormDataType => ({
           message: "This field is required",
         },
         deps: ["state"],
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "zip_code",
+      label: "Zip Code",
+      placeholder: "Zip Code",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
       },
     },
   ],

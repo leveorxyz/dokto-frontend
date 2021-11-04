@@ -21,7 +21,7 @@ const firstColumn = (watch: any) :FormDataType => ({
         },
         pattern: {
           value: /^\w+$/,
-          message: "Only letters and underscore allowed",
+          message: "Only letters, numbers and underscore allowed",
         },
       },
     },
@@ -30,7 +30,6 @@ const firstColumn = (watch: any) :FormDataType => ({
       name: "full_name",
       label: "Name",
       placeholder: "",
-      leftAddon: "Dr",
       rules: {
         required: {
           value: true,
@@ -119,7 +118,11 @@ const secondColumn = () :FormDataType => ({
       },
       {
         value: "OTHER",
-        label: "OTHER",
+        label: "Other",
+      },
+      {
+        value: "PREFER NOT TO SAY",
+        label: "Prefer not to say",
       }],
       placeholder: "",
       rules: {
