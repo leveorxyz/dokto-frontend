@@ -8,10 +8,22 @@ const firstColumn = () :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.ARRAY,
+      type: FieldTypes.TEXTAREA,
       name: "professional_bio",
       label: "Professional Bio",
-      addButtonText: "Add Professional Bio +",
+      resize: "vertical",
+      rules: {
+        maxLength: {
+          value: 200,
+          message: "Must be less than 200 characters",
+        },
+      },
+    },
+    {
+      type: FieldTypes.ARRAY,
+      name: "experience",
+      label: "Experience",
+      addButtonText: "Add Experience +",
       rules: {
         required: {
           value: true,
@@ -19,12 +31,6 @@ const firstColumn = () :FormDataType => ({
         },
       },
       fields: [
-        {
-          type: FieldTypes.INPUT,
-          name: "doctor_info",
-          label: "Doctor Info",
-          placeholder: "Doctor Info",
-        },
         {
           type: FieldTypes.INPUT,
           name: "establishment_name",
@@ -93,7 +99,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.FILE,
-      name: "license",
+      name: "license_file",
       label: "License Upload",
       accept: "image/*, application/pdf",
       rules: {
@@ -105,7 +111,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.TEXTAREA,
-      name: "awardsAndPublications",
+      name: "awards",
       label: "Awards/Publications if any",
       resize: "both",
     },
