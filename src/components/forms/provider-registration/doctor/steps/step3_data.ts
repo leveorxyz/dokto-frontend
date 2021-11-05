@@ -1,3 +1,4 @@
+import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
@@ -10,6 +11,7 @@ const firstColumn = () :FormDataType => ({
       type: FieldTypes.RADIO,
       name: "language",
       label: "Languages",
+      direction: "row",
       options: [{
         value: "English",
         label: "English",
@@ -78,6 +80,7 @@ const firstColumn = () :FormDataType => ({
           type: FieldTypes.INPUT,
           name: "year",
           label: "Year Graduated",
+          max: format(new Date(), "yyyy-MM-dd"),
           inputType: "date",
           rules: {
             required: {
