@@ -44,6 +44,7 @@ export type InputFieldType = {
   inputType?: "text" | "number" | "email" | "password" | "date" | "time" | "datetime-local" | "month" | "week" | "tel" | "url" | "color";
   leftAddon?: string | React.ReactNode;
   rightAddon?: string | React.ReactNode;
+  max?: string | number;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
   customProperties?: { [key: string]: string };
@@ -81,6 +82,7 @@ export type CheckboxFieldType = {
 
 export type RadioFieldType = {
   type: FieldTypes.RADIO;
+  direction?: "column" | "row";
   options: {
     value: string;
     label: string;

@@ -20,6 +20,7 @@ export default function RadioField({
   options,
   errors,
   label,
+  direction,
   register,
   rules,
   watch,
@@ -28,7 +29,7 @@ export default function RadioField({
     <FormControl id={name} isInvalid={errors[name]} py={6}>
       <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
       <RadioGroup id={name} value={watch(name)}>
-        <Stack direction="row">
+        <Stack direction={direction}>
           {options.map(({ value, label: optionLabel }) => (
             <Radio
               key={value}

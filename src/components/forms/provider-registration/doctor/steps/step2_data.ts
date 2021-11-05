@@ -43,6 +43,10 @@ const firstColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+        pattern: {
+          value: /^[\d]+$/,
+          message: "Only numbers allowed",
+        },
       },
     },
     {

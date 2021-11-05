@@ -1,3 +1,4 @@
+import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
@@ -71,7 +72,7 @@ const firstColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "date_of_birth",
       label: "Date Of Birth",
-      placeholder: "YYYY/MM/DD",
+      max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",
@@ -87,6 +88,7 @@ const firstColumn = () :FormDataType => ({
       type: FieldTypes.RADIO,
       name: "gender",
       label: "Gender",
+      direction: "row",
       options: [{
         value: "MALE",
         label: "Male",
