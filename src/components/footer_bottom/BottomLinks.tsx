@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 
+import Loading from "../fallback/Loading";
+
 const NotImplemented = lazy(() => import("../NotImplemented"));
 const TermsAndConditions = lazy(() => import("../../pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("../../pages/PrivacyPolicy"));
@@ -15,7 +17,7 @@ type linkType = {
 }
 
 const LazyLoader = ({ children }: {children: React.ReactChild}) => (
-  <Suspense fallback={<div>loading...</div>}>
+  <Suspense fallback={<Loading />}>
     {children}
   </Suspense>
 );

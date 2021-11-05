@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 
+import Loading from "../components/fallback/Loading";
+
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
 const NotImplemented = lazy(() => import("../components/NotImplemented"));
@@ -21,7 +23,7 @@ type routeType = {
 }
 
 const LazyLoader = ({ children }: {children: React.ReactChild}) => (
-  <Suspense fallback={<div>loading...</div>}>
+  <Suspense fallback={<Loading />}>
     {children}
   </Suspense>
 );
