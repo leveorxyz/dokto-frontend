@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 
-import Loading from "../components/common/fallback/Loading";
+import Loading from "../components/common/fallback/LoadingPage";
 
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));

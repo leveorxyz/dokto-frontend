@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Country, State } from "country-state-city";
 
-import Loading from "../../../common/fallback/Loading";
+import Loading from "../../../common/fallback/LoadingPage";
 import { stepAtom } from "../atoms";
 import usePatientReg from "../../../../hooks/register/usePatientReg";
 
