@@ -14,6 +14,7 @@ import "swiper/components/pagination/pagination.scss";
 
 import Routes from "./router";
 import NavBar from "./components/nav/Bar";
+import Footer from "./components/common/footer/Footer";
 import theme from "./components/ExtendedTheme";
 import AxiosContextProvider from "./contexts/AxiosContext";
 
@@ -24,6 +25,7 @@ function AppContent() {
     <>
       <NavBar />
       <Routes />
+      <Footer />
     </>
   );
 }

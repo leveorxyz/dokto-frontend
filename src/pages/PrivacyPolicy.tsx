@@ -1,5 +1,3 @@
-import React from "react";
-import FooterDoctor from "../components/home/FooterDoctor";
 import Banner from "../components/common/Banner";
 import AboutBackground from "../static/Group 96.png";
 import TableofContents from "../components/privacy_policy/TableofContents";
@@ -36,7 +34,6 @@ const PrivacyPolicy = () => (
     <PolicySecurity />
     <ChildrensPrivacy />
     <ContactingUs />
-    <FooterDoctor />
   </>
 );
 
