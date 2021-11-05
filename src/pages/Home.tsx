@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
 
-import FooterDoctor from "../components/home/FooterDoctor";
 import LandingSearch from "../components/home/LandingSearch";
 import OurServices from "../components/home/OurServices";
 import HowItWorks from "../components/home/HowItWorks";
@@ -23,7 +22,6 @@ export default function Home() {
       <DownloadDokto />
       <BenefitsOfDokto />
       <TestimonialCarousel />
-      <FooterDoctor />
     </>
   );
 }

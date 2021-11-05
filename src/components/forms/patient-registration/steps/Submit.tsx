@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Country, State } from "country-state-city";
 
+import Loading from "../../../common/fallback/LoadingPage";
 import { stepAtom } from "../atoms";
 import usePatientReg from "../../../../hooks/register/usePatientReg";
 
@@ -46,7 +47,7 @@ export default function Submit() {
   } = usePatientReg(data);
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
