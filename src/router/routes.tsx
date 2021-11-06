@@ -99,6 +99,13 @@ const routes: routeType[] = [
     isProtected: false,
     showInNavbar: false,
   },
+  {
+    displayName: "Video Call",
+    path: "/calls",
+    component: <LazyLoader><NotImplemented /></LazyLoader>,
+    isProtected: true,
+    showInNavbar: false,
+  },
 ];
 
 export default routes;
