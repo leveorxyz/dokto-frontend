@@ -12,6 +12,7 @@ const TermsAndConditions = lazy(() => import("../pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
 const ProviderRegistration = lazy(() => import("../pages/registration/Provider"));
 const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
+const VideoCalls = lazy(() => import("../pages/calls"));
 
 type routeType = {
     displayName: string;
@@ -102,7 +103,7 @@ const routes: routeType[] = [
   {
     displayName: "Video Call",
     path: "/calls",
-    component: <LazyLoader><NotImplemented /></LazyLoader>,
+    component: <LazyLoader><VideoCalls /></LazyLoader>,
     isProtected: true,
     showInNavbar: false,
   },
