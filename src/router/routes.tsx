@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 
+import Loading from "../components/common/fallback/LoadingPage";
+
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
 const NotImplemented = lazy(() => import("../components/NotImplemented"));
@@ -8,6 +10,8 @@ const ContactUs = lazy(() => import("../pages/ContactUs"));
 const AvailableCare = lazy(() => import("../pages/AvailableCare"));
 const TermsAndConditions = lazy(() => import("../pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
+const ProviderRegistration = lazy(() => import("../pages/registration/Provider"));
+const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 
 type routeType = {
     displayName: string;
@@ -19,7 +23,7 @@ type routeType = {
 }
 
 const LazyLoader = ({ children }: {children: React.ReactChild}) => (
-  <Suspense fallback={<div>loading...</div>}>
+  <Suspense fallback={<Loading />}>
     {children}
   </Suspense>
 );
@@ -78,6 +82,20 @@ const routes: routeType[] = [
     displayName: "Privacy Policy",
     path: "/privacy-policy",
     component: <LazyLoader><PrivacyPolicy /></LazyLoader>,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Patient Registration",
+    path: "/patient-registration",
+    component: <LazyLoader><PatientRegistration /></LazyLoader>,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Provider Registration",
+    path: "/provider-registration",
+    component: <LazyLoader><ProviderRegistration /></LazyLoader>,
     isProtected: false,
     showInNavbar: false,
   },

@@ -1,5 +1,3 @@
-import React from "react";
-import FooterDoctor from "../components/home/FooterDoctor";
 import Description from "../components/about_us/Description";
 import Banner from "../components/common/Banner";
 import FactSection from "../components/about_us/FactSection";
@@ -12,7 +10,6 @@ const AboutUs = () => (
     <FactSection />
     <MemberEngagement />
     <Description />
-    <FooterDoctor />
   </div>
 );
 

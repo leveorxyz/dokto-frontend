@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box, Container, Divider, Heading, List, ListItem, Image,
 } from "@chakra-ui/react";
@@ -6,14 +5,14 @@ import { IoMailOutline, IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
 
-import FooterLinks from "../about_us/FooterLinks";
-import BottomLinks from "../footer_bottom/BottomLinks";
-import FooterLogo from "../../static/dokto_png_blue_white1.png";
-import SocialIcons from "../common/SocialIcons";
-import FooterLinkStyle from "../about_us/FooterLinkStyle";
-import BottomLinkStyle from "../footer_bottom/BottomLinkStyle";
+import FooterLinks from "./FooterLinks";
+import BottomLinks from "./BottomLinks";
+import FooterLogo from "../../../static/dokto_png_blue_white1.png";
+import SocialIcons from "../SocialIcons";
+import FooterLink from "./FooterLink";
+import BottomLink from "./BottomLink";
 
-const FooterDoctor = () => {
+const Footer = () => {
   const dividerDisplay = {
     sm: "none", md: "block", lg: "block", xl: "block", base: "none",
   };
@@ -47,9 +46,8 @@ const FooterDoctor = () => {
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
               {FooterLinks
-                .filter((route) => route.showInNavbar)
                 .map((route) => (
-                  <FooterLinkStyle
+                  <FooterLink
                     key={route.path}
                     title={route.displayName}
                     href={route.path}
@@ -92,9 +90,8 @@ const FooterDoctor = () => {
           </Box>
           <Box d="flex" mt="10" flexWrap="wrap">
             {BottomLinks
-              .filter((route) => route.showInNavbar)
               .map((route) => (
-                <BottomLinkStyle
+                <BottomLink
                   key={route.path}
                   title={route.displayName}
                   href={route.path}
@@ -107,4 +104,4 @@ const FooterDoctor = () => {
   );
 };
 
-export default FooterDoctor;
+export default Footer;
