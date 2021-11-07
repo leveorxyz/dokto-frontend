@@ -1,6 +1,6 @@
 import { Box, Flex, IconButton } from "@chakra-ui/react";
 import {
-  IoPause, IoVideocam, IoVolumeHigh,
+  IoPause, IoVideocam, IoVolumeHigh, IoSettingsSharp,
 } from "react-icons/io5";
 import { MdCallEnd } from "react-icons/md";
 
@@ -27,9 +27,14 @@ export default function Video({ videoRef, showOptions }: PropTypes) {
       title: "Mute Video",
     },
     {
+      icon: IoSettingsSharp,
+      onClick: () => {},
+      title: "Video Settings",
+    },
+    {
       icon: MdCallEnd,
       onClick: () => {},
-      title: "Stop Video",
+      title: "End Call",
     },
   ];
 
