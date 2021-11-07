@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { AudioTrack, VideoTrack, Participant as VideoParticipant } from "twilio-video";
 
+import Video from "./Video";
+
 interface ParticipantProps {
   participant: VideoParticipant;
 }
@@ -89,7 +91,7 @@ const Participant = ({ participant }: ParticipantProps) => {
     <div className="participant" id={participant.identity}>
       {/* these videos wouldn't have captions so it's safe to disable */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <video ref={videoRef} autoPlay />
+      <Video videoRef={videoRef} />
       <audio ref={audioRef} autoPlay muted />
     </div>
   );
