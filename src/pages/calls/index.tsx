@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
-import { v4 } from "uuid";
-// import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import Overlay from "../../components/call/Overlay";
 
 import useTwilioToken from "../../hooks/twilio/useTwilioToken";
 
 import SideBar from "../../components/call/SideBar";
 import Room from "../../components/call/Room";
+import authAtom from "../../atoms/auth.atom";
 
 export default function VideoCalls() {
   const {
@@ -19,8 +19,12 @@ export default function VideoCalls() {
     // isError,
   } = useTwilioToken();
 
+  const data = useRecoilValue(authAtom);
+
   useEffect(() => {
-    getAccessToken({ room_name: "test", id: v4() });
+    if (data.user) {
+      getAccessToken({ room_name: "doktor", id: data.user.id });
+    }
     // eslint-disable-next-line
   }, []);
 
