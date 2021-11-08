@@ -1,10 +1,8 @@
 import {
   connect,
   LocalAudioTrack,
-  // LocalDataTrack,
   LocalVideoTrack,
 } from "twilio-video";
-// import { setShowOverlay } from "../store/actions";
 
 // const audioConstraints = {
 //   video: false,
