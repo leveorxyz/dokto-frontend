@@ -7,10 +7,11 @@ import Video from "./Video";
 
 interface ParticipantProps {
   participant: VideoParticipant;
-  room: Room
+  room: Room,
+  isLocal?: boolean
 }
 
-const Participant = ({ participant, room }: ParticipantProps) => {
+const Participant = ({ participant, room, isLocal }: ParticipantProps) => {
   const [videoTracks, setVideoTracks] = useState<(VideoTrack | null)[]>([]);
   const [audioTracks, setAudioTracks] = useState<(AudioTrack | null)[]>([]);
 
@@ -94,10 +95,21 @@ const Participant = ({ participant, room }: ParticipantProps) => {
     <div className="participant" id={participant.identity}>
       {/* these videos wouldn't have captions so it's safe to disable */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <Video videoRef={videoRef} videoTracks={videoTracks} audioTracks={audioTracks} room={room} />
-      <audio ref={audioRef} autoPlay muted />
+      <Video
+        videoRef={videoRef}
+        videoTracks={videoTracks}
+        audioTracks={audioTracks}
+        room={room}
+        showOptions={isLocal}
+      />
+      {/* eslint-disable-next-line */}
+      <audio ref={audioRef} />
     </div>
   );
+};
+
+Participant.defaultProps = {
+  isLocal: false,
 };
 
 export default Participant;
