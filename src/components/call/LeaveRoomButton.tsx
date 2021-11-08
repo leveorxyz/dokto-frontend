@@ -1,5 +1,4 @@
 import { Room } from "twilio-video";
-import { useHistory } from "react-router-dom";
 import { IconButton } from "@chakra-ui/react";
 import { MdCallEnd } from "react-icons/md";
 
@@ -8,11 +7,10 @@ type PropTypes = {
 }
 
 const LeaveRoomButton = ({ room }: PropTypes) => {
-  const history = useHistory();
-
   const handleRoomDisconnection = () => {
     room.disconnect();
-    history.push("/");
+
+    window.location.href = "/";
   };
 
   return (
