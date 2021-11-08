@@ -7,6 +7,12 @@ export type UserDataType = {
   email: string;
 };
 
+export type TokenDataType = {
+  token: string;
+  identity: string;
+  room: string;
+}
+
 const dummyCallList: UserDataType[] = [
   {
     id: "1",
@@ -44,9 +50,13 @@ export const waitingListAtom = atom<UserDataType[]>({
   default: dummyCallList,
 });
 
-export const twilioTokenAtom = atom({
+export const twilioTokenAtom = atom<TokenDataType>({
   key: "accessToken",
-  default: "",
+  default: {
+    token: "",
+    identity: "",
+    room: "",
+  },
 });
 
 export default { callListAtom, waitingListAtom };
