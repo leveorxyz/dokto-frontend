@@ -25,8 +25,10 @@ export default function useTwilioToken() {
       retry: false,
       onSuccess: ({
         token,
+        identity,
+        room,
       }) => {
-        setAccessToken(token);
+        setAccessToken({ token, identity, room });
       },
     },
   );
