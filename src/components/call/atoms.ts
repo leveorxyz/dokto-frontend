@@ -59,4 +59,10 @@ export const twilioTokenAtom = atom<TokenDataType>({
   },
 });
 
-export default { callListAtom, waitingListAtom };
+export const participantsAtom = atom<any>({
+  key: "participants",
+  default: [],
+
+});
+
+export default { callListAtom, waitingListAtom, participantsAtom };
