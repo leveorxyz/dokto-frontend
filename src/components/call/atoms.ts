@@ -44,4 +44,9 @@ export const waitingListAtom = atom<UserDataType[]>({
   default: dummyCallList,
 });
 
+export const twilioTokenAtom = atom({
+  key: "accessToken",
+  default: "",
+});
+
 export default { callListAtom, waitingListAtom };
