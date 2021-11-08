@@ -38,7 +38,8 @@ const CameraButton = ({ videoTracks }: PropTypes) => {
       <IconButton
         icon={isLocalVideoTrackDisabled ? <IoVideocamOff /> : <IoVideocam />}
         onClick={handleCameraButtonPressed}
-        aria-label="mute-unmute"
+        aria-label="camera-enable-disable"
+        title="Camera Enable/Disable"
         mx={2}
       />
     </div>

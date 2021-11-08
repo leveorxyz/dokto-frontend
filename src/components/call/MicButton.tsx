@@ -39,6 +39,7 @@ const MicButton = ({ audioTracks }: PropTypes) => {
         icon={isMicMuted ? <IoMicOff /> : <IoMic />}
         onClick={handleMicButtonPressed}
         aria-label="mute-unmute"
+        title="Mute/Unmute"
         mx={2}
       />
     </div>
