@@ -6,11 +6,11 @@ import { AxiosContext } from "../../contexts/AxiosContext";
 import { twilioTokenAtom } from "../../components/call/atoms";
 
 type Data = {
-  id: string;
-  room_name: string;
+  identity: string;
+  room_name: string[];
 };
 
-const getToken = async (axios: AxiosInstance, data: Data) => axios.post("twilio/video-token/", data)
+const getToken = async (axios: AxiosInstance, data: Data) => axios.post("twilio/appointment-video-token/", data)
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
@@ -26,9 +26,13 @@ export default function useTwilioToken(data: Data) {
       onSuccess: ({
         token,
         identity,
-        room,
+        room_name: roomNames,
       }) => {
-        setAccessToken({ token, identity, room });
+        setAccessToken({
+          token,
+          identity,
+          roomNames,
+        });
       },
     },
   );
