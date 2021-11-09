@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { RemoteParticipant } from "twilio-video";
 
 export type UserDataType = {
   id: string;
@@ -59,7 +60,7 @@ export const twilioTokenAtom = atom<TokenDataType>({
   },
 });
 
-export const participantsAtom = atom<any>({
+export const participantsAtom = atom<RemoteParticipant[]>({
   key: "participants",
   default: [],
 
