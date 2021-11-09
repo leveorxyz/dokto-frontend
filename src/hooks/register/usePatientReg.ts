@@ -6,10 +6,9 @@ import { useSetRecoilState } from "recoil";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import authAtom from "../../atoms/auth.atom";
 
-const registerPatient = async (axios: AxiosInstance, data: any) => {
-  const response = await axios.post("user/patient-signup/", data);
-  return response;
-};
+const registerPatient = async (axios: AxiosInstance, data: any) => axios.post("user/patient-signup/", data)
+  .then(({ data: { result } }) => Promise.resolve(result))
+  .catch(({ response: { data: response } }) => Promise.reject(response));
 
 export default function usePatientReg(data: any) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
@@ -21,14 +20,12 @@ export default function usePatientReg(data: any) {
     {
       retry: 2,
       onSuccess: ({
-        data: {
-          result: {
-            token,
-            id,
-            profile_photo: profilePhoto,
-            email,
-          },
-        },
+        token,
+        id,
+        email,
+        user_type: userType,
+        profile_photo: profilePhoto,
+        full_name: fullName,
       }) => {
         setAuthState({
           isLoggedIn: true,
@@ -37,16 +34,11 @@ export default function usePatientReg(data: any) {
             email,
             token,
             profilePhoto,
+            userType,
+            fullName,
           },
         });
       },
-      onError: ({
-        response: {
-          data: {
-            message,
-          },
-        },
-      }) => Promise.reject(message),
     },
   );
 }
