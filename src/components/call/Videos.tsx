@@ -1,3 +1,4 @@
+import { Grid, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import _ from "lodash";
@@ -56,13 +57,26 @@ const Videos = ({ room }: PropTypes) => {
   }, []);
 
   return (
-    <div>
-      <Participant participant={room.localParticipant} room={room} isLocal />
-
+    <Grid
+      height="100%"
+      templateColumns="repeat(2, 1fr)"
+      position="relative"
+      gap={6}
+    >
       {remoteParticipants.map(
         (p:any) => <Participant key={p.identity} participant={p} room={room} />,
       )}
-    </div>
+
+      <Box
+        as={Participant}
+        participant={room.localParticipant}
+        room={room}
+        isLocal
+        position="absolute"
+        top="1rem"
+        right="1rem"
+      />
+    </Grid>
   );
 };
 
