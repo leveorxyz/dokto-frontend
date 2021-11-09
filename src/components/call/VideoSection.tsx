@@ -11,14 +11,25 @@ const VideoSection = () => {
   const { token, roomNames } = useRecoilValue(twilioTokenAtom);
 
   useEffect(() => {
-    roomNames?.forEach((roomName) => {
-      TwilioUtils.connectToRoom(token, roomName, setRooms);
+    Promise.all(
+      roomNames?.map((roomName) => TwilioUtils.connectToRoom(token, roomName)),
+    ).then((currentRooms) => {
+      setRooms(currentRooms.filter((room) => room !== undefined && room !== null));
     });
-  }, [token, rooms, roomNames]);
+  }, [token, roomNames]);
+
+  useEffect(
+    () => console.log({ rooms, roomNames }),
+    [rooms, roomNames],
+  );
 
   return (
     <>
-      {rooms?.map((room) => <Videos key={room.sid} room={room} />)}
+      {
+        rooms?.map(
+          (room) => <Videos key={room.sid} room={room} />,
+        )
+      }
     </>
   );
 };
