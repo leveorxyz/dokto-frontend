@@ -11,7 +11,7 @@ export type UserDataType = {
 export type TokenDataType = {
   token: string;
   identity: string;
-  room: string;
+  roomNames: string[];
 }
 
 const dummyCallList: UserDataType[] = [
@@ -56,14 +56,13 @@ export const twilioTokenAtom = atom<TokenDataType>({
   default: {
     token: "",
     identity: "",
-    room: "",
+    roomNames: [],
   },
 });
 
 export const participantsAtom = atom<RemoteParticipant[]>({
   key: "participants",
   default: [],
-
 });
 
 export default { callListAtom, waitingListAtom, participantsAtom };

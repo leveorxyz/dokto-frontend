@@ -7,17 +7,19 @@ import Videos from "./Videos";
 import TwilioUtils from "./utils/TwilioUtils";
 
 const VideoSection = () => {
-  const [room, setRoom] = useState<RoomType | null>(null);
-  const { token, room: roomId } = useRecoilValue(twilioTokenAtom);
+  const [rooms, setRooms] = useState<RoomType[] | null>(null);
+  const { token, roomNames } = useRecoilValue(twilioTokenAtom);
 
   useEffect(() => {
-    TwilioUtils.connectToRoom(token, roomId, setRoom);
-  }, [token, roomId]);
+    roomNames?.forEach((roomName) => {
+      TwilioUtils.connectToRoom(token, roomName, setRooms);
+    });
+  }, [token, rooms, roomNames]);
 
   return (
-    <div>
-      {room && <Videos room={room} />}
-    </div>
+    <>
+      {rooms?.map((room) => <Videos key={room.sid} room={room} />)}
+    </>
   );
 };
 

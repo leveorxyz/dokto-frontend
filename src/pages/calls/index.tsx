@@ -14,18 +14,25 @@ export default function VideoCalls() {
   const {
     isLoading,
   } = useTwilioToken({
-    id: authState.user?.id ?? "",
-    room_name: "doktor",
+    identity: authState.user?.id ?? "",
+    room_name: [
+      `${authState.user?.id}_${authState.user?.fullName}` ?? "",
+      `${authState.user?.id}_${authState.user?.fullName}_waiting` ?? "",
+    ],
   });
+
+  if (isLoading) {
+    return (
+      <Flex minHeight="100vh">
+        <Overlay />
+      </Flex>
+    );
+  }
 
   return (
     <Flex minHeight="100vh">
-      {isLoading ? <Overlay /> : (
-        <>
-          <SideBar />
-          <Room />
-        </>
-      )}
+      <SideBar />
+      <Room />
     </Flex>
   );
 }

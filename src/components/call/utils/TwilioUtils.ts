@@ -16,7 +16,7 @@ const videoConstraints = {
 const connectToRoom = async (
   token: string,
   roomId: string,
-  setRoom: (room: RoomType) => void,
+  setRooms: React.Dispatch<React.SetStateAction<RoomType[] | null>>,
 ) => {
   // const onlyWithAudio = store.getState().connectOnlyWithAudio;
   const constraints = videoConstraints;
@@ -34,7 +34,7 @@ const connectToRoom = async (
         tracks,
       });
 
-      setRoom(room);
+      setRooms((prev) => (prev ? [room, ...prev] : [room]));
     })
     .catch((err) => {
       console.log(err);
