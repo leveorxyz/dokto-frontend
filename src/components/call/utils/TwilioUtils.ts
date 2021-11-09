@@ -13,7 +13,7 @@ const videoConstraints = {
   audio: true,
   video: {
     width: 640,
-    height: 480,
+    height: 320,
   },
 };
 
