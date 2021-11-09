@@ -1,5 +1,5 @@
 import { Grid, Flex, Box } from "@chakra-ui/react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { Room as RoomType, RemoteParticipant } from "twilio-video";
 import { useRecoilState } from "recoil";
 import { uniqBy } from "lodash";
@@ -12,52 +12,25 @@ type PropTypes = {
 };
 
 const Videos = ({ room }: PropTypes) => {
-  const [remoteParticipants, setRemotePerticipants] = useState(Array.from(
-    room.participants.values(),
-  ));
-
   const [participants, setParticipants] = useRecoilState(participantsAtom);
 
-  const addParticipantToStore = useCallback((participant: RemoteParticipant) => {
-    if (participants.find((p: RemoteParticipant) => p.identity === participant.identity)) {
-      return "";
-    }
-    const newParticipants = [...participants];
-    newParticipants.push({ identity: participant.identity });
-    setParticipants(uniqBy(newParticipants, "identity"));
-    return "";
-  }, [participants, setParticipants]);
-
-  const removeParticipantFromStore = useCallback((participant:RemoteParticipant) => {
-    const filteredParticipants = participants.filter(
-      (p: RemoteParticipant) => p.identity !== participant.identity,
-    );
-    setParticipants(uniqBy(filteredParticipants, "identity"));
-  }, [participants, setParticipants]);
-
   const addParticipant = useCallback((participant: RemoteParticipant) => {
-    addParticipantToStore(participant);
-    setRemotePerticipants((prev) => uniqBy([...prev, participant], "identity"));
-  }, [addParticipantToStore]);
+    setParticipants((prev) => (uniqBy([...prev, participant], "identity")));
+  }, [setParticipants]);
 
   const removeParticipant = useCallback((participant: RemoteParticipant) => {
-    removeParticipantFromStore(participant);
-    setRemotePerticipants(
+    setParticipants(
       (prev) => prev.filter((p: RemoteParticipant) => p.identity !== participant.identity),
     );
-  }, [removeParticipantFromStore]);
+  }, [setParticipants]);
 
   useEffect(() => {
-    remoteParticipants.forEach((participant) => {
-      addParticipant(participant);
-    });
-
     room.on("participantConnected", (participant: RemoteParticipant) => addParticipant(participant));
 
     room.on("participantDisconnected", (participant: RemoteParticipant) => {
       removeParticipant(participant);
     });
-  }, [addParticipant, remoteParticipants, removeParticipant, room]);
+  }, [addParticipant, participants, removeParticipant, room]);
 
   return (
     <Flex direction="row" wrap="nowrap" w="100%">
@@ -67,7 +40,7 @@ const Videos = ({ room }: PropTypes) => {
         templateColumns="repeat(2, 1fr)"
         gap={6}
       >
-        {remoteParticipants.map(
+        {participants.map(
           (p: RemoteParticipant) => <Participant key={p.identity} participant={p} room={room} />,
         )}
       </Grid>
