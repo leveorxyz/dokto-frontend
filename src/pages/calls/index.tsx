@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import Overlay from "../../components/call/Overlay";
@@ -10,23 +9,14 @@ import Room from "../../components/call/Room";
 import authAtom from "../../atoms/auth.atom";
 
 export default function VideoCalls() {
+  const authState = useRecoilValue(authAtom);
+
   const {
-    mutate: getAccessToken,
-    // error,
     isLoading,
-    // isIdle,
-    // isSuccess,
-    // isError,
-  } = useTwilioToken();
-
-  const data = useRecoilValue(authAtom);
-
-  useEffect(() => {
-    if (data.user) {
-      getAccessToken({ room_name: "doktor", id: data.user.id });
-    }
-    // eslint-disable-next-line
-  }, []);
+  } = useTwilioToken({
+    id: authState.user?.id ?? "",
+    room_name: "doktor",
+  });
 
   return (
     <Flex minHeight="100vh">
