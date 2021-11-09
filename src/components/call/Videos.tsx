@@ -1,4 +1,4 @@
-import { Grid, Box } from "@chakra-ui/react";
+import { Grid, Flex, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import _ from "lodash";
@@ -57,8 +57,9 @@ const Videos = ({ room }: PropTypes) => {
   }, []);
 
   return (
-    <Box position="relative" w="100%">
+    <Flex direction="row" wrap="nowrap" position="relative" w="100%">
       <Grid
+        flexGrow={1}
         height="100%"
         templateColumns="repeat(2, 1fr)"
         gap={6}
@@ -78,7 +79,7 @@ const Videos = ({ room }: PropTypes) => {
         width="15rem"
         height="max-content"
       />
-    </Box>
+    </Flex>
   );
 };
 
