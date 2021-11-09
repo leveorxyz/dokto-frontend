@@ -57,16 +57,16 @@ const Videos = ({ room }: PropTypes) => {
   }, []);
 
   return (
-    <Grid
-      height="100%"
-      templateColumns="repeat(2, 1fr)"
-      position="relative"
-      gap={6}
-    >
-      {remoteParticipants.map(
-        (p:any) => <Participant key={p.identity} participant={p} room={room} />,
-      )}
-
+    <Box position="relative" w="100%">
+      <Grid
+        height="100%"
+        templateColumns="repeat(2, 1fr)"
+        gap={6}
+      >
+        {remoteParticipants.map(
+          (p:any) => <Participant key={p.identity} participant={p} room={room} />,
+        )}
+      </Grid>
       <Box
         as={Participant}
         participant={room.localParticipant}
@@ -75,8 +75,10 @@ const Videos = ({ room }: PropTypes) => {
         position="absolute"
         top="1rem"
         right="1rem"
+        width="15rem"
+        height="max-content"
       />
-    </Grid>
+    </Box>
   );
 };
 
