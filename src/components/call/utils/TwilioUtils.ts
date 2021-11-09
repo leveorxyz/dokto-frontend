@@ -2,12 +2,8 @@ import {
   connect,
   LocalAudioTrack,
   LocalVideoTrack,
+  Room as RoomType,
 } from "twilio-video";
-
-// const audioConstraints = {
-//   video: false,
-//   audio: true,
-// };
 
 const videoConstraints = {
   audio: true,
@@ -20,7 +16,7 @@ const videoConstraints = {
 const connectToRoom = async (
   token: string,
   roomId: string,
-  setRoom: any,
+  setRoom: (room: RoomType) => void,
 ) => {
   // const onlyWithAudio = store.getState().connectOnlyWithAudio;
   const constraints = videoConstraints;
