@@ -57,7 +57,7 @@ const Videos = ({ room }: PropTypes) => {
   }, []);
 
   return (
-    <Flex direction="row" wrap="nowrap" position="relative" w="100%">
+    <Flex direction="row" wrap="nowrap" w="100%">
       <Grid
         flexGrow={1}
         height="100%"
@@ -73,10 +73,7 @@ const Videos = ({ room }: PropTypes) => {
         participant={room.localParticipant}
         room={room}
         isLocal
-        position="absolute"
-        top="1rem"
-        right="1rem"
-        width="15rem"
+        maxWidth="15rem"
         height="max-content"
       />
     </Flex>
