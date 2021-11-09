@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useMutation } from "react-query";
+import { useQuery } from "react-query";
 import { AxiosInstance } from "axios";
 import { useSetRecoilState } from "recoil";
 import { AxiosContext } from "../../contexts/AxiosContext";
@@ -14,14 +14,14 @@ const getToken = async (axios: AxiosInstance, data: Data) => axios.post("twilio/
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
-export default function useTwilioToken() {
+export default function useTwilioToken(data: Data) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAccessToken = useSetRecoilState(twilioTokenAtom);
 
-  return useMutation(
-    (data: Data) => getToken(axios as AxiosInstance, data),
+  return useQuery(
+    ["twilio/video-token", data],
+    () => getToken(axios as AxiosInstance, data),
     {
-      mutationKey: "getAccessToken",
       retry: false,
       onSuccess: ({
         token,
