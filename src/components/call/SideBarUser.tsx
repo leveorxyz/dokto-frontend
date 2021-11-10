@@ -14,6 +14,8 @@ type UserComponentProps = {
 export default function UserComponent({ user, inCallList }: UserComponentProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const fullName = user.identity.slice(37);
+
   return (
     <Flex
       wrap="nowrap"
@@ -31,9 +33,9 @@ export default function UserComponent({ user, inCallList }: UserComponentProps) 
         },
       }}
     >
-      <Avatar name={user.identity} />
+      <Avatar name={fullName} />
       <Flex direction="column" mx={3}>
-        <Box color="white" mx={3}>{user.identity}</Box>
+        <Box color="white" mx={3}>{fullName}</Box>
         {!inCallList && (
         <Button
           id="call-button"
@@ -47,7 +49,7 @@ export default function UserComponent({ user, inCallList }: UserComponentProps) 
         )}
       </Flex>
       <IconButton
-        aria-label={`User actions for ${user.identity}`}
+        aria-label={`User actions for ${fullName}`}
         icon={<Box as={IoEllipsisVertical} color="brand.light" />}
         variant="ghost"
         _hover={{ bg: "brand.light" }}
