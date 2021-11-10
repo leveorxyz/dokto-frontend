@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Flex, Grid, GridItem, Box, Image, Button, IconButton, Center, Icon,
   useDisclosure,
@@ -116,7 +117,9 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
   return (
     <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
       <GridItem display="flex" bg="#7002C7" h="100%" w="100%" pr={3} alignItems="center" justifyContent="flex-end">
-        <Image src={logoSVG} alt="logo" fit="cover" />
+        <Link to="/">
+          <Image src={logoSVG} alt="logo" fit="cover" />
+        </Link>
       </GridItem>
 
       <GridItem display="flex" w="100%" h="100%" bg="#3DE0FF" justifyContent="space-between" alignItems="center" pr={[3, 3, 3, "10%", "10%"]}>

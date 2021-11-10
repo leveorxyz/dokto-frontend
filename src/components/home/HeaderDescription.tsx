@@ -8,13 +8,12 @@ import { IconContext } from "react-icons";
 const HeaderDescription = () => (
   <div>
     <Flex direction="column">
-      <Heading as="h1" fontWeight="bold" fontSize="6xl" mb="30" color="brand.dark">Your Health, Our Happiness</Heading>
-      <Box fontSize="md" color="rgba(51, 51, 51, 0.5)" mb="30">
-        In the new normal era like now, your health is very important,
-        <br />
-        especially the Covid-19 cases are increasing every day.
-        <br />
-        therefore your health, happiness for medical personnel.
+      <Heading as="h1" fontWeight="bold" fontSize="6xl" mb="30" color="brand.dark">Your Health, Our Commitment</Heading>
+      <Box as="h3" fontSize="lg" fontWeight="600" color="gray.500" mb="30" maxWidth="35rem">
+        Get instant access to a physician at any time,
+        anywhere in the world. We prioritize your care
+        and healthcare needs to get you feeling better
+        as quickly as possible.
       </Box>
       <Flex direction="row" alignItems="center">
         <Box as="button" mr="4" bgColor="#A42BAD" color="white" rounded="full" py=".5rem" px="3rem" textTransform="uppercase" _hover={{ opacity: ".9" }} _active={{ opacity: ".9" }} d="flex" flexDir="column" alignItems="baseline">

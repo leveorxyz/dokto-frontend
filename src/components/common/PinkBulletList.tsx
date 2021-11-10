@@ -10,7 +10,7 @@ type PropTypes = {
 
 const PinkBulletList = ({ listData }: PropTypes) => (
   <div>
-    <List color="#0a001a" fontSize="md" spacing={6}>
+    <List color="#0a001a" fontSize="lg" spacing={4}>
       {
         listData.map((item) => (
           <ListItem key={item} d="flex" flexDir="row" alignItems="baseline">

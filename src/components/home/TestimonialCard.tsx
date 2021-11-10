@@ -1,17 +1,18 @@
 import {
-  Heading, Box, Avatar, Link,
+  Heading,
+  Box,
+  Avatar,
+  Text,
 } from "@chakra-ui/react";
-import { FaStar } from "react-icons/fa";
 
 type PropTypes = {
   title: string;
   data: string;
-  rating: string;
   patientType: string;
 };
 
 const TestimonialCard = ({
-  title, data, rating, patientType,
+  title, data, patientType,
 }: PropTypes) => (
   <Box
     bg="white"
@@ -34,14 +35,9 @@ const TestimonialCard = ({
       <Heading as="h2" fontWeight="bold" fontSize="2xl" mb={1} color="#333333">{title}</Heading>
       <Box fontSize="sm" color="rgba(51, 51, 51, 0.6)" mb={2}>{patientType}</Box>
 
-      <Box fontSize="md" d="flex" flexDir="row" alignItems="center">
-        <Box as={FaStar} color="#3DE0FF" />
-        <Box ml="2" mr="2" fontWeight="semibold">{rating}</Box>
-      </Box>
-
       <br />
-      <Box color="rgba(51, 51, 51, 0.6)">{data}</Box>
-      <Link href="/" color="#3DE0FF" _hover={{ outline: "none" }}>Read more</Link>
+
+      <Text color="gray.500" fontSize="lg">{data}</Text>
     </Box>
 
   </Box>

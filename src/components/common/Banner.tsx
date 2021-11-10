@@ -17,7 +17,7 @@ const CommonHeader = ({ text, imgSrc }:PropTypes) => (
       height={["60vh", "45vh", "45vh", "45vh"]}
     >
       <Heading
-        fontSize={["5xl", "5xl", "5xl", "6xl"]}
+        fontSize={["5xl", "5xl", "5xl", "7xl"]}
         minWidth={["100%", "100%", "50%", "45%"]}
         fontWeight={900}
         color="#170041"
