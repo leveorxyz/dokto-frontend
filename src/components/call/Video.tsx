@@ -16,7 +16,7 @@ export default function Video({
   videoRef, showOptions, videoTracks, audioTracks, room,
 }: PropTypes) {
   return (
-    <Box w="100%" h="100%" position="relative">
+    <Box w="100%" h="100%" position="relative" rounded="lg">
       {/* these videos wouldn't have captions so it's safe to disable the caption tracks */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video ref={videoRef} autoPlay />
