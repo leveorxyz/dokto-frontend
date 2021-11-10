@@ -71,11 +71,13 @@ const Videos = ({ room }: PropTypes) => {
       )}
 
       <Flex
+        maxWidth="15rem"
+        height="max-content"
         flexGrow={0}
         flexShrink={1}
         direction="column"
       >
-        <Box as="h3" fontSize="lg" fontWeight="600">
+        <Box as="h3" fontSize="lg" fontWeight="600" width="100%" textAlign="center">
           Your video
         </Box>
         <Box
@@ -85,8 +87,6 @@ const Videos = ({ room }: PropTypes) => {
           isLocal
           m={[3, 6, 6, 6, 6]}
           p={[3, 6, 6, 6, 6]}
-          maxWidth="15rem"
-          height="max-content"
         />
       </Flex>
     </Flex>
