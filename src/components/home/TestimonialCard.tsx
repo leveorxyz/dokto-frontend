@@ -19,7 +19,7 @@ const TestimonialCard = ({
     flexDir="row"
     mb="2"
     p="10"
-    minHeight="max-content"
+    minHeight="30rem"
     maxW="100%"
     borderRadius="2xl"
   >
@@ -34,7 +34,7 @@ const TestimonialCard = ({
       {/* <Box fontSize="sm" color="rgba(51, 51, 51, 0.6)" mb={2}>{patientType}</Box> */}
       <br />
 
-      <Text color="gray.500" fontSize="lg">{data}</Text>
+      <Text color="gray.500" fontSize="lg" maxW="25rem">{data}</Text>
     </Box>
 
   </Box>
