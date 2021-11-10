@@ -1,58 +1,44 @@
 [
   {
     "id": 1,
-    "title": "Eren Jeager",
+    "title": "Aaliyah Lewis",
     "rating": "4.67",
     "patientType": "Dentist Patient",
-    "data": "A few days ago my back teeth had a problem. but since meeting the doctor at Medical it seems like a simple matter."
+    "data": "Finally, a doctor took the time to explain my symptoms, the tests performed and the results. I had been going from doctor to doctor, getting medical jargon and no clear understanding of what the problem was until I came on Dokto. I didn’t feel rushed and got the opportunity to utilize my full appointment slot and I asked all the questions I needed to. I wish I could go into more detail but I can’t as it’s a sensitive, private issue, but suffice to say – I feel more confident about taking the medication I’d been prescribed, and I’m already feeling so much better! Thank you!"
   },
   {
     "id": 2,
     "title": "Velicha",
     "rating": "4.80",
-    "patientType": "Oculist Patient",
-    "data": "I consulted an ophthalmologist. the doctor is kind and friendly. he gave me more knowledge about eye health."
+    "patientType": "Isabelle Brooks",
+    "data": "5* from a technophobe like me! My son told me about Dokto and I didn’t buy the idea. But after waiting for close to 2 hours in a waiting roomful of people coughing and sneezing, I decided to try it out – I’m glad I did! Booking a physician was easy since I knew what I was looking for. I got my reminder the day before the appointment, and the day of. The doctor appeared on the screen FULLY PREPARED – had taken a couple of minutes to read my file and knew why I was there. I was in and out in a jiffy. Thank you, this is sooo much easier!"
   },
   {
     "id": 3,
-    "title": "Eren Jeager",
+    "title": "Rosemary Kariuki",
     "rating": "4.67",
     "patientType": "Dentist Patient",
-    "data": "A few days ago my back teeth had a problem. but since meeting the doctor at Medical it seems like a simple matter."
+    "data": "I’m based in Kenya, and I was able to book an appointment for my young daughter with a doctor in the United States. Payment was pretty straightforward, and the connection was clear and uninterrupted. It’s just great to know that I can get expert medical advice for daily issues without getting in a car or even on a plane. I will be using this service again."
   },
   {
     "id": 4,
-    "title": "Velicha",
+    "title": "Julian Blaese",
     "rating": "4.80",
     "patientType": "Oculist Patient",
-    "data": "I consulted an ophthalmologist. the doctor is kind and friendly. he gave me more knowledge about eye health."
+    "data": "I’ve been using Dr. Afonja for years, and my whole family and I trust him for all our healthcare concerns, so when he said we could contact him for a virtual appointment, I was sceptical but happy to give it a try. It’s the same service without leaving my home!!! It’s the same great care, the same bedside manner I always look forward to with Dr. A, just less of the stress looking for parking etc. This is my favorite new app!"
   },
   {
     "id": 5,
-    "title": "Eren Jeager",
+    "title": "Nate Gutierrez",
     "rating": "4.67",
     "patientType": "Dentist Patient",
-    "data": "A few days ago my back teeth had a problem. but since meeting the doctor at Medical it seems like a simple matter."
+    "data": "Honestly, I generally don’t like doctors and will not go to a clinic unless I’m almost at death’s door but doing this seemed easier somehow. I found a specialist that fit my budget pretty easily, and I got the answers I needed within a few days. I’m getting tests done now but my physician has sent a follow-up message already. I have to say I’m impressed with Dokto!"
   },
   {
     "id": 6,
-    "title": "Velicha",
+    "title": "Dr. Carl Richards",
     "rating": "4.80",
     "patientType": "Oculist Patient",
-    "data": "I consulted an ophthalmologist. the doctor is kind and friendly. he gave me more knowledge about eye health."
-  },
-  {
-    "id": 7,
-    "title": "Eren Jeager",
-    "rating": "4.67",
-    "patientType": "Dentist Patient",
-    "data": "A few days ago my back teeth had a problem. but since meeting the doctor at Medical it seems like a simple matter."
-  },
-  {
-    "id": 8,
-    "title": "Velicha",
-    "rating": "4.80",
-    "patientType": "Oculist Patient",
-    "data": "I consulted an ophthalmologist. the doctor is kind and friendly. he gave me more knowledge about eye health."
+    "data": "I know it’s not often you get a testimonial from a doctor, but I have to say I love the way Dokto does business. It’s been revealing holding appointments with patients from across the globe, understanding cultural norms and helping ease their health anxieties. It’s great to be able to help people all over the world without leaving my practice in New Jersey, and I’m glad I came across this platform. Keep it going, Dokto!"
   }
 ]

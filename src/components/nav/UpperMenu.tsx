@@ -80,7 +80,7 @@ export default function UpperNavBar() {
         wrap="wrap"
       >
         <Box w="30%">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Excellent healthcare, focused on you.
         </Box>
         <Flex justifyContent="flex-end" alignItems="center">
           <SocialIcons />
