@@ -37,7 +37,7 @@ const routes: routeType[] = [
     showInNavbar: true,
   },
   {
-    displayName: "How it works",
+    displayName: "How It Works",
     path: "/how",
     component: <LazyLoader><HowItWorks /></LazyLoader>,
     isProtected: false,
