@@ -3,10 +3,10 @@ import {
   Heading, Tabs, TabList, TabPanels, Tab, TabPanel,
 } from "@chakra-ui/react";
 import { SpacedContainer } from "../common/Containers";
-import PatientSection from "./PatientSection";
-import DoctorSection from "./DoctorSection";
-import ClinicsSection from "./ClinicsSection";
-import PharmacySection from "./PharmacySection";
+import PatientSection from "./BenifitSections/PatientSection";
+import DoctorSection from "./BenifitSections/DoctorSection";
+import ClinicsSection from "./BenifitSections/ClinicsSection";
+import PharmacySection from "./BenifitSections/PharmacySection";
 
 const BenefitsOfDokto = () => {
   const tabs = [

@@ -3,7 +3,7 @@ import {
   Flex, Box,
 } from "@chakra-ui/react";
 import React from "react";
-import PinkBulletList from "../common/PinkBulletList";
+import PinkBulletList from "../../common/PinkBulletList";
 
 const items = [
   "Create your own flexible work hours.",
