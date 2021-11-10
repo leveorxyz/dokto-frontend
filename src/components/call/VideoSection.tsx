@@ -12,9 +12,11 @@ const VideoSection = () => {
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
 
   useEffect(() => {
-    TwilioUtils.connectToRoom(token, roomName).then((currentRoom) => {
-      setRoom(currentRoom);
-    });
+    if (token && roomName) {
+      TwilioUtils.connectToRoom(token, roomName).then((currentRoom) => {
+        setRoom(currentRoom);
+      });
+    }
   }, [token, roomName]);
 
   if (!room) {
