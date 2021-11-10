@@ -1,57 +1,90 @@
+import { useState, useEffect, useRef } from "react";
 import {
   Input,
   FormControl,
   FormLabel,
   FormErrorMessage,
   Flex,
-  Box,
 } from "@chakra-ui/react";
-import { useController } from "react-hook-form";
-import { useRecoilValue } from "recoil";
+import { debounce } from "lodash";
 
 import { CustomFieldType } from "../../../../types/form";
-import { stepAtom } from "../../atoms";
-import BrandButton from "../../../../../common/buttons/BrandButton";
+import useCheckUsername from "../../../../../../hooks/register/useCheckUsername";
 
 type PropTypes = {
   data: CustomFieldType;
-  control: any;
+  errors: any;
+  setError: any;
+  clearErrors: any;
+  setValue: any;
 };
 
 export default function UserID({
   data: {
     name, placeholder, label, rules,
-  }, control,
+  },
+  setValue,
+  setError,
+  clearErrors,
+  errors,
 }: PropTypes) {
-  const step1Data = useRecoilValue(stepAtom);
+  const [localValue, setLocalValue] = useState("");
+  const [debouncedValue, setDebouncedValue] = useState("");
   const {
-    field: { ref, ...inputProps },
-    fieldState: { error, invalid },
-  } = useController({
-    name,
-    control,
-    rules,
-    defaultValue: (step1Data as any)[name] ?? "",
-  });
+    mutateAsync: checkUsernameAvailability,
+    // isSuccess,
+    // isError,
+  } = useCheckUsername();
+
+  const debouncedUpdate = useRef(
+    debounce((x) => setDebouncedValue(x), 500),
+  ).current;
+
+  useEffect(() => {
+    if (rules?.required?.value && (!debouncedValue || debouncedValue === "")) {
+      setError(name, { type: "required", message: "User ID is required" });
+    } else {
+      clearErrors(name);
+    }
+
+    checkUsernameAvailability({
+      userType: "doctor",
+      username: debouncedValue,
+    })
+      .then(() => setError(name, { type: "username", message: "User ID is taken" }))
+      .catch(() => clearErrors(name));
+
+    console.log(debouncedValue);
+  },
+  [
+    checkUsernameAvailability,
+    clearErrors,
+    debouncedValue,
+    name, rules?.required?.value,
+    setError,
+  ]);
+
+  const handleChange = (x: string) => {
+    setValue(name, x);
+    setLocalValue(x);
+    debouncedUpdate(x);
+  };
 
   return (
-    <FormControl isInvalid={invalid}>
+    <FormControl isInvalid={errors[name]}>
       <FormLabel htmlFor="name">{label}</FormLabel>
       <Flex>
         <Input
           flexGrow={1}
           id={name}
           placeholder={placeholder}
-          ref={ref}
-          {...inputProps}
           mr={2}
+          value={localValue}
+          onChange={(e) => handleChange(e.target.value)}
         />
-        <Box>
-          <BrandButton>Check Availability</BrandButton>
-        </Box>
       </Flex>
       <FormErrorMessage>
-        {error && error.message}
+        {errors[name] && errors[name]?.message}
       </FormErrorMessage>
     </FormControl>
   );
