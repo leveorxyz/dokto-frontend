@@ -5,14 +5,14 @@ import {
 import { SpacedContainer } from "../common/Containers";
 import PatientSection from "./PatientSection";
 import DoctorSection from "./DoctorSection";
-import HospitalSection from "./HospitalSection";
+import ClinicsSection from "./ClinicsSection";
 import PharmacySection from "./PharmacySection";
 
 const BenefitsOfDokto = () => {
   const tabs = [
-    { title: "Patient" },
+    { title: "Patients" },
     { title: "Doctor" },
-    { title: "Hospital" },
+    { title: "Clinics" },
     { title: "Pharmacy" },
   ];
 
@@ -55,7 +55,7 @@ const BenefitsOfDokto = () => {
             <DoctorSection />
           </TabPanel>
           <TabPanel>
-            <HospitalSection />
+            <ClinicsSection />
           </TabPanel>
           <TabPanel>
             <PharmacySection />

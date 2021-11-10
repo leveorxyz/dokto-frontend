@@ -1,61 +1,18 @@
-import { useState } from "react";
-import { Box, Flex, Image } from "@chakra-ui/react";
+/* eslint-disable max-len */
+import { Box } from "@chakra-ui/react";
 
 export default function PharmacySection() {
-  type VideoPropertyType = {
-    link: string;
-    thumbnail: string;
-  }
-
-  const videos: VideoPropertyType[] = [
-    {
-      link: "https://www.youtube-nocookie.com/embed/YkgkThdzX-8",
-      thumbnail: "https://img.youtube.com/vi/YkgkThdzX-8/0.jpg",
-    },
-    {
-      link: "https://www.youtube-nocookie.com/embed/YkgkThdzX-8",
-      thumbnail: "https://img.youtube.com/vi/YkgkThdzX-8/0.jpg",
-    },
-    {
-      link: "https://www.youtube-nocookie.com/embed/YkgkThdzX-8",
-      thumbnail: "https://img.youtube.com/vi/YkgkThdzX-8/0.jpg",
-    },
-    {
-      link: "https://www.youtube-nocookie.com/embed/YkgkThdzX-8",
-      thumbnail: "https://img.youtube.com/vi/YkgkThdzX-8/0.jpg",
-    },
+  const listData = [
+    "For our pharmacies, our telehealth solution can help to enhance patient relationships and maintain customer loyalty while simultaneously improving care and extending patient services. As a pharmacy, you can offer proactive care with your customers, who will delight convenient, immediate access and high-quality urgent care services from a trusted source.",
+    "The world is busier than ever, leading pharmacists to inevitably volume and efficiency. With Dokto, you can achieve both without compromising on delivering personal care.",
+    "Our platform is smart, efficient and cost-saving, providing the technology to expand healthcare outside the walls of a retail pharmacy while complementing and enhancing existing retail pharmacy services and experience.",
   ];
-
-  const [currentVideo, setCurrentVideo] = useState<VideoPropertyType>(videos[0]);
-
   return (
-    <Flex width="100%" direction={["column-reverse", "column-reverse", "row", "row", "row"]}>
-      <Box
-        key={currentVideo?.link}
-        as="iframe"
-        width={["100%", "100%", "80%", "85%", "85%"]}
-        height={[200, 200, 400, 500, 600]}
-        src={currentVideo?.link}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-      <Flex
-        direction={["row", "row", "column", "column", "column"]}
-        width={["100%", "100%", "20%", "15%", "15%"]}
-      >
-        {videos.map((video) => (
-          <Image
-            key={video.link}
-            src={video.thumbnail}
-            px={3}
-            pb={3}
-            width={["25%", "25%", "100%", "100%", "100%"]}
-            onClick={() => setCurrentVideo(video)}
-          />
+    <Box mb="50">
+      {listData
+        .map((data) => (
+          <Box key={data} fontSize="xl" px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="brand.dark" mt="4">{data}</Box>
         ))}
-      </Flex>
-    </Flex>
+    </Box>
   );
 }
