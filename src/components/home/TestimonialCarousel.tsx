@@ -4,9 +4,8 @@ import {
 import Carousel, { CarouselSlideRenderControlProps as CarouselProps } from "nuka-carousel";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
-import { range } from "lodash";
 import { SpacedContainer } from "../common/Containers";
-import TestimonialList from "./TestimonialList";
+import TestimonialCard from "./TestimonialCard";
 import testimonialData from "./TestimonialData.json";
 
 const TestimonialCarousel = () => {
@@ -28,6 +27,7 @@ const TestimonialCarousel = () => {
         <Box
           as={Carousel}
           px={[6, 6, 12, 24, 24]}
+          pb={12}
           renderCenterLeftControls={
             ({ previousSlide }: CarouselProps) => (
               <IconButton
@@ -65,20 +65,17 @@ const TestimonialCarousel = () => {
               fill: "#170041 !important",
             },
           }}
+          heightMode="max"
+          cellSpacing={48}
+          slidesToShow={numberOfCarouselComponents}
           wrapAround
           autoplay
           enableKeyboardControls
         >
           {
-            range(0, testimonialData.length, numberOfCarouselComponents)
-              .map((i) => (
-                <TestimonialList
-                  key={i}
-                  listData={
-                    testimonialData.slice(i, i + (numberOfCarouselComponents as number) ?? 0)
-                  }
-                />
-              ))
+            testimonialData.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} {...testimonial} />
+            ))
           }
         </Box>
       </Flex>
