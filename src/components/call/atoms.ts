@@ -10,11 +10,13 @@ export type TokenDataType = {
 export const callListAtom = atom<RemoteParticipant[]>({
   key: "in_call_users",
   default: [],
+  dangerouslyAllowMutability: true,
 });
 
 export const waitingListAtom = atom<RemoteParticipant[]>({
   key: "waiting_users",
   default: [],
+  dangerouslyAllowMutability: true,
 });
 
 export const twilioTokenAtom = atom<TokenDataType>({
