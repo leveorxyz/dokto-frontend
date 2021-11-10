@@ -5,14 +5,14 @@ import { useRecoilState } from "recoil";
 import { uniqBy } from "lodash";
 
 import Participant from "./Participant";
-import { participantsAtom } from "./atoms";
+import { callListAtom } from "./atoms";
 
 type PropTypes = {
   room: RoomType;
 };
 
 const Videos = ({ room }: PropTypes) => {
-  const [participants, setParticipants] = useRecoilState(participantsAtom);
+  const [participants, setParticipants] = useRecoilState(callListAtom);
 
   const addParticipant = useCallback((participant: RemoteParticipant) => {
     setParticipants((prev) => (uniqBy([...prev, participant], "identity")));
@@ -30,6 +30,12 @@ const Videos = ({ room }: PropTypes) => {
     room.on("participantDisconnected", (participant: RemoteParticipant) => {
       removeParticipant(participant);
     });
+
+    const unscubscribe = () => {
+      room.removeAllListeners();
+    };
+
+    return unscubscribe;
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (

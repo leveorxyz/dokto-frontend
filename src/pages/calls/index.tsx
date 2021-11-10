@@ -15,10 +15,7 @@ export default function VideoCalls() {
     isLoading,
   } = useTwilioToken({
     identity: authState.user?.id ?? "",
-    room_name: [
-      `${authState.user?.id}_${authState.user?.fullName}` ?? "",
-      `${authState.user?.id}_${authState.user?.fullName}_waiting` ?? "",
-    ],
+    roomName: `${authState.user?.id}_${authState.user?.fullName}` ?? "",
   });
 
   if (isLoading) {

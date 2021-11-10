@@ -52,7 +52,7 @@ export default function SideBar() {
         <Flex direction="column">
           {callListUsers.length === 0 && <EmptyComponent />}
           {callListUsers.map((user) => (
-            <SideBarUser key={user.id} user={user} inCallList />
+            <SideBarUser key={user.identity} user={user} inCallList />
           ))}
         </Flex>
       </Box>
@@ -62,7 +62,7 @@ export default function SideBar() {
         <Flex direction="column">
           {waitingListUsers.length === 0 && <EmptyComponent />}
           {waitingListUsers.map((user) => (
-            <SideBarUser key={user.id} user={user} inCallList={false} />
+            <SideBarUser key={user.identity} user={user} inCallList={false} />
           ))}
         </Flex>
       </Box>
