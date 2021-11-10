@@ -5,31 +5,25 @@ import { Room as RoomType } from "twilio-video";
 import { twilioTokenAtom } from "./atoms";
 import Videos from "./Videos";
 import TwilioUtils from "./utils/TwilioUtils";
+import LoadingPage from "../common/fallback/LoadingPage";
 
 const VideoSection = () => {
-  const [rooms, setRooms] = useState<RoomType[] | null>(null);
-  const { token, roomNames } = useRecoilValue(twilioTokenAtom);
+  const [room, setRoom] = useState<RoomType | null>(null);
+  const { token, roomName } = useRecoilValue(twilioTokenAtom);
 
   useEffect(() => {
-    Promise.all(
-      roomNames?.map((roomName) => TwilioUtils.connectToRoom(token, roomName)),
-    ).then((currentRooms) => {
-      setRooms(currentRooms.filter((room) => room !== undefined && room !== null));
+    TwilioUtils.connectToRoom(token, roomName).then((currentRoom) => {
+      setRoom(currentRoom);
     });
-  }, [token, roomNames]);
+  }, [token, roomName]);
 
-  useEffect(
-    () => console.log({ rooms, roomNames }),
-    [rooms, roomNames],
-  );
+  if (!room) {
+    return <LoadingPage />;
+  }
 
   return (
     <>
-      {
-        rooms?.map(
-          (room) => <Videos key={room.sid} room={room} />,
-        )
-      }
+      <Videos key={room.sid} room={room} />
     </>
   );
 };

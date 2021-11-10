@@ -9,10 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { IoPersonAdd, IoPause, IoStopCircle } from "react-icons/io5";
 
-import { UserDataType } from "./atoms";
+import { RemoteParticipant } from "twilio-video";
 
 type PropsType = {
-  user: UserDataType;
+  user: RemoteParticipant;
   isOpen: boolean;
   onClose: () => void;
 };
@@ -28,7 +28,7 @@ export default function UserActionModal({ user, isOpen, onClose }: PropsType) {
           borderBottomStyle="solid"
         >
           Start meeting with
-          {user.name}
+          {user.identity}
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>

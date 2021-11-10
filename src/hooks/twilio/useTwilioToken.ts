@@ -7,7 +7,7 @@ import { twilioTokenAtom } from "../../components/call/atoms";
 
 type Data = {
   identity: string;
-  room_name: string[];
+  roomName: string;
 };
 
 const getToken = async (axios: AxiosInstance, data: Data) => axios.post("twilio/appointment-video-token/", data)
@@ -26,12 +26,11 @@ export default function useTwilioToken(data: Data) {
       onSuccess: ({
         token,
         identity,
-        room_name: roomNames,
       }) => {
         setAccessToken({
           token,
           identity,
-          roomNames,
+          roomName: data.roomName,
         });
       },
     },
