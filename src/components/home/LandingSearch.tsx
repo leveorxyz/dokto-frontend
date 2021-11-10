@@ -30,7 +30,7 @@ export default function LandingSearch() {
           px={[4, 8, 8, 8]}
           py={[3, 6, 6, 6]}
         >
-          <Text as="h1" fontSize="lg" fontWeight={600} color="brand.dark">Refine Your Search</Text>
+          <Text as="h1" fontSize="2xl" fontWeight={600} color="brand.dark">Refine Your Search</Text>
           <Flex
             my={2}
             justifyContent={["space-between", "space-between", "flex-start", "flex-start"]}

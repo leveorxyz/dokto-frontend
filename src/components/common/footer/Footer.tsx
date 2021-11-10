@@ -39,7 +39,7 @@ const Footer = () => {
                   <Box pb="6"><Image src={FooterLogo} /></Box>
                 </ListItem>
                 <ListItem>
-                  <Box fontSize="sm" color="#847C93">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lacus mollis, accumsan odio et, porttitor nisl. Aenean in efficitur massa. Donec commodo ex et viverra tincidunt.</Box>
+                  <Box fontSize="md" color="gray.500">A global Telehealth service that simplifies healthcare and increases round-the-clock patient access to medical experts. We are Dokto: virtual care without boundaries.</Box>
                 </ListItem>
               </List>
             </Box>

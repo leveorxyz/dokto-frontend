@@ -8,7 +8,7 @@ const firstColumn = () :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.RADIO,
+      type: FieldTypes.CHECKBOX,
       name: "language",
       label: "Languages",
       direction: "row",

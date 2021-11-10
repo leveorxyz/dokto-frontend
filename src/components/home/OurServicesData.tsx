@@ -7,71 +7,25 @@ export default [
   {
     id: "people",
     Icon: Chat,
-    title: (
-      <>
-        <b>Consulation</b>
-      </>
-    ),
-    description: (
-      <>
-        Consulation with a
-        <br />
-        trusted doctor
-      </>
-    ),
+    title: "Consultation",
+    description: "Consult with a trusted, licensed doctor or healthcare specialist, all happy to answer your questions from the little issues to critical conditions. Choose support from chat, SMS, video telemed service or email.",
   },
   {
     id: "globe",
     Icon: Stethoscope,
-    title: (
-      <>
-        <b>Doctor</b>
-      </>
-    ),
-    description: (
-      <>
-        Thousands of doctors
-        <br />
-        with specific or general
-        <br />
-        expertise
-      </>
-    ),
+    title: "Doctors",
+    description: "Our specialists range from family practice and general practitioners to experts in cancer care, nutritional health and allergies, paediatrics, and so much more. Be confident that you are in the best possible hands.",
   },
   {
-    id: "business",
+    id: "globe",
     Icon: Hospital,
-    title: (
-      <>
-        <b>Hospital</b>
-      </>
-    ),
-    description: (
-      <>
-        Look for the hospital
-        <br />
-        closest to your
-        <br />
-        location
-      </>
-    ),
+    title: "Flexibility",
+    description: "Paying for healthcare has never been easier. Select from insurance, self-pay, or take advantage of the Dokto Gift Card and enjoy improved health with a little help from friends & family!",
   },
   {
-    id: "pharmacy",
+    id: "globe",
     Icon: Capsule,
-    title: (
-      <>
-        <b>Online pharmacy</b>
-      </>
-    ),
-    description: (
-      <>
-        Find a drug that
-        <br />
-        matches your diseases,
-        <br />
-        or buy it directly
-      </>
-    ),
+    title: "Convenience",
+    description: "We keep your convenience and care at the heart of all our services. From virtual medical consultancies to tests, results, prescriptions and pharmacy deliveries to your door, we excel in providing remote care.",
   },
 ];
