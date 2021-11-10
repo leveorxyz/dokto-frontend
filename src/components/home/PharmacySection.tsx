@@ -11,7 +11,7 @@ export default function PharmacySection() {
     <Box mb="50">
       {listData
         .map((data) => (
-          <Box key={data} fontSize="xl" px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="brand.dark" mt="4">{data}</Box>
+          <Box key={data} fontSize="lg" px={[0, 0, 6, 6, 6]} color="gray.500" mt="4">{data}</Box>
         ))}
     </Box>
   );
