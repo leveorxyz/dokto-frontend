@@ -20,9 +20,16 @@ const TestimonialCarousel = () => {
   return (
     <SpacedContainer>
       <Flex direction="column" alignItems="center" bg="rgba(23, 0, 65, 0.1)" mb="100" px={4} rounded="2xl">
-        <Box pt={6} d="flex" flexDir="column" alignItems="center" borderColor="#170041" mb="12">
-          <Heading as="h2" fontWeight="bold" fontSize="4xl" color="#333333">Testimonials</Heading>
-          <Divider w="20%" h="10px" />
+        <Box pt={6} d="flex" flexDir="column" alignItems="center" mb="12">
+          <Heading as="h2" fontWeight="bold" fontSize="4xl" color="primary.dark">Testimonials</Heading>
+          <Divider
+            w="20%"
+            h="10px"
+            sx={{
+              borderBottomWidth: 3,
+              borderBottomColor: "brand.darkPink",
+            }}
+          />
         </Box>
         <Box
           as={Carousel}
