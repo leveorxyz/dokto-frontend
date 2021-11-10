@@ -14,7 +14,7 @@ export default function VideoCalls() {
   const {
     isLoading,
   } = useTwilioToken({
-    identity: authState.user?.id ?? "",
+    identity: `${authState.user?.id}_${authState.user?.fullName}`,
     // roomName: `${authState.user?.id}_${authState.user?.fullName}` ?? "",
     roomName: "doctor",
   });
