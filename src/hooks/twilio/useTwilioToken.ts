@@ -23,6 +23,7 @@ export default function useTwilioToken(data: Data) {
     () => getToken(axios as AxiosInstance, data),
     {
       retry: false,
+      staleTime: Infinity,
       onSuccess: ({
         token,
         identity,
