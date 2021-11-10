@@ -14,7 +14,7 @@ import LoadingPage from "../components/common/fallback/LoadingPage";
 export default function EmailVerification() {
   const urlQueries = useURLQuery();
   const {
-    isFetching, isError, error, isSuccess,
+    isFetching, isError, isSuccess,
   } = useVerifyEmail({ token: urlQueries.get("token") ?? "" });
 
   if (isFetching) {
@@ -36,10 +36,10 @@ export default function EmailVerification() {
         >
           <AlertIcon boxSize="40px" mr={0} />
           <AlertTitle mt={4} mb={1} fontSize="xl">
-            Error!
+            Woops!
           </AlertTitle>
           <AlertDescription maxWidth="sm">
-            {(error as any).message}
+            Sorry, something went wrong. Please try again or come back later.
           </AlertDescription>
         </Alert>
       </SpacedContainer>
