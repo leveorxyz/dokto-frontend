@@ -69,16 +69,26 @@ const Videos = ({ room }: PropTypes) => {
         room={room}
       />
       )}
-      <Box
-        as={Participant}
+
+      <Flex
         flexGrow={0}
         flexShrink={1}
-        participant={room.localParticipant}
-        room={room}
-        isLocal
-        maxWidth="15rem"
-        height="max-content"
-      />
+        direction="column"
+      >
+        <Box as="h3" fontSize="lg" fontWeight="600">
+          Your video
+        </Box>
+        <Box
+          as={Participant}
+          participant={room.localParticipant}
+          room={room}
+          isLocal
+          m={[3, 6, 6, 6, 6]}
+          p={[3, 6, 6, 6, 6]}
+          maxWidth="15rem"
+          height="max-content"
+        />
+      </Flex>
     </Flex>
   );
 };
