@@ -41,34 +41,34 @@ const Videos = ({ room }: PropTypes) => {
   return (
     <Flex direction="row" wrap="nowrap" w="100%">
       {participants.length > 1
-        ? (
-          <Grid
-            flexGrow={1}
-            height="100%"
-            templateColumns="repeat(2, 1fr)"
-            gap={6}
-          >
-            {participants.map(
-              (p: RemoteParticipant) => (
-                <Participant
-                  key={p.identity}
-                  participant={p}
-                  room={room}
-                />
-              ),
-            )}
-          </Grid>
-        )
-        : (
-          <Box
-            flexGrow={1}
-            height="100%"
-            as={Participant}
-            key={participants[0].identity}
-            participant={participants[0]}
-            room={room}
-          />
+      && (
+      <Grid
+        flexGrow={1}
+        height="100%"
+        templateColumns="repeat(2, 1fr)"
+        gap={6}
+      >
+        {participants.map(
+          (p: RemoteParticipant) => (
+            <Participant
+              key={p.identity}
+              participant={p}
+              room={room}
+            />
+          ),
         )}
+      </Grid>
+      )}
+      { participants.length === 1 && (
+      <Box
+        flexGrow={1}
+        height="100%"
+        as={Participant}
+        key={participants[0].identity}
+        participant={participants[0]}
+        room={room}
+      />
+      )}
       <Box
         as={Participant}
         flexGrow={0}
