@@ -10,12 +10,12 @@ type PropTypes = {
 
 const PinkBulletList = ({ listData }: PropTypes) => (
   <div>
-    <List color="#0a001a" fontSize="lg" spacing={4}>
+    <List fontSize="lg" spacing={4}>
       {
         listData.map((item) => (
-          <ListItem key={item} d="flex" flexDir="row" alignItems="baseline">
+          <ListItem key={item} d="flex" flexDir="row" alignItems="center">
             <ListIcon as={FaCircle} color="#FF00FF" />
-            <Box color="#170041">{item}</Box>
+            <Box color="gray.500">{item}</Box>
           </ListItem>
         ))
       }
