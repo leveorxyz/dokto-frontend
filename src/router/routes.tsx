@@ -12,6 +12,7 @@ const TermsAndConditions = lazy(() => import("../pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
 const ProviderRegistration = lazy(() => import("../pages/registration/Provider"));
 const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
+const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 
 type routeType = {
     displayName: string;
@@ -96,6 +97,13 @@ const routes: routeType[] = [
     displayName: "Provider Registration",
     path: "/provider-registration",
     component: <LazyLoader><ProviderRegistration /></LazyLoader>,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Email Verification",
+    path: "/email-verification",
+    component: <LazyLoader><EmailVerification /></LazyLoader>,
     isProtected: false,
     showInNavbar: false,
   },
