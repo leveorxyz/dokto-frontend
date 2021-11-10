@@ -2,7 +2,7 @@ import {
   ChakraProvider,
 } from "@chakra-ui/react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
 } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
