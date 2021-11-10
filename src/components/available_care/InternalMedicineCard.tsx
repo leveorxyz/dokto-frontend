@@ -37,11 +37,11 @@ const InternalMedicineCard = ({ title, data, icon }: PropTypes) => (
           }}
         />
       </Box>
-      <Box as="h3" ml="2" fontSize="lg" fontWeight="semibold" color="primary.dark">
+      <Box as="h1" ml="2" fontSize="2xl" fontWeight="semibold" color="primary.dark">
         {title}
       </Box>
     </Box>
-    <Box color="rgba(51, 51, 51, 0.6)" mt={4}>{data}</Box>
+    <Box color="gray.500" mt={4} fontSize="lg">{data}</Box>
   </Box>
 );
 

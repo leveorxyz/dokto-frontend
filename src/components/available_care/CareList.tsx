@@ -52,7 +52,7 @@ const CareList = () => {
           )}
         </Grid>
 
-        <Box fontSize="md" color="rgba(51, 51, 51, 0.5)" textAlign="center" px="2" mb="20">
+        <Box fontSize="lg" color="gray.500" textAlign="center" px="2" mb="20">
           *Some services may require additional or in-person follow-up consultation with a
           specialized practitioner, which may not be available online.
           <br />
