@@ -37,11 +37,11 @@ const Videos = ({ room }: PropTypes) => {
       removeParticipant(participant);
     });
 
-    const unscubscribe = () => {
-      room.removeAllListeners();
-    };
+    // const unscubscribe = () => {
+    //   room.removeAllListeners();
+    // };
 
-    return unscubscribe;
+    // return unscubscribe;
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (
