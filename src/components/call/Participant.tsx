@@ -9,9 +9,12 @@ interface ParticipantProps {
   participant: VideoParticipant;
   room: Room,
   isLocal?: boolean
+  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>
 }
 
-const Participant = ({ participant, room, isLocal }: ParticipantProps) => {
+const Participant = ({
+  participant, room, isLocal, setScreenShareStream,
+}: ParticipantProps) => {
   const [videoTracks, setVideoTracks] = useState<(VideoTrack | null)[]>([]);
   const [audioTracks, setAudioTracks] = useState<(AudioTrack | null)[]>([]);
 
@@ -101,6 +104,7 @@ const Participant = ({ participant, room, isLocal }: ParticipantProps) => {
         audioTracks={audioTracks}
         room={room}
         showOptions={isLocal}
+        setScreenShareStream={setScreenShareStream}
       />
       {/* eslint-disable-next-line */}
       <audio ref={audioRef} />
