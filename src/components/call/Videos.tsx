@@ -84,7 +84,6 @@ const Videos = ({ room }: PropTypes) => {
         flexGrow={0}
         flexShrink={1}
         direction="column"
-        position="relative"
       >
         <Box as="h3" fontSize="lg" fontWeight="600" width="100%" textAlign="center">
           Your video
@@ -96,12 +95,7 @@ const Videos = ({ room }: PropTypes) => {
           p={[3, 6, 6, 6, 6]}
         />
 
-        <Flex
-          position="absolute"
-          bottom="1rem"
-          left="50%"
-          transform="translateX(-50%)"
-        >
+        <Flex>
           <CameraButton room={room} />
           <MicButton room={room} />
           <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
