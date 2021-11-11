@@ -1,27 +1,31 @@
 import { useState } from "react";
-import { AudioTrack } from "twilio-video";
+import { LocalAudioTrackPublication, Room } from "twilio-video";
 import { IconButton } from "@chakra-ui/react";
 import { IoMic, IoMicOff } from "react-icons/io5";
 
 type PropTypes = {
-  audioTracks: (AudioTrack | null)[]
+  room: Room
 }
 
-const MicButton = ({ audioTracks }: PropTypes) => {
+const MicButton = ({ room }: PropTypes) => {
   const [isMicMuted, setIsMicMuted] = useState(false);
 
   const mute = () => {
     // mute our microphone so other users will be not able to hear us
-    audioTracks.forEach((localAudioTrackPublication:any) => {
-      localAudioTrackPublication.disable();
-    });
+    room.localParticipant.audioTracks.forEach(
+      (localAudioTrackPublication: LocalAudioTrackPublication) => {
+        localAudioTrackPublication.track.disable();
+      },
+    );
   };
 
   const unmute = () => {
     // turn on mic back
-    audioTracks.forEach((localAudioTrackPublication:any) => {
-      localAudioTrackPublication.enable();
-    });
+    room.localParticipant.audioTracks.forEach(
+      (localAudioTrackPublication: LocalAudioTrackPublication) => {
+        localAudioTrackPublication.track.enable();
+      },
+    );
   };
 
   const handleMicButtonPressed = () => {
@@ -34,15 +38,15 @@ const MicButton = ({ audioTracks }: PropTypes) => {
   };
 
   return (
-    <div className="video_button_container">
-      <IconButton
-        icon={isMicMuted ? <IoMicOff /> : <IoMic />}
-        onClick={handleMicButtonPressed}
-        aria-label="mute-unmute"
-        title="Mute/Unmute"
-        mx={2}
-      />
-    </div>
+    <IconButton
+      icon={isMicMuted ? <IoMicOff /> : <IoMic />}
+      onClick={handleMicButtonPressed}
+      aria-label="mute-unmute"
+      title="Mute/Unmute"
+      colorScheme="purple"
+      mx={2}
+      rounded="full"
+    />
   );
 };
 

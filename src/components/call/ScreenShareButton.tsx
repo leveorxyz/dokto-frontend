@@ -49,15 +49,15 @@ const ScreenShareButton = ({ room, setScreenShareStream }:PropTypes) => {
   };
 
   return (
-    <div className="video_button_container">
-      <IconButton
-        icon={isScreenSharingActive ? <MdStopScreenShare /> : <MdScreenShare />}
-        onClick={handleScreenSharingEnabling}
-        aria-label="mute-unmute"
-        title="Mute/Unmute"
-        mx={2}
-      />
-    </div>
+    <IconButton
+      icon={isScreenSharingActive ? <MdStopScreenShare /> : <MdScreenShare />}
+      onClick={handleScreenSharingEnabling}
+      aria-label="mute-unmute"
+      title="Mute/Unmute"
+      colorScheme="purple"
+      mx={2}
+      rounded="full"
+    />
   );
 };
 
