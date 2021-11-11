@@ -3,17 +3,19 @@ import { VideoTrack, AudioTrack, Room } from "twilio-video";
 import CameraButton from "./CameraButton";
 import LeaveRoomButton from "./LeaveRoomButton";
 import MicButton from "./MicButton";
+import ScreenShareButton from "./ScreenShareButton";
 
 type PropTypes = {
   videoRef: React.RefObject<HTMLVideoElement>
   showOptions?: boolean
   videoTracks: (VideoTrack|null)[]
   audioTracks: (AudioTrack|null)[]
-  room: Room
+  room: Room,
+  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>
 }
 
 export default function Video({
-  videoRef, showOptions, videoTracks, audioTracks, room,
+  videoRef, showOptions, videoTracks, audioTracks, room, setScreenShareStream,
 }: PropTypes) {
   return (
     <Box w="100%" h="100%" position="relative" rounded="lg">
@@ -31,6 +33,7 @@ export default function Video({
 
           <CameraButton videoTracks={videoTracks} />
           <MicButton audioTracks={audioTracks} />
+          <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
           <LeaveRoomButton room={room} />
 
         </Flex>

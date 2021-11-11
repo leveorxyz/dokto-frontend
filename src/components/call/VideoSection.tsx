@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { Room as RoomType } from "twilio-video";
-
 import { twilioTokenAtom } from "./atoms";
 import Videos from "./Videos";
 import TwilioUtils from "./utils/TwilioUtils";

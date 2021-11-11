@@ -1,11 +1,12 @@
 import { Grid, Flex, Box } from "@chakra-ui/react";
-import { useEffect, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Room as RoomType, RemoteParticipant } from "twilio-video";
 import { useRecoilState } from "recoil";
 import { uniqBy } from "lodash";
 
 import Participant from "./Participant";
 import { callListAtom } from "./atoms";
+import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
 
 type PropTypes = {
   room: RoomType;
@@ -13,6 +14,7 @@ type PropTypes = {
 
 const Videos = ({ room }: PropTypes) => {
   const [participants, setParticipants] = useRecoilState(callListAtom);
+  const [screenShareStream, setScreenShareStream] = useState<MediaStream|null>(null);
 
   const addParticipant = useCallback((participant: RemoteParticipant) => {
     setParticipants((prev) => (uniqBy([...prev, participant], "identity")));
@@ -54,9 +56,11 @@ const Videos = ({ room }: PropTypes) => {
               key={p.identity}
               participant={p}
               room={room}
+              setScreenShareStream={setScreenShareStream}
             />
           ),
         )}
+
       </Grid>
       )}
       { participants.length === 1 && (
@@ -67,8 +71,12 @@ const Videos = ({ room }: PropTypes) => {
         key={participants[0].identity}
         participant={participants[0]}
         room={room}
+        setScreenShareStream={setScreenShareStream}
       />
       )}
+
+      {/* Local screen share preview */}
+      {screenShareStream && <LocalScreenSharingPreview stream={screenShareStream} />}
 
       <Flex
         maxWidth="15rem"
@@ -85,6 +93,7 @@ const Videos = ({ room }: PropTypes) => {
           participant={room.localParticipant}
           room={room}
           isLocal
+          setScreenShareStream={setScreenShareStream}
           m={[3, 6, 6, 6, 6]}
           p={[3, 6, 6, 6, 6]}
         />
