@@ -80,7 +80,7 @@ const Videos = ({ room }: PropTypes) => {
 
       <Flex
         maxWidth="15rem"
-        height="max-content"
+        minH="90vh"
         flexGrow={0}
         flexShrink={1}
         direction="column"
