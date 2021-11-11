@@ -7,6 +7,10 @@ import { uniqBy } from "lodash";
 import Participant from "./Participant";
 import { callListAtom } from "./atoms";
 import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
+import CameraButton from "./CameraButton";
+import LeaveRoomButton from "./LeaveRoomButton";
+import MicButton from "./MicButton";
+import ScreenShareButton from "./ScreenShareButton";
 
 type PropTypes = {
   room: RoomType;
@@ -55,8 +59,6 @@ const Videos = ({ room }: PropTypes) => {
             <Participant
               key={p.identity}
               participant={p}
-              room={room}
-              setScreenShareStream={setScreenShareStream}
             />
           ),
         )}
@@ -70,8 +72,6 @@ const Videos = ({ room }: PropTypes) => {
         as={Participant}
         key={participants[0].identity}
         participant={participants[0]}
-        room={room}
-        setScreenShareStream={setScreenShareStream}
       />
       )}
 
@@ -84,6 +84,7 @@ const Videos = ({ room }: PropTypes) => {
         flexGrow={0}
         flexShrink={1}
         direction="column"
+        position="relative"
       >
         <Box as="h3" fontSize="lg" fontWeight="600" width="100%" textAlign="center">
           Your video
@@ -91,12 +92,21 @@ const Videos = ({ room }: PropTypes) => {
         <Box
           as={Participant}
           participant={room.localParticipant}
-          room={room}
-          isLocal
-          setScreenShareStream={setScreenShareStream}
           m={[3, 6, 6, 6, 6]}
           p={[3, 6, 6, 6, 6]}
         />
+
+        <Flex
+          position="absolute"
+          bottom="1rem"
+          left="50%"
+          transform="translateX(-50%)"
+        >
+          <CameraButton room={room} />
+          <MicButton room={room} />
+          <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
+          <LeaveRoomButton room={room} />
+        </Flex>
       </Flex>
     </Flex>
   );

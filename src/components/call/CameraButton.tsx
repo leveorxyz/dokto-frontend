@@ -1,27 +1,31 @@
 import { useState } from "react";
-import { VideoTrack } from "twilio-video";
+import { LocalVideoTrackPublication, Room } from "twilio-video";
 import { IconButton } from "@chakra-ui/react";
 import { IoVideocam, IoVideocamOff } from "react-icons/io5";
 
 type PropTypes = {
-  videoTracks: (VideoTrack | null)[]
+  room: Room;
 }
 
-const CameraButton = ({ videoTracks }: PropTypes) => {
+const CameraButton = ({ room }: PropTypes) => {
   const [isLocalVideoTrackDisabled, setIsLocalVideoTrackDisabled] = useState(false);
 
   const startVideo = () => {
     // start sending back video stream to other users
-    videoTracks.forEach((localVideoTrackPublication: any) => {
-      localVideoTrackPublication.enable();
-    });
+    room.localParticipant.videoTracks.forEach(
+      (localVideoTrackPublication: LocalVideoTrackPublication) => {
+        localVideoTrackPublication.track.enable();
+      },
+    );
   };
 
   const stopVideo = () => {
     // stop sending camera stream to other users
-    videoTracks.forEach((localVideoTrackPublication: any) => {
-      localVideoTrackPublication.disable();
-    });
+    room.localParticipant.videoTracks.forEach(
+      (localVideoTrackPublication: LocalVideoTrackPublication) => {
+        localVideoTrackPublication.track.disable();
+      },
+    );
   };
 
   const handleCameraButtonPressed = () => {
@@ -34,15 +38,15 @@ const CameraButton = ({ videoTracks }: PropTypes) => {
   };
 
   return (
-    <div className="video_button_container">
-      <IconButton
-        icon={isLocalVideoTrackDisabled ? <IoVideocamOff /> : <IoVideocam />}
-        onClick={handleCameraButtonPressed}
-        aria-label="camera-enable-disable"
-        title="Camera Enable/Disable"
-        mx={2}
-      />
-    </div>
+    <IconButton
+      icon={isLocalVideoTrackDisabled ? <IoVideocamOff /> : <IoVideocam />}
+      onClick={handleCameraButtonPressed}
+      aria-label="camera-enable-disable"
+      title="Camera Enable/Disable"
+      colorScheme="purple"
+      mx={2}
+      rounded="full"
+    />
   );
 };
 

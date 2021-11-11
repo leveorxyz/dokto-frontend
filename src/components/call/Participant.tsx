@@ -1,20 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  AudioTrack, VideoTrack, Participant as VideoParticipant, Room,
+  AudioTrack, VideoTrack, Participant as VideoParticipant,
 } from "twilio-video";
 
 import Video from "./Video";
 
 interface ParticipantProps {
   participant: VideoParticipant;
-  room: Room,
-  isLocal?: boolean
-  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>
 }
 
-const Participant = ({
-  participant, room, isLocal, setScreenShareStream,
-}: ParticipantProps) => {
+const Participant = ({ participant }: ParticipantProps) => {
   const [videoTracks, setVideoTracks] = useState<(VideoTrack | null)[]>([]);
   const [audioTracks, setAudioTracks] = useState<(AudioTrack | null)[]>([]);
 
@@ -98,22 +93,11 @@ const Participant = ({
     <div className="participant" id={participant.identity}>
       {/* these videos wouldn't have captions so it's safe to disable */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <Video
-        videoRef={videoRef}
-        videoTracks={videoTracks}
-        audioTracks={audioTracks}
-        room={room}
-        showOptions={isLocal}
-        setScreenShareStream={setScreenShareStream}
-      />
+      <Video videoRef={videoRef} />
       {/* eslint-disable-next-line */}
       <audio ref={audioRef} />
     </div>
   );
-};
-
-Participant.defaultProps = {
-  isLocal: false,
 };
 
 export default Participant;

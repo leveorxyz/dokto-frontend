@@ -14,15 +14,15 @@ const LeaveRoomButton = ({ room }: PropTypes) => {
   };
 
   return (
-    <div className="video_button_container">
-      <IconButton
-        icon={<MdCallEnd color="red" />}
-        onClick={handleRoomDisconnection}
-        aria-label="end-call"
-        title="End Call"
-        mx={2}
-      />
-    </div>
+    <IconButton
+      icon={<MdCallEnd color="red" />}
+      onClick={handleRoomDisconnection}
+      aria-label="end-call"
+      title="End Call"
+      colorScheme="purple"
+      mx={2}
+      rounded="full"
+    />
   );
 };
 
