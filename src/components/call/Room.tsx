@@ -22,11 +22,7 @@ const Room = () => {
     return <LoadingPage />;
   }
 
-  return (
-    <>
-      <Videos key={room.sid} room={room} />
-    </>
-  );
+  return <Videos key={room.sid} room={room} />;
 };
 
 export default Room;

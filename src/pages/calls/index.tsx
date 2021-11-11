@@ -1,12 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
-import Overlay from "../../components/call/Overlay";
 
 import useTwilioToken from "../../hooks/twilio/useTwilioToken";
 
 import SideBar from "../../components/call/SideBar";
 import Room from "../../components/call/Room";
 import authAtom from "../../atoms/auth.atom";
+import LoadingPage from "../../components/common/fallback/LoadingPage";
 
 export default function VideoCalls() {
   const authState = useRecoilValue(authAtom);
@@ -22,13 +22,13 @@ export default function VideoCalls() {
   if (isLoading) {
     return (
       <Flex minHeight="100vh">
-        <Overlay />
+        <LoadingPage />
       </Flex>
     );
   }
 
   return (
-    <Flex minHeight="100vh">
+    <Flex minHeight="100vh" w="100%">
       <SideBar />
       <Room />
     </Flex>
