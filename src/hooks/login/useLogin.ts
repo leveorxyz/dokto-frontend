@@ -25,10 +25,12 @@ export default function useLogin() {
       mutationKey: "login",
       retry: false,
       onSuccess: ({
-        token,
         id,
-        profile_photo: profilePhoto,
         email,
+        token,
+        profile_photo: profilePhoto,
+        user_type: userType,
+        full_name: fullName,
       }) => {
         setAuthState({
           isLoggedIn: true,
@@ -37,6 +39,8 @@ export default function useLogin() {
             email,
             token,
             profilePhoto,
+            userType,
+            fullName,
           },
         });
       },

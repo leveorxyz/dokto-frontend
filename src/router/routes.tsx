@@ -13,6 +13,7 @@ const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
 const ProviderRegistration = lazy(() => import("../pages/registration/Provider"));
 const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
+const VideoCalls = lazy(() => import("../pages/calls"));
 
 type routeType = {
     displayName: string;
@@ -105,6 +106,13 @@ const routes: routeType[] = [
     path: "/email-verification",
     component: <LazyLoader><EmailVerification /></LazyLoader>,
     isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Video Call",
+    path: "/calls",
+    component: <LazyLoader><VideoCalls /></LazyLoader>,
+    isProtected: true,
     showInNavbar: false,
   },
 ];

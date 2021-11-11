@@ -13,6 +13,8 @@ type LoggedInState = {
     token: string;
     email: string;
     profilePhoto: string;
+    userType: string;
+    fullName: string;
   };
 };
 
