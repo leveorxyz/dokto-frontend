@@ -1,11 +1,9 @@
 import { Grid, Flex, Box } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
 import { Room as RoomType, RemoteParticipant } from "twilio-video";
-import { useRecoilState } from "recoil";
 import { uniqBy } from "lodash";
 
 import Participant from "./Participant";
-import { callListAtom } from "./atoms";
 import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
 import CameraButton from "./CameraButton";
 import LeaveRoomButton from "./LeaveRoomButton";
@@ -17,7 +15,9 @@ type PropTypes = {
 };
 
 const Videos = ({ room }: PropTypes) => {
-  const [participants, setParticipants] = useRecoilState(callListAtom);
+  const [participants, setParticipants] = useState<RemoteParticipant[]>(
+    Array.from(room.participants.values()),
+  );
   const [screenShareStream, setScreenShareStream] = useState<MediaStream|null>(null);
 
   const addParticipant = useCallback((participant: RemoteParticipant) => {
