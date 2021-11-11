@@ -45,38 +45,36 @@ const Videos = ({ room }: PropTypes) => {
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (
-    <Flex direction="row" wrap="nowrap" w="100%" justifyContent={participants.length > 1 ? "space-between" : "flex-end"}>
-      {participants.length > 1
-      && (
-      <Grid
-        flexGrow={1}
-        height="100%"
-        templateColumns="repeat(2, 1fr)"
-        gap={6}
-      >
-        {participants.map(
-          (p: RemoteParticipant) => (
-            <Participant
-              key={p.identity}
-              participant={p}
-            />
-          ),
+    <Flex direction="row" wrap="nowrap" w="100%" justifyContent={participants.length === 0 ? "space-between" : "flex-end"}>
+      <Flex direction="column" flexGrow={1}>
+        {/* Local screen share preview */}
+        {screenShareStream && <LocalScreenSharingPreview stream={screenShareStream} />}
+        {participants.length > 1
+        && (
+        <Grid
+          height="100%"
+          templateColumns="repeat(2, 1fr)"
+          gap={6}
+        >
+          {participants.map(
+            (p: RemoteParticipant) => (
+              <Participant
+                key={p.identity}
+                participant={p}
+              />
+            ),
+          )}
+
+        </Grid>
         )}
-
-      </Grid>
-      )}
-      { participants.length === 1 && (
-      <Box
-        flexGrow={1}
-        height="100%"
-        as={Participant}
-        key={participants[0].identity}
-        participant={participants[0]}
-      />
-      )}
-
-      {/* Local screen share preview */}
-      {screenShareStream && <LocalScreenSharingPreview stream={screenShareStream} />}
+        { participants.length === 1 && (
+        <Box
+          height="100%"
+          as={Participant}
+          participant={participants[0]}
+        />
+        )}
+      </Flex>
 
       <Flex
         maxWidth="15rem"
@@ -95,7 +93,7 @@ const Videos = ({ room }: PropTypes) => {
           p={[3, 6, 6, 6, 6]}
         />
 
-        <Flex>
+        <Flex mt={6}>
           <CameraButton room={room} />
           <MicButton room={room} />
           <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
