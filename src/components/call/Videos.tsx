@@ -45,7 +45,7 @@ const Videos = ({ room }: PropTypes) => {
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (
-    <Flex direction="row" wrap="nowrap" w="100%">
+    <Flex direction="row" wrap="nowrap" w="100%" justifyContent={participants.length > 1 ? "space-between" : "flex-end"}>
       {participants.length > 1
       && (
       <Grid
