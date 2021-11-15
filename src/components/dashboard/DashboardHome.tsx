@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box, Grid, Image,
 } from "@chakra-ui/react";
-import Typography from "@material-ui/core/Typography";
 import Calendar from "../../static/calendar.svg";
 import Profile from "../../static/profile.svg";
 import Chat from "../../static/messages.svg";
@@ -88,7 +87,6 @@ const DashboardHome = () => (
             />
           ))}
         </Grid>
-        <Typography variant="h1" color="secondary" align="center">Create new</Typography>
       </Box>
     </Box>
   </div>
