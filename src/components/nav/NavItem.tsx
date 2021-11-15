@@ -26,21 +26,28 @@ export default function NavItem({
         fontSize={["xl", "xl", "md", "md"]}
         fontWeight={isCurrentRoute ? [900, 900, 500, 600, 600] : [800, 800, 400, 500, 500]}
         position="relative"
-        color="gray.700"
+        color="ghost"
         style={{
           textDecoration: "none",
         }}
         _after={{
           content: "''",
+          textDecoration: "none",
           position: "absolute",
+          color: "ghost",
           bottom: "-6px",
           left: 0,
           width: "100%",
           height: isCurrentRoute ? "3px" : "0px",
-          backgroundColor: "pink.500",
+          backgroundColor: "brand.dark",
+        }}
+        _focus={{
+          textDecoration: "none",
+          color: "brand.dark",
         }}
         _hover={{
-          color: "brand.darkPink",
+          textDecoration: "none",
+          color: "brand.dark",
         }}
         onClick={() => setIsMenuOpen && setIsMenuOpen(false)}
       >

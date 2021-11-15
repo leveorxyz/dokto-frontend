@@ -10,9 +10,9 @@ import PharmacySection from "./BenifitSections/PharmacySection";
 
 const BenefitsOfDokto = () => {
   const tabs = [
-    { title: "Patients" },
+    { title: "Patient" },
     { title: "Doctor" },
-    { title: "Clinics" },
+    { title: "Hospital" },
     { title: "Pharmacy" },
   ];
 

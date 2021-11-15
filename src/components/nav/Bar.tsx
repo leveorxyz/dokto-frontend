@@ -39,10 +39,10 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       <Box
         as={Button}
         px={6}
-        bg="brand.darkPink"
+        bg="brand.dark"
         color="white"
         rounded="full"
-        _hover={{ bg: "brand.pink", color: "black" }}
+        _hover={{ bg: "brand.dark", color: "white" }}
         onClick={authState.isLoggedIn ? () => {} : openLoginModal}
       >
         <Box mr={6}>
@@ -57,10 +57,10 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       <Box
         as={Button}
         px={6}
-        bg="brand.darkPink"
+        bg="brand.dark"
         color="white"
         rounded="full"
-        _hover={{ bg: "brand.pink", color: "black" }}
+        _hover={{ bg: "brand.dark", color: "black" }}
         onClick={() => setAuthState({ isLoggedIn: false, user: null })}
       >
         <Box mr={6}>
@@ -116,7 +116,7 @@ type MenuProps = {
 function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
   return (
     <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
-      <GridItem display="flex" bg="#7002C7" h="100%" w="100%" pr={3} alignItems="center" justifyContent="flex-end">
+      <GridItem display="flex" bg="brand.dark" h="100%" w="100%" pr={3} alignItems="center" justifyContent="flex-end">
         <Link to="/">
           <Image src={logoSVG} alt="logo" fit="cover" />
         </Link>
@@ -142,7 +142,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         <Box display={["flex", "flex", "none", "none"]}>
           <IconButton
             aria-label="Open Menu"
-            colorScheme="cyan"
+            colorScheme="brand.dark"
             icon={isMenuOpen ? <IoClose size="1.5em" /> : <IoMenu size="1.5em" />}
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
