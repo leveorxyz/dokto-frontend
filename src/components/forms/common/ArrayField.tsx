@@ -61,7 +61,7 @@ export default function ArrayField({
             <Box>{index + 1}</Box>
             <IconButton
               aria-label={`Remove ${index + 1}`}
-              icon={<Box as={IoTrash} size={24} />}
+              icon={<Box as={IoTrash} size={24} color="red" />}
               onClick={() => remove(index)}
             />
           </Flex>

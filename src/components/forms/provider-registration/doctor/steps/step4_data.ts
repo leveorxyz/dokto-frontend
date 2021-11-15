@@ -423,7 +423,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.RADIO,
       name: "group_1",
-      label: "Group 1",
+      label: "Business Associate Agreement",
       direction: "column",
       options: [{
         value: "I have read and agree to the Business Associate Agreement",
@@ -444,7 +444,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.RADIO,
       name: "group_2",
-      label: "Group 2",
+      label: "HIPAA Agreement",
       direction: "column",
       options: [{
         value: "I have read and agree to the HIPAA Agreement",
@@ -465,7 +465,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.RADIO,
       name: "group_3",
-      label: "Group 3",
+      label: "GDPR Laws",
       direction: "column",
       options: [{
         value: "I have read and agree to the GDPR Laws",
@@ -486,7 +486,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.RADIO,
       name: "ALL",
-      label: "ALL",
+      label: "Terms & Privacy",
       direction: "column",
       options: [{
         value: "I agree to the terms of use and privacy policy",
