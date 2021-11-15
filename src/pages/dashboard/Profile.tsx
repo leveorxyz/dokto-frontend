@@ -8,6 +8,7 @@ import {
 import { useRecoilValue } from "recoil";
 
 import { SpacedContainer } from "../../components/common/Containers";
+import ProfileTabs from "../../components/profile/doctor/ProfileTabs";
 import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
@@ -36,6 +37,7 @@ export default function Profile() {
           </Text>
         </Box>
       </Flex>
+      <ProfileTabs />
     </SpacedContainer>
   );
 }
