@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {
   Modal,
@@ -34,7 +33,6 @@ type LoginFormData = {
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
-  const navigate = useNavigate();
   const {
     mutate: login,
     error,
@@ -47,9 +45,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   useEffect(() => {
     if (isSuccess && !isIdle) {
       onClose();
-      navigate("/dashboard");
     }
-  }, [isSuccess, isIdle, onClose, navigate]);
+  }, [isSuccess, isIdle, onClose]);
 
   const onSubmit = ({ email, password }: LoginFormData) => {
     login({ email, password });
