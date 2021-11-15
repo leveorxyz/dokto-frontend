@@ -40,11 +40,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       placeholder: "Select type",
       options: [
         {
-          label: "Self paid",
+          label: "Self-Pay",
           value: "SELF_PAID",
         },
         {
-          label: "Insurance verified",
+          label: "Insurance",
           value: "INSURANCE_VERIFIED",
         },
       ],
