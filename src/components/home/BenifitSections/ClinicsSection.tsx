@@ -36,16 +36,17 @@ const ClinicsSection = () => (
         letterSpacing={6}
         mt="4"
         color="brand.darkPink"
+        textTransform="capitalize"
       >
         Virtual care without boundaries
       </Box>
       {data.map(({ heading, description, id }) => (
         <React.Fragment key={id}>
-          <Heading fontSize="2xl" px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="primary.dark" mt="4">
+          <Heading fontSize="2xl" px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="primary.dark" mt="4" textTransform="capitalize">
             {heading}
           </Heading>
           {description.map((item) => (
-            <Box key={item} fontSize="lg" px={[0, 0, 6, 6, 6]} color="gray.500" mt="4">
+            <Box key={item} fontSize="lg" px={[0, 0, 6, 6, 6]} color="black" mt="4">
               {item}
             </Box>
           ))}

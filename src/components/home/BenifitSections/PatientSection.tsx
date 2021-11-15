@@ -15,10 +15,10 @@ const PatientSection = () => {
   return (
     <div>
       <Box mb="50">
-        <Heading fontSize="2xl" px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="#170041" mt="4">An Appointment at The Click of a Button</Heading>
+        <Heading fontSize="2xl" px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="#170041" mt="4" textTransform="capitalize">An Appointment at The Click of a Button</Heading>
         {listData
           .map((data) => (
-            <Box key={data} fontSize="lg" px={[0, 0, 6, 6, 6]} color="gray.500" mt="4">{data}</Box>
+            <Box key={data} fontSize="lg" px={[0, 0, 6, 6, 6]} color="black" mt="4">{data}</Box>
           ))}
       </Box>
     </div>
