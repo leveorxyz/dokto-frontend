@@ -17,11 +17,14 @@ const DashboardHome = () => (
           }}
           gap={12}
         >
-          {cardsData.map(({ id, Icon, title }) => (
+          {cardsData.map(({
+            id, Icon, title, path,
+          }) => (
             <Card
               key={id}
               icon={<Image src={Icon} />}
               title={title}
+              path={path}
             />
           ))}
         </Grid>

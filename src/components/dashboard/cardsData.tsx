@@ -13,31 +13,37 @@ export default [
     id: "calender",
     Icon: Calendar,
     title: "Appointment",
+    path: "/appointment",
   },
   {
     id: "profile",
     Icon: Profile,
     title: "Profile",
+    path: "/profile",
   },
   {
     id: "chat",
     Icon: Chat,
     title: "Chat",
+    path: "/chat",
   },
   {
     id: "settings",
     Icon: Settings,
     title: "Profile Setting",
+    path: "/settings",
   },
   {
     id: "specialities",
     Icon: Specialities,
     title: "Specialities",
+    path: "/specialities",
   },
   {
     id: "account_settings",
     Icon: AccountSettings,
     title: "Account Settings",
+    path: "/account_settings",
   },
   {
     id: "appointment_booking_system",
@@ -49,15 +55,18 @@ export default [
         booking system
       </>
     ),
+    path: "/appointment_booking_system",
   },
   {
     id: "invoice",
     Icon: Invoice,
     title: "Invoice",
+    path: "/invoice",
   },
   {
     id: "logout",
     Icon: LogOut,
     title: "Log Out",
+    path: "/logout",
   },
 ];
