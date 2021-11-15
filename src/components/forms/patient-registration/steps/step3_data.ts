@@ -9,12 +9,6 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "referring_doctor_address",
-      label: "Referring Doctor Address",
-      placeholder: "Referring Doctor Address",
-    },
-    {
-      type: FieldTypes.INPUT,
       name: "referring_doctor_full_name",
       label: "Referring Doctor Full Name",
       placeholder: "Referring Doctor Full Name",
@@ -24,6 +18,12 @@ const firstColumn = () :FormDataType => ({
       name: "referring_doctor_phone_number",
       label: "Referring Doctor Phone Number",
       placeholder: "Referring Doctor Phone Number",
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "referring_doctor_address",
+      label: "Referring Doctor Address",
+      placeholder: "Referring Doctor Address",
     },
   ],
 });

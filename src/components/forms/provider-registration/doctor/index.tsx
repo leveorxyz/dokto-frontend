@@ -41,7 +41,7 @@ const getStepsData = (): StepTypes[] => (
     {
       id: 1,
       title: "Personal Details",
-      data: step2Data,
+      data: step1Data,
       isFormStep: true,
       atom: stepAtom,
       submitButtonText: "Next",
@@ -49,7 +49,7 @@ const getStepsData = (): StepTypes[] => (
     {
       id: 2,
       title: "Identification Verification",
-      data: step1Data,
+      data: step2Data,
       isFormStep: true,
       atom: stepAtom,
       submitButtonText: "Next",
