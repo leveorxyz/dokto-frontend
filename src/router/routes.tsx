@@ -1,6 +1,4 @@
-import React, { Suspense, lazy } from "react";
-
-import Loading from "../components/common/fallback/LoadingPage";
+import React, { lazy } from "react";
 
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
@@ -15,103 +13,97 @@ const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 
-type routeType = {
+export type RouteType = {
     displayName: string;
     path: string;
-    component: React.ReactNode;
+    component: React.ReactElement;
     isProtected: boolean;
     allowedRoles?: string[];
     showInNavbar: boolean;
 }
 
-const LazyLoader = ({ children }: {children: React.ReactChild}) => (
-  <Suspense fallback={<Loading />}>
-    {children}
-  </Suspense>
-);
-
-const routes: routeType[] = [
+const routes: RouteType[] = [
   {
     displayName: "Home",
     path: "/",
-    component: <LazyLoader><Home /></LazyLoader>,
+    component: <Home />,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "How It Works",
     path: "/how",
-    component: <LazyLoader><HowItWorks /></LazyLoader>,
+    component: <HowItWorks />,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "Available Care",
     path: "/available-care",
-    component: <LazyLoader><AvailableCare /></LazyLoader>,
+    component: <AvailableCare />,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "About Us",
     path: "/about",
-    component: <LazyLoader><AboutUs /></LazyLoader>,
+    component: <AboutUs />,
     isProtected: false,
     showInNavbar: true,
   },
   {
     displayName: "Registration",
     path: "/registration",
-    component: <LazyLoader><NotImplemented /></LazyLoader>,
+    component: <NotImplemented />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Contact Us",
     path: "/contact",
-    component: <LazyLoader><ContactUs /></LazyLoader>,
+    component: <ContactUs />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Terms & Conditions",
     path: "/terms-and-conditions",
-    component: <LazyLoader><TermsAndConditions /></LazyLoader>,
+    component: <TermsAndConditions />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Privacy Policy",
     path: "/privacy-policy",
-    component: <LazyLoader><PrivacyPolicy /></LazyLoader>,
+    component: <PrivacyPolicy />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Patient Registration",
     path: "/patient-registration",
-    component: <LazyLoader><PatientRegistration /></LazyLoader>,
+    component: <PatientRegistration />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Provider Registration",
     path: "/provider-registration",
-    component: <LazyLoader><ProviderRegistration /></LazyLoader>,
+    component: <ProviderRegistration />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Email Verification",
     path: "/email-verification",
-    component: <LazyLoader><EmailVerification /></LazyLoader>,
+    component: <EmailVerification />,
     isProtected: false,
     showInNavbar: false,
   },
   {
     displayName: "Video Call",
     path: "/calls",
-    component: <LazyLoader><VideoCalls /></LazyLoader>,
+    component: <VideoCalls />,
     isProtected: true,
     showInNavbar: false,
   },
