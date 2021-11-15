@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { Country, State } from "country-state-city";
 
@@ -54,5 +54,5 @@ export default function Submit() {
     return <>{(error as any).message}</>;
   }
 
-  return <Redirect to="/" />;
+  return <Navigate to="/" />;
 }
