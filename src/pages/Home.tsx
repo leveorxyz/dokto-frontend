@@ -8,7 +8,6 @@ import DownloadDokto from "../components/home/DownloadDokto";
 import BenefitsOfDokto from "../components/home/BenefitsOfDokto";
 import TestimonialCarousel from "../components/home/TestimonialCarousel";
 import HeaderDokto from "../components/home/HeaderDokto";
-import DashboardHome from "../components/dashboard/DashboardHome";
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
       <DownloadDokto />
       <BenefitsOfDokto />
       <TestimonialCarousel />
-      <DashboardHome />
     </>
   );
 }
