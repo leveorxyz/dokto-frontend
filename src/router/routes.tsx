@@ -12,6 +12,7 @@ const ProviderRegistration = lazy(() => import("../pages/registration/Provider")
 const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
+const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 
 export type RouteType = {
@@ -112,6 +113,20 @@ const routes: RouteType[] = [
     displayName: "Home",
     path: "/dashboard",
     component: <DashboardHome />,
+    isProtected: true,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Home",
+    path: "/dashboard",
+    component: <DashboardHome />,
+    isProtected: true,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Profile",
+    path: "/profile",
+    component: <Profile />,
     isProtected: true,
     showInNavbar: false,
   },
