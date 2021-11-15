@@ -2,26 +2,36 @@ import { atom } from "recoil";
 
 export type DoctorProfile = {
   id: string;
-  avgRating: string;
-  qualificationSuffix?: string;
+  avg_rating: string;
+  qualification_suffix?: string;
   username: string;
-  fullName: string;
+  full_name: string;
   email: string;
-  isVerified: boolean;
+  is_verified: boolean;
   street: string;
   state: string;
   city?: string;
-  zipCode: string;
-  contactNo: string;
-  profilePhoto: string;
-  professionalBio: string;
+  zip_code: string;
+  contact_no: string;
+  profile_photo: string;
+  professional_bio: string;
   country: string;
   gender: string;
-  dateOfBirth: string;
-  education: string[];
-  experience: string[];
+  date_of_birth: string;
+  education: {
+    college: string;
+    course: string;
+    year: string;
+  }[];
+  experience: {
+    establishment_name: string;
+    job_title: string;
+    job_description: string;
+    start_date: string;
+    end_date?: string;
+  }[];
   specialty: string[];
-  availableHours?: string[];
+  available_hours?: string[];
   review?: string[];
 };
 

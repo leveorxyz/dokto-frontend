@@ -3,6 +3,8 @@ import {
 } from "@chakra-ui/react";
 
 import NotImplemented from "../../NotImplemented";
+import Tab1 from "./Tab1";
+import Tab2 from "./Tab2";
 
 export default function ProfileTabs() {
   const tabs = ["Provider Details", "Services & available hours", "Reviews"];
@@ -34,13 +36,13 @@ export default function ProfileTabs() {
         ))}
       </TabList>
 
-      <TabPanels>
+      <TabPanels bg="gray.100" mt={3} rounded="lg">
         <TabPanel>
-          <NotImplemented />
+          <Tab1 />
         </TabPanel>
 
         <TabPanel>
-          <NotImplemented />
+          <Tab2 />
         </TabPanel>
 
         <TabPanel>

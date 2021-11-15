@@ -5,7 +5,6 @@ import { useSetRecoilState, RecoilState } from "recoil";
 
 import { AxiosContext } from "../../contexts/AxiosContext";
 import { DoctorProfile } from "../../atoms/doctorProfile";
-import { toCamelCaseObj } from "../../utils/toCamelCase";
 
 const getProfile = async (axios: AxiosInstance, userType: string) => axios.get(`dashboard/${userType}/profile/`)
   .then(({ data: { result } }) => Promise.resolve(result))
@@ -24,7 +23,7 @@ export default function useProfile(
     {
       retry: false,
       onSuccess: (data) => {
-        setProfile(toCamelCaseObj(data) as DoctorProfile);
+        setProfile(data as DoctorProfile);
       },
     },
   );
