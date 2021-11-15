@@ -36,7 +36,7 @@ export default function ProfileTabs() {
 
       <TabPanels>
         <TabPanel>
-          <p>one!</p>
+          <NotImplemented />
         </TabPanel>
 
         <TabPanel>
