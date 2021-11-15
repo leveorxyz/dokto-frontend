@@ -93,6 +93,11 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
         {data.fields.map((field) => (
           <FieldsGenerator key={[data.name, field.name].join(".")} data={field} {...formProps} />
         ))}
+        {data.bottomText && data.bottomText !== "" && (
+        <Heading as="h2" size="lg" fontWeight="600" mb={4} color="brand.dark">
+          {data.bottomText}
+        </Heading>
+        )}
       </Stack>
     );
   }

@@ -4,6 +4,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Heading,
 } from "@chakra-ui/react";
 
 import { FileFieldType } from "../types/form";
@@ -26,6 +27,7 @@ export default function FileInput({
   accept,
   multiple,
   errors,
+  bottomText,
   setValue,
   setError,
   clearErrors,
@@ -62,6 +64,7 @@ export default function FileInput({
         multiple={multiple ?? false}
         borderRadius="0 !important"
       />
+      <Heading as="h2" size="sm" fontWeight="normal" mt="3" color="brand.dark">{bottomText}</Heading>
       <FormErrorMessage>
         {errors[shadowFieldName] && errors[shadowFieldName].message}
       </FormErrorMessage>
