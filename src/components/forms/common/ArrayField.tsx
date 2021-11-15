@@ -80,6 +80,8 @@ export default function ArrayField({
       <Button
         width="max-content"
         variant="ghost"
+        colorScheme="purple"
+        color="brand.darkPink"
         onClick={() => append(fieldsDetails.reduce((prev, curr) => ({
           ...prev,
           [curr.name]: "",

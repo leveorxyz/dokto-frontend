@@ -24,7 +24,7 @@ const DownloadDokto = () => (
   >
 
     <Box d="flex" flexDir="column">
-      <Heading as="h1" size="lg" fontWeight="bold" px={6} py={7} color="brand.dark">
+      <Heading as="h1" size="lg" fontFamily="sora" fontWeight="bold" px={6} py={7} color="brand.dark">
         Download the Dokto App
       </Heading>
       <Box d="flex" pb="12">

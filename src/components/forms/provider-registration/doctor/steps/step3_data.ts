@@ -115,6 +115,7 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.MULTISELECT,
       name: "specialty",
       label: "Specialties",
+      bottomText: "(Select one or more option)",
       options: [
         {
           value: "Allergy Specialist",
