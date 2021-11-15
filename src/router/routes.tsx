@@ -11,7 +11,7 @@ const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
 const ProviderRegistration = lazy(() => import("../pages/registration/Provider"));
 const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
-const DashboardHome = lazy(() => import("../pages/DashboardHome"));
+const DashboardHome = lazy(() => import("../pages/dashboard"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 
 export type RouteType = {
