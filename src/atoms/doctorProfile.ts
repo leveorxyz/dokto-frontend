@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-type DoctorProfile = {
+export type DoctorProfile = {
   id: string;
   avgRating: string;
   qualificationSuffix?: string;
