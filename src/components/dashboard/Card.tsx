@@ -7,10 +7,6 @@ type PropTypes = {
 }
 
 export default function CardDashboardHome({ icon, title }: PropTypes) {
-  const marginY = {
-    sm: "50", md: "120", lg: "120", xl: "120", base: "50",
-  };
-
   return (
     <Box
       w="100%"
@@ -18,9 +14,18 @@ export default function CardDashboardHome({ icon, title }: PropTypes) {
       bg="white"
       borderRadius="3xl"
       cursor="pointer"
-      _hover={{ boxShadow: "0 10px 30px 0 rgb(205 204 219 / 25%)", filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))" }}
+      _hover={{
+        boxShadow: "0 10px 30px 0 rgb(205 204 219 / 25%)",
+        filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
+      }}
     >
-      <Flex direction="column" alignItems="center" py={marginY} px="1">
+      <Flex
+        direction="column"
+        alignItems="center"
+        py={{
+          base: 12, sm: 12, md: 20, lg: 20, xl: 20,
+        }}
+      >
         {icon}
         <Text fontSize="xl" textAlign="center" color="#11142D" mt="4">
           {title}
