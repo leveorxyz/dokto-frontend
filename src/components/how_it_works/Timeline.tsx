@@ -43,7 +43,7 @@ const ProcessTimeline = () => (
       >
         <Box pb={[6, 36, 36, 36, 36]}>
           <Heading as="h6" fontSize="3xl" fontWeight="normal">{title}</Heading>
-          <Box fontSize="xl" color="rgba(51, 51, 51, 0.6)">{description}</Box>
+          <Box fontSize="xl" color="gray.500">{description}</Box>
         </Box>
       </TimelineEvent>
     ))}

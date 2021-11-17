@@ -44,15 +44,15 @@ const firstColumn = () :FormDataType => ({
           message: "This field is required",
         },
         pattern: {
-          value: /^[\d]+$/,
-          message: "Only numbers allowed",
+          value: /^[a-zA-Z0-9_ ]+$/,
+          message: "Only numbers and letters allowed",
         },
       },
     },
     {
       type: FieldTypes.FILE,
       name: "identification_photo",
-      label: "Enter your passport, driver's license or State ID number",
+      label: "Upload your ID file",
       accept: "image/*",
       rules: {
         required: {

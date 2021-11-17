@@ -10,7 +10,7 @@ type PropTypes = {
 const OurServicesCard = ({ icon, title, description }: PropTypes) => (
   <Box
     w="100%"
-    p={6}
+    p={8}
     height="100%"
     borderRadius="20"
     _hover={{ bg: "white", boxShadow: "0 10px 30px 0 rgb(205 204 219 / 25%)" }}
@@ -18,10 +18,10 @@ const OurServicesCard = ({ icon, title, description }: PropTypes) => (
   >
     <Flex direction="column" px="1">
       {icon}
-      <Text fontSize="xl" mt="4" mb="2" color="#333333">
+      <Text fontSize="xl" fontWeight="600" mt="4" mb="2" color="#333333">
         {title}
       </Text>
-      <Text fontSize="md" color="rgba(51, 51, 51, 0.6)">
+      <Text fontSize="lg" color="gray.500">
         {description}
       </Text>
     </Flex>

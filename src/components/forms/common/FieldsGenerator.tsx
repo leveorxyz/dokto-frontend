@@ -7,6 +7,7 @@ import InputField from "./InputField";
 import FileInput from "./FileInput";
 import SelectInput from "./SelectInput";
 import RadioInput from "./RadioInput";
+import CheckboxField from "./Checkbox";
 import TextareaField from "./TextareaField";
 import ArrayField from "./ArrayField";
 import MultiSelect from "./MultiSelect";
@@ -53,6 +54,10 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
     return <RadioInput {...data} {...formProps} />;
   }
 
+  if (data.type === FieldTypes.CHECKBOX) {
+    return <CheckboxField {...data} {...formProps} />;
+  }
+
   if (data.type === FieldTypes.TEXTAREA) {
     return <TextareaField {...data} {...formProps} />;
   }
@@ -88,6 +93,11 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
         {data.fields.map((field) => (
           <FieldsGenerator key={[data.name, field.name].join(".")} data={field} {...formProps} />
         ))}
+        {data.bottomText && data.bottomText !== "" && (
+        <Heading as="h2" size="lg" fontWeight="600" mb={4} color="brand.dark">
+          {data.bottomText}
+        </Heading>
+        )}
       </Stack>
     );
   }

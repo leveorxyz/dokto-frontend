@@ -1,11 +1,11 @@
 import { Grid, Flex, Box } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
 import { Room as RoomType, RemoteParticipant } from "twilio-video";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { uniqBy } from "lodash";
 
-import Participant from "./Participant";
 import { callListAtom } from "./atoms";
+import Participant from "./Participant";
 import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
 import CameraButton from "./CameraButton";
 import LeaveRoomButton from "./LeaveRoomButton";
@@ -17,7 +17,10 @@ type PropTypes = {
 };
 
 const Videos = ({ room }: PropTypes) => {
-  const [participants, setParticipants] = useRecoilState(callListAtom);
+  const setInCallList = useSetRecoilState(callListAtom);
+  const [participants, setParticipants] = useState<RemoteParticipant[]>(
+    Array.from(room.participants.values()),
+  );
   const [screenShareStream, setScreenShareStream] = useState<MediaStream|null>(null);
 
   const addParticipant = useCallback((participant: RemoteParticipant) => {
@@ -31,17 +34,21 @@ const Videos = ({ room }: PropTypes) => {
   }, [setParticipants]);
 
   useEffect(() => {
+    setInCallList(participants);
+  }, [participants, setInCallList]);
+
+  useEffect(() => {
     room.on("participantConnected", (participant: RemoteParticipant) => addParticipant(participant));
 
     room.on("participantDisconnected", (participant: RemoteParticipant) => {
       removeParticipant(participant);
     });
 
-    // const unscubscribe = () => {
-    //   room.removeAllListeners();
-    // };
+    const unscubscribe = () => {
+      room.removeAllListeners();
+    };
 
-    // return unscubscribe;
+    return unscubscribe;
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (

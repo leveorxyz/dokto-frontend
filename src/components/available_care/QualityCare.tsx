@@ -35,7 +35,7 @@ const QualityCare = () => (
             borderBottomColor: "primary.light",
           }}
           />
-          <Box fontSize="md" color="brand.light" py="1rem" px={[0, 0, "3rem", "4rem"]}>Our board-certified doctors and specialists can diagnose and treat a wide variety of things remotely.</Box>
+          <Box fontSize="lg" color="brand.light" py="1rem" px={[0, 0, "3rem", "4rem"]}>Our board-certified doctors and specialists can diagnose and treat a wide variety of things remotely.</Box>
           <Divider sx={{
             borderBottomWidth: 2,
             borderBottomColor: "primary.light",

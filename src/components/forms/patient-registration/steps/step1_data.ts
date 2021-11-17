@@ -102,8 +102,8 @@ const firstColumn = () :FormDataType => ({
         label: "Other",
       },
       {
-        value: "Prefer not to say",
-        label: "PREFER NOT TO SAY",
+        value: "PREFER NOT TO SAY",
+        label: "Prefer not to say",
       }],
       placeholder: "Select",
       rules: {

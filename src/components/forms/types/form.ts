@@ -22,6 +22,7 @@ type CommonType = {
   label: string;
   defaultValue?: string;
   placeholder?: string;
+  bottomText?: string;
   size?: "xs" | "sm" | "md" | "lg";
   visibilityDependencies?: {
     name: string;
@@ -73,7 +74,8 @@ export type MultiSelectFieldType = {
 
 export type CheckboxFieldType = {
   type: FieldTypes.CHECKBOX;
-  options?: {
+  direction?: "column" | "row";
+  options: {
     value: string;
     label: string;
     required?: boolean;
@@ -93,6 +95,7 @@ export type RadioFieldType = {
 export type FileFieldType = {
   type: FieldTypes.FILE;
   accept?: string;
+  bottomText?: string;
   multiple?: boolean;
 } & CommonType;
 
@@ -132,6 +135,7 @@ export type FormRowType = {
   type: FieldTypes.ROW;
   name: string; // this is just for the keys for mapping
   label?: string;
+  bottomText?: string;
   fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 
@@ -139,6 +143,7 @@ export type FormColumnType = {
   type: FieldTypes.COLUMN;
   name: string; // this is just for the keys for mapping
   label?: string;
+  bottomText?: string;
   fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 

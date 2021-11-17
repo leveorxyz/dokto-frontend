@@ -4,6 +4,7 @@ import {
   Select,
   FormControl,
   FormLabel,
+  Heading,
   FormErrorMessage,
   Tag,
   TagLabel,
@@ -24,6 +25,7 @@ export default function MultiSelect({
   name,
   errors,
   label,
+  bottomText,
   options,
   setValue,
   setError,
@@ -75,7 +77,7 @@ export default function MultiSelect({
           {errors[shadowFieldName] && errors[shadowFieldName].message}
         </FormErrorMessage>
       </FormControl>
-
+      <Heading as="h2" size="sm" fontWeight="normal" mt="3" color="brand.dark">{bottomText}</Heading>
       {currentValues?.length !== 0 && (
       <Flex wrap="wrap" borderWidth={1} rounded="lg" p={2}>
         {

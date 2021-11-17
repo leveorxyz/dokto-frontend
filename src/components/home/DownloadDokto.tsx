@@ -5,22 +5,26 @@ import {
 
 import AppStoreIMG from "../../static/AppStore.png";
 import PlayStoreIMG from "../../static/PlayStore.png";
-import BluePhonesIMG from "../../static/BluePhones.png";
-import { SpacedContainer } from "../common/Containers";
+import BluePhonesIMG from "../../static/DownloadBackground.png";
+// import { SpacedContainer } from "../common/Containers";
+import BigPhonesIMG from "../../static/BiggerPhone.png";
+import SmallPhonesIMG from "../../static/SmallerPhone.png";
 
 const DownloadDokto = () => (
   <Box
-    flex="1"
     d="flex"
-    flexDir="column"
+    flexDir="row"
     justifyContent={["flex-end", "flex-end", "center", "center"]}
     bgImage={BluePhonesIMG}
-    minHeight={["60vh", "60vh", "60vh", "100vh", "100vh"]}
+    position="relative"
+    backgroundSize="max-content"
+    minHeight={["40vh", "40vh", "60vh", "60vh", "60vh"]}
     bgRepeat="no-repeat"
     bgSize="contain"
   >
-    <SpacedContainer py="20">
-      <Heading as="h1" size="lg" fontWeight="bold" px={6} py={7} color="brand.dark">
+
+    <Box d="flex" flexDir="column">
+      <Heading as="h1" size="lg" fontFamily="sora" fontWeight="bold" px={6} py={7} color="brand.dark">
         Download the Dokto App
       </Heading>
       <Box d="flex" pb="12">
@@ -31,7 +35,14 @@ const DownloadDokto = () => (
           <Image cursor="pointer" w="310px" px={6} py={3} src={AppStoreIMG} />
         </Link>
       </Box>
-    </SpacedContainer>
+    </Box>
+    <Box display={["none", "none", "block", "block"]}>
+      <Image src={BigPhonesIMG} />
+    </Box>
+    <Box display={["none", "none", "block", "block"]}>
+      <Image src={SmallPhonesIMG} />
+    </Box>
+
   </Box>
 );
 

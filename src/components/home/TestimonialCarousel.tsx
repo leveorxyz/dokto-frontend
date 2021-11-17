@@ -4,9 +4,8 @@ import {
 import Carousel, { CarouselSlideRenderControlProps as CarouselProps } from "nuka-carousel";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
-import { range } from "lodash";
 import { SpacedContainer } from "../common/Containers";
-import TestimonialList from "./TestimonialList";
+import TestimonialCard from "./TestimonialCard";
 import testimonialData from "./TestimonialData.json";
 
 const TestimonialCarousel = () => {
@@ -21,13 +20,21 @@ const TestimonialCarousel = () => {
   return (
     <SpacedContainer>
       <Flex direction="column" alignItems="center" bg="rgba(23, 0, 65, 0.1)" mb="100" px={4} rounded="2xl">
-        <Box pt={6} d="flex" flexDir="column" alignItems="center" borderColor="#170041" mb="12">
-          <Heading as="h2" fontWeight="bold" fontSize="4xl" color="#333333">Patient testimonials</Heading>
-          <Divider w="20%" h="10px" />
+        <Box pt={6} d="flex" flexDir="column" alignItems="center" mb="12">
+          <Heading as="h2" fontWeight="bold" fontSize="4xl" color="primary.dark">Testimonials</Heading>
+          <Divider
+            w="20%"
+            h="10px"
+            sx={{
+              borderBottomWidth: 3,
+              borderBottomColor: "brand.darkPink",
+            }}
+          />
         </Box>
         <Box
           as={Carousel}
           px={[6, 6, 12, 24, 24]}
+          pb={12}
           renderCenterLeftControls={
             ({ previousSlide }: CarouselProps) => (
               <IconButton
@@ -65,20 +72,17 @@ const TestimonialCarousel = () => {
               fill: "#170041 !important",
             },
           }}
+          heightMode="max"
+          cellSpacing={48}
+          slidesToShow={numberOfCarouselComponents}
           wrapAround
           autoplay
           enableKeyboardControls
         >
           {
-            range(0, testimonialData.length, numberOfCarouselComponents)
-              .map((i) => (
-                <TestimonialList
-                  key={i}
-                  listData={
-                    testimonialData.slice(i, i + (numberOfCarouselComponents as number) ?? 0)
-                  }
-                />
-              ))
+            testimonialData.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} {...testimonial} />
+            ))
           }
         </Box>
       </Flex>
