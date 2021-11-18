@@ -44,7 +44,7 @@ const CameraButton = ({ room }: PropTypes) => {
       aria-label="camera-enable-disable"
       title="Camera Enable/Disable"
       colorScheme="purple"
-      mx={2}
+      mx={3}
       rounded="full"
     />
   );

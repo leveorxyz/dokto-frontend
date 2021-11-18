@@ -55,7 +55,7 @@ const ScreenShareButton = ({ room, setScreenShareStream }:PropTypes) => {
       aria-label="mute-unmute"
       title="Mute/Unmute"
       colorScheme="purple"
-      mx={2}
+      mx={3}
       rounded="full"
     />
   );

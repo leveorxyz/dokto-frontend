@@ -7,10 +7,11 @@ import { uniqBy } from "lodash";
 import { callListAtom } from "./atoms";
 import Participant from "./Participant";
 import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
-import CameraButton from "./CameraButton";
-import LeaveRoomButton from "./LeaveRoomButton";
-import MicButton from "./MicButton";
-import ScreenShareButton from "./ScreenShareButton";
+// import CameraButton from "./CameraButton";
+// import LeaveRoomButton from "./LeaveRoomButton";
+// import MicButton from "./MicButton";
+// import ScreenShareButton from "./ScreenShareButton";
+import ActionButtons from "./ActionButtons";
 
 type PropTypes = {
   room: RoomType;
@@ -100,12 +101,15 @@ const Videos = ({ room }: PropTypes) => {
           p={[3, 6, 6, 6, 6]}
         />
 
+        {/* Video action buttons */}
+        <ActionButtons room={room} setScreenShareStream={setScreenShareStream} />
+        {/*
         <Flex mt={6}>
           <CameraButton room={room} />
           <MicButton room={room} />
           <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
           <LeaveRoomButton room={room} />
-        </Flex>
+        </Flex> */}
       </Flex>
     </Flex>
   );
