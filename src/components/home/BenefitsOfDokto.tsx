@@ -33,7 +33,8 @@ const BenefitsOfDokto = () => {
               py={[3, 3, 4, 8, 8]}
               textTransform="uppercase"
               bgColor="white"
-              color="#0095C1"
+              color="brand.dark"
+              fontFamily="Barlow"
               fontSize={["xs", "sm", "md", "lg", "lg"]}
               fontWeight="bold"
               borderRightWidth={idx === tabs.length - 1 ? "0" : "2px"}
