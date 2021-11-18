@@ -1,9 +1,11 @@
+import { useState, useEffect, useCallback } from "react";
 import {
   Flex, Box,
 } from "@chakra-ui/react";
 import { IoPeopleCircle, IoTv } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
-import { Room as RoomType } from "twilio-video";
+import { Room as RoomType, RemoteParticipant } from "twilio-video";
+import { uniqBy } from "lodash";
 import { callListAtom } from "./atoms";
 import SideBarUser from "./SideBarUser";
 import { CustomHeading, EmptyComponent } from "./misc";
@@ -14,8 +16,34 @@ type PropTypes = {
 
 export default function SideBar({ waitingRoom }: PropTypes) {
   const callListUsers = useRecoilValue(callListAtom);
+  const [waitingListUsers, setWaitingListUsers] = useState<RemoteParticipant[]>(
+    Array.from(waitingRoom?.participants?.values()),
+  );
   // const waitingListUsers = useRecoilValue(waitingListAtom);
-  const waitingListUsers = Array.from(waitingRoom?.participants?.values());
+
+  const addParticipant = useCallback((participant: RemoteParticipant) => {
+    setWaitingListUsers((prev) => (uniqBy([...prev, participant], "identity")));
+  }, [setWaitingListUsers]);
+
+  const removeParticipant = useCallback((participant: RemoteParticipant) => {
+    setWaitingListUsers(
+      (prev) => prev.filter((p: RemoteParticipant) => p.identity !== participant.identity),
+    );
+  }, [setWaitingListUsers]);
+
+  useEffect(() => {
+    waitingRoom.on("participantConnected", (participant: RemoteParticipant) => addParticipant(participant));
+
+    waitingRoom.on("participantDisconnected", (participant: RemoteParticipant) => {
+      removeParticipant(participant);
+    });
+
+    const unscubscribe = () => {
+      waitingRoom.removeAllListeners();
+    };
+
+    return unscubscribe;
+  }, [addParticipant, removeParticipant, waitingRoom]);
 
   return (
     <Flex
