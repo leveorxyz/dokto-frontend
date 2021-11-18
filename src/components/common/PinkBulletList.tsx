@@ -15,7 +15,15 @@ const PinkBulletList = ({ listData }: PropTypes) => (
         listData.map((item) => (
           <ListItem key={item} d="flex" flexDir="row" alignItems="center">
             <ListIcon as={FaCircle} color="#FF00FF" />
-            <Box color="black">{item}</Box>
+            <Box
+              fontSize="lg"
+              fontWeight={300}
+              lineHeight="2rem"
+              color="primary.dark"
+            >
+              {item}
+
+            </Box>
           </ListItem>
         ))
       }
