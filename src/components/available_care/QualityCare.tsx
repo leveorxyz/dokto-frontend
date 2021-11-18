@@ -4,7 +4,7 @@ import {
 
 import { SpacedContainer } from "../common/Containers";
 import doctorsSVG from "../../static/doctors.svg";
-import doktoIconSVG from "../../static/DoktoIcon.png";
+import doktoIcon from "../../static/DoktoIcon.png";
 
 const QualityCare = () => (
   <div>
@@ -13,7 +13,7 @@ const QualityCare = () => (
         <Box position="relative">
           <Image src={doctorsSVG} height="100%" fit="contain" overflow="hidden" />
           <Image
-            src={doktoIconSVG}
+            src={doktoIcon}
             fit="contain"
             position="absolute"
             boxSize={[12, 12, 24, 48, 48]}
