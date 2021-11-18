@@ -5,9 +5,9 @@ import { BiMessageRoundedAdd } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 import HeaderDescription from "./HeaderDescription";
-import { SpacedContainer } from "../common/Containers";
-import LandingDoctorIMG from "../../static/LandingDoctor.png";
-import dotsSVG from "../../static/dots.svg";
+import { SpacedContainer } from "../../common/Containers";
+import LandingDoctorIMG from "../../../static/LandingDoctor.png";
+import dotsSVG from "../../../static/dots.svg";
 
 const HeaderDokto = () => (
   <Box position="relative">

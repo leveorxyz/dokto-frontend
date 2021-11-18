@@ -1,7 +1,7 @@
-import Chat from "../../static/Group 129.svg";
-import Hospital from "../../static/Group 131.svg";
-import Capsule from "../../static/Group 133.svg";
-import Stethoscope from "../../static/stethoscope.svg";
+import Chat from "../../../static/Group 129.svg";
+import Hospital from "../../../static/Group 131.svg";
+import Capsule from "../../../static/Group 133.svg";
+import Stethoscope from "../../../static/stethoscope.svg";
 
 export default [
   {

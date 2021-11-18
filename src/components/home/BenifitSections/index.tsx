@@ -1,12 +1,11 @@
-import React from "react";
 import {
   Heading, Tabs, TabList, TabPanels, Tab, TabPanel,
 } from "@chakra-ui/react";
-import { SpacedContainer } from "../common/Containers";
-import PatientSection from "./BenifitSections/PatientSection";
-import DoctorSection from "./BenifitSections/DoctorSection";
-import ClinicsSection from "./BenifitSections/ClinicsSection";
-import PharmacySection from "./BenifitSections/PharmacySection";
+import { SpacedContainer } from "../../common/Containers";
+import PatientSection from "./PatientSection";
+import DoctorSection from "./DoctorSection";
+import HospitalSection from "./HospitalSection";
+import PharmacySection from "./PharmacySection";
 
 const BenefitsOfDokto = () => {
   const tabs = [
@@ -56,7 +55,7 @@ const BenefitsOfDokto = () => {
             <DoctorSection />
           </TabPanel>
           <TabPanel>
-            <ClinicsSection />
+            <HospitalSection />
           </TabPanel>
           <TabPanel>
             <PharmacySection />
