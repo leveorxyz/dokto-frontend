@@ -44,11 +44,12 @@ const firstColumn = () :FormDataType => ({
           message: "This field is required",
         },
       },
+      bottomText: "Enter your passport, driver's license or State ID number",
     },
     {
       type: FieldTypes.FILE,
       name: "identification_photo",
-      label: "Enter your passport, driver's license or State ID number",
+      label: "Upload Your Identification",
       accept: "image/*",
       rules: {
         required: {
