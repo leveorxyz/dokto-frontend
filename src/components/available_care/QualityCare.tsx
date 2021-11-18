@@ -12,9 +12,10 @@ const QualityCare = () => (
       <Flex direction="column" alignItems="center">
         <Box position="relative">
           <Image src={doctorsSVG} height="100%" fit="contain" overflow="hidden" />
-          <Image
-            src={doktoIcon}
-            fit="contain"
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
             position="absolute"
             boxSize={[12, 12, 24, 48, 48]}
             top={[6, 6, 12, 16, 16]}
@@ -26,7 +27,14 @@ const QualityCare = () => (
             transform="translateX(-50%)"
             bg="brand.darkPink"
             rounded="full"
-          />
+          >
+            <Image
+              height="100%"
+              width="auto"
+              src={doktoIcon}
+              fit="contain"
+            />
+          </Box>
         </Box>
         <Heading as="h1" fontWeight="bold" fontSize="7xl" pt="12" color="brand.darkPink" textAlign="center">Quality care with peace of mind.</Heading>
         <Box p="12" borderColor="brand.light">
