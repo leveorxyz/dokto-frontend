@@ -177,7 +177,7 @@ export default function MenuBar() {
   } = useDisclosure();
 
   return (
-    <FullWidthContainer py={{ base: 2 }}>
+    <FullWidthContainer pt={{ base: 2 }}>
       <UpperMenu />
       <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} openLoginModal={openLoginModal} />
       {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}
