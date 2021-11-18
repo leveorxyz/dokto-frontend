@@ -1,15 +1,14 @@
-import React from "react";
 import "react-vertical-timeline-component/style.min.css";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 import {
   Box, Heading,
 } from "@chakra-ui/react";
 
-import TimelineElement from "./TimelineElement";
+import TimelineData from "./TimelineData";
 
 const ProcessTimeline = () => (
   <Timeline>
-    {TimelineElement.map(({
+    {TimelineData.map(({
       id, Icon, title, description,
     }) => (
       // eslint-disable-next-line object-curly-newline
