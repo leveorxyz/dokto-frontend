@@ -63,7 +63,7 @@ export default function SideBar({ waitingRoom }: PropTypes) {
       </Box>
 
       <Box py={3} w="100%">
-        <CustomHeading>Waiting List</CustomHeading>
+        <CustomHeading>Waiting Room</CustomHeading>
         <Flex direction="column">
           {waitingListUsers.length === 0 && <EmptyComponent />}
           {waitingListUsers.map((user) => (
