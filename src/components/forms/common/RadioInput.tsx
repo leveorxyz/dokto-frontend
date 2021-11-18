@@ -40,6 +40,7 @@ export default function RadioField({
                   color: "gray.300",
                   bg: "gray.300",
                   borderColor: "white",
+                  p: 2,
                 },
                 "&[data-checked]": {
                   color: "brand.darkPink",

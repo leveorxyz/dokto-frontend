@@ -58,7 +58,22 @@ export default function ArrayField({
       {fields.map((field, index) => (
         <React.Fragment key={field.id}>
           <Flex justifyContent="space-between">
-            <Box>{index + 1}</Box>
+            <Box
+              display="inline-block flex"
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="center"
+              rounded="full"
+              bg="brand.darkPink"
+              color="white"
+              fontSize="sm"
+              w="2rem"
+              h="2rem"
+              textAlign="center"
+              mr={2}
+            >
+              {index + 1}
+            </Box>
             <IconButton
               aria-label={`Remove ${index + 1}`}
               icon={<Box as={IoTrash} size={24} color="red" />}

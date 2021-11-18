@@ -3,10 +3,10 @@ import {
   Heading, Box, Container, Link,
 } from "@chakra-ui/react";
 
-import LeftRightArrow from "../common/buttons/LeftRightArrow";
-import { SpacedContainer } from "../common/Containers";
+import LeftRightArrow from "../../common/buttons/LeftRightArrow";
+import { SpacedContainer } from "../../common/Containers";
 import OurFeaturedDoctors from "./OurFeaturedDoctors";
-import UnderlinedHeader from "../common/UnderlinedHeader";
+import UnderlinedHeader from "../../common/UnderlinedHeader";
 
 const OurDoctors = () => (
   <Box bg="#F4F4F4">

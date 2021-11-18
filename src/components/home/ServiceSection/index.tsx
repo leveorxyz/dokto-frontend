@@ -4,9 +4,9 @@ import {
 } from "@chakra-ui/react";
 
 import OurServicesCard from "./OurServicesCard";
-import { SpacedContainer } from "../common/Containers";
+import { SpacedContainer } from "../../common/Containers";
 import OurServicesData from "./OurServicesData";
-import UnderlinedHeader from "../common/UnderlinedHeader";
+import UnderlinedHeader from "../../common/UnderlinedHeader";
 
 export default function OurServices() {
   return (

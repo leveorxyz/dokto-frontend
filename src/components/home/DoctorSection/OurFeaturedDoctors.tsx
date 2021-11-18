@@ -1,8 +1,7 @@
-import React from "react";
 import {
   Grid,
 } from "@chakra-ui/react";
-import OurDoctorsCard from "./OurDoctorsCard";
+import DoctorCard from "./DoctorCard";
 
 const OurFeaturedDoctors = () => (
   <div>
@@ -14,11 +13,11 @@ const OurFeaturedDoctors = () => (
         sm: "15", md: "6", lg: "6", xl: "6", base: "16",
       }}
     >
-      <OurDoctorsCard />
-      <OurDoctorsCard />
-      <OurDoctorsCard />
-      <OurDoctorsCard />
-      <OurDoctorsCard />
+      <DoctorCard />
+      <DoctorCard />
+      <DoctorCard />
+      <DoctorCard />
+      <DoctorCard />
     </Grid>
   </div>
 );

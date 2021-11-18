@@ -4,7 +4,7 @@ import {
 import Carousel, { CarouselSlideRenderControlProps as CarouselProps } from "nuka-carousel";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
-import { SpacedContainer } from "../common/Containers";
+import { SpacedContainer } from "../../common/Containers";
 import TestimonialCard from "./TestimonialCard";
 import testimonialData from "./TestimonialData.json";
 

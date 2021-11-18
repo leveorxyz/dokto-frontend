@@ -3,9 +3,9 @@ import {
   Box, Flex, Image,
 } from "@chakra-ui/react";
 
-import { SpacedContainer } from "../common/Containers";
-import DescriptionHowItWorks from "./DescriptionHowItWorks";
-import StethoscopeIMG from "../../static/stetho.png";
+import { SpacedContainer } from "../../common/Containers";
+import Description from "./Description";
+import StethoscopeIMG from "../../../static/stetho.png";
 
 const HowItWorks = () => (
   <div>
@@ -17,7 +17,7 @@ const HowItWorks = () => (
         alignItems="center"
       >
         <Box flex="1"><Image src={StethoscopeIMG} fit="contain" overflow="hidden" /></Box>
-        <Box flex="1"><DescriptionHowItWorks /></Box>
+        <Box flex="1"><Description /></Box>
       </Flex>
     </SpacedContainer>
   </div>

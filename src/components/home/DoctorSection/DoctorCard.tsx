@@ -5,8 +5,8 @@ import {
 import { IoLocationOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import Profile from "../../static/home/profile.jpg";
-import ArrowButton from "../common/buttons/ArrowButton";
+import Profile from "../../../static/home/profile.jpg";
+import ArrowButton from "../../common/buttons/ArrowButton";
 
 const OurDoctorsCard = () => (
   <div>

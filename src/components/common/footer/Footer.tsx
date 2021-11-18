@@ -34,14 +34,8 @@ const Footer = () => {
               }}
               pr="100"
             >
-              <List mt="1" spacing={2}>
-                <ListItem>
-                  <Box pb="6"><Image src={FooterLogo} /></Box>
-                </ListItem>
-                <ListItem>
-                  <Box fontSize="md" color="gray.500">A global Telehealth service that simplifies healthcare and increases round-the-clock patient access to medical experts. We are Dokto: virtual care without boundaries.</Box>
-                </ListItem>
-              </List>
+              <Box pb="6"><Image width="50%" height="auto" src={FooterLogo} /></Box>
+              <Box fontSize="md" color="gray.500">A global Telehealth service that simplifies healthcare and increases round-the-clock patient access to medical experts. We are Dokto: virtual care without boundaries.</Box>
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">

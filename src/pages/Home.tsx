@@ -1,19 +1,19 @@
 import { Box } from "@chakra-ui/react";
 
 import LandingSearch from "../components/home/LandingSearch";
-import OurServices from "../components/home/OurServices";
-import HowItWorks from "../components/home/HowItWorks";
-import OurDoctors from "../components/home/OurDoctors";
+import OurServices from "../components/home/ServiceSection";
+import HowItWorks from "../components/home/HowItWorksSection";
+import OurDoctors from "../components/home/DoctorSection";
 import DownloadDokto from "../components/home/DownloadDokto";
-import BenefitsOfDokto from "../components/home/BenefitsOfDokto";
-import TestimonialCarousel from "../components/home/TestimonialCarousel";
-import HeaderDokto from "../components/home/HeaderDokto";
+import BenefitsOfDokto from "../components/home/BenifitSections";
+import TestimonialSection from "../components/home/TestimonialSection";
+import Header from "../components/home/Header";
 
 export default function Home() {
   return (
     <>
       <Box minHeight="90vh">
-        <HeaderDokto />
+        <Header />
         <LandingSearch />
       </Box>
       <OurServices />
@@ -21,7 +21,7 @@ export default function Home() {
       <OurDoctors />
       <DownloadDokto />
       <BenefitsOfDokto />
-      <TestimonialCarousel />
+      <TestimonialSection />
     </>
   );
 }
