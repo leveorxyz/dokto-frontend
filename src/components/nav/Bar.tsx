@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Flex, Grid, GridItem, Box, Image, Button, IconButton, Center, Icon,
+  Flex,
+  Grid,
+  GridItem,
+  Box,
+  Image,
+  Button,
+  IconButton,
+  Center,
+  Icon,
+  Link as ChakraLink,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -116,10 +125,17 @@ type MenuProps = {
 function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
   return (
     <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
-      <GridItem display="flex" bg="brand.dark" h="100%" w="100%" pr={3} alignItems="center" justifyContent="flex-end">
-        <Link to="/">
-          <Image src={logoSVG} alt="logo" fit="cover" />
-        </Link>
+      <GridItem
+        display="flex"
+        bg="brand.dark"
+        h="100%"
+        w="auto"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <ChakraLink as={Link} to="/" height="75%">
+          <Image src={logoSVG} height="100%" alt="logo" fit="cover" />
+        </ChakraLink>
       </GridItem>
 
       <GridItem display="flex" w="100%" h="100%" bg="#3DE0FF" justifyContent="space-between" alignItems="center" pr={[3, 3, 3, "10%", "10%"]}>
