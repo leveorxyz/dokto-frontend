@@ -2,7 +2,6 @@ import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
-import UserID from "./custom/UserID";
 import MobileNo from "./custom/MobileNo";
 
 const firstColumn = (watch: any) :FormDataType => ({
@@ -10,26 +9,9 @@ const firstColumn = (watch: any) :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.CUSTOM,
-      component: UserID,
-      name: "username",
-      label: "Choose your User ID",
-      placeholder: "User ID",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        pattern: {
-          value: /^\w+$/,
-          message: "Only letters, numbers and underscore allowed",
-        },
-      },
-    },
-    {
       type: FieldTypes.INPUT,
       name: "full_name",
-      label: "Name",
+      label: "Full Name",
       placeholder: "",
       rules: {
         required: {
