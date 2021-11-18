@@ -28,7 +28,8 @@ export default function UserActionModal({ user, isOpen, onClose }: PropsType) {
           borderBottomStyle="solid"
         >
           Start meeting with
-          {user.identity}
+          {" "}
+          {user.identity.slice(37)}
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>

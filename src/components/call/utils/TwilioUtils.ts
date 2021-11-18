@@ -7,9 +7,10 @@ import {
 const connectToRoom = async (
   token: string,
   roomId: string,
+  trackDisabled = false,
 ): Promise<RoomType> => {
   try {
-    const tracks = await createLocalTracks();
+    const tracks = trackDisabled ? [] : await createLocalTracks();
     const room = await connect(token, {
       name: roomId,
       tracks,

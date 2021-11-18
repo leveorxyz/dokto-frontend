@@ -3,14 +3,19 @@ import {
 } from "@chakra-ui/react";
 import { IoPeopleCircle, IoTv } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
-
-import { callListAtom, waitingListAtom } from "./atoms";
+import { Room as RoomType } from "twilio-video";
+import { callListAtom } from "./atoms";
 import SideBarUser from "./SideBarUser";
 import { CustomHeading, EmptyComponent } from "./misc";
 
-export default function SideBar() {
+type PropTypes = {
+  waitingRoom: RoomType;
+};
+
+export default function SideBar({ waitingRoom }: PropTypes) {
   const callListUsers = useRecoilValue(callListAtom);
-  const waitingListUsers = useRecoilValue(waitingListAtom);
+  // const waitingListUsers = useRecoilValue(waitingListAtom);
+  const waitingListUsers = Array.from(waitingRoom?.participants?.values());
 
   return (
     <Flex
