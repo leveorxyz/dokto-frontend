@@ -5,11 +5,13 @@ import {
 
 import Card from "./Card";
 import cardsData from "./cardsData";
+import SideBar from "../nav/Sidebar";
 
 const DashboardHome = () => (
   <div>
-    <Box py={12} bg="rgba(255, 255, 255, 0.35)">
-      <Box mx={[3, 3, "10%", "10%"]}>
+    <Box bg="rgba(255, 255, 255, 0.35)" d="flex" flexDir="row" h="100%">
+      <Box w="20%" h="100%"><SideBar /></Box>
+      <Box py={12} mx={[3, 3, "10%", "10%"]}>
         <Box pb="10" color="#11142D" fontSize="4xl" fontWeight="bold">Dashboard</Box>
         <Grid
           templateColumns={{

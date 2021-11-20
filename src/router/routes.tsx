@@ -23,6 +23,7 @@ export type RouteType = {
     isProtected: boolean;
     allowedRoles?: string[];
     showInNavbar: boolean;
+    showInDashboard?: boolean;
 }
 
 const routes: RouteType[] = [
@@ -116,13 +117,7 @@ const routes: RouteType[] = [
     component: <DashboardHome />,
     isProtected: true,
     showInNavbar: false,
-  },
-  {
-    displayName: "Home",
-    path: "/dashboard",
-    component: <DashboardHome />,
-    isProtected: true,
-    showInNavbar: false,
+    showInDashboard: true,
   },
   {
     displayName: "Profile",
@@ -130,6 +125,7 @@ const routes: RouteType[] = [
     component: <Profile />,
     isProtected: true,
     showInNavbar: false,
+    showInDashboard: true,
   },
   {
     displayName: "Calender",
