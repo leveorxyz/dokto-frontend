@@ -125,6 +125,17 @@ const secondColumn = () :FormDataType => ({
   name: "second",
   fields: [
     {
+      type: FieldTypes.CHECKBOX,
+      name: "accept_all_insurance",
+      label: "I Accept All Insurances",
+      options: [
+        {
+          value: "all",
+          label: "Yes",
+        },
+      ],
+    },
+    {
       type: FieldTypes.MULTISELECT,
       name: "accepted_insurance",
       label: "Accepted Insurances",
@@ -421,6 +432,15 @@ const secondColumn = () :FormDataType => ({
         label: "Wyoming Medicaid",
       },
       ],
+      visibilityDependencies: [
+        {
+          name: "accept_all_insurance",
+          value: (value) => !(value as string[]).includes("all"),
+        },
+      ],
+      rules: {
+        deps: ["accept_all_insurance"],
+      },
     },
     {
       type: FieldTypes.RADIO,
