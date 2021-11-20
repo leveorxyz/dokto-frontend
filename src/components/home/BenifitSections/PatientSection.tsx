@@ -1,5 +1,6 @@
 import { Box, Heading, Image } from "@chakra-ui/react";
 import PatientBenifitIMG from "../../../static/home/PatientBenifit.png";
+import PinkBulletList from "../../common/PinkBulletList";
 
 const PatientSection = () => {
   const listData = [
@@ -35,21 +36,7 @@ const PatientSection = () => {
         >
           An Appointment at The Click of a Button
         </Heading>
-        {listData
-          .map((data) => (
-            <Box
-              key={data}
-              fontSize="lg"
-              fontWeight={300}
-              lineHeight="2rem"
-              px={[0, 0, 6, 6, 6]}
-              color="primary.dark"
-              mt="4"
-            >
-              {data}
-            </Box>
-          ))}
-
+        <PinkBulletList listData={listData} alignBullet="flex-start" />
         <Heading
           fontSize="4xl"
           px={[0, 0, 6, 6, 6]}
@@ -61,7 +48,7 @@ const PatientSection = () => {
           What could be simpler?
         </Heading>
       </Box>
-      <Image src={PatientBenifitIMG} w="100%" height="auto" pt={24} px={[0, 0, 0, 6, 6]} />
+      <Image src={PatientBenifitIMG} w="100%" height="auto" pt={24} px={[0, 0, 0, 6, 6]} fit="contain" />
     </div>
   );
 };

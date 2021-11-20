@@ -25,10 +25,10 @@ export default function PharmacySection() {
           For our pharmacies, our telehealth solution can help to enhance patient relationships and maintain customer loyalty while simultaneously improving care and extending patient services. As a pharmacy, you can offer proactive care with your customers, who will delight convenient, immediate access and high-quality urgent care services from a trusted source.
 
         </Box>
-        <Image src={Telehealth} flex="1" />
+        <Image src={Telehealth} flex="1" fit="contain" />
       </Flex>
       <Flex direction="row" w="100%" mt="150" alignItems="center">
-        <Image src={Medicine} flex="1" />
+        <Image src={Medicine} flex="1" fit="contain" />
         <Flex direction="column" flex="1">
           {listData
             .map((data) => (
