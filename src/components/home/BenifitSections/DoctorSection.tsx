@@ -20,7 +20,7 @@ const DoctorSection = () => (
   <Box>
     <Flex direction="column" alignItems="center">
       <Flex direction="row" alignItems="center">
-        <Image src={VirtualofficeImage} flex="1" />
+        <Image src={VirtualofficeImage} flex="1" fit="contain" />
         <Box w="100%" d="flex" flexDir="column" alignItems="top" m="4" fontSize="lg" flex="1">
           <Heading
             fontSize="4xl"
@@ -56,7 +56,7 @@ const DoctorSection = () => (
         </Box>
       </Flex>
       <Flex direction="row" mt="200">
-        <Image src={DoctorProviderImage} flex="1" />
+        <Image src={DoctorProviderImage} flex="1" fit="contain" />
         <Flex direction="column" flex="1">
           <Heading px={[0, 0, 6, 6, 6]} fontWeight="semibold" color="primary.dark" mt={4}>
             As a Dokto provider you can:

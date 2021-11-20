@@ -61,7 +61,7 @@ const PatientSection = () => {
           What could be simpler?
         </Heading>
       </Box>
-      <Image src={PatientBenifitIMG} w="100%" height="auto" pt={24} px={[0, 0, 0, 6, 6]} />
+      <Image src={PatientBenifitIMG} w="100%" height="auto" pt={24} px={[0, 0, 0, 6, 6]} fit="contain" />
     </div>
   );
 };

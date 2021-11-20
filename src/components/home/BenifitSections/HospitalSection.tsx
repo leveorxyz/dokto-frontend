@@ -37,7 +37,7 @@ const ClinicsSection = () => (
   <div>
     <Box mb="50">
       <Flex direction="row" alignItems="center">
-        <Image src={HospitalUpperImage} flex="1" />
+        <Image src={HospitalUpperImage} flex="1" fit="contain" />
         <Flex direction="column" flex="1">
           <Heading
             fontSize="4xl"
@@ -102,7 +102,7 @@ const ClinicsSection = () => (
             </React.Fragment>
           ))}
         </Flex>
-        <Image src={HospitalLowerImage} flex="1" />
+        <Image src={HospitalLowerImage} flex="1" fit="contain" />
       </Flex>
     </Box>
   </div>
