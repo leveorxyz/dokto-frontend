@@ -3,6 +3,8 @@ import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
 
+import TnC from "./custom/TnC";
+
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
@@ -484,21 +486,10 @@ const secondColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.RADIO,
+      type: FieldTypes.CUSTOM,
       name: "ALL",
       label: "Terms & Privacy",
-      direction: "column",
-      options: [{
-        value: "I agree to the terms of use and privacy policy",
-        label: "I agree to the terms of use and privacy policy",
-      },
-      ],
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
+      component: TnC,
     },
   ],
 });
