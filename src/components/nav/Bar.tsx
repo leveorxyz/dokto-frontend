@@ -10,11 +10,15 @@ import {
   IconButton,
   Center,
   Icon,
+  Menu as ChakraMenu,
+  MenuButton,
+  MenuList,
+  MenuItem,
   Link as ChakraLink,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut,
+  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown,
 } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 
@@ -149,6 +153,36 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
                 href={route.path}
               />
             ))}
+          <Center p={4}>
+            <ChakraMenu>
+              <MenuButton
+                fontSize={["xl", "xl", "md", "md"]}
+                fontWeight={[800, 800, 400, 500, 500]}
+                bg="transparent"
+                _hover={{ bg: "rgba(255, 255, 255, 0.3)" }}
+                _focus={{ bg: "rgba(255, 255, 255, 0.3)" }}
+                _active={{ bg: "rgba(255, 255, 255, 0.5)" }}
+                as={Button}
+                rightIcon={<IoChevronDown />}
+              >
+                Useful Info
+              </MenuButton>
+              <MenuList>
+                {
+                  [
+                    { title: "FAQs", href: "/faqs" },
+                    { title: "T&Cs", href: "/terms-and-conditions" },
+                    { title: "Privacy Policy", href: "/privacy-policy" },
+                    { title: "HIPAA Policy", href: "/hipaa_policy" },
+                  ].map(({ title, href }) => (
+                    <MenuItem key={href} as={Link} to={href}>
+                      {title}
+                    </MenuItem>
+                  ))
+                }
+              </MenuList>
+            </ChakraMenu>
+          </Center>
         </Flex>
 
         <Box display={["none", "none", "block", "block"]}>
