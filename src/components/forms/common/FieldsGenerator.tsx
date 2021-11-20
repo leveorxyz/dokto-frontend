@@ -1,4 +1,6 @@
 import { Heading, Stack } from "@chakra-ui/react";
+import isFunction from "lodash/isFunction";
+import isString from "lodash/isString";
 
 import {
   FormFieldType, FieldTypes, FormRowType, FormColumnType,
@@ -29,7 +31,16 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
   const FormFieldData = data as FormFieldType;
   if (FormFieldData.visibilityDependencies) {
     const shouldDisplayComponent = FormFieldData.visibilityDependencies.reduce(
-      (prev, current) => (prev && formProps.watch(current.name) === current.value),
+      (prev, current) => {
+        let currentTest = true;
+
+        if (isFunction(current.value)) {
+          currentTest = current.value(formProps.watch(current.name));
+        } else if (isString(current.value)) {
+          currentTest = formProps.watch(current.name) === current.value;
+        }
+        return prev && currentTest;
+      },
       true,
     );
 
