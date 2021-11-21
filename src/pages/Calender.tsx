@@ -70,8 +70,10 @@ function SelectableCalendar({ dateLocalizer }:props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const {
-    register, handleSubmit, reset, formState: { errors },
-  } = useForm<EventData>();
+    register, handleSubmit, reset, formState: { isSubmitting, errors },
+  } = useForm<EventData>(
+    { mode: "onBlur" },
+  );
 
   const handleSelect = ({ start, end }: any) => {
     onOpen();
@@ -85,6 +87,8 @@ function SelectableCalendar({ dateLocalizer }:props) {
 
   const onSubmit = (data:any) => {
     console.log(data);
+
+    onClose();
     // TODO store data with Recoil
   };
 
@@ -164,11 +168,20 @@ function SelectableCalendar({ dateLocalizer }:props) {
             </form>
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} type="submit">
-              Save
+          <ModalFooter display="flex" justifyContent="space-between">
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Cancel
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button
+              type="submit"
+              bg="brand.darkPink"
+              color="white"
+              _hover={{ opacity: 0.85 }}
+              _focus={{ opacity: 0.85 }}
+              isLoading={isSubmitting}
+            >
+              Login
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
