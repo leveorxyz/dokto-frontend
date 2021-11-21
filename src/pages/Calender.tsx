@@ -8,9 +8,11 @@ import {
 } from "date-fns";
 import {
   useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,
-  ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input,
+  ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input, Textarea,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
+import eventsAtom from "../atoms/events.atom";
 
 type EventData = {
   title: string;
@@ -68,6 +70,7 @@ class CalendarEvent {
 function SelectableCalendar({ dateLocalizer }:props) {
   const [events] = useState([] as unknown as CalendarEvent[]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const setEventsState = useSetRecoilState(eventsAtom);
 
   const {
     register, handleSubmit, reset, formState: { isSubmitting, errors },
@@ -77,7 +80,6 @@ function SelectableCalendar({ dateLocalizer }:props) {
 
   const handleSelect = ({ start, end }: any) => {
     onOpen();
-    console.log(start, end);
 
     reset({
       startDate: format(start, "yyyy-MM-dd'T'HH:mm") as unknown as Date,
@@ -89,7 +91,7 @@ function SelectableCalendar({ dateLocalizer }:props) {
     console.log(data);
 
     onClose();
-    // TODO store data with Recoil
+    setEventsState(data);
   };
 
   return (
@@ -101,6 +103,7 @@ function SelectableCalendar({ dateLocalizer }:props) {
         defaultView="month"
         views={allViews}
         defaultDate={new Date()}
+        // TODO Open events in modal
         // onSelectEvent={() => onOpen()}
         onSelectSlot={handleSelect}
         startAccessor="start"
@@ -131,6 +134,24 @@ function SelectableCalendar({ dateLocalizer }:props) {
                   {errors.title && errors.title.message}
                 </FormErrorMessage>
               </FormControl>
+              <FormControl isInvalid={!!errors.description} my={6}>
+                <FormLabel htmlFor="description" color="primary.dark">Description</FormLabel>
+
+                <Textarea
+                  {...register("description", {
+                    required: {
+                      value: true,
+                      message: "This field is required",
+                    },
+                  })}
+                  placeholder="Description"
+                  size="sm"
+                />
+                <FormErrorMessage>
+                  {errors.description && errors.description.message}
+                </FormErrorMessage>
+              </FormControl>
+
               <FormControl isInvalid={!!errors.startDate} my={6}>
                 <FormLabel htmlFor="startDate" color="primary.dark">Start Date</FormLabel>
                 <Input
@@ -180,7 +201,7 @@ function SelectableCalendar({ dateLocalizer }:props) {
               _focus={{ opacity: 0.85 }}
               isLoading={isSubmitting}
             >
-              Login
+              Save
             </Button>
           </ModalFooter>
         </ModalContent>
