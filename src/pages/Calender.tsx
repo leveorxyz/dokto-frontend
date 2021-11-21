@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState } from "react";
 import {
   Calendar, View, dateFnsLocalizer, DateLocalizer,
@@ -8,8 +7,8 @@ import {
   startOfWeek, getDay, format, parse,
 } from "date-fns";
 import {
-  useDisclosure,
-  Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input,
+  useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,
+  ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
@@ -55,7 +54,8 @@ class CalendarEvent {
 
     tooltip?: string;
 
-    constructor(_title: string, _start: Date, _endDate: Date, _allDay?: boolean, _desc?: string, _resourceId?: string) {
+    constructor(_title: string, _start: Date, _endDate: Date, _allDay?: boolean,
+      _desc?: string, _resourceId?: string) {
       this.title = _title;
       this.allDay = _allDay || false;
       this.start = _start;
