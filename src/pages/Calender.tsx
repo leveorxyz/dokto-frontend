@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Calendar, View, dateFnsLocalizer, DateLocalizer,
 } from "react-big-calendar";
@@ -11,16 +11,8 @@ import {
   ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input, Textarea,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
-import eventsAtom from "../atoms/events.atom";
-
-type EventData = {
-  title: string;
-  description: string;
-  startDate:Date;
-  endDate:Date;
-
-};
+import { useRecoilState } from "recoil";
+import eventsAtom, { EventData } from "../atoms/events.atom";
 
 interface props {
     dateLocalizer: DateLocalizer;
@@ -41,36 +33,35 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-class CalendarEvent {
-    title: string;
+// class CalendarEvent {
+//     title: string;
 
-    allDay: boolean;
+//     allDay: boolean;
 
-    start: Date;
+//     start: Date;
 
-    end: Date;
+//     end: Date;
 
-    desc: string;
+//     desc: string;
 
-    resourceId?: string;
+//     resourceId?: string;
 
-    tooltip?: string;
+//     tooltip?: string;
 
-    constructor(_title: string, _start: Date, _endDate: Date, _allDay?: boolean,
-      _desc?: string, _resourceId?: string) {
-      this.title = _title;
-      this.allDay = _allDay || false;
-      this.start = _start;
-      this.end = _endDate;
-      this.desc = _desc || "";
-      this.resourceId = _resourceId;
-    }
-}
+//     constructor(_title: string, _start: Date, _endDate: Date, _allDay?: boolean,
+//       _desc?: string, _resourceId?: string) {
+//       this.title = _title;
+//       this.allDay = _allDay || false;
+//       this.start = _start;
+//       this.end = _endDate;
+//       this.desc = _desc || "";
+//       this.resourceId = _resourceId;
+//     }
+// }
 
 function SelectableCalendar({ dateLocalizer }:props) {
-  const [events] = useState([] as unknown as CalendarEvent[]);
+  const [events, setEvents] = useRecoilState(eventsAtom);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const setEventsState = useSetRecoilState(eventsAtom);
 
   const {
     register, handleSubmit, reset, formState: { isSubmitting, errors },
@@ -88,11 +79,13 @@ function SelectableCalendar({ dateLocalizer }:props) {
   };
 
   const onSubmit = (data:any) => {
-    console.log(data);
-
     onClose();
-    setEventsState(data);
+    setEvents((prev:any) => [...prev, data]);
   };
+
+  const formatStartAccessor = (event:EventData) => new Date(event.startDate);
+
+  const formatEndAccessor = (event:EventData) => new Date(event.endDate);
 
   return (
     <>
@@ -103,20 +96,20 @@ function SelectableCalendar({ dateLocalizer }:props) {
         defaultView="month"
         views={allViews}
         defaultDate={new Date()}
-        // TODO Open events in modal
-        // onSelectEvent={() => onOpen()}
+        onSelectEvent={() => onOpen()}
         onSelectSlot={handleSelect}
-        startAccessor="start"
-        endAccessor="end"
+        startAccessor={formatStartAccessor}
+        endAccessor={formatEndAccessor}
         titleAccessor="title"
       />
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Add Event</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <ModalHeader>Add Event</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+
               <FormControl isInvalid={!!errors.title} my={6}>
                 <FormLabel htmlFor="title" color="primary.dark">Title</FormLabel>
                 <Input
@@ -186,24 +179,25 @@ function SelectableCalendar({ dateLocalizer }:props) {
                   {errors.endDate && errors.endDate.message}
                 </FormErrorMessage>
               </FormControl>
-            </form>
-          </ModalBody>
+            </ModalBody>
 
-          <ModalFooter display="flex" justifyContent="space-between">
-            <Button variant="ghost" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              bg="brand.darkPink"
-              color="white"
-              _hover={{ opacity: 0.85 }}
-              _focus={{ opacity: 0.85 }}
-              isLoading={isSubmitting}
-            >
-              Save
-            </Button>
-          </ModalFooter>
+            <ModalFooter display="flex" justifyContent="space-between">
+              <Button variant="ghost" mr={3} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                bg="brand.darkPink"
+                color="white"
+                _hover={{ opacity: 0.85 }}
+                _focus={{ opacity: 0.85 }}
+                isLoading={isSubmitting}
+              >
+                Save
+              </Button>
+            </ModalFooter>
+          </form>
+
         </ModalContent>
       </Modal>
     </>
