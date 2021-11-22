@@ -10,7 +10,7 @@ import LogOut from "../../static/account_logout.svg";
 
 export default [
   {
-    id: "calender",
+    id: "calendar",
     Icon: Calendar,
     title: "Appointment",
     path: "/appointment",
