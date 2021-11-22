@@ -28,9 +28,13 @@ export default function CustomRoutes() {
                     <Navigate to="/" />
                   )
                   : (
-                    <Suspense fallback={<Loading />}>
-                      {component}
-                    </Suspense>
+                    authState.isLoggedIn && !isProtected
+                      ? (<Navigate to="/dashboard" />)
+                      : (
+                        <Suspense fallback={<Loading />}>
+                          {component}
+                        </Suspense>
+                      )
                   )
               }
             />
