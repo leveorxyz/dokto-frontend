@@ -133,6 +133,7 @@ const routes: RouteType[] = [
     component: <Calender />,
     isProtected: true,
     showInNavbar: false,
+    showInDashboard: true,
   },
 ];
 
