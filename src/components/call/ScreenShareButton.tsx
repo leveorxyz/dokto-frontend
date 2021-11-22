@@ -44,8 +44,8 @@ const ScreenShareButton = ({
           console.error("cound not get an access to share screen", err);
         });
     } else {
-      screenShareTrack?.stop();
       room.localParticipant.unpublishTrack(screenShareTrack as LocalVideoTrack);
+      screenShareTrack?.stop();
       setScreenShareTrack(null);
       setIsScreenSharingActive(false);
     }

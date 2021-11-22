@@ -74,7 +74,11 @@ const Participant = ({ participant }: ParticipantProps) => {
   // When a new videoTrack or audioTrack is subscribed, add it to the DOM.
   // When unsubscribed, detach it
   useEffect(() => {
-    const videoTrack = videoTracks[0];
+    let videoTrack: VideoTrack | null = videoTracks[0];
+    // If screen share track show it. else show video track
+    if (videoTracks.length >= 2) {
+      videoTrack = videoTracks[1] || null;
+    }
     videoTrack?.attach(videoRef?.current ?? undefined);
     return () => {
       videoTrack?.detach();
