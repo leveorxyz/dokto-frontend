@@ -135,7 +135,7 @@ const routes: RouteType[] = [
     displayName: "Calender",
     path: "/calender",
     component: <Calender />,
-    isProtected: false,
+    isProtected: true,
     showInNavbar: false,
   },
 ];
