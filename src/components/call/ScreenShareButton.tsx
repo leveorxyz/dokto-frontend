@@ -5,11 +5,14 @@ import { MdScreenShare, MdStopScreenShare } from "react-icons/md";
 
 type PropTypes = {
   room: Room,
-  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>
+  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>,
+  isScreenSharingActive: boolean,
+  setIsScreenSharingActive: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const ScreenShareButton = ({ room, setScreenShareStream }:PropTypes) => {
-  const [isScreenSharingActive, setIsScreenSharingActive] = useState(false);
+const ScreenShareButton = ({
+  room, setScreenShareStream, isScreenSharingActive, setIsScreenSharingActive,
+}:PropTypes) => {
   const [screenShareTrack, setScreenShareTrack] = useState<LocalVideoTrack|null>(null);
 
   const handleScreenSharingEnabling = () => {

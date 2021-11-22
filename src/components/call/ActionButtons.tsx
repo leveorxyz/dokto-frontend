@@ -7,14 +7,23 @@ import ScreenShareButton from "./ScreenShareButton";
 
 type PropTypes = {
   room: Room,
-  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>
+  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>,
+  isScreenSharingActive: boolean,
+  setIsScreenSharingActive: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
-const ActionButtons = ({ room, setScreenShareStream }: PropTypes) => (
+const ActionButtons = ({
+  room, setScreenShareStream, isScreenSharingActive, setIsScreenSharingActive,
+}: PropTypes) => (
   <Box pos="fixed" bottom="10" left="48%">
     <CameraButton room={room} />
     <MicButton room={room} />
-    <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
+    <ScreenShareButton
+      room={room}
+      setScreenShareStream={setScreenShareStream}
+      isScreenSharingActive={isScreenSharingActive}
+      setIsScreenSharingActive={setIsScreenSharingActive}
+    />
     <LeaveRoomButton room={room} />
   </Box>
 );
