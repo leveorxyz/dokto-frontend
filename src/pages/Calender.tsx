@@ -8,7 +8,7 @@ import {
 } from "date-fns";
 import {
   useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,
-  ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input, Textarea,
+  ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input, Textarea, Box,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
@@ -179,10 +179,9 @@ function SelectableCalendar({ dateLocalizer }:props) {
 
 export default function Availability() {
   return (
-    <div style={{ height: "100vh" }}>
+    <Box height="90vh" padding={6}>
       <SelectableCalendar dateLocalizer={localizer} />
-
-    </div>
+    </Box>
 
   );
 }
