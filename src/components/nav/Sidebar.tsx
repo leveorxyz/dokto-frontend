@@ -42,4 +42,16 @@ const Sidebar = () => {
     </Flex>
   );
 };
-export default Sidebar;
+
+export default function SidebarContainer({ children }: {children: React.ReactNode}) {
+  return (
+    <Flex wrap="nowrap">
+      <Box w="15rem">
+        <Sidebar />
+      </Box>
+      <Box w="calc(100% - 15rem)">
+        {children}
+      </Box>
+    </Flex>
+  );
+}
