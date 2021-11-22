@@ -113,7 +113,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
   },
   {
-    displayName: "Home",
+    displayName: "Dashboard",
     path: "/dashboard",
     component: <DashboardHome />,
     isProtected: true,
@@ -129,8 +129,8 @@ const routes: RouteType[] = [
     showInDashboard: true,
   },
   {
-    displayName: "Calendar",
-    path: "/calendar",
+    displayName: "Appointment",
+    path: "/appointments",
     component: <Calendar />,
     isProtected: true,
     showInNavbar: false,

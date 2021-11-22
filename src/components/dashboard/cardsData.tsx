@@ -13,7 +13,7 @@ export default [
     id: "calendar",
     Icon: Calendar,
     title: "Appointment",
-    path: "/appointment",
+    path: "/appointments",
   },
   {
     id: "profile",
