@@ -435,7 +435,7 @@ const secondColumn = () :FormDataType => ({
       visibilityDependencies: [
         {
           name: "accept_all_insurance",
-          value: (value) => !(value as string[]).includes("all"),
+          value: (value) => !(value as string[])?.includes("all"),
         },
       ],
       rules: {
