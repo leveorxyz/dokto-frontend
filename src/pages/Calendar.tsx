@@ -1,18 +1,37 @@
-import React from "react";
 import {
-  Calendar, View, dateFnsLocalizer, DateLocalizer,
+  Calendar,
+  View,
+  dateFnsLocalizer,
+  DateLocalizer,
 } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import {
   startOfWeek, getDay, format, parse,
 } from "date-fns";
 import {
-  useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,
-  ModalFooter, Button, FormControl, FormErrorMessage, FormLabel, Input, Textarea, Box,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Textarea,
+  Heading,
+  Box,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
+import enUS from "date-fns/esm/locale/en-US";
+
 import eventsAtom, { EventData } from "../atoms/events.atom";
+import { SpacedContainer } from "../components/common/Containers";
 
 interface props {
     dateLocalizer: DateLocalizer;
@@ -21,7 +40,7 @@ interface props {
 const allViews: View[] = ["agenda", "day", "week", "month"];
 
 const locales = {
-  "en-US": import("date-fns/locale/en-US"),
+  "en-US": enUS,
 };
 
 const localizer = dateFnsLocalizer({
@@ -179,9 +198,11 @@ function SelectableCalendar({ dateLocalizer }:props) {
 
 export default function Availability() {
   return (
-    <Box height="90vh" padding={6}>
-      <SelectableCalendar dateLocalizer={localizer} />
-    </Box>
-
+    <SpacedContainer py={6}>
+      <Heading mb={6}>Appointments</Heading>
+      <Box height="90vh">
+        <SelectableCalendar dateLocalizer={localizer} />
+      </Box>
+    </SpacedContainer>
   );
 }

@@ -23,7 +23,9 @@ const CameraButton = ({ room }: PropTypes) => {
     // stop sending camera stream to other users
     room.localParticipant.videoTracks.forEach(
       (localVideoTrackPublication: LocalVideoTrackPublication) => {
-        localVideoTrackPublication.track.disable();
+        if (localVideoTrackPublication.trackName !== "screen-share-track") {
+          localVideoTrackPublication.track.disable();
+        }
       },
     );
   };
@@ -44,7 +46,7 @@ const CameraButton = ({ room }: PropTypes) => {
       aria-label="camera-enable-disable"
       title="Camera Enable/Disable"
       colorScheme="purple"
-      mx={2}
+      mx={3}
       rounded="full"
     />
   );

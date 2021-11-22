@@ -5,11 +5,14 @@ import { MdScreenShare, MdStopScreenShare } from "react-icons/md";
 
 type PropTypes = {
   room: Room,
-  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>
+  setScreenShareStream: React.Dispatch<React.SetStateAction<MediaStream | null>>,
+  isScreenSharingActive: boolean,
+  setIsScreenSharingActive: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const ScreenShareButton = ({ room, setScreenShareStream }:PropTypes) => {
-  const [isScreenSharingActive, setIsScreenSharingActive] = useState(false);
+const ScreenShareButton = ({
+  room, setScreenShareStream, isScreenSharingActive, setIsScreenSharingActive,
+}:PropTypes) => {
   const [screenShareTrack, setScreenShareTrack] = useState<LocalVideoTrack|null>(null);
 
   const handleScreenSharingEnabling = () => {
@@ -41,8 +44,8 @@ const ScreenShareButton = ({ room, setScreenShareStream }:PropTypes) => {
           console.error("cound not get an access to share screen", err);
         });
     } else {
-      screenShareTrack?.stop();
       room.localParticipant.unpublishTrack(screenShareTrack as LocalVideoTrack);
+      screenShareTrack?.stop();
       setScreenShareTrack(null);
       setIsScreenSharingActive(false);
     }
@@ -55,7 +58,7 @@ const ScreenShareButton = ({ room, setScreenShareStream }:PropTypes) => {
       aria-label="mute-unmute"
       title="Mute/Unmute"
       colorScheme="purple"
-      mx={2}
+      mx={3}
       rounded="full"
     />
   );

@@ -1,9 +1,11 @@
+import { useState, useEffect, useCallback } from "react";
 import {
   Flex, Box,
 } from "@chakra-ui/react";
-import { IoPeopleCircle, IoTv } from "react-icons/io5";
+import { IoPeopleCircle } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
-import { Room as RoomType } from "twilio-video";
+import { Room as RoomType, RemoteParticipant } from "twilio-video";
+import { uniqBy } from "lodash";
 import { callListAtom } from "./atoms";
 import SideBarUser from "./SideBarUser";
 import { CustomHeading, EmptyComponent } from "./misc";
@@ -14,8 +16,34 @@ type PropTypes = {
 
 export default function SideBar({ waitingRoom }: PropTypes) {
   const callListUsers = useRecoilValue(callListAtom);
+  const [waitingListUsers, setWaitingListUsers] = useState<RemoteParticipant[]>(
+    Array.from(waitingRoom?.participants?.values()),
+  );
   // const waitingListUsers = useRecoilValue(waitingListAtom);
-  const waitingListUsers = Array.from(waitingRoom?.participants?.values());
+
+  const addParticipant = useCallback((participant: RemoteParticipant) => {
+    setWaitingListUsers((prev) => (uniqBy([...prev, participant], "identity")));
+  }, [setWaitingListUsers]);
+
+  const removeParticipant = useCallback((participant: RemoteParticipant) => {
+    setWaitingListUsers(
+      (prev) => prev.filter((p: RemoteParticipant) => p.identity !== participant.identity),
+    );
+  }, [setWaitingListUsers]);
+
+  useEffect(() => {
+    waitingRoom.on("participantConnected", (participant: RemoteParticipant) => addParticipant(participant));
+
+    waitingRoom.on("participantDisconnected", (participant: RemoteParticipant) => {
+      removeParticipant(participant);
+    });
+
+    const unscubscribe = () => {
+      waitingRoom.removeAllListeners();
+    };
+
+    return unscubscribe;
+  }, [addParticipant, removeParticipant, waitingRoom]);
 
   return (
     <Flex
@@ -41,7 +69,7 @@ export default function SideBar({ waitingRoom }: PropTypes) {
         <Box as={IoPeopleCircle} fontSize="1.2rem" mr={3} />
         <Box>Group Call</Box>
       </Flex>
-      <Flex
+      {/* <Flex
         width="100%"
         p={3}
         alignItems="center"
@@ -51,7 +79,7 @@ export default function SideBar({ waitingRoom }: PropTypes) {
       >
         <Box as={IoTv} fontSize="1.2rem" mr={3} />
         <Box>Screen Share</Box>
-      </Flex>
+      </Flex> */}
       <Box py={3} w="100%">
         <CustomHeading>In Call</CustomHeading>
         <Flex direction="column">
@@ -63,7 +91,7 @@ export default function SideBar({ waitingRoom }: PropTypes) {
       </Box>
 
       <Box py={3} w="100%">
-        <CustomHeading>Waiting List</CustomHeading>
+        <CustomHeading>Waiting Room</CustomHeading>
         <Flex direction="column">
           {waitingListUsers.length === 0 && <EmptyComponent />}
           {waitingListUsers.map((user) => (

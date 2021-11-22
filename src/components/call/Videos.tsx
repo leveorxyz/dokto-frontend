@@ -7,10 +7,11 @@ import { uniqBy } from "lodash";
 import { callListAtom } from "./atoms";
 import Participant from "./Participant";
 import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
-import CameraButton from "./CameraButton";
-import LeaveRoomButton from "./LeaveRoomButton";
-import MicButton from "./MicButton";
-import ScreenShareButton from "./ScreenShareButton";
+// import CameraButton from "./CameraButton";
+// import LeaveRoomButton from "./LeaveRoomButton";
+// import MicButton from "./MicButton";
+// import ScreenShareButton from "./ScreenShareButton";
+import ActionButtons from "./ActionButtons";
 
 type PropTypes = {
   room: RoomType;
@@ -22,6 +23,7 @@ const Videos = ({ room }: PropTypes) => {
     Array.from(room.participants.values()),
   );
   const [screenShareStream, setScreenShareStream] = useState<MediaStream|null>(null);
+  const [isScreenSharingActive, setIsScreenSharingActive] = useState<boolean>(false);
 
   const addParticipant = useCallback((participant: RemoteParticipant) => {
     setParticipants((prev) => (uniqBy([...prev, participant], "identity")));
@@ -54,8 +56,10 @@ const Videos = ({ room }: PropTypes) => {
   return (
     <Flex direction="row" wrap="nowrap" w="100%" justifyContent={participants.length === 0 ? "space-between" : "flex-end"}>
       <Flex direction="column" flexGrow={1}>
-        {/* Local screen share preview */}
-        {screenShareStream && <LocalScreenSharingPreview stream={screenShareStream} />}
+        {/* Local screen share preview show only when screen share state is active */}
+        {isScreenSharingActive
+         && screenShareStream
+         && <LocalScreenSharingPreview stream={screenShareStream} />}
         {participants.length > 1
         && (
         <Grid
@@ -85,7 +89,9 @@ const Videos = ({ room }: PropTypes) => {
 
       <Flex
         maxWidth="15rem"
-        minH="85vh"
+        minH="84vh"
+        marginRight="4"
+        marginTop="4"
         flexGrow={0}
         flexShrink={1}
         direction="column"
@@ -100,12 +106,20 @@ const Videos = ({ room }: PropTypes) => {
           p={[3, 6, 6, 6, 6]}
         />
 
+        {/* Video action buttons */}
+        <ActionButtons
+          room={room}
+          setScreenShareStream={setScreenShareStream}
+          isScreenSharingActive={isScreenSharingActive}
+          setIsScreenSharingActive={setIsScreenSharingActive}
+        />
+        {/*
         <Flex mt={6}>
           <CameraButton room={room} />
           <MicButton room={room} />
           <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
           <LeaveRoomButton room={room} />
-        </Flex>
+        </Flex> */}
       </Flex>
     </Flex>
   );
