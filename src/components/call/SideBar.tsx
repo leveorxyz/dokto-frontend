@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import {
   Flex, Box,
 } from "@chakra-ui/react";
-import { IoPeopleCircle, IoTv } from "react-icons/io5";
+import { IoPeopleCircle } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { Room as RoomType, RemoteParticipant } from "twilio-video";
 import { uniqBy } from "lodash";
@@ -69,7 +69,7 @@ export default function SideBar({ waitingRoom }: PropTypes) {
         <Box as={IoPeopleCircle} fontSize="1.2rem" mr={3} />
         <Box>Group Call</Box>
       </Flex>
-      <Flex
+      {/* <Flex
         width="100%"
         p={3}
         alignItems="center"
@@ -79,7 +79,7 @@ export default function SideBar({ waitingRoom }: PropTypes) {
       >
         <Box as={IoTv} fontSize="1.2rem" mr={3} />
         <Box>Screen Share</Box>
-      </Flex>
+      </Flex> */}
       <Box py={3} w="100%">
         <CustomHeading>In Call</CustomHeading>
         <Flex direction="column">
