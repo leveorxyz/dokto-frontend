@@ -1,11 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Flex, Grid, GridItem, Box, Image, Button, IconButton, Center, Icon,
+  Flex,
+  Grid,
+  GridItem,
+  Box,
+  Image,
+  Button,
+  IconButton,
+  Center,
+  Icon,
+  Menu as ChakraMenu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Link as ChakraLink,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut,
+  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown,
 } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 
@@ -39,10 +52,10 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       <Box
         as={Button}
         px={6}
-        bg="brand.darkPink"
+        bg="brand.dark"
         color="white"
         rounded="full"
-        _hover={{ bg: "brand.pink", color: "black" }}
+        _hover={{ bg: "brand.dark", color: "white" }}
         onClick={authState.isLoggedIn ? () => {} : openLoginModal}
       >
         <Box mr={6}>
@@ -57,10 +70,10 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       <Box
         as={Button}
         px={6}
-        bg="brand.darkPink"
+        bg="brand.dark"
         color="white"
         rounded="full"
-        _hover={{ bg: "brand.pink", color: "black" }}
+        _hover={{ bg: "brand.dark", color: "black" }}
         onClick={() => setAuthState({ isLoggedIn: false, user: null })}
       >
         <Box mr={6}>
@@ -116,10 +129,17 @@ type MenuProps = {
 function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
   return (
     <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
-      <GridItem display="flex" bg="#7002C7" h="100%" w="100%" pr={3} alignItems="center" justifyContent="flex-end">
-        <Link to="/">
-          <Image src={logoSVG} alt="logo" fit="cover" />
-        </Link>
+      <GridItem
+        display="flex"
+        bg="brand.dark"
+        h="100%"
+        w="auto"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <ChakraLink as={Link} to="/" height="75%">
+          <Image src={logoSVG} height="100%" alt="logo" fit="cover" />
+        </ChakraLink>
       </GridItem>
 
       <GridItem display="flex" w="100%" h="100%" bg="#3DE0FF" justifyContent="space-between" alignItems="center" pr={[3, 3, 3, "10%", "10%"]}>
@@ -133,6 +153,36 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
                 href={route.path}
               />
             ))}
+          <Center p={4}>
+            <ChakraMenu>
+              <MenuButton
+                fontSize={["xl", "xl", "md", "md"]}
+                fontWeight={[800, 800, 400, 500, 500]}
+                bg="transparent"
+                _hover={{ bg: "rgba(255, 255, 255, 0.3)" }}
+                _focus={{ bg: "rgba(255, 255, 255, 0.3)" }}
+                _active={{ bg: "rgba(255, 255, 255, 0.5)" }}
+                as={Button}
+                rightIcon={<IoChevronDown />}
+              >
+                Useful Info
+              </MenuButton>
+              <MenuList>
+                {
+                  [
+                    { title: "FAQs", href: "/faqs" },
+                    { title: "T&Cs", href: "/terms-and-conditions" },
+                    { title: "Privacy Policy", href: "/privacy-policy" },
+                    { title: "HIPAA Policy", href: "/hipaa_policy" },
+                  ].map(({ title, href }) => (
+                    <MenuItem key={href} as={Link} to={href}>
+                      {title}
+                    </MenuItem>
+                  ))
+                }
+              </MenuList>
+            </ChakraMenu>
+          </Center>
         </Flex>
 
         <Box display={["none", "none", "block", "block"]}>
@@ -142,7 +192,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         <Box display={["flex", "flex", "none", "none"]}>
           <IconButton
             aria-label="Open Menu"
-            colorScheme="cyan"
+            colorScheme="brand.dark"
             icon={isMenuOpen ? <IoClose size="1.5em" /> : <IoMenu size="1.5em" />}
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
@@ -161,7 +211,7 @@ export default function MenuBar() {
   } = useDisclosure();
 
   return (
-    <FullWidthContainer py={{ base: 2 }}>
+    <FullWidthContainer pt={{ base: 2 }}>
       <UpperMenu />
       <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} openLoginModal={openLoginModal} />
       {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}

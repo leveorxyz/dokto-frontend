@@ -33,6 +33,7 @@ type LoginFormData = {
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
+
   const {
     mutate: login,
     error,

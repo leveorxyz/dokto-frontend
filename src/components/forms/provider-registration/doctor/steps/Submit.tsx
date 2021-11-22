@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Country, State } from "country-state-city";
 
 import { stepAtom } from "../atoms";
 import useDoctorReg from "../../../../../hooks/register/useDoctorReg";
+import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
@@ -42,16 +43,20 @@ export default function Submit() {
   );
 
   const {
-    error, isFetching,
+    error, isError, isSuccess, isFetching,
   } = useDoctorReg(data);
 
   if (isFetching) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <>{(error as any).message}</>;
+  if (isSuccess) {
+    return <MessagePage status="success" title="Success!" message="You have successfully registered to Dokto! Please check your email and verify your email to log in to Dokto" />;
   }
 
-  return <Redirect to="/" />;
+  if (isError) {
+    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
+  }
+
+  return <Navigate to="/" />;
 }

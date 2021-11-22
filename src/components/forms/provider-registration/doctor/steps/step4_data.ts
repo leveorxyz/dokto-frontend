@@ -3,6 +3,8 @@ import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
 
+import TnC from "./custom/TnC";
+
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
@@ -122,6 +124,17 @@ const secondColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
   fields: [
+    {
+      type: FieldTypes.CHECKBOX,
+      name: "accept_all_insurance",
+      label: "I Accept All Insurances",
+      options: [
+        {
+          value: "all",
+          label: "Yes",
+        },
+      ],
+    },
     {
       type: FieldTypes.MULTISELECT,
       name: "accepted_insurance",
@@ -419,11 +432,20 @@ const secondColumn = () :FormDataType => ({
         label: "Wyoming Medicaid",
       },
       ],
+      visibilityDependencies: [
+        {
+          name: "accept_all_insurance",
+          value: (value) => !(value as string[])?.includes("all"),
+        },
+      ],
+      rules: {
+        deps: ["accept_all_insurance"],
+      },
     },
     {
       type: FieldTypes.RADIO,
       name: "group_1",
-      label: "Group 1",
+      label: "Business Associate Agreement",
       direction: "column",
       options: [{
         value: "I have read and agree to the Business Associate Agreement",
@@ -444,7 +466,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.RADIO,
       name: "group_2",
-      label: "Group 2",
+      label: "HIPAA Agreement",
       direction: "column",
       options: [{
         value: "I have read and agree to the HIPAA Agreement",
@@ -465,7 +487,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.RADIO,
       name: "group_3",
-      label: "Group 3",
+      label: "GDPR Laws",
       direction: "column",
       options: [{
         value: "I have read and agree to the GDPR Laws",
@@ -484,21 +506,10 @@ const secondColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.RADIO,
+      type: FieldTypes.CUSTOM,
       name: "ALL",
-      label: "ALL",
-      direction: "column",
-      options: [{
-        value: "I agree to the terms of use and privacy policy",
-        label: "I agree to the terms of use and privacy policy",
-      },
-      ],
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
+      label: "Terms & Privacy",
+      component: TnC,
     },
   ],
 });

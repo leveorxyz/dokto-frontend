@@ -17,16 +17,19 @@ type RuleType<T> = {
   message: string;
 };
 
+type VisibilityDependenciesWithValue = {
+    name: string;
+    value: string | ((value: unknown) => boolean);
+};
+
 type CommonType = {
   name: string;
   label: string;
   defaultValue?: string;
   placeholder?: string;
+  bottomText?: string;
   size?: "xs" | "sm" | "md" | "lg";
-  visibilityDependencies?: {
-    name: string;
-    value: string;
-  }[];
+  visibilityDependencies?: VisibilityDependenciesWithValue[];
   rules?: {
     deps?: string[];
     required?: RuleType<boolean>;
@@ -94,6 +97,7 @@ export type RadioFieldType = {
 export type FileFieldType = {
   type: FieldTypes.FILE;
   accept?: string;
+  bottomText?: string;
   multiple?: boolean;
 } & CommonType;
 
@@ -133,6 +137,7 @@ export type FormRowType = {
   type: FieldTypes.ROW;
   name: string; // this is just for the keys for mapping
   label?: string;
+  bottomText?: string;
   fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 
@@ -140,6 +145,7 @@ export type FormColumnType = {
   type: FieldTypes.COLUMN;
   name: string; // this is just for the keys for mapping
   label?: string;
+  bottomText?: string;
   fields: (FormFieldType | FormColumnType | FormRowType)[];
 }
 

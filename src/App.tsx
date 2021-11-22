@@ -4,7 +4,7 @@ import {
 import {
   HashRouter as Router,
 } from "react-router-dom";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilValue } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./app.scss";
 import "swiper/swiper.scss";
@@ -14,18 +14,27 @@ import "swiper/components/pagination/pagination.scss";
 
 import Routes from "./router";
 import NavBar from "./components/nav/Bar";
+import SideBarContainer from "./components/nav/Sidebar";
 import Footer from "./components/common/footer/Footer";
 import theme from "./components/ExtendedTheme";
+import authAtom from "./atoms/auth.atom";
 import AxiosContextProvider from "./contexts/AxiosContext";
 
 const queryClient = new QueryClient();
 
 function AppContent() {
+  const authState = useRecoilValue(authAtom);
   return (
     <>
-      <NavBar />
-      <Routes />
-      <Footer />
+      {!authState.isLoggedIn && <NavBar />}
+      {!authState.isLoggedIn && <Routes />}
+      {!authState.isLoggedIn && <Footer />}
+
+      {authState.isLoggedIn && (
+        <SideBarContainer>
+          <Routes />
+        </SideBarContainer>
+      )}
     </>
   );
 }

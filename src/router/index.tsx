@@ -1,26 +1,42 @@
-import React from "react";
+import { Suspense } from "react";
 import {
-  Switch,
+  Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
 import routes from "./routes";
+import authAtom from "../atoms/auth.atom";
+import Loading from "../components/common/fallback/LoadingPage";
 
-export default function Routes() {
+export default function CustomRoutes() {
+  const authState = useRecoilValue(authAtom);
+
   return (
-    <Switch>
+    <Routes>
       {
         routes
-          .map((route) => (
+          .map(({ path, component, isProtected }) => (
             <Route
-              key={route.path}
-              path={route.path}
-              render={() => route.component}
-              exact
+              key={path}
+              path={path}
+              element={
+                // eslint-disable-next-line no-nested-ternary
+                !authState.isLoggedIn && isProtected
+                  ? (
+                    <Navigate to="/" />
+                  )
+                  : (
+                    <Suspense fallback={<Loading />}>
+                      {component}
+                    </Suspense>
+                  )
+              }
             />
           ))
       }
-    </Switch>
+    </Routes>
   );
 }
 

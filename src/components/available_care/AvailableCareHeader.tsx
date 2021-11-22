@@ -22,9 +22,9 @@ const AvailableCareHeader = () => {
       <SpacedContainer py={[12, 12, 36, 48, 48]}>
         <Box
           as={motion.h1}
-          fontWeight="bold"
+          fontWeight={800}
           color="#170041"
-          fontSize={["6xl", "6xl", "8xl", "8xl", "8xl"]}
+          fontSize={["6xl", "6xl", "7xl", "7xl", "7xl"]}
           {...animationVariants}
           custom={0}
         >

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { AxiosInstance } from "axios";
 import { useSetRecoilState } from "recoil";
@@ -18,6 +19,7 @@ const login = async (axios: AxiosInstance, data: Data) => axios.post("user/login
 export default function useLogin() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAuthState = useSetRecoilState(authAtom);
+  const navigate = useNavigate();
 
   return useMutation(
     (data: Data) => login(axios as AxiosInstance, data),
@@ -25,10 +27,12 @@ export default function useLogin() {
       mutationKey: "login",
       retry: false,
       onSuccess: ({
-        token,
         id,
-        profile_photo: profilePhoto,
         email,
+        token,
+        profile_photo: profilePhoto,
+        user_type: userType,
+        full_name: fullName,
       }) => {
         setAuthState({
           isLoggedIn: true,
@@ -37,8 +41,11 @@ export default function useLogin() {
             email,
             token,
             profilePhoto,
+            userType,
+            fullName,
           },
         });
+        navigate("/dashboard");
       },
     },
   );
