@@ -14,6 +14,7 @@ const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const VideoCalls = lazy(() => import("../pages/calls"));
+const Calender = lazy(() => import("../pages/Calender"));
 
 export type RouteType = {
     displayName: string;
@@ -127,6 +128,13 @@ const routes: RouteType[] = [
     displayName: "Profile",
     path: "/profile",
     component: <Profile />,
+    isProtected: true,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Calender",
+    path: "/calender",
+    component: <Calender />,
     isProtected: true,
     showInNavbar: false,
   },
