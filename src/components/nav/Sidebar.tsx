@@ -17,14 +17,21 @@ const Sidebar = () => {
       overflowY="scroll"
       overflowX="hidden"
       bg="gray.100"
+      sx={{
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
     >
       {routes
         .filter((route) => route.showInDashboard)
         .map((route) => (
           <ChakraLink as={Link} to={route.path} key={route.path}>
             <Box
-              p={6}
-              m={2}
+              py={3}
+              px={6}
+              my={2}
+              mx={6}
               bg={location.pathname === route.path ? "brand.darkPink" : "transparent"}
               color={location.pathname === route.path ? "white" : "black"}
               cursor="pointer"
