@@ -23,7 +23,9 @@ const CameraButton = ({ room }: PropTypes) => {
     // stop sending camera stream to other users
     room.localParticipant.videoTracks.forEach(
       (localVideoTrackPublication: LocalVideoTrackPublication) => {
-        localVideoTrackPublication.track.disable();
+        if (localVideoTrackPublication.trackName !== "screen-share-track") {
+          localVideoTrackPublication.track.disable();
+        }
       },
     );
   };
