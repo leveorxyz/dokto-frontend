@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import {
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
@@ -16,18 +17,22 @@ export default function CustomRoutes() {
     <Routes>
       {
         routes
-          .filter((route) => (authState.isLoggedIn ? true : !route.isProtected))
-          .map(({ path, component }) => (
+          .map(({ path, component, isProtected }) => (
             <Route
               key={path}
               path={path}
               element={
-              (
-                <Suspense fallback={<Loading />}>
-                  {component}
-                </Suspense>
-              )
-            }
+                // eslint-disable-next-line no-nested-ternary
+                !authState.isLoggedIn && isProtected
+                  ? (
+                    <Navigate to="/" />
+                  )
+                  : (
+                    <Suspense fallback={<Loading />}>
+                      {component}
+                    </Suspense>
+                  )
+              }
             />
           ))
       }

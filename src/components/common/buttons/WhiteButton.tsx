@@ -6,6 +6,9 @@ type PropTypes = {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   bgColor?: string;
+  border?: string;
+  borderColor?: string;
+  ml?: string;
   color?: string;
   w?: string;
   rounded?: string;
@@ -32,9 +35,12 @@ export default function RegisterButton({
 
 RegisterButton.defaultProps = {
   onClick: () => {},
-  color: "white",
-  bgColor: "brand.darkPink",
+  border: "2px",
+  color: "brand.darkPink",
+  borderColor: "brand.darkPink",
+  bgColor: "white",
   rounded: "xl",
+  ml: "0px",
   w: "min-content",
   width: "max-content",
   type: "button",

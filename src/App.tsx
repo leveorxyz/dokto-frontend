@@ -14,6 +14,7 @@ import "swiper/components/pagination/pagination.scss";
 
 import Routes from "./router";
 import NavBar from "./components/nav/Bar";
+import SideBarContainer from "./components/nav/Sidebar";
 import Footer from "./components/common/footer/Footer";
 import theme from "./components/ExtendedTheme";
 import authAtom from "./atoms/auth.atom";
@@ -26,8 +27,14 @@ function AppContent() {
   return (
     <>
       {!authState.isLoggedIn && <NavBar />}
-      <Routes />
+      {!authState.isLoggedIn && <Routes />}
       {!authState.isLoggedIn && <Footer />}
+
+      {authState.isLoggedIn && (
+        <SideBarContainer>
+          <Routes />
+        </SideBarContainer>
+      )}
     </>
   );
 }
