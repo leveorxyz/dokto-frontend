@@ -18,8 +18,6 @@ const isDateLessThan18Years = (value: unknown) :boolean => {
     ),
   );
 
-  console.log(test);
-
   return test;
 };
 
@@ -154,11 +152,11 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.CHECKBOX,
       name: "is_parent",
-      label: "I'm a parent",
+      label: "Date of birth is under 18 years",
       direction: "column",
       options: [{
         value: "is_parent",
-        label: "Yes",
+        label: "Yes, I’m a parent/guardian/guarantor",
         required: true,
       }],
       visibilityDependencies: [
