@@ -20,7 +20,7 @@ const LeaveRoomButton = ({ room }: PropTypes) => {
       aria-label="end-call"
       title="End Call"
       colorScheme="purple"
-      mx={2}
+      mx={3}
       rounded="full"
     />
   );
