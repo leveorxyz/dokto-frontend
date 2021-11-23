@@ -3,10 +3,14 @@ import {
   View,
   dateFnsLocalizer,
   DateLocalizer,
+  SlotInfo,
 } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import {
-  startOfWeek, getDay, format, parse,
+  startOfWeek,
+  getDay,
+  format,
+  parse,
 } from "date-fns";
 import {
   useDisclosure,
@@ -56,23 +60,33 @@ function SelectableCalendar({ dateLocalizer }:props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const {
-    register, handleSubmit, reset, formState: { isSubmitting, errors },
+    register, handleSubmit, setValue, formState: { isSubmitting, errors },
   } = useForm<EventData>(
     { mode: "onBlur" },
   );
 
-  const handleSelect = ({ start, end }: any) => {
+  const handleSelect = ({ start, end }: SlotInfo) => {
     onOpen();
 
-    reset({
-      startDate: format(start, "yyyy-MM-dd'T'HH:mm") as unknown as Date,
-      endDate: format(end, "yyyy-MM-dd'T'HH:mm") as unknown as Date,
-    });
+    setValue(
+      "startDate",
+      format(
+        start as Date,
+        "yyyy-MM-dd'T'HH:mm",
+      ),
+    );
+    setValue(
+      "endDate",
+      format(
+        end as Date,
+        "yyyy-MM-dd'T'HH:mm",
+      ),
+    );
   };
 
-  const onSubmit = (data:any) => {
+  const onSubmit = (data:EventData) => {
     onClose();
-    setEvents((prev:any) => [...prev, data]);
+    setEvents((prev:EventData[]) => [...prev, data]);
   };
 
   const formatStartAccessor = (event:EventData) => new Date(event.startDate);
