@@ -77,7 +77,6 @@ function PatientsTable({
       </Thead>
       <Tbody {...getTableBodyProps()}>
         {rows.map((row) => {
-          console.log({ rawww: row });
           prepareRow(row);
           return (
             <Tr
