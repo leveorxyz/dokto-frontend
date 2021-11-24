@@ -18,7 +18,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown,
+  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown, IoLogIn,
 } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 
@@ -44,9 +44,26 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       borderLeftColor="black"
     >
       {!authState.isLoggedIn && (
-        <>
-          <NavItem href="/patient-registration" title="Patient Registration" />
-        </>
+        // <NavItem href="/patient-registration" title="Patient Registration" />
+        <Link to="/patient-registration">
+          <Box
+            as={Button}
+            px={6}
+            mx={[0, 0, 4, 4, 4]}
+            bg="brand.darkPink"
+            color="white"
+            rounded="full"
+            _hover={{ bg: "brand.dark", color: "white" }}
+          >
+            <Box mr={4}>
+              Patient Registration
+            </Box>
+
+            <Box d="flex" justifyContent="center">
+              <Icon as={IoLogIn} fontSize="1.5rem" />
+            </Box>
+          </Box>
+        </Link>
       )}
       <Box
         as={Button}
@@ -57,11 +74,11 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
         _hover={{ bg: "brand.dark", color: "white" }}
         onClick={authState.isLoggedIn ? () => {} : openLoginModal}
       >
-        <Box mr={6}>
+        <Box mr={4}>
           {authState.isLoggedIn ? authState.user.email : "Login"}
         </Box>
 
-        <Box>
+        <Box d="flex" justifyContent="center">
           <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
         </Box>
       </Box>
@@ -80,7 +97,7 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
         </Box>
 
         <Box>
-          <Icon as={IoLogOut} fontSize="1.2rem" />
+          <Icon as={IoLogOut} fontSize="1.5rem" />
         </Box>
       </Box>
       )}
