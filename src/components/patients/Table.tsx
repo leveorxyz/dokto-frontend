@@ -31,6 +31,7 @@ type PropTypes = {
   headerGroups: HeaderGroup<Patient>[];
   rows: Row<Patient>[];
   prepareRow: (row: Row<Patient>) => void;
+  showModal: (patient: Patient) => void;
 }
 
 function PatientsTable({
@@ -39,6 +40,7 @@ function PatientsTable({
   headerGroups,
   rows,
   prepareRow,
+  showModal,
 }: PropTypes) {
   return (
     <Table {...getTableProps()}>
@@ -75,11 +77,15 @@ function PatientsTable({
       </Thead>
       <Tbody {...getTableBodyProps()}>
         {rows.map((row) => {
+          console.log({ rawww: row });
           prepareRow(row);
           return (
             <Tr
               {...row.getRowProps()}
               key={row.id}
+              onClick={() => {
+                showModal(row.original);
+              }}
             >
               {row.cells.map((cell) => (
                 <Td
