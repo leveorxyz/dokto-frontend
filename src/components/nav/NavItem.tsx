@@ -20,7 +20,7 @@ export default function NavItem({
   );
 
   return (
-    <Center p={4}>
+    <Center p={[2, 2, 3, 3, 3]}>
       <Link
         as={RouteLink}
         to={href}
