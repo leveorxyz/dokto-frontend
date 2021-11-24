@@ -8,6 +8,7 @@ import {
   Row,
 } from "react-table";
 import {
+  Box,
   Table,
   Thead,
   Tbody,
@@ -18,8 +19,8 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import {
-  IoChevronDown,
-  IoChevronUp,
+  IoCaretUp,
+  IoCaretDown,
 } from "react-icons/io5";
 
 import { Patient } from "../../atoms/ehr/patients";
@@ -51,17 +52,22 @@ function PatientsTable({
                 )}
                 key={column.id}
               >
-                {column.render("Header")}
-                <chakra.span pl="4">
-                  {/* eslint-disable-next-line no-nested-ternary */}
-                  {column.isSorted ? (
-                    column.isSortedDesc ? (
-                      <Icon as={IoChevronDown} aria-label="sorted descending" />
-                    ) : (
-                      <Icon as={IoChevronUp} aria-label="sorted ascending" />
-                    )
-                  ) : null}
-                </chakra.span>
+                <Box
+                  d="flex"
+                  alignItems="center"
+                >
+                  {column.render("Header")}
+                  <chakra.span pl="4">
+                    {/* eslint-disable-next-line no-nested-ternary */}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <Icon as={IoCaretDown} aria-label="sorted descending" />
+                      ) : (
+                        <Icon as={IoCaretUp} aria-label="sorted ascending" />
+                      )
+                    ) : null}
+                  </chakra.span>
+                </Box>
               </Th>
             ))}
           </Tr>
@@ -71,7 +77,10 @@ function PatientsTable({
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <Tr {...row.getRowProps()} key={row.id}>
+            <Tr
+              {...row.getRowProps()}
+              key={row.id}
+            >
               {row.cells.map((cell) => (
                 <Td
                   {...cell.getCellProps()}
