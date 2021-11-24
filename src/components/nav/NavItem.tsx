@@ -7,10 +7,11 @@ type PropTypes = {
   icon?: JSX.Element;
   title: string;
   setIsMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  color?: string;
 }
 
 export default function NavItem({
-  href, icon, title, setIsMenuOpen,
+  href, icon, title, setIsMenuOpen, color,
 }: PropTypes) {
   const location = useLocation();
   const isCurrentRoute = useMemo(
@@ -26,7 +27,7 @@ export default function NavItem({
         fontSize={["xl", "xl", "md", "md"]}
         fontWeight={isCurrentRoute ? [900, 900, 500, 600, 600] : [800, 800, 400, 500, 500]}
         position="relative"
-        color="ghost"
+        color={color}
         style={{
           textDecoration: "none",
         }}
@@ -34,20 +35,18 @@ export default function NavItem({
           content: "''",
           textDecoration: "none",
           position: "absolute",
-          color: "ghost",
+          color,
           bottom: "-6px",
           left: 0,
           width: "100%",
           height: isCurrentRoute ? "3px" : "0px",
-          backgroundColor: "brand.dark",
+          backgroundColor: color,
         }}
         _focus={{
           textDecoration: "none",
-          color: "brand.dark",
         }}
         _hover={{
           textDecoration: "none",
-          color: "brand.dark",
         }}
         onClick={() => setIsMenuOpen && setIsMenuOpen(false)}
       >
@@ -62,4 +61,5 @@ export default function NavItem({
 NavItem.defaultProps = {
   icon: null,
   setIsMenuOpen: null,
+  color: "brand.dark",
 };
