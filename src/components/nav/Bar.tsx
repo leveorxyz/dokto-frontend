@@ -46,7 +46,6 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       {!authState.isLoggedIn && (
         <>
           <NavItem href="/patient-registration" title="Patient Registration" />
-          <NavItem href="/provider-registration" title="Provider Registration" />
         </>
       )}
       <Box
