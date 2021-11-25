@@ -9,6 +9,7 @@ import FooterLinks from "./FooterLinks";
 import FooterLogo from "../../../static/dokto_png_blue_white1.png";
 import SocialIcons from "../SocialIcons";
 import FooterLink from "./FooterLink";
+import Partners from "./Partners";
 
 const Footer = () => {
   const dividerDisplay = {
@@ -46,7 +47,7 @@ const Footer = () => {
                 Useful Info
               </Heading>
 
-              <Box flex="1" mb="4">
+              <Box ml="2" flex="1" mb="4">
                 {FooterLinks
                   .map((route) => (
                     <FooterLink
@@ -57,6 +58,15 @@ const Footer = () => {
                   ))}
               </Box>
             </Box>
+            {/* //Dokita247, Inc. Partners */}
+            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
+            <Box flex="1">
+              <Heading size="md" mb="4">
+                Dokita247, Inc. Partners
+              </Heading>
+              <Partners />
+            </Box>
+            {/* //Connect with Dokto */}
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
               <Heading size="md" ml="1">Connect with Dokto</Heading>
