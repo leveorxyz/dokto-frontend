@@ -1,18 +1,30 @@
+import { useContext } from "react";
 import {
   Flex, Box, Avatar, Button, IconButton,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { Conversation } from "@twilio/conversations";
+import { AxiosInstance } from "axios";
+import { AxiosContext } from "../../contexts/AxiosContext";
 
 // import UserActionModal from "./UserActionModal";
 
 type ConversationComponentProps = {
   conversation: Conversation;
-
 }
 
 export default function SidebarConversation({ conversation }: ConversationComponentProps) {
   // const { isOpen, onOpen, onClose } = useDisclosure();
+  const axios = useContext<AxiosInstance | null>(AxiosContext);
+
+  // Remove patient from waiting room
+  const handleRemoveParticipant = (channelUniqueName:string): void => {
+    axios?.post("twilio/remove-participant-conversation/", { channel_unique_name: channelUniqueName })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Flex
@@ -40,6 +52,7 @@ export default function SidebarConversation({ conversation }: ConversationCompon
           bg="brand.pink"
           size="xs"
           _hover={{ bg: "brand.darkPink", color: "white" }}
+          onClick={() => handleRemoveParticipant(conversation.uniqueName)}
         >
           Start Call
         </Button>

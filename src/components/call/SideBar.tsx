@@ -68,7 +68,10 @@ export default function SideBar({ conversations }: PropTypes) {
         <Flex direction="column">
           {conversations.length === 0 && <EmptyComponent />}
           {conversations.map((conversation) => (
-            <SidebarConversation key={conversation.sid} conversation={conversation} />
+            <SidebarConversation
+              key={conversation.sid}
+              conversation={conversation}
+            />
           ))}
         </Flex>
       </Box>

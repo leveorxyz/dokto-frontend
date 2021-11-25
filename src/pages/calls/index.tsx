@@ -76,6 +76,12 @@ export default function VideoCalls() {
       setConversations(
         (prevState) => [...prevState.filter((it) => it.sid !== thisConversation.sid)],
       );
+      if (authState.user?.userType === "PATIENT") {
+        // connect patient doctor room
+        TwilioUtils.connectToRoom(token, roomName).then((currentRoom) => {
+          setRoom(currentRoom);
+        });
+      }
     });
   }, [token]);
 
@@ -92,6 +98,7 @@ export default function VideoCalls() {
 
         initConversations();
       } else if (authState.user?.userType === "PATIENT") {
+        initConversations();
         // Create conversation room for patient waiting
         axios?.post("twilio/create-conversation/", { doctor_username: "mahmudul" })
           .then((data) => {
