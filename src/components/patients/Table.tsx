@@ -85,6 +85,10 @@ function PatientsTable({
               onClick={() => {
                 showModal(row.original);
               }}
+              _hover={{
+                cursor: "pointer",
+                bg: "gray.100",
+              }}
             >
               {row.cells.map((cell) => (
                 <Td

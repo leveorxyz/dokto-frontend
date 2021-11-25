@@ -89,7 +89,7 @@ export default function PatientOverViewModal({ isOpen, onClose, patient }: Props
             Close
           </Button>
           <Button mr={2}>View Profile</Button>
-          <Link to="encounters">
+          <Link to={`encounters?name=${patient.name}`}>
             <Button colorScheme="purple">View Encounters</Button>
           </Link>
         </ModalFooter>
