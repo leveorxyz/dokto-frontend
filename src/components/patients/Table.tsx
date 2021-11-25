@@ -43,7 +43,7 @@ function PatientsTable({
   showModal,
 }: PropTypes) {
   return (
-    <Table {...getTableProps()}>
+    <Table {...getTableProps()} overflowX="scroll">
       <Thead>
         {headerGroups.map((headerGroup) => (
           <Tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.getHeaderGroupProps().key}>
