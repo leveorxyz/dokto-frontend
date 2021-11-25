@@ -11,7 +11,7 @@ const partnerList:IPartner[] = [
     description: "Global telemedicine platform",
   },
   {
-    title: "Klik4Health (United States-residents)",
+    title: "Klik4Health",
     description: "Care-At-Home service for US residents",
   },
   {
@@ -19,20 +19,25 @@ const partnerList:IPartner[] = [
     description: "Urgent care facilities for New Jersey residents",
   },
   {
-    title: "American Hospital (Lagos-residents)",
+    title: "American Hospital",
     description: "Advanced medical facility offering highest standards of private healthcare to Lagos State residents.",
   },
   {
-    title: "EMX (Global)",
+    title: "EMX Global",
     description: "Technology for transfer and exchange of clinical information between all medical platforms.",
   },
 ];
 
 const Partners = () => (
   <Box flex="1" mb="4">
-    {partnerList.map((partner) => (
+    {partnerList.map((partner, idx) => (
       <Box key={partner.title} ml="2" mb="2">
-        <Box>{partner.title}</Box>
+        <Box>
+          <Box as="span" color="primary.light" fontWeight="bold" mr={2}>
+            {`${idx + 1}.`}
+          </Box>
+          <Box as="span">{partner.title}</Box>
+        </Box>
         <Box fontSize="sm" color="gray.500">{partner.description}</Box>
       </Box>
     ))}

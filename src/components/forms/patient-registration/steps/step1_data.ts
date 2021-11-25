@@ -1,8 +1,25 @@
 import format from "date-fns/format";
+import isAfter from "date-fns/isAfter";
+import parseISO from "date-fns/parseISO";
+
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
 import MobileNo from "../../provider-registration/doctor/steps/custom/MobileNo";
+
+const isDateLessThan18Years = (value: unknown) :boolean => {
+  const date = new Date();
+  const test = isAfter(
+    parseISO(value as string),
+    new Date(
+      date.getFullYear() - 18,
+      date.getMonth(),
+      date.getDate(),
+    ),
+  );
+
+  return test;
+};
 
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
@@ -82,6 +99,48 @@ const firstColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+      },
+    },
+    {
+      type: FieldTypes.CHECKBOX,
+      name: "is_parent",
+      label: "Date of birth is under 18 years",
+      direction: "column",
+      options: [{
+        value: "is_parent",
+        label: "Yes, I am the parent/guardian/guarantor",
+        required: true,
+      }],
+      visibilityDependencies: [
+        {
+          name: "date_of_birth",
+          value: isDateLessThan18Years,
+        },
+      ],
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+        deps: ["date_of_birth"],
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "parent_name",
+      label: "Name of Parent or Guardian",
+      visibilityDependencies: [
+        {
+          name: "date_of_birth",
+          value: isDateLessThan18Years,
+        },
+      ],
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+        deps: ["date_of_birth"],
       },
     },
     {

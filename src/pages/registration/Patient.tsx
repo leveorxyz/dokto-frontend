@@ -28,11 +28,6 @@ export default function Provider() {
             >
               Patient Registration
             </Heading>
-            <Box color="gray.500" mt={6}>
-              Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm
-              Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm
-              Lorem Ipsulm Lorem Ipsulm
-            </Box>
           </Box>
           <Image src={PatientRegIMG} fill="contain" height="100%" />
         </Flex>

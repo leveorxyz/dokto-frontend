@@ -10,6 +10,30 @@ const firstColumn = () :FormDataType => ({
   name: "first",
   fields: [
     {
+      type: FieldTypes.FILE,
+      name: "license_file",
+      label: "Current License",
+      accept: "image/*, application/pdf",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      inputType: "date",
+      name: "license_expiration",
+      label: "Current License Expiration Date",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
       type: FieldTypes.TEXTAREA,
       name: "professional_bio",
       label: "Professional Bio",
@@ -98,18 +122,6 @@ const firstColumn = () :FormDataType => ({
           },
         },
       ],
-    },
-    {
-      type: FieldTypes.FILE,
-      name: "license_file",
-      label: "License Upload",
-      accept: "image/*, application/pdf",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
     {
       type: FieldTypes.TEXTAREA,

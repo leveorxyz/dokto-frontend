@@ -136,12 +136,6 @@ const secondColumn = (watch: any) :FormDataType => ({
       name: "zip_code",
       label: "Zip Code",
       placeholder: "Zip Code",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
   ],
 });
