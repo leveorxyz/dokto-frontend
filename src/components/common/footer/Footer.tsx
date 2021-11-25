@@ -41,15 +41,21 @@ const Footer = () => {
               </Box>
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
-            <Box flex="1" mb="4">
-              {FooterLinks
-                .map((route) => (
-                  <FooterLink
-                    key={route.path}
-                    title={route.displayName}
-                    href={route.path}
-                  />
-                ))}
+            <Box flex="1">
+              <Heading size="md" mb="4">
+                Useful Info
+              </Heading>
+
+              <Box flex="1" mb="4">
+                {FooterLinks
+                  .map((route) => (
+                    <FooterLink
+                      key={route.path}
+                      title={route.displayName}
+                      href={route.path}
+                    />
+                  ))}
+              </Box>
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
