@@ -89,19 +89,6 @@ const firstColumn = () :FormDataType => ({
             },
           },
         },
-        {
-          type: FieldTypes.FILE,
-          name: "certificate",
-          label: "Certificate Upload",
-          accept: "image/*",
-          bottomText: "Certificate will not be shown publicly",
-          rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
-          },
-        },
       ],
     },
   ],
