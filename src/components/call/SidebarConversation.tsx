@@ -3,24 +3,23 @@ import {
   Flex, Box, Avatar, Button, IconButton,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
-import { RemoteParticipant } from "twilio-video";
+import { Conversation } from "@twilio/conversations";
 import { AxiosInstance } from "axios";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
 // import UserActionModal from "./UserActionModal";
 
-type UserComponentProps = {
-  user: RemoteParticipant;
-
+type ConversationComponentProps = {
+  conversation: Conversation;
 }
 
-export default function UserComponent({ user }: UserComponentProps) {
+export default function SidebarConversation({ conversation }: ConversationComponentProps) {
   // const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-  const fullName = user.identity.slice(37);
 
-  const handleEnd = (participant:RemoteParticipant) => {
-    axios?.post("twilio/remove-participant-video/", { room_name: "doctor", participant_sid: participant.sid })
+  // Remove patient from waiting room
+  const handleRemoveParticipant = (channelUniqueName:string): void => {
+    axios?.post("twilio/remove-participant-conversation/", { channel_unique_name: channelUniqueName })
       .then((data) => {
         console.log(data);
       })
@@ -44,21 +43,23 @@ export default function UserComponent({ user }: UserComponentProps) {
         },
       }}
     >
-      <Avatar name={fullName} />
+      <Avatar name={conversation.friendlyName} />
       <Flex direction="column" mx={3}>
-        <Box color="white" mx={3}>{fullName}</Box>
+        <Box color="white" mx={3}>{conversation.friendlyName}</Box>
+
         <Button
           id="call-button"
           bg="brand.pink"
           size="xs"
           _hover={{ bg: "brand.darkPink", color: "white" }}
-          onClick={() => handleEnd(user)}
+          onClick={() => handleRemoveParticipant(conversation.uniqueName)}
         >
-          End Call
+          Start Call
         </Button>
+
       </Flex>
       <IconButton
-        aria-label={`User actions for ${fullName}`}
+        aria-label={`User actions for ${conversation.friendlyName}`}
         icon={<Box as={IoEllipsisVertical} color="brand.light" />}
         variant="ghost"
         _hover={{ bg: "brand.light" }}
