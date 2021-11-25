@@ -1,7 +1,7 @@
-import Chat from "../../static/Group 129.svg";
-import Hospital from "../../static/Group 131.svg";
-import Capsule from "../../static/Group 133.svg";
-import Stethoscope from "../../static/stethoscope.svg";
+import Chat from "../../../static/Group 129.svg";
+import Stethoscope from "../../../static/stethoscope.svg";
+import Flexibility from "../../../static/Flexibility.png";
+import Convenience from "../../../static/Convenience.png";
 
 export default [
   {
@@ -18,13 +18,13 @@ export default [
   },
   {
     id: 3,
-    Icon: Hospital,
+    Icon: Flexibility,
     title: "Flexibility",
     description: "Paying for healthcare has never been easier. Select from insurance, self-pay, or take advantage of the Dokto Gift Card and enjoy improved health with a little help from friends & family!",
   },
   {
     id: 4,
-    Icon: Capsule,
+    Icon: Convenience,
     title: "Convenience",
     description: "We keep your convenience and care at the heart of all our services. From virtual medical consultancies to tests, results, prescriptions and pharmacy deliveries to your door, we excel in providing remote care.",
   },

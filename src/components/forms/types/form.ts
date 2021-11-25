@@ -17,6 +17,11 @@ type RuleType<T> = {
   message: string;
 };
 
+type VisibilityDependenciesWithValue = {
+    name: string;
+    value: string | ((value: unknown) => boolean);
+};
+
 type CommonType = {
   name: string;
   label: string;
@@ -24,10 +29,7 @@ type CommonType = {
   placeholder?: string;
   bottomText?: string;
   size?: "xs" | "sm" | "md" | "lg";
-  visibilityDependencies?: {
-    name: string;
-    value: string;
-  }[];
+  visibilityDependencies?: VisibilityDependenciesWithValue[];
   rules?: {
     deps?: string[];
     required?: RuleType<boolean>;

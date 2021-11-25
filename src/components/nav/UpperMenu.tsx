@@ -9,7 +9,7 @@ import StoreIMG from "../../static/Store.png";
 
 export function UpperMenuActions() {
   return (
-    <Flex alignItems="center" justifyContent="flex-end" shrink={1} grow={0}>
+    <Flex alignItems="center" pl={2} shrink={1} grow={0}>
       <Button size="sm" mr={{ base: 2, md: 1 }} variant="ghost" borderWidth={2} borderColor="brand.dark">Dokto News</Button>
       <Link to="contact">
         <Button size="sm" mr={{ base: 2, md: 1 }} variant="ghost" borderWidth={2} borderColor="brand.dark">Contact Us</Button>
@@ -84,6 +84,20 @@ export default function UpperNavBar() {
         </Box>
         <Flex justifyContent="flex-end" alignItems="center">
           <SocialIcons />
+          <Box
+            as={Link}
+            to="/provider-registration"
+            bg="primary.dark"
+            color="white"
+            rounded="md"
+            px={3}
+            py={2}
+            ml={3}
+            fontSize="sm"
+            fontWeight={600}
+          >
+            Join as a Provider
+          </Box>
           <UpperMenuActions />
         </Flex>
       </Flex>

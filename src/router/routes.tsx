@@ -14,6 +14,8 @@ const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const VideoCalls = lazy(() => import("../pages/calls"));
+const Logout = lazy(() => import("../pages/Logout"));
+const Calendar = lazy(() => import("../pages/Calendar"));
 
 export type RouteType = {
     displayName: string;
@@ -22,6 +24,7 @@ export type RouteType = {
     isProtected: boolean;
     allowedRoles?: string[];
     showInNavbar: boolean;
+    showInDashboard?: boolean;
 }
 
 const routes: RouteType[] = [
@@ -110,18 +113,12 @@ const routes: RouteType[] = [
     showInNavbar: false,
   },
   {
-    displayName: "Home",
+    displayName: "Dashboard",
     path: "/dashboard",
     component: <DashboardHome />,
     isProtected: true,
     showInNavbar: false,
-  },
-  {
-    displayName: "Home",
-    path: "/dashboard",
-    component: <DashboardHome />,
-    isProtected: true,
-    showInNavbar: false,
+    showInDashboard: true,
   },
   {
     displayName: "Profile",
@@ -129,6 +126,23 @@ const routes: RouteType[] = [
     component: <Profile />,
     isProtected: true,
     showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Appointment",
+    path: "/appointments",
+    component: <Calendar />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Logout",
+    path: "/logout",
+    component: <Logout />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
   },
 ];
 

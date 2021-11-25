@@ -7,6 +7,7 @@ type PropTypes = {
   onClick?: () => void;
   bgColor?: string;
   color?: string;
+  w?: string;
   rounded?: string;
   width?: string;
   isLoading?: boolean;
@@ -34,6 +35,7 @@ RegisterButton.defaultProps = {
   color: "white",
   bgColor: "brand.darkPink",
   rounded: "xl",
+  w: "min-content",
   width: "max-content",
   type: "button",
   isLoading: false,

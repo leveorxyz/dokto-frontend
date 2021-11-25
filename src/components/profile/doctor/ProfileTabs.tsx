@@ -9,7 +9,7 @@ import Tab2 from "./Tab2";
 export default function ProfileTabs() {
   const tabs = ["Provider Details", "Services & available hours", "Reviews"];
   return (
-    <Tabs variant="unstyled" isFitted>
+    <Tabs variant="unstyled" isFitted w="100%">
       <TabList sx={{
         borderRadius: "1rem",
         border: "2px",

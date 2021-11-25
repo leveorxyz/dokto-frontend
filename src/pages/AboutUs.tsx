@@ -3,6 +3,7 @@ import Banner from "../components/common/Banner";
 import FactSection from "../components/about_us/FactSection";
 import AboutBackground from "../static/Group 96.png";
 import MemberEngagement from "../components/about_us/MemberEngagement";
+import Disclaimer from "../components/common/Disclaimer";
 
 const AboutUs = () => (
   <div>
@@ -10,6 +11,7 @@ const AboutUs = () => (
     <FactSection />
     <MemberEngagement />
     <Description />
+    <Disclaimer />
   </div>
 );
 

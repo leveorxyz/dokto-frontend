@@ -6,6 +6,7 @@ import QualityCare from "../components/available_care/QualityCare";
 import AvailableCareCarousel from "../components/available_care/AvailableCareCarousel";
 import DoktoIconIMG from "../static/DoktoIcon.png";
 import dotsSVG from "../static/dots.svg";
+import Disclaimer from "../components/common/Disclaimer";
 
 const Blobs = () => (
   <>
@@ -64,6 +65,7 @@ const AvailableCare = () => (
     <CareList />
     <AvailableCareCarousel />
     <QualityCare />
+    <Disclaimer />
   </Box>
 );
 

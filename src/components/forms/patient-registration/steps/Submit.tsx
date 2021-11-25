@@ -6,6 +6,7 @@ import { Country, State } from "country-state-city";
 import Loading from "../../../common/fallback/LoadingPage";
 import { stepAtom } from "../atoms";
 import usePatientReg from "../../../../hooks/register/usePatientReg";
+import MessagePage from "../../../common/fallback/MessagePage";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
@@ -43,15 +44,19 @@ export default function Submit() {
   }), [stepData]);
 
   const {
-    error, isFetching,
+    error, isError, isSuccess, isFetching,
   } = usePatientReg(data);
 
   if (isFetching) {
     return <Loading />;
   }
 
-  if (error) {
-    return <>{(error as any).message}</>;
+  if (isSuccess) {
+    return <MessagePage status="success" title="Success!" message="You have successfully registered to Dokto! Please check your email and verify your email to log in to Dokto" />;
+  }
+
+  if (isError) {
+    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
   return <Navigate to="/" />;
