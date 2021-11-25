@@ -195,7 +195,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
                 {
                   [
                     { title: "FAQs", href: "/faqs" },
-                    { title: "T&Cs", href: "/terms-and-conditions" },
+                    { title: "Terms of Use", href: "/terms-and-conditions" },
                     { title: "Privacy Policy", href: "/privacy-policy" },
                     { title: "HIPAA Policy", href: "/hipaa_policy" },
                   ].map(({ title, href }) => (

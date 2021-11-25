@@ -13,7 +13,7 @@ const FooterLinks: linkType[] = [
     path: "/faqs",
   },
   {
-    displayName: "T&Cs",
+    displayName: "Terms of Use",
     path: "/terms-and-conditions",
   },
   {
