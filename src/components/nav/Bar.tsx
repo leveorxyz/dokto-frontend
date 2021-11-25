@@ -20,7 +20,7 @@ import {
 import {
   IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown, IoLogIn,
 } from "react-icons/io5";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import routes from "../../router/routes";
 import NavItem from "./NavItem";
@@ -30,6 +30,7 @@ import SocialIcons from "../common/SocialIcons";
 import UpperMenu, { UpperMenuActions } from "./UpperMenu";
 import authAtom, { AuthStateType } from "../../atoms/auth.atom";
 import LoginModal from "../login/LoginModal";
+import loginModalAtom from "../../atoms/loginModal.atom";
 
 function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
   const [authState, setAuthState] = useRecoilState<AuthStateType>(authAtom);
@@ -229,11 +230,14 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
 
 export default function MenuBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const setLoginModalState = useSetRecoilState(loginModalAtom);
   const {
     isOpen: isLoginModalOpen,
     onOpen: openLoginModal,
     onClose: closeLoginModal,
   } = useDisclosure();
+
+  setLoginModalState({ isLoginModalOpen, openLoginModal, closeLoginModal });
 
   return (
     <FullWidthContainer pt={{ base: 2 }}>
