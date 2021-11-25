@@ -1,6 +1,12 @@
 import { atom } from "recoil";
 
-export default atom<boolean>({
+type LoginModalState = {
+  isLoginModalOpen: boolean;
+  openLoginModal: () => void;
+  closeLoginModal: () => void;
+};
+
+export default atom<LoginModalState | null>({
   key: "loginModal",
-  default: false,
+  default: null,
 });

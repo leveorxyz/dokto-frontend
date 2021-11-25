@@ -3,10 +3,11 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  Button,
 } from "@chakra-ui/react";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
-import { useRecoilState } from "recoil";
-import LoginModal from "../components/login/LoginModal";
+import { useRecoilValue } from "recoil";
+
 import { SpacedContainer } from "../components/common/Containers";
 import useURLQuery from "../hooks/common/useURLQuery";
 import useVerifyEmail from "../hooks/emailVerification/useVerifyEmail";
@@ -15,9 +16,7 @@ import loginModalAtom from "../atoms/loginModal.atom";
 
 export default function EmailVerification() {
   const urlQueries = useURLQuery();
-
-  const [modalState, setModalState] = useRecoilState(loginModalAtom);
-  const closeModal = () => setModalState(false);
+  const loginModalState = useRecoilValue(loginModalAtom);
 
   const {
     isFetching, isError, isSuccess,
@@ -48,15 +47,11 @@ export default function EmailVerification() {
             Sorry, something went wrong. Please try again or come back later.
           </AlertDescription>
         </Alert>
-        {/* <LoginModal isOpen={modalState} onClose={closeModal} /> */}
-
       </SpacedContainer>
     );
   }
 
   if (isSuccess) {
-    // ! IF I CALL setModalState FROM HERE IT DOES NOT GET CLOSED
-    // setModalState(true);
     return (
       <SpacedContainer py={12}>
         <Alert
@@ -76,10 +71,10 @@ export default function EmailVerification() {
           <AlertDescription maxWidth="sm">
             Thanks for signing up and verifying your email.
             You can login and access the dashboard now.
+
+            <Button my={3} colorScheme="purple" onClick={() => loginModalState?.openLoginModal()}>Login</Button>
           </AlertDescription>
         </Alert>
-        <LoginModal isOpen={modalState} onClose={closeModal} />
-
       </SpacedContainer>
 
     );
