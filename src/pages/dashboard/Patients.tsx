@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { useTable, useSortBy, usePagination } from "react-table";
 import {
@@ -10,6 +10,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { matchSorter } from "match-sorter";
+import debounce from "lodash/debounce";
 
 import patientsAtom, { Patient } from "../../atoms/ehr/patients";
 import { columns } from "../../data/PatientsData";
@@ -22,19 +23,24 @@ export default function Patients() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [currentPatient, setCurrentPatient] = useState<Patient | null>(null);
   const [searchParam, setSearchParam] = useState<string | null>(null);
+  const [searchParamDebounced, setSearchParamDebounced] = useState<string | null>(null);
+
+  const debouncedSearch = useRef(
+    debounce((x) => setSearchParamDebounced(x), 500),
+  ).current;
 
   const memoizedColumns = useMemo(() => columns, []);
   const memoizedPatientsData = useMemo(
     () => {
-      if (!searchParam) return patientsData;
+      if (!searchParamDebounced) return patientsData;
       return matchSorter(
         patientsData,
-        searchParam,
+        searchParamDebounced,
         {
           keys: ["name", "address", "phoneNo", "reasonOfVisit", "status"],
         },
       );
-    }, [searchParam, patientsData],
+    }, [searchParamDebounced, patientsData],
   );
 
   const showModal = (patient: Patient) => {
@@ -78,7 +84,10 @@ export default function Patients() {
             placeholder="Search"
             value={searchParam ?? ""}
             variant="filled"
-            onChange={(e) => setSearchParam(e.target.value)}
+            onChange={(e) => {
+              setSearchParam(e.target.value);
+              debouncedSearch(e.target.value);
+            }}
           />
         </Box>
       </Flex>
