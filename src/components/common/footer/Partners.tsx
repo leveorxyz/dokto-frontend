@@ -32,8 +32,8 @@ const Partners = () => (
   <Box flex="1" mb="4">
     {parterlist.map((partner) => (
       <Box key={partner.title} ml="2" mb="2">
-        <Box fontSize="sm">{partner.title}</Box>
-        <Box color="gray.500">{partner.description}</Box>
+        <Box>{partner.title}</Box>
+        <Box fontSize="sm" color="gray.500">{partner.description}</Box>
       </Box>
     ))}
 
