@@ -37,13 +37,13 @@ export default [
     id: "specialities",
     Icon: Specialities,
     title: "Specialities",
-    path: "/specialities",
+    path: "/specialities-services",
   },
   {
     id: "account_settings",
     Icon: AccountSettings,
     title: "Account Settings",
-    path: "/account_settings",
+    path: "/account-settings",
   },
   {
     id: "appointment_booking_system",
