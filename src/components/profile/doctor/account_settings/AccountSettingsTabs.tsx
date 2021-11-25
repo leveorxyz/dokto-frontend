@@ -5,7 +5,7 @@ import DeleteAccount from "./DeleteAccount";
 import EmailNotification from "./EmailNotification";
 
 import PasswordReset from "./PasswordReset";
-import ProfileDetails from "./ProfileDetails";
+import SecuritySettings from "./SecuritySettings";
 
 export default function ProfileSettingsTabs() {
   const tabs = ["Security & Settings", "Password Reset", "Email Notification", "Delete Account"];
@@ -36,7 +36,7 @@ export default function ProfileSettingsTabs() {
         filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
       >
         <TabPanel>
-          <ProfileDetails />
+          <SecuritySettings />
         </TabPanel>
 
         <TabPanel>

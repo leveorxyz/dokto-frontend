@@ -10,6 +10,7 @@ import FileInput from "./FileInput";
 import SelectInput from "./SelectInput";
 import RadioInput from "./RadioInput";
 import CheckboxField from "./Checkbox";
+import SwitchInput from "./SwitchInput";
 import TextareaField from "./TextareaField";
 import ArrayField from "./ArrayField";
 import MultiSelect from "./MultiSelect";
@@ -63,6 +64,10 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
 
   if (data.type === FieldTypes.RADIO) {
     return <RadioInput {...data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.SWITCH) {
+    return <SwitchInput {...data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.CHECKBOX) {

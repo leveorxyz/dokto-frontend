@@ -4,6 +4,7 @@ export enum FieldTypes {
   SELECT = "select",
   MULTISELECT = "multiselect",
   CHECKBOX = "checkbox",
+  SWITCH = "switch",
   RADIO = "radio",
   FILE = "file",
   ARRAY = "array",
@@ -84,6 +85,10 @@ export type CheckboxFieldType = {
   }[];
 } & CommonType;
 
+export type SwitchFieldType = {
+  type: FieldTypes.SWITCH;
+} & CommonType;
+
 export type RadioFieldType = {
   type: FieldTypes.RADIO;
   direction?: "column" | "row";
@@ -130,6 +135,7 @@ export type FormFieldType = InputFieldType
                             | CheckboxFieldType
                             | RadioFieldType
                             | FileFieldType
+                            | SwitchFieldType
                             | CustomFieldType
                             | ArrayFieldType;
 
