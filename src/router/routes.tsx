@@ -14,6 +14,8 @@ const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"));
+const AccountSettings = lazy(() => import("../pages/dashboard/AccountSettings"));
+const SpecialitiesServices = lazy(() => import("../pages/dashboard/SpecialitiesServices"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
@@ -133,6 +135,22 @@ const routes: RouteType[] = [
     displayName: "Profile Settings",
     path: "/profile-settings",
     component: <ProfileSettings />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Specialities & Services",
+    path: "/specialities-services",
+    component: <SpecialitiesServices />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Account Settings",
+    path: "/account-settings",
+    component: <AccountSettings />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,

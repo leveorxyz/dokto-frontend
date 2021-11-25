@@ -1,22 +1,21 @@
+import React from "react";
 import {
-  Heading,
-  Box,
+  Heading, Box,
   Divider,
 } from "@chakra-ui/react";
-
 import { SpacedContainer } from "../../components/common/Containers";
-import ProfileSettingsTabs from "../../components/profile/doctor/profile_settings/ProfileSettingsTabs";
+
+import SpecialitiesSection from "../../components/profile/doctor/specialities_services/SpecialitiesSection";
 import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 
-export default function Profile() {
+const SpecialitiesServices = () => {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;
   }
-
   return (
     <SpacedContainer py={20}>
       <Box
@@ -27,10 +26,12 @@ export default function Profile() {
         boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
         filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
       >
-        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Profile Settings</Heading>
+        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Specialities &amp; Services</Heading>
         <Divider mb="5" />
-        <ProfileSettingsTabs />
+        <SpecialitiesSection />
       </Box>
     </SpacedContainer>
   );
-}
+};
+
+export default SpecialitiesServices;
