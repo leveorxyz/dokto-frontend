@@ -24,6 +24,10 @@ const FooterLinks: linkType[] = [
     displayName: "HIPAA Policy",
     path: "/hipaaa_policy",
   },
+  {
+    displayName: "Cookies Policy",
+    path: "/cookies-policy",
+  },
 ];
 
 export default FooterLinks;

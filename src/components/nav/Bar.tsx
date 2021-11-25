@@ -198,6 +198,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
                     { title: "Terms of Use", href: "/terms-and-conditions" },
                     { title: "Privacy Policy", href: "/privacy-policy" },
                     { title: "HIPAA Policy", href: "/hipaa_policy" },
+                    { title: "Cookies Policy", href: "/cookies-policy" },
                   ].map(({ title, href }) => (
                     <MenuItem key={href} as={Link} to={href}>
                       {title}
