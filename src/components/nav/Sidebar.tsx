@@ -32,12 +32,12 @@ const Sidebar = () => {
               px={6}
               my={2}
               mx={6}
-              bg={location.pathname === route.path ? "brand.darkPink" : "transparent"}
-              color={location.pathname === route.path ? "white" : "black"}
+              bg={location.pathname.includes(route.path) ? "brand.darkPink" : "transparent"}
+              color={location.pathname.includes(route.path) ? "white" : "black"}
               cursor="pointer"
               _hover={{
-                bg: location.pathname === route.path ? "brand.darkPink" : "white",
-                color: location.pathname === route.path ? "white" : "brand.darkPink",
+                bg: location.pathname.includes(route.path) ? "brand.darkPink" : "white",
+                color: location.pathname.includes(route.path) ? "white" : "brand.darkPink",
                 textDecoration: "none",
               }}
               rounded="lg"
@@ -52,8 +52,8 @@ const Sidebar = () => {
 
 export default function SidebarContainer({ children }: {children: React.ReactNode}) {
   return (
-    <Flex wrap="nowrap">
-      <Box w="15rem">
+    <Flex wrap="nowrap" justifyContent="flex-end" position="relative">
+      <Box w="15rem" position="fixed" top={0} left={0}>
         <Sidebar />
       </Box>
       <Box w="calc(100% - 15rem)">
