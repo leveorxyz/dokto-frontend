@@ -34,7 +34,7 @@ const Footer = () => {
             >
               <Box pb="6"><Image width="50%" height="auto" src={FooterLogo} /></Box>
               <Box fontSize="md" color="gray.500">
-                <Box as="span" fontSize="md" fontWeight="800" color="gray.500">Dokto, a Dokita247, Inc. company, </Box>
+                <Box as="span" fontWeight="800" color="#3DE0FF">Dokto, a Dokita247, Inc. company, </Box>
                 A global Telehealth service that simplifies healthcare and increases round-the-clock
                 patient
                 access to medical experts. We are Dokto: virtual care without boundaries.
