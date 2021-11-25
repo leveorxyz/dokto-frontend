@@ -13,7 +13,7 @@ const FooterLinks: linkType[] = [
     path: "/faqs",
   },
   {
-    displayName: "T&Cs",
+    displayName: "Terms of Use",
     path: "/terms-and-conditions",
   },
   {
@@ -23,6 +23,10 @@ const FooterLinks: linkType[] = [
   {
     displayName: "HIPAA Policy",
     path: "/hipaaa_policy",
+  },
+  {
+    displayName: "Cookies Policy",
+    path: "/cookies-policy",
   },
 ];
 

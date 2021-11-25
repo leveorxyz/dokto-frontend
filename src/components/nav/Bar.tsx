@@ -18,7 +18,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown,
+  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown, IoLogIn,
 } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 
@@ -39,15 +39,31 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       direction={["column", "column", "row", "row"]}
       alignItems="center"
       h="100%"
-      py={4}
+      pr={4}
       borderLeftWidth={[0, 0, 2, 2, 2]}
       borderLeftColor="black"
     >
       {!authState.isLoggedIn && (
-        <>
-          <NavItem href="/patient-registration" title="Patient Registration" />
-          <NavItem href="/provider-registration" title="Provider Registration" />
-        </>
+        // <NavItem href="/patient-registration" title="Patient Registration" />
+        <Link to="/patient-registration">
+          <Box
+            as={Button}
+            px={6}
+            mx={[0, 0, 4, 4, 4]}
+            bg="brand.darkPink"
+            color="white"
+            rounded="full"
+            _hover={{ bg: "brand.dark", color: "white" }}
+          >
+            <Box mr={4}>
+              Patient Registration
+            </Box>
+
+            <Box d="flex" justifyContent="center">
+              <Icon as={IoLogIn} fontSize="1.5rem" />
+            </Box>
+          </Box>
+        </Link>
       )}
       <Box
         as={Button}
@@ -58,11 +74,11 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
         _hover={{ bg: "brand.dark", color: "white" }}
         onClick={authState.isLoggedIn ? () => {} : openLoginModal}
       >
-        <Box mr={6}>
+        <Box mr={4}>
           {authState.isLoggedIn ? authState.user.email : "Login"}
         </Box>
 
-        <Box>
+        <Box d="flex" justifyContent="center">
           <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
         </Box>
       </Box>
@@ -81,7 +97,7 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
         </Box>
 
         <Box>
-          <Icon as={IoLogOut} fontSize="1.2rem" />
+          <Icon as={IoLogOut} fontSize="1.5rem" />
         </Box>
       </Box>
       )}
@@ -137,12 +153,20 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         alignItems="center"
         justifyContent="center"
       >
-        <ChakraLink as={Link} to="/" height="75%">
-          <Image src={logoSVG} height="100%" alt="logo" fit="cover" />
+        <ChakraLink as={Link} to="/" height="75%" p={3}>
+          <Image src={logoSVG} height="100%" alt="logo" fit="contain" />
         </ChakraLink>
       </GridItem>
 
-      <GridItem display="flex" w="100%" h="100%" bg="#3DE0FF" justifyContent="space-between" alignItems="center" pr={[3, 3, 3, "10%", "10%"]}>
+      <GridItem
+        display="flex"
+        w="100%"
+        h="100%"
+        bg="primary.light"
+        justifyContent="space-between"
+        alignItems="center"
+        pr={[3, 3, 3, 8, 8]}
+      >
         <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]} py={4}>
           {routes
             .filter((route) => route.showInNavbar)
@@ -171,9 +195,10 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
                 {
                   [
                     { title: "FAQs", href: "/faqs" },
-                    { title: "T&Cs", href: "/terms-and-conditions" },
+                    { title: "Terms of Use", href: "/terms-and-conditions" },
                     { title: "Privacy Policy", href: "/privacy-policy" },
                     { title: "HIPAA Policy", href: "/hipaa_policy" },
+                    { title: "Cookies Policy", href: "/cookies-policy" },
                   ].map(({ title, href }) => (
                     <MenuItem key={href} as={Link} to={href}>
                       {title}
