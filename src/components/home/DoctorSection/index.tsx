@@ -30,9 +30,8 @@ const OurDoctors = () => (
         as="button"
         bgColor="brand.darkPink"
         color="white"
-        minW="50%"
         rounded="3xl"
-        p={8}
+        p={6}
         mx="auto"
         mt={24}
         textTransform="uppercase"

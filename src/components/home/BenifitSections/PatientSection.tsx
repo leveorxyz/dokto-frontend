@@ -1,6 +1,9 @@
-import { Box, Heading, Image } from "@chakra-ui/react";
+import {
+  Flex, Box, Heading, Image,
+} from "@chakra-ui/react";
 import PatientBenifitIMG from "../../../static/home/PatientBenifit.png";
 import PinkBulletList from "../../common/PinkBulletList";
+import DoktoIcon from "../../../static/DoktoIcon.png";
 
 const PatientSection = () => {
   const listData = [
@@ -48,6 +51,26 @@ const PatientSection = () => {
           What could be simpler?
         </Heading>
       </Box>
+      <Flex justifyContent="flex-end">
+        <Box
+          as="button"
+          bgColor="brand.darkPink"
+          color="white"
+          rounded="3xl"
+          p={6}
+          mr={[0, 0, 0, 6, 6]}
+          textTransform="uppercase"
+          _hover={{ opacity: ".9" }}
+          _active={{ opacity: ".9" }}
+          d="flex"
+          flexDir="row"
+          alignItems="center"
+          flexWrap="nowrap"
+        >
+          <Box fontSize={["3xl", "3xl", "3xl", "5xl", "5xl"]} fontWeight={800}>See a Doctor Now</Box>
+          <Image src={DoktoIcon} ml={12} height={["3rem", "3rem", "3rem", "6rem", "6rem"]} width="auto" fit="contain" />
+        </Box>
+      </Flex>
       <Image src={PatientBenifitIMG} w="100%" height="auto" pt={24} px={[0, 0, 0, 6, 6]} fit="contain" />
     </div>
   );
