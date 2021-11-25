@@ -2,7 +2,7 @@ import {
   Tabs, TabList, TabPanels, Tab, TabPanel,
 } from "@chakra-ui/react";
 
-import Tab2 from "../Tab2";
+import ExperienceEducation from "./ExperienceEducation";
 import ProfileDetails from "./ProfileDetails";
 
 export default function ProfileSettingsTabs() {
@@ -38,7 +38,7 @@ export default function ProfileSettingsTabs() {
         </TabPanel>
 
         <TabPanel>
-          <Tab2 />
+          <ExperienceEducation />
         </TabPanel>
       </TabPanels>
     </Tabs>
