@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Flex } from "@chakra-ui/react";
+import { Client as ConversationsClient } from "@twilio/conversations";
 import { Room as RoomType } from "twilio-video";
 import { useRecoilValue } from "recoil";
 import TwilioUtils from "../../components/call/utils/TwilioUtils";
@@ -12,10 +13,56 @@ import LoadingPage from "../../components/common/fallback/LoadingPage";
 
 export default function VideoCalls() {
   const [room, setRoom] = useState<RoomType | null>(null);
+  const [connectionState, setConnectionState] = useState({
+    status: "",
+    statusString: "",
+  });
   // eslint-disable-next-line
   const [waitingRoom, setWaitingRoom] = useState<RoomType | null>(null);
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
   const authState = useRecoilValue(authAtom);
+
+  console.log(connectionState);
+
+  // Conversation initialization handler
+  const initConversations = useCallback(() => {
+    const client = new ConversationsClient(token);
+    setConnectionState({ status: "default", statusString: "connecting" });
+
+    client.on("connectionStateChanged", (state) => {
+      if (state === "connecting") {
+        setConnectionState({
+          statusString: "Connecting to Twilio…",
+          status: "default",
+        });
+      }
+      if (state === "connected") {
+        setConnectionState({
+          statusString: "You are connected.",
+          status: "success",
+        });
+      }
+      if (state === "disconnecting") {
+        setConnectionState({
+          statusString: "Disconnecting from Twilio…",
+          status: "default",
+        });
+      }
+      if (state === "disconnected") {
+        setConnectionState({
+          statusString: "Disconnected.",
+
+          status: "warning",
+        });
+      }
+      if (state === "denied") {
+        setConnectionState({
+          statusString: "Failed to connect.",
+          status: "error",
+        });
+      }
+    });
+  }, [token]);
 
   useEffect(() => {
     if (token && roomName) {
@@ -29,13 +76,14 @@ export default function VideoCalls() {
         TwilioUtils.connectToRoom(token, "waiting", true).then((currentRoom) => {
           setWaitingRoom(currentRoom);
         });
+        initConversations();
       } else if (authState.user?.userType === "PATIENT") {
         TwilioUtils.connectToRoom(token, "waiting", true).then((currentRoom) => {
           setWaitingRoom(currentRoom);
         });
       }
     }
-  }, [token, roomName, authState.user?.userType]);
+  }, [token, roomName, authState.user?.userType, initConversations]);
 
   const {
     isLoading,
