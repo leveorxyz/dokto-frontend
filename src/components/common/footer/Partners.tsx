@@ -5,7 +5,7 @@ type IPartner={
 title:string;
 description:string
 }
-const parterlist:IPartner[] = [
+const partnerList:IPartner[] = [
   {
     title: "Dokto Global",
     description: "Global telemedicine platform",
@@ -30,7 +30,7 @@ const parterlist:IPartner[] = [
 
 const Partners = () => (
   <Box flex="1" mb="4">
-    {parterlist.map((partner) => (
+    {partnerList.map((partner) => (
       <Box key={partner.title} ml="2" mb="2">
         <Box>{partner.title}</Box>
         <Box fontSize="sm" color="gray.500">{partner.description}</Box>
