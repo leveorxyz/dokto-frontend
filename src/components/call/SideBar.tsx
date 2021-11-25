@@ -58,7 +58,7 @@ export default function SideBar({ conversations }: PropTypes) {
         <Flex direction="column">
           {callListUsers.length === 0 && <EmptyComponent />}
           {callListUsers.map((user) => (
-            <SideBarUser key={user.identity} user={user} inCallList />
+            <SideBarUser key={user.identity} user={user} />
           ))}
         </Flex>
       </Box>

@@ -30,6 +30,10 @@ export default function VideoCalls() {
 
   console.log(connectionState);
 
+  room?.on("disconnected", () => {
+    setRoom(null);
+  });
+
   // Conversation initialization handler
   const initConversations = useCallback(() => {
     const client = new ConversationsClient(token);

@@ -1,20 +1,31 @@
+import { useContext } from "react";
 import {
-  Flex, Box, Avatar, Button, IconButton, useDisclosure,
+  Flex, Box, Avatar, Button, IconButton,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { RemoteParticipant } from "twilio-video";
+import { AxiosInstance } from "axios";
+import { AxiosContext } from "../../contexts/AxiosContext";
 
-import UserActionModal from "./UserActionModal";
+// import UserActionModal from "./UserActionModal";
 
 type UserComponentProps = {
   user: RemoteParticipant;
-  inCallList: boolean;
+
 }
 
-export default function UserComponent({ user, inCallList }: UserComponentProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+export default function UserComponent({ user }: UserComponentProps) {
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const axios = useContext<AxiosInstance | null>(AxiosContext);
   const fullName = user.identity.slice(37);
+
+  const handleEnd = (participant:RemoteParticipant) => {
+    axios?.post("twilio/remove-participant-video/", { room_name: "doctor", participant_sid: participant.sid })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Flex
@@ -36,17 +47,15 @@ export default function UserComponent({ user, inCallList }: UserComponentProps) 
       <Avatar name={fullName} />
       <Flex direction="column" mx={3}>
         <Box color="white" mx={3}>{fullName}</Box>
-        {!inCallList && (
         <Button
           id="call-button"
           bg="brand.pink"
           size="xs"
           _hover={{ bg: "brand.darkPink", color: "white" }}
-          onClick={onOpen}
+          onClick={() => handleEnd(user)}
         >
-          Start Call
+          End Call
         </Button>
-        )}
       </Flex>
       <IconButton
         aria-label={`User actions for ${fullName}`}
@@ -55,7 +64,7 @@ export default function UserComponent({ user, inCallList }: UserComponentProps) 
         _hover={{ bg: "brand.light" }}
         _active={{ bg: "brand.pink" }}
       />
-      <UserActionModal user={user} isOpen={isOpen} onClose={onClose} />
+      {/* <UserActionModal user={user} isOpen={isOpen} onClose={onClose} /> */}
     </Flex>
   );
 }
