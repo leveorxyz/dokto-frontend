@@ -6,11 +6,9 @@ import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
 
 import FooterLinks from "./FooterLinks";
-import BottomLinks from "./BottomLinks";
 import FooterLogo from "../../../static/dokto_png_blue_white1.png";
 import SocialIcons from "../SocialIcons";
 import FooterLink from "./FooterLink";
-import BottomLink from "./BottomLink";
 
 const Footer = () => {
   const dividerDisplay = {
@@ -82,16 +80,7 @@ const Footer = () => {
               </List>
             </Box>
           </Box>
-          <Box d="flex" mt="10" flexWrap="wrap">
-            {BottomLinks
-              .map((route) => (
-                <BottomLink
-                  key={route.path}
-                  title={route.displayName}
-                  href={route.path}
-                />
-              ))}
-          </Box>
+
         </Container>
       </Box>
     </div>
