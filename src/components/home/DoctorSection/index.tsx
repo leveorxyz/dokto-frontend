@@ -1,12 +1,12 @@
-import React from "react";
 import {
-  Heading, Box, Container, Link,
+  Heading, Box, Container, Link, Image,
 } from "@chakra-ui/react";
 
 import LeftRightArrow from "../../common/buttons/LeftRightArrow";
 import { SpacedContainer } from "../../common/Containers";
 import OurFeaturedDoctors from "./OurFeaturedDoctors";
 import UnderlinedHeader from "../../common/UnderlinedHeader";
+import DoktoIcon from "../../../static/DoktoIcon.png";
 
 const OurDoctors = () => (
   <Box bg="#F4F4F4">
@@ -25,6 +25,25 @@ const OurDoctors = () => (
           <OurFeaturedDoctors />
         </Container>
         <Link href="/" color="brand.dark" mt="14" fontSize="lg" cursor="pointer" fontWeight="bold" _hover={{ outline: "none" }}>View All Doctors</Link>
+      </Box>
+      <Box
+        as="button"
+        bgColor="brand.darkPink"
+        color="white"
+        rounded="3xl"
+        p={6}
+        mx="auto"
+        mt={24}
+        textTransform="uppercase"
+        _hover={{ opacity: ".9" }}
+        _active={{ opacity: ".9" }}
+        d="flex"
+        flexDir="row"
+        alignItems="center"
+        flexWrap="nowrap"
+      >
+        <Box fontSize="5xl" fontWeight={800}>See a Doctor Now</Box>
+        <Image src={DoktoIcon} ml={12} height="6rem" width="auto" fit="contain" />
       </Box>
     </SpacedContainer>
   </Box>

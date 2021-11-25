@@ -6,11 +6,10 @@ import { IconContext } from "react-icons";
 import { FiPhone } from "react-icons/fi";
 
 import FooterLinks from "./FooterLinks";
-import BottomLinks from "./BottomLinks";
 import FooterLogo from "../../../static/dokto_png_blue_white1.png";
 import SocialIcons from "../SocialIcons";
 import FooterLink from "./FooterLink";
-import BottomLink from "./BottomLink";
+import Partners from "./Partners";
 
 const Footer = () => {
   const dividerDisplay = {
@@ -19,7 +18,7 @@ const Footer = () => {
 
   return (
     <div>
-      <Box color="white" background="#170041" borderColor="#433E4A" px={[6, 6, 32, 32, 32]} py="20" mt="5">
+      <Box color="white" background="#170041" borderColor="#433E4A" px={20} py="20" mt="5">
         <Container maxW="container.2xl">
           <Box
             d="flex"
@@ -35,19 +34,41 @@ const Footer = () => {
               pr="100"
             >
               <Box pb="6"><Image width="50%" height="auto" src={FooterLogo} /></Box>
-              <Box fontSize="md" color="gray.500">A global Telehealth service that simplifies healthcare and increases round-the-clock patient access to medical experts. We are Dokto: virtual care without boundaries.</Box>
+              <Box fontSize="md" color="gray.500">
+                Dokto, a
+                {" "}
+                <Box as="span" fontWeight="800" color="#3DE0FF">Dokita247, Inc. company, </Box>
+                is a global Telehealth service that simplifies healthcare and
+                increases round-the-clock patient
+                access to medical experts. We are Dokto: virtual care without boundaries.
+              </Box>
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
-            <Box flex="1" mb="4">
-              {FooterLinks
-                .map((route) => (
-                  <FooterLink
-                    key={route.path}
-                    title={route.displayName}
-                    href={route.path}
-                  />
-                ))}
+            <Box flex="1">
+              <Heading size="md" mb="4">
+                Useful Info
+              </Heading>
+
+              <Box ml="2" flex="1" mb="4">
+                {FooterLinks
+                  .map((route) => (
+                    <FooterLink
+                      key={route.path}
+                      title={route.displayName}
+                      href={route.path}
+                    />
+                  ))}
+              </Box>
             </Box>
+            {/* //Dokita247, Inc. Partners */}
+            <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
+            <Box flex="1" mr="4">
+              <Heading size="md" mb="4">
+                Dokita247, Inc. Partners
+              </Heading>
+              <Partners />
+            </Box>
+            {/* //Connect with Dokto */}
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
               <Heading size="md" ml="1">Connect with Dokto</Heading>
@@ -82,16 +103,7 @@ const Footer = () => {
               </List>
             </Box>
           </Box>
-          <Box d="flex" mt="10" flexWrap="wrap">
-            {BottomLinks
-              .map((route) => (
-                <BottomLink
-                  key={route.path}
-                  title={route.displayName}
-                  href={route.path}
-                />
-              ))}
-          </Box>
+
         </Container>
       </Box>
     </div>

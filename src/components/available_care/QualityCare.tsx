@@ -1,6 +1,7 @@
 import {
   Heading, Box, Flex, Button, Divider, Image,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 import { SpacedContainer } from "../common/Containers";
 import doctorsSVG from "../../static/doctors.svg";
@@ -10,6 +11,25 @@ const QualityCare = () => (
   <div>
     <SpacedContainer py={100}>
       <Flex direction="column" alignItems="center">
+        <Box
+          as="button"
+          bgColor="brand.darkPink"
+          color="white"
+          rounded="3xl"
+          p={6}
+          mb={12}
+          mx="auto"
+          textTransform="uppercase"
+          _hover={{ opacity: ".9" }}
+          _active={{ opacity: ".9" }}
+          d="flex"
+          flexDir="row"
+          alignItems="center"
+          flexWrap="nowrap"
+        >
+          <Box fontSize={["3xl", "3xl", "3xl", "5xl", "5xl"]} fontWeight={800}>See a Doctor Now</Box>
+          <Image src={doktoIcon} ml={12} height={["3rem", "3rem", "3rem", "6rem", "6rem"]} width="auto" fit="contain" />
+        </Box>
         <Box position="relative">
           <Image src={doctorsSVG} height="100%" fit="contain" overflow="hidden" />
           <Box
@@ -50,18 +70,21 @@ const QualityCare = () => (
           }}
           />
         </Box>
-        <Button
-          bg="brand.darkPink"
-          color="white"
-          rounded="full"
-          py="1.5rem"
-          px="3rem"
-          textTransform="uppercase"
-          _hover={{ opacity: ".9" }}
-          _active={{ opacity: ".9" }}
-        >
-          See a doctor now
-        </Button>
+
+        <Link to="/provider-registration">
+          <Button
+            bg="brand.darkPink"
+            color="white"
+            rounded="full"
+            py="1.5rem"
+            px="3rem"
+            textTransform="uppercase"
+            _hover={{ opacity: ".9" }}
+            _active={{ opacity: ".9" }}
+          >
+            Join as a Provider
+          </Button>
+        </Link>
       </Flex>
     </SpacedContainer>
   </div>

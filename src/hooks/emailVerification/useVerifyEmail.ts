@@ -17,6 +17,8 @@ export default function useVerifyEmail(data: Data) {
   return useQuery(
     ["verifyEmail", data],
     () => verifyEmail(axios as AxiosInstance, data),
-    { retry: false },
+    {
+      retry: false,
+    },
   );
 }

@@ -26,11 +26,6 @@ export default function Provider() {
             >
               Provider Registration
             </Heading>
-            <Box color="gray.500" mt={6}>
-              Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm
-              Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm Lorem Ipsulm
-              Lorem Ipsulm Lorem Ipsulm
-            </Box>
           </Box>
           <Image src={ProviderRegIMG} fill="contain" height="100%" />
         </Flex>

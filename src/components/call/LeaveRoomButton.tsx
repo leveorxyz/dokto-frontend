@@ -19,7 +19,7 @@ const LeaveRoomButton = ({ room }: PropTypes) => {
       onClick={handleRoomDisconnection}
       aria-label="end-call"
       title="End Call"
-      colorScheme="purple"
+      colorScheme="blackAlpha"
       mx={3}
       rounded="full"
     />

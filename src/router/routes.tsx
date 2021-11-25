@@ -13,9 +13,14 @@ const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
+const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"));
+const AccountSettings = lazy(() => import("../pages/dashboard/AccountSettings"));
+const SpecialitiesServices = lazy(() => import("../pages/dashboard/SpecialitiesServices"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
+const Patients = lazy(() => import("../pages/dashboard/Patients"));
+const Encounters = lazy(() => import("../pages/dashboard/Encounters"));
 
 export type RouteType = {
     displayName: string;
@@ -129,12 +134,52 @@ const routes: RouteType[] = [
     showInDashboard: true,
   },
   {
+    displayName: "Profile Settings",
+    path: "/profile-settings",
+    component: <ProfileSettings />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Specialities & Services",
+    path: "/specialities-services",
+    component: <SpecialitiesServices />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Account Settings",
+    path: "/account-settings",
+    component: <AccountSettings />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
     displayName: "Appointment",
     path: "/appointments",
     component: <Calendar />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
+  },
+  {
+    displayName: "Patients",
+    path: "/patients",
+    component: <Patients />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Encounters",
+    path: "/patients/encounters",
+    component: <Encounters />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
   },
   {
     displayName: "Logout",

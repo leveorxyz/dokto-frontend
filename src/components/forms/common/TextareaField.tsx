@@ -17,6 +17,7 @@ export default function InputField({
   label,
   resize,
   errors,
+  placeholder,
   register,
   rules,
 }: DefaultProps) {
@@ -25,6 +26,7 @@ export default function InputField({
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <Textarea
         id={name}
+        placeholder={placeholder}
         {...register(name, rules)}
         resize={resize}
         borderRadius="0 !important"

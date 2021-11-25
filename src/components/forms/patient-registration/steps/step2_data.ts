@@ -58,12 +58,6 @@ const firstColumn = () :FormDataType => ({
         },
       },
     },
-    {
-      type: FieldTypes.INPUT,
-      name: "social_security_number",
-      label: "Social Security Number",
-      placeholder: "Enter your social security Number",
-    },
   ],
 });
 
@@ -139,12 +133,6 @@ const secondColumn = (watch: any) :FormDataType => ({
       name: "zip_code",
       label: "Zip Code",
       placeholder: "Code",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
   ],
 });

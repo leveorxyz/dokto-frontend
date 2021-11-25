@@ -57,7 +57,7 @@ const ScreenShareButton = ({
       onClick={handleScreenSharingEnabling}
       aria-label="mute-unmute"
       title="Mute/Unmute"
-      colorScheme="purple"
+      colorScheme="blackAlpha"
       mx={3}
       rounded="full"
     />
