@@ -1,12 +1,37 @@
+import { useMemo } from "react";
 import { Badge } from "@chakra-ui/react";
 
 export default function PatientStatus({ value }: {value: string}) {
+  const bgColor = useMemo(() => {
+    switch (value) {
+      case "New Patient":
+        return "rgba(164, 43, 173, 0.1)";
+      case "Recovered":
+        return "rgba(143, 140, 255, 0.1)";
+      case "In Treatment":
+        return "rgba(255, 92, 0, 0.1)";
+      default:
+        return "gray.500";
+    }
+  }, [value]);
+
+  const color = useMemo(() => {
+    switch (value) {
+      case "New Patient":
+        return "rgba(164, 43, 173, 1)";
+      case "Recovered":
+        return "rgba(45, 40, 255, 1)";
+      case "In Treatment":
+        return "rgba(255, 92, 0, 1)";
+      default:
+        return "brand.dark";
+    }
+  }, [value]);
+
   return (
     <Badge
-        // eslint-disable-next-line no-nested-ternary
-      bgColor={value === "New Patient" ? "gray.100" : value === "Recovered" ? "rgba(143, 140, 255, 0.28)" : "rgba(255, 92, 0, 0.1)"}
-        // eslint-disable-next-line no-nested-ternary
-      color={value === "New Patient" ? "rgba(164, 43, 173, 1)" : value === "Recovered" ? "rgba(45, 40, 255, 1)" : "rgba(255, 92, 0, 1)"}
+      bgColor={bgColor}
+      color={color}
       variant="subtle"
       py={2}
       px={3}
