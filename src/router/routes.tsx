@@ -13,6 +13,7 @@ const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
+const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
@@ -124,6 +125,14 @@ const routes: RouteType[] = [
     displayName: "Profile",
     path: "/profile",
     component: <Profile />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+  },
+  {
+    displayName: "Profile Settings",
+    path: "/profile-settings",
+    component: <ProfileSettings />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
