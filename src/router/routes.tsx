@@ -20,6 +20,7 @@ const VideoCalls = lazy(() => import("../pages/calls"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
 const Patients = lazy(() => import("../pages/dashboard/Patients"));
+const Encounters = lazy(() => import("../pages/dashboard/Encounters"));
 
 export type RouteType = {
     displayName: string;
@@ -171,6 +172,14 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
+  },
+  {
+    displayName: "Encounters",
+    path: "/patients/encounters",
+    component: <Encounters />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
   },
   {
     displayName: "Logout",
