@@ -33,7 +33,12 @@ const Footer = () => {
               pr="100"
             >
               <Box pb="6"><Image width="50%" height="auto" src={FooterLogo} /></Box>
-              <Box fontSize="md" color="gray.500">A global Telehealth service that simplifies healthcare and increases round-the-clock patient access to medical experts. We are Dokto: virtual care without boundaries.</Box>
+              <Box fontSize="md" color="gray.500">
+                <Box as="span" fontSize="md" fontWeight="800" color="gray.500">Dokto, a Dokita247, Inc. company, </Box>
+                A global Telehealth service that simplifies healthcare and increases round-the-clock
+                patient
+                access to medical experts. We are Dokto: virtual care without boundaries.
+              </Box>
             </Box>
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
             <Box flex="1" mb="4">
