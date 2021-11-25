@@ -31,7 +31,7 @@ export default [
     id: "settings",
     Icon: Settings,
     title: "Profile Setting",
-    path: "/settings",
+    path: "/profile-settings",
   },
   {
     id: "specialities",

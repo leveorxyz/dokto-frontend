@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import {
+  Heading,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -23,6 +24,7 @@ export default function InputField({
   placeholder,
   inputType,
   max,
+  bottomText,
   leftAddon,
   rightAddon,
   rightElement,
@@ -72,6 +74,7 @@ export default function InputField({
       <FormErrorMessage>
         {errors[name] && errors[name].message}
       </FormErrorMessage>
+      <Heading as="h2" size="sm" fontWeight="normal" mt="3" color="brand.darkPink">{bottomText}</Heading>
     </FormControl>
   );
 }
