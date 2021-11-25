@@ -1,49 +1,22 @@
-import { useState, useEffect, useCallback } from "react";
 import {
   Flex, Box,
 } from "@chakra-ui/react";
 import { IoPeopleCircle } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
-import { Room as RoomType, RemoteParticipant } from "twilio-video";
-import { uniqBy } from "lodash";
+import { Conversation } from "@twilio/conversations";
 import { callListAtom } from "./atoms";
 import SideBarUser from "./SideBarUser";
+import SidebarConversation from "./SidebarConversation";
 import { CustomHeading, EmptyComponent } from "./misc";
 
 type PropTypes = {
-  waitingRoom: RoomType;
+  conversations: Conversation[];
 };
 
-export default function SideBar({ waitingRoom }: PropTypes) {
+export default function SideBar({ conversations }: PropTypes) {
   const callListUsers = useRecoilValue(callListAtom);
-  const [waitingListUsers, setWaitingListUsers] = useState<RemoteParticipant[]>(
-    Array.from(waitingRoom?.participants?.values()),
-  );
+
   // const waitingListUsers = useRecoilValue(waitingListAtom);
-
-  const addParticipant = useCallback((participant: RemoteParticipant) => {
-    setWaitingListUsers((prev) => (uniqBy([...prev, participant], "identity")));
-  }, [setWaitingListUsers]);
-
-  const removeParticipant = useCallback((participant: RemoteParticipant) => {
-    setWaitingListUsers(
-      (prev) => prev.filter((p: RemoteParticipant) => p.identity !== participant.identity),
-    );
-  }, [setWaitingListUsers]);
-
-  useEffect(() => {
-    waitingRoom.on("participantConnected", (participant: RemoteParticipant) => addParticipant(participant));
-
-    waitingRoom.on("participantDisconnected", (participant: RemoteParticipant) => {
-      removeParticipant(participant);
-    });
-
-    const unscubscribe = () => {
-      waitingRoom.removeAllListeners();
-    };
-
-    return unscubscribe;
-  }, [addParticipant, removeParticipant, waitingRoom]);
 
   return (
     <Flex
@@ -93,9 +66,9 @@ export default function SideBar({ waitingRoom }: PropTypes) {
       <Box py={3} w="100%">
         <CustomHeading>Waiting Room</CustomHeading>
         <Flex direction="column">
-          {waitingListUsers.length === 0 && <EmptyComponent />}
-          {waitingListUsers.map((user) => (
-            <SideBarUser key={user.identity} user={user} inCallList={false} />
+          {conversations.length === 0 && <EmptyComponent />}
+          {conversations.map((conversation) => (
+            <SidebarConversation key={conversation.sid} conversation={conversation} />
           ))}
         </Flex>
       </Box>
