@@ -29,7 +29,7 @@ const parterlist:IPartner[] = [
 ];
 
 const Partners = () => (
-  <Box flex="1" mb="4" mr="4">
+  <Box flex="1" mb="4">
     {parterlist.map((partner) => (
       <Box key={partner.title} ml="2" mb="2">
         <Box>{partner.title}</Box>

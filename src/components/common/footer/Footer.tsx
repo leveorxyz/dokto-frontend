@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <div>
-      <Box color="white" background="#170041" borderColor="#433E4A" px={[6, 6, 32, 32, 32]} py="20" mt="5">
+      <Box color="white" background="#170041" borderColor="#433E4A" px={20} py="20" mt="5">
         <Container maxW="container.2xl">
           <Box
             d="flex"
@@ -60,7 +60,7 @@ const Footer = () => {
             </Box>
             {/* //Dokita247, Inc. Partners */}
             <Divider orientation="vertical" h="12rem" px="10" display={dividerDisplay} sx={{ borderLeftColor: "#433E4A" }} />
-            <Box flex="1">
+            <Box flex="1" mr="4">
               <Heading size="md" mb="4">
                 Dokita247, Inc. Partners
               </Heading>
