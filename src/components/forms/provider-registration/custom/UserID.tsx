@@ -8,8 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { debounce } from "lodash";
 
-import { CustomFieldType } from "../../../../types/form";
-import useCheckUsername from "../../../../../../hooks/register/useCheckUsername";
+import { CustomFieldType } from "../../types/form";
+import useCheckUsername from "../../../../hooks/register/useCheckUsername";
 
 type PropTypes = {
   data: CustomFieldType;

@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-import { CustomFieldType } from "../../../../types/form";
+import { CustomFieldType } from "../../types/form";
 
 type PropTypes = {
   data: CustomFieldType;

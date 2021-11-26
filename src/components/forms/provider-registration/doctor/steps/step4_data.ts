@@ -3,7 +3,7 @@ import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
 
-import TnC from "./custom/TnC";
+import TnC from "../../custom/TnC";
 
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,

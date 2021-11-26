@@ -5,7 +5,7 @@ import parseISO from "date-fns/parseISO";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
-import MobileNo from "./custom/MobileNo";
+import MobileNo from "../../custom/MobileNo";
 
 const isDateLessThan18Years = (value: unknown) :boolean => {
   const date = new Date();
