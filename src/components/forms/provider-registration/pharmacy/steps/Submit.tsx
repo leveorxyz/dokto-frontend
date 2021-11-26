@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import { Country, State } from "country-state-city";
 
 import { stepAtom } from "../atoms";
-import useDoctorReg from "../../../../../hooks/register/useDoctorReg";
+import usePharmacyReg from "../../../../../hooks/register/usePharmacyReg";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -38,7 +38,7 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useDoctorReg(data);
+  } = usePharmacyReg(data);
 
   if (isFetching) {
     return <div>Loading...</div>;

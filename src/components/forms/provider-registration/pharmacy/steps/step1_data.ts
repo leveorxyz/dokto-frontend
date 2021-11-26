@@ -210,7 +210,7 @@ const secondColumn = (watch: any) :FormDataType => ({
       label: "",
       direction: "column",
       options: [{
-        value: "is_parent",
+        value: "businessAssociateAgreement",
         label: "I have read and agree to the Business Associate Agreement",
         required: true,
       }],
@@ -230,11 +230,11 @@ const secondColumn = (watch: any) :FormDataType => ({
     },
     {
       type: FieldTypes.CHECKBOX,
-      name: "terms of use and privacy policy",
+      name: "termsOfUseAndPrivacyPolicy",
       label: "",
       direction: "column",
       options: [{
-        value: "is_parent",
+        value: "termsOfUseAndPrivacyPolicy",
         label: "I agree to the terms of use and privacy policy",
         required: true,
       }],
