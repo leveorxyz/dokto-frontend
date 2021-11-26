@@ -5,23 +5,25 @@ import MobileNo from "../../custom/MobileNo";
 const firstColumn = (watch:any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
+  label: "Clinic Details",
+
   fields: [
-    {
-      type: FieldTypes.INPUT,
-      name: "username",
-      label: "User ID",
-      placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        // pattern: {
-        //   value: /^[\w\s]+$/,
-        //   message: "Only letters and underscore allowed",
-        // },
-      },
-    },
+    // {
+    //   type: FieldTypes.INPUT,
+    //   name: "username",
+    //   label: "User ID",
+    //   placeholder: "",
+    //   rules: {
+    //     required: {
+    //       value: true,
+    //       message: "This field is required",
+    //     },
+    //     // pattern: {
+    //     //   value: /^[\w\s]+$/,
+    //     //   message: "Only letters and underscore allowed",
+    //     // },
+    //   },
+    // },
     {
       type: FieldTypes.INPUT,
       name: "full_name",
@@ -38,88 +40,7 @@ const firstColumn = (watch:any) :FormDataType => ({
       },
 
     },
-    {
-      type: FieldTypes.SELECT,
-      name: "country",
-      label: "Country",
-      options: Country.getAllCountries().map((country) => ({
-        label: country.name,
-        value: country.isoCode,
-      })),
-      placeholder: "Select",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.SELECT,
-      name: "state",
-      label: "State",
-      placeholder: "Select",
-      options: State.getStatesOfCountry(watch("country")).map((state) => ({
-        label: state.name,
-        value: state.isoCode,
-      })),
-      rules: {
-        required: {
-          value: State.getStatesOfCountry(watch("country")).length > 0,
-          message: "This field is required",
-        },
-        deps: ["country"],
-      },
-    },
-    {
-      type: FieldTypes.SELECT,
-      name: "city",
-      label: "City",
-      placeholder: "Select",
-      options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
-        label: city.name,
-        value: city.name,
-      })),
-      rules: {
-        required: {
-          value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
-          message: "This field is required",
-        },
-        deps: ["state"],
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "street",
-      label: "Street",
-      placeholder: "Street",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
 
-    {
-      type: FieldTypes.INPUT,
-      name: "zip_code",
-      label: "Zip Code",
-      placeholder: "Code",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-  ],
-});
-
-const secondColumn = (watch: any) :FormDataType => ({
-  type: FieldTypes.COLUMN,
-  name: "second",
-  fields: [
     {
       type: FieldTypes.FILE,
       name: "profile_photo",
@@ -135,7 +56,7 @@ const secondColumn = (watch: any) :FormDataType => ({
     {
       type: FieldTypes.CUSTOM,
       name: "contact_no",
-      label: "Mobile Number",
+      label: "Office Number",
       component: MobileNo,
       rules: {
         required: {
@@ -205,6 +126,92 @@ const secondColumn = (watch: any) :FormDataType => ({
       },
     },
 
+  ],
+});
+
+const secondColumn = (watch: any) :FormDataType => ({
+  type: FieldTypes.COLUMN,
+  name: "second",
+  label: "Address",
+
+  fields: [
+    {
+      type: FieldTypes.SELECT,
+      name: "country",
+      label: "Country",
+      options: Country.getAllCountries().map((country) => ({
+        label: country.name,
+        value: country.isoCode,
+      })),
+      placeholder: "Select",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "street",
+      label: "Address",
+      placeholder: "Address",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.SELECT,
+      name: "state",
+      label: "State",
+      placeholder: "Select",
+      options: State.getStatesOfCountry(watch("country")).map((state) => ({
+        label: state.name,
+        value: state.isoCode,
+      })),
+      rules: {
+        required: {
+          value: State.getStatesOfCountry(watch("country")).length > 0,
+          message: "This field is required",
+        },
+        deps: ["country"],
+      },
+    },
+
+    {
+      type: FieldTypes.SELECT,
+      name: "city",
+      label: "City",
+      placeholder: "Select",
+      options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
+        label: city.name,
+        value: city.name,
+      })),
+      rules: {
+        required: {
+          value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
+          message: "This field is required",
+        },
+        deps: ["state"],
+      },
+    },
+
+    {
+      type: FieldTypes.INPUT,
+      name: "zip_code",
+      label: "Zip Code",
+      placeholder: "Code",
+      // rules: {
+      //   required: {
+      //     value: true,
+      //     message: "This field is required",
+      //   },
+      // },
+    },
+
     {
       type: FieldTypes.CHECKBOX,
       name: "businessAssociateAgreement",
@@ -253,6 +260,7 @@ const secondColumn = (watch: any) :FormDataType => ({
         // deps: ["date_of_birth"],
       },
     },
+
   ],
 });
 
