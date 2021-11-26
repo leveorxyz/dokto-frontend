@@ -50,8 +50,9 @@
 					"error",
 					"double"
 			],
+			"no-unused-vars": "warn",
 			"@typescript-eslint/no-unused-vars": [
-					"error",
+					"warn",
 					{ 
 							"argsIgnorePattern": "^_",
 							"varsIgnorePattern": "^_"
@@ -73,6 +74,16 @@
 				"error",
 				{
 					"allowForLoopAfterthoughts": true
+				}
+			],
+			"max-len" : [
+				"warn",
+				{
+					"code": 100,
+					"ignoreComments": true,
+					"ignoreRegExpLiterals": true,
+					"ignoreStrings": true,
+					"ignoreTemplateLiterals": true
 				}
 			],
 			"import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
