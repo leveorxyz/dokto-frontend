@@ -8,22 +8,6 @@ const firstColumn = (watch:any) :FormDataType => ({
   label: "Pharmacy Details",
 
   fields: [
-    // {
-    //   type: FieldTypes.INPUT,
-    //   name: "username",
-    //   label: "User ID",
-    //   placeholder: "",
-    //   rules: {
-    //     required: {
-    //       value: true,
-    //       message: "This field is required",
-    //     },
-    //     // pattern: {
-    //     //   value: /^[\w\s]+$/,
-    //     //   message: "Only letters and underscore allowed",
-    //     // },
-    //   },
-    // },
     {
       type: FieldTypes.INPUT,
       name: "full_name",
@@ -193,12 +177,6 @@ const secondColumn = (watch: any) :FormDataType => ({
       name: "zip_code",
       label: "Zip Code",
       placeholder: "Code",
-      // rules: {
-      //   required: {
-      //     value: true,
-      //     message: "This field is required",
-      //   },
-      // },
     },
 
     {
@@ -211,18 +189,13 @@ const secondColumn = (watch: any) :FormDataType => ({
         label: "I have read and agree to the Business Associate Agreement",
         required: true,
       }],
-      // visibilityDependencies: [
-      //   {
-      //     name: "date_of_birth",
-      //     value: isDateLessThan18Years,
-      //   },
-      // ],
+
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
-        // deps: ["date_of_birth"],
+
       },
     },
     {
@@ -235,18 +208,12 @@ const secondColumn = (watch: any) :FormDataType => ({
         label: "I agree to the terms of use and privacy policy",
         required: true,
       }],
-      // visibilityDependencies: [
-      //   {
-      //     name: "date_of_birth",
-      //     value: isDateLessThan18Years,
-      //   },
-      // ],
+
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
-        // deps: ["date_of_birth"],
       },
     },
 
@@ -261,6 +228,8 @@ const data = (watch: any) :FormDataType => ({
     secondColumn(watch),
   ],
 });
+
+console.log(data);
 
 export default data;
 export const step1Data = data;
