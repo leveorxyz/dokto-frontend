@@ -10,40 +10,40 @@ import LogOut from "../../static/account_logout.svg";
 
 export default [
   {
-    id: "calendar",
-    Icon: Calendar,
-    title: "Appointment",
-    path: "/appointments",
-  },
-  {
     id: "profile",
     Icon: Profile,
     title: "Profile",
     path: "/profile",
   },
   {
-    id: "chat",
+    id: "inbox",
     Icon: Chat,
-    title: "Chat",
-    path: "/chat",
+    title: "Inbox",
+    path: "/inbox",
   },
   {
     id: "settings",
     Icon: Settings,
-    title: "Profile Setting",
+    title: "Profile Settings",
     path: "/profile-settings",
   },
   {
     id: "specialities",
     Icon: Specialities,
-    title: "Specialities",
+    title: (
+      <>
+        Specialities &amp;
+        <br />
+        Services
+      </>
+    ),
     path: "/specialities-services",
   },
   {
-    id: "account_settings",
-    Icon: AccountSettings,
-    title: "Account Settings",
-    path: "/account-settings",
+    id: "calendar",
+    Icon: Calendar,
+    title: "Appointments",
+    path: "/appointments",
   },
   {
     id: "appointment_booking_system",
@@ -60,8 +60,14 @@ export default [
   {
     id: "invoice",
     Icon: Invoice,
-    title: "Invoice",
+    title: "Invoices",
     path: "/invoice",
+  },
+  {
+    id: "account_settings",
+    Icon: AccountSettings,
+    title: "Account Settings",
+    path: "/account-settings",
   },
   {
     id: "logout",
