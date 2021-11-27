@@ -8,7 +8,7 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "email_notification",
+      name: "notification_email",
       label: "Email Notification",
       bottomText: "All future emails will be sent to the address above",
       placeholder: "Change designated email address",

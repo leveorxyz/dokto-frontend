@@ -8,7 +8,7 @@ const firstColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.SWITCH,
-      name: "disable_temporary",
+      name: "temporary_disable",
       label: "Disable my account temporarily",
     },
   ],
