@@ -1,31 +1,26 @@
 import Calendar from "../../static/calendar.svg";
-import Profile from "../../static/profile.svg";
 import Chat from "../../static/messages.svg";
 import Settings from "../../static/settings.svg";
 import Specialities from "../../static/specialities.svg";
 import AccountSettings from "../../static/supervised_user_circle.svg";
-import AppointmentBookingSystem from "../../static/group.svg";
+import AppointmentBookingSystem from "../../static/Schedulesettings.svg";
+import Patientlist from "../../static/Patientlist.svg";
+import Payout from "../../static/Payout.svg";
 import Invoice from "../../static/invoice.svg";
 import LogOut from "../../static/account_logout.svg";
 
 export default [
   {
-    id: "profile",
-    Icon: Profile,
-    title: "Profile",
-    path: "/profile",
+    id: "settings",
+    Icon: Settings,
+    title: "Profile Settings",
+    path: "/profile-settings",
   },
   {
     id: "inbox",
     Icon: Chat,
     title: "Inbox",
     path: "/inbox",
-  },
-  {
-    id: "settings",
-    Icon: Settings,
-    title: "Profile Settings",
-    path: "/profile-settings",
   },
   {
     id: "specialities",
@@ -46,16 +41,22 @@ export default [
     path: "/appointments",
   },
   {
-    id: "appointment_booking_system",
+    id: "schedule-settings",
     Icon: AppointmentBookingSystem,
-    title: (
-      <>
-        Appointment
-        <br />
-        booking system
-      </>
-    ),
-    path: "/appointment_booking_system",
+    title: "Schedule Settings",
+    path: "/schedule-settings",
+  },
+  {
+    id: "patient-list",
+    Icon: Patientlist,
+    title: "Patient List",
+    path: "/patient-list",
+  },
+  {
+    id: "payouts-settings",
+    Icon: Payout,
+    title: "Payouts Settings",
+    path: "/payouts-settings",
   },
   {
     id: "invoice",
