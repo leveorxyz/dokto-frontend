@@ -58,7 +58,7 @@ export default function MultiSelect({
 
   return (
     <Flex direction="column">
-      <FormControl isInvalid={errors[shadowFieldName]} py={6}>
+      <FormControl isInvalid={errors[shadowFieldName]} py={4}>
         <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
         <Select
           placeholder="Select"
@@ -77,7 +77,7 @@ export default function MultiSelect({
           {errors[shadowFieldName] && errors[shadowFieldName].message}
         </FormErrorMessage>
       </FormControl>
-      <Heading as="h2" size="sm" fontWeight="normal" mt="3" color="brand.dark">{bottomText}</Heading>
+      <Heading as="h2" size="sm" fontWeight="normal" py="2" color="brand.dark">{bottomText}</Heading>
       {currentValues?.length !== 0 && (
       <Flex wrap="wrap" borderWidth={1} rounded="lg" p={2}>
         {

@@ -425,12 +425,6 @@ const firstColumn = () :FormDataType => ({
           label: "Yoga",
         }],
       placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
   ],
 });
