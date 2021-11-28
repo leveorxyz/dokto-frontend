@@ -69,7 +69,7 @@ export default function UserComponent({ user }: UserComponentProps) {
     >
       <Avatar name={fullName} />
       <Flex direction="column" mx={3}>
-        <Box color="white" mx={3}>{fullName}</Box>
+        <Box color="white" mx={3} textTransform="capitalize">{fullName}</Box>
         <Button
           id="call-button"
           bg="brand.pink"

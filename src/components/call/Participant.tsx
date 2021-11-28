@@ -106,7 +106,7 @@ const Participant = ({ participant, videoStyle }: ParticipantProps) => {
 };
 
 Participant.defaultProps = {
-  videoStyle: { width: "100%", height: "100vh" },
+  videoStyle: { width: "100%" },
 };
 
 export default Participant;

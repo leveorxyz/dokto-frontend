@@ -45,7 +45,7 @@ export default function SidebarConversation({ conversation }: ConversationCompon
     >
       <Avatar name={conversation.friendlyName} />
       <Flex direction="column" mx={3}>
-        <Box color="white" mx={3}>{conversation.friendlyName}</Box>
+        <Box color="white" mx={3} textTransform="capitalize">{conversation.friendlyName}</Box>
 
         <Button
           id="call-button"

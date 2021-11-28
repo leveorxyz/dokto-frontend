@@ -77,7 +77,6 @@ const Videos = ({ room }: PropTypes) => {
         { participants.length === 1 && (
         <Box
           height="100%"
-          width="100vh"
           as={Participant}
           participant={participants[0]}
         />
