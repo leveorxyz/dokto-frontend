@@ -8,6 +8,8 @@ import { useRecoilValue } from "recoil";
 
 import { SpacedContainer } from "../../components/common/Containers";
 import ProfileTabs from "../../components/profile/doctor/ProfileTabs";
+import BrandButton from "../../components/common/buttons/BrandButton";
+import WhiteButton from "../../components/common/buttons/WhiteButton";
 import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
@@ -34,6 +36,10 @@ export default function Profile() {
           <Text fontSize="lg" color="gray.500">
             {doctorProfile?.professional_bio}
           </Text>
+          <Box d="flex" flexDir="row" mt="3">
+            <BrandButton>Add Review</BrandButton>
+            <WhiteButton ml="5">Book Now</WhiteButton>
+          </Box>
         </Box>
       </Box>
       <ProfileTabs />
