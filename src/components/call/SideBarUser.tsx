@@ -19,12 +19,31 @@ type UserComponentProps = {
 export default function UserComponent({ user }: UserComponentProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-  const { roomName } = useRecoilValue(twilioTokenAtom);
+  const { roomName, identity } = useRecoilValue(twilioTokenAtom);
   const fullName = user.identity.slice(37);
 
   // Remove participant from video room handler
   const handleRemove = (participant:RemoteParticipant) => {
     axios?.post("twilio/remove-participant-video/", { room_name: roomName, participant_sid: participant.sid })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // Remove participant from video room and move to waiting room handler
+  const handleRemoveMoveToWaiting = (participant:RemoteParticipant) => {
+    handleRemove(participant);
+    const participantIdentity = participant.identity.slice(0, 36);
+    const doctorIdentity = identity.slice(0, 36);
+    const channelUniqueName = `${doctorIdentity}_${participantIdentity}`;
+
+    const payload = {
+      channel_unique_name: channelUniqueName,
+      participant_identity: participantIdentity,
+    };
+
+    axios?.post("twilio/add-participant-conversation/", payload)
       .then((data) => {
         console.log(data);
       })
@@ -73,6 +92,7 @@ export default function UserComponent({ user }: UserComponentProps) {
         isOpen={isOpen}
         onClose={onClose}
         handleRemove={handleRemove}
+        handleRemoveMoveToWaiting={handleRemoveMoveToWaiting}
       />
     </Flex>
   );

@@ -7,7 +7,7 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { IoPersonAdd, IoCloseCircleSharp, IoStopCircle } from "react-icons/io5";
+import { IoPersonAdd, IoCloseCircleSharp } from "react-icons/io5";
 
 import { RemoteParticipant } from "twilio-video";
 
@@ -16,10 +16,11 @@ type PropsType = {
   isOpen: boolean;
   onClose: () => void;
   handleRemove: (participant: RemoteParticipant) => void;
+  handleRemoveMoveToWaiting: (participant: RemoteParticipant) => void;
 };
 
 export default function UserActionModal({
-  user, isOpen, onClose, handleRemove,
+  user, isOpen, onClose, handleRemove, handleRemoveMoveToWaiting,
 }: PropsType) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -53,10 +54,11 @@ export default function UserActionModal({
             _hover={{ bg: "brand.pink", color: "white" }}
             leftIcon={<IoPersonAdd />}
             isFullWidth
+            onClick={() => handleRemoveMoveToWaiting(user)}
           >
             End call and move patient to waiting room.
           </Button>
-          <Button
+          {/* <Button
             variant="ghost"
             color="brand.pink"
             my={3}
@@ -65,7 +67,7 @@ export default function UserActionModal({
             isFullWidth
           >
             End active call and start new one
-          </Button>
+          </Button> */}
 
         </ModalBody>
       </ModalContent>
