@@ -19,7 +19,7 @@ type UserComponentProps = {
 export default function UserComponent({ user }: UserComponentProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-  const { roomName, identity } = useRecoilValue(twilioTokenAtom);
+  const { roomName } = useRecoilValue(twilioTokenAtom);
   const fullName = user.identity.slice(37);
 
   // Remove participant from video room handler
@@ -35,15 +35,12 @@ export default function UserComponent({ user }: UserComponentProps) {
   const handleRemoveMoveToWaiting = (participant:RemoteParticipant) => {
     handleRemove(participant);
     const participantIdentity = participant.identity.slice(0, 36);
-    const doctorIdentity = identity.slice(0, 36);
-    const channelUniqueName = `${doctorIdentity}_${participantIdentity}`;
 
     const payload = {
-      channel_unique_name: channelUniqueName,
-      participant_identity: participantIdentity,
+      patient_id: participantIdentity,
     };
 
-    axios?.post("twilio/add-participant-conversation/", payload)
+    axios?.post("twilio/create-conversation/", payload)
       .then((data) => {
         console.log(data);
       })
