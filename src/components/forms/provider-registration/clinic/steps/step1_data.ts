@@ -5,7 +5,7 @@ import MobileNo from "../../custom/MobileNo";
 const firstColumn = (watch:any) :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
-  label: "Clinic Details",
+  label: "Hospital Details",
 
   fields: [
     // {
@@ -27,7 +27,7 @@ const firstColumn = (watch:any) :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "full_name",
-      label: "Clinic Name",
+      label: "Hospital Name",
       rules: {
         required: {
           value: true,
@@ -86,6 +86,7 @@ const firstColumn = (watch:any) :FormDataType => ({
       name: "number_of_practitioners",
       label: "Number of Practitioners",
       inputType: "number",
+      min: 0,
       rules: {
         required: {
           value: true,

@@ -3,7 +3,6 @@ import {
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../../components/common/Containers";
-import NotImplemented from "../../components/NotImplemented";
 import DoctorRegistration from "../../components/forms/provider-registration/doctor";
 import ClinicRegistration from "../../components/forms/provider-registration/clinic";
 import PharmacyRegistration from "../../components/forms/provider-registration/pharmacy";
@@ -46,7 +45,7 @@ export default function Provider() {
                 Register as a:
               </Box>
               <TabList borderBottomWidth={0}>
-                {["Doctor", "Hospital", "Clinic", "Pharmacy"].map(
+                {["Doctor", "Hospital", "Pharmacy"].map(
                   (title) => (
                     <Tab
                       key={title}
@@ -78,10 +77,6 @@ export default function Provider() {
             <TabPanels>
               <TabPanel p={0}>
                 <DoctorRegistration />
-              </TabPanel>
-
-              <TabPanel p={0}>
-                <NotImplemented />
               </TabPanel>
 
               <TabPanel p={0}>

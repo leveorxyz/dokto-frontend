@@ -5,14 +5,15 @@ import { AxiosInstance } from "axios";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
 const registerClinic = async (axios: AxiosInstance, data: any) => axios.post("user/clinic-signup/", {
-  email: data.email,
   password: data.password,
-  full_name: data.full_name,
   street: data.street,
-  state: data.state,
   city: data.city,
+  email: data.email,
   zip_code: data.zip_code,
   contact_no: data.contact_no,
+  state: data.state,
+  full_name: data.full_name,
+  number_of_practitioners: data.number_of_practitioners,
   profile_photo: data.profile_photo,
 })
 
