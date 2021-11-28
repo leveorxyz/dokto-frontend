@@ -21,6 +21,7 @@ import LoadingPage from "../../components/common/fallback/LoadingPage";
 export default function VideoCalls() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const [room, setRoom] = useState<RoomType | null>(null);
+  const [callEnded, setCallEnded] = useState<boolean>(false);
   const [connectionState, setConnectionState] = useState({
     status: "",
     statusString: "",
@@ -36,6 +37,7 @@ export default function VideoCalls() {
 
   room?.on("disconnected", () => {
     setRoom(null);
+    setCallEnded(true);
     // TODO: Alert patient that call has ended.
   });
 
@@ -143,7 +145,7 @@ export default function VideoCalls() {
       {/* Only show sidebar for doctor */}
       {isDoctor() && <SideBar conversations={conversations} />}
       {/* Show waiting banner for patient */}
-      {(isPatient() && !room) && <WaitingBanner />}
+      {(isPatient() && !room) && <WaitingBanner callEnded={callEnded} />}
       {room && <Videos room={room} />}
     </Flex>
   );
