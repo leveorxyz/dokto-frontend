@@ -6,7 +6,7 @@ import ExperienceEducation from "./ExperienceEducation";
 import ProfileDetails from "./ProfileDetails";
 
 export default function ProfileSettingsTabs() {
-  const tabs = ["Personal Details", "Experience & Education"];
+  const tabs = ["Personal Details", "Experience & Education", "Professional Profile", "Insurances"];
   return (
     <Tabs align="start" variant="unstyled" w="100%" orientation="vertical" display="grid" gridTemplateColumns="auto 1fr">
       <TabList>

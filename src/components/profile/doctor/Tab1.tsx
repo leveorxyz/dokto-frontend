@@ -10,35 +10,34 @@ export default function Tab1() {
   const doctorProfileData = useRecoilValue(doctorProfile);
   return (
     <Box>
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Email:
         </Heading>
-        {" "}
-        {doctorProfileData?.email}
+        <Box>{doctorProfileData?.email}</Box>
       </Box>
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Contact No:
         </Heading>
         {" "}
         {doctorProfileData?.contact_no}
       </Box>
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Gender:
         </Heading>
         {" "}
         {doctorProfileData?.gender}
       </Box>
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Date of birth:
         </Heading>
         {" "}
         {doctorProfileData?.date_of_birth}
       </Box>
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Address:
         </Heading>
@@ -46,7 +45,7 @@ export default function Tab1() {
         {doctorProfileData?.street}
       </Box>
       {doctorProfileData?.city && (
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           City:
         </Heading>
@@ -55,7 +54,7 @@ export default function Tab1() {
       </Box>
       )}
       {doctorProfileData?.state && (
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           State:
         </Heading>
@@ -63,7 +62,7 @@ export default function Tab1() {
         {doctorProfileData?.state}
       </Box>
       )}
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Country:
         </Heading>
@@ -71,7 +70,7 @@ export default function Tab1() {
         {doctorProfileData?.country}
       </Box>
       {doctorProfileData?.education?.length && (
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Education:
         </Heading>
@@ -86,7 +85,7 @@ export default function Tab1() {
       </Box>
       )}
       {doctorProfileData?.experience?.length && (
-      <Box>
+      <Box d="flex">
         <Heading display="inline-block" as="h3" size="md" mb={3}>
           Experience:
         </Heading>
