@@ -4,8 +4,6 @@ import {
 import MobileNo from "../../provider-registration/custom/MobileNo";
 import doctorProfile from "../../../../atoms/doctorProfile";
 
-console.log(doctorProfile);
-
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",

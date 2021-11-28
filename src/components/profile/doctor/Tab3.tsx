@@ -3,8 +3,15 @@ import {
   Box,
   Heading,
   Badge,
+  Image,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
 } from "@chakra-ui/react";
 
+import AddIcon from "../../../static/Plus.svg";
+import MinusIcon from "../../../static/Minus.svg";
 import doctorProfile from "../../../atoms/doctorProfile";
 
 export default function Tab3() {
@@ -22,6 +29,260 @@ export default function Tab3() {
           (specialty) => <Badge key={specialty} variant="subtle" colorScheme="purple" m={1} fontSize="1em">{specialty}</Badge>,
         )}
       </Box>
+      <Accordion defaultIndex={[0]} allowMultiple>
+        <AccordionItem>
+          {({ isExpanded }) => (
+            <>
+              <AccordionButton rounded="xl">
+                <Box flex="1" textAlign="left">
+                  Emergency Services
+                </Box>
+                {isExpanded ? (
+                  <Image src={MinusIcon} w="1.25%" />
+                ) : (
+                  <Image src={AddIcon} w="1.25%" />
+                )}
+              </AccordionButton>
+              <AccordionPanel d="flex" flexDir="column">
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    bla
+                  </Box>
+                  <Box>
+                    bla
+                  </Box>
+                </Box>
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    bla
+                  </Box>
+                  <Box>
+                    bla
+                  </Box>
+                </Box>
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    bla
+                  </Box>
+                  <Box>
+                    bla
+                  </Box>
+                </Box>
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    bla
+                  </Box>
+                  <Box>
+                    bla
+                  </Box>
+                </Box>
+              </AccordionPanel>
+            </>
+          )}
+        </AccordionItem>
+        <AccordionItem>
+          {({ isExpanded }) => (
+            <>
+              <AccordionButton rounded="xl">
+                <Box flex="1" textAlign="left">
+                  Medical Genetics
+                </Box>
+                {isExpanded ? (
+                  <Image src={MinusIcon} w="1.25%" />
+                ) : (
+                  <Image src={AddIcon} w="1.25%" />
+                )}
+              </AccordionButton>
+              <AccordionPanel d="flex" flexDir="column">
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    Biochemical genetics
+                  </Box>
+                  <Box>
+                    $234.35
+                  </Box>
+                </Box>
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    Cytogenetics
+                  </Box>
+                  <Box>
+                    $234.35
+                  </Box>
+                </Box>
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    Clinical genetics
+                  </Box>
+                  <Box>
+                    $234.35
+                  </Box>
+                </Box>
+                <Box
+                  as="button"
+                  d="flex"
+                  flexDir="row"
+                  justifyContent="space-between"
+                  backgroundColor="rgba(61, 224, 255, 0.14)"
+                  px="4"
+                  py="2"
+                  rounded="xl"
+                  border="1px"
+                  borderColor="gray.300"
+                  _hover={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                  _focus={{
+                    border: "2px",
+                    borderColor: "#3DE0FF",
+                  }}
+                >
+                  <Box>
+                    Genetic pathology
+                  </Box>
+                  <Box>
+                    $234.35
+                  </Box>
+                </Box>
+              </AccordionPanel>
+            </>
+          )}
+        </AccordionItem>
+      </Accordion>
     </Box>
   );
 }
