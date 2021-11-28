@@ -1,6 +1,7 @@
 import {
   Heading,
   Box,
+  Link as ChakraLink,
   Flex,
   Divider,
 } from "@chakra-ui/react";
@@ -33,9 +34,9 @@ export default function Profile() {
       >
         <Flex mb="5" justifyContent="space-between">
           <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark">Profile Settings</Heading>
-          <Link to="profile">
+          <ChakraLink as={Link} to="profile">
             <BrandButton>View my Profile</BrandButton>
-          </Link>
+          </ChakraLink>
         </Flex>
         <Divider mb="5" />
         <ProfileSettingsTabs />
