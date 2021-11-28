@@ -8,7 +8,7 @@ type PropTypes = {
 }
 
 const WaitingBanner = ({ callEnded }:PropTypes) => (
-  <Flex minHeight="100vh" w="100%" justifyContent="center" alignItems="center" backgroundColor="rgba(1,1,1,0.3)">
+  <Flex minHeight="100vh" w="100%" justifyContent="center" alignItems="center">
     <Flex as="p" fontSize="40px" color="white" alignItems="center">
       {callEnded ? <Icon as={FaInfoCircle} color="purple" marginRight="10px" /> : (
         <Spinner
