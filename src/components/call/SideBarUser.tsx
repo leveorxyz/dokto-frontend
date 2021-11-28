@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useRecoilValue } from "recoil";
 import {
   Flex, Box, Avatar, Button, IconButton,
 } from "@chakra-ui/react";
@@ -6,6 +7,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import { RemoteParticipant } from "twilio-video";
 import { AxiosInstance } from "axios";
 import { AxiosContext } from "../../contexts/AxiosContext";
+import { twilioTokenAtom } from "./atoms";
 
 // import UserActionModal from "./UserActionModal";
 
@@ -17,10 +19,11 @@ type UserComponentProps = {
 export default function UserComponent({ user }: UserComponentProps) {
   // const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
+  const { roomName } = useRecoilValue(twilioTokenAtom);
   const fullName = user.identity.slice(37);
 
   const handleEnd = (participant:RemoteParticipant) => {
-    axios?.post("twilio/remove-participant-video/", { room_name: "doctor", participant_sid: participant.sid })
+    axios?.post("twilio/remove-participant-video/", { room_name: roomName, participant_sid: participant.sid })
       .then((data) => {
         console.log(data);
       })

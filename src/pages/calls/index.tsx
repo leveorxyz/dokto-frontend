@@ -2,6 +2,7 @@ import {
   useState, useEffect, useCallback, useContext,
 } from "react";
 import { Flex } from "@chakra-ui/react";
+import { useSearchParams } from "react-router-dom";
 import { Client as ConversationsClient, Conversation } from "@twilio/conversations";
 import { Room as RoomType } from "twilio-video";
 import { useRecoilValue } from "recoil";
@@ -27,12 +28,20 @@ export default function VideoCalls() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
   const authState = useRecoilValue(authAtom);
-
+  const [searchParams] = useSearchParams();
+  const queryRoomName = searchParams.get("doctor");
+  // TODO: if doctor get username/roomName from authState
   console.log(connectionState);
 
   room?.on("disconnected", () => {
     setRoom(null);
+    // TODO: Alert patient that call has ended.
   });
+
+  // Check user is doctor
+  const isDoctor = useCallback(() => authState?.user?.userType === "DOCTOR", [authState]);
+  // Check user is patient
+  const isPatient = useCallback(() => authState?.user?.userType === "PATIENT", [authState]);
 
   // Conversation initialization handler
   const initConversations = useCallback(() => {
@@ -80,45 +89,44 @@ export default function VideoCalls() {
       setConversations(
         (prevState) => [...prevState.filter((it) => it.sid !== thisConversation.sid)],
       );
-      if (authState.user?.userType === "PATIENT") {
+      if (isPatient()) {
         // connect patient doctor room
-        TwilioUtils.connectToRoom(token, roomName).then((currentRoom) => {
+        TwilioUtils.connectToRoom(token, queryRoomName || roomName).then((currentRoom) => {
           setRoom(currentRoom);
         });
       }
     });
+    // eslint-disable-next-line
   }, [token]);
 
-  console.log(conversations);
-
   useEffect(() => {
-    if (token && roomName) {
+    if (token && queryRoomName) {
       // If doctor, join both waiting & doctor room
-      if (authState.user?.userType === "DOCTOR") {
+      if (isDoctor()) {
         // connect to doctor room
-        TwilioUtils.connectToRoom(token, roomName).then((currentRoom) => {
+        TwilioUtils.connectToRoom(token, queryRoomName).then((currentRoom) => {
           setRoom(currentRoom);
         });
 
         initConversations();
-      } else if (authState.user?.userType === "PATIENT") {
+      } else if (isPatient()) {
         initConversations();
         // Create conversation room for patient waiting
-        axios?.post("twilio/create-conversation/", { doctor_username: "mahmudul" })
+        axios?.post("twilio/create-conversation/", { doctor_username: queryRoomName })
           .then((data) => {
             console.log(data);
           })
           .catch((err) => console.log(err));
       }
     }
-  }, [token, roomName, authState.user?.userType, initConversations, axios]);
+  }, [token, queryRoomName, initConversations, axios, isDoctor, isPatient]);
 
   const {
     isLoading,
   } = useTwilioToken({
     identity: `${authState.user?.id}_${authState.user?.fullName}`,
     // roomName: `${authState.user?.id}_${authState.user?.fullName}` ?? "",
-    roomName: "doctor",
+    roomName: queryRoomName || "doctor",
   });
 
   if (isLoading) {
@@ -131,7 +139,8 @@ export default function VideoCalls() {
 
   return (
     <Flex minHeight="100vh" w="100%">
-      <SideBar conversations={conversations} />
+      {/* Only show sidebar for doctor */}
+      {isDoctor() && <SideBar conversations={conversations} />}
       {room && <Videos room={room} />}
     </Flex>
   );
