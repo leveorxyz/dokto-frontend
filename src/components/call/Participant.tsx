@@ -7,9 +7,10 @@ import Video from "./Video";
 
 interface ParticipantProps {
   participant: VideoParticipant;
+  videoStyle?: Record<string, string>
 }
 
-const Participant = ({ participant }: ParticipantProps) => {
+const Participant = ({ participant, videoStyle }: ParticipantProps) => {
   const [videoTracks, setVideoTracks] = useState<(VideoTrack | null)[]>([]);
   const [audioTracks, setAudioTracks] = useState<(AudioTrack | null)[]>([]);
 
@@ -97,11 +98,15 @@ const Participant = ({ participant }: ParticipantProps) => {
     <div className="participant" id={participant.identity}>
       {/* these videos wouldn't have captions so it's safe to disable */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <Video videoRef={videoRef} />
+      <Video videoRef={videoRef} videoStyle={videoStyle} />
       {/* eslint-disable-next-line */}
       <audio ref={audioRef} />
     </div>
   );
+};
+
+Participant.defaultProps = {
+  videoStyle: { width: "100%", height: "100vh" },
 };
 
 export default Participant;

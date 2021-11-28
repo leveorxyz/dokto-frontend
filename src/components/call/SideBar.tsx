@@ -22,7 +22,7 @@ export default function SideBar({ conversations }: PropTypes) {
     <Flex
       direction="column"
       bg="brand.dark"
-      minHeight="100%"
+      minHeight="100vh"
       minWidth="15rem"
       overflowY="scroll"
       py={6}
