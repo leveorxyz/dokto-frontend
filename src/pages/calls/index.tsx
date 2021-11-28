@@ -8,6 +8,7 @@ import { Room as RoomType } from "twilio-video";
 import { useRecoilValue } from "recoil";
 import { uniqBy } from "lodash";
 import { AxiosInstance } from "axios";
+import WaitingBanner from "../../components/call/WaitingBanner";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import TwilioUtils from "../../components/call/utils/TwilioUtils";
 import useTwilioToken from "../../hooks/twilio/useTwilioToken";
@@ -141,6 +142,8 @@ export default function VideoCalls() {
     <Flex minHeight="100vh" w="100%">
       {/* Only show sidebar for doctor */}
       {isDoctor() && <SideBar conversations={conversations} />}
+      {/* Show waiting banner for patient */}
+      {(isPatient() && !room) && <WaitingBanner />}
       {room && <Videos room={room} />}
     </Flex>
   );
