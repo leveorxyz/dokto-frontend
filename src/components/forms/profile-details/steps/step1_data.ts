@@ -1,7 +1,7 @@
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
-import MobileNo from "../../provider-registration/doctor/steps/custom/MobileNo";
+import MobileNo from "../../provider-registration/custom/MobileNo";
 
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
