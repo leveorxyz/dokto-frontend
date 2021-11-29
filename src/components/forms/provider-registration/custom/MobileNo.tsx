@@ -22,7 +22,7 @@ export default function MobileNo({
   }, register, errors,
 }: PropTypes) {
   return (
-    <FormControl isInvalid={errors[`${name}-prefix`] || errors[`${name}-value`]}>
+    <FormControl isInvalid={errors[`${name}-prefix`] || errors[`${name}-value`]} pb={6}>
       <FormLabel htmlFor={name}>{label}</FormLabel>
 
       <Flex wrap="nowrap">
