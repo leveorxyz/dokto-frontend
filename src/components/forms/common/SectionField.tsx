@@ -75,6 +75,8 @@ export default function ArrayField({
         py="6"
         rounded="xl"
         color="white"
+        _hover={{ opacity: ".85" }}
+        _focus={{ outline: "none", opacity: ".85" }}
         bgColor="brand.darkPink"
       >
         {submitButtonText}
