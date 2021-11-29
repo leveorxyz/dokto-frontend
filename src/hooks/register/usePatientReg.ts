@@ -14,6 +14,6 @@ export default function usePatientReg(data: any) {
   return useQuery(
     ["patient_reg", data],
     () => registerPatient(axios as AxiosInstance, data),
-    { retry: 2 },
+    { retry: false, staleTime: Infinity },
   );
 }

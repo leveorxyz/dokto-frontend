@@ -14,6 +14,6 @@ export default function useDoctorReg(data: any) {
   return useQuery(
     ["doctor_reg", data],
     () => registerDoctor(axios as AxiosInstance, data),
-    { retry: 2 },
+    { retry: false, staleTime: Infinity },
   );
 }
