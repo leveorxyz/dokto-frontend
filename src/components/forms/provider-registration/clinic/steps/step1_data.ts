@@ -8,22 +8,6 @@ const firstColumn = (watch:any) :FormDataType => ({
   label: "Hospital Details",
 
   fields: [
-    // {
-    //   type: FieldTypes.INPUT,
-    //   name: "username",
-    //   label: "User ID",
-    //   placeholder: "",
-    //   rules: {
-    //     required: {
-    //       value: true,
-    //       message: "This field is required",
-    //     },
-    //     // pattern: {
-    //     //   value: /^[\w\s]+$/,
-    //     //   message: "Only letters and underscore allowed",
-    //     // },
-    //   },
-    // },
     {
       type: FieldTypes.INPUT,
       name: "full_name",
@@ -92,6 +76,10 @@ const firstColumn = (watch:any) :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+        min: {
+          value: 0,
+          message: "Minimum value is 1",
+        },
       },
     },
     {
@@ -126,7 +114,6 @@ const firstColumn = (watch:any) :FormDataType => ({
         deps: ["password"],
       },
     },
-
   ],
 });
 
@@ -181,7 +168,6 @@ const secondColumn = (watch: any) :FormDataType => ({
         deps: ["country"],
       },
     },
-
     {
       type: FieldTypes.SELECT,
       name: "city",
@@ -205,12 +191,6 @@ const secondColumn = (watch: any) :FormDataType => ({
       name: "zip_code",
       label: "Zip Code",
       placeholder: "Code",
-      // rules: {
-      //   required: {
-      //     value: true,
-      //     message: "This field is required",
-      //   },
-      // },
     },
 
     {
@@ -223,18 +203,11 @@ const secondColumn = (watch: any) :FormDataType => ({
         label: "I have read and agree to the Business Associate Agreement",
         required: true,
       }],
-      // visibilityDependencies: [
-      //   {
-      //     name: "date_of_birth",
-      //     value: isDateLessThan18Years,
-      //   },
-      // ],
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
-        // deps: ["date_of_birth"],
       },
     },
     {
@@ -247,18 +220,11 @@ const secondColumn = (watch: any) :FormDataType => ({
         label: "I agree to the terms of use and privacy policy",
         required: true,
       }],
-      // visibilityDependencies: [
-      //   {
-      //     name: "date_of_birth",
-      //     value: isDateLessThan18Years,
-      //   },
-      // ],
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
-        // deps: ["date_of_birth"],
       },
     },
 

@@ -229,7 +229,5 @@ const data = (watch: any) :FormDataType => ({
   ],
 });
 
-console.log(data);
-
 export default data;
 export const step1Data = data;
