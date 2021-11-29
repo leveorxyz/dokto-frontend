@@ -22,6 +22,7 @@ export default function InputField({
   name,
   placeholder,
   inputType,
+  min,
   max,
   leftAddon,
   rightAddon,
@@ -59,6 +60,7 @@ export default function InputField({
           type={inputType}
           placeholder={placeholder}
           max={max}
+          min={min}
           sx={{
             "&": {
               ...borderStyles,
