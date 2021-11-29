@@ -1,12 +1,14 @@
 import {
   Heading,
   Box,
+  Flex,
   Image,
   Text,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 
 import { SpacedContainer } from "../../components/common/Containers";
+import ProfileIcon from "../../static/user.svg";
 import ProfileTabs from "../../components/profile/doctor/ProfileTabs";
 import BrandButton from "../../components/common/buttons/BrandButton";
 import WhiteButton from "../../components/common/buttons/WhiteButton";
@@ -24,7 +26,10 @@ export default function Profile() {
 
   return (
     <SpacedContainer>
-      <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mt="4">Profile</Heading>
+      <Flex alignItems="center" direction="row">
+        <Image src={ProfileIcon} position="relative" top="2" right="1" />
+        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mt="4">Profile</Heading>
+      </Flex>
       <Box display="flex" py={8}>
         <Image src={doctorProfile?.profile_photo} width="12rem" fit="contain" mr={6} />
         <Box w="100%" mb="10" d="flex" flexDir="column">
