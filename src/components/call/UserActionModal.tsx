@@ -7,7 +7,7 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { IoPersonAdd, IoPause, IoStopCircle } from "react-icons/io5";
+import { IoPersonAdd, IoCloseCircleSharp } from "react-icons/io5";
 
 import { RemoteParticipant } from "twilio-video";
 
@@ -15,9 +15,13 @@ type PropsType = {
   user: RemoteParticipant;
   isOpen: boolean;
   onClose: () => void;
+  handleRemove: (participant: RemoteParticipant) => void;
+  handleRemoveMoveToWaiting: (participant: RemoteParticipant) => void;
 };
 
-export default function UserActionModal({ user, isOpen, onClose }: PropsType) {
+export default function UserActionModal({
+  user, isOpen, onClose, handleRemove, handleRemoveMoveToWaiting,
+}: PropsType) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -27,7 +31,7 @@ export default function UserActionModal({ user, isOpen, onClose }: PropsType) {
           borderBottomColor="brand.pink"
           borderBottomStyle="solid"
         >
-          Start meeting with
+          End meeting with
           {" "}
           {user.identity.slice(37)}
         </ModalHeader>
@@ -37,21 +41,24 @@ export default function UserActionModal({ user, isOpen, onClose }: PropsType) {
             variant="ghost"
             my={3}
             _hover={{ bg: "brand.pink", color: "white" }}
-            leftIcon={<IoPersonAdd />}
+            leftIcon={<IoCloseCircleSharp />}
             isFullWidth
+            onClick={() => handleRemove(user)}
           >
-            Add patient to active call
+            Remove patient from video room
           </Button>
+
           <Button
             variant="ghost"
             my={3}
             _hover={{ bg: "brand.pink", color: "white" }}
-            leftIcon={<IoPause />}
+            leftIcon={<IoPersonAdd />}
             isFullWidth
+            onClick={() => handleRemoveMoveToWaiting(user)}
           >
-            Pause active call and start new one
+            End call and move patient to waiting room.
           </Button>
-          <Button
+          {/* <Button
             variant="ghost"
             color="brand.pink"
             my={3}
@@ -60,7 +67,8 @@ export default function UserActionModal({ user, isOpen, onClose }: PropsType) {
             isFullWidth
           >
             End active call and start new one
-          </Button>
+          </Button> */}
+
         </ModalBody>
       </ModalContent>
     </Modal>

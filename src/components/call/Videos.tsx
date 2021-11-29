@@ -7,10 +7,6 @@ import { uniqBy } from "lodash";
 import { callListAtom } from "./atoms";
 import Participant from "./Participant";
 import LocalScreenSharingPreview from "./LocalScreenSharingPreview";
-// import CameraButton from "./CameraButton";
-// import LeaveRoomButton from "./LeaveRoomButton";
-// import MicButton from "./MicButton";
-// import ScreenShareButton from "./ScreenShareButton";
 import ActionButtons from "./ActionButtons";
 
 type PropTypes = {
@@ -54,7 +50,7 @@ const Videos = ({ room }: PropTypes) => {
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (
-    <Flex direction="row" wrap="nowrap" w="100%" justifyContent={participants.length === 0 ? "space-between" : "flex-end"}>
+    <Flex direction="row" wrap="nowrap" w="100%" justifyContent="stretch" paddingTop="10" paddingRight="3">
       <Flex direction="column" flexGrow={1}>
         {/* Local screen share preview show only when screen share state is active */}
         {isScreenSharingActive
@@ -87,23 +83,21 @@ const Videos = ({ room }: PropTypes) => {
         )}
       </Flex>
 
-      <Flex
-        maxWidth="15rem"
-        minH="84vh"
-        marginRight="4"
-        marginTop="4"
-        flexGrow={0}
-        flexShrink={1}
-        direction="column"
+      <Box
+        position="fixed"
+        width="200px"
+        bottom="20"
+        right="5rem"
       >
-        <Box as="h3" fontSize="lg" fontWeight="600" width="100%" textAlign="center">
-          Your video
-        </Box>
-        <Box
-          as={Participant}
+
+        <Participant
           participant={room.localParticipant}
-          m={[3, 6, 6, 6, 6]}
-          p={[3, 6, 6, 6, 6]}
+          videoStyle={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "15px",
+            border: "2px solid white",
+          }}
         />
 
         {/* Video action buttons */}
@@ -120,7 +114,7 @@ const Videos = ({ room }: PropTypes) => {
           <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
           <LeaveRoomButton room={room} />
         </Flex> */}
-      </Flex>
+      </Box>
     </Flex>
   );
 };

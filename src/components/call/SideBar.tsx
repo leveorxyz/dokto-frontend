@@ -1,7 +1,7 @@
 import {
   Flex, Box,
 } from "@chakra-ui/react";
-import { IoPeopleCircle } from "react-icons/io5";
+// import { IoPeopleCircle } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { Conversation } from "@twilio/conversations";
 import { callListAtom } from "./atoms";
@@ -22,7 +22,7 @@ export default function SideBar({ conversations }: PropTypes) {
     <Flex
       direction="column"
       bg="brand.dark"
-      minHeight="100%"
+      minHeight="100vh"
       minWidth="15rem"
       overflowY="scroll"
       py={6}
@@ -30,7 +30,7 @@ export default function SideBar({ conversations }: PropTypes) {
       alignItems="center"
       color="white"
     >
-      <CustomHeading>Actions</CustomHeading>
+      {/* <CustomHeading>Actions</CustomHeading>
       <Flex
         width="100%"
         p={3}
@@ -41,7 +41,7 @@ export default function SideBar({ conversations }: PropTypes) {
       >
         <Box as={IoPeopleCircle} fontSize="1.2rem" mr={3} />
         <Box>Group Call</Box>
-      </Flex>
+      </Flex> */}
       {/* <Flex
         width="100%"
         p={3}
