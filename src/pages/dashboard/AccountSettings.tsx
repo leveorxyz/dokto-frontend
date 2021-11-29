@@ -26,7 +26,7 @@ const AccountSettings = () => {
         boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
         filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
       >
-        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Profile Settings</Heading>
+        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Account Settings</Heading>
         <Divider mb="5" />
         <AccountSettingsTabs />
       </Box>
