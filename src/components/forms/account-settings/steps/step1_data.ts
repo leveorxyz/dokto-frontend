@@ -75,6 +75,7 @@ const secondColumn = (watch: any) :FormDataType => ({
       type: FieldTypes.SECTION,
       name: "delete_account",
       label: "Delete Account",
+      iconDelete: true,
       submitButtonText: "Delete Account",
       fields: [
         {

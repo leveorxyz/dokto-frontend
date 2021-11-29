@@ -25,6 +25,7 @@ export default function ArrayField({
   data: {
     name,
     label,
+    iconDelete,
     fields: fieldsDetails,
     submitButtonText,
   },
@@ -43,13 +44,19 @@ export default function ArrayField({
         <Heading as="h4" size="md" my={6}>
           {label}
         </Heading>
-        <IconButton
-          position="relative"
-          top="3"
-          variant="ghost"
-          aria-label=""
-          icon={<Box as={IoTrash} size={24} color="red" />}
-        />
+        {iconDelete ? (
+          <IconButton
+            position="relative"
+            top="3"
+            variant="ghost"
+            _hover={{ bgColor: "white" }}
+            _active={{ bgColor: "white" }}
+            aria-label=""
+            icon={<Box as={IoTrash} size={24} color="red" />}
+          />
+        ) : (
+          <Box />
+        )}
       </Flex>
       {!fields.length && (
       <>

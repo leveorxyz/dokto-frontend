@@ -134,6 +134,7 @@ export type SectionFieldType = {
   type: FieldTypes.SECTION;
   fields: FormFieldType[];
   submitButtonText?: string;
+  iconDelete?: boolean;
 } & CommonType;
 
 export type FormFieldType = InputFieldType
