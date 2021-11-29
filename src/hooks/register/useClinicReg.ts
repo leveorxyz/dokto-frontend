@@ -4,16 +4,17 @@ import { AxiosInstance } from "axios";
 
 import { AxiosContext } from "../../contexts/AxiosContext";
 
-const registerDoctor = async (axios: AxiosInstance, data: any) => axios.post("user/doctor-signup/", data)
+const registerClinic = async (axios: AxiosInstance, data: any) => axios.post("user/clinic-signup/", data)
+
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
-export default function useDoctorReg(data: any) {
+export default function useClinicReg(data: any) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
 
   return useQuery(
-    ["doctor_reg", data],
-    () => registerDoctor(axios as AxiosInstance, data),
+    ["clinic_reg", data],
+    () => registerClinic(axios as AxiosInstance, data),
     { retry: false, staleTime: Infinity },
   );
 }

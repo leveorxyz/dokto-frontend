@@ -49,6 +49,7 @@ export type InputFieldType = {
   leftAddon?: string | React.ReactNode;
   rightAddon?: string | React.ReactNode;
   max?: string | number;
+  min?: string | number;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
   customProperties?: { [key: string]: string };

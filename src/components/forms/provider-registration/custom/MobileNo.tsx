@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { Country } from "country-state-city";
 
-import { CustomFieldType } from "../../../../types/form";
+import { CustomFieldType } from "../../types/form";
 
 type PropTypes = {
   data: CustomFieldType;
