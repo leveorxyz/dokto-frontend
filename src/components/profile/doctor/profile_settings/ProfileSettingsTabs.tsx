@@ -4,6 +4,7 @@ import {
 
 import ExperienceEducation from "./ExperienceEducation";
 import ProfileDetails from "./ProfileDetails";
+import ProfessionalProfile from "./ProfessionalProfile";
 import Insurances from "./Insurances";
 
 export default function ProfileSettingsTabs() {
@@ -43,7 +44,7 @@ export default function ProfileSettingsTabs() {
         </TabPanel>
 
         <TabPanel>
-          <ExperienceEducation />
+          <ProfessionalProfile />
         </TabPanel>
 
         <TabPanel>

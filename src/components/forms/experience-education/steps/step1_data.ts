@@ -89,7 +89,7 @@ const secondColumn = () :FormDataType => ({
     {
       type: FieldTypes.ARRAY,
       name: "experience",
-      label: "Experience",
+      label: "Experience Profile",
       addButtonText: "Add Experience +",
       rules: {
         required: {
