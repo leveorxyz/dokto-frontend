@@ -91,7 +91,7 @@ export default function Form() {
           ))}
       </Breadcrumb>
 
-      <Box>
+      <Box px="4">
         {CurrentStep}
       </Box>
     </>

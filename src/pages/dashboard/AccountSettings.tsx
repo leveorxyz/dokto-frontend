@@ -17,7 +17,7 @@ const AccountSettings = () => {
     return <LoadingPage />;
   }
   return (
-    <SpacedContainer py={20}>
+    <SpacedContainer pt={10}>
       <Box
         d="flex"
         flexDir="column"

@@ -52,7 +52,7 @@ export default function InputField({
   }, [leftAddon, rightAddon, leftElement, rightElement]);
 
   return (
-    <FormControl id={name} isInvalid={errors[name]} py={6}>
+    <FormControl id={name} isInvalid={errors[name]} pb={4}>
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <InputGroup>
         {leftAddon && <InputLeftAddon bg="brand.darkPink" color="white" borderRadius="xl">{leftAddon}</InputLeftAddon>}

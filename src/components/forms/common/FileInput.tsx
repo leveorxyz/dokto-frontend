@@ -53,7 +53,7 @@ export default function FileInput({
   }, [currentValue, isRequired, setError, shadowFieldName, isDirty]);
 
   return (
-    <FormControl isInvalid={errors[shadowFieldName]} py={6}>
+    <FormControl isInvalid={errors[shadowFieldName]} pb={4}>
       <FormLabel htmlFor={shadowFieldName} color="brand.dark">{label}</FormLabel>
       <Input
         id={shadowFieldName}
