@@ -4,6 +4,16 @@ import {
   Flex,
   Image,
   Text,
+  useDisclosure,
+  Modal,
+  Checkbox,
+  Textarea,
+  Button,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 
@@ -19,6 +29,8 @@ import LoadingPage from "../../components/common/fallback/LoadingPage";
 export default function Profile() {
   const doctorProfile = useRecoilValue(doctorProfileAtom);
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   if (isLoading) {
     return <LoadingPage />;
@@ -42,7 +54,36 @@ export default function Profile() {
             {doctorProfile?.professional_bio}
           </Text>
           <Box d="flex" flexDir="row" mt="3">
-            <BrandButton>Add Review</BrandButton>
+            <BrandButton onClick={onOpen}>Add Review</BrandButton>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered>
+              <ModalOverlay />
+              <ModalContent bgColor="#FAFAFD" rounded="xl" p="3">
+                <ModalHeader>{doctorProfile?.full_name}</ModalHeader>
+                <ModalBody>
+                  <Flex mb="4">
+                    <Box color="rgba(51, 51, 51, 0.5)" mr="4">Posting Publicly</Box>
+                    <Checkbox defaultIsChecked>Hide My Name</Checkbox>
+                  </Flex>
+                  <Textarea placeholder="Type a Review...." resize="vertical" />
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button colorScheme="white" color="black" bgColor="#E8E7E9" mr={3} onClick={onClose}>
+                    Cancel
+                  </Button>
+                  <Button
+                    color="white"
+                    bgColor="brand.darkPink"
+                    _hover={{ opacity: ".85" }}
+                    _active={{ opacity: ".85" }}
+                    _focus={{ outline: "none", opacity: ".85" }}
+                  >
+                    Post Review
+
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
             <WhiteButton ml="5">Book Now</WhiteButton>
           </Box>
         </Box>

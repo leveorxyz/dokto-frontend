@@ -37,7 +37,7 @@ export default function Tab2() {
                     mx="4"
                     p="1"
                     cursor="pointer"
-                    _hover={{ color: "white", bgColor: "brand.darkPink" }}
+                    _hover={{ color: "white", bgColor: "brand.darkPink", borderColor: "brand.darkPink" }}
                     _focus={{ color: "white", bgColor: "brand.darkPink" }}
                     _active={{ color: "white", bgColor: "brand.darkPink" }}
                   >
