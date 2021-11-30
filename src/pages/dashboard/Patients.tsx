@@ -1,5 +1,4 @@
 import { useState, useMemo, useRef } from "react";
-import { useRecoilValue } from "recoil";
 import { useTable, useSortBy, usePagination } from "react-table";
 import {
   Flex,
@@ -8,42 +7,43 @@ import {
   Text,
   Input,
   useDisclosure,
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
 } from "@chakra-ui/react";
-import { matchSorter } from "match-sorter";
 import debounce from "lodash/debounce";
-
-import patientsAtom, { Patient } from "../../atoms/ehr/patients";
 import { columns } from "../../data/PatientsData";
+import LoadingPage from "../../components/common/fallback/LoadingPage";
 import PatientTable from "../../components/patients/Table";
 import PatientModal from "../../components/patients/OverviewModal";
 import { SpacedContainer } from "../../components/common/Containers";
+import useEncounteredPatients, { EncounteredPatient, PropTypes } from "../../hooks/encounteredPatients/useEncounteredPatients";
 
 export default function Patients() {
-  const patientsData = useRecoilValue(patientsAtom);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [currentPatient, setCurrentPatient] = useState<Patient | null>(null);
+  const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
   const [searchParam, setSearchParam] = useState<string | null>(null);
-  const [searchParamDebounced, setSearchParamDebounced] = useState<string | null>(null);
+  const [searchParamDebounced, setSearchParamDebounced] = useState<PropTypes>(
+    { limit: 10, offset: 0 },
+  );
 
   const debouncedSearch = useRef(
     debounce((x) => setSearchParamDebounced(x), 500),
+
   ).current;
 
+  const {
+    isFetching, isError, isSuccess, data,
+  } = useEncounteredPatients(searchParamDebounced);
+
   const memoizedColumns = useMemo(() => columns, []);
+
   const memoizedPatientsData = useMemo(
-    () => {
-      if (!searchParamDebounced) return patientsData;
-      return matchSorter(
-        patientsData,
-        searchParamDebounced,
-        {
-          keys: ["name", "address", "phoneNo", "reasonOfVisit", "status"],
-        },
-      );
-    }, [searchParamDebounced, patientsData],
+    () => data?.results ?? [], [data],
   );
 
-  const showModal = (patient: Patient) => {
+  const showModal = (patient: EncounteredPatient) => {
     setCurrentPatient(patient);
     onOpen();
   };
@@ -64,49 +64,82 @@ export default function Patients() {
   },
   useSortBy, usePagination);
 
-  return (
-    <SpacedContainer py={12}>
-      <Flex justifyContent="space-between" pb={6}>
-        <Box>
-          <Heading as="h1" fontSize="3xl">
-            Patients
-          </Heading>
-          <Text fontSize="lg" color="gray.500">
-            List of all patients
-          </Text>
-        </Box>
+  if (isFetching) {
+    return <LoadingPage />;
+  }
 
-        <Box>
-          <Text fontSize="lg">
-            Search Patients
-          </Text>
-          <Input
-            placeholder="Search"
-            value={searchParam ?? ""}
-            variant="filled"
-            onChange={(e) => {
-              setSearchParam(e.target.value);
-              debouncedSearch(e.target.value);
-            }}
-          />
-        </Box>
-      </Flex>
+  if (isError) {
+    return (
+      <SpacedContainer py={12}>
+        <Alert
+          status="error"
+          variant="subtle"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          minHeight="200px"
+          rounded="lg"
+        >
+          <AlertIcon boxSize="40px" mr={0} />
+          <AlertTitle mt={4} mb={1} fontSize="xl">
+            Woops!
+          </AlertTitle>
+          <AlertDescription maxWidth="sm">
+            Sorry, something went wrong. Please try again or come back later.
+          </AlertDescription>
+        </Alert>
+      </SpacedContainer>
+    );
+  }
 
-      <PatientTable
-        {...{
-          getTableProps,
-          getTableBodyProps,
-          headerGroups,
-          rows,
-          prepareRow,
-          showModal,
-        }}
-      />
-      <PatientModal
-        onClose={closeModal}
-        isOpen={isOpen}
-        patient={currentPatient}
-      />
-    </SpacedContainer>
-  );
+  if (isSuccess) {
+    return (
+      <SpacedContainer py={12}>
+        <Flex justifyContent="space-between" pb={6}>
+          <Box>
+            <Heading as="h1" fontSize="3xl">
+              Patients
+            </Heading>
+            <Text fontSize="lg" color="gray.500">
+              List of all patients
+            </Text>
+          </Box>
+
+          <Box>
+            <Text fontSize="lg">
+              Search Patients
+            </Text>
+            <Input
+              placeholder="Search"
+              value={searchParam ?? ""}
+              variant="filled"
+              onChange={(e) => {
+                setSearchParam(e.target.value);
+                debouncedSearch(e.target.value);
+              }}
+            />
+          </Box>
+        </Flex>
+
+        <PatientTable
+          {...{
+            getTableProps,
+            getTableBodyProps,
+            headerGroups,
+            rows,
+            prepareRow,
+            showModal,
+          }}
+        />
+        <PatientModal
+          onClose={closeModal}
+          isOpen={isOpen}
+          patient={currentPatient}
+        />
+      </SpacedContainer>
+    );
+  }
+
+  return <></>;
 }
