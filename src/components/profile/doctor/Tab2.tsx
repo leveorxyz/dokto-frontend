@@ -24,37 +24,38 @@ export default function Tab2() {
           .map((day) => (
             <Flex direction="row" key={day} my="4" alignItems="center">
               <Box color="brand.dark" w="25%">{day}</Box>
-              {times
-                .map((time) => (
-                  (day !== "Sunday" && day !== "Wednesday") ? (
-                    <Box
-                      as="button"
-                      key={time}
-                      border="2px"
-                      borderColor="brand.dark"
-                      borderRadius="md"
-                      color="brand.dark"
-                      mx="4"
-                      p="1"
-                      cursor="pointer"
-                      _hover={{ color: "white", bgColor: "brand.darkPink" }}
-                      _focus={{ color: "white", bgColor: "brand.darkPink" }}
-                      _active={{ color: "white", bgColor: "brand.darkPink" }}
-                    >
-                      {time}
+              {(day !== "Sunday" && day !== "Wednesday") ? (
+                times.map((time) => (
 
-                    </Box>
-                  ) : (
-                    <Box
-                      color="red"
-                      mx="4"
-                      p="1"
-                    >
-                      Closed
+                  <Box
+                    as="button"
+                    key={time}
+                    border="2px"
+                    borderColor="brand.dark"
+                    borderRadius="md"
+                    color="brand.dark"
+                    mx="4"
+                    p="1"
+                    cursor="pointer"
+                    _hover={{ color: "white", bgColor: "brand.darkPink" }}
+                    _focus={{ color: "white", bgColor: "brand.darkPink" }}
+                    _active={{ color: "white", bgColor: "brand.darkPink" }}
+                  >
+                    {time}
 
-                    </Box>
-                  )
-                ))}
+                  </Box>
+
+                ))
+              ) : (
+                <Box
+                  color="red"
+                  mx="4"
+                  p="1"
+                >
+                  Closed
+
+                </Box>
+              )}
             </Flex>
           ))}
       </Flex>
