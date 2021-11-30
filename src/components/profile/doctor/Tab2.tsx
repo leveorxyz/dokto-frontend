@@ -1,6 +1,7 @@
 import { useRecoilValue } from "recoil";
 import {
   Box,
+  Flex,
   Heading,
 } from "@chakra-ui/react";
 
@@ -10,13 +11,26 @@ export default function Tab2() {
   const doctorProfileData = useRecoilValue(doctorProfile);
   console.log(doctorProfileData);
 
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const times = ["9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm"];
+
   return (
     <Box>
-      <Box mt={6}>
-        <Heading as="h3" size="md" mb={3}>
-          Available hours:
-        </Heading>
-      </Box>
+      <Heading as="h3" size="md" mb={3}>
+        Available Hours:
+      </Heading>
+      <Flex direction="column">
+        {days
+          .map((day) => (
+            <Flex direction="row" key={day}>
+              <Box color="brand.dark">{day}</Box>
+              {times
+                .map((time) => (
+                  <Box key={time} border="2px" borderColor="brand.dark" borderRadius="md" color="brand.dark">{time}</Box>
+                ))}
+            </Flex>
+          ))}
+      </Flex>
     </Box>
   );
 }
