@@ -6,7 +6,7 @@ import {
 import MobileNo from "../../provider-registration/custom/MobileNo";
 import doctorProfile from "../../../../atoms/doctorProfile";
 
-const firstColumn = () :FormDataType => ({
+const secondRow = () :FormDataType => ({
   type: FieldTypes.ROW,
   name: "first",
   fields: [
@@ -35,7 +35,7 @@ const firstColumn = () :FormDataType => ({
   ],
 });
 
-const secondColumn = () :FormDataType => ({
+const thirdRow = () :FormDataType => ({
   type: FieldTypes.ROW,
   name: "second",
   fields: [
@@ -96,8 +96,8 @@ const data = (watch: any) :FormDataType => ({
         },
       },
     },
-    firstColumn(),
-    secondColumn(),
+    secondRow(),
+    thirdRow(),
     {
       type: FieldTypes.INPUT,
       name: "street",

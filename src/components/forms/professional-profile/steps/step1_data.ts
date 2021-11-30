@@ -1,10 +1,37 @@
+import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
 
-const firstColumn = () :FormDataType => ({
+const secondRow = () :FormDataType => ({
+  type: FieldTypes.ROW,
+  name: "second",
+  fields: [
+    {
+      type: FieldTypes.FILE,
+      name: "license_file",
+      label: "License Upload",
+      accept: "image/*, application/pdf",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "end_date",
+      label: "Current License End Date",
+      max: format(new Date(), "yyyy-MM-dd"),
+      inputType: "date",
+    },
+  ],
+});
+
+const data = () :FormDataType => ({
   type: FieldTypes.COLUMN,
-  name: "first",
+  name: "step1",
   fields: [
     {
       type: FieldTypes.CHECKBOX,
@@ -31,14 +58,19 @@ const firstColumn = () :FormDataType => ({
         },
       },
     },
-  ],
-});
-
-const data = () :FormDataType => ({
-  type: FieldTypes.ROW,
-  name: "step1",
-  fields: [
-    firstColumn(),
+    secondRow(),
+    {
+      type: FieldTypes.TEXTAREA,
+      name: "professional_bio",
+      label: "Professional Bio",
+      resize: "vertical",
+      rules: {
+        maxLength: {
+          value: 200,
+          message: "Must be less than 200 characters",
+        },
+      },
+    },
   ],
 });
 
