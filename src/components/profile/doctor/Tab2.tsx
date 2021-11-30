@@ -22,11 +22,11 @@ export default function Tab2() {
       <Flex direction="column">
         {days
           .map((day) => (
-            <Flex direction="row" key={day}>
+            <Flex direction="row" key={day} my="4" alignItems="center">
               <Box color="brand.dark">{day}</Box>
               {times
                 .map((time) => (
-                  <Box key={time} border="2px" borderColor="brand.dark" borderRadius="md" color="brand.dark">{time}</Box>
+                  <Box key={time} border="2px" borderColor="brand.dark" borderRadius="md" color="brand.dark" mx="4" p="1">{time}</Box>
                 ))}
             </Flex>
           ))}
