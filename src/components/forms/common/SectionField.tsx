@@ -40,7 +40,7 @@ export default function ArrayField({
 
   return (
     <Flex direction="column">
-      <Flex justifyContent="space-between">
+      <Flex justifyContent="space-between" alignItems="baseline">
         <Heading as="h4" size="md" pb={4}>
           {label}
         </Heading>
@@ -48,7 +48,6 @@ export default function ArrayField({
           <IconButton
             as="div"
             position="relative"
-            top="3"
             variant="ghost"
             _hover={{ bgColor: "white" }}
             _active={{ bgColor: "white" }}
