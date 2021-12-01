@@ -1,14 +1,15 @@
 import React from "react";
-// import ReactStars from "react-rating-stars-component";
+import StarRatingComponent from "react-star-rating-component";
 
 export default function Tab4() {
   return (
     <>
-      {/* <ReactStars
-        count={5}
-        size={24}
-        activeColor="#ffd700"
-      /> */}
+      <StarRatingComponent
+        name="rate1"
+        starCount={10}
+        value={3}
+        starColor="#ffd700"
+      />
     </>
   );
 }
