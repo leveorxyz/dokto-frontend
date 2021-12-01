@@ -20,7 +20,7 @@ export default function FormStep({
   formData, currentStepAtom, stepDataAtom, submitButtonText,
 }: PropTypes) {
   const [stepState, setStepState] = useRecoilState(stepDataAtom);
-  const setCurrentStep = useSetRecoilState(currentStepAtom);
+  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
   const {
     handleSubmit,
     register,
@@ -69,7 +69,15 @@ export default function FormStep({
           control={control}
         />
 
-        <Flex justifyContent="flex-end" py={6}>
+        <Flex justifyContent="space-between" py={6}>
+          <BrandButton
+            isDisabled={currentStep <= 1}
+            onClick={() => setCurrentStep(
+              (prev) => (prev >= 1 ? prev - 1 : prev),
+            )}
+          >
+            Back
+          </BrandButton>
           <BrandButton type="submit" isLoading={isSubmitting}>
             {submitButtonText}
           </BrandButton>
