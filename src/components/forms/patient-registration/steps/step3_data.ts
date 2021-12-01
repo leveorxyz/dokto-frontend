@@ -8,22 +8,64 @@ const firstColumn = () :FormDataType => ({
   label: "Referring Physician Details",
   fields: [
     {
+      type: FieldTypes.SELECT,
+      name: "referring_doctor_visibility",
+      label: "Enter Referring Physician",
+      options: [
+        {
+          label: "Not applicable",
+          value: "NOT_APPLICABLE",
+        },
+        {
+          label: "Referring Doctor’s Details",
+          value: "APPLICABLE",
+        },
+      ],
+    },
+    {
       type: FieldTypes.INPUT,
       name: "referring_doctor_full_name",
       label: "Referring Doctor Full Name",
       placeholder: "Referring Doctor Full Name",
+      visibilityDependencies: [
+        {
+          name: "referring_doctor_visibility",
+          value: "APPLICABLE",
+        },
+      ],
+      rules: {
+        deps: ["referring_doctor_visibility"],
+      },
     },
     {
       type: FieldTypes.INPUT,
       name: "referring_doctor_phone_number",
       label: "Referring Doctor Phone Number",
       placeholder: "Referring Doctor Phone Number",
+      visibilityDependencies: [
+        {
+          name: "referring_doctor_visibility",
+          value: "APPLICABLE",
+        },
+      ],
+      rules: {
+        deps: ["referring_doctor_visibility"],
+      },
     },
     {
       type: FieldTypes.INPUT,
       name: "referring_doctor_address",
       label: "Referring Doctor Address",
       placeholder: "Referring Doctor Address",
+      visibilityDependencies: [
+        {
+          name: "referring_doctor_visibility",
+          value: "APPLICABLE",
+        },
+      ],
+      rules: {
+        deps: ["referring_doctor_visibility"],
+      },
     },
   ],
 });
