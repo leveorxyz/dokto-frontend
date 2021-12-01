@@ -46,6 +46,7 @@ export default function ArrayField({
         </Heading>
         {iconDelete ? (
           <IconButton
+            as="div"
             position="relative"
             top="3"
             variant="ghost"
@@ -70,6 +71,7 @@ export default function ArrayField({
         ))}
       </>
       )}
+      {submitButtonText && (
       <Button
         width="100%"
         py="6"
@@ -81,7 +83,7 @@ export default function ArrayField({
       >
         {submitButtonText}
       </Button>
-
+      )}
     </Flex>
   );
 }
