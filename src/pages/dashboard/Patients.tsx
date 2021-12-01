@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo } from "react";
 import { useTable, useSortBy, usePagination } from "react-table";
 import {
   Flex,
@@ -12,30 +12,31 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
-import debounce from "lodash/debounce";
+// import debounce from "lodash/debounce";
 import { columns } from "../../data/PatientsData";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import PatientTable from "../../components/patients/Table";
 import PatientModal from "../../components/patients/OverviewModal";
 import { SpacedContainer } from "../../components/common/Containers";
 import useEncounteredPatients, { EncounteredPatient, PropTypes } from "../../hooks/encounteredPatients/useEncounteredPatients";
+import useDebounce from "../../hooks/common/useDebounce";
 
 export default function Patients() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
-  const [searchParam, setSearchParam] = useState<string | null>(null);
-  const [searchParamDebounced, setSearchParamDebounced] = useState<PropTypes>(
-    { limit: 10, offset: 0 },
-  );
+  const [search, setSearch] = useState("");
+  const [offset] = useState(0);
+  const [limit] = useState(15);
 
-  const debouncedSearch = useRef(
-    debounce((x) => setSearchParamDebounced(x), 500),
-
-  ).current;
+  const debouncedSearch = useDebounce<PropTypes>({
+    limit,
+    offset,
+    search,
+  });
 
   const {
     isFetching, isError, isSuccess, data,
-  } = useEncounteredPatients(searchParamDebounced);
+  } = useEncounteredPatients(debouncedSearch);
 
   const memoizedColumns = useMemo(() => columns, []);
 
@@ -112,12 +113,9 @@ export default function Patients() {
             </Text>
             <Input
               placeholder="Search"
-              value={searchParam ?? ""}
+              value={search ?? ""}
               variant="filled"
-              onChange={(e) => {
-                setSearchParam(e.target.value);
-                debouncedSearch(e.target.value);
-              }}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </Box>
         </Flex>
