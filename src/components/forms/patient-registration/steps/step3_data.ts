@@ -83,11 +83,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       options: [
         {
           label: "Self-Pay",
-          value: "SELF_PAID",
+          value: "SELF-PAY",
         },
         {
           label: "Insurance",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
