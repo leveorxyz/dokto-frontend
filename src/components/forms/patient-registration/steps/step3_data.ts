@@ -105,11 +105,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       visibilityDependencies: [
         {
           name: "insurance_type",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
-        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        validate: (v) => (watch("insurance_type") === "INSURANCE" && v ? true : "This field is required"),
         deps: ["insurance_type"],
       },
     },
@@ -121,11 +121,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       visibilityDependencies: [
         {
           name: "insurance_type",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
-        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        validate: (v) => (watch("insurance_type") === "INSURANCE" && v ? true : "This field is required"),
         deps: ["insurance_type"],
       },
     },
@@ -137,11 +137,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       visibilityDependencies: [
         {
           name: "insurance_type",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
-        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        validate: (v) => (watch("insurance_type") === "INSURANCE" && v ? true : "This field is required"),
         deps: ["insurance_type"],
       },
     },
