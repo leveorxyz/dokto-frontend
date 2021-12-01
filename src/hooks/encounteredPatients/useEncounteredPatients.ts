@@ -28,9 +28,11 @@ export type EncounteredPatient={
 
 export type EncounteredPatients={
   count: number,
-  next: number|null,
-  previous: number|null,
-  results:EncounteredPatient[]
+  next: string,
+  previous: string,
+  results:EncounteredPatient[],
+  previous_offset: number|null,
+  next_offset: number|null,
 }
 
 export type PropTypes={

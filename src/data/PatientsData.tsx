@@ -17,6 +17,10 @@ import PatientStatus from "../components/patients/Status";
 
 export const columns: Column<EncounteredPatient>[] = [
   {
+    Header: "Account ID",
+    accessor: "display_id",
+  },
+  {
     Header: "Name",
     accessor: "name",
   },

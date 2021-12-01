@@ -11,6 +11,10 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Button,
+  Spacer,
+  Select,
+  FormControl,
 } from "@chakra-ui/react";
 // import debounce from "lodash/debounce";
 import { columns } from "../../data/PatientsData";
@@ -25,8 +29,8 @@ export default function Patients() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
   const [search, setSearch] = useState("");
-  const [offset] = useState(0);
-  const [limit] = useState(15);
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(2);
 
   const debouncedSearch = useDebounce<PropTypes>({
     limit,
@@ -130,6 +134,63 @@ export default function Patients() {
             showModal,
           }}
         />
+        <Flex m="2">
+          <Box>
+            Showing
+            {" "}
+            {limit > data?.count! ? data?.count : limit}
+            {" "}
+            from
+            {" "}
+            {data?.count}
+            {" "}
+            data
+          </Box>
+          <Spacer />
+          <Flex alignItems="center">
+            <Box mr="2">Show</Box>
+            <FormControl>
+              <Select
+                placeholder="Select"
+                defaultValue="2"
+                value={limit}
+                // TODO fix type
+                onChange={(e:any) => setLimit(e.target.value)}
+              >
+
+                <option value={2}>
+                  2
+                </option>
+                <option value={5}>
+                  5
+                </option>
+                <option value={10}>
+                  10
+                </option>
+              </Select>
+            </FormControl>
+            <Box ml="2" whiteSpace="nowrap">Rows Per Page</Box>
+          </Flex>
+          <Spacer />
+          <Flex>
+
+            <Button
+              onClick={() => setOffset(data?.previous_offset ?? 0)}
+              disabled={!data?.previous}
+            >
+              Previous
+
+            </Button>
+            <Button
+              onClick={() => setOffset(data?.next_offset ?? 0)}
+              disabled={!data?.next}
+            >
+              Next
+
+            </Button>
+          </Flex>
+
+        </Flex>
         <PatientModal
           onClose={closeModal}
           isOpen={isOpen}
