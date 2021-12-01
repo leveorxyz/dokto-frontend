@@ -4,7 +4,7 @@ import AccountSettingsForm from "../../../forms/account-settings";
 
 export default function ProfileSettingsTabs() {
   return (
-    <Box>
+    <Box bgColor="white">
       <AccountSettingsForm />
     </Box>
   );

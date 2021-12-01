@@ -31,6 +31,7 @@ export default function ProfileSettingsTabs() {
       </TabList>
 
       <TabPanels
+        bgColor="white"
         borderRadius="lg"
         boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
         filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"

@@ -37,7 +37,7 @@ export default function ProfileTabs() {
         ))}
       </TabList>
 
-      <TabPanels bg="gray.100" mt={3} rounded="lg">
+      <TabPanels bgColor="white" mt={3} rounded="lg">
         <TabPanel>
           <Tab1 />
         </TabPanel>

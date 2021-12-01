@@ -6,7 +6,7 @@ export default function Tab4() {
     <>
       <StarRatingComponent
         name="rate1"
-        starCount={10}
+        starCount={5}
         value={3}
         starColor="#ffd700"
       />

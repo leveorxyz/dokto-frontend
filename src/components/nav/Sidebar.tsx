@@ -16,7 +16,7 @@ const Sidebar = () => {
       minHeight="100vh"
       overflowY="scroll"
       overflowX="hidden"
-      bg="gray.100"
+      bg="white"
       sx={{
         "&::-webkit-scrollbar": {
           display: "none",

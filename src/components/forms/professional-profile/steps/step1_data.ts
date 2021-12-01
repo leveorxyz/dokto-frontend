@@ -12,6 +12,7 @@ const secondRow = () :FormDataType => ({
       name: "license_file",
       label: "License Upload",
       accept: "image/*, application/pdf",
+      bottomText: "License will not be shown publicly",
       rules: {
         required: {
           value: true,
@@ -22,7 +23,7 @@ const secondRow = () :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "end_date",
-      label: "Current License End Date",
+      label: "Current License Expiration Date",
       max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
     },

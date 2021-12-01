@@ -1,8 +1,5 @@
-import { useRecoilValue } from "recoil";
 import {
   Box,
-  Heading,
-  Badge,
   Image,
   Accordion,
   AccordionItem,
@@ -12,25 +9,12 @@ import {
 
 import AddIcon from "../../../static/Plus.svg";
 import MinusIcon from "../../../static/Minus.svg";
-import doctorProfile from "../../../atoms/doctorProfile";
 
 export default function Tab3() {
-  const doctorProfileData = useRecoilValue(doctorProfile);
-  console.log(doctorProfileData);
-
   const titles = ["Emergency Services", "Obstetrics and gynecology", "Medical Genetics", "Dermatology", "Family Medicine", "Pathology"];
 
   return (
     <Box>
-      <Box>
-        <Heading as="h3" size="md" mb={3}>
-          Specialties:
-        </Heading>
-        {" "}
-        {doctorProfileData?.specialty?.map(
-          (specialty) => <Badge key={specialty} variant="subtle" colorScheme="purple" m={1} fontSize="1em">{specialty}</Badge>,
-        )}
-      </Box>
       <Accordion defaultIndex={[0]} allowMultiple>
         {titles
           .map((title) => (
