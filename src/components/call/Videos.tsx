@@ -71,7 +71,7 @@ const Videos = ({ room }: PropTypes) => {
             (p: RemoteParticipant) => (
               <Box
                 key={p.identity}
-                m={3}
+                p={3}
                 width={participants.length === 2 ? "50%" : "33.33%"}
                 position="relative"
               >
