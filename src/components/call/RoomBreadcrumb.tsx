@@ -11,7 +11,6 @@ type PropTypes ={
 const RoomBreadcrumb = ({ doctor, isPatient }:PropTypes) => (
   <Flex
     justifyContent="space-between"
-    position="fixed"
     top={0}
     right={0}
     m={2}
@@ -25,7 +24,6 @@ const RoomBreadcrumb = ({ doctor, isPatient }:PropTypes) => (
       <BreadcrumbItem>
         <Box textTransform="capitalize">
           <Icon as={FaUserMd} />
-          {" "}
           {doctor}
         </Box>
       </BreadcrumbItem>

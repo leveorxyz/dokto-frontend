@@ -75,7 +75,14 @@ const Videos = ({ room }: PropTypes) => {
                 width={participants.length === 2 ? "50%" : "33.33%"}
                 position="relative"
               >
-                <Participant participant={p} />
+                <Participant
+                  participant={p}
+                  videoStyle={{
+                    width: "100%",
+                    height: "100%",
+                    rounded: "lg",
+                  }}
+                />
               </Box>
             ),
           )}
