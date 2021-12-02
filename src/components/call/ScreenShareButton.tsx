@@ -57,8 +57,7 @@ const ScreenShareButton = ({
       onClick={handleScreenSharingEnabling}
       aria-label="mute-unmute"
       title="Share screen"
-      bgColor="rgba(0, 0, 0, 0.5)"
-      _hover={{ bgColor: "rgba(0, 0, 0, 0.8)" }}
+      colorScheme="blackAlpha"
       mx={3}
       rounded="full"
     />
