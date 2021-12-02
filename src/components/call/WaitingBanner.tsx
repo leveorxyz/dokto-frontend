@@ -20,7 +20,7 @@ const WaitingBanner = ({ callEnded }:PropTypes) => (
           marginRight="10px"
         />
       )}
-      <Box as="p" color="black">{callEnded ? "The call has been ended! " : "Please wait while your doctor lets you in!"}</Box>
+      <Box as="p" color="white">{callEnded ? "The call has been ended! " : "Please wait while your doctor lets you in!"}</Box>
     </Flex>
   </Flex>
 );
