@@ -17,20 +17,22 @@ const AccountSettings = () => {
     return <LoadingPage />;
   }
   return (
-    <SpacedContainer py={20}>
-      <Box
-        d="flex"
-        flexDir="column"
-        borderRadius="3xl"
-        borderColor="brand.darkPink"
-        boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
-        filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
-      >
-        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Profile Settings</Heading>
-        <Divider mb="5" />
-        <AccountSettingsTabs />
-      </Box>
-    </SpacedContainer>
+    <Box bgColor="#E5E5E5">
+      <SpacedContainer pt={10}>
+        <Box
+          d="flex"
+          flexDir="column"
+          borderRadius="3xl"
+          borderColor="brand.darkPink"
+          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
+          filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
+        >
+          <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Account Settings</Heading>
+          <Divider mb="5" />
+          <AccountSettingsTabs />
+        </Box>
+      </SpacedContainer>
+    </Box>
   );
 };
 export default AccountSettings;

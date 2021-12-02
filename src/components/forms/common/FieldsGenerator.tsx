@@ -11,6 +11,7 @@ import SelectInput from "./SelectInput";
 import RadioInput from "./RadioInput";
 import CheckboxField from "./Checkbox";
 import SwitchInput from "./SwitchInput";
+import SectionField from "./SectionField";
 import TextareaField from "./TextareaField";
 import ArrayField from "./ArrayField";
 import MultiSelect from "./MultiSelect";
@@ -89,6 +90,10 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
 
   if (data.type === FieldTypes.ARRAY) {
     return <ArrayField data={data} {...formProps} />;
+  }
+
+  if (data.type === FieldTypes.SECTION) {
+    return <SectionField data={data} {...formProps} />;
   }
 
   if (data.type === FieldTypes.ROW || data.type === FieldTypes.COLUMN) {

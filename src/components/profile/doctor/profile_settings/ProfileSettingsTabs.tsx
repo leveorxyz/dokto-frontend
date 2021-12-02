@@ -4,9 +4,11 @@ import {
 
 import ExperienceEducation from "./ExperienceEducation";
 import ProfileDetails from "./ProfileDetails";
+import ProfessionalProfile from "./ProfessionalProfile";
+import Insurances from "./Insurances";
 
 export default function ProfileSettingsTabs() {
-  const tabs = ["Personal Details", "Experience & Education"];
+  const tabs = ["Personal Details", "Experience & Education", "Professional Profile", "Insurances"];
   return (
     <Tabs align="start" variant="unstyled" w="100%" orientation="vertical" display="grid" gridTemplateColumns="auto 1fr">
       <TabList>
@@ -29,6 +31,7 @@ export default function ProfileSettingsTabs() {
       </TabList>
 
       <TabPanels
+        bgColor="white"
         borderRadius="lg"
         boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
         filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
@@ -39,6 +42,14 @@ export default function ProfileSettingsTabs() {
 
         <TabPanel>
           <ExperienceEducation />
+        </TabPanel>
+
+        <TabPanel>
+          <ProfessionalProfile />
+        </TabPanel>
+
+        <TabPanel>
+          <Insurances />
         </TabPanel>
       </TabPanels>
     </Tabs>

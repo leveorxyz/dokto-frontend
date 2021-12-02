@@ -54,7 +54,7 @@ export default function FormStep({
   };
 
   return (
-    <Box py={12}>
+    <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <FormGenerator

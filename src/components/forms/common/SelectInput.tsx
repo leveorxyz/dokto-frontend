@@ -22,7 +22,7 @@ export default function SelectField({
   rules,
 }: DefaultProps) {
   return (
-    <FormControl isInvalid={errors[name]} py={6}>
+    <FormControl isInvalid={errors[name]} pb={6}>
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <Select
         id={name}

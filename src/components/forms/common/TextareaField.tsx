@@ -22,7 +22,7 @@ export default function InputField({
   rules,
 }: DefaultProps) {
   return (
-    <FormControl isInvalid={errors[name]} py={6}>
+    <FormControl isInvalid={errors[name]} pb={4}>
       <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
       <Textarea
         id={name}

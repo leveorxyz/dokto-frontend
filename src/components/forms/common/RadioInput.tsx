@@ -26,7 +26,7 @@ export default function RadioField({
   watch,
 }: DefaultProps) {
   return (
-    <FormControl id={name} isInvalid={errors[name]} py={6}>
+    <FormControl id={name} isInvalid={errors[name]} pb={4}>
       <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
       <RadioGroup id={name} value={watch(name)}>
         <Stack direction={direction}>

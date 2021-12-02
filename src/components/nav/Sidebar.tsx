@@ -16,7 +16,7 @@ const Sidebar = () => {
       minHeight="100vh"
       overflowY="scroll"
       overflowX="hidden"
-      bg="gray.100"
+      bg="white"
       sx={{
         "&::-webkit-scrollbar": {
           display: "none",
@@ -24,7 +24,7 @@ const Sidebar = () => {
       }}
     >
       {routes
-        .filter((route) => route.showInDashboard)
+        .filter((route) => route.showInDashboard && route.showInSideLink)
         .map((route) => (
           <ChakraLink as={Link} to={route.path} key={route.path}>
             <Box

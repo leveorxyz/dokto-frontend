@@ -1,12 +1,12 @@
 import { atom } from "recoil";
 
 export const currentStepAtom = atom<number>({
-  key: "accountSettingsStep",
+  key: "profileDetailsStep",
   default: 1,
 });
 
 export const stepAtom = atom({
-  key: "account_settings_data",
+  key: "profile_details_data",
   default: {},
 });
 

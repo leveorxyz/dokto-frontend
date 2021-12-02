@@ -43,14 +43,14 @@ const getStepsData = (): StepTypes[] => (
       data: step1Data,
       isFormStep: true,
       atom: stepAtom,
-      submitButtonText: "Delete Account",
+      submitButtonText: "Save & Update",
     },
     {
       id: 2,
       title: "Confirmation",
       component: <Submit />,
       isFormStep: false,
-      submitButtonText: "Delete Account",
+      submitButtonText: "Save & Update",
     },
   ]
 );
@@ -91,7 +91,7 @@ export default function Form() {
           ))}
       </Breadcrumb>
 
-      <Box>
+      <Box px="4">
         {CurrentStep}
       </Box>
     </>
