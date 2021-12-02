@@ -56,8 +56,9 @@ const ScreenShareButton = ({
       icon={isScreenSharingActive ? <MdStopScreenShare /> : <MdScreenShare />}
       onClick={handleScreenSharingEnabling}
       aria-label="mute-unmute"
-      title="Mute/Unmute"
-      colorScheme="blackAlpha"
+      title="Share screen"
+      bgColor="rgba(0, 0, 0, 0.5)"
+      _hover={{ bgColor: "rgba(0, 0, 0, 0.8)" }}
       mx={3}
       rounded="full"
     />
