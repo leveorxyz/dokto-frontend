@@ -22,5 +22,9 @@ export default function Video({
   );
 }
 Video.defaultProps = {
-  videoStyle: { borderRadius: "15px" },
+  videoStyle: {
+    borderRadius: "15px",
+    width: "100%",
+    height: "100%",
+  },
 };

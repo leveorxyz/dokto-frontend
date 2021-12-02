@@ -14,7 +14,6 @@ const RoomBreadcrumb = ({ doctor, isPatient }:PropTypes) => (
       <BreadcrumbItem>
         <Box textTransform="capitalize">
           <Icon as={FaUserMd} />
-          {" "}
           {doctor}
         </Box>
       </BreadcrumbItem>
