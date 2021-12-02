@@ -47,6 +47,7 @@ const CameraButton = ({ room }: PropTypes) => {
       title="Camera Enable/Disable"
       colorScheme="blackAlpha"
       mx={3}
+      size="lg"
       rounded="full"
     />
   );
