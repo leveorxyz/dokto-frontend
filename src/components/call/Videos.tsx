@@ -65,6 +65,7 @@ const Videos = ({ room }: PropTypes) => {
           direction="row"
           justifyContent="center"
           wrap="wrap"
+          bgColor="gray.900"
         >
           {participants.map(
             (p: RemoteParticipant) => (
