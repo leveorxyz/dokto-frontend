@@ -30,8 +30,6 @@ export default function Profile() {
           flexDir="column"
           borderRadius="3xl"
           borderColor="brand.darkPink"
-          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
-          filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
         >
           <Flex mb="5" justifyContent="space-between">
             <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark">Profile Settings</Heading>

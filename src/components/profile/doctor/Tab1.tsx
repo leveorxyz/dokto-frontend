@@ -2,7 +2,6 @@ import { useRecoilValue } from "recoil";
 import {
   Box,
   Heading,
-  Grid,
 } from "@chakra-ui/react";
 
 import doctorProfile from "../../../atoms/doctorProfile";
@@ -11,80 +10,21 @@ export default function Tab1() {
   const doctorProfileData = useRecoilValue(doctorProfile);
   return (
     <Box>
-      <Grid
-        templateColumns={{
-          sm: "repeat(1, 1fr)", md: "repeat(2, 1fr)", lg: "repeat(2, 1fr)", base: "repeat(1, 1fr)",
-        }}
-      >
-        <Box gridColumnStart={1} gridColumnEnd={2} d="flex" flexDir="column">
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Email:
-            </Heading>
-            <Box flex="1">{doctorProfileData?.email}</Box>
+      <Box d="flex" flexDir="column">
+        <Box flex="1" d="flex" flexDir="row">
+          <Heading w="25%" as="h3" size="md" mb={3}>
+            Bio:
+          </Heading>
+          <Box>
+            {doctorProfileData?.professional_bio}
           </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Contact No:
-            </Heading>
-            <Box flex="1">{doctorProfileData?.contact_no}</Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Gender:
-            </Heading>
-            <Box flex="1">{doctorProfileData?.gender}</Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Date of birth:
-            </Heading>
-            <Box flex="1">{doctorProfileData?.date_of_birth}</Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Address:
-            </Heading>
-            <Box flex="1">{doctorProfileData?.street}</Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              City:
-            </Heading>
-            <Box flex="1">
-              {doctorProfileData?.city && (
-              <Box>
-                {doctorProfileData?.city}
-              </Box>
-              )}
-            </Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              State:
-            </Heading>
-            <Box flex="1">
-              {doctorProfileData?.state && (
-              <Box>
-                {doctorProfileData?.state}
-              </Box>
-              )}
-            </Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Country:
-            </Heading>
-            <Box flex="1">
-              {doctorProfileData?.country}
-            </Box>
-          </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Education:
-            </Heading>
-            <Box flex="1">
-              {doctorProfileData?.education?.length && (
+        </Box>
+        <Box flex="1" d="flex" flexDir="row">
+          <Heading w="25%" as="h3" size="md" mb={3}>
+            Education:
+          </Heading>
+          <Box>
+            {doctorProfileData?.education?.length && (
               <Box>
                 {doctorProfileData?.education.map(
                   ({ college, year, course }, idx) => (
@@ -94,15 +34,15 @@ export default function Tab1() {
                   ),
                 )}
               </Box>
-              )}
-            </Box>
+            )}
           </Box>
-          <Box flex="1" d="flex" flexDir="row">
-            <Heading display="inline-block" as="h3" size="md" mb={3} flex="1">
-              Experience:
-            </Heading>
-            <Box flex="1">
-              {doctorProfileData?.experience?.length && (
+        </Box>
+        <Box flex="1" d="flex" flexDir="row">
+          <Heading w="25%" as="h3" size="md" mb={3}>
+            Experience:
+          </Heading>
+          <Box>
+            {doctorProfileData?.experience?.length && (
               <Box>
                 {doctorProfileData?.experience.map(
                   ({
@@ -125,12 +65,10 @@ export default function Tab1() {
                   ),
                 )}
               </Box>
-              )}
-            </Box>
+            )}
           </Box>
         </Box>
-        <Box gridColumnStart={2} d="flex" flexDir="column" />
-      </Grid>
+      </Box>
     </Box>
   );
 }
