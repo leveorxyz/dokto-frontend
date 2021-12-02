@@ -80,7 +80,8 @@ const Videos = ({ room }: PropTypes) => {
                   videoStyle={{
                     width: "100%",
                     height: "100%",
-                    rounded: "lg",
+                    borderRadius: "15px",
+                    border: "0px solid white",
                   }}
                 />
               </Box>
