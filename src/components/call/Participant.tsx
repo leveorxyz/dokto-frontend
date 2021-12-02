@@ -108,14 +108,15 @@ const Participant = ({ participant, videoStyle }: ParticipantProps) => {
       <audio ref={audioRef} />
       <Box
         position="absolute"
-        bottom={3}
-        left={3}
+        bottom={1}
+        left={1}
         p={1}
         bgColor="rgba(0,0,0,0.5)"
         color="white"
         zIndex={1}
+        rounded="md"
       >
-        {participant.identity.slice(0, 36)}
+        {participant.identity.slice(37)}
       </Box>
     </Box>
   );
