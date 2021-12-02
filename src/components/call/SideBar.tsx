@@ -29,6 +29,11 @@ export default function SideBar({ conversations }: PropTypes) {
       px={4}
       alignItems="center"
       color="white"
+      sx={{
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
     >
       <Box py={3} w="100%">
         <CustomHeading>In Call</CustomHeading>
