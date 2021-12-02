@@ -108,8 +108,8 @@ const Participant = ({ participant, videoStyle }: ParticipantProps) => {
       <audio ref={audioRef} />
       <Box
         position="absolute"
-        bottom={1}
-        left={1}
+        bottom={2}
+        left={2}
         p={1}
         bgColor="rgba(0,0,0,0.5)"
         color="white"
