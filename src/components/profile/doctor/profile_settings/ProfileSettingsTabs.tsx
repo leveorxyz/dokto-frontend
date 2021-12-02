@@ -10,17 +10,31 @@ import Insurances from "./Insurances";
 export default function ProfileSettingsTabs() {
   const tabs = ["Personal Details", "Experience & Education", "Professional Profile", "Insurances"];
   return (
-    <Tabs align="start" variant="unstyled" w="100%" orientation="vertical" display="grid" gridTemplateColumns="auto 1fr">
-      <TabList>
-        {tabs.map((title) => (
+    <Tabs
+      align="start"
+      variant="unstyled"
+      w="100%"
+      orientation="vertical"
+      display="grid"
+      gridTemplateColumns="auto 1fr"
+    >
+      <TabList
+        sx={{
+          borderRadius: "0.5rem",
+          border: "1px",
+          borderColor: "brand.dark",
+          height: "max-content",
+          overflow: "hidden",
+        }}
+      >
+        {tabs.map((title, idx) => (
           <Tab
             key={title}
             bgColor="white"
             color="brand.dark"
-            rounded="lg"
-            border="2px"
+            borderBottomWidth={idx === tabs.length - 1 ? "0" : "1px"}
             fontSize={["xs", "sm", "md", "lg", "lg"]}
-            fontWeight="bold"
+            fontFamily="sora"
             borderColor="brand.dark"
             _hover={{ bgColor: "brand.darkPink", color: "white" }}
             _selected={{ color: "white", bg: "brand.darkPink" }}
