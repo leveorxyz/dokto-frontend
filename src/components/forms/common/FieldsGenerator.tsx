@@ -107,7 +107,7 @@ export default function FieldsGenerator({ data, ...formProps }: PropTypes) {
         sx={formStyles}
       >
         {data.label && data.label !== "" && (
-        <Heading as="h2" size="lg" fontWeight="600" mb={4} color="brand.dark">
+        <Heading as="h2" size="md" fontWeight="600" mb={4} color="brand.dark">
           {data.label}
         </Heading>
         )}

@@ -12,8 +12,8 @@ export default function ProfileTabs() {
   return (
     <Tabs variant="unstyled" isFitted w="100%">
       <TabList sx={{
-        borderRadius: "1rem",
-        border: "2px",
+        borderRadius: "0.5rem",
+        border: "1px",
         borderColor: "brand.dark",
         overflow: "hidden",
       }}
@@ -26,8 +26,8 @@ export default function ProfileTabs() {
             bgColor="white"
             color="brand.dark"
             fontSize={["xs", "sm", "md", "lg", "lg"]}
-            fontWeight="bold"
-            borderRightWidth={idx === tabs.length - 1 ? "0" : "2px"}
+            fontFamily="sora"
+            borderRightWidth={idx === tabs.length - 1 ? "0" : "1px"}
             borderColor="brand.dark"
             _hover={{ bgColor: "brand.darkPink", color: "white" }}
             _selected={{ color: "white", bg: "brand.darkPink" }}

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useRecoilValue } from "recoil";
 import {
-  Flex, Box, Avatar, Button, IconButton, useDisclosure,
+  Flex, Box, Avatar, IconButton, useDisclosure,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { RemoteParticipant } from "twilio-video";
@@ -67,22 +67,16 @@ export default function UserComponent({ user }: UserComponentProps) {
       <Avatar name={fullName} />
       <Flex direction="column" mx={3}>
         <Box color="white" mx={3} textTransform="capitalize">{fullName}</Box>
-        <Button
-          id="call-button"
-          bg="brand.pink"
-          size="xs"
-          _hover={{ bg: "brand.darkPink", color: "white" }}
-          onClick={onOpen}
-        >
-          End Call
-        </Button>
+
       </Flex>
       <IconButton
         aria-label={`User actions for ${fullName}`}
         icon={<Box as={IoEllipsisVertical} color="brand.light" />}
         variant="ghost"
+        onClick={onOpen}
         _hover={{ bg: "brand.light" }}
         _active={{ bg: "brand.pink" }}
+
       />
       <UserActionModal
         user={user}

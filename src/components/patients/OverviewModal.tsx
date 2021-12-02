@@ -19,13 +19,13 @@ import {
 } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-import { Patient } from "../../atoms/ehr/patients";
 import PatientStatus from "./Status";
+import { EncounteredPatient } from "../../hooks/encounteredPatients/useEncounteredPatients";
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  patient: Patient | null;
+  patient: EncounteredPatient | null;
 };
 
 export default function PatientOverViewModal({ isOpen, onClose, patient }: Props) {
@@ -33,17 +33,17 @@ export default function PatientOverViewModal({ isOpen, onClose, patient }: Props
     {
       title: "Last Appointment",
       icon: IoCalendar,
-      value: patient?.lastAppointment,
+      value: patient?.date,
     },
     {
       title: "Reason of Visit",
       icon: IoInformationCircle,
-      value: patient?.reasonOfVisit,
+      value: patient?.description,
     },
     {
       title: "Phone Number",
       icon: IoCall,
-      value: patient?.phoneNo,
+      value: patient?.phone_number,
     },
     {
       title: "Address",
@@ -60,7 +60,7 @@ export default function PatientOverViewModal({ isOpen, onClose, patient }: Props
       <ModalContent>
         <ModalHeader d="flex">
           <Box mr={3}>{patient?.name}</Box>
-          <PatientStatus value={patient?.status} />
+          <PatientStatus value={patient?.patient_status} />
         </ModalHeader>
 
         <ModalCloseButton />

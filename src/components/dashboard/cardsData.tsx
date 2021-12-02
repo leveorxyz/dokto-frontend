@@ -1,7 +1,7 @@
 import Calendar from "../../static/calendar.svg";
 import Chat from "../../static/messages.svg";
 import Settings from "../../static/settings.svg";
-import Specialities from "../../static/specialities.svg";
+import Specialties from "../../static/specialties.svg";
 import AccountSettings from "../../static/supervised_user_circle.svg";
 import AppointmentBookingSystem from "../../static/Schedulesettings.svg";
 import Patientlist from "../../static/Patientlist.svg";
@@ -23,16 +23,16 @@ export default [
     path: "/inbox",
   },
   {
-    id: "specialities",
-    Icon: Specialities,
+    id: "specialties",
+    Icon: Specialties,
     title: (
       <>
-        Specialities &amp;
+        Specialties &amp;
         <br />
         Services
       </>
     ),
-    path: "/specialities-services",
+    path: "/specialties-services",
   },
   {
     id: "calendar",

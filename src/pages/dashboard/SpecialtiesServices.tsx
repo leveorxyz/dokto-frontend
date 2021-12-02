@@ -5,12 +5,12 @@ import {
 } from "@chakra-ui/react";
 import { SpacedContainer } from "../../components/common/Containers";
 
-import SpecialitiesSection from "../../components/profile/doctor/specialities_services/SpecialitiesSection";
+import SpecialtiesSection from "../../components/profile/doctor/specialties_services/SpecialtiesSection";
 import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 
-const SpecialitiesServices = () => {
+const SpecialtiesServices = () => {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
 
   if (isLoading) {
@@ -28,10 +28,10 @@ const SpecialitiesServices = () => {
       >
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Specialities &amp; Services</Heading>
         <Divider mb="5" />
-        <SpecialitiesSection />
+        <SpecialtiesSection />
       </Box>
     </SpacedContainer>
   );
 };
 
-export default SpecialitiesServices;
+export default SpecialtiesServices;

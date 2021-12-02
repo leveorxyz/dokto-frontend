@@ -44,6 +44,7 @@ const MicButton = ({ room }: PropTypes) => {
       aria-label="mute-unmute"
       title="Mute/Unmute"
       colorScheme="blackAlpha"
+      size="lg"
       mx={3}
       rounded="full"
     />

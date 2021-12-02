@@ -26,7 +26,17 @@ const Sidebar = () => {
       {routes
         .filter((route) => route.showInDashboard && route.showInSideLink)
         .map((route) => (
-          <ChakraLink as={Link} to={route.path} key={route.path}>
+          <ChakraLink
+            as={Link}
+            to={route.path}
+            key={route.path}
+            _hover={{
+              textDecoration: "none",
+            }}
+            _focus={{
+              boxShadow: "none",
+            }}
+          >
             <Box
               py={3}
               px={6}
