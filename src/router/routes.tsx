@@ -15,7 +15,7 @@ const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"));
 const AccountSettings = lazy(() => import("../pages/dashboard/AccountSettings"));
-const SpecialitiesServices = lazy(() => import("../pages/dashboard/SpecialitiesServices"));
+const SpecialtiesServices = lazy(() => import("../pages/dashboard/SpecialtiesServices"));
 const VideoCalls = lazy(() => import("../pages/calls"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
@@ -146,9 +146,9 @@ const routes: RouteType[] = [
     showInSideLink: true,
   },
   {
-    displayName: "Specialities & Services",
-    path: "/specialities-services",
-    component: <SpecialitiesServices />,
+    displayName: "Specialties & Services",
+    path: "/specialties-services",
+    component: <SpecialtiesServices />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,

@@ -39,7 +39,7 @@ export default function ArrayField({
 
   return (
     <Flex direction="column">
-      <Heading as="h4" size="sm" my={4}>
+      <Heading as="h4" size="md" fontWeight="600" my={4}>
         {label}
       </Heading>
       {!fields.length && (

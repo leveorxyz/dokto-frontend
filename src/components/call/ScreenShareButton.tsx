@@ -58,6 +58,7 @@ const ScreenShareButton = ({
       aria-label="mute-unmute"
       title="Share screen"
       colorScheme="blackAlpha"
+      size="lg"
       mx={3}
       rounded="full"
     />
