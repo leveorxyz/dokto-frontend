@@ -8,6 +8,7 @@ export enum FieldTypes {
   RADIO = "radio",
   FILE = "file",
   ARRAY = "array",
+  SECTION = "section",
   CUSTOM = "custom",
   ROW = "row",
   COLUMN = "column",
@@ -49,6 +50,7 @@ export type InputFieldType = {
   leftAddon?: string | React.ReactNode;
   rightAddon?: string | React.ReactNode;
   max?: string | number;
+  min?: string | number;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
   customProperties?: { [key: string]: string };
@@ -128,6 +130,13 @@ export type ArrayFieldType = {
   addButtonText: string;
 } & CommonType;
 
+export type SectionFieldType = {
+  type: FieldTypes.SECTION;
+  fields: FormFieldType[];
+  submitButtonText?: string;
+  iconDelete?: boolean;
+} & CommonType;
+
 export type FormFieldType = InputFieldType
                             | TextareaFieldType
                             | SelectFieldType
@@ -137,6 +146,7 @@ export type FormFieldType = InputFieldType
                             | FileFieldType
                             | SwitchFieldType
                             | CustomFieldType
+                            | SectionFieldType
                             | ArrayFieldType;
 
 export type FormRowType = {

@@ -118,6 +118,7 @@ export default function Form() {
                 alignItems="center"
                 color={step.id <= currentStep ? "black" : "gray.500"}
                 sx={{
+                  py: "12",
                   _hover: {
                     textDecoration: "none",
                     cursor: step.id <= currentStep ? "pointer" : "default",

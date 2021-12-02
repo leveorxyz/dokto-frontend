@@ -1,5 +1,7 @@
 import {
   Switch,
+  Flex,
+  Heading,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -14,15 +16,19 @@ type PropTypes = {
 export default function SwitchInput({
   name,
   errors,
+  bottomText,
   label,
 }: PropTypes) {
   return (
-    <FormControl id={name} isInvalid={errors && errors[name]} py={6} display="flex" alignItems="center">
-      <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
-      <Switch colorScheme="purple" color="black" size="lg" />
+    <FormControl id={name} isInvalid={errors && errors[name]} py={6}>
+      <Flex alignItems="center">
+        <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
+        <Switch colorScheme="purple" color="black" size="lg" />
+      </Flex>
       <FormErrorMessage>
         {errors && errors[name] && errors[name].message}
       </FormErrorMessage>
+      <Heading as="h2" size="sm" fontWeight="normal" mt="5" color="brand.darkPink">{bottomText}</Heading>
     </FormControl>
   );
 }

@@ -43,7 +43,7 @@ export default function CheckboxField({
   }, [clearErrors, localValue, name, rules?.required?.value, setError, setValue]);
 
   return (
-    <FormControl id={name} isInvalid={errors && errors[name]} py={6}>
+    <FormControl id={name} isInvalid={errors && errors[name]} pb={4}>
       <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
       <CheckboxGroup colorScheme="purple" value={localValue} onChange={(value) => setLocalValue(value)}>
         <Stack direction={direction ?? "row"}>

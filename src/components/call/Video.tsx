@@ -2,10 +2,12 @@ import { Box } from "@chakra-ui/react";
 
 type PropTypes = {
   videoRef: React.RefObject<HTMLVideoElement>
+  videoStyle?: Record<string, string>
 }
 
 export default function Video({
   videoRef,
+  videoStyle,
 }: PropTypes) {
   return (
     <Box w="100%" h="100%" position="relative" rounded="lg">
@@ -14,10 +16,15 @@ export default function Video({
       <video
         ref={videoRef}
         autoPlay
-        style={{
-          borderRadius: "15px",
-        }}
+        style={videoStyle}
       />
     </Box>
   );
 }
+Video.defaultProps = {
+  videoStyle: {
+    borderRadius: "15px",
+    width: "100%",
+    height: "100%",
+  },
+};

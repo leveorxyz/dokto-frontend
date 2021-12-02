@@ -1,9 +1,14 @@
 import {
   Heading,
   Box,
+  Link as ChakraLink,
+  Flex,
   Divider,
 } from "@chakra-ui/react";
 
+import { Link } from "react-router-dom";
+
+import BrandButton from "../../components/common/buttons/BrandButton";
 import { SpacedContainer } from "../../components/common/Containers";
 import ProfileSettingsTabs from "../../components/profile/doctor/profile_settings/ProfileSettingsTabs";
 import doctorProfileAtom from "../../atoms/doctorProfile";
@@ -18,19 +23,24 @@ export default function Profile() {
   }
 
   return (
-    <SpacedContainer py={20}>
-      <Box
-        d="flex"
-        flexDir="column"
-        borderRadius="3xl"
-        borderColor="brand.darkPink"
-        boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
-        filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
-      >
-        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5">Profile Settings</Heading>
-        <Divider mb="5" />
-        <ProfileSettingsTabs />
-      </Box>
-    </SpacedContainer>
+    <Box bgColor="#E5E5E5" h="100%">
+      <SpacedContainer py={20}>
+        <Box
+          d="flex"
+          flexDir="column"
+          borderRadius="3xl"
+          borderColor="brand.darkPink"
+        >
+          <Flex mb="5" justifyContent="space-between">
+            <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark">Profile Settings</Heading>
+            <ChakraLink as={Link} to="profile">
+              <BrandButton>View my Profile</BrandButton>
+            </ChakraLink>
+          </Flex>
+          <Divider mb="5" />
+          <ProfileSettingsTabs />
+        </Box>
+      </SpacedContainer>
+    </Box>
   );
 }

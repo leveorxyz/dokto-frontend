@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Box } from "@chakra-ui/react";
 import {
   AudioTrack, VideoTrack, Participant as VideoParticipant,
 } from "twilio-video";
@@ -7,9 +8,10 @@ import Video from "./Video";
 
 interface ParticipantProps {
   participant: VideoParticipant;
+  videoStyle?: Record<string, string>
 }
 
-const Participant = ({ participant }: ParticipantProps) => {
+const Participant = ({ participant, videoStyle }: ParticipantProps) => {
   const [videoTracks, setVideoTracks] = useState<(VideoTrack | null)[]>([]);
   const [audioTracks, setAudioTracks] = useState<(AudioTrack | null)[]>([]);
 
@@ -94,14 +96,34 @@ const Participant = ({ participant }: ParticipantProps) => {
   }, [audioTracks]);
 
   return (
-    <div className="participant" id={participant.identity}>
+    <Box
+      className="participant"
+      id={participant.identity}
+      position="relative"
+    >
       {/* these videos wouldn't have captions so it's safe to disable */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <Video videoRef={videoRef} />
+      <Video videoRef={videoRef} videoStyle={videoStyle} />
       {/* eslint-disable-next-line */}
       <audio ref={audioRef} />
-    </div>
+      <Box
+        position="absolute"
+        bottom={2}
+        left={2}
+        p={1}
+        bgColor="rgba(0,0,0,0.5)"
+        color="white"
+        zIndex={1}
+        rounded="md"
+      >
+        {participant.identity.slice(37)}
+      </Box>
+    </Box>
   );
+};
+
+Participant.defaultProps = {
+  videoStyle: { width: "100%" },
 };
 
 export default Participant;

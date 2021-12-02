@@ -1,7 +1,7 @@
 import {
   Flex, Box,
 } from "@chakra-ui/react";
-import { IoPeopleCircle } from "react-icons/io5";
+// import { IoPeopleCircle } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { Conversation } from "@twilio/conversations";
 import { callListAtom } from "./atoms";
@@ -22,37 +22,19 @@ export default function SideBar({ conversations }: PropTypes) {
     <Flex
       direction="column"
       bg="brand.dark"
-      minHeight="100%"
+      minHeight="100vh"
       minWidth="15rem"
       overflowY="scroll"
       py={6}
       px={4}
       alignItems="center"
       color="white"
+      sx={{
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
     >
-      <CustomHeading>Actions</CustomHeading>
-      <Flex
-        width="100%"
-        p={3}
-        alignItems="center"
-        justifyContent="flex-start"
-        rounded="lg"
-        _hover={{ bgColor: "brand.pink" }}
-      >
-        <Box as={IoPeopleCircle} fontSize="1.2rem" mr={3} />
-        <Box>Group Call</Box>
-      </Flex>
-      {/* <Flex
-        width="100%"
-        p={3}
-        alignItems="center"
-        justifyContent="flex-start"
-        rounded="lg"
-        _hover={{ bgColor: "brand.pink" }}
-      >
-        <Box as={IoTv} fontSize="1.2rem" mr={3} />
-        <Box>Screen Share</Box>
-      </Flex> */}
       <Box py={3} w="100%">
         <CustomHeading>In Call</CustomHeading>
         <Flex direction="column">

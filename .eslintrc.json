@@ -50,8 +50,9 @@
 					"error",
 					"double"
 			],
+			"no-unused-vars": "warn",
 			"@typescript-eslint/no-unused-vars": [
-					"error",
+					"warn",
 					{ 
 							"argsIgnorePattern": "^_",
 							"varsIgnorePattern": "^_"
@@ -75,12 +76,22 @@
 					"allowForLoopAfterthoughts": true
 				}
 			],
+			"max-len" : [
+				"warn",
+				{
+					"code": 100,
+					"ignoreComments": true,
+					"ignoreRegExpLiterals": true,
+					"ignoreStrings": true,
+					"ignoreTemplateLiterals": true
+				}
+			],
 			"import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
 			"react/jsx-props-no-spreading": "off",
 			"react/jsx-key": "error",
 			"react/jsx-filename-extension": [2, { "extensions": [".tsx", ".ts"] }],
 			"react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
 			"react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-			"camelcase": "off"
+			"camelcase": "warn"
 		}
 }

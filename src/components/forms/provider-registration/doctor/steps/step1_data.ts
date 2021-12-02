@@ -3,7 +3,7 @@ import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
-import MobileNo from "./custom/MobileNo";
+import MobileNo from "../../custom/MobileNo";
 
 const firstColumn = (watch: any) :FormDataType => ({
   type: FieldTypes.COLUMN,

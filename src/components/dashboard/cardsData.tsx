@@ -1,67 +1,74 @@
 import Calendar from "../../static/calendar.svg";
-import Profile from "../../static/profile.svg";
 import Chat from "../../static/messages.svg";
 import Settings from "../../static/settings.svg";
 import Specialities from "../../static/specialities.svg";
 import AccountSettings from "../../static/supervised_user_circle.svg";
-import AppointmentBookingSystem from "../../static/group.svg";
+import AppointmentBookingSystem from "../../static/Schedulesettings.svg";
+import Patientlist from "../../static/Patientlist.svg";
+import Payout from "../../static/Payout.svg";
 import Invoice from "../../static/invoice.svg";
 import LogOut from "../../static/account_logout.svg";
 
 export default [
   {
-    id: "calendar",
-    Icon: Calendar,
-    title: "Appointment",
-    path: "/appointments",
-  },
-  {
-    id: "profile",
-    Icon: Profile,
-    title: "Profile",
-    path: "/profile",
-  },
-  {
-    id: "chat",
-    Icon: Chat,
-    title: "Chat",
-    path: "/chat",
-  },
-  {
     id: "settings",
     Icon: Settings,
-    title: "Profile Setting",
+    title: "Profile Settings",
     path: "/profile-settings",
+  },
+  {
+    id: "inbox",
+    Icon: Chat,
+    title: "Inbox",
+    path: "/inbox",
   },
   {
     id: "specialities",
     Icon: Specialities,
-    title: "Specialities",
-    path: "/specialities",
+    title: (
+      <>
+        Specialities &amp;
+        <br />
+        Services
+      </>
+    ),
+    path: "/specialities-services",
+  },
+  {
+    id: "calendar",
+    Icon: Calendar,
+    title: "Appointments",
+    path: "/appointments",
+  },
+  {
+    id: "schedule-settings",
+    Icon: AppointmentBookingSystem,
+    title: "Schedule Settings",
+    path: "/schedule-settings",
+  },
+  {
+    id: "patient-list",
+    Icon: Patientlist,
+    title: "Patient List",
+    path: "/patient-list",
+  },
+  {
+    id: "payouts-settings",
+    Icon: Payout,
+    title: "Payouts Settings",
+    path: "/payouts-settings",
+  },
+  {
+    id: "invoice",
+    Icon: Invoice,
+    title: "Invoices",
+    path: "/invoice",
   },
   {
     id: "account_settings",
     Icon: AccountSettings,
     title: "Account Settings",
-    path: "/account_settings",
-  },
-  {
-    id: "appointment_booking_system",
-    Icon: AppointmentBookingSystem,
-    title: (
-      <>
-        Appointment
-        <br />
-        booking system
-      </>
-    ),
-    path: "/appointment_booking_system",
-  },
-  {
-    id: "invoice",
-    Icon: Invoice,
-    title: "Invoice",
-    path: "/invoice",
+    path: "/account-settings",
   },
   {
     id: "logout",

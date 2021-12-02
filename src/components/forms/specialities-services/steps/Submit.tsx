@@ -13,17 +13,8 @@ export default function Submit() {
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
-        if (curr === "contact_no-prefix") {
-          return { ...prev, contact_no: stepData[curr] + prev.contact_no ?? "" };
-        }
-        if (curr === "contact_no-value") {
-          return { ...prev, contact_no: (prev.contact_no ?? "") + stepData[curr] };
-        }
-        if (curr === "first_name") {
-          return { ...prev, full_name: `${stepData[curr]} ${prev.full_name.trim()}` };
-        }
-        if (curr === "last_name") {
-          return { ...prev, full_name: `${prev.full_name.trim()} ${stepData[curr]}` };
+        if (curr === "specialty" && typeof (stepData as any)[curr] === "string") {
+          return { ...prev, [curr]: [(stepData as any)[curr]] };
         }
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };

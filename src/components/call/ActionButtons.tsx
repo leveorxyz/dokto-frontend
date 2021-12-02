@@ -15,7 +15,7 @@ type PropTypes = {
 const ActionButtons = ({
   room, setScreenShareStream, isScreenSharingActive, setIsScreenSharingActive,
 }: PropTypes) => (
-  <Box pos="fixed" bottom="10" left="48%">
+  <Box pos="fixed" bottom="10" left="50%" transform="translateX(50%)">
     <CameraButton room={room} />
     <MicButton room={room} />
     <ScreenShareButton
