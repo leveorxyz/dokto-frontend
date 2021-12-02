@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dokto",
+  "name": "Visit doctors online",
   "icons": [
     {
       "src": "favicon.ico",
