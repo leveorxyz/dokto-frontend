@@ -75,17 +75,6 @@ const Videos = ({ room }: PropTypes) => {
                 position="relative"
               >
                 <Participant participant={p} />
-                <Box
-                  position="absolute"
-                  bottom={3}
-                  left={3}
-                  p={1}
-                  bgColor="rgba(0,0,0,0.5)"
-                  color="white"
-                  zIndex={1}
-                >
-                  {p.identity.slice(0, 36)}
-                </Box>
               </Box>
             ),
           )}
