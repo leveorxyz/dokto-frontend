@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 
+import StarRatingComponent from "react-star-rating-component";
 import { SpacedContainer } from "../../components/common/Containers";
 import ProfileIcon from "../../static/user.svg";
 import ProfileTabs from "../../components/profile/doctor/ProfileTabs";
@@ -65,7 +66,13 @@ export default function Profile() {
                       <Box color="rgba(51, 51, 51, 0.5)" mr="4">Posting Publicly</Box>
                       <Checkbox defaultIsChecked>Hide My Name</Checkbox>
                     </Flex>
-                    <Textarea placeholder="Type a Review...." resize="vertical" />
+                    <StarRatingComponent
+                      name="rating3"
+                      starCount={5}
+                      value={4}
+                      starColor="#ffd700"
+                    />
+                    <Textarea placeholder="Type a Review...." resize="vertical" my="2" />
                   </ModalBody>
 
                   <ModalFooter>
