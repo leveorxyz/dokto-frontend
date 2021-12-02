@@ -41,7 +41,7 @@ export default function ArrayField({
   return (
     <Flex direction="column">
       <Flex justifyContent="space-between" alignItems="baseline">
-        <Heading as="h4" size="md" pb={4}>
+        <Heading as="h4" size="md" fontWeight="600" pb={4}>
           {label}
         </Heading>
         {iconDelete ? (
