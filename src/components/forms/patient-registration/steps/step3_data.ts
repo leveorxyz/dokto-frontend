@@ -8,22 +8,64 @@ const firstColumn = () :FormDataType => ({
   label: "Referring Physician Details",
   fields: [
     {
+      type: FieldTypes.SELECT,
+      name: "referring_doctor_visibility",
+      label: "Enter Referring Physician",
+      options: [
+        {
+          label: "Not applicable",
+          value: "NOT_APPLICABLE",
+        },
+        {
+          label: "Referring Doctor’s Details",
+          value: "APPLICABLE",
+        },
+      ],
+    },
+    {
       type: FieldTypes.INPUT,
       name: "referring_doctor_full_name",
       label: "Referring Doctor Full Name",
       placeholder: "Referring Doctor Full Name",
+      visibilityDependencies: [
+        {
+          name: "referring_doctor_visibility",
+          value: "APPLICABLE",
+        },
+      ],
+      rules: {
+        deps: ["referring_doctor_visibility"],
+      },
     },
     {
       type: FieldTypes.INPUT,
       name: "referring_doctor_phone_number",
       label: "Referring Doctor Phone Number",
       placeholder: "Referring Doctor Phone Number",
+      visibilityDependencies: [
+        {
+          name: "referring_doctor_visibility",
+          value: "APPLICABLE",
+        },
+      ],
+      rules: {
+        deps: ["referring_doctor_visibility"],
+      },
     },
     {
       type: FieldTypes.INPUT,
       name: "referring_doctor_address",
       label: "Referring Doctor Address",
       placeholder: "Referring Doctor Address",
+      visibilityDependencies: [
+        {
+          name: "referring_doctor_visibility",
+          value: "APPLICABLE",
+        },
+      ],
+      rules: {
+        deps: ["referring_doctor_visibility"],
+      },
     },
   ],
 });
@@ -41,11 +83,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       options: [
         {
           label: "Self-Pay",
-          value: "SELF_PAID",
+          value: "SELF-PAY",
         },
         {
           label: "Insurance",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
@@ -63,11 +105,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       visibilityDependencies: [
         {
           name: "insurance_type",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
-        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        validate: (v) => (watch("insurance_type") === "INSURANCE" && v ? true : "This field is required"),
         deps: ["insurance_type"],
       },
     },
@@ -79,11 +121,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       visibilityDependencies: [
         {
           name: "insurance_type",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
-        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        validate: (v) => (watch("insurance_type") === "INSURANCE" && v ? true : "This field is required"),
         deps: ["insurance_type"],
       },
     },
@@ -95,11 +137,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       visibilityDependencies: [
         {
           name: "insurance_type",
-          value: "INSURANCE_VERIFIED",
+          value: "INSURANCE",
         },
       ],
       rules: {
-        validate: (v) => (watch("insurance_type") === "INSURANCE_VERIFIED" && v ? true : "This field is required"),
+        validate: (v) => (watch("insurance_type") === "INSURANCE" && v ? true : "This field is required"),
         deps: ["insurance_type"],
       },
     },
