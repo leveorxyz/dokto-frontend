@@ -56,23 +56,41 @@ const Videos = ({ room }: PropTypes) => {
         {isScreenSharingActive
          && screenShareStream
          && <LocalScreenSharingPreview stream={screenShareStream} />}
+
+        {/* Show grid when there's more than one participant */}
         {participants.length > 1
         && (
-        <Grid
+        <Flex
           height="100%"
-          templateColumns="repeat(2, 1fr)"
-          gap={6}
+          direction="row"
+          justifyContent="center"
+          wrap="wrap"
         >
           {participants.map(
             (p: RemoteParticipant) => (
-              <Participant
+              <Box
                 key={p.identity}
-                participant={p}
-              />
+                m={3}
+                width={participants.length === 2 ? "50%" : "33.33%"}
+                position="relative"
+              >
+                <Participant participant={p} />
+                <Box
+                  position="absolute"
+                  bottom={3}
+                  left={3}
+                  p={1}
+                  bgColor="rgba(0,0,0,0.5)"
+                  color="white"
+                  zIndex={1}
+                >
+                  {p.identity.slice(0, 36)}
+                </Box>
+              </Box>
             ),
           )}
 
-        </Grid>
+        </Flex>
         )}
         { participants.length === 1 && (
         <Box
@@ -86,8 +104,8 @@ const Videos = ({ room }: PropTypes) => {
       <Box
         position="fixed"
         width="200px"
-        bottom="20"
-        right="5rem"
+        bottom="2rem"
+        right="2rem"
       >
 
         <Participant
@@ -107,13 +125,6 @@ const Videos = ({ room }: PropTypes) => {
           isScreenSharingActive={isScreenSharingActive}
           setIsScreenSharingActive={setIsScreenSharingActive}
         />
-        {/*
-        <Flex mt={6}>
-          <CameraButton room={room} />
-          <MicButton room={room} />
-          <ScreenShareButton room={room} setScreenShareStream={setScreenShareStream} />
-          <LeaveRoomButton room={room} />
-        </Flex> */}
       </Box>
     </Flex>
   );

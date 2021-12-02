@@ -30,29 +30,6 @@ export default function SideBar({ conversations }: PropTypes) {
       alignItems="center"
       color="white"
     >
-      {/* <CustomHeading>Actions</CustomHeading>
-      <Flex
-        width="100%"
-        p={3}
-        alignItems="center"
-        justifyContent="flex-start"
-        rounded="lg"
-        _hover={{ bgColor: "brand.pink" }}
-      >
-        <Box as={IoPeopleCircle} fontSize="1.2rem" mr={3} />
-        <Box>Group Call</Box>
-      </Flex> */}
-      {/* <Flex
-        width="100%"
-        p={3}
-        alignItems="center"
-        justifyContent="flex-start"
-        rounded="lg"
-        _hover={{ bgColor: "brand.pink" }}
-      >
-        <Box as={IoTv} fontSize="1.2rem" mr={3} />
-        <Box>Screen Share</Box>
-      </Flex> */}
       <Box py={3} w="100%">
         <CustomHeading>In Call</CustomHeading>
         <Flex direction="column">
