@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Heading,
   Box,
@@ -30,6 +31,7 @@ import LoadingPage from "../../components/common/fallback/LoadingPage";
 export default function Profile() {
   const doctorProfile = useRecoilValue(doctorProfileAtom);
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const [stars, setStars] = useState(5);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -69,7 +71,8 @@ export default function Profile() {
                     <StarRatingComponent
                       name="rating3"
                       starCount={5}
-                      value={4}
+                      value={stars}
+                      onStarClick={(nextValue) => setStars(nextValue)}
                       starColor="#ffd700"
                     />
                     <Textarea placeholder="Type a Review...." resize="vertical" my="2" />
@@ -87,7 +90,6 @@ export default function Profile() {
                       _focus={{ outline: "none", opacity: ".85" }}
                     >
                       Post Review
-
                     </Button>
                   </ModalFooter>
                 </ModalContent>
