@@ -1,27 +1,32 @@
-import faker from "faker";
+// import faker from "faker";
 import { Column } from "react-table";
+import { EncounteredPatient } from "../hooks/encounteredPatients/useEncounteredPatients";
 
-import { Patient } from "../atoms/ehr/patients";
+// import { Patient } from "../atoms/ehr/patients";
 import PatientStatus from "../components/patients/Status";
 
-export const dummyPatients: Patient[] = new Array(100).fill(null)
-  .map(() => ({
-    name: faker.name.findName(),
-    phoneNo: faker.phone.phoneNumber(),
-    address: faker.fake("{{address.streetAddress}} {{address.city}}, {{address.state}}"),
-    lastAppointment: faker.date.past().toDateString(),
-    reasonOfVisit: faker.lorem.sentence(),
-    status: faker.random.arrayElement(["New Patient", "Recovered", "In Treatment"]),
-  }));
+// export const dummyPatients: Patient[] = new Array(100).fill(null)
+//   .map(() => ({
+//     name: faker.name.findName(),
+//     phoneNo: faker.phone.phoneNumber(),
+//     address: faker.fake("{{address.streetAddress}} {{address.city}}, {{address.state}}"),
+//     lastAppointment: faker.date.past().toDateString(),
+//     reasonOfVisit: faker.lorem.sentence(),
+//     status: faker.random.arrayElement(["New Patient", "Recovered", "In Treatment"]),
+//   }));
 
-export const columns: Column<Patient>[] = [
+export const columns: Column<EncounteredPatient>[] = [
+  {
+    Header: "Account ID",
+    accessor: "display_id",
+  },
   {
     Header: "Name",
     accessor: "name",
   },
   {
     Header: "Phone No",
-    accessor: "phoneNo",
+    accessor: "phone_number",
   },
   {
     Header: "Address",
@@ -29,17 +34,17 @@ export const columns: Column<Patient>[] = [
   },
   {
     Header: "Last Appointment",
-    accessor: "lastAppointment",
+    accessor: "date",
   },
   {
     Header: "Reason of Visit",
-    accessor: "reasonOfVisit",
+    accessor: "description",
   },
   {
     Header: "Status",
-    accessor: "status",
+    accessor: "patient_status",
     Cell: ({ value }: { value: string}) => <PatientStatus value={value} />,
   },
 ];
 
-export default { dummyPatients, columns };
+export default { columns };
