@@ -146,7 +146,7 @@ export default function VideoCalls() {
   }
 
   return (
-    <Flex minHeight="100vh" w="100%">
+    <Flex minHeight="100vh" w="100%" backgroundColor="gray.900">
       {/* Only show sidebar for doctor */}
       {isDoctor && <SideBar conversations={conversations} />}
       <RoomBreadcrumb doctor={roomName} isPatient={isPatient} />

@@ -7,7 +7,8 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { IoPersonAdd, IoCloseCircleSharp } from "react-icons/io5";
+import { IoPauseSharp } from "react-icons/io5";
+import { MdCallEnd } from "react-icons/md";
 
 import { RemoteParticipant } from "twilio-video";
 
@@ -41,22 +42,24 @@ export default function UserActionModal({
             variant="ghost"
             my={3}
             _hover={{ bg: "brand.pink", color: "white" }}
-            leftIcon={<IoCloseCircleSharp />}
+            leftIcon={<IoPauseSharp />}
             isFullWidth
-            onClick={() => handleRemove(user)}
-          >
-            Remove patient from video room
-          </Button>
-
-          <Button
-            variant="ghost"
-            my={3}
-            _hover={{ bg: "brand.pink", color: "white" }}
-            leftIcon={<IoPersonAdd />}
-            isFullWidth
+            justifyContent="left"
             onClick={() => handleRemoveMoveToWaiting(user)}
           >
-            End call and move patient to waiting room.
+            Pause call & move patient to waiting room
+          </Button>
+          <Button
+            variant="ghost"
+            color="red.300"
+            my={3}
+            _hover={{ bg: "brand.pink", color: "white" }}
+            leftIcon={<MdCallEnd />}
+            isFullWidth
+            justifyContent="left"
+            onClick={() => handleRemove(user)}
+          >
+            End active call & start new one
           </Button>
           {/* <Button
             variant="ghost"
