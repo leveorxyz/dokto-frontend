@@ -8,6 +8,7 @@ import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import PatientProcedureForm from "../../components/forms/patient-procedure";
+import PatientEncountersTable from "../../components/common/patientEncounters/PatientEncounters";
 
 export default function PatientProcedure() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
@@ -28,6 +29,7 @@ export default function PatientProcedure() {
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2">Patient Procedure</Heading>
         <Box p="4">
           <PatientProcedureForm />
+          <PatientEncountersTable />
         </Box>
       </Box>
     </SpacedContainer>

@@ -7,31 +7,27 @@ export const dummyPatientEncounters: PatientEncounters[] = new Array(5).fill(nul
     date: faker.date.past().toDateString(),
     code: faker.lorem.word(),
     description: faker.lorem.paragraph(3),
-    status: "active",
+    status: "Status: Active",
   }));
 
 export const columns: Column<PatientEncounters>[] = [
   {
-    Header: "Date",
+    Header: "",
     accessor: "date",
   },
   {
-    Header: "Code",
+    Header: "",
     accessor: "code",
   },
   {
-    Header: "Description",
+    Header: "",
     accessor: "description",
   },
   {
-    Header: "Status",
+    Header: "",
     accessor: "status",
   },
-  {
-    Header: "",
-    // accessor: "action",
-    // Cell: ({ value }: { value: string}) => (value ? "Signed" : "Not Signed"),
-  },
+
 ];
 
 export default { dummyPatientEncounters, columns };
