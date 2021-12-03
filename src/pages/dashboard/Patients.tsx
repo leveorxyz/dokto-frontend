@@ -176,6 +176,12 @@ export default function Patients() {
           <Spacer />
           <Flex>
             <Button
+              mr="1rem"
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(data?.previous_offset ?? 0)}
               disabled={!data?.previous}
             >
@@ -184,6 +190,11 @@ export default function Patients() {
             </Button>
             {offset / limit - 1 > 0 && (
             <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(
                 data?.previous_offset! - limit,
               )}
@@ -194,6 +205,11 @@ export default function Patients() {
             )}
             {offset / limit > 0 && (
             <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(data?.previous_offset ?? 0)}
             >
               {offset / limit }
@@ -202,6 +218,9 @@ export default function Patients() {
             )}
 
             <Button
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
               backgroundColor="brand.darkPink"
               color="white"
             >
@@ -209,6 +228,11 @@ export default function Patients() {
             </Button>
 
             <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(data?.next_offset ?? 0)}
               disabled={!data?.next}
             >
@@ -216,6 +240,11 @@ export default function Patients() {
 
             </Button>
             <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(
               data?.next_offset! + limit,
               )}
@@ -226,6 +255,12 @@ export default function Patients() {
 
             </Button>
             <Button
+              ml="1rem"
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(data?.next_offset ?? 0)}
               disabled={!data?.next}
             >
