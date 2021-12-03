@@ -24,6 +24,7 @@ const Encounters = lazy(() => import("../pages/dashboard/Encounters"));
 const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/Assessment&Diagnosis"));
 const PlanOfCare = lazy(() => import("../pages/dashboard/PlanOfCare"));
 const PatientProcedure = lazy(() => import("../pages/dashboard/PatientProcedure"));
+const PatientEncounters = lazy(() => import("../pages/dashboard/PatientEncounters"));
 
 export type RouteType = {
     displayName: string;
@@ -211,6 +212,14 @@ const routes: RouteType[] = [
     displayName: "Patient Procedure",
     path: "/patients/patient-procedure",
     component: <PatientProcedure />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Patient encounters",
+    path: "/encounters",
+    component: <PatientEncounters />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,

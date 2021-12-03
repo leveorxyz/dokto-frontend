@@ -50,7 +50,7 @@ export default [
     id: "patient-list",
     Icon: Patientlist,
     title: "Patient List",
-    path: "/patient-list",
+    path: "/patients",
   },
   {
     id: "payouts-settings",

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { memo } from "react";
 import {
   TableProps,
@@ -77,19 +78,21 @@ function EncountersTable({
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <Tr
-              {...row.getRowProps()}
-              key={row.id}
-            >
-              {row.cells.map((cell) => (
-                <Td
-                  {...cell.getCellProps()}
-                  key={cell.column.id}
-                >
-                  {cell.render("Cell")}
-                </Td>
-              ))}
-            </Tr>
+            <Link key={row.id} to="/encounters">
+              <Tr
+                {...row.getRowProps()}
+              >
+                {row.cells.map((cell) => (
+                  <Td
+                    {...cell.getCellProps()}
+                    key={cell.column.id}
+                  >
+                    {cell.render("Cell")}
+                  </Td>
+                ))}
+              </Tr>
+            </Link>
+
           );
         })}
       </Tbody>
