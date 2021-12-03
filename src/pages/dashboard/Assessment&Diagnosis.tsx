@@ -26,8 +26,10 @@ export default function AssessmentAndDiagnosis() {
         boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
       >
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2">Assessment & Diagnosis</Heading>
-        {/* <Divider mb="5" /> */}
-        <AssessmentAndDiagnosisForm />
+
+        <Box p="4">
+          <AssessmentAndDiagnosisForm />
+        </Box>
 
       </Box>
     </SpacedContainer>

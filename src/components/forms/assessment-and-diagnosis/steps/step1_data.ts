@@ -107,6 +107,16 @@ const secondColumn = () :FormDataType => ({
           message: "This field is required",
         },
       },
+    }, {
+      type: FieldTypes.CHECKBOX,
+      name: "accept_all_insurance",
+      label: "",
+      options: [
+        {
+          value: "all",
+          label: "Primary Diagnosis",
+        },
+      ],
     }],
 });
 
