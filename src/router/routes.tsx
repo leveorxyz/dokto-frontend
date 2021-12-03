@@ -21,6 +21,7 @@ const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
 const Patients = lazy(() => import("../pages/dashboard/Patients"));
 const Encounters = lazy(() => import("../pages/dashboard/Encounters"));
+const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/Assessment&Diagnosis"));
 
 export type RouteType = {
     displayName: string;
@@ -191,7 +192,7 @@ const routes: RouteType[] = [
   {
     displayName: "Assessment & Diagnosis",
     path: "/patients/assessment-and-diagnosis",
-    component: <Encounters />,
+    component: <AssessmentAndDiagnosis />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
