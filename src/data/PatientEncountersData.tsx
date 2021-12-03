@@ -30,16 +30,6 @@ export const columns: Column<PatientEncounters>[] = [
     accessor: "status",
     Cell: ({ value }) => `Status: ${value}`,
   },
-  {
-    Header: "",
-    accessor: "status",
-    Cell: () => (
-      <Flex>
-        <Button>Edit</Button>
-        <Button>Delete</Button>
-      </Flex>
-    ),
-  },
 
 ];
 
