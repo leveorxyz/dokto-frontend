@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { memo } from "react";
 import {
   TableProps,
@@ -24,14 +23,14 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { Encounters } from "../../atoms/ehr/encounters";
+import { PatientEncounters } from "../../../atoms/ehr/patientEncounters";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<Encounters> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<Encounters> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<Encounters>[];
-  rows: Row<Encounters>[];
-  prepareRow: (row: Row<Encounters>) => void;
+  getTableProps: (propGetter?: TablePropGetter<PatientEncounters> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<PatientEncounters> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<PatientEncounters>[];
+  rows: Row<PatientEncounters>[];
+  prepareRow: (row: Row<PatientEncounters>) => void;
 }
 
 function EncountersTable({
@@ -78,21 +77,24 @@ function EncountersTable({
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <Link key={row.id} to="/encounters">
-              <Tr
-                {...row.getRowProps()}
-              >
-                {row.cells.map((cell) => (
-                  <Td
-                    {...cell.getCellProps()}
-                    key={cell.column.id}
-                  >
-                    {cell.render("Cell")}
-                  </Td>
-                ))}
-              </Tr>
-            </Link>
-
+            <Tr
+              {...row.getRowProps()}
+              key={row.id}
+              color="#3E4954"
+              _hover={{
+                cursor: "pointer",
+                bg: "gray.100",
+              }}
+            >
+              {row.cells.map((cell) => (
+                <Td
+                  {...cell.getCellProps()}
+                  key={cell.column.id}
+                >
+                  {cell.render("Cell")}
+                </Td>
+              ))}
+            </Tr>
           );
         })}
       </Tbody>

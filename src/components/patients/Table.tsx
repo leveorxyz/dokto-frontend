@@ -85,9 +85,11 @@ function PatientsTable({
               onClick={() => {
                 showModal(row.original);
               }}
+              color="#3E4954"
               _hover={{
                 cursor: "pointer",
                 bg: "gray.100",
+                color: "#3E4954",
               }}
             >
               {row.cells.map((cell) => (

@@ -30,7 +30,7 @@ export default function Patients() {
   const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
   const [search, setSearch] = useState("");
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(1);
 
   const debouncedSearch = useDebounce<PropTypes>({
     limit,
@@ -157,7 +157,9 @@ export default function Patients() {
                 // TODO fix type
                 onChange={(e:any) => setLimit(e.target.value)}
               >
-
+                <option value={1}>
+                  1
+                </option>
                 <option value={2}>
                   2
                 </option>
@@ -173,21 +175,99 @@ export default function Patients() {
           </Flex>
           <Spacer />
           <Flex>
-
             <Button
+              mr="1rem"
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(data?.previous_offset ?? 0)}
               disabled={!data?.previous}
             >
               Previous
 
             </Button>
+            {offset / limit - 1 > 0 && (
             <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
+              onClick={() => setOffset(
+                data?.previous_offset! - limit,
+              )}
+            >
+              {offset / limit - 1}
+
+            </Button>
+            )}
+            {offset / limit > 0 && (
+            <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
+              onClick={() => setOffset(data?.previous_offset ?? 0)}
+            >
+              {offset / limit }
+
+            </Button>
+            )}
+
+            <Button
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              backgroundColor="brand.darkPink"
+              color="white"
+            >
+              {offset / limit + 1}
+            </Button>
+
+            <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
+              onClick={() => setOffset(data?.next_offset ?? 0)}
+              disabled={!data?.next}
+            >
+              {offset / limit + 2}
+
+            </Button>
+            <Button
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
+              onClick={() => setOffset(
+              data?.next_offset! + limit,
+              )}
+              disabled={(!(data && data.next_offset
+                && (data.count < (data?.next_offset + limit))))}
+            >
+              {offset / limit + 3}
+
+            </Button>
+            <Button
+              ml="1rem"
+              backgroundColor="#fff"
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              color="brand.darkPink"
               onClick={() => setOffset(data?.next_offset ?? 0)}
               disabled={!data?.next}
             >
               Next
 
             </Button>
+
           </Flex>
 
         </Flex>
