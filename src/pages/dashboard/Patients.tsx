@@ -30,7 +30,7 @@ export default function Patients() {
   const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
   const [search, setSearch] = useState("");
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(1);
+  const [limit, setLimit] = useState(10);
 
   const debouncedSearch = useDebounce<PropTypes>({
     limit,
