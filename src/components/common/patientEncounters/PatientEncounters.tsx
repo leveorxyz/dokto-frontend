@@ -27,17 +27,16 @@ export default function Encounters() {
   useSortBy, usePagination);
 
   return (
-    <SpacedContainer py={12}>
 
-      <EncountersTable
-        {...{
-          getTableProps,
-          getTableBodyProps,
-          headerGroups,
-          rows,
-          prepareRow,
-        }}
-      />
-    </SpacedContainer>
+    <EncountersTable
+      {...{
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+      }}
+    />
+
   );
 }

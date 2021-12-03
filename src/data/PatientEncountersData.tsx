@@ -1,3 +1,4 @@
+import { Button, Flex } from "@chakra-ui/react";
 import faker from "faker";
 import { Column } from "react-table";
 import { PatientEncounters } from "../atoms/ehr/patientEncounters";
@@ -7,7 +8,7 @@ export const dummyPatientEncounters: PatientEncounters[] = new Array(5).fill(nul
     date: faker.date.past().toDateString(),
     code: faker.lorem.word(),
     description: faker.lorem.paragraph(3),
-    status: "Status: Active",
+    status: faker.random.arrayElement(["Active", "Inactive"]),
   }));
 
 export const columns: Column<PatientEncounters>[] = [
@@ -18,6 +19,7 @@ export const columns: Column<PatientEncounters>[] = [
   {
     Header: "",
     accessor: "code",
+    Cell: ({ value }) => `ICU: ${value}`,
   },
   {
     Header: "",
@@ -26,6 +28,17 @@ export const columns: Column<PatientEncounters>[] = [
   {
     Header: "",
     accessor: "status",
+    Cell: ({ value }) => `Status: ${value}`,
+  },
+  {
+    Header: "",
+    accessor: "status",
+    Cell: () => (
+      <Flex>
+        <Button>Edit</Button>
+        <Button>Delete</Button>
+      </Flex>
+    ),
   },
 
 ];
