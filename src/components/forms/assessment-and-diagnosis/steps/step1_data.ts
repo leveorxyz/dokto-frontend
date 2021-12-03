@@ -128,13 +128,19 @@ const row = ():FormDataType => ({
 });
 
 const data = () :FormDataType => ({
-  type: FieldTypes.ROW,
+  type: FieldTypes.COLUMN,
   name: "step1",
   fields: [
-    firstColumn(),
-    secondColumn(),
+    {
+      type: FieldTypes.ROW,
+      name: "first row",
+      fields: [
+        firstColumn(),
+        secondColumn()],
+    },
     row(),
   ],
+
 });
 
 export default data;
