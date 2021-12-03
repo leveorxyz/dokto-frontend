@@ -80,6 +80,10 @@ function EncountersTable({
             <Tr
               {...row.getRowProps()}
               key={row.id}
+              _hover={{
+                cursor: "pointer",
+                bg: "gray.100",
+              }}
             >
               {row.cells.map((cell) => (
                 <Td
