@@ -2,7 +2,7 @@ import faker from "faker";
 import { Column } from "react-table";
 import { PatientEncounters } from "../atoms/ehr/patientEncounters";
 
-export const dummyPatientEncounters: PatientEncounters[] = new Array(100).fill(null)
+export const dummyPatientEncounters: PatientEncounters[] = new Array(5).fill(null)
   .map(() => ({
     date: faker.date.past().toDateString(),
     code: faker.lorem.word(),
@@ -12,19 +12,19 @@ export const dummyPatientEncounters: PatientEncounters[] = new Array(100).fill(n
 
 export const columns: Column<PatientEncounters>[] = [
   {
-    Header: "",
+    Header: "Date",
     accessor: "date",
   },
   {
-    Header: "",
+    Header: "Code",
     accessor: "code",
   },
   {
-    Header: "",
+    Header: "Description",
     accessor: "description",
   },
   {
-    Header: "",
+    Header: "Status",
     accessor: "status",
   },
   {

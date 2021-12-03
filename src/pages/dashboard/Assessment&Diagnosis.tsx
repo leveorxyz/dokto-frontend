@@ -8,7 +8,7 @@ import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import AssessmentAndDiagnosisForm from "../../components/forms/assessment-and-diagnosis";
-import PatientEncountersTable from "../../components/common/PatientEncountersTable";
+import PatientEncountersTable from "../../components/common/patientEncounters/PatientEncounters";
 
 export default function AssessmentAndDiagnosis() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
