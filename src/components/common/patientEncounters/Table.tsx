@@ -80,6 +80,7 @@ function EncountersTable({
             <Tr
               {...row.getRowProps()}
               key={row.id}
+              color="#3E4954"
               _hover={{
                 cursor: "pointer",
                 bg: "gray.100",
