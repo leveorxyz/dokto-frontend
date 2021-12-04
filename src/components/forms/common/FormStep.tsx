@@ -32,7 +32,7 @@ export default function FormStep({
     formState: { errors, isSubmitting, isDirty },
   } = useForm({
     mode: "onChange",
-    defaultValues: Object.keys(stepState)
+    defaultValues: Object.keys(stepState ?? {})
       .reduce(
         (prev, curr) => (
           // WARNING: This is a hack to get around the fact that we can't
