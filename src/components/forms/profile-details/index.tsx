@@ -58,13 +58,16 @@ const getStepsData = (): StepTypes[] => (
 
 export default function Form() {
   const {
-    data, error, isError, isSuccess, isFetching,
+    error, isError, isSuccess, isFetching,
   } = useProfileDetails();
   const steps = getStepsData();
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
 
   const CurrentStep = useMemo(
     () => {
+      if (!isSuccess) {
+        return <Loading />;
+      }
       if (steps[currentStep - 1].isFormStep) {
         const step = steps[currentStep - 1] as FormStepType;
         return (
@@ -78,7 +81,7 @@ export default function Form() {
       }
       return (steps[currentStep - 1] as SubmitStepType).component;
     },
-    [currentStep, steps],
+    [currentStep, steps, isSuccess],
   );
 
   if (isFetching) {
