@@ -50,33 +50,12 @@ const firstColumn = () :FormDataType => ({
   ],
 });
 
-const secondColumn = () :FormDataType => ({
-  type: FieldTypes.COLUMN,
-  name: "second",
-
+const dates = ():FormDataType => ({
+  type: FieldTypes.ROW,
+  name: "date",
   fields: [
     {
-      type: FieldTypes.INPUT,
-      name: "street",
-      label: "Disease Description",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
-      type: FieldTypes.INPUT,
-      name: "street",
-      label: "ICD Description",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    }, {
+
       type: FieldTypes.INPUT,
       name: "date_of_birth",
       label: "Start Date",
@@ -107,7 +86,38 @@ const secondColumn = () :FormDataType => ({
           message: "This field is required",
         },
       },
-    }, {
+    }],
+});
+
+const secondColumn = () :FormDataType => ({
+  type: FieldTypes.COLUMN,
+  name: "second",
+
+  fields: [
+    {
+      type: FieldTypes.INPUT,
+      name: "street",
+      label: "Disease Description",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "street",
+      label: "ICD Description",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    dates(),
+    {
       type: FieldTypes.CHECKBOX,
       name: "accept_all_insurance",
       label: "",
@@ -117,7 +127,8 @@ const secondColumn = () :FormDataType => ({
           label: "Primary Diagnosis",
         },
       ],
-    }],
+    },
+  ],
 });
 
 const row = ():FormDataType => ({
