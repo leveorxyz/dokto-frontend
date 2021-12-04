@@ -78,20 +78,21 @@ function EncountersTable({
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <Link key={row.id} to="/encounters">
-              <Tr
-                {...row.getRowProps()}
-              >
-                {row.cells.map((cell) => (
-                  <Td
-                    {...cell.getCellProps()}
-                    key={cell.column.id}
-                  >
+            <Tr
+              {...row.getRowProps()}
+              key={row.id}
+            >
+              {row.cells.map((cell) => (
+                <Td
+                  {...cell.getCellProps()}
+                  key={cell.column.id}
+                >
+                  <Link to="/encounters">
                     {cell.render("Cell")}
-                  </Td>
-                ))}
-              </Tr>
-            </Link>
+                  </Link>
+                </Td>
+              ))}
+            </Tr>
 
           );
         })}
