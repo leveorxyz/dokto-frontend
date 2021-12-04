@@ -13,7 +13,7 @@ export default function useSpecialitySettings() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setSpecialitySettings = useSetRecoilState(SpecialitySettingsAtom);
   return useQuery(
-    ["profile"],
+    ["specialty-settings"],
     () => getSpecialitySettings(axios as AxiosInstance),
     {
       retry: false,

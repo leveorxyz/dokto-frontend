@@ -13,7 +13,7 @@ export default function useAccountSettings() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAccountSettings = useSetRecoilState(AccountSettingsAtom);
   return useQuery(
-    ["profile"],
+    ["account-settings"],
     () => getAccountSettings(axios as AxiosInstance),
     {
       retry: false,

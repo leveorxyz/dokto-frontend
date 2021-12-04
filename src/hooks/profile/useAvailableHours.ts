@@ -13,7 +13,7 @@ export default function useAvailableHours() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAvailableHours = useSetRecoilState(AvailableHoursAtom);
   return useQuery(
-    ["profile"],
+    ["profile-settings/available-hours"],
     () => getAvailableHours(axios as AxiosInstance),
     {
       retry: false,

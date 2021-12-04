@@ -13,7 +13,7 @@ export default function useEducationExperience() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setEducationExperience = useSetRecoilState(EducationExperienceAtom);
   return useQuery(
-    ["profile"],
+    ["profile-settings/education-experience"],
     () => getEducationExperience(axios as AxiosInstance),
     {
       retry: false,

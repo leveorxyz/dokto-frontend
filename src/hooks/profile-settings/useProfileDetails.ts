@@ -13,7 +13,7 @@ export default function useProfileDetails() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setProfileDetails = useSetRecoilState(ProfileDetailsAtom);
   return useQuery(
-    ["profile"],
+    ["profile-settings/profile-detail"],
     () => getProfileDetails(axios as AxiosInstance),
     {
       retry: false,
