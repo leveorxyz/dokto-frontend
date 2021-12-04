@@ -1,6 +1,16 @@
 import { useMemo, useState } from "react";
 import {
-  Box, Flex, Input, Button,
+  Box,
+  Flex,
+  Input,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
 } from "@chakra-ui/react";
 
 type ParticipantTextType = {
@@ -56,41 +66,70 @@ const dummyTexts = [
   },
 ];
 
-export default function Chat() {
+type PropType = {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function Chat({ isOpen, onClose }: PropType) {
   const [text, setText] = useState("");
   const [texts, setTexts] = useState(dummyTexts);
 
   return (
-    <Box bgColor="gray.100">
-      <Box overflowY="scroll" p="2">
-        {texts.map(({ text: textContent, id, isLocal }) => (
-          <ParticipantText
-            key={id}
-            text={textContent}
-            isLocal={isLocal}
-          />
-        ))}
-      </Box>
+    <Drawer
+      isOpen={isOpen}
+      placement="right"
+      onClose={onClose}
+    >
+      <DrawerOverlay />
+      <DrawerContent bgColor="gray.100">
+        <DrawerCloseButton />
+        <DrawerHeader>Chat</DrawerHeader>
+        <DrawerBody>
+          <Box
+            h="100%"
+            overflowY="scroll"
+            p="2"
+            sx={{
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+            }}
+          >
+            {texts.map(({ text: textContent, id, isLocal }) => (
+              <ParticipantText
+                key={id}
+                text={textContent}
+                isLocal={isLocal}
+              />
+            ))}
+          </Box>
+        </DrawerBody>
 
-      <Flex wrap="nowrap" p={2} h="15rem">
-        <Input
-          placeholder="Type a message..."
-          flexGrow={1}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <Button
-          onClick={() => setTexts(
-            (prev) => [...prev, {
-              id: prev.length + 1,
-              text,
-              isLocal: true,
-            }],
-          )}
-        >
-          Send
-        </Button>
-      </Flex>
-    </Box>
+        <DrawerFooter>
+          <Flex wrap="nowrap" p={2}>
+            <Input
+              placeholder="Type a message..."
+              flexGrow={1}
+              value={text}
+              mr={2}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <Button
+              colorScheme="purple"
+              onClick={() => setTexts(
+                (prev) => [...prev, {
+                  id: prev.length + 1,
+                  text,
+                  isLocal: true,
+                }],
+              )}
+            >
+              Send
+            </Button>
+          </Flex>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
 }

@@ -5,7 +5,7 @@ import {
   useContext,
   useMemo,
 } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 import { Client as ConversationsClient, Conversation } from "@twilio/conversations";
 import { Room as RoomType } from "twilio-video";
@@ -44,7 +44,11 @@ export default function VideoCalls() {
   const [searchParams] = useSearchParams();
   const queryRoomName = isDoctor ? authState.user?.fullName : searchParams.get("doctor");
 
-  console.log(connectionState);
+  const {
+    isOpen: isChatWindowOpen,
+    onOpen: openChatWindow,
+    onClose: closeChatWindow,
+  } = useDisclosure();
 
   room?.on("disconnected", () => {
     setRoom(null);
@@ -150,11 +154,11 @@ export default function VideoCalls() {
     <Flex minHeight="100vh" w="100%" backgroundColor="gray.900">
       {/* Only show sidebar for doctor */}
       {isDoctor && <SideBar conversations={conversations} />}
-      <RoomBreadcrumb doctor={roomName} isPatient={isPatient} />
+      <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
       {/* Show waiting banner for patient */}
       {(isPatient && !room) && <WaitingBanner callEnded={callEnded} />}
       {room && <Videos room={room} />}
-      <Chat />
+      <Chat isOpen={isChatWindowOpen} onClose={closeChatWindow} />
     </Flex>
   );
 }

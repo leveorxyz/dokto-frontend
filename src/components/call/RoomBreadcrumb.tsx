@@ -6,9 +6,10 @@ import { IoChatboxEllipsesOutline } from "react-icons/io5";
 
 type PropTypes ={
   doctor: string,
-  isPatient: boolean
+  isPatient: boolean,
+  openChatWindow: () => void,
 }
-const RoomBreadcrumb = ({ doctor, isPatient }:PropTypes) => (
+const RoomBreadcrumb = ({ doctor, isPatient, openChatWindow }:PropTypes) => (
   <>
     <Breadcrumb position="fixed" left={isPatient ? "17rem" : "32rem"} top="3" color="white">
       <BreadcrumbItem>
@@ -23,7 +24,7 @@ const RoomBreadcrumb = ({ doctor, isPatient }:PropTypes) => (
       </BreadcrumbItem>
     </Breadcrumb>
     <Box position="fixed" right="10" top="3" color="white">
-      <Icon as={IoChatboxEllipsesOutline} fontSize="30" _hover={{ color: "purple" }} />
+      <Icon as={IoChatboxEllipsesOutline} fontSize="30" _hover={{ color: "purple" }} onClick={openChatWindow} />
     </Box>
   </>
 );
