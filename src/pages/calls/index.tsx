@@ -12,6 +12,7 @@ import { Room as RoomType } from "twilio-video";
 import { useRecoilValue } from "recoil";
 import { uniqBy } from "lodash";
 import { AxiosInstance } from "axios";
+import Chat from "../../components/chat";
 import RoomBreadcrumb from "../../components/call/RoomBreadcrumb";
 import WaitingBanner from "../../components/call/WaitingBanner";
 import { AxiosContext } from "../../contexts/AxiosContext";
@@ -153,6 +154,7 @@ export default function VideoCalls() {
       {/* Show waiting banner for patient */}
       {(isPatient && !room) && <WaitingBanner callEnded={callEnded} />}
       {room && <Videos room={room} />}
+      <Chat />
     </Flex>
   );
 }

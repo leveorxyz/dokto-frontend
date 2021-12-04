@@ -27,13 +27,15 @@ const ParticipantText = ({ text, isLocal }: ParticipantTextType) => {
       style.bgColor = "white";
       style.color = "primary.dark";
     }
+    return style;
   }, [isLocal]);
 
   return (
     <Box
       width="70%"
       rounded="lg"
-      py={1}
+      p={2}
+      my={1}
       {...styles}
     >
       {text}
@@ -60,7 +62,7 @@ export default function Chat() {
 
   return (
     <Box bgColor="gray.100">
-      <Box overflowY="scroll">
+      <Box overflowY="scroll" p="2">
         {texts.map(({ text: textContent, id, isLocal }) => (
           <ParticipantText
             key={id}
