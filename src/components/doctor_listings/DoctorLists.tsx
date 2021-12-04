@@ -11,9 +11,8 @@ import {
 } from "react-icons/io5";
 
 import { SpacedContainer } from "../common/Containers";
-import Profile from "../../static/doctors/doctorLists.jpg";
+import Profile from "../../static/doctors-listing/doctorLists.jpg";
 import patientEncountersAtom from "../../atoms/ehr/patientEncounters";
-import Certificate from "../../static/doctors/Certificate.svg";
 
 const DoctorLists = () => {
   const data = useRecoilValue(patientEncountersAtom);
