@@ -5,10 +5,11 @@ import {
   BreadcrumbItem,
 } from "@chakra-ui/react";
 import { RecoilState, useRecoilState } from "recoil";
+import MessagePage from "../../common/fallback/MessagePage";
+import Loading from "../../common/fallback/LoadingPage";
+import stepAtom, { currentStepAtom } from "../../../atoms/profileDetails.atom";
+import useProfileDetails from "../../../hooks/profile-settings/useProfileDetails";
 
-import {
-  stepAtom, currentStepAtom,
-} from "./atoms";
 import FormStep from "../common/FormStep";
 import {
   step1Data,
@@ -56,6 +57,9 @@ const getStepsData = (): StepTypes[] => (
 );
 
 export default function Form() {
+  const {
+    data, error, isError, isSuccess, isFetching,
+  } = useProfileDetails();
   const steps = getStepsData();
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
 
@@ -77,23 +81,34 @@ export default function Form() {
     [currentStep, steps],
   );
 
-  return (
-    <>
-      <Breadcrumb>
-        {steps
-          .filter((step) => step.isFormStep)
-          .map((step) => (
-            <BreadcrumbItem key={step.id}>
-              <Box
-                onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-              />
-            </BreadcrumbItem>
-          ))}
-      </Breadcrumb>
+  if (isFetching) {
+    return <Loading />;
+  }
 
-      <Box>
-        {CurrentStep}
-      </Box>
-    </>
-  );
+  if (isError) {
+    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
+  }
+  if (isSuccess) {
+    return (
+      <>
+        <Breadcrumb>
+          {steps
+            .filter((step) => step.isFormStep)
+            .map((step) => (
+              <BreadcrumbItem key={step.id}>
+                <Box
+                  onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
+                />
+              </BreadcrumbItem>
+            ))}
+        </Breadcrumb>
+
+        <Box>
+          {CurrentStep}
+        </Box>
+      </>
+    );
+  }
+
+  return <></>;
 }
