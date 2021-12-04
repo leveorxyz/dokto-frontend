@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   Box,
@@ -29,6 +30,7 @@ export default function FormStep({
     setError,
     clearErrors,
     control,
+    reset,
     formState: { errors, isSubmitting, isDirty },
   } = useForm({
     mode: "onChange",
@@ -47,6 +49,10 @@ export default function FormStep({
         {},
       ),
   });
+
+  useEffect(() => {
+    reset(stepState ?? {});
+  }, [stepState, reset]);
 
   const onSubmit = (data: unknown) => {
     setStepState(data);
