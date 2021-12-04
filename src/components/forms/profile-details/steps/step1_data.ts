@@ -11,10 +11,10 @@ const secondRow = () :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.CUSTOM,
+      type: FieldTypes.INPUT,
       name: "contact_no",
       label: "Mobile Number",
-      component: MobileNo,
+      placeholder: "Mobile Number",
     },
     {
       type: FieldTypes.INPUT,
