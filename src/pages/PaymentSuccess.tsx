@@ -4,19 +4,29 @@ import {
 } from "@chakra-ui/react";
 import { SpacedContainer } from "../components/common/Containers";
 import successfulPaymentBanner from "../static/payment-success/OBJECTS.png";
+import checkIcon from "../static/payment-success/Icon.png";
 
 const PaymentSuccess = () => (
   <SpacedContainer py={20}>
     <Center>
 
-      <Image src={successfulPaymentBanner} ml={12} height="20rem" width="auto" fit="contain" />
-      <Flex>
+      <Box>
+        <Image src={successfulPaymentBanner} height="30rem" width="auto" fit="contain" />
+      </Box>
+
+    </Center>
+    <Center mt="10">
+      <Flex alignItems="center">
         <Box>
-          hi
+          <Image src={checkIcon} mr={8} height="10rem" width="auto" fit="contain" />
         </Box>
-        <Box>
-          Thank You !
-          Your Appoinment has been Created.
+
+        <Box fontSize="46" fontWeight="500">
+          Thank You!
+          <br />
+          Your appoinment
+          <br />
+          has been created.
         </Box>
       </Flex>
     </Center>
