@@ -3,7 +3,7 @@ import {
   FieldTypes, FormDataType,
 } from "../../types/form";
 
-const firstColumn = () :FormDataType => ({
+const firstRow = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
   fields: [
@@ -14,14 +14,15 @@ const firstColumn = () :FormDataType => ({
       options: [{
         value: "MALE",
         label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
-    },
+      }],
+    }],
+});
+
+const firstColumn = () :FormDataType => ({
+  type: FieldTypes.COLUMN,
+  name: "first",
+  fields: [
+
     {
       type: FieldTypes.INPUT,
       name: "contact_no",
@@ -92,6 +93,7 @@ const data = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "step1",
   fields: [
+    firstRow(),
     {
       type: FieldTypes.ROW,
       name: "first row",

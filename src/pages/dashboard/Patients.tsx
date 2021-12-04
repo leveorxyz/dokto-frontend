@@ -16,7 +16,6 @@ import {
   Select,
   FormControl,
 } from "@chakra-ui/react";
-// import debounce from "lodash/debounce";
 import { columns } from "../../data/PatientsData";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import PatientTable from "../../components/patients/Table";
@@ -30,7 +29,7 @@ export default function Patients() {
   const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
   const [search, setSearch] = useState("");
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(1);
+  const [limit, setLimit] = useState(10);
 
   const debouncedSearch = useDebounce<PropTypes>({
     limit,
@@ -157,17 +156,17 @@ export default function Patients() {
                 // TODO fix type
                 onChange={(e:any) => setLimit(e.target.value)}
               >
-                <option value={1}>
-                  1
-                </option>
-                <option value={2}>
-                  2
-                </option>
-                <option value={5}>
-                  5
-                </option>
                 <option value={10}>
                   10
+                </option>
+                <option value={25}>
+                  25
+                </option>
+                <option value={50}>
+                  50
+                </option>
+                <option value={100}>
+                  100
                 </option>
               </Select>
             </FormControl>
