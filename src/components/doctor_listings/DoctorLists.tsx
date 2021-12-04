@@ -6,15 +6,14 @@ import { IconContext } from "react-icons";
 import { FaStar } from "react-icons/fa";
 import { useRecoilValue } from "recoil";
 import {
-  IoArrowBack,
+  IoArrowForward,
   IoLanguage, IoLocationOutline,
 } from "react-icons/io5";
-import {
-  GrCertificate,
-} from "react-icons/gr";
+
 import { SpacedContainer } from "../common/Containers";
 import Profile from "../../static/doctors/doctorLists.jpg";
 import patientEncountersAtom from "../../atoms/ehr/patientEncounters";
+import Certificate from "../../static/doctors/Certificate.svg";
 
 const DoctorLists = () => {
   const data = useRecoilValue(patientEncountersAtom);
@@ -30,14 +29,14 @@ const DoctorLists = () => {
               borderColor="gray.300"
               borderRadius="20"
               height="60"
-              mb="12"
+              mb="14"
               boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
               _hover={{
                 boxShadow: "0 10px 30px 0 rgb(205 204 219 / 25%)",
                 filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
               }}
             >
-              <Box width="60%">
+              <Box w="65%">
                 <Flex p="4" alignItems="center">
                   <Flex basis="30%" direction="column" mr="4">
                     <Avatar name="dummy" src={Profile} boxSize="8rem" />
@@ -95,9 +94,9 @@ const DoctorLists = () => {
                   </Button>
                 </Flex>
               </Box>
-              <Box pt="4" pr="4" w="40%">
+              <Box pt="4" pr="4" w="35%">
 
-                <Box backgroundColor="primary.dark" height="60" borderRadius="20">
+                <Box backgroundColor="primary.dark" height="64" rounded="lg">
                   <Box fontSize="md" px="4" pt="4" d="flex" flexDir="row" mr="8" mb="4">
 
                     <Box as={IoLocationOutline} size={30} color="brand.pink" />
@@ -115,28 +114,38 @@ const DoctorLists = () => {
                       English, French, Spanish
                     </Box>
                   </Box>
-                  <Box fontSize="md" px="4" d="flex" flexDir="row" mr="8" mb="4">
+                  <Box fontSize="md" px="4" d="flex" flexDir="row" mr="8" mb="2" alignItems="center">
+                    <Box
+                      mt="3"
+                      as="svg"
+                      role="img"
+                      width="30px"
+                      height="30px"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      _hover={{
+                        fill: "brand.accent",
+                      }}
+                    >
+                      <path d="M13.4824 11.7803H11.1709V9.52148C11.6133 9.02051 11.8799 8.37012 11.8799 7.6582C11.8799 6.08789 10.5791 4.81348 8.97949 4.81348C7.37988 4.81348 6.0791 6.09082 6.0791 7.6582C6.0791 8.37012 6.3457 9.02051 6.78809 9.52148V11.7803H1.51758V1.51758H13.4795V11.7803H13.4824ZM8.97949 12.0762L7.99219 12.835V10.3359C8.2998 10.4443 8.63379 10.5059 8.97949 10.5059C9.3252 10.5059 9.65918 10.4473 9.9668 10.3359V12.835L8.97949 12.0762ZM8.97949 9.31055C8.03906 9.31055 7.27441 8.56934 7.27441 7.6582C7.27441 6.74707 8.03906 6.00586 8.97949 6.00586C9.91992 6.00586 10.6846 6.74707 10.6846 7.6582C10.6846 8.56934 9.91992 9.31055 8.97949 9.31055ZM14.0801 0.322266H0.919922C0.588867 0.322266 0.322266 0.588867 0.322266 0.919922V12.3779C0.322266 12.709 0.588867 12.9756 0.919922 12.9756H6.78809V14.0918C6.78809 14.5752 7.34473 14.8506 7.72852 14.5547L8.97949 13.5938L10.2305 14.5547C10.6143 14.8506 11.1709 14.5752 11.1709 14.0918V12.9756H14.0801C14.4111 12.9756 14.6777 12.709 14.6777 12.3779V0.919922C14.6777 0.588867 14.4111 0.322266 14.0801 0.322266Z" fill="#FF00FF" />
+                      <path d="M4.42676 4.24512H10.5703C10.9014 4.24512 11.168 3.97852 11.168 3.64746C11.168 3.31641 10.9014 3.0498 10.5703 3.0498H4.42676C4.0957 3.0498 3.8291 3.31641 3.8291 3.64746C3.8291 3.97559 4.09863 4.24512 4.42676 4.24512Z" fill="#FF00FF" />
+                    </Box>
 
-                    <Box as={GrCertificate} size={30} color="brand.pink" />
-
-                    <Center ml="2" color="#fff" backgroundColor="#2ECC71" borderRadius="20" fontSize="12px" px="4" py="1" fontWeight="600">
+                    <Center color="#fff" backgroundColor="#2ECC71" borderRadius="20" fontSize="10px" px="4" h="6" fontWeight="600">
                       VERIFIED
                     </Center>
                   </Box>
                   <Divider
                     sx={{
                       borderBottomWidth: 1,
-                      borderBottomColor: "primary.light",
+                      borderBottomColor: "#2D0081",
                     }}
                   />
-                  <Link to="/" backgroundColor="transparent" color="#fff" _hover={{ backgroundColor: "transparent" }} mt="2" width="100%">
-                    <Flex justifyContent="space-between" alignItems="center">
-                      <Box>View Profile</Box>
-                      <Box>
-                        <IconContext.Provider value={{ color: "#FF00FF" }}>
-                          <IoArrowBack size={30} />
-                        </IconContext.Provider>
-                      </Box>
+                  <Link to="/" color="#fff" width="100%">
+                    <Flex justifyContent="space-between" alignItems="center" px="4" mt="4">
+                      <Box fontWeight="600">View Profile</Box>
+                      <Box as={IoArrowForward} size={30} color="primary.light" />
+
                     </Flex>
                   </Link>
 
