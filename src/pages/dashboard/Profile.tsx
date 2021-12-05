@@ -52,7 +52,7 @@ export default function Profile() {
             <Heading as="h3" fontSize="3xl" fontWeight={700} color="primary.dark">{doctorProfile?.full_name}</Heading>
             <Heading as="h4" fontSize="xl" fontWeight={400} color="brand.darkPink" mb={3}>{doctorProfile?.qualification_suffix}</Heading>
             <Box color="gray.500" mb={3}>
-              No reviews yet.
+              {doctorProfile?.review}
             </Box>
             <Text fontSize="lg" color="gray.500">
               {doctorProfile?.professional_bio}
