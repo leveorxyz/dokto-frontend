@@ -17,9 +17,12 @@ export default function Submit() {
         return { ...prev, [curr]: stepData[curr] };
       },
       {
+
       },
     ),
   }), [stepData]);
+
+  console.log(data);
 
   const {
     error, isError, isSuccess, isFetching,

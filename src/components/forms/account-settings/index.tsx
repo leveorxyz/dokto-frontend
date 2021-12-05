@@ -7,7 +7,7 @@ import {
 import { RecoilState, useRecoilState } from "recoil";
 import MessagePage from "../../common/fallback/MessagePage";
 import Loading from "../../common/fallback/LoadingPage";
-import stepAtom, { currentStepAtom } from "../../../atoms/educationExperience.atom";
+import stepAtom, { currentStepAtom } from "../../../atoms/accountSettings.atom";
 import useAccountSettings from "../../../hooks/account-settings/useAccountSettings";
 
 import FormStep from "../common/FormStep";
