@@ -95,7 +95,7 @@ const DoctorLists = () => {
               </Box>
               <Box pt="4" pr="4" w="35%">
 
-                <Box backgroundColor="primary.dark" height="64" rounded="lg">
+                <Box backgroundColor="primary.dark" rounded="lg">
                   <Box fontSize="md" px="4" pt="4" d="flex" flexDir="row" mr="8" mb="4">
 
                     <Box as={IoLocationOutline} size={30} color="brand.pink" />
@@ -141,7 +141,7 @@ const DoctorLists = () => {
                     }}
                   />
                   <Link to="/" color="#fff" width="100%">
-                    <Flex justifyContent="space-between" alignItems="center" px="4" mt="4">
+                    <Flex justifyContent="space-between" alignItems="center" px="4" py="3">
                       <Box fontWeight="600">View Profile</Box>
                       <Box as={IoArrowForward} size={30} color="primary.light" />
 
