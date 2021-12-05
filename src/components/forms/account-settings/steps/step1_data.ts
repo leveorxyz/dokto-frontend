@@ -140,7 +140,7 @@ const secondColumn = (watch: any) :FormDataType => ({
           name: "description",
           label: "",
           placeholder: "Description (Optional)",
-          resize: "both",
+          resize: "vertical",
         },
       ],
     },
