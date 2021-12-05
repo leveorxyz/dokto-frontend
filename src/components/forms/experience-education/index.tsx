@@ -58,9 +58,9 @@ const getStepsData = (): StepTypes[] => (
 
 export default function Form() {
   const {
-    error, isError, isSuccess, isFetching, data,
+    error, isError, isSuccess, isFetching,
   } = useEducationExperience();
-  console.log(data);
+
   const steps = getStepsData();
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
 
