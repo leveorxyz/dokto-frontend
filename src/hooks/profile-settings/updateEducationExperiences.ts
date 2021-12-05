@@ -10,7 +10,7 @@ const updateEducation = async (axios: AxiosInstance, data: any) => axios.put("da
 
 export default function useUpdateEducationExperiences(data: any) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-  console.log(data);
+
   return useQuery(
     ["profile-settings/education-experience", data],
     () => updateEducation(axios as AxiosInstance, data),
