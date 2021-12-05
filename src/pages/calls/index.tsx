@@ -24,11 +24,16 @@ import authAtom from "../../atoms/auth.atom";
 import { twilioTokenAtom } from "../../components/call/atoms";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 
+export type connectionStateType = {
+  status: string,
+  statusString: string
+}
+
 export default function VideoCalls() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const [room, setRoom] = useState<RoomType | null>(null);
   const [callEnded, setCallEnded] = useState<boolean>(false);
-  const [connectionState, setConnectionState] = useState({
+  const [connectionState, setConnectionState] = useState<connectionStateType>({
     status: "",
     statusString: "",
   });
@@ -43,6 +48,8 @@ export default function VideoCalls() {
 
   const [searchParams] = useSearchParams();
   const queryRoomName = isDoctor ? authState.user?.fullName : searchParams.get("doctor");
+
+  // console.log(conversations);
 
   const {
     isOpen: isChatWindowOpen,
@@ -158,7 +165,12 @@ export default function VideoCalls() {
       {/* Show waiting banner for patient */}
       {(isPatient && !room) && <WaitingBanner callEnded={callEnded} />}
       {room && <Videos room={room} />}
-      <Chat isOpen={isChatWindowOpen} onClose={closeChatWindow} />
+      <Chat
+        isOpen={isChatWindowOpen}
+        onClose={closeChatWindow}
+        conversation={conversations[0]}
+        connectionState={connectionState}
+      />
     </Flex>
   );
 }

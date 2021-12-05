@@ -1,4 +1,10 @@
-import { useMemo, useState } from "react";
+import {
+  useMemo, useState, useEffect, useCallback,
+} from "react";
+import { Conversation, Message } from "@twilio/conversations";
+import { useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import { uniqBy } from "lodash";
 import {
   Box,
   Flex,
@@ -12,10 +18,13 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
+import authAtom from "../../atoms/auth.atom";
+import { connectionStateType } from "../../pages/calls/index";
 
 type ParticipantTextType = {
   text: string;
   isLocal: boolean;
+  dateCreated: Date;
 }
 
 type StyleType = {
@@ -25,7 +34,7 @@ type StyleType = {
   color?: string;
 }
 
-const ParticipantText = ({ text, isLocal }: ParticipantTextType) => {
+const ParticipantText = ({ text, isLocal, dateCreated }: ParticipantTextType) => {
   const styles = useMemo(() => {
     const style: StyleType = {};
     if (isLocal) {
@@ -41,39 +50,60 @@ const ParticipantText = ({ text, isLocal }: ParticipantTextType) => {
   }, [isLocal]);
 
   return (
-    <Box
-      width="70%"
-      rounded="lg"
-      p={2}
-      my={1}
-      {...styles}
-    >
-      {text}
+    <Box my={1}>
+      <Box
+        width="70%"
+        rounded="lg"
+        p={2}
+        {...styles}
+      >
+        {text}
+        <Box><sub {...styles}>{dateCreated.toLocaleString()}</sub></Box>
+      </Box>
     </Box>
   );
 };
 
-const dummyTexts = [
-  {
-    id: 1,
-    text: "This is a text sent by the LOCAL participant",
-    isLocal: true,
-  },
-  {
-    id: 2,
-    text: "This is a text sent by the REMOTE participant",
-    isLocal: false,
-  },
-];
-
 type PropType = {
   isOpen: boolean;
   onClose: () => void;
+  conversation: Conversation
+  connectionState: connectionStateType
 }
 
-export default function Chat({ isOpen, onClose }: PropType) {
-  const [text, setText] = useState("");
-  const [texts, setTexts] = useState(dummyTexts);
+export default function Chat({
+  isOpen, onClose, conversation, connectionState,
+}: PropType) {
+  const [activeConversation, setActiveConversation] = useState<Conversation|null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const authState = useRecoilValue(authAtom);
+  const { register, handleSubmit, reset } = useForm();
+
+  // Handler for new message
+  const messageAdded = (message:Message) => {
+    setMessages((prevState) => uniqBy([...prevState, message], "sid"));
+  };
+
+  // Single conversation handler for fetching messages
+  const handleConversation = useCallback(async () => {
+    if (conversation && connectionState.status === "success") {
+      const fetchedMessages = await conversation.getMessages();
+      setActiveConversation(conversation);
+      setMessages(fetchedMessages?.items || []);
+      conversation.on("messageAdded", (m) => messageAdded(m));
+    }
+    // eslint-disable-next-line
+  }, [conversation]);
+
+  // Form submit handler
+  const handleFormSubmit = (data:{message:string}) => {
+    activeConversation?.sendMessage(String(data.message).trim());
+    reset();
+  };
+
+  useEffect(() => {
+    handleConversation();
+  }, [conversation, handleConversation]);
 
   return (
     <Drawer
@@ -96,38 +126,36 @@ export default function Chat({ isOpen, onClose }: PropType) {
               },
             }}
           >
-            {texts.map(({ text: textContent, id, isLocal }) => (
+            {messages.map(({
+              sid, author, body, dateCreated,
+            }) => (
               <ParticipantText
-                key={id}
-                text={textContent}
-                isLocal={isLocal}
+                key={sid}
+                text={body}
+                isLocal={author.slice(0, 36) === authState?.user?.id}
+                dateCreated={dateCreated}
               />
             ))}
           </Box>
         </DrawerBody>
 
         <DrawerFooter>
-          <Flex wrap="nowrap" p={2}>
-            <Input
-              placeholder="Type a message..."
-              flexGrow={1}
-              value={text}
-              mr={2}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <Button
-              colorScheme="purple"
-              onClick={() => setTexts(
-                (prev) => [...prev, {
-                  id: prev.length + 1,
-                  text,
-                  isLocal: true,
-                }],
-              )}
-            >
-              Send
-            </Button>
-          </Flex>
+          <form onSubmit={handleSubmit(handleFormSubmit)}>
+            <Flex wrap="nowrap" p={2}>
+              <Input
+                placeholder="Type a message..."
+                flexGrow={1}
+                mr={2}
+                {...register("message", { required: true })}
+              />
+              <Button
+                type="submit"
+                colorScheme="purple"
+              >
+                Send
+              </Button>
+            </Flex>
+          </form>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
