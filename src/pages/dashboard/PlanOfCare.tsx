@@ -31,7 +31,7 @@ export default function PlanOfCare() {
           pt="8"
           backgroundColor="#fff"
         >
-          <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2">Plan of Care</Heading>
+          <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Plan of Care</Heading>
 
           <Box p="4">
             <ReactQuill theme="snow" value={value} onChange={setValue} />

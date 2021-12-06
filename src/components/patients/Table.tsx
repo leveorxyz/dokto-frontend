@@ -52,6 +52,7 @@ function PatientsTable({
                 {...column.getHeaderProps(
                   column.getSortByToggleProps(),
                 )}
+                color="#000"
                 key={column.id}
               >
                 <Box
@@ -69,6 +70,7 @@ function PatientsTable({
                       )
                     ) : null}
                   </chakra.span>
+
                 </Box>
               </Th>
             ))}

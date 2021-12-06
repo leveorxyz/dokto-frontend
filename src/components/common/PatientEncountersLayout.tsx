@@ -7,7 +7,7 @@ interface props{
 }
 
 const PatientEncountersLayout :React.FC<props> = ({ children }) => (
-  <Box backgroundColor="gray.200" minH="100vh">
+  <Box backgroundColor="##f7f7fc" minH="100vh">
     <SpacedContainer>
       <Heading fontSize="xl" fontWeight="600" color="brand.darkPink" py="8">
         PATIENT ENCOUNTERS

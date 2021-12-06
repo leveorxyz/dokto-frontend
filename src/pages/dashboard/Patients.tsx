@@ -40,7 +40,6 @@ export default function Patients() {
   const {
     isFetching, isError, isSuccess, data,
   } = useEncounteredPatients(debouncedSearch);
-
   const memoizedColumns = useMemo(() => columns, []);
 
   const memoizedPatientsData = useMemo(
@@ -99,183 +98,191 @@ export default function Patients() {
 
   if (isSuccess) {
     return (
-      <SpacedContainer py={12}>
-        <Flex justifyContent="space-between" pb={6}>
-          <Box>
-            <Heading as="h1" fontSize="3xl">
-              Patients
-            </Heading>
-            <Text fontSize="lg" color="gray.500">
-              List of all patients
-            </Text>
-          </Box>
+      <Box backgroundColor="#f7f7fc" minH="100vh">
+        <SpacedContainer py={12}>
+          <Text color="#11142D" fontWeight="800" pb="8"> Appointment</Text>
 
-          <Box>
-            <Text fontSize="lg">
-              Search Patients
-            </Text>
-            <Input
-              placeholder="Search"
-              value={search ?? ""}
-              variant="filled"
-              onChange={(e) => setSearch(e.target.value)}
+          <Box backgroundColor="#fff" p="6" rounded="lg">
+            <Flex justifyContent="space-between" pb={6}>
+              <Box>
+                <Heading as="h2" fontSize="3xl">
+                  Patients
+                </Heading>
+                <Text fontSize="lg" color="gray.500" mt="2">
+                  List of all patients
+                </Text>
+              </Box>
+              <Flex>
+
+                <Input
+                  placeholder="Search"
+                  width="100%"
+                  mr="4"
+                  value={search ?? ""}
+                  variant="filled"
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+
+                {" "}
+                <Box>
+                  <Button
+                    border="2px"
+                    borderRadius="0px"
+                    borderColor="brand.darkPink"
+                    backgroundColor="brand.darkPink"
+                    color="white"
+                  >
+                    + New Patient
+                  </Button>
+                </Box>
+              </Flex>
+            </Flex>
+            <PatientTable
+              {...{
+                getTableProps,
+                getTableBodyProps,
+                headerGroups,
+                rows,
+                prepareRow,
+                showModal,
+              }}
+            />
+            <Flex m="2" pt="10">
+              <Box color="#3E4954">
+                Showing
+                {" "}
+                {limit > data?.count! ? data?.count : limit}
+                {" "}
+                from
+                {" "}
+                {data?.count}
+                {" "}
+                data
+              </Box>
+              <Spacer />
+              <Flex alignItems="center">
+                <Box mr="2" color="#3E4954">Show</Box>
+                <FormControl>
+                  <Select
+                    placeholder="Select"
+                    defaultValue="2"
+                    value={limit}
+                    color="#3E4954"
+                    // TODO fix type
+                    onChange={(e:any) => setLimit(e.target.value)}
+                  >
+                    <option value={10}>
+                      10
+                    </option>
+                    <option value={25}>
+                      25
+                    </option>
+                    <option value={50}>
+                      50
+                    </option>
+                    <option value={100}>
+                      100
+                    </option>
+                  </Select>
+                </FormControl>
+                <Box ml="2" whiteSpace="nowrap" color="#3E4954">Rows Per Page</Box>
+              </Flex>
+              <Spacer />
+              <Flex>
+                <Button
+                  mr="1rem"
+                  backgroundColor="#fff"
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  color="brand.darkPink"
+                  onClick={() => setOffset(data?.previous_offset ?? 0)}
+                  disabled={!data?.previous}
+                >
+                  Previous
+                </Button>
+                {offset / limit - 1 > 0 && (
+                  <Button
+                    backgroundColor="#fff"
+                    border="2px"
+                    borderRadius="0px"
+                    borderColor="brand.darkPink"
+                    color="brand.darkPink"
+                    onClick={() => setOffset(
+                    data?.previous_offset! - limit,
+                    )}
+                  >
+                    {offset / limit - 1}
+                  </Button>
+                )}
+                {offset / limit > 0 && (
+                  <Button
+                    backgroundColor="#fff"
+                    border="2px"
+                    borderRadius="0px"
+                    borderColor="brand.darkPink"
+                    color="brand.darkPink"
+                    onClick={() => setOffset(data?.previous_offset ?? 0)}
+                  >
+                    {offset / limit }
+                  </Button>
+                )}
+                <Button
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  backgroundColor="brand.darkPink"
+                  color="white"
+                >
+                  {offset / limit + 1}
+                </Button>
+                <Button
+                  backgroundColor="#fff"
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  color="brand.darkPink"
+                  onClick={() => setOffset(data?.next_offset ?? 0)}
+                  disabled={!data?.next}
+                >
+                  {offset / limit + 2}
+                </Button>
+                <Button
+                  backgroundColor="#fff"
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  color="brand.darkPink"
+                  onClick={() => setOffset(
+                  data?.next_offset! + limit,
+                  )}
+                  disabled={(!(data && data.next_offset
+                    && (data.count < (data?.next_offset + limit))))}
+                >
+                  {offset / limit + 3}
+                </Button>
+                <Button
+                  ml="1rem"
+                  backgroundColor="#fff"
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  color="brand.darkPink"
+                  onClick={() => setOffset(data?.next_offset ?? 0)}
+                  disabled={!data?.next}
+                >
+                  Next
+                </Button>
+              </Flex>
+            </Flex>
+            <PatientModal
+              onClose={closeModal}
+              isOpen={isOpen}
+              patient={currentPatient}
             />
           </Box>
-        </Flex>
-
-        <PatientTable
-          {...{
-            getTableProps,
-            getTableBodyProps,
-            headerGroups,
-            rows,
-            prepareRow,
-            showModal,
-          }}
-        />
-        <Flex m="2">
-          <Box>
-            Showing
-            {" "}
-            {limit > data?.count! ? data?.count : limit}
-            {" "}
-            from
-            {" "}
-            {data?.count}
-            {" "}
-            data
-          </Box>
-          <Spacer />
-          <Flex alignItems="center">
-            <Box mr="2">Show</Box>
-            <FormControl>
-              <Select
-                placeholder="Select"
-                defaultValue="2"
-                value={limit}
-                // TODO fix type
-                onChange={(e:any) => setLimit(e.target.value)}
-              >
-                <option value={10}>
-                  10
-                </option>
-                <option value={25}>
-                  25
-                </option>
-                <option value={50}>
-                  50
-                </option>
-                <option value={100}>
-                  100
-                </option>
-              </Select>
-            </FormControl>
-            <Box ml="2" whiteSpace="nowrap">Rows Per Page</Box>
-          </Flex>
-          <Spacer />
-          <Flex>
-            <Button
-              mr="1rem"
-              backgroundColor="#fff"
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              color="brand.darkPink"
-              onClick={() => setOffset(data?.previous_offset ?? 0)}
-              disabled={!data?.previous}
-            >
-              Previous
-
-            </Button>
-            {offset / limit - 1 > 0 && (
-            <Button
-              backgroundColor="#fff"
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              color="brand.darkPink"
-              onClick={() => setOffset(
-                data?.previous_offset! - limit,
-              )}
-            >
-              {offset / limit - 1}
-
-            </Button>
-            )}
-            {offset / limit > 0 && (
-            <Button
-              backgroundColor="#fff"
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              color="brand.darkPink"
-              onClick={() => setOffset(data?.previous_offset ?? 0)}
-            >
-              {offset / limit }
-
-            </Button>
-            )}
-
-            <Button
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              backgroundColor="brand.darkPink"
-              color="white"
-            >
-              {offset / limit + 1}
-            </Button>
-
-            <Button
-              backgroundColor="#fff"
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              color="brand.darkPink"
-              onClick={() => setOffset(data?.next_offset ?? 0)}
-              disabled={!data?.next}
-            >
-              {offset / limit + 2}
-
-            </Button>
-            <Button
-              backgroundColor="#fff"
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              color="brand.darkPink"
-              onClick={() => setOffset(
-              data?.next_offset! + limit,
-              )}
-              disabled={(!(data && data.next_offset
-                && (data.count < (data?.next_offset + limit))))}
-            >
-              {offset / limit + 3}
-
-            </Button>
-            <Button
-              ml="1rem"
-              backgroundColor="#fff"
-              border="2px"
-              borderRadius="0px"
-              borderColor="brand.darkPink"
-              color="brand.darkPink"
-              onClick={() => setOffset(data?.next_offset ?? 0)}
-              disabled={!data?.next}
-            >
-              Next
-
-            </Button>
-
-          </Flex>
-
-        </Flex>
-        <PatientModal
-          onClose={closeModal}
-          isOpen={isOpen}
-          patient={currentPatient}
-        />
-      </SpacedContainer>
+        </SpacedContainer>
+      </Box>
     );
   }
 
