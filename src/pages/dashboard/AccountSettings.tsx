@@ -17,7 +17,7 @@ const AccountSettings = () => {
     return <LoadingPage />;
   }
   return (
-    <Box bgColor="#E5E5E5">
+    <Box>
       <SpacedContainer pt={10}>
         <Box
           d="flex"
