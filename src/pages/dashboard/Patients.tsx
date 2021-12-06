@@ -15,7 +15,11 @@ import {
   Spacer,
   Select,
   FormControl,
+  InputGroup,
+  InputLeftAddon,
+  InputLeftElement,
 } from "@chakra-ui/react";
+import { IoSearch } from "react-icons/io5";
 import { columns } from "../../data/PatientsData";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import PatientTable from "../../components/patients/Table";
@@ -113,17 +117,22 @@ export default function Patients() {
                 </Text>
               </Box>
               <Flex>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none">
+                    <Box as={IoSearch} size="1rem" color="gray.400" />
+                  </InputLeftElement>
 
-                <Input
-                  placeholder="Search"
-                  width="100%"
-                  mr="4"
-                  value={search ?? ""}
-                  variant="filled"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
+                  <Input
+                    placeholder="Search"
+                    width="100%"
+                    mr="4"
+                    value={search ?? ""}
+                    variant="filled"
+                    onChange={(e) => setSearch(e.target.value)}
 
-                {" "}
+                  />
+
+                </InputGroup>
                 <Box>
                   <Button
                     border="2px"
