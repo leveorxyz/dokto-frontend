@@ -40,7 +40,7 @@ export default function Profile() {
   }
 
   return (
-    <Box bgColor="#E5E5E5" h="100%">
+    <Box>
       <SpacedContainer>
         <Flex alignItems="center" direction="row">
           <Image src={ProfileIcon} position="relative" top="2" right="1" />

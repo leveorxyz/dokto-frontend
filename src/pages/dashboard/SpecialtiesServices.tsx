@@ -17,7 +17,7 @@ const SpecialtiesServices = () => {
     return <LoadingPage />;
   }
   return (
-    <Box bgColor="#E5E5E5">
+    <Box>
       <SpacedContainer py={20}>
         <Box
           d="flex"
