@@ -31,7 +31,7 @@ export default function PatientProcedure() {
           backgroundColor="#fff"
         >
           <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2">Patient Procedure</Heading>
-          <Box p="4">
+          <Box p="4" px="6">
             <PatientProcedureForm />
             <PatientEncountersTable />
           </Box>
