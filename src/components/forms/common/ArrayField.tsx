@@ -1,9 +1,9 @@
-import React from "react";
+import { useState, useMemo } from "react";
 import {
-  Flex, Heading, Button, Box, IconButton,
+  Flex, Heading, Button, Box, IconButton, chakra,
 } from "@chakra-ui/react";
 import { useFieldArray } from "react-hook-form";
-import { IoTrash } from "react-icons/io5";
+import { IoTrash, IoCreate } from "react-icons/io5";
 
 import { ArrayFieldType } from "../types/form";
 import FieldsGenerator from "./FieldsGenerator";
@@ -28,6 +28,8 @@ export default function ArrayField({
     fields: fieldsDetails,
     addButtonText,
   },
+  watch,
+  setValue,
   ...rest
 }: PropTypes) {
   const {
@@ -37,27 +39,49 @@ export default function ArrayField({
     name,
   });
 
+  const [formState, setFormState] = useState<"creating" | "editing" | "hidden">("hidden");
+  const [currentEditingItemIdx, setCurrentEditingItemIdx] = useState<number | null>(null);
+  const shadowName = useMemo(() => `${name}__shadow`, [name]);
+
+  const setEditing = (idx: number, data: any) => {
+    setFormState("editing");
+    setCurrentEditingItemIdx(idx);
+    setValue(shadowName, data);
+  };
+
+  const setCreating = () => {
+    setFormState("creating");
+  };
+
+  const cancel = () => {
+    setFormState("hidden");
+    setCurrentEditingItemIdx(null);
+    setValue(shadowName, {});
+  };
+
+  const saveItem = () => {
+    const data = watch(shadowName);
+    if (formState === "creating") {
+      append(data);
+    } else if (formState === "editing") {
+      setValue(name, fields.map(
+        (field, index) => (index === currentEditingItemIdx
+          ? ({ ...field, ...data })
+          : field),
+      ));
+    }
+    cancel();
+  };
+
   return (
     <Flex direction="column">
       <Heading as="h4" size="md" fontWeight="600" my={4}>
         {label}
       </Heading>
-      {!fields.length && (
-      <>
-        {fieldsDetails.map((data) => (
-          <FieldsGenerator
-            key={`${name}.${0}.${data.name}`}
-            data={{ ...data, name: `${name}.${0}.${data.name}` }}
-            control={control}
-            {...rest}
-          />
-        ))}
-      </>
-      )}
 
-      {fields.map((field, index) => (
-        <React.Fragment key={field.id}>
-          <Flex justifyContent="space-between">
+      {fields?.map((field, index) => (
+        <Box key={field.id} rounded="lg" bgColor="gray.100" p={2} my={2}>
+          <Flex>
             <Box
               display="inline-block flex"
               flexDirection="row"
@@ -70,40 +94,72 @@ export default function ArrayField({
               w="2rem"
               h="2rem"
               textAlign="center"
+              lineHeight={0}
               mr={2}
             >
               {index + 1}
             </Box>
             <IconButton
+              ml="auto"
               aria-label={`Remove ${index + 1}`}
-              icon={<Box as={IoTrash} size={24} color="red" />}
+              icon={<Box as={IoCreate} size={24} color="brand.darkSky" />}
+              onClick={() => setEditing(index, field)}
+            />
+            <IconButton
+              ml={2}
+              aria-label={`Remove ${index + 1}`}
+              icon={<Box as={IoTrash} size={24} color="red.600" />}
               onClick={() => remove(index)}
             />
           </Flex>
+
           {fieldsDetails.map((data) => (
-            <FieldsGenerator
+            <Flex
               // eslint-disable-next-line react/no-array-index-key
               key={`${name}.${index}.${data.name}`}
-              data={{ ...data, name: `${name}.${index}.${data.name}` }}
-              control={control}
-              {...rest}
-            />
+            >
+              <chakra.span fontWeight="600">
+                {data.name}
+                {" : "}
+              </chakra.span>
+              <chakra.span>
+                {fields[index] && (fields[index] as any)[data.name]}
+              </chakra.span>
+            </Flex>
           ))}
-        </React.Fragment>
+        </Box>
       ))}
 
+      {formState !== "hidden" && (
+      <>
+        {fieldsDetails.map((data) => (
+          <FieldsGenerator
+            key={`${shadowName}.${data.name}`}
+            data={{ ...data, name: `${shadowName}.${data.name}` }}
+            {...{
+              control, watch, setValue, ...rest,
+            }}
+          />
+        ))}
+        <Flex>
+          <Button onClick={cancel}>Cancel</Button>
+          <Button onClick={saveItem} ml={2} colorScheme="purple">Save</Button>
+        </Flex>
+      </>
+      )}
+
+      {formState === "hidden" && (
       <Button
         width="max-content"
         variant="ghost"
         colorScheme="purple"
         color="brand.darkPink"
-        onClick={() => append(fieldsDetails.reduce((prev, curr) => ({
-          ...prev,
-          [curr.name]: "",
-        }), {}))}
+        mt={4}
+        onClick={setCreating}
       >
         {addButtonText}
       </Button>
+      )}
 
     </Flex>
   );
