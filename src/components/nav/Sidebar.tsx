@@ -42,12 +42,12 @@ const Sidebar = () => {
               px={6}
               my={2}
               mx={6}
-              bg={location.pathname.includes(route.path) ? "brand.darkPink" : "transparent"}
+              bg={location.pathname.includes(route.path) ? "brand.dark" : "transparent"}
               color={location.pathname.includes(route.path) ? "white" : "black"}
               cursor="pointer"
               _hover={{
-                bg: location.pathname.includes(route.path) ? "brand.darkPink" : "white",
-                color: location.pathname.includes(route.path) ? "white" : "brand.darkPink",
+                bgColor: location.pathname.includes(route.path) ? "brand.dark" : "white",
+                color: location.pathname.includes(route.path) ? "white" : "brand.dark",
                 textDecoration: "none",
               }}
               rounded="lg"
