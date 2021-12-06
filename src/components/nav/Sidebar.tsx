@@ -62,11 +62,11 @@ const Sidebar = () => {
 
 export default function SidebarContainer({ children }: {children: React.ReactNode}) {
   return (
-    <Flex wrap="nowrap" justifyContent="flex-end" position="relative">
+    <Flex wrap="nowrap" justifyContent="flex-end" position="relative" minHeight="100vh">
       <Box w="15rem" position="fixed" top={0} left={0}>
         <Sidebar />
       </Box>
-      <Box w="calc(100% - 15rem)">
+      <Box w="calc(100% - 15rem)" bgColor="#E5E5E5">
         {children}
       </Box>
     </Flex>
