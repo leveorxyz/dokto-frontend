@@ -36,6 +36,7 @@ export default function VideoCalls() {
   const updateConnectionState = useUpdateConnectionState();
   // eslint-disable-next-line
   const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [currentConversationRoom, setCurrentConversationRoom] = useState<Conversation | null>(null);
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
   const authState = useRecoilValue(authAtom);
   // Check user is doctor
@@ -124,7 +125,13 @@ export default function VideoCalls() {
   return (
     <Flex minHeight="100vh" w="100%" backgroundColor="gray.900">
       {/* Only show sidebar for doctor */}
-      {isDoctor && <SideBar conversations={conversations} />}
+      {isDoctor && (
+      <SideBar
+        conversations={conversations}
+        setCurrentConversationRoom={setCurrentConversationRoom}
+        openChatWindow={openChatWindow}
+      />
+      )}
       <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
       {/* Show waiting banner for patient */}
       {(isPatient && !room) && <WaitingBanner callEnded={callEnded} />}
@@ -132,7 +139,7 @@ export default function VideoCalls() {
       <Chat
         isOpen={isChatWindowOpen}
         onClose={closeChatWindow}
-        conversation={conversations[0]}
+        conversation={currentConversationRoom}
         connectionState={connectionState}
       />
     </Flex>

@@ -1,3 +1,4 @@
+import { Dispatch } from "react";
 import {
   Flex, Box,
 } from "@chakra-ui/react";
@@ -11,9 +12,15 @@ import { CustomHeading, EmptyComponent } from "./misc";
 
 type PropTypes = {
   conversations: Conversation[];
+  setCurrentConversationRoom: Dispatch<Conversation | null>;
+  openChatWindow: () => void;
 };
 
-export default function SideBar({ conversations }: PropTypes) {
+export default function SideBar({
+  conversations,
+  setCurrentConversationRoom,
+  openChatWindow,
+}: PropTypes) {
   const callListUsers = useRecoilValue(callListAtom);
 
   // const waitingListUsers = useRecoilValue(waitingListAtom);
@@ -53,6 +60,8 @@ export default function SideBar({ conversations }: PropTypes) {
             <SidebarConversation
               key={conversation.sid}
               conversation={conversation}
+              setCurrentConversationRoom={setCurrentConversationRoom}
+              openChatWindow={openChatWindow}
             />
           ))}
         </Flex>

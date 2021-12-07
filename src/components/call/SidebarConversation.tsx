@@ -1,20 +1,31 @@
-import { useContext } from "react";
+import { useContext, Dispatch } from "react";
 import {
-  Flex, Box, Avatar, Button, IconButton,
+  Flex,
+  Box,
+  Avatar,
+  Button,
+  IconButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { Conversation } from "@twilio/conversations";
 import { AxiosInstance } from "axios";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
-// import UserActionModal from "./UserActionModal";
-
 type ConversationComponentProps = {
   conversation: Conversation;
+  setCurrentConversationRoom: Dispatch<Conversation | null>;
+  openChatWindow: () => void;
 }
 
-export default function SidebarConversation({ conversation }: ConversationComponentProps) {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
+export default function SidebarConversation(
+  {
+    conversation,
+    setCurrentConversationRoom,
+    openChatWindow,
+  }: ConversationComponentProps,
+) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
 
   // Remove patient from waiting room
@@ -56,8 +67,20 @@ export default function SidebarConversation({ conversation }: ConversationCompon
         >
           Start Call
         </Button>
-
+        <Button
+          id="call-button"
+          bg="brand.pink"
+          size="xs"
+          _hover={{ bg: "brand.darkPink", color: "white" }}
+          onClick={() => {
+            setCurrentConversationRoom(conversation);
+            openChatWindow();
+          }}
+        >
+          Chat
+        </Button>
       </Flex>
+
       <IconButton
         aria-label={`User actions for ${conversation.friendlyName}`}
         icon={<Box as={IoEllipsisVertical} color="brand.light" />}
