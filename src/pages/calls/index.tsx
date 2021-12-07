@@ -23,20 +23,17 @@ import Videos from "../../components/call/Videos";
 import authAtom from "../../atoms/auth.atom";
 import { twilioTokenAtom } from "../../components/call/atoms";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
-
-export type connectionStateType = {
-  status: string,
-  statusString: string
-}
+import useUpdateConnectionState, { ConnectionStateType } from "../../hooks/calls/useUpdateConnectionState";
 
 export default function VideoCalls() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const [room, setRoom] = useState<RoomType | null>(null);
   const [callEnded, setCallEnded] = useState<boolean>(false);
-  const [connectionState, setConnectionState] = useState<connectionStateType>({
-    status: "",
-    statusString: "",
+  const [connectionState, setConnectionState] = useState<ConnectionStateType>({
+    status: "default",
+    statusString: "connecting",
   });
+  const updateConnectionState = useUpdateConnectionState();
   // eslint-disable-next-line
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
@@ -48,8 +45,6 @@ export default function VideoCalls() {
 
   const [searchParams] = useSearchParams();
   const queryRoomName = isDoctor ? authState.user?.fullName : searchParams.get("doctor");
-
-  // console.log(conversations);
 
   const {
     isOpen: isChatWindowOpen,
@@ -68,39 +63,8 @@ export default function VideoCalls() {
     const client = new ConversationsClient(token);
     setConnectionState({ status: "default", statusString: "connecting" });
 
-    client.on("connectionStateChanged", (state) => {
-      if (state === "connecting") {
-        setConnectionState({
-          statusString: "Connecting to Twilio…",
-          status: "default",
-        });
-      }
-      if (state === "connected") {
-        setConnectionState({
-          statusString: "You are connected.",
-          status: "success",
-        });
-      }
-      if (state === "disconnecting") {
-        setConnectionState({
-          statusString: "Disconnecting from Twilio…",
-          status: "default",
-        });
-      }
-      if (state === "disconnected") {
-        setConnectionState({
-          statusString: "Disconnected.",
+    updateConnectionState({ client, setConnectionState });
 
-          status: "warning",
-        });
-      }
-      if (state === "denied") {
-        setConnectionState({
-          statusString: "Failed to connect.",
-          status: "error",
-        });
-      }
-    });
     client.on("conversationJoined", (conversation) => {
       setConversations((prevState) => uniqBy([...prevState, conversation], "sid"));
     });

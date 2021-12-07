@@ -19,7 +19,7 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import authAtom from "../../atoms/auth.atom";
-import { connectionStateType } from "../../pages/calls/index";
+import { ConnectionStateType } from "../../hooks/calls/useUpdateConnectionState";
 
 type ParticipantTextType = {
   text: string;
@@ -68,7 +68,7 @@ type PropType = {
   isOpen: boolean;
   onClose: () => void;
   conversation: Conversation
-  connectionState: connectionStateType
+  connectionState: ConnectionStateType
 }
 
 export default function Chat({
