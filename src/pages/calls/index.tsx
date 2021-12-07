@@ -5,13 +5,14 @@ import {
   useContext,
   useMemo,
 } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 import { Client as ConversationsClient, Conversation } from "@twilio/conversations";
 import { Room as RoomType } from "twilio-video";
 import { useRecoilValue } from "recoil";
 import { uniqBy } from "lodash";
 import { AxiosInstance } from "axios";
+import Chat from "../../components/chat";
 import RoomBreadcrumb from "../../components/call/RoomBreadcrumb";
 import WaitingBanner from "../../components/call/WaitingBanner";
 import { AxiosContext } from "../../contexts/AxiosContext";
@@ -22,17 +23,20 @@ import Videos from "../../components/call/Videos";
 import authAtom from "../../atoms/auth.atom";
 import { twilioTokenAtom } from "../../components/call/atoms";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
+import useUpdateConnectionState, { ConnectionStateType } from "../../hooks/calls/useUpdateConnectionState";
 
 export default function VideoCalls() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const [room, setRoom] = useState<RoomType | null>(null);
   const [callEnded, setCallEnded] = useState<boolean>(false);
-  const [connectionState, setConnectionState] = useState({
-    status: "",
-    statusString: "",
+  const [connectionState, setConnectionState] = useState<ConnectionStateType>({
+    status: "default",
+    statusString: "connecting",
   });
+  const updateConnectionState = useUpdateConnectionState();
   // eslint-disable-next-line
   const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [currentConversationRoom, setCurrentConversationRoom] = useState<Conversation | null>(null);
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
   const authState = useRecoilValue(authAtom);
   // Check user is doctor
@@ -43,7 +47,11 @@ export default function VideoCalls() {
   const [searchParams] = useSearchParams();
   const queryRoomName = isDoctor ? authState.user?.fullName : searchParams.get("doctor");
 
-  console.log(connectionState);
+  const {
+    isOpen: isChatWindowOpen,
+    onOpen: openChatWindow,
+    onClose: closeChatWindow,
+  } = useDisclosure();
 
   room?.on("disconnected", () => {
     setRoom(null);
@@ -56,39 +64,8 @@ export default function VideoCalls() {
     const client = new ConversationsClient(token);
     setConnectionState({ status: "default", statusString: "connecting" });
 
-    client.on("connectionStateChanged", (state) => {
-      if (state === "connecting") {
-        setConnectionState({
-          statusString: "Connecting to Twilio…",
-          status: "default",
-        });
-      }
-      if (state === "connected") {
-        setConnectionState({
-          statusString: "You are connected.",
-          status: "success",
-        });
-      }
-      if (state === "disconnecting") {
-        setConnectionState({
-          statusString: "Disconnecting from Twilio…",
-          status: "default",
-        });
-      }
-      if (state === "disconnected") {
-        setConnectionState({
-          statusString: "Disconnected.",
+    updateConnectionState({ client, setConnectionState });
 
-          status: "warning",
-        });
-      }
-      if (state === "denied") {
-        setConnectionState({
-          statusString: "Failed to connect.",
-          status: "error",
-        });
-      }
-    });
     client.on("conversationJoined", (conversation) => {
       setConversations((prevState) => uniqBy([...prevState, conversation], "sid"));
     });
@@ -148,11 +125,23 @@ export default function VideoCalls() {
   return (
     <Flex minHeight="100vh" w="100%" backgroundColor="gray.900">
       {/* Only show sidebar for doctor */}
-      {isDoctor && <SideBar conversations={conversations} />}
-      <RoomBreadcrumb doctor={roomName} isPatient={isPatient} />
+      {isDoctor && (
+      <SideBar
+        conversations={conversations}
+        setCurrentConversationRoom={setCurrentConversationRoom}
+        openChatWindow={openChatWindow}
+      />
+      )}
+      <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
       {/* Show waiting banner for patient */}
       {(isPatient && !room) && <WaitingBanner callEnded={callEnded} />}
       {room && <Videos room={room} />}
+      <Chat
+        isOpen={isChatWindowOpen}
+        onClose={closeChatWindow}
+        conversation={currentConversationRoom}
+        connectionState={connectionState}
+      />
     </Flex>
   );
 }
