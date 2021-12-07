@@ -1,5 +1,5 @@
 import {
-  Tabs, TabList, TabPanels, Tab, TabPanel,
+  Tabs, TabList, TabPanels, Tab, TabPanel, Heading,
 } from "@chakra-ui/react";
 
 import Tab1 from "./Tab1";
@@ -25,19 +25,17 @@ export default function ProfileTabs() {
             textTransform="capitalize"
             bgColor="white"
             color="brand.dark"
-            fontSize={["xs", "sm", "md", "lg", "lg"]}
-            fontFamily="sora"
             borderRightWidth={idx === tabs.length - 1 ? "0" : "1px"}
             borderColor="brand.dark"
             _hover={{ bgColor: "brand.darkPink", color: "white" }}
             _selected={{ color: "white", bg: "brand.darkPink" }}
           >
-            {title}
+            <Heading as="h3" fontWeight="semibold" fontSize="lg">{title}</Heading>
           </Tab>
         ))}
       </TabList>
 
-      <TabPanels bgColor="white" mt={3} rounded="lg">
+      <TabPanels bgColor="white" rounded="lg">
         <TabPanel>
           <Tab1 />
         </TabPanel>
