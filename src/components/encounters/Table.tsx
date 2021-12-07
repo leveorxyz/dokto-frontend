@@ -51,6 +51,7 @@ function EncountersTable({
                 {...column.getHeaderProps(
                   column.getSortByToggleProps(),
                 )}
+                color="#000"
                 key={column.id}
               >
                 <Box
@@ -81,6 +82,12 @@ function EncountersTable({
             <Tr
               {...row.getRowProps()}
               key={row.id}
+              color="#3E4954"
+              _hover={{
+                cursor: "pointer",
+                bg: "gray.100",
+                color: "#3E4954",
+              }}
             >
               {row.cells.map((cell) => (
                 <Td

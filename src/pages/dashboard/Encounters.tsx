@@ -8,11 +8,16 @@ import {
   Text,
   Input,
   chakra,
+  Button,
+  InputGroup,
+  InputLeftElement,
 } from "@chakra-ui/react";
 import { matchSorter } from "match-sorter";
 import { useSearchParams } from "react-router-dom";
 import debounce from "lodash/debounce";
 
+import { IoSearch } from "react-icons/io5";
+import PatientEncountersLayout from "../../components/common/PatientEncountersLayout";
 import encountersAtom from "../../atoms/ehr/encounters";
 import { columns } from "../../data/EncountersData";
 import EncountersTable from "../../components/encounters/Table";
@@ -56,50 +61,69 @@ export default function Encounters() {
   useSortBy, usePagination);
 
   return (
-    <SpacedContainer py={12}>
-      <Flex justifyContent="space-between" pb={6} wrap="wrap">
-        <Box>
-          {name ? (
-            <Heading as="h1" fontSize="3xl">
-              Encounters with -
-              {" "}
-              <chakra.span color="brand.darkPink">{name}</chakra.span>
-            </Heading>
-          ) : (
-            <Heading as="h1" fontSize="3xl">
-              Encounters
-            </Heading>
-          )}
-          <Text fontSize="lg" color="gray.500">
-            List of all encounters
-          </Text>
-        </Box>
+    <PatientEncountersLayout>
+      <SpacedContainer>
+        <Box
+          d="flex"
+          flexDir="column"
+          borderRadius="md"
+          borderColor="brand.darkPink"
+          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
+          py="8"
+          px="6"
+          backgroundColor="#fff"
+        >
+          <Flex justifyContent="space-between" pb={6} wrap="wrap">
+            <Box>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <Box as={IoSearch} size="1rem" color="gray.400" />
+                </InputLeftElement>
 
-        <Box>
-          <Text fontSize="lg">
-            Search Encounters
-          </Text>
-          <Input
-            placeholder="Search"
-            value={searchParam ?? ""}
-            variant="filled"
-            onChange={(e) => {
-              setSearchParam(e.target.value);
-              debouncedSearch(e.target.value);
+                <Input
+                  placeholder="Search"
+                  width="60%"
+                  mr="4"
+                  value={searchParam ?? ""}
+                  variant="filled"
+                  onChange={(e) => {
+                    setSearchParam(e.target.value);
+                    debouncedSearch(e.target.value);
+                  }}
+                />
+
+              </InputGroup>
+            </Box>
+            <Box>
+              <Button
+                border="2px"
+                borderRadius="0px"
+                borderColor="brand.darkPink"
+                backgroundColor="brand.darkPink"
+                py="5"
+                px="10"
+                color="white"
+                _hover={{
+                  borderColor: "brand.darkPink",
+                  backgroundColor: "brand.darkPink",
+                }}
+              >
+                +New
+              </Button>
+            </Box>
+          </Flex>
+          <EncountersTable
+            {...{
+              getTableProps,
+              getTableBodyProps,
+              headerGroups,
+              rows,
+              prepareRow,
             }}
           />
-        </Box>
-      </Flex>
 
-      <EncountersTable
-        {...{
-          getTableProps,
-          getTableBodyProps,
-          headerGroups,
-          rows,
-          prepareRow,
-        }}
-      />
-    </SpacedContainer>
+        </Box>
+      </SpacedContainer>
+    </PatientEncountersLayout>
   );
 }

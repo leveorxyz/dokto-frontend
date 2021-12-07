@@ -1,5 +1,8 @@
+import { Box, Image } from "@chakra-ui/react";
 import faker from "faker";
 import { Column } from "react-table";
+import signed from "../static/signed2.svg";
+import unsigned from "../static/signed1.svg";
 
 import { Encounters } from "../atoms/ehr/encounters";
 
@@ -54,8 +57,14 @@ export const dummyEncounters: Encounters[] = new Array(100).fill(null)
 
 export const columns: Column<Encounters>[] = [
   {
-    Header: "Date",
+    Header: "Visit Date",
     accessor: "date",
+    Cell: ({ value }:any) => (
+      <Box as="span" color="#0029FF" mr="4px">
+        {value}
+      </Box>
+
+    ),
   },
   {
     Header: "Provider",
@@ -72,8 +81,14 @@ export const columns: Column<Encounters>[] = [
   {
     Header: "Signed",
     accessor: "signed",
-    Cell: ({ value }: { value: string}) => (value ? "Signed" : "Not Signed"),
+    Cell: ({ value }: { value: string}) => (value ? <Image src={unsigned} />
+      : <Image src={signed} />),
   },
+  // {
+  //   Header: "Action",
+  //   accessor: "action",
+  //   // Cell: ({ value }: { value: string}) => (value ? <Box h="5" w="5">{ signed }</Box> : "Not Signed"),
+  // },
 ];
 
 export default { dummyEncounters, columns };
