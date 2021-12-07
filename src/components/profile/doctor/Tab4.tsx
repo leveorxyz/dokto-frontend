@@ -39,13 +39,14 @@ export default function Tab4() {
       <Flex alignItems="center">
         <Box w="12%">
           <Box fontSize="sm" fontWeight="normal" color="brand.dark">Overall Rating</Box>
-          <Box fontSize="5xl" fontWeight="normal" color="brand.dark">4.6</Box>
+          <Box fontSize="5xl" fontWeight="normal" color="brand.dark" fontFamily="poppins">4.6</Box>
           <Box mb="5">
             <StarRatingComponent
               name="rate1"
               starCount={5}
               value={4}
-              starColor="#ffd700"
+              emptyStarColor="#c4c4c4"
+              starColor="#ffc107"
             />
           </Box>
         </Box>
@@ -122,7 +123,8 @@ export default function Tab4() {
           <StarRatingComponent
             name="rate2"
             starCount={5}
-            starColor="#ffd700"
+            starColor="#ffc107"
+            emptyStarColor="#c4c4c4"
             value={value}
           />
           <Box fontSize="md" mb="2">{text}</Box>
