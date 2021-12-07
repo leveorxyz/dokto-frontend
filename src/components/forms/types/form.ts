@@ -80,6 +80,7 @@ export type MultiSelectFieldType = {
 export type CheckboxFieldType = {
   type: FieldTypes.CHECKBOX;
   direction?: "column" | "row";
+  spacing?: string;
   options: {
     value: string;
     label: string;

@@ -9,11 +9,11 @@ const firstColumn = () :FormDataType => ({
     {
       type: FieldTypes.CHECKBOX,
       name: "accept_all_insurance",
-      label: "I Accept All Insurances",
+      label: "",
       options: [
         {
           value: "all",
-          label: "Yes",
+          label: "I accept all Insurances",
         },
       ],
     },
