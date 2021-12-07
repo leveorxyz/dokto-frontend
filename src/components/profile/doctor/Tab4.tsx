@@ -33,13 +33,13 @@ export default function Tab4() {
     },
   ];
   return (
-    <>
+    <Box fontFamily="poppins">
       <Heading as="h3" fontSize="xl" fontWeight="normal" color="brand.dark" mb="3">Patient reviews</Heading>
       <Box color="rgba(51, 51, 51, 0.5)" fontSize="md" mb="3">All reviews have been submitted by patients after seeing the provider</Box>
       <Flex alignItems="center">
         <Box w="12%">
           <Box fontSize="sm" fontWeight="normal" color="brand.dark">Overall Rating</Box>
-          <Box fontSize="5xl" fontWeight="normal" color="brand.dark" fontFamily="poppins">4.6</Box>
+          <Box fontSize="5xl" fontWeight="normal" color="brand.dark">4.6</Box>
           <Box mb="5">
             <StarRatingComponent
               name="rate1"
@@ -57,7 +57,7 @@ export default function Tab4() {
           size="sm"
           rounded="md"
           border="2px"
-          borderColor="brand.dark"
+          borderColor="#aeaeae"
           colorScheme="white"
           width="20%"
           sx={{
@@ -87,9 +87,10 @@ export default function Tab4() {
             rounded="md"
             variant="filled"
             placeholder="Search"
+            bg="white"
             sx={{
               "&": {
-                borderColor: "brand.dark",
+                borderColor: "#aeaeae",
               },
               "&::placeholder": {
                 color: "#C2CACE",
@@ -98,7 +99,7 @@ export default function Tab4() {
                 "&": {
                   bg: "white",
                   color: "brand.dark",
-                  borderColor: "brand.dark",
+                  borderColor: "#aeaeae",
                 },
                 "&::placeholder": {
                   color: "#C2CACE",
@@ -108,7 +109,7 @@ export default function Tab4() {
                 "&": {
                   bg: "white",
                   color: "brand.dark",
-                  borderColor: "brand.dark",
+                  borderColor: "#aeaeae",
                 },
                 "&::placeholder": {
                   color: "#C2CACE",
@@ -131,6 +132,6 @@ export default function Tab4() {
           <Box color="rgba(51, 51, 51, 0.5)" fontSize="sm">September 2021 | Name hidden</Box>
         </Box>
       ))}
-    </>
+    </Box>
   );
 }
