@@ -57,28 +57,29 @@ export default function SidebarConversation(
       <Avatar name={conversation.friendlyName} />
       <Flex direction="column" mx={3}>
         <Box color="white" mx={3} textTransform="capitalize">{conversation.friendlyName}</Box>
-
-        <Button
-          id="call-button"
-          bg="brand.pink"
-          size="xs"
-          _hover={{ bg: "brand.darkPink", color: "white" }}
-          onClick={() => handleRemoveParticipant(conversation.uniqueName)}
-        >
-          Start Call
-        </Button>
-        <Button
-          id="call-button"
-          bg="brand.pink"
-          size="xs"
-          _hover={{ bg: "brand.darkPink", color: "white" }}
-          onClick={() => {
-            setCurrentConversationRoom(conversation);
-            openChatWindow();
-          }}
-        >
-          Chat
-        </Button>
+        <Flex justifyContent="space-between" alignItems="center">
+          <Button
+            id="call-button"
+            bg="brand.pink"
+            size="xs"
+            _hover={{ bg: "brand.darkPink", color: "white" }}
+            onClick={() => handleRemoveParticipant(conversation.uniqueName)}
+          >
+            Start Call
+          </Button>
+          <Button
+            id="call-button"
+            bg="brand.pink"
+            size="xs"
+            _hover={{ bg: "brand.darkPink", color: "white" }}
+            onClick={() => {
+              setCurrentConversationRoom(conversation);
+              openChatWindow();
+            }}
+          >
+            Chat
+          </Button>
+        </Flex>
       </Flex>
 
       <IconButton
