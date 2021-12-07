@@ -58,7 +58,7 @@ export type Encounters = {
       riskFactorsData?: Partial<RiskFactorsData>;
       drinksData?: Partial<DrinksData>;
     };
-    // action:s;
+    action:string;
 }
 
 export default atom<(Encounters)[]>({

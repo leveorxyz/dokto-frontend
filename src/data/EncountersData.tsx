@@ -1,9 +1,14 @@
-import { Box, Image } from "@chakra-ui/react";
+import {
+  Box, Button, Flex, IconButton, Image,
+} from "@chakra-ui/react";
 import faker from "faker";
 import { Column } from "react-table";
+import { MdStopScreenShare } from "react-icons/md";
+import { AiOutlineFile } from "react-icons/ai";
+import { FiPrinter, FiTrash2 } from "react-icons/fi";
+import { BiFileBlank } from "react-icons/bi";
 import signed from "../static/signed2.svg";
 import unsigned from "../static/signed1.svg";
-
 import { Encounters } from "../atoms/ehr/encounters";
 
 export const dummyEncounters: Encounters[] = new Array(100).fill(null)
@@ -53,6 +58,7 @@ export const dummyEncounters: Encounters[] = new Array(100).fill(null)
         ETOHUsage: faker.lorem.sentence(),
       },
     },
+    action: "action",
   }));
 
 export const columns: Column<Encounters>[] = [
@@ -84,11 +90,35 @@ export const columns: Column<Encounters>[] = [
     Cell: ({ value }: { value: string}) => (value ? <Image src={unsigned} />
       : <Image src={signed} />),
   },
-  // {
-  //   Header: "Action",
-  //   accessor: "action",
-  //   // Cell: ({ value }: { value: string}) => (value ? <Box h="5" w="5">{ signed }</Box> : "Not Signed"),
-  // },
+  {
+    Header: "Action",
+    accessor: "action",
+    Cell: () => (
+      <Flex>
+        <IconButton
+          icon={<BiFileBlank size="24" color="#2D28FF" />}
+          backgroundColor="#fff"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+        <IconButton
+          icon={<FiPrinter size="24" color="#2D28FF" />}
+          backgroundColor="#fff"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+        <IconButton
+          icon={<FiTrash2 size="24" color="#A42BAD" />}
+          backgroundColor="#fff"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+      </Flex>
+    ),
+  },
 ];
 
 export default { dummyEncounters, columns };
