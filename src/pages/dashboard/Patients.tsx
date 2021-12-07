@@ -140,6 +140,10 @@ export default function Patients() {
                     borderColor="brand.darkPink"
                     backgroundColor="brand.darkPink"
                     color="white"
+                    _hover={{
+                      borderColor: "brand.darkPink",
+                      backgroundColor: "brand.darkPink",
+                    }}
                   >
                     + New Patient
                   </Button>
