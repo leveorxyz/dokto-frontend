@@ -1,5 +1,5 @@
 import {
-  Tabs, TabList, TabPanels, Tab, TabPanel, Heading,
+  Tabs, TabList, TabPanels, Tab, TabPanel, Heading, Box,
 } from "@chakra-ui/react";
 
 import Tab1 from "./Tab1";
@@ -10,7 +10,7 @@ import Tab4 from "./Tab4";
 export default function ProfileTabs() {
   const tabs = ["Provider Details", "Available Hours", "Services", "Reviews"];
   return (
-    <Tabs variant="unstyled" isFitted w="100%">
+    <Tabs variant="unstyled" isFitted w="100%" boxShadow="md" borderRadius="3xl">
       <TabList sx={{
         borderRadius: "0.5rem",
         border: "1px",
@@ -35,7 +35,7 @@ export default function ProfileTabs() {
         ))}
       </TabList>
 
-      <TabPanels bgColor="white" rounded="lg">
+      <Box as={TabPanels} bgColor="white" rounded="2xl" overflow="hidden">
         <TabPanel>
           <Tab1 />
         </TabPanel>
@@ -51,7 +51,7 @@ export default function ProfileTabs() {
         <TabPanel>
           <Tab4 />
         </TabPanel>
-      </TabPanels>
+      </Box>
     </Tabs>
   );
 }
