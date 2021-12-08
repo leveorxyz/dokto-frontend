@@ -11,10 +11,10 @@ const secondRow = () :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.CUSTOM,
+      type: FieldTypes.INPUT,
       name: "contact_no",
       label: "Mobile Number",
-      component: MobileNo,
+      placeholder: "Mobile Number",
     },
     {
       type: FieldTypes.INPUT,
@@ -22,10 +22,6 @@ const secondRow = () :FormDataType => ({
       label: "Email",
       placeholder: "Email",
       rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
         pattern: {
           value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
           message: "Invalid email address",
@@ -47,12 +43,6 @@ const thirdRow = () :FormDataType => ({
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",
-      },
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
       },
     },
     {
@@ -108,12 +98,6 @@ const data = (watch: any) :FormDataType => ({
           name: "street",
           label: "Street Address",
           placeholder: "Street Address",
-          rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
-          },
         },
         {
           type: FieldTypes.SELECT,
@@ -124,12 +108,6 @@ const data = (watch: any) :FormDataType => ({
             value: country.isoCode,
           })),
           placeholder: "Select",
-          rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
-          },
         },
         {
           type: FieldTypes.SELECT,
@@ -141,10 +119,6 @@ const data = (watch: any) :FormDataType => ({
             value: state.isoCode,
           })),
           rules: {
-            required: {
-              value: State.getStatesOfCountry(watch("country")).length > 0,
-              message: "This field is required",
-            },
             deps: ["country"],
           },
         },
@@ -158,10 +132,6 @@ const data = (watch: any) :FormDataType => ({
             value: city.name,
           })),
           rules: {
-            required: {
-              value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
-              message: "This field is required",
-            },
             deps: ["state"],
           },
         },
@@ -170,12 +140,6 @@ const data = (watch: any) :FormDataType => ({
           name: "zip_code",
           label: "Zip Code",
           placeholder: "Zip Code",
-          rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
-          },
         },
       ],
     },

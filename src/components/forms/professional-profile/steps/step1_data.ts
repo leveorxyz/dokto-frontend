@@ -13,12 +13,6 @@ const secondRow = () :FormDataType => ({
       label: "License Upload",
       accept: "image/*, application/pdf",
       bottomText: "License will not be shown publicly",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
     {
       type: FieldTypes.INPUT,
@@ -39,6 +33,7 @@ const data = () :FormDataType => ({
       name: "language",
       label: "Languages",
       direction: "row",
+      spacing: "10",
       options: [{
         value: "English",
         label: "English",
@@ -52,12 +47,6 @@ const data = () :FormDataType => ({
         label: "French",
       }],
       placeholder: "",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
     secondRow(),
     {

@@ -18,9 +18,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  IoMenu, IoClose, IoPersonCircleOutline, IoLogOut, IoChevronDown, IoLogIn,
+  IoMenu, IoClose, IoPersonCircleOutline, IoChevronDown, IoLogIn,
 } from "react-icons/io5";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import routes from "../../router/routes";
 import NavItem from "./NavItem";
@@ -33,7 +33,7 @@ import LoginModal from "../login/LoginModal";
 import loginModalAtom from "../../atoms/loginModal.atom";
 
 function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
-  const [authState, setAuthState] = useRecoilState<AuthStateType>(authAtom);
+  const authState = useRecoilValue<AuthStateType>(authAtom);
 
   return (
     <Flex
@@ -66,42 +66,27 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
           </Box>
         </Link>
       )}
-      <Box
-        as={Button}
-        px={6}
-        bg="brand.dark"
-        color="white"
-        rounded="full"
-        _hover={{ bg: "brand.dark", color: "white" }}
-        onClick={authState.isLoggedIn ? () => {} : openLoginModal}
-      >
-        <Box mr={4}>
-          {authState.isLoggedIn ? authState.user.email : "Login"}
-        </Box>
+      <Link to="/dashboard">
+        <Box
+          as={Button}
+          px={6}
+          bg="brand.dark"
+          color="white"
+          rounded="full"
+          ml={2}
+          _hover={{ bg: "brand.dark", color: "white" }}
+          onClick={authState.isLoggedIn ? () => {} : openLoginModal}
+        >
+          <Box d="flex" justifyContent="center">
+            <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
+          </Box>
 
-        <Box d="flex" justifyContent="center">
-          <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
-        </Box>
-      </Box>
-      {authState.isLoggedIn && (
-      <Box
-        as={Button}
-        px={6}
-        bg="brand.dark"
-        color="white"
-        rounded="full"
-        _hover={{ bg: "brand.dark", color: "black" }}
-        onClick={() => setAuthState({ isLoggedIn: false, user: null })}
-      >
-        <Box mr={6}>
-          Logout
-        </Box>
+          <Box ml={4}>
+            {authState.isLoggedIn ? authState.user.fullName : "Login"}
+          </Box>
 
-        <Box>
-          <Icon as={IoLogOut} fontSize="1.5rem" />
         </Box>
-      </Box>
-      )}
+      </Link>
     </Flex>
   );
 }

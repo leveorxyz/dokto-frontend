@@ -22,6 +22,7 @@ export default function CheckboxField({
   options,
   errors,
   label,
+  spacing,
   direction,
   setValue,
   rules,
@@ -46,7 +47,7 @@ export default function CheckboxField({
     <FormControl id={name} isInvalid={errors && errors[name]} pb={4}>
       <FormLabel htmlFor={name} color="brand.dark">{label}</FormLabel>
       <CheckboxGroup colorScheme="purple" value={localValue} onChange={(value) => setLocalValue(value)}>
-        <Stack direction={direction ?? "row"}>
+        <Stack direction={direction ?? "row"} spacing={spacing}>
           {options.map(
             ({ value, label: fieldLabel }) => (
               <Checkbox

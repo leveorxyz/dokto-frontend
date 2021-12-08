@@ -1,11 +1,14 @@
 import React from "react";
 import StarRatingComponent from "react-star-rating-component";
 import {
-  Heading, Box, Flex, Input, InputGroup, InputLeftElement, Select,
+  Heading, Box, Flex, Input, InputGroup, InputLeftElement, Select, Divider,
 } from "@chakra-ui/react";
 import { IoSearch } from "react-icons/io5";
 
 export default function Tab4() {
+  const dividerDisplay = {
+    sm: "none", md: "block", lg: "block", xl: "block", base: "none",
+  };
   const reviews = [
     {
       value: 1,
@@ -33,19 +36,20 @@ export default function Tab4() {
     },
   ];
   return (
-    <>
+    <Box fontFamily="poppins" px="6" py="2">
       <Heading as="h3" fontSize="xl" fontWeight="normal" color="brand.dark" mb="3">Patient reviews</Heading>
       <Box color="rgba(51, 51, 51, 0.5)" fontSize="md" mb="3">All reviews have been submitted by patients after seeing the provider</Box>
       <Flex alignItems="center">
         <Box w="12%">
           <Box fontSize="sm" fontWeight="normal" color="brand.dark">Overall Rating</Box>
           <Box fontSize="5xl" fontWeight="normal" color="brand.dark">4.6</Box>
-          <Box mb="5">
+          <Box>
             <StarRatingComponent
               name="rate1"
               starCount={5}
               value={4}
-              starColor="#ffd700"
+              emptyStarColor="#c4c4c4"
+              starColor="#ffc107"
             />
           </Box>
         </Box>
@@ -56,7 +60,7 @@ export default function Tab4() {
           size="sm"
           rounded="md"
           border="2px"
-          borderColor="brand.dark"
+          borderColor="#aeaeae"
           colorScheme="white"
           width="20%"
           sx={{
@@ -86,9 +90,10 @@ export default function Tab4() {
             rounded="md"
             variant="filled"
             placeholder="Search"
+            bg="white"
             sx={{
               "&": {
-                borderColor: "brand.dark",
+                borderColor: "#aeaeae",
               },
               "&::placeholder": {
                 color: "#C2CACE",
@@ -97,7 +102,7 @@ export default function Tab4() {
                 "&": {
                   bg: "white",
                   color: "brand.dark",
-                  borderColor: "brand.dark",
+                  borderColor: "#aeaeae",
                 },
                 "&::placeholder": {
                   color: "#C2CACE",
@@ -107,7 +112,7 @@ export default function Tab4() {
                 "&": {
                   bg: "white",
                   color: "brand.dark",
-                  borderColor: "brand.dark",
+                  borderColor: "#aeaeae",
                 },
                 "&::placeholder": {
                   color: "#C2CACE",
@@ -117,18 +122,24 @@ export default function Tab4() {
           />
         </InputGroup>
       </Flex>
+      <Divider w="42.5rem" display={dividerDisplay} />
       {reviews.map(({ value, text }) => (
-        <Box key={value} my="4">
+        <Box key={value} my="2" pb="4">
           <StarRatingComponent
             name="rate2"
             starCount={5}
-            starColor="#ffd700"
+            starColor="#ffc107"
+            emptyStarColor="#c4c4c4"
             value={value}
           />
           <Box fontSize="md" mb="2">{text}</Box>
-          <Box color="rgba(51, 51, 51, 0.5)" fontSize="sm">September 2021 | Name hidden</Box>
+          <Box color="rgba(51, 51, 51, 0.5)" fontSize="sm" d="flex" alignItems="center">
+            <Box>September 2021</Box>
+            <Box mx="4">|</Box>
+            <Box>Name hidden</Box>
+          </Box>
         </Box>
       ))}
-    </>
+    </Box>
   );
 }

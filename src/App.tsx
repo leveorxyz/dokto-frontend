@@ -1,8 +1,10 @@
+import { useMemo } from "react";
 import {
   ChakraProvider,
 } from "@chakra-ui/react";
 import {
   BrowserRouter as Router,
+  useLocation,
 } from "react-router-dom";
 import { RecoilRoot, useRecoilValue } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -13,6 +15,7 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 
 import Routes from "./router";
+import RoutesData from "./router/routes";
 import NavBar from "./components/nav/Bar";
 import SideBarContainer from "./components/nav/Sidebar";
 import Footer from "./components/common/footer/Footer";
@@ -23,7 +26,14 @@ import AxiosContextProvider from "./contexts/AxiosContext";
 const queryClient = new QueryClient();
 
 function AppContent() {
+  const { pathname: currentURL } = useLocation();
   const authState = useRecoilValue(authAtom);
+
+  const shouldRenderSidebar = useMemo(() => {
+    const currentRoute = RoutesData.find((route) => route.path === currentURL);
+    return currentRoute?.isProtected;
+  }, [currentURL]);
+
   return (
     <>
       {!authState.isLoggedIn && <NavBar />}
@@ -31,9 +41,19 @@ function AppContent() {
       {!authState.isLoggedIn && <Footer />}
 
       {authState.isLoggedIn && (
-        <SideBarContainer>
-          <Routes />
-        </SideBarContainer>
+        shouldRenderSidebar
+          ? (
+            <SideBarContainer>
+              <Routes />
+            </SideBarContainer>
+          )
+          : (
+            <>
+              <NavBar />
+              <Routes />
+              <Footer />
+            </>
+          )
       )}
     </>
   );
