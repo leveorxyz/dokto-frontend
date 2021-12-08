@@ -140,7 +140,7 @@ export default function VideoCalls() {
       )}
       <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
       {/* Show waiting banner for patient */}
-      {(isPatient && !room) && <WaitingBanner callEnded={callEnded} />}
+      {(isPatient && !room) && <WaitingBanner callEnded={callEnded} roomName={roomName} />}
       {room && <Videos room={room} />}
       <Chat
         isOpen={isChatWindowOpen}
