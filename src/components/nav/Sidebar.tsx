@@ -25,7 +25,7 @@ const Sidebar = () => {
       }}
     >
       {routes
-        .filter((route) => route.showInDashboard && route.showInSideLink)
+        .filter((route) => route.showInDashboard)
         .map((route) => (
           <ChakraLink
             as={Link}

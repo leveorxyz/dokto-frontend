@@ -34,7 +34,6 @@ export type RouteType = {
     allowedRoles?: string[];
     showInNavbar: boolean;
     showInDashboard?: boolean;
-    showInSideLink?: boolean;
 }
 
 const routes: RouteType[] = [
@@ -129,7 +128,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Profile",
@@ -137,8 +135,7 @@ const routes: RouteType[] = [
     component: <Profile />,
     isProtected: true,
     showInNavbar: false,
-    showInDashboard: true,
-    showInSideLink: false,
+    showInDashboard: false,
   },
   {
     displayName: "Profile Settings",
@@ -147,7 +144,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Specialties & Services",
@@ -156,7 +152,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Appointments",
@@ -165,7 +160,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Account Settings",
@@ -174,7 +168,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Patients",
@@ -231,7 +224,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
 ];
 
