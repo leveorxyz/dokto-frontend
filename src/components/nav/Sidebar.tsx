@@ -2,10 +2,12 @@ import {
   Flex,
   Box,
   Link as ChakraLink,
+  Image,
 } from "@chakra-ui/react";
 import { useLocation, Link } from "react-router-dom";
 
 import routes from "../../router/routes";
+import DashboardTopBar from "./DashboardTopBar";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -13,7 +15,7 @@ const Sidebar = () => {
     <Flex
       justifyContent="flex-start"
       direction="column"
-      minHeight="100vh"
+      minHeight="calc(100vh - 4rem)"
       overflowY="scroll"
       overflowX="hidden"
       bg="white"
@@ -24,7 +26,7 @@ const Sidebar = () => {
       }}
     >
       {routes
-        .filter((route) => route.showInDashboard && route.showInSideLink)
+        .filter((route) => route.showInDashboard)
         .map((route) => (
           <ChakraLink
             as={Link}
@@ -37,7 +39,8 @@ const Sidebar = () => {
               boxShadow: "none",
             }}
           >
-            <Box
+            <Flex
+              wrap="nowrap"
               py={3}
               px={6}
               my={2}
@@ -46,14 +49,27 @@ const Sidebar = () => {
               color={location.pathname.includes(route.path) ? "white" : "black"}
               cursor="pointer"
               _hover={{
-                bgColor: location.pathname.includes(route.path) ? "brand.dark" : "white",
+                bgColor: location.pathname.includes(route.path) ? "brand.dark" : "gray.100",
                 color: location.pathname.includes(route.path) ? "white" : "brand.dark",
                 textDecoration: "none",
               }}
               rounded="lg"
             >
-              {route.displayName}
-            </Box>
+              {route.icon && (
+              <Image
+                m={1}
+                src={route.icon}
+                alt={route.displayName}
+                boxSize="1.2rem"
+                sx={{
+                  fill: "brand.darkPink",
+                }}
+              />
+              )}
+              <Box>
+                {route.displayName}
+              </Box>
+            </Flex>
           </ChakraLink>
         ))}
     </Flex>
@@ -62,13 +78,16 @@ const Sidebar = () => {
 
 export default function SidebarContainer({ children }: {children: React.ReactNode}) {
   return (
-    <Flex wrap="nowrap" justifyContent="flex-end" position="relative" minHeight="100vh">
-      <Box w="15rem" position="fixed" top={0} left={0}>
-        <Sidebar />
-      </Box>
-      <Box w="calc(100% - 15rem)" bgColor="#F7F7FC">
-        {children}
-      </Box>
-    </Flex>
+    <Box>
+      <DashboardTopBar />
+      <Flex wrap="nowrap" justifyContent="flex-end" position="relative">
+        <Box w="15rem" position="fixed" top="4rem" left={0}>
+          <Sidebar />
+        </Box>
+        <Box w="calc(100% - 15rem)" minH="100vh" pt="4rem" bgColor="#F7F7FC">
+          {children}
+        </Box>
+      </Flex>
+    </Box>
   );
 }

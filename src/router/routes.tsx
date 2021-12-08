@@ -1,5 +1,16 @@
 import React, { lazy } from "react";
 
+import CalendarIcon from "../static/calendar.svg";
+import SettingsIcon from "../static/settings.svg";
+import SpecialtiesIcon from "../static/specialties.svg";
+import PatientlistIcon from "../static/Patientlist.svg";
+import LogOutIcon from "../static/account_logout.svg";
+import ChatIcon from "../static/messages.svg";
+import AccountSettingsIcon from "../static/supervised_user_circle.svg";
+import AppointmentBookingIcon from "../static/Schedulesettings.svg";
+import PayoutIcon from "../static/Payout.svg";
+import InvoiceIcon from "../static/invoice.svg";
+
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
 const NotImplemented = lazy(() => import("../components/NotImplemented"));
@@ -34,7 +45,7 @@ export type RouteType = {
     allowedRoles?: string[];
     showInNavbar: boolean;
     showInDashboard?: boolean;
-    showInSideLink?: boolean;
+    icon?: string;
 }
 
 const routes: RouteType[] = [
@@ -129,7 +140,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Profile",
@@ -137,8 +147,7 @@ const routes: RouteType[] = [
     component: <Profile />,
     isProtected: true,
     showInNavbar: false,
-    showInDashboard: true,
-    showInSideLink: false,
+    showInDashboard: false,
   },
   {
     displayName: "Profile Settings",
@@ -147,7 +156,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: SettingsIcon,
   },
   {
     displayName: "Specialties & Services",
@@ -156,7 +165,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: SpecialtiesIcon,
   },
   {
     displayName: "Appointments",
@@ -165,7 +174,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: CalendarIcon,
   },
   {
     displayName: "Account Settings",
@@ -174,7 +183,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: SettingsIcon,
   },
   {
     displayName: "Patients",
@@ -183,6 +192,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
+    icon: PatientlistIcon,
   },
   {
     displayName: "Encounters",
@@ -231,7 +241,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: LogOutIcon,
   },
 ];
 
