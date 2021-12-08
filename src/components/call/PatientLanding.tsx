@@ -19,8 +19,8 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
     async () => axios?.get(`/dashboard/public/doctor/profile/${roomName}/`));
 
   return (
-    <Flex w="100%" justifyContent="center" backgroundColor="white" marginTop="3rem">
-      <Box paddingTop="6rem" textAlign="center">
+    <Flex w="100%" justifyContent="center" backgroundColor="white">
+      <Box paddingTop="3rem" textAlign="center">
         <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
           <Image
             rounded="full"
@@ -35,7 +35,7 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
           </Box>
         </Flex>
       </Box>
-      <Image src={BottomImage} width="40%" position="fixed" bottom="0" />
+      <Image src={BottomImage} width="40%" position="absolute" bottom="0" />
     </Flex>
   );
 };
