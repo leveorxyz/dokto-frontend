@@ -6,6 +6,7 @@ import {
 import { useLocation, Link } from "react-router-dom";
 
 import routes from "../../router/routes";
+import DashboardTopBar from "./DashboardTopBar";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const Sidebar = () => {
     <Flex
       justifyContent="flex-start"
       direction="column"
-      minHeight="100vh"
+      minHeight="calc(100vh - 4rem)"
       overflowY="scroll"
       overflowX="hidden"
       bg="white"
@@ -62,13 +63,16 @@ const Sidebar = () => {
 
 export default function SidebarContainer({ children }: {children: React.ReactNode}) {
   return (
-    <Flex wrap="nowrap" justifyContent="flex-end" position="relative" minHeight="100vh">
-      <Box w="15rem" position="fixed" top={0} left={0}>
-        <Sidebar />
-      </Box>
-      <Box w="calc(100% - 15rem)" bgColor="#F7F7FC">
-        {children}
-      </Box>
-    </Flex>
+    <Box>
+      <DashboardTopBar />
+      <Flex wrap="nowrap" justifyContent="flex-end" position="relative">
+        <Box w="15rem" position="fixed" top="4rem" left={0}>
+          <Sidebar />
+        </Box>
+        <Box w="calc(100% - 15rem)" minH="100vh" pt="4rem" bgColor="#F7F7FC">
+          {children}
+        </Box>
+      </Flex>
+    </Box>
   );
 }
