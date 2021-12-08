@@ -9,8 +9,8 @@ type PropTypes = {
 
 const WaitingBanner = ({ callEnded }:PropTypes) => (
   <Flex minHeight="100vh" w="100%" justifyContent="center" backgroundColor="white">
-    <Box paddingTop="8rem" textAlign="center">
-      <Flex justifyContent="flex-end" alignItems="center" paddingLeft="5rem" paddingRight="5rem">
+    <Box paddingTop="6rem" textAlign="center">
+      <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
         <Image
           rounded="full"
           boxSize="160px"
