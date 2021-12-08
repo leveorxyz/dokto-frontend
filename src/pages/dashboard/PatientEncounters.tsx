@@ -9,6 +9,7 @@ const PatientEncounters = () => (
     <Link to="/patients/patient-procedure"><Button m="2rem">Patient Procedure</Button></Link>
     <Link to="/patients/functional-and-cognitive-status"><Button m="2rem">Functional And Cognitive Status</Button></Link>
     <Link to="/patients/chief-complaints-and-HPI"><Button m="2rem">Chief Complaints and HPI</Button></Link>
+    <Link to="/patients/vitals"><Button m="2rem">Vitals</Button></Link>
   </Box>
 );
 

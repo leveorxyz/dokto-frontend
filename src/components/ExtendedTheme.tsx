@@ -14,6 +14,18 @@ const theme = extendTheme({
         },
       },
     },
+    Table: {
+      variants: {
+        mytable: {
+          tr: {
+            _even: {
+              background: "#edfffd",
+            },
+          },
+        },
+      },
+    },
+
   },
   fonts: {
     heading: "Poppins",
