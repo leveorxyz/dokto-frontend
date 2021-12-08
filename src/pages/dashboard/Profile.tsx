@@ -64,10 +64,10 @@ export default function Profile() {
               <Divider orientation="vertical" h="2rem" />
               <Box mx="3">12 reviews</Box>
             </Box>
-            <Box color="gray.500" mb={3}>
+            <Box color="rgba(51, 51, 51, .5)" mb={3}>
               {doctorProfile?.review}
             </Box>
-            <Text fontSize="lg" color="gray.500">
+            <Text fontSize="lg" color="rgba(51, 51, 51, .5)">
               {doctorProfile?.professional_bio}
             </Text>
             <Box d="flex" flexDir="row" mt="3">

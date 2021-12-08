@@ -12,15 +12,15 @@ export default function Tab1() {
     <Box>
       <Box d="flex" flexDir="column">
         <Box flex="1" d="flex" flexDir="row">
-          <Box w="25%" size="lg" mb={3}>
+          <Box w="25%" fontSize="lg" mb={3}>
             Bio:
           </Box>
-          <Box>
+          <Box color="rgba(51, 51, 51, .5)">
             {doctorProfileData?.professional_bio}
           </Box>
         </Box>
         <Box flex="1" d="flex" flexDir="row">
-          <Box w="25%" size="lg" mb={3}>
+          <Box w="25%" fontSize="lg" mb={3}>
             Education:
           </Box>
           <Box>
@@ -38,7 +38,7 @@ export default function Tab1() {
           </Box>
         </Box>
         <Box flex="1" d="flex" flexDir="row">
-          <Box w="25%" size="lg" mb={3}>
+          <Box w="25%" fontSize="lg" mb={3}>
             Experience:
           </Box>
           <Box>
