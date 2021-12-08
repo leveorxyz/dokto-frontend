@@ -85,15 +85,20 @@ export default function VideoCalls() {
     // eslint-disable-next-line
   }, [token]);
 
+  // Video room join handler
+  const handleJoin = () => {
+    if (token && queryRoomName) {
+      TwilioUtils.connectToRoom(token, queryRoomName).then((currentRoom) => {
+        setRoom(currentRoom);
+      });
+    }
+  };
+
   useEffect(() => {
     if (token && queryRoomName) {
       // If doctor, join both waiting & doctor room
       if (isDoctor) {
         // connect to doctor room
-        // TwilioUtils.connectToRoom(token, queryRoomName).then((currentRoom) => {
-        //   setRoom(currentRoom);
-        // });
-
         initConversations();
       } else if (isPatient) {
         initConversations();
@@ -153,7 +158,13 @@ export default function VideoCalls() {
       {/* Landing page for patient */}
       {(isPatient && !room) && <PatientLanding callEnded={callEnded} roomName={roomName} />}
       {/* Landing page for doctor */}
-      {(isDoctor && !room) && <DoctorLanding roomName={roomName} userName={authState?.user?.username} />}
+      {(isDoctor && !room) && (
+      <DoctorLanding
+        roomName={roomName}
+        userName={authState?.user?.username}
+        handleJoin={handleJoin}
+      />
+      )}
 
       {room && <Videos room={room} />}
       <Chat

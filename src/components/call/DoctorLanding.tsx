@@ -9,9 +9,10 @@ import EditRoom from "../../static/waiting-room.svg";
 type PropTypes = {
   roomName: string;
   userName: string|undefined;
+  handleJoin: ()=>void;
 }
 
-const DoctorLanding = ({ roomName, userName }:PropTypes) => {
+const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
   const [copySuccess, setCopySuccess] = useState(false);
 
   const roomURL = useMemo(() => `${window.location.origin}/calls?doctor=${userName}`, [userName]);
@@ -59,6 +60,7 @@ const DoctorLanding = ({ roomName, userName }:PropTypes) => {
             borderRadius="10px"
             textAlign="center"
             cursor="pointer"
+            onClick={handleJoin}
             _hover={{ backgroundColor: "#81F9EC" }}
           >
             <Image src={ConsultingImage} margin="0 auto" />
