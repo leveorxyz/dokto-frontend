@@ -109,15 +109,17 @@ export default function Encounters() {
               </Button>
             </Box>
           </Flex>
-          <EncountersTable
-            {...{
-              getTableProps,
-              getTableBodyProps,
-              headerGroups,
-              rows,
-              prepareRow,
-            }}
-          />
+          <Box overflowX="scroll">
+            <EncountersTable
+              {...{
+                getTableProps,
+                getTableBodyProps,
+                headerGroups,
+                rows,
+                prepareRow,
+              }}
+            />
+          </Box>
 
         </Box>
       </SpacedContainer>

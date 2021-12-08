@@ -149,16 +149,18 @@ export default function Patients() {
                 </Box>
               </Flex>
             </Flex>
-            <PatientTable
-              {...{
-                getTableProps,
-                getTableBodyProps,
-                headerGroups,
-                rows,
-                prepareRow,
-                showModal,
-              }}
-            />
+            <Box overflowX="scroll">
+              <PatientTable
+                {...{
+                  getTableProps,
+                  getTableBodyProps,
+                  headerGroups,
+                  rows,
+                  prepareRow,
+                  showModal,
+                }}
+              />
+            </Box>
             <Flex m="2" pt="10">
               <Box color="#3E4954">
                 Showing
