@@ -22,8 +22,7 @@ export default function RegisterButton({
 }: PropTypes) {
   return (
     <Button
-      fontSize="sm"
-      minH={50}
+      fontSize="md"
       _hover={{ opacity: ".85" }}
       _focus={{ outline: "none", opacity: ".85" }}
       {...rest}
@@ -39,7 +38,7 @@ RegisterButton.defaultProps = {
   color: "brand.dark",
   borderColor: "brand.dark",
   bgColor: "white",
-  rounded: "xl",
+  rounded: "lg",
   ml: "0px",
   w: "min-content",
   width: "max-content",

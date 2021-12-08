@@ -70,7 +70,16 @@ export default function Profile() {
             {doctorProfile?.professional_bio}
           </Text>
           <Box d="flex" flexDir="row" mt="3">
-            <BrandButton onClick={onOpen}>Add Review</BrandButton>
+            <Button
+              onClick={onOpen}
+              color="white"
+              px="8"
+              bgColor="brand.darkPink"
+              _hover={{ opacity: ".85" }}
+              _focus={{ outline: "none", opacity: ".85" }}
+            >
+              Add Review
+            </Button>
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
               <ModalOverlay />
               <ModalContent bgColor="#FAFAFD" rounded="xl" p="3">
@@ -85,7 +94,8 @@ export default function Profile() {
                     starCount={5}
                     value={stars}
                     onStarClick={(nextValue) => setStars(nextValue)}
-                    starColor="#ffd700"
+                    starColor="#ffc107"
+                    emptyStarColor="#c4c4c4"
                   />
                   <Textarea placeholder="Type a Review...." resize="vertical" my="2" />
                 </ModalBody>
@@ -106,7 +116,7 @@ export default function Profile() {
                 </ModalFooter>
               </ModalContent>
             </Modal>
-            <WhiteButton ml="5">Book Now</WhiteButton>
+            <WhiteButton ml="8">Book Now</WhiteButton>
           </Box>
         </Box>
       </Box>

@@ -11,7 +11,7 @@ export default function Tab1() {
     <Box>
       <Box d="flex" flexDir="column">
         <Box flex="1" d="flex" flexDir="row">
-          <Box w="25%" fontSize="lg" mb={3}>
+          <Box w="25%" fontSize="lg" mb={3} color="brand.dark">
             Bio:
           </Box>
           <Box w="75%" color="rgba(51, 51, 51, .5)">
@@ -19,7 +19,7 @@ export default function Tab1() {
           </Box>
         </Box>
         <Box flex="1" d="flex" flexDir="row" my={4}>
-          <Box w="25%" fontSize="lg" mb={3}>
+          <Box w="25%" fontSize="lg" mb={3} color="brand.dark">
             Education:
           </Box>
           <Box w="75%">
@@ -34,7 +34,7 @@ export default function Tab1() {
                       <Box>
                         {course}
                       </Box>
-                      <Box color="gray.500">
+                      <Box color="rgba(51, 51, 51, .5)" my="2">
                         {year}
                       </Box>
                     </Box>
@@ -45,7 +45,7 @@ export default function Tab1() {
           </Box>
         </Box>
         <Box flex="1" d="flex" flexDir="row">
-          <Box w="25%" fontSize="lg" mb={3}>
+          <Box w="25%" fontSize="lg" mb={3} color="brand.dark">
             Experience:
           </Box>
           <Box w="75%">
@@ -66,7 +66,7 @@ export default function Tab1() {
                       <Box>
                         {jobTitle}
                       </Box>
-                      <Box color="gray.500">
+                      <Box color="rgba(51, 51, 51, .5)" my="2">
                         {`${startDate} - ${endDate}`}
                       </Box>
                       <Box>
