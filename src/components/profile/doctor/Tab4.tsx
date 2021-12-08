@@ -129,7 +129,11 @@ export default function Tab4() {
             value={value}
           />
           <Box fontSize="md" mb="2">{text}</Box>
-          <Box color="rgba(51, 51, 51, 0.5)" fontSize="sm">September 2021 | Name hidden</Box>
+          <Box color="rgba(51, 51, 51, 0.5)" fontSize="sm" d="flex" alignItems="center">
+            <Box>September 2021</Box>
+            <Box mx="4">|</Box>
+            <Box>Name hidden</Box>
+          </Box>
         </Box>
       ))}
     </Box>
