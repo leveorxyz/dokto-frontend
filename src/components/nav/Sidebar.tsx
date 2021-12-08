@@ -16,7 +16,7 @@ const Sidebar = () => {
       minHeight="100vh"
       overflowY="scroll"
       overflowX="hidden"
-      bg="gray.100"
+      bg="white"
       sx={{
         "&::-webkit-scrollbar": {
           display: "none",
@@ -42,12 +42,12 @@ const Sidebar = () => {
               px={6}
               my={2}
               mx={6}
-              bg={location.pathname.includes(route.path) ? "brand.darkPink" : "transparent"}
+              bg={location.pathname.includes(route.path) ? "brand.dark" : "transparent"}
               color={location.pathname.includes(route.path) ? "white" : "black"}
               cursor="pointer"
               _hover={{
-                bg: location.pathname.includes(route.path) ? "brand.darkPink" : "white",
-                color: location.pathname.includes(route.path) ? "white" : "brand.darkPink",
+                bgColor: location.pathname.includes(route.path) ? "brand.dark" : "white",
+                color: location.pathname.includes(route.path) ? "white" : "brand.dark",
                 textDecoration: "none",
               }}
               rounded="lg"
@@ -62,11 +62,11 @@ const Sidebar = () => {
 
 export default function SidebarContainer({ children }: {children: React.ReactNode}) {
   return (
-    <Flex wrap="nowrap" justifyContent="flex-end" position="relative">
+    <Flex wrap="nowrap" justifyContent="flex-end" position="relative" minHeight="100vh">
       <Box w="15rem" position="fixed" top={0} left={0}>
         <Sidebar />
       </Box>
-      <Box w="calc(100% - 15rem)">
+      <Box w="calc(100% - 15rem)" bgColor="#F7F7FC">
         {children}
       </Box>
     </Flex>

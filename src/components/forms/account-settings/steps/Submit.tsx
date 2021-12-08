@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../common/fallback/LoadingPage";
-import { stepAtom } from "../atoms";
-import usePatientReg from "../../../../hooks/register/usePatientReg";
+import stepAtom from "../../../../atoms/updateAccountSettings.atom";
+import useUpdateAccountSettings from "../../../../hooks/account-settings/updateAccountSettings";
 import MessagePage from "../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -17,27 +17,25 @@ export default function Submit() {
         return { ...prev, [curr]: stepData[curr] };
       },
       {
-        contact_no: "",
-        full_name: "",
       },
     ),
   }), [stepData]);
 
   const {
     error, isError, isSuccess, isFetching,
-  } = usePatientReg(data);
+  } = useUpdateAccountSettings(data);
 
   if (isFetching) {
     return <Loading />;
   }
 
   if (isSuccess) {
-    return <MessagePage status="success" title="Success!" message="You have successfully registered to Dokto! Please check your email and verify your email to log in to Dokto" />;
+    return <MessagePage status="success" title="Success!" message="Successfully updated account settings data" />;
   }
 
   if (isError) {
     return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
-  return <Navigate to="/" />;
+  return <Navigate to="/account-settings" />;
 }

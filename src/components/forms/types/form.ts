@@ -51,6 +51,7 @@ export type InputFieldType = {
   rightAddon?: string | React.ReactNode;
   max?: string | number;
   min?: string | number;
+  optionalText?: string;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
   customProperties?: { [key: string]: string };
@@ -80,6 +81,7 @@ export type MultiSelectFieldType = {
 export type CheckboxFieldType = {
   type: FieldTypes.CHECKBOX;
   direction?: "column" | "row";
+  spacing?: string;
   options: {
     value: string;
     label: string;

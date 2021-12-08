@@ -31,8 +31,16 @@ export type DoctorProfile = {
     end_date?: string;
   }[];
   specialty: string[];
-  available_hours?: string[];
-  review?: string[];
+  available_hours?: {
+    day_of_week: string;
+    start_time: string;
+    end_time: string;
+  }[];
+  review?: {
+    patient_name: string;
+    star_count: number;
+    comment: string;
+  }[];
 };
 
 export default atom<DoctorProfile | null>({
