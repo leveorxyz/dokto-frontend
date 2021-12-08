@@ -18,7 +18,7 @@ const WaitingBanner = ({ callEnded }:PropTypes) => (
           alt="Dan Abramov"
           boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
         />
-        <Box as="p" fontSize="30px" color="black">
+        <Box as="p" fontSize="30px" color="black" fontWeight="600">
           {callEnded ? "The call has been ended! " : `Welcome to Dr. Jonah Salem's waiting 
         room.Your specialist will see you shortly.`}
         </Box>
