@@ -12,7 +12,7 @@ export default function Tab2() {
   console.log(doctorProfileData);
 
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  const times = ["9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm"];
+  const times = ["9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "1:00pm", "1:30pm", "2:00pm", "3:00pm"];
 
   return (
     <Box>
@@ -22,7 +22,7 @@ export default function Tab2() {
       <Flex direction="column">
         {days
           .map((day) => (
-            <Flex direction="row" key={day} my="4" alignItems="center">
+            <Flex direction="row" key={day} my="4">
               <Box color="brand.dark" w="25%">{day}</Box>
               <Box w="75%">
                 {(day !== "Sunday" && day !== "Wednesday") ? (
@@ -34,8 +34,10 @@ export default function Tab2() {
                       border="2px"
                       borderColor="brand.dark"
                       borderRadius="md"
+                      w="90px"
                       color="brand.dark"
                       mx="4"
+                      my="1"
                       p="1"
                       cursor="pointer"
                       _hover={{ color: "white", bgColor: "brand.darkPink", borderColor: "brand.darkPink" }}
