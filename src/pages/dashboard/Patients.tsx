@@ -285,11 +285,13 @@ export default function Patients() {
                 </Button>
               </Flex>
             </Flex>
+            {currentPatient && (
             <PatientModal
               onClose={closeModal}
               isOpen={isOpen}
               patient={currentPatient}
             />
+            )}
           </Box>
         </SpacedContainer>
       </Box>
