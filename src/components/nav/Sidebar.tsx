@@ -2,6 +2,7 @@ import {
   Flex,
   Box,
   Link as ChakraLink,
+  Image,
 } from "@chakra-ui/react";
 import { useLocation, Link } from "react-router-dom";
 
@@ -38,7 +39,8 @@ const Sidebar = () => {
               boxShadow: "none",
             }}
           >
-            <Box
+            <Flex
+              wrap="nowrap"
               py={3}
               px={6}
               my={2}
@@ -47,14 +49,27 @@ const Sidebar = () => {
               color={location.pathname.includes(route.path) ? "white" : "black"}
               cursor="pointer"
               _hover={{
-                bgColor: location.pathname.includes(route.path) ? "brand.dark" : "white",
+                bgColor: location.pathname.includes(route.path) ? "brand.dark" : "gray.100",
                 color: location.pathname.includes(route.path) ? "white" : "brand.dark",
                 textDecoration: "none",
               }}
               rounded="lg"
             >
-              {route.displayName}
-            </Box>
+              {route.icon && (
+              <Image
+                m={1}
+                src={route.icon}
+                alt={route.displayName}
+                boxSize="1.2rem"
+                sx={{
+                  fill: "brand.darkPink",
+                }}
+              />
+              )}
+              <Box>
+                {route.displayName}
+              </Box>
+            </Flex>
           </ChakraLink>
         ))}
     </Flex>
