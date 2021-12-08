@@ -12,12 +12,6 @@ const firstColumn = () :FormDataType => ({
       name: "education",
       label: "Education Profile",
       addButtonText: "Add Education Profile +",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
       fields: [
         {
           type: FieldTypes.INPUT,
@@ -25,10 +19,6 @@ const firstColumn = () :FormDataType => ({
           label: "College",
           placeholder: "College",
           rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
             maxLength: {
               value: 60,
               message: "Must be less than 60 characters",
@@ -41,10 +31,6 @@ const firstColumn = () :FormDataType => ({
           label: "Course Studied",
           placeholder: "Course Studied",
           rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
             maxLength: {
               value: 50,
               message: "Must be less than 50 characters",
@@ -57,12 +43,6 @@ const firstColumn = () :FormDataType => ({
           label: "Year Graduated",
           max: format(new Date(), "yyyy-MM-dd"),
           inputType: "date",
-          rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
-          },
         },
       ],
     },
@@ -78,12 +58,6 @@ const secondColumn = () :FormDataType => ({
       name: "experience",
       label: "Experience Profile",
       addButtonText: "Add Experience +",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
       fields: [
         {
           type: FieldTypes.INPUT,
@@ -91,10 +65,6 @@ const secondColumn = () :FormDataType => ({
           label: "Establishment Name",
           placeholder: "Establishment Name",
           rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
             maxLength: {
               value: 50,
               message: "Must be less than 50 characters",
@@ -107,10 +77,6 @@ const secondColumn = () :FormDataType => ({
           label: "Job Title",
           placeholder: "Job Title",
           rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
             maxLength: {
               value: 50,
               message: "Must be less than 50 characters",
@@ -123,17 +89,12 @@ const secondColumn = () :FormDataType => ({
           label: "Start Date",
           max: format(new Date(), "yyyy-MM-dd"),
           inputType: "date",
-          rules: {
-            required: {
-              value: true,
-              message: "This field is required",
-            },
-          },
         },
         {
           type: FieldTypes.INPUT,
           name: "end_date",
           label: "End Date",
+          optionalText: "(Ignore if you currently work here)",
           max: format(new Date(), "yyyy-MM-dd"),
           inputType: "date",
         },

@@ -1,5 +1,16 @@
 import React, { lazy } from "react";
 
+import CalendarIcon from "../static/calendar.svg";
+import SettingsIcon from "../static/settings.svg";
+import SpecialtiesIcon from "../static/specialties.svg";
+import PatientlistIcon from "../static/Patientlist.svg";
+import LogOutIcon from "../static/account_logout.svg";
+import ChatIcon from "../static/messages.svg";
+import AccountSettingsIcon from "../static/supervised_user_circle.svg";
+import AppointmentBookingIcon from "../static/Schedulesettings.svg";
+import PayoutIcon from "../static/Payout.svg";
+import InvoiceIcon from "../static/invoice.svg";
+
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
 const NotImplemented = lazy(() => import("../components/NotImplemented"));
@@ -21,6 +32,10 @@ const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
 const Patients = lazy(() => import("../pages/dashboard/Patients"));
 const Encounters = lazy(() => import("../pages/dashboard/Encounters"));
+const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/Assessment&Diagnosis"));
+const PlanOfCare = lazy(() => import("../pages/dashboard/PlanOfCare"));
+const PatientProcedure = lazy(() => import("../pages/dashboard/PatientProcedure"));
+const PatientEncounters = lazy(() => import("../pages/dashboard/PatientEncounters"));
 
 export type RouteType = {
     displayName: string;
@@ -30,7 +45,7 @@ export type RouteType = {
     allowedRoles?: string[];
     showInNavbar: boolean;
     showInDashboard?: boolean;
-    showInSideLink?: boolean;
+    icon?: string;
 }
 
 const routes: RouteType[] = [
@@ -125,7 +140,6 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
   },
   {
     displayName: "Profile",
@@ -133,8 +147,7 @@ const routes: RouteType[] = [
     component: <Profile />,
     isProtected: true,
     showInNavbar: false,
-    showInDashboard: true,
-    showInSideLink: false,
+    showInDashboard: false,
   },
   {
     displayName: "Profile Settings",
@@ -143,7 +156,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: SettingsIcon,
   },
   {
     displayName: "Specialties & Services",
@@ -152,7 +165,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: SpecialtiesIcon,
   },
   {
     displayName: "Appointments",
@@ -161,7 +174,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: CalendarIcon,
   },
   {
     displayName: "Account Settings",
@@ -170,7 +183,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: SettingsIcon,
   },
   {
     displayName: "Patients",
@@ -179,11 +192,44 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
+    icon: PatientlistIcon,
   },
   {
     displayName: "Encounters",
     path: "/patients/encounters",
     component: <Encounters />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Assessment & Diagnosis",
+    path: "/patients/assessment-and-diagnosis",
+    component: <AssessmentAndDiagnosis />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Plan of Care",
+    path: "/patients/plan-of-care",
+    component: <PlanOfCare />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Patient Procedure",
+    path: "/patients/patient-procedure",
+    component: <PatientProcedure />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Patient encounters",
+    path: "/encounters",
+    component: <PatientEncounters />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
@@ -195,7 +241,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    showInSideLink: true,
+    icon: LogOutIcon,
   },
 ];
 

@@ -23,7 +23,7 @@ export default function Profile() {
   }
 
   return (
-    <Box bgColor="#E5E5E5" h="100%">
+    <Box>
       <SpacedContainer py={20}>
         <Box
           d="flex"

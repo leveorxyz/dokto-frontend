@@ -1,6 +1,7 @@
 import {
   Box,
   Image,
+  Button,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -11,19 +12,48 @@ import AddIcon from "../../../static/Plus.svg";
 import MinusIcon from "../../../static/Minus.svg";
 
 export default function Tab3() {
-  const titles = ["Emergency Services", "Obstetrics and gynecology", "Medical Genetics", "Dermatology", "Family Medicine", "Pathology"];
+  const titles = [
+    {
+      title: "Emergency Services",
+      services: "4",
+    },
+    {
+      title: "Obstetrics and gynecology",
+      services: "3",
+    },
+    {
+      title: "Medical Genetics",
+      services: "4",
+    },
+    {
+      title: "Dermatology",
+      services: "2",
+    },
+    {
+      title: "Family Medicine",
+      services: "3",
+    },
+    {
+      title: "Pathology",
+      services: "3",
+    }];
 
   return (
-    <Box>
+    <Box px="4" py="2" fontFamily="poppins">
       <Accordion defaultIndex={[0]} allowMultiple>
         {titles
-          .map((title) => (
-            <AccordionItem key={title}>
+          .map(({ title, services }) => (
+            <AccordionItem key={title} mb="1.5">
               {({ isExpanded }) => (
                 <>
-                  <AccordionButton rounded="xl">
-                    <Box flex="1" textAlign="left">
-                      {title}
+                  <AccordionButton rounded="2xl" border="1px" borderColor="#c2cace" bgColor="#fafafd">
+                    <Box flex="1" textAlign="left" color="brand.dark" fontSize="xl" d="flex" flexDir="column" ml="2.5rem">
+                      <Box>
+                        {title}
+                      </Box>
+                      <Box color="rgba(51, 51, 51, 0.5)" fontSize="md">
+                        {`${services} Services`}
+                      </Box>
                     </Box>
                     {isExpanded ? (
                       <Image src={MinusIcon} w="1.25%" />
@@ -33,13 +63,16 @@ export default function Tab3() {
                   </AccordionButton>
                   <AccordionPanel d="flex" flexDir="column">
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
+                      fontSize="lg"
+                      color="#3b3a3e"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
@@ -52,7 +85,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Biochemical genetics
                       </Box>
                       <Box>
@@ -60,13 +93,16 @@ export default function Tab3() {
                       </Box>
                     </Box>
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
+                      fontSize="lg"
+                      color="#3b3a3e"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
@@ -79,7 +115,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Cytogenetics
                       </Box>
                       <Box>
@@ -87,14 +123,17 @@ export default function Tab3() {
                       </Box>
                     </Box>
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
-                      rounded="xl"
+                      fontWeight="normal"
+                      fontSize="lg"
+                      color="#3b3a3e"
+                      rounded="lg"
                       border="1px"
                       borderColor="gray.300"
                       _hover={{
@@ -106,7 +145,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Clinical genetics
                       </Box>
                       <Box>
@@ -114,13 +153,16 @@ export default function Tab3() {
                       </Box>
                     </Box>
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
+                      fontSize="lg"
+                      color="#3b3a3e"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
@@ -133,7 +175,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Genetic pathology
                       </Box>
                       <Box>

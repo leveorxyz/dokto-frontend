@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -26,15 +22,6 @@
     "outDir": "dist",
     "noImplicitAny": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "./customs.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "*.scss",
-    "*.css"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "./customs.d.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "*.scss", "*.css"]
 }

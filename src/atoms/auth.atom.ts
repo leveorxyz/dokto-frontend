@@ -15,6 +15,7 @@ type LoggedInState = {
     profilePhoto: string;
     userType: string;
     fullName: string;
+    username?: string;
   };
 };
 
