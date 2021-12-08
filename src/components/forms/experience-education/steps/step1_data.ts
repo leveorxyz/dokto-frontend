@@ -94,6 +94,7 @@ const secondColumn = () :FormDataType => ({
           type: FieldTypes.INPUT,
           name: "end_date",
           label: "End Date",
+          optionalText: "(Ignore if you currently work here)",
           max: format(new Date(), "yyyy-MM-dd"),
           inputType: "date",
         },

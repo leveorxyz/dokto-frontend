@@ -3,6 +3,8 @@ import {
   Heading,
   Input,
   InputGroup,
+  Flex,
+  Box,
   InputLeftAddon,
   InputRightAddon,
   InputLeftElement,
@@ -27,6 +29,7 @@ export default function InputField({
   max,
   bottomText,
   leftAddon,
+  optionalText,
   rightAddon,
   rightElement,
   leftElement,
@@ -53,7 +56,10 @@ export default function InputField({
 
   return (
     <FormControl id={name} isInvalid={errors[name]} pb={4}>
-      <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
+      <Flex>
+        <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
+        <Box color="#c2cace">{optionalText}</Box>
+      </Flex>
       <InputGroup>
         {leftAddon && <InputLeftAddon bg="brand.darkPink" color="white" borderRadius="xl">{leftAddon}</InputLeftAddon>}
         {leftElement && <InputLeftElement borderRadius="xl">{leftElement}</InputLeftElement>}
