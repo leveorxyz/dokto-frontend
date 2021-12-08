@@ -28,7 +28,7 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
   };
 
   return (
-    <Box w="100%" backgroundColor="white" paddingLeft="5%">
+    <Box w="100%" paddingLeft="5%">
       <Box
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
         width="60%"
@@ -42,7 +42,7 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
       >
         <Text fontSize="25px">{`Welcome, ${roomName}`}</Text>
         <Flex marginTop="45px" width="100%">
-          <Box backgroundColor="#F6F6F7" padding="15px" width="60%" borderRadius="8px" marginRight="25px">
+          <Box backgroundColor="white" padding="15px" width="60%" borderRadius="8px" marginRight="25px">
             {roomURL}
           </Box>
           <BrandButton onClick={handleCopy}>

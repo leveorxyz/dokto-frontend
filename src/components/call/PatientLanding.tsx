@@ -19,8 +19,8 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
     async () => axios?.get(`/dashboard/public/doctor/profile/${roomName}/`));
 
   return (
-    <Flex w="100%" justifyContent="center" backgroundColor="white">
-      <Box paddingTop="3rem" textAlign="center">
+    <Flex w="100%" justifyContent="center">
+      <Box paddingTop="4rem" textAlign="center">
         <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
           <Image
             rounded="full"

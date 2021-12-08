@@ -135,7 +135,7 @@ export default function VideoCalls() {
   }
 
   return (
-    <Flex minHeight="100vh" w="100%" backgroundColor="gray.900">
+    <Flex minHeight="calc(100vh-4rem)" w="100%">
       {/* Only show sidebar for doctor when doctor connected to room */}
       {(isDoctor && room) && (
         <>
