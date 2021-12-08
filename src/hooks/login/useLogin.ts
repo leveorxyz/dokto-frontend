@@ -33,6 +33,7 @@ export default function useLogin() {
         profile_photo: profilePhoto,
         user_type: userType,
         full_name: fullName,
+        username,
       }) => {
         setAuthState({
           isLoggedIn: true,
@@ -43,6 +44,7 @@ export default function useLogin() {
             profilePhoto,
             userType,
             fullName,
+            username,
           },
         });
         navigate("/dashboard");
