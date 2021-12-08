@@ -36,8 +36,8 @@ export default function RegisterButton({
 RegisterButton.defaultProps = {
   onClick: () => {},
   border: "2px",
-  color: "brand.darkPink",
-  borderColor: "brand.darkPink",
+  color: "brand.dark",
+  borderColor: "brand.dark",
   bgColor: "white",
   rounded: "xl",
   ml: "0px",
