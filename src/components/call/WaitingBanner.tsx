@@ -1,27 +1,30 @@
 import {
-  Flex, Spinner, Box, Icon,
+  Flex, Box, Image,
 } from "@chakra-ui/react";
-import { FaInfoCircle } from "react-icons/fa";
+import BottomImage from "../../static/waiting_room_frame.png";
 
 type PropTypes = {
   callEnded: boolean;
 }
 
 const WaitingBanner = ({ callEnded }:PropTypes) => (
-  <Flex minHeight="100vh" w="100%" justifyContent="center" alignItems="center">
-    <Flex as="p" fontSize="40px" color="white" alignItems="center">
-      {callEnded ? <Icon as={FaInfoCircle} color="purple" marginRight="10px" /> : (
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="brand.darkPink"
-          size="xl"
-          marginRight="10px"
+  <Flex minHeight="100vh" w="100%" justifyContent="center" backgroundColor="white">
+    <Box paddingTop="8rem" textAlign="center">
+      <Flex justifyContent="flex-end" alignItems="center" paddingLeft="5rem" paddingRight="5rem">
+        <Image
+          rounded="full"
+          boxSize="160px"
+          src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg"
+          alt="Dan Abramov"
+          boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
         />
-      )}
-      <Box as="p" color="white">{callEnded ? "The call has been ended! " : "Please wait while your doctor lets you in!"}</Box>
-    </Flex>
+        <Box as="p" fontSize="30px" color="black">
+          {callEnded ? "The call has been ended! " : `Welcome to Dr. Jonah Salem's waiting 
+        room.Your specialist will see you shortly.`}
+        </Box>
+      </Flex>
+    </Box>
+    <Image src={BottomImage} width="40%" position="fixed" bottom="0" />
   </Flex>
 );
 
