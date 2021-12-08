@@ -85,7 +85,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Biochemical genetics
                       </Box>
                       <Box>
@@ -115,7 +115,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Cytogenetics
                       </Box>
                       <Box>
@@ -145,7 +145,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Clinical genetics
                       </Box>
                       <Box>
@@ -175,7 +175,7 @@ export default function Tab3() {
                         borderColor: "#3DE0FF",
                       }}
                     >
-                      <Box>
+                      <Box ml="2.5rem">
                         Genetic pathology
                       </Box>
                       <Box>
