@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   useDisclosure,
+  Divider,
   Modal,
   Checkbox,
   Textarea,
@@ -46,11 +47,23 @@ export default function Profile() {
           <Image src={ProfileIcon} position="relative" top="2" right="1" />
           <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mt="4">Profile</Heading>
         </Flex>
-        <Box display="flex" py={8}>
+        <Box display="flex" py={8} fontFamily="poppins">
           <Image src={doctorProfile?.profile_photo} width="12rem" fit="contain" mr={6} />
           <Box w="100%" mb="10" d="flex" flexDir="column">
             <Heading as="h3" fontSize="3xl" fontWeight={700} color="primary.dark">{doctorProfile?.full_name}</Heading>
             <Heading as="h4" fontSize="xl" fontWeight={400} color="brand.darkPink" mb={3}>{doctorProfile?.qualification_suffix}</Heading>
+            <Box mb="5" d="flex" alignItems="center" borderColor="black">
+              <StarRatingComponent
+                name="rate1"
+                starCount={5}
+                value={4}
+                emptyStarColor="#c4c4c4"
+                starColor="#ffc107"
+              />
+              <Box mx="3">4.6</Box>
+              <Divider orientation="vertical" h="2rem" />
+              <Box mx="3">12 reviews</Box>
+            </Box>
             <Box color="gray.500" mb={3}>
               {doctorProfile?.review}
             </Box>

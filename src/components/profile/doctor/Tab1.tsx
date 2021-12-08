@@ -12,17 +12,17 @@ export default function Tab1() {
     <Box>
       <Box d="flex" flexDir="column">
         <Box flex="1" d="flex" flexDir="row">
-          <Heading w="25%" as="h3" size="md" mb={3}>
+          <Box w="25%" size="lg" mb={3}>
             Bio:
-          </Heading>
+          </Box>
           <Box>
             {doctorProfileData?.professional_bio}
           </Box>
         </Box>
         <Box flex="1" d="flex" flexDir="row">
-          <Heading w="25%" as="h3" size="md" mb={3}>
+          <Box w="25%" size="lg" mb={3}>
             Education:
-          </Heading>
+          </Box>
           <Box>
             {doctorProfileData?.education?.length && (
               <Box>
@@ -38,9 +38,9 @@ export default function Tab1() {
           </Box>
         </Box>
         <Box flex="1" d="flex" flexDir="row">
-          <Heading w="25%" as="h3" size="md" mb={3}>
+          <Box w="25%" size="lg" mb={3}>
             Experience:
-          </Heading>
+          </Box>
           <Box>
             {doctorProfileData?.experience?.length && (
               <Box>
