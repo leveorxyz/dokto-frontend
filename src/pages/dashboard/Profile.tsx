@@ -23,7 +23,6 @@ import StarRatingComponent from "react-star-rating-component";
 import { SpacedContainer } from "../../components/common/Containers";
 import ProfileIcon from "../../static/user.svg";
 import ProfileTabs from "../../components/profile/doctor/ProfileTabs";
-import BrandButton from "../../components/common/buttons/BrandButton";
 import WhiteButton from "../../components/common/buttons/WhiteButton";
 import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
@@ -74,6 +73,7 @@ export default function Profile() {
               onClick={onOpen}
               color="white"
               px="8"
+              fontWeight="normal"
               bgColor="brand.darkPink"
               _hover={{ opacity: ".85" }}
               _focus={{ outline: "none", opacity: ".85" }}

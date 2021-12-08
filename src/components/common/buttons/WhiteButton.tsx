@@ -23,6 +23,7 @@ export default function RegisterButton({
   return (
     <Button
       fontSize="md"
+      fontWeight="normal"
       _hover={{ opacity: ".85" }}
       _focus={{ outline: "none", opacity: ".85" }}
       {...rest}
