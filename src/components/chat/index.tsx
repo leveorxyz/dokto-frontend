@@ -8,6 +8,7 @@ import { uniqBy } from "lodash";
 import {
   Box,
   Flex,
+  Text,
   Input,
   Button,
   Drawer,
@@ -19,7 +20,7 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import authAtom from "../../atoms/auth.atom";
-import { connectionStateType } from "../../pages/calls/index";
+import { ConnectionStateType } from "../../hooks/calls/useUpdateConnectionState";
 
 type ParticipantTextType = {
   text: string;
@@ -32,6 +33,8 @@ type StyleType = {
   ml?: string;
   bgColor?: string;
   color?: string;
+  border?: string;
+  borderRadius?: string | number;
 }
 
 const ParticipantText = ({ text, isLocal, dateCreated }: ParticipantTextType) => {
@@ -39,22 +42,26 @@ const ParticipantText = ({ text, isLocal, dateCreated }: ParticipantTextType) =>
     const style: StyleType = {};
     if (isLocal) {
       style.ml = "auto";
-      style.bgColor = "primary.dark";
-      style.color = "white";
+      style.bgColor = "#BAFAF5";
+      style.color = "primary.dark";
+      style.border = "0px solid red";
+      style.borderRadius = "30px 0px 30px 30px";
     } else {
       style.mr = "auto";
-      style.bgColor = "white";
+      style.bgColor = "gray.100";
       style.color = "primary.dark";
+      style.border = "0px solid red";
+      style.borderRadius = "0px 30px 30px 30px";
     }
+
     return style;
   }, [isLocal]);
 
   return (
-    <Box my={1}>
+    <Box my={2}>
       <Box
         width="70%"
-        rounded="lg"
-        p={2}
+        p={4}
         {...styles}
       >
         {text}
@@ -67,8 +74,8 @@ const ParticipantText = ({ text, isLocal, dateCreated }: ParticipantTextType) =>
 type PropType = {
   isOpen: boolean;
   onClose: () => void;
-  conversation: Conversation
-  connectionState: connectionStateType
+  conversation: Conversation | null;
+  connectionState: ConnectionStateType
 }
 
 export default function Chat({
@@ -110,11 +117,14 @@ export default function Chat({
       isOpen={isOpen}
       placement="right"
       onClose={onClose}
+      size="md"
     >
       <DrawerOverlay />
-      <DrawerContent bgColor="gray.100">
+      <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Chat</DrawerHeader>
+        <DrawerHeader>
+          <Text textTransform="capitalize">{conversation?.friendlyName}</Text>
+        </DrawerHeader>
         <DrawerBody>
           <Box
             h="100%"
@@ -140,12 +150,13 @@ export default function Chat({
         </DrawerBody>
 
         <DrawerFooter>
-          <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <Flex wrap="nowrap" p={2}>
+          <Box as="form" onSubmit={handleSubmit(handleFormSubmit)} width="100%">
+            <Flex wrap="nowrap" p={2} justifyContent="flex-start">
               <Input
                 placeholder="Type a message..."
                 flexGrow={1}
                 mr={2}
+                variant="filled"
                 {...register("message", { required: true })}
               />
               <Button
@@ -155,7 +166,7 @@ export default function Chat({
                 Send
               </Button>
             </Flex>
-          </form>
+          </Box>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
