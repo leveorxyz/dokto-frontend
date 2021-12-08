@@ -3,13 +3,13 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import PatientEncountersLayout from "../../components/common/PatientEncountersLayout";
-import { SpacedContainer } from "../../components/common/Containers";
-import doctorProfileAtom from "../../atoms/doctorProfile";
-import useProfile from "../../hooks/profile/useProfile";
-import LoadingPage from "../../components/common/fallback/LoadingPage";
-import AssessmentAndDiagnosisForm from "../../components/forms/assessment-and-diagnosis";
-import AssessmentAndDiagnosisTable from "../../components/common/assessmentAndDiagnosis";
+import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
+import { SpacedContainer } from "../../../components/common/Containers";
+import doctorProfileAtom from "../../../atoms/doctorProfile";
+import useProfile from "../../../hooks/profile/useProfile";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
+import AssessmentAndDiagnosisForm from "../../../components/forms/assessment-and-diagnosis";
+import AssessmentAndDiagnosisTable from "../../../components/common/assessmentAndDiagnosis";
 
 export default function AssessmentAndDiagnosis() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);

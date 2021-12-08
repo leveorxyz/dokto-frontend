@@ -4,12 +4,12 @@ import {
   Box,
 } from "@chakra-ui/react";
 import ReactQuill from "react-quill";
-import { SpacedContainer } from "../../components/common/Containers";
-import doctorProfileAtom from "../../atoms/doctorProfile";
-import useProfile from "../../hooks/profile/useProfile";
-import LoadingPage from "../../components/common/fallback/LoadingPage";
+import { SpacedContainer } from "../../../components/common/Containers";
+import doctorProfileAtom from "../../../atoms/doctorProfile";
+import useProfile from "../../../hooks/profile/useProfile";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
 import "react-quill/dist/quill.snow.css";
-import PatientEncountersLayout from "../../components/common/PatientEncountersLayout";
+import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 
 export default function PlanOfCare() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);

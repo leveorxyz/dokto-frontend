@@ -3,12 +3,12 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import PatientEncountersLayout from "../../components/common/PatientEncountersLayout";
-import { SpacedContainer } from "../../components/common/Containers";
-import doctorProfileAtom from "../../atoms/doctorProfile";
-import useProfile from "../../hooks/profile/useProfile";
-import LoadingPage from "../../components/common/fallback/LoadingPage";
-import FunctionalAndCognitiveStatusForm from "../../components/forms/functional-and-cognitive-status";
+import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
+import { SpacedContainer } from "../../../components/common/Containers";
+import doctorProfileAtom from "../../../atoms/doctorProfile";
+import useProfile from "../../../hooks/profile/useProfile";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
+import FunctionalAndCognitiveStatusForm from "../../../components/forms/functional-and-cognitive-status";
 
 export default function FunctionalAndCognitiveStatus() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);

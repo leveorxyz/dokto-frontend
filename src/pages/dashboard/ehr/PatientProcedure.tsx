@@ -3,13 +3,13 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import PatientEncountersLayout from "../../components/common/PatientEncountersLayout";
-import { SpacedContainer } from "../../components/common/Containers";
-import doctorProfileAtom from "../../atoms/doctorProfile";
-import useProfile from "../../hooks/profile/useProfile";
-import LoadingPage from "../../components/common/fallback/LoadingPage";
-import PatientProcedureForm from "../../components/forms/patient-procedure";
-import PatientProcedureTable from "../../components/common/patientProcedure";
+import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
+import { SpacedContainer } from "../../../components/common/Containers";
+import doctorProfileAtom from "../../../atoms/doctorProfile";
+import useProfile from "../../../hooks/profile/useProfile";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
+import PatientProcedureForm from "../../../components/forms/patient-procedure";
+import PatientProcedureTable from "../../../components/common/patientProcedure";
 
 export default function PatientProcedure() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);

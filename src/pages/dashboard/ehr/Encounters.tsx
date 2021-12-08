@@ -14,11 +14,11 @@ import { useSearchParams } from "react-router-dom";
 import debounce from "lodash/debounce";
 
 import { IoSearch } from "react-icons/io5";
-import PatientEncountersLayout from "../../components/common/PatientEncountersLayout";
-import encountersAtom from "../../atoms/ehr/encounters";
-import { columns } from "../../data/EncountersData";
-import EncountersTable from "../../components/encounters/Table";
-import { SpacedContainer } from "../../components/common/Containers";
+import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
+import encountersAtom from "../../../atoms/ehr/encounters";
+import { columns } from "../../../data/EncountersData";
+import EncountersTable from "../../../components/encounters/Table";
+import { SpacedContainer } from "../../../components/common/Containers";
 
 export default function Encounters() {
   const data = useRecoilValue(encountersAtom);
