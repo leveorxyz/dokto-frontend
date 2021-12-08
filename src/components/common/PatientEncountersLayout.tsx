@@ -13,7 +13,7 @@ const PatientEncountersLayout :React.FC<props> = ({ children }) => (
         PATIENT ENCOUNTERS
       </Heading>
     </SpacedContainer>
-    <Box>{children}</Box>
+    <Box pb={12}>{children}</Box>
   </Box>
 );
 
