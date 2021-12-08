@@ -16,7 +16,6 @@ import {
   Select,
   FormControl,
   InputGroup,
-  InputLeftAddon,
   InputLeftElement,
 } from "@chakra-ui/react";
 import { IoSearch } from "react-icons/io5";

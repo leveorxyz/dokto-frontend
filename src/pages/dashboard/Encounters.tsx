@@ -4,10 +4,7 @@ import { useTable, useSortBy, usePagination } from "react-table";
 import {
   Flex,
   Box,
-  Heading,
-  Text,
   Input,
-  chakra,
   Button,
   InputGroup,
   InputLeftElement,
