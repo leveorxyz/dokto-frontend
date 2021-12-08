@@ -176,8 +176,6 @@ export default function Patients() {
                 <Box mr="2" color="#3E4954">Show</Box>
                 <FormControl>
                   <Select
-                    placeholder="Select"
-                    defaultValue="2"
                     value={limit}
                     color="#3E4954"
                     // TODO fix type
