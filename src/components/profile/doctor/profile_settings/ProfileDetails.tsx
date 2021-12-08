@@ -13,7 +13,7 @@ const ProfileDetails = () => {
     <Box>
       <Heading as="h2" fontWeight="600" fontSize="2xl" color="brand.dark">Your Details</Heading>
       <Flex direction="row" alignItems="center" py="12" px="6">
-        <Image src={doctorProfile?.profile_photo} fit="contain" w="15%" borderRadius="50%" mr="10" />
+        <Image src={doctorProfile?.profile_photo} fit="cover" boxSize="10rem" borderRadius="50%" mr="10" />
         <Button
           bgColor="brand.darkPink"
           color="white"
