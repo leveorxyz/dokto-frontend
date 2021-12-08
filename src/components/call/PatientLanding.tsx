@@ -13,7 +13,7 @@ type PropTypes = {
   roomName: string;
 }
 
-const WaitingBanner = ({ callEnded, roomName }:PropTypes) => {
+const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const { data } = useQuery(["profile", roomName],
     async () => axios?.get(`/dashboard/public/doctor/profile/${roomName}/`));
@@ -26,13 +26,12 @@ const WaitingBanner = ({ callEnded, roomName }:PropTypes) => {
             rounded="full"
             boxSize="160px"
             src={data?.data?.result?.identification_photo || DoctorImage}
-            alt="Dan Abramov"
+            alt={roomName}
             boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
             marginRight="30px"
           />
           <Box as="p" fontSize="30px" color="black" fontWeight="600">
-            {callEnded ? "The call has been ended! " : `Welcome to Dr. ${roomName}'s waiting 
-        room.Your specialist will see you shortly.`}
+            {callEnded ? "The call has been ended! " : `Welcome to Dr. ${roomName}'s waiting  room. Your specialist will see you shortly.`}
           </Box>
         </Flex>
       </Box>
@@ -41,4 +40,4 @@ const WaitingBanner = ({ callEnded, roomName }:PropTypes) => {
   );
 };
 
-export default WaitingBanner;
+export default PatientLanding;
