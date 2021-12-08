@@ -14,7 +14,8 @@ import { uniqBy } from "lodash";
 import { AxiosInstance } from "axios";
 import Chat from "../../components/chat";
 import RoomBreadcrumb from "../../components/call/RoomBreadcrumb";
-import WaitingBanner from "../../components/call/WaitingBanner";
+import PatientLanding from "../../components/call/PatientLanding";
+import DoctorLanding from "../../components/call/DoctorLanding";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import TwilioUtils from "../../components/call/utils/TwilioUtils";
 import useTwilioToken from "../../hooks/twilio/useTwilioToken";
@@ -89,9 +90,9 @@ export default function VideoCalls() {
       // If doctor, join both waiting & doctor room
       if (isDoctor) {
         // connect to doctor room
-        TwilioUtils.connectToRoom(token, queryRoomName).then((currentRoom) => {
-          setRoom(currentRoom);
-        });
+        // TwilioUtils.connectToRoom(token, queryRoomName).then((currentRoom) => {
+        //   setRoom(currentRoom);
+        // });
 
         initConversations();
       } else if (isPatient) {
@@ -130,17 +131,30 @@ export default function VideoCalls() {
 
   return (
     <Flex minHeight="100vh" w="100%" backgroundColor="gray.900">
-      {/* Only show sidebar for doctor */}
-      {isDoctor && (
-      <SideBar
-        conversations={conversations}
-        setCurrentConversationRoom={setCurrentConversationRoom}
+      {/* Only show sidebar for doctor when doctor connected to room */}
+      {(isDoctor && room) && (
+        <>
+          <SideBar
+            conversations={conversations}
+            setCurrentConversationRoom={setCurrentConversationRoom}
+            openChatWindow={openChatWindow}
+          />
+          <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
+        </>
+      )}
+      {/* Show topbar for patient  */}
+      {isPatient && (
+      <RoomBreadcrumb
+        doctor={roomName}
+        isPatient={isPatient}
         openChatWindow={openChatWindow}
       />
       )}
-      <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
-      {/* Show waiting banner for patient */}
-      {(isPatient && !room) && <WaitingBanner callEnded={callEnded} roomName={roomName} />}
+      {/* Landing page for patient */}
+      {(isPatient && !room) && <PatientLanding callEnded={callEnded} roomName={roomName} />}
+      {/* Landing page for doctor */}
+      {(isDoctor && !room) && <DoctorLanding roomName={roomName} userName={authState?.user?.username} />}
+
       {room && <Videos room={room} />}
       <Chat
         isOpen={isChatWindowOpen}
