@@ -1,10 +1,8 @@
 import {
-  Box, Button, Flex, IconButton, Image,
+  Box, Flex, IconButton, Image,
 } from "@chakra-ui/react";
 import faker from "faker";
 import { Column } from "react-table";
-import { MdStopScreenShare } from "react-icons/md";
-import { AiOutlineFile } from "react-icons/ai";
 import { FiPrinter, FiTrash2 } from "react-icons/fi";
 import { BiFileBlank } from "react-icons/bi";
 import signed from "../static/signed2.svg";
