@@ -18,7 +18,7 @@ export default function Tab1() {
             {doctorProfileData?.professional_bio}
           </Box>
         </Box>
-        <Box flex="1" d="flex" flexDir="row">
+        <Box flex="1" d="flex" flexDir="row" my={4}>
           <Box w="25%" fontSize="lg" mb={3}>
             Education:
           </Box>
@@ -26,9 +26,17 @@ export default function Tab1() {
             {doctorProfileData?.education?.length && (
               <Box>
                 {doctorProfileData?.education.map(
-                  ({ college, year, course }, idx) => (
+                  ({ college, year, course }) => (
                     <Box key={`${college}-${course}`} mb={3}>
-                      {`${idx + 1}. ${course} - ${college} - ${year}`}
+                      <Box fontWeight="500">
+                        {college}
+                      </Box>
+                      <Box>
+                        {course}
+                      </Box>
+                      <Box color="gray.500">
+                        {year}
+                      </Box>
                     </Box>
                   ),
                 )}
@@ -45,20 +53,24 @@ export default function Tab1() {
               <Box>
                 {doctorProfileData?.experience.map(
                   ({
-                    establishment_name,
-                    job_title,
-                    job_description,
-                    start_date,
-                    end_date,
-                  },
-                  idx) => (
-                    <Box key={`${establishment_name}-${job_title}`} mb={3}>
-                      {`${idx + 1}. ${job_title}, ${establishment_name}`}
-                      <Box pl={3}>
-                        {`${start_date} - ${end_date}`}
+                    establishment_name: establishmentName,
+                    job_title: jobTitle,
+                    job_description: jobDescription,
+                    start_date: startDate,
+                    end_date: endDate,
+                  }) => (
+                    <Box key={`${establishmentName}-${jobTitle}`} mb={3}>
+                      <Box fontWeight="500">
+                        {establishmentName}
                       </Box>
-                      <Box pl={3}>
-                        {job_description}
+                      <Box>
+                        {jobTitle}
+                      </Box>
+                      <Box color="gray.500">
+                        {`${startDate} - ${endDate}`}
+                      </Box>
+                      <Box>
+                        {jobDescription}
                       </Box>
                     </Box>
                   ),
