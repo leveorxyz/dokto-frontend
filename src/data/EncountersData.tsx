@@ -97,21 +97,21 @@ export const columns: Column<Encounters>[] = [
       <Flex>
         <IconButton
           icon={<BiFileBlank size="24" color="#2D28FF" />}
-          backgroundColor="#fff"
+          backgroundColor="transparent"
           aria-label="mute-unmute"
           size="md"
           rounded="full"
         />
         <IconButton
           icon={<FiPrinter size="24" color="#2D28FF" />}
-          backgroundColor="#fff"
+          backgroundColor="transparent"
           aria-label="mute-unmute"
           size="md"
           rounded="full"
         />
         <IconButton
           icon={<FiTrash2 size="24" color="#A42BAD" />}
-          backgroundColor="#fff"
+          backgroundColor="transparent"
           aria-label="mute-unmute"
           size="md"
           rounded="full"
