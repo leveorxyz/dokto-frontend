@@ -106,6 +106,12 @@ export default function VideoCalls() {
     }
   }, [token, queryRoomName, initConversations, axios, isDoctor, isPatient]);
 
+  useEffect(() => {
+    if (conversations.length > 0) {
+      setCurrentConversationRoom(conversations[0]);
+    }
+  }, [conversations]);
+
   const {
     isLoading,
   } = useTwilioToken({
