@@ -58,6 +58,7 @@ const DoctorLanding = ({ roomName, userName }:PropTypes) => {
             border="1px solid #dddddd"
             borderRadius="10px"
             textAlign="center"
+            cursor="pointer"
             _hover={{ backgroundColor: "#81F9EC" }}
           >
             <Image src={ConsultingImage} margin="0 auto" />
@@ -72,6 +73,7 @@ const DoctorLanding = ({ roomName, userName }:PropTypes) => {
             marginLeft="10px"
             textAlign="center"
             paddingTop="3.5rem"
+            cursor="pointer"
             _hover={{ backgroundColor: "#A42BAD" }}
           >
             <Image src={EditRoom} margin="0 auto" marginTop="10%" />
