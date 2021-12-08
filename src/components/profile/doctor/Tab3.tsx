@@ -1,6 +1,7 @@
 import {
   Box,
   Image,
+  Button,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -14,14 +15,14 @@ export default function Tab3() {
   const titles = ["Emergency Services", "Obstetrics and gynecology", "Medical Genetics", "Dermatology", "Family Medicine", "Pathology"];
 
   return (
-    <Box>
+    <Box px="4" py="2">
       <Accordion defaultIndex={[0]} allowMultiple>
         {titles
           .map((title) => (
-            <AccordionItem key={title}>
+            <AccordionItem key={title} mb="1.5">
               {({ isExpanded }) => (
                 <>
-                  <AccordionButton rounded="xl">
+                  <AccordionButton rounded="xl" border="1px" borderColor="#c2cace" bgColor="#fafafd">
                     <Box flex="1" textAlign="left">
                       {title}
                     </Box>
@@ -33,13 +34,14 @@ export default function Tab3() {
                   </AccordionButton>
                   <AccordionPanel d="flex" flexDir="column">
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
@@ -60,13 +62,14 @@ export default function Tab3() {
                       </Box>
                     </Box>
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
@@ -87,13 +90,14 @@ export default function Tab3() {
                       </Box>
                     </Box>
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
@@ -114,13 +118,14 @@ export default function Tab3() {
                       </Box>
                     </Box>
                     <Box
-                      as="button"
+                      as={Button}
                       d="flex"
                       flexDir="row"
                       justifyContent="space-between"
                       backgroundColor="rgba(61, 224, 255, 0.14)"
                       px="4"
                       py="2"
+                      fontWeight="normal"
                       rounded="xl"
                       border="1px"
                       borderColor="gray.300"
