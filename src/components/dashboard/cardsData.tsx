@@ -8,6 +8,7 @@ import Patientlist from "../../static/Patientlist.svg";
 import Payout from "../../static/Payout.svg";
 import Invoice from "../../static/invoice.svg";
 import LogOut from "../../static/account_logout.svg";
+import VideoConf from "../../static/video_conference.svg";
 
 export default [
   {
@@ -51,6 +52,12 @@ export default [
     Icon: Patientlist,
     title: "Patient List",
     path: "/patients",
+  },
+  {
+    id: "video-conference",
+    Icon: VideoConf,
+    title: "Video Conference",
+    path: "/calls",
   },
   {
     id: "payouts-settings",
