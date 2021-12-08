@@ -18,6 +18,7 @@ const DoctorLanding = ({ roomName, userName }:PropTypes) => {
    * Clipboard copy handler
    */
   const handleCopy = () => {
+    clearTimeout(2000);
     navigator.clipboard.writeText(roomURL);
     setCopySuccess(true);
     setTimeout(() => setCopySuccess(false), 2000);
