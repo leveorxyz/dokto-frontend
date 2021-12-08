@@ -2,10 +2,10 @@ import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
 import { useTable, useSortBy, usePagination } from "react-table";
 import patientEncountersAtom from "../../../atoms/ehr/patientEncounters";
-import { columns } from "../../../data/AssessmentAndDiagnosisData";
+import { columns } from "../../../data/PatientProcedureData";
 import EncountersTable from "./Table";
 
-export default function Encounters() {
+export default function PatientProcedureTable() {
   const data = useRecoilValue(patientEncountersAtom);
   const memoizedColumns = useMemo(() => columns, []);
   const memoizedData = useMemo(

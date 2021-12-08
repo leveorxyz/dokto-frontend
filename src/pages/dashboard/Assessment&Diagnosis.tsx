@@ -9,7 +9,7 @@ import doctorProfileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import AssessmentAndDiagnosisForm from "../../components/forms/assessment-and-diagnosis";
-import PatientEncountersTable from "../../components/common/assessmentAndDiagnosis/PatientEncounters";
+import AssessmentAndDiagnosisTable from "../../components/common/assessmentAndDiagnosis";
 
 export default function AssessmentAndDiagnosis() {
   const { isLoading } = useProfile("doctor", doctorProfileAtom);
@@ -33,7 +33,7 @@ export default function AssessmentAndDiagnosis() {
           <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Assessment & Diagnosis</Heading>
           <Box p="4" px="6">
             <AssessmentAndDiagnosisForm />
-            <PatientEncountersTable />
+            <AssessmentAndDiagnosisTable />
           </Box>
         </Box>
       </SpacedContainer>
