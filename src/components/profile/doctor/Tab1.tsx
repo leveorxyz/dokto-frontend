@@ -1,7 +1,6 @@
 import { useRecoilValue } from "recoil";
 import {
   Box,
-  Heading,
 } from "@chakra-ui/react";
 
 import doctorProfile from "../../../atoms/doctorProfile";
@@ -15,7 +14,7 @@ export default function Tab1() {
           <Box w="25%" fontSize="lg" mb={3}>
             Bio:
           </Box>
-          <Box color="rgba(51, 51, 51, .5)">
+          <Box w="75%" color="rgba(51, 51, 51, .5)">
             {doctorProfileData?.professional_bio}
           </Box>
         </Box>
@@ -23,7 +22,7 @@ export default function Tab1() {
           <Box w="25%" fontSize="lg" mb={3}>
             Education:
           </Box>
-          <Box>
+          <Box w="75%">
             {doctorProfileData?.education?.length && (
               <Box>
                 {doctorProfileData?.education.map(
@@ -41,7 +40,7 @@ export default function Tab1() {
           <Box w="25%" fontSize="lg" mb={3}>
             Experience:
           </Box>
-          <Box>
+          <Box w="75%">
             {doctorProfileData?.experience?.length && (
               <Box>
                 {doctorProfileData?.experience.map(
