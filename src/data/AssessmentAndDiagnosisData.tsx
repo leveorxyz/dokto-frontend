@@ -2,6 +2,8 @@ import { Box, Flex, IconButton } from "@chakra-ui/react";
 import faker from "faker";
 import { FiTrash2 } from "react-icons/fi";
 import { Column } from "react-table";
+import format from "date-fns/format";
+
 import { PatientEncounters } from "../atoms/ehr/patientEncounters";
 
 export const dummyAssessmentAndDiagnosis: PatientEncounters[] = new Array(5).fill(null)
@@ -20,7 +22,7 @@ export const columns: Column<PatientEncounters>[] = [
     Cell: ({ value }:any) => (
       <Flex>
         <Box color="#0029FF" whiteSpace="nowrap">
-          {value}
+          {format(new Date(value), "MMM dd, yyyy")}
         </Box>
       </Flex>
     ),
