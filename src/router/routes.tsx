@@ -28,6 +28,7 @@ const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"))
 const AccountSettings = lazy(() => import("../pages/dashboard/AccountSettings"));
 const SpecialtiesServices = lazy(() => import("../pages/dashboard/SpecialtiesServices"));
 const VideoCalls = lazy(() => import("../pages/calls"));
+const EditRoom = lazy(() => import("../pages/calls/edit-room"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
 const Patients = lazy(() => import("../pages/dashboard/Patients"));
@@ -130,6 +131,13 @@ const routes: RouteType[] = [
     displayName: "Video Call",
     path: "/calls",
     component: <VideoCalls />,
+    isProtected: true,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Edit Waiting Room",
+    path: "/calls/edit-room",
+    component: <EditRoom />,
     isProtected: true,
     showInNavbar: false,
   },

@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import {
   Flex, Box, Text, Image,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import BrandButton from "../common/buttons/BrandButton";
 import ConsultingImage from "../../static/doctor-consulting.svg";
 import EditRoom from "../../static/waiting-room.svg";
@@ -66,7 +67,10 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
             <Image src={ConsultingImage} margin="0 auto" />
             <Text fontSize="20px" fontWeight="500">Enter Your Consulting Room</Text>
           </Box>
+
           <Box
+            as={Link}
+            to="/calls/edit-room"
             width="35%"
             height="243px"
             boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
