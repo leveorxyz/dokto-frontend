@@ -12,7 +12,7 @@ import PatientRegIMG from "../../static/reg/PatientReg.png";
 export default function Provider() {
   return (
     <>
-      <Box bgColor="#E5E5E5" pt={12}>
+      <Box bgColor="#F7F7FC" pt={12}>
         <Flex
           direction={["column", "column", "row", "row"]}
           justify={["center", "center", "space-between", "space-between"]}

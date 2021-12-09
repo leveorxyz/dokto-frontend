@@ -1,4 +1,5 @@
 import format from "date-fns/format";
+import subYears from "date-fns/subYears";
 
 import {
   FieldTypes, FormDataType,
@@ -121,8 +122,9 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "date_of_birth",
       label: "Date Of Birth",
-      max: format(new Date(), "yyyy-MM-dd"),
+      max: format(subYears(new Date(), 18), "yyyy-MM-dd"),
       inputType: "date",
+      bottomText: "You need to be 18 years or older to sign up",
       customProperties: {
         format: "yyyy/MM/dd",
       },

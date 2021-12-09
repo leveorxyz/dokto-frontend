@@ -1,5 +1,13 @@
 import {
-  Box, Flex, Tabs, TabList, TabPanels, Tab, TabPanel, Image, Heading,
+  Box,
+  Flex,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Image,
+  Heading,
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../../components/common/Containers";
@@ -7,11 +15,14 @@ import DoctorRegistration from "../../components/forms/provider-registration/doc
 import ClinicRegistration from "../../components/forms/provider-registration/clinic";
 import PharmacyRegistration from "../../components/forms/provider-registration/pharmacy";
 import ProviderRegIMG from "../../static/reg/ProviderReg.png";
+import DoktorTabIMG from "../../static/reg/DoktorTab.png";
+import HospitalTabIMG from "../../static/reg/HospitalTab.png";
+import PharmacyTabIMG from "../../static/reg/PharmacyTab.png";
 
 export default function Provider() {
   return (
     <>
-      <Box bgColor="#E5E5E5" pt={12}>
+      <Box bgColor="#F7F7FC" pt={12}>
         <Flex
           direction={["column", "column", "row", "row"]}
           justify={["center", "center", "space-between", "space-between"]}
@@ -28,20 +39,24 @@ export default function Provider() {
               Provider Registration
             </Heading>
           </Box>
-          <Image src={ProviderRegIMG} fill="contain" height="100%" />
+          <Image src={ProviderRegIMG} fill="contain" height="100%" transform="translateY(2rem)" />
         </Flex>
       </Box>
 
       <Box bg="rgba(61, 224, 251, 0.06)">
         <SpacedContainer py={12}>
           <Tabs>
-            <Flex justifyContent="flex-start" alignItems="center" mb={[3, 3, 6, 12, 12]}>
-              <Box as="h2" fontSize="lg" mr={[3, 3, 6, 12, 12]} color="primary.dark">
+            <Flex justifyContent="flex-start" alignItems="flex-end" mb={[3, 3, 6, 12, 12]}>
+              <Box as="h2" fontSize="lg" mr={[3, 3, 6, 12, 12]} mb={3} color="primary.dark">
                 Register as a:
               </Box>
               <TabList borderBottomWidth={0}>
-                {["Doctor", "Hospital", "Pharmacy"].map(
-                  (title) => (
+                {[
+                  { title: "Doctor", icon: DoktorTabIMG },
+                  { title: "Hospital", icon: HospitalTabIMG },
+                  { title: "Pharmacy", icon: PharmacyTabIMG },
+                ].map(
+                  ({ title, icon }) => (
                     <Tab
                       key={title}
                       borderBottomWidth={0}
@@ -53,7 +68,7 @@ export default function Provider() {
                         color: "brand.darkPink",
                         _after: {
                           content: "''",
-                          bg: "primary.dark",
+                          bg: "brand.darkPurple",
                           position: "absolute",
                           bottom: 1,
                           right: 0,
@@ -62,7 +77,7 @@ export default function Provider() {
                         },
                       }}
                     >
-                      {title}
+                      <Image src={icon} w="100%" h="auto" />
                     </Tab>
                   ),
                 )}

@@ -2,6 +2,7 @@ import { useRecoilValue } from "recoil";
 import {
   Box,
 } from "@chakra-ui/react";
+import format from "date-fns/format";
 
 import doctorProfile from "../../../atoms/doctorProfile";
 
@@ -35,7 +36,7 @@ export default function Tab1() {
                         {course}
                       </Box>
                       <Box color="rgba(51, 51, 51, .5)" my="2">
-                        {year}
+                        {format(new Date(year), "MMM dd, yyyy")}
                       </Box>
                     </Box>
                   ),
@@ -67,7 +68,13 @@ export default function Tab1() {
                         {jobTitle}
                       </Box>
                       <Box color="rgba(51, 51, 51, .5)" my="2">
-                        {`${startDate} - ${endDate}`}
+                        {`${
+                          format(new Date(startDate), "MMM dd, yyyy")
+                        } - ${
+                          endDate
+                            ? format(new Date(endDate), "MMM dd, yyyy")
+                            : "Present"
+                        }`}
                       </Box>
                       <Box>
                         {jobDescription}

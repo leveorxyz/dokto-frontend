@@ -1,6 +1,15 @@
 import { useState, useMemo } from "react";
 import {
-  Flex, Heading, Button, Box, IconButton, chakra,
+  Flex,
+  Heading,
+  Button,
+  Box,
+  IconButton,
+  Table,
+  Tbody,
+  Tr,
+  Td,
+  chakra,
 } from "@chakra-ui/react";
 import { useFieldArray } from "react-hook-form";
 import { IoTrash, IoCreate } from "react-icons/io5";
@@ -80,7 +89,7 @@ export default function ArrayField({
       </Heading>
 
       {fields?.map((field, index) => (
-        <Box key={field.id} rounded="lg" bgColor="gray.100" p={2} my={2}>
+        <Box key={field.id} rounded="lg" bgColor="gray.100" p={4} my={2}>
           <Flex>
             <Box
               display="inline-block flex"
@@ -113,20 +122,28 @@ export default function ArrayField({
             />
           </Flex>
 
-          {fieldsDetails.map((data) => (
-            <Flex
-              // eslint-disable-next-line react/no-array-index-key
-              key={`${name}.${index}.${data.name}`}
-            >
-              <chakra.span fontWeight="600">
-                {data.name}
-                {" : "}
-              </chakra.span>
-              <chakra.span>
-                {fields[index] && (fields[index] as any)[data.name]}
-              </chakra.span>
-            </Flex>
-          ))}
+          <Table size="sm">
+            <Tbody>
+              {fieldsDetails.map((data) => (
+                <Tr
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`${name}.${index}.${data.name}`}
+                >
+                  <Td p={0}>
+                    <chakra.span fontWeight="600">
+                      {data.label}
+                      &nbsp;:
+                    </chakra.span>
+                  </Td>
+                  <Td>
+                    <chakra.span>
+                      {fields[index] && (fields[index] as any)[data.name]}
+                    </chakra.span>
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
         </Box>
       ))}
 

@@ -18,6 +18,7 @@ import {
   IoCall, IoLocation, IoCalendar, IoInformationCircle,
 } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import format from "date-fns/format";
 
 import PatientStatus from "./Status";
 import { EncounteredPatient } from "../../hooks/encounteredPatients/useEncounteredPatients";
@@ -33,7 +34,7 @@ export default function PatientOverViewModal({ isOpen, onClose, patient }: Props
     {
       title: "Last Appointment",
       icon: IoCalendar,
-      value: patient?.date,
+      value: format(new Date(patient?.date ?? ""), "MMM dd, yyyy"),
     },
     {
       title: "Reason of Visit",

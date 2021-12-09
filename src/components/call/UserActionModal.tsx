@@ -47,7 +47,7 @@ export default function UserActionModal({
             justifyContent="left"
             onClick={() => handleRemoveMoveToWaiting(user)}
           >
-            Pause call & move patient to waiting room
+            Pause call & move to waiting room
           </Button>
           <Button
             variant="ghost"

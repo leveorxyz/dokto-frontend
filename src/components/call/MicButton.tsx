@@ -44,6 +44,9 @@ const MicButton = ({ room }: PropTypes) => {
       aria-label="mute-unmute"
       title="Mute/Unmute"
       colorScheme="blackAlpha"
+      color="white"
+      bg={isMicMuted ? "rgba(255, 0, 0, 0.3)" : "rgba(0, 0, 0, 0.3)"}
+      _hover={{ bg: isMicMuted ? "rgba(255, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.5)" }}
       size="lg"
       mx={3}
       rounded="full"
