@@ -5,6 +5,8 @@ import faker from "faker";
 import { Column } from "react-table";
 import { FiPrinter, FiTrash2 } from "react-icons/fi";
 import { BiFileBlank } from "react-icons/bi";
+import format from "date-fns/format";
+
 import signed from "../static/signed2.svg";
 import unsigned from "../static/signed1.svg";
 import { Encounters } from "../atoms/ehr/encounters";
@@ -65,7 +67,7 @@ export const columns: Column<Encounters>[] = [
     accessor: "date",
     Cell: ({ value }:any) => (
       <Box as="span" color="#0029FF" mr="4px">
-        {value}
+        {format(new Date(value), "MMM dd, yyyy")}
       </Box>
 
     ),

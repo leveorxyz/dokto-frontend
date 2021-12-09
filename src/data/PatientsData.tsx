@@ -1,5 +1,7 @@
 // import faker from "faker";
 import { Column } from "react-table";
+import format from "date-fns/format";
+
 import { EncounteredPatient } from "../hooks/encounteredPatients/useEncounteredPatients";
 
 // import { Patient } from "../atoms/ehr/patients";
@@ -35,6 +37,7 @@ export const columns: Column<EncounteredPatient>[] = [
   {
     Header: "Last Appointment",
     accessor: "date",
+    Cell: ({ value }: { value: string}) => format(new Date(value), "MMM dd, yyyy"),
   },
   {
     Header: "Reason of Visit",
