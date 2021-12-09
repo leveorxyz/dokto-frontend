@@ -119,8 +119,8 @@ export default function ArrayField({
               key={`${name}.${index}.${data.name}`}
             >
               <chakra.span fontWeight="600">
-                {data.name}
-                {" : "}
+                {data.name.split("_").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                &nbsp;:&nbsp;
               </chakra.span>
               <chakra.span>
                 {fields[index] && (fields[index] as any)[data.name]}
