@@ -29,6 +29,7 @@ export default function ProfileSettingsTabs() {
           <Tab
             key={title}
             bgColor="white"
+            justifyContent="start"
             color="brand.dark"
             borderBottomWidth={idx === tabs.length - 1 ? "0" : "1px"}
             fontSize={["xs", "sm", "md", "lg", "lg"]}
@@ -37,7 +38,7 @@ export default function ProfileSettingsTabs() {
             _hover={{ bgColor: "brand.darkPink", color: "white" }}
             _selected={{ color: "white", bg: "brand.darkPink" }}
           >
-            <Heading as="h3" fontWeight="semibold" fontSize="lg">{title}</Heading>
+            <Heading as="h3" fontWeight="normal" fontSize="lg">{title}</Heading>
           </Tab>
         ))}
       </TabList>
