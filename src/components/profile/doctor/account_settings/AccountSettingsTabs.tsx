@@ -1,11 +1,70 @@
-import React from "react";
-import { Box } from "@chakra-ui/react";
-import AccountSettingsForm from "../../../forms/account-settings";
+import {
+  Tabs, TabList, TabPanels, Tab, TabPanel, Heading,
+} from "@chakra-ui/react";
+import DeleteAccount from "./DeleteAccount";
+import EmailNotification from "./EmailNotification";
+import PasswordReset from "./PasswordReset";
+import SecuritySettings from "./SecuritySettings";
 
 export default function ProfileSettingsTabs() {
+  const tabs = ["Security Settings", "Password Reset", "Email Notification", "Delete Account"];
   return (
-    <Box bgColor="white" p={6} rounded="xl">
-      <AccountSettingsForm />
-    </Box>
+    <Tabs
+      align="start"
+      variant="unstyled"
+      w="100%"
+      orientation="vertical"
+      display="grid"
+      gridTemplateColumns="auto 1fr"
+    >
+      <TabList sx={{
+        borderRadius: "0.5rem",
+        border: "1px",
+        borderColor: "brand.dark",
+        height: "max-content",
+        overflow: "hidden",
+      }}
+      >
+        {tabs.map((title, idx) => (
+          <Tab
+            key={title}
+            bgColor="white"
+            justifyContent="start"
+            color="brand.dark"
+            borderBottomWidth={idx === tabs.length - 1 ? "0" : "1px"}
+            fontSize={["xs", "sm", "md", "lg", "lg"]}
+            fontFamily="sora"
+            borderColor="brand.dark"
+            _hover={{ bgColor: "brand.darkPink", color: "white" }}
+            _selected={{ color: "white", bg: "brand.darkPink" }}
+          >
+            <Heading as="h3" fontWeight="normal" fontSize="lg">{title}</Heading>
+          </Tab>
+        ))}
+      </TabList>
+
+      <TabPanels
+        bgColor="white"
+        borderRadius="lg"
+        boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
+        filter="drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))"
+      >
+        <TabPanel>
+          <SecuritySettings />
+        </TabPanel>
+
+        <TabPanel>
+          <PasswordReset />
+        </TabPanel>
+
+        <TabPanel>
+          <EmailNotification />
+        </TabPanel>
+
+        <TabPanel>
+          <DeleteAccount />
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 }
