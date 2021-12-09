@@ -1,7 +1,9 @@
+import { useState } from "react";
 import {
   Box, Text, Flex,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
+import MessageInput from "../../components/call/edit-room/MessageInput";
 import BacktoDashboard from "../../components/call/edit-room/BacktoDashboard";
 import authAtom from "../../atoms/auth.atom";
 import BrandButton from "../../components/common/buttons/BrandButton";
@@ -10,6 +12,11 @@ import EditIcons from "../../components/call/edit-room/EditIcons";
 
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
+  const [showTextInput, setShowTextInput] = useState<boolean>(false);
+
+  // hide message input
+  const hideMessageInput = () => setShowTextInput(false);
+
   return (
     <div>
       <Box w="100%" paddingLeft="5%" paddingTop="35px">
@@ -53,7 +60,7 @@ const EditRoom = () => {
           paddingRight="25px"
         >
           <Flex justifyContent="space-around" alignItems="center">
-            <Box textAlign="center" cursor="pointer">
+            <Box textAlign="center" cursor="pointer" onClick={() => setShowTextInput(true)}>
               <EditIcons.TextIcon />
               <Text fontSize="20px" marginTop="10px">Text</Text>
             </Box>
@@ -67,6 +74,7 @@ const EditRoom = () => {
             </Box>
           </Flex>
         </Box>
+        {showTextInput && <MessageInput handleClose={hideMessageInput} />}
       </Box>
     </div>
   );
