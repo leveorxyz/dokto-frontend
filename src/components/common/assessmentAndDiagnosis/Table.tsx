@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { memo } from "react";
 import {
   TableProps,
@@ -24,14 +23,14 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { Encounters } from "../../atoms/ehr/encounters";
+import { PatientEncounters } from "../../../atoms/ehr/patientEncounters";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<Encounters> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<Encounters> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<Encounters>[];
-  rows: Row<Encounters>[];
-  prepareRow: (row: Row<Encounters>) => void;
+  getTableProps: (propGetter?: TablePropGetter<PatientEncounters> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<PatientEncounters> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<PatientEncounters>[];
+  rows: Row<PatientEncounters>[];
+  prepareRow: (row: Row<PatientEncounters>) => void;
 }
 
 function EncountersTable({
@@ -42,7 +41,7 @@ function EncountersTable({
   prepareRow,
 }: PropTypes) {
   return (
-    <Table {...getTableProps()}>
+    <Table {...getTableProps()} overflowX="scroll">
       <Thead>
         {headerGroups.map((headerGroup) => (
           <Tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.getHeaderGroupProps().key}>
@@ -51,7 +50,6 @@ function EncountersTable({
                 {...column.getHeaderProps(
                   column.getSortByToggleProps(),
                 )}
-                color="#000"
                 key={column.id}
               >
                 <Box
@@ -59,16 +57,7 @@ function EncountersTable({
                   alignItems="center"
                 >
                   {column.render("Header")}
-                  <chakra.span pl="4">
-                    {/* eslint-disable-next-line no-nested-ternary */}
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <Icon as={IoCaretDown} aria-label="sorted descending" />
-                      ) : (
-                        <Icon as={IoCaretUp} aria-label="sorted ascending" />
-                      )
-                    ) : null}
-                  </chakra.span>
+
                 </Box>
               </Th>
             ))}
@@ -86,7 +75,6 @@ function EncountersTable({
               _hover={{
                 cursor: "pointer",
                 bg: "gray.100",
-                color: "#3E4954",
               }}
             >
               {row.cells.map((cell) => (
@@ -94,13 +82,10 @@ function EncountersTable({
                   {...cell.getCellProps()}
                   key={cell.column.id}
                 >
-                  <Link to="/encounters">
-                    {cell.render("Cell")}
-                  </Link>
+                  {cell.render("Cell")}
                 </Td>
               ))}
             </Tr>
-
           );
         })}
       </Tbody>

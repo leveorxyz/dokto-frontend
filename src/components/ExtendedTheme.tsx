@@ -14,6 +14,18 @@ const theme = extendTheme({
         },
       },
     },
+    Table: {
+      variants: {
+        mytable: {
+          tr: {
+            _even: {
+              background: "#edfffd",
+            },
+          },
+        },
+      },
+    },
+
   },
   fonts: {
     heading: "Poppins",
@@ -26,7 +38,9 @@ const theme = extendTheme({
       midPink: "#B30AB3",
       darkSky: "#0095C1",
       darkCyan: "#00728A",
+      lightCyan: "#EEF9FF",
       dark: "#26004d",
+      darkPurple: "#7002C7",
     },
     primary: {
       dark: "#170041",

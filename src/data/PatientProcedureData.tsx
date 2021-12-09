@@ -2,7 +2,7 @@ import {
   Box, Flex, IconButton,
 } from "@chakra-ui/react";
 import faker from "faker";
-import { FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Column } from "react-table";
 import { PatientEncounters } from "../atoms/ehr/patientEncounters";
 
@@ -60,28 +60,27 @@ export const columns: Column<PatientEncounters>[] = [
       </Flex>
     ),
   },
+
   {
     Header: "",
-    accessor: "status",
-    Cell: ({ value }:any) => (
-      <Flex>
-        <Box color="#0029FF" mr="4px">Status: </Box>
-        {" "}
-        {value}
-      </Flex>
-    ),
-  },
-  {
-    Header: "",
-    accessor: "status",
+    accessor: "action",
     Cell: () => (
-      <IconButton
-        icon={<FiTrash2 size="24" color="#A42BAD" />}
-        backgroundColor="transparent"
-        aria-label="mute-unmute"
-        size="md"
-        rounded="full"
-      />
+      <Flex>
+        <IconButton
+          icon={<FiEdit size="24" color="#0029FF" />}
+          backgroundColor="transparent"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+        <IconButton
+          icon={<FiTrash2 size="24" color="#A42BAD" />}
+          backgroundColor="transparent"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+      </Flex>
     ),
   },
 
