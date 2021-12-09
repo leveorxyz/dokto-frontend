@@ -11,7 +11,7 @@ import ProviderRegIMG from "../../static/reg/ProviderReg.png";
 export default function Provider() {
   return (
     <>
-      <Box bgColor="#E5E5E5" pt={12}>
+      <Box bgColor="#F7F7FC" pt={12}>
         <Flex
           direction={["column", "column", "row", "row"]}
           justify={["center", "center", "space-between", "space-between"]}
@@ -28,7 +28,7 @@ export default function Provider() {
               Provider Registration
             </Heading>
           </Box>
-          <Image src={ProviderRegIMG} fill="contain" height="100%" />
+          <Image src={ProviderRegIMG} fill="contain" height="100%" transform="translateY(2rem)" />
         </Flex>
       </Box>
 
