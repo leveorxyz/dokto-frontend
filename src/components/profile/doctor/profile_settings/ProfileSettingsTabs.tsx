@@ -30,6 +30,8 @@ export default function ProfileSettingsTabs() {
         {tabs.map((title, idx) => (
           <Tab
             key={title}
+            textAlign="left"
+            justifyContent="start"
             bgColor="white"
             color="brand.dark"
             borderBottomWidth={idx === tabs.length - 1 ? "0" : "1px"}

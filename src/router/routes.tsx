@@ -31,11 +31,14 @@ const VideoCalls = lazy(() => import("../pages/calls"));
 const Logout = lazy(() => import("../pages/Logout"));
 const Calendar = lazy(() => import("../pages/Calendar"));
 const Patients = lazy(() => import("../pages/dashboard/Patients"));
-const Encounters = lazy(() => import("../pages/dashboard/Encounters"));
-const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/Assessment&Diagnosis"));
-const PlanOfCare = lazy(() => import("../pages/dashboard/PlanOfCare"));
-const PatientProcedure = lazy(() => import("../pages/dashboard/PatientProcedure"));
-const PatientEncounters = lazy(() => import("../pages/dashboard/PatientEncounters"));
+const Encounters = lazy(() => import("../pages/dashboard/ehr/Encounters"));
+const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/ehr/Assessment&Diagnosis"));
+const PlanOfCare = lazy(() => import("../pages/dashboard/ehr/PlanOfCare"));
+const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/PatientProcedure"));
+const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/FunctionalAndCognitiveStatus"));
+const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
+const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
+const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 
 export type RouteType = {
     displayName: string;
@@ -203,8 +206,16 @@ const routes: RouteType[] = [
     showInDashboard: false,
   },
   {
+    displayName: "Patient encounters",
+    path: "/patients/encounters-data",
+    component: <PatientEncounters />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
     displayName: "Assessment & Diagnosis",
-    path: "/patients/assessment-and-diagnosis",
+    path: "/patients/encounters-data/assessment-and-diagnosis",
     component: <AssessmentAndDiagnosis />,
     isProtected: true,
     showInNavbar: false,
@@ -212,7 +223,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Plan of Care",
-    path: "/patients/plan-of-care",
+    path: "/patients/encounters-data/plan-of-care",
     component: <PlanOfCare />,
     isProtected: true,
     showInNavbar: false,
@@ -220,16 +231,32 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient Procedure",
-    path: "/patients/patient-procedure",
+    path: "/patients/encounters-data/patient-procedure",
     component: <PatientProcedure />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
   },
   {
-    displayName: "Patient encounters",
-    path: "/encounters",
-    component: <PatientEncounters />,
+    displayName: "Functional And Cognitive Status",
+    path: "/patients/encounters-data/functional-and-cognitive-status",
+    component: <FunctionalAndCognitiveStatus />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Chief Complaints and HPI(History Of Present Illness)",
+    path: "/patients/encounters-data/chief-complaints-and-HPI",
+    component: <ChiefComplaintsAndHPI />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
+    displayName: "Vitals",
+    path: "/patients/encounters-data/vitals",
+    component: <Vitals />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,

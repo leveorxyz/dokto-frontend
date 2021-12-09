@@ -1,25 +1,38 @@
 import { useMemo } from "react";
-import { Badge } from "@chakra-ui/react";
+import { Badge, Box, Flex } from "@chakra-ui/react";
 
 export default function PatientStatus({ value }: {value: string}) {
   const bgColor = useMemo(() => {
     switch (value) {
-      case "New Patient":
-        return "rgba(164, 43, 173, 0.1)";
-      case "Recovered":
+      case "new patient":
+        return "#fff";
+      case "recovering":
         return "rgba(143, 140, 255, 0.1)";
       case "In Treatment":
         return "rgba(255, 92, 0, 0.1)";
       default:
-        return "gray.500";
+        return "#fff";
+    }
+  }, [value]);
+
+  const borderColor = useMemo(() => {
+    switch (value) {
+      case "new patient":
+        return "rgba(164, 43, 173, 0.1)";
+      case "recovering":
+        return "rgba(143, 140, 255, 0.1)";
+      case "In Treatment":
+        return "rgba(255, 92, 0, 0.1)";
+      default:
+        return "gray.200";
     }
   }, [value]);
 
   const color = useMemo(() => {
     switch (value) {
-      case "New Patient":
+      case "new patient":
         return "rgba(164, 43, 173, 1)";
-      case "Recovered":
+      case "recovering":
         return "rgba(45, 40, 255, 1)";
       case "In Treatment":
         return "rgba(255, 92, 0, 1)";
@@ -30,14 +43,19 @@ export default function PatientStatus({ value }: {value: string}) {
 
   return (
     <Badge
+      border="1px solid"
+      borderColor={borderColor}
       bgColor={bgColor}
       color={color}
       variant="subtle"
       py={2}
       px={3}
-      rounded="md"
+      rounded="sm"
     >
-      {value}
+      <Flex alignItems="center">
+        <Box h="2" w="2" mr="2" rounded="full" backgroundColor={color} />
+        {value}
+      </Flex>
     </Badge>
   );
 }

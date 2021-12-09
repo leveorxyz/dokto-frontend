@@ -18,7 +18,7 @@ const SpecialtiesServices = () => {
   }
   return (
     <Box>
-      <SpacedContainer py={20}>
+      <SpacedContainer py={10} mx={12}>
         <Box
           d="flex"
           flexDir="column"

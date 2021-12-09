@@ -46,6 +46,9 @@ const CameraButton = ({ room }: PropTypes) => {
       aria-label="camera-enable-disable"
       title="Camera Enable/Disable"
       colorScheme="blackAlpha"
+      color="white"
+      bg={isLocalVideoTrackDisabled ? "rgba(255, 0, 0, 0.3)" : "rgba(0, 0, 0, 0.3)"}
+      _hover={{ bg: isLocalVideoTrackDisabled ? "rgba(255, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.5)" }}
       mx={3}
       size="lg"
       rounded="full"

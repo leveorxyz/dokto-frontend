@@ -1,6 +1,7 @@
 import { State, City, Country } from "country-state-city";
 import { FieldTypes, FormDataType } from "../../../types/form";
 import MobileNo from "../../custom/MobileNo";
+import TnC from "../../custom/TnC";
 
 const firstColumn = (watch:any) :FormDataType => ({
   type: FieldTypes.COLUMN,
@@ -211,23 +212,11 @@ const secondColumn = (watch: any) :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.CHECKBOX,
-      name: "termsOfUseAndPrivacyPolicy",
-      label: "",
-      direction: "column",
-      options: [{
-        value: "termsOfUseAndPrivacyPolicy",
-        label: "I agree to the terms of use and privacy policy",
-        required: true,
-      }],
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
+      type: FieldTypes.CUSTOM,
+      name: "ALL",
+      label: "Terms & Privacy",
+      component: TnC,
     },
-
   ],
 });
 
