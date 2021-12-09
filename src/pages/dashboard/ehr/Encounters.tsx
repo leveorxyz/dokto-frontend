@@ -10,7 +10,6 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { matchSorter } from "match-sorter";
-import { useSearchParams } from "react-router-dom";
 import debounce from "lodash/debounce";
 
 import { IoSearch } from "react-icons/io5";
@@ -18,14 +17,11 @@ import PatientEncountersLayout from "../../../components/common/PatientEncounter
 import encountersAtom from "../../../atoms/ehr/encounters";
 import { columns } from "../../../data/EncountersData";
 import EncountersTable from "../../../components/encounters/Table";
-import { SpacedContainer } from "../../../components/common/Containers";
 
 export default function Encounters() {
   const data = useRecoilValue(encountersAtom);
   const [searchParam, setSearchParam] = useState<string | null>(null);
   const [searchParamDebounced, setSearchParamDebounced] = useState<string | null>(null);
-  const [urlSearchParams] = useSearchParams();
-  const name = urlSearchParams.get("name") || "";
 
   const debouncedSearch = useRef(
     debounce((x) => setSearchParamDebounced(x), 500),
@@ -59,70 +55,68 @@ export default function Encounters() {
 
   return (
     <PatientEncountersLayout>
-      <SpacedContainer>
-        <Box
-          d="flex"
-          flexDir="column"
-          borderRadius="md"
-          borderColor="brand.darkPink"
-          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
-          py="8"
-          px="6"
-          backgroundColor="#fff"
-        >
-          <Flex justifyContent="space-between" pb={6} wrap="wrap">
-            <Box>
-              <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <Box as={IoSearch} size="1rem" color="gray.400" />
-                </InputLeftElement>
+      <Box
+        d="flex"
+        flexDir="column"
+        borderRadius="md"
+        borderColor="brand.darkPink"
+        boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
+        py="8"
+        px="6"
+        backgroundColor="#fff"
+      >
+        <Flex justifyContent="space-between" pb={6} wrap="wrap">
+          <Box>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <Box as={IoSearch} size="1rem" color="gray.400" />
+              </InputLeftElement>
 
-                <Input
-                  placeholder="Search"
-                  width="60%"
-                  mr="4"
-                  value={searchParam ?? ""}
-                  variant="filled"
-                  onChange={(e) => {
-                    setSearchParam(e.target.value);
-                    debouncedSearch(e.target.value);
-                  }}
-                />
-
-              </InputGroup>
-            </Box>
-            <Box>
-              <Button
-                border="2px"
-                borderRadius="0px"
-                borderColor="brand.darkPink"
-                backgroundColor="brand.darkPink"
-                py="5"
-                px="10"
-                color="white"
-                _hover={{
-                  borderColor: "brand.darkPink",
-                  backgroundColor: "brand.darkPink",
+              <Input
+                placeholder="Search"
+                width="60%"
+                mr="4"
+                value={searchParam ?? ""}
+                variant="filled"
+                onChange={(e) => {
+                  setSearchParam(e.target.value);
+                  debouncedSearch(e.target.value);
                 }}
-              >
-                +New
-              </Button>
-            </Box>
-          </Flex>
-          <Box overflowX="scroll">
-            <EncountersTable
-              {...{
-                getTableProps,
-                getTableBodyProps,
-                headerGroups,
-                rows,
-                prepareRow,
-              }}
-            />
-          </Box>
+              />
 
+            </InputGroup>
+          </Box>
+          <Box>
+            <Button
+              border="2px"
+              borderRadius="0px"
+              borderColor="brand.darkPink"
+              backgroundColor="brand.darkPink"
+              py="5"
+              px="10"
+              color="white"
+              _hover={{
+                borderColor: "brand.darkPink",
+                backgroundColor: "brand.darkPink",
+              }}
+            >
+              +New
+            </Button>
+          </Box>
+        </Flex>
+        <Box overflowX="scroll">
+          <EncountersTable
+            {...{
+              getTableProps,
+              getTableBodyProps,
+              headerGroups,
+              rows,
+              prepareRow,
+            }}
+          />
         </Box>
-      </SpacedContainer>
+
+      </Box>
     </PatientEncountersLayout>
   );
 }
