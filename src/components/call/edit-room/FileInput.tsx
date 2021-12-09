@@ -1,7 +1,11 @@
 import { Box, Icon, Text } from "@chakra-ui/react";
 import { IoAddSharp } from "react-icons/io5";
 
-const FileInput = () => (
+type PropTypes = {
+  handleAdd: ()=>void
+}
+
+const FileInput = ({ handleAdd }:PropTypes) => (
   <Box
     border="2px dashed #170041"
     width="60%"
@@ -16,6 +20,7 @@ const FileInput = () => (
       backgroundColor: "#170041",
       color: "white",
     }}
+    onClick={handleAdd}
   >
     <Box textAlign="center">
       <Icon as={IoAddSharp} fontSize="6rem" />
