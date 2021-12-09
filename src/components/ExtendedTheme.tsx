@@ -39,6 +39,7 @@ const theme = extendTheme({
       darkSky: "#0095C1",
       darkCyan: "#00728A",
       dark: "#26004d",
+      darkPurple: "#7002C7",
     },
     primary: {
       dark: "#170041",
