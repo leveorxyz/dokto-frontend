@@ -15,29 +15,31 @@ import { IoPrintOutline } from "react-icons/io5";
 
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 
+const baseUrl = "/patients/encounters-data";
+
 const encountersData = [
   {
-    url: "/patients/vitals",
+    url: `${baseUrl}/vitals`,
     title: "Vitals",
   },
   {
-    url: "/patients/functional-and-cognitive-status",
+    url: `${baseUrl}/functional-and-cognitive-status`,
     title: "Functional And Cognitive Status",
   },
   {
-    url: "/patients/chief-complaints-and-HPI",
+    url: `${baseUrl}/chief-complaints-and-HPI`,
     title: "Chief Complaints and HPI",
   },
   {
-    url: "/patients/plan-of-care",
+    url: `${baseUrl}/plan-of-care`,
     title: "Plan of Care",
   },
   {
-    url: "/patients/assessment-and-diagnosis",
+    url: `${baseUrl}/assessment-and-diagnosis`,
     title: "Assessment and Diagnosis",
   },
   {
-    url: "/patients/patient-procedure",
+    url: `${baseUrl}/patient-procedure`,
     title: "Patient Procedure",
   },
 ];

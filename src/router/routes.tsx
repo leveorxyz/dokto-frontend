@@ -206,8 +206,16 @@ const routes: RouteType[] = [
     showInDashboard: false,
   },
   {
+    displayName: "Patient encounters",
+    path: "/patients/encounters-data",
+    component: <PatientEncounters />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
     displayName: "Assessment & Diagnosis",
-    path: "/patients/assessment-and-diagnosis",
+    path: "/patients/encounters-data/assessment-and-diagnosis",
     component: <AssessmentAndDiagnosis />,
     isProtected: true,
     showInNavbar: false,
@@ -215,7 +223,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Plan of Care",
-    path: "/patients/plan-of-care",
+    path: "/patients/encounters-data/plan-of-care",
     component: <PlanOfCare />,
     isProtected: true,
     showInNavbar: false,
@@ -223,7 +231,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient Procedure",
-    path: "/patients/patient-procedure",
+    path: "/patients/encounters-data/patient-procedure",
     component: <PatientProcedure />,
     isProtected: true,
     showInNavbar: false,
@@ -231,7 +239,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Functional And Cognitive Status",
-    path: "/patients/functional-and-cognitive-status",
+    path: "/patients/encounters-data/functional-and-cognitive-status",
     component: <FunctionalAndCognitiveStatus />,
     isProtected: true,
     showInNavbar: false,
@@ -239,7 +247,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Chief Complaints and HPI(History Of Present Illness)",
-    path: "/patients/chief-complaints-and-HPI",
+    path: "/patients/encounters-data/chief-complaints-and-HPI",
     component: <ChiefComplaintsAndHPI />,
     isProtected: true,
     showInNavbar: false,
@@ -247,17 +255,8 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Vitals",
-    path: "/patients/vitals",
+    path: "/patients/encounters-data/vitals",
     component: <Vitals />,
-    isProtected: true,
-    showInNavbar: false,
-    showInDashboard: false,
-  },
-
-  {
-    displayName: "Patient encounters",
-    path: "/encounters",
-    component: <PatientEncounters />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,

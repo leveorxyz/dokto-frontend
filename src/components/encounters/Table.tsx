@@ -94,7 +94,7 @@ function EncountersTable({
                   {...cell.getCellProps()}
                   key={cell.column.id}
                 >
-                  <Link to="/encounters">
+                  <Link to="/patients/encounters-data">
                     {cell.render("Cell")}
                   </Link>
                 </Td>
