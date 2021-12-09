@@ -6,16 +6,8 @@ import PatientEncountersLayout from "../../../components/common/PatientEncounter
 
 const encountersData = [
   {
-    url: "/patients/assessment-and-diagnosis",
-    title: "Assessment and Diagnosis",
-  },
-  {
-    url: "/patients/plan-of-care",
-    title: "Plan of Care",
-  },
-  {
-    url: "/patients/patient-procedure",
-    title: "Patient Procedure",
+    url: "/patients/vitals",
+    title: "Vitals",
   },
   {
     url: "/patients/functional-and-cognitive-status",
@@ -26,8 +18,16 @@ const encountersData = [
     title: "Chief Complaints and HPI",
   },
   {
-    url: "/patients/vitals",
-    title: "Vitals",
+    url: "/patients/plan-of-care",
+    title: "Plan of Care",
+  },
+  {
+    url: "/patients/assessment-and-diagnosis",
+    title: "Assessment and Diagnosis",
+  },
+  {
+    url: "/patients/patient-procedure",
+    title: "Patient Procedure",
   },
 ];
 
