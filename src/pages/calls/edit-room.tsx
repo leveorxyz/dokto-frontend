@@ -4,6 +4,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import MessageInput from "../../components/call/edit-room/MessageInput";
+import FileInput from "../../components/call/edit-room/FileInput";
 import BacktoDashboard from "../../components/call/edit-room/BacktoDashboard";
 import authAtom from "../../atoms/auth.atom";
 import BrandButton from "../../components/common/buttons/BrandButton";
@@ -12,10 +13,10 @@ import EditIcons from "../../components/call/edit-room/EditIcons";
 
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
-  const [showTextInput, setShowTextInput] = useState<boolean>(false);
+  const [showInput, setShowInput] = useState<""|"image"|"text"|"video">("");
 
   // hide message input
-  const hideMessageInput = () => setShowTextInput(false);
+  const hideInput = () => setShowInput("");
 
   return (
     <div>
@@ -60,21 +61,23 @@ const EditRoom = () => {
           paddingRight="25px"
         >
           <Flex justifyContent="space-around" alignItems="center">
-            <Box textAlign="center" cursor="pointer" onClick={() => setShowTextInput(true)}>
+            <Box textAlign="center" cursor="pointer" onClick={() => setShowInput("text")}>
               <EditIcons.TextIcon />
               <Text fontSize="20px" marginTop="10px">Text</Text>
             </Box>
-            <Box textAlign="center" cursor="pointer">
+            <Box textAlign="center" cursor="pointer" onClick={() => setShowInput("image")}>
               <EditIcons.ImageIcon />
               <Text fontSize="20px" marginTop="10px">Image</Text>
             </Box>
-            <Box textAlign="center" cursor="pointer">
+            <Box textAlign="center" cursor="pointer" onClick={() => setShowInput("video")}>
               <EditIcons.VideoIcon />
               <Text fontSize="20px" marginTop="10px">Video</Text>
             </Box>
           </Flex>
         </Box>
-        {showTextInput && <MessageInput handleClose={hideMessageInput} />}
+        {showInput === "text" && <MessageInput handleClose={hideInput} />}
+        {(showInput === "image" || showInput === "video") && <FileInput />}
+
       </Box>
     </div>
   );
