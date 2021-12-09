@@ -1,6 +1,7 @@
 import {
   Tabs, TabList, TabPanels, Tab, TabPanel, Heading,
 } from "@chakra-ui/react";
+import PasswordReset from "./PasswordReset";
 import SecuritySettings from "./SecuritySettings";
 
 export default function ProfileSettingsTabs() {
@@ -49,7 +50,9 @@ export default function ProfileSettingsTabs() {
           <SecuritySettings />
         </TabPanel>
 
-        <TabPanel />
+        <TabPanel>
+          <PasswordReset />
+        </TabPanel>
 
         <TabPanel />
 

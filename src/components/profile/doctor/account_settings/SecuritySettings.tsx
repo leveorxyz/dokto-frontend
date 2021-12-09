@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
 import SecuritySettingsForm from "../../../forms/account-settings-forms/security-settings";
 
