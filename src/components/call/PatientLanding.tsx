@@ -25,7 +25,7 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
           <Image
             rounded="full"
             boxSize="160px"
-            src={data?.data?.result?.identification_photo || DoctorImage}
+            src={data?.data?.result?.profile_photo || DoctorImage}
             alt={roomName}
             boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
             marginRight="30px"
