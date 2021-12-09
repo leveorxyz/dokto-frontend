@@ -1,6 +1,7 @@
 import {
   Tabs, TabList, TabPanels, Tab, TabPanel, Heading,
 } from "@chakra-ui/react";
+import DeleteAccount from "./DeleteAccount";
 import EmailNotification from "./EmailNotification";
 import PasswordReset from "./PasswordReset";
 import SecuritySettings from "./SecuritySettings";
@@ -59,7 +60,9 @@ export default function ProfileSettingsTabs() {
           <EmailNotification />
         </TabPanel>
 
-        <TabPanel />
+        <TabPanel>
+          <DeleteAccount />
+        </TabPanel>
       </TabPanels>
     </Tabs>
   );
