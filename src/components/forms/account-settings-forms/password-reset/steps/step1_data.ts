@@ -7,48 +7,41 @@ const firstColumn = (watch: any) :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.SECTION,
-      name: "password_reset",
-      label: "Password Reset",
-      fields: [
-        {
-          type: FieldTypes.INPUT,
-          name: "remember_password",
-          label: "Last Remember Password",
-          placeholder: "Last Remember Password",
-          inputType: "password",
-          rules: {
-            pattern: {
-              value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-              message: "Minimum eight characters, at least one letter and one number",
-            },
-          },
+      type: FieldTypes.INPUT,
+      name: "remember_password",
+      label: "Last Remember Password",
+      placeholder: "Last Remember Password",
+      inputType: "password",
+      rules: {
+        pattern: {
+          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
+          message: "Minimum eight characters, at least one letter and one number",
         },
-        {
-          type: FieldTypes.INPUT,
-          name: "password",
-          label: "Choose a new Password",
-          placeholder: "New Password",
-          inputType: "password",
-          rules: {
-            pattern: {
-              value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-              message: "Minimum eight characters, at least one letter and one number",
-            },
-          },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "password",
+      label: "Choose a new Password",
+      placeholder: "New Password",
+      inputType: "password",
+      rules: {
+        pattern: {
+          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
+          message: "Minimum eight characters, at least one letter and one number",
         },
-        {
-          type: FieldTypes.INPUT,
-          name: "confirm_password",
-          label: "Confirm new Password",
-          inputType: "password",
-          placeholder: "Confirm new Password",
-          rules: {
-            validate: (v) => (v === watch("password") ? true : "Passwords do not match"),
-            deps: ["password"],
-          },
-        },
-      ],
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "confirm_password",
+      label: "Confirm new Password",
+      inputType: "password",
+      placeholder: "Confirm new Password",
+      rules: {
+        validate: (v) => (v === watch("password") ? true : "Passwords do not match"),
+        deps: ["password"],
+      },
     },
   ],
 });
