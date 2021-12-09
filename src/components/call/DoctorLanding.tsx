@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import {
   Flex, Box, Text, Image,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import BrandButton from "../common/buttons/BrandButton";
 import ConsultingImage from "../../static/doctor-consulting.svg";
 import EditRoom from "../../static/waiting-room.svg";
@@ -30,6 +31,7 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
   return (
     <Box w="100%" paddingLeft="5%">
       <Box
+        backgroundColor="#fff"
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
         width="60%"
         height="243px"
@@ -42,7 +44,7 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
       >
         <Text fontSize="25px">{`Welcome, ${roomName}`}</Text>
         <Flex marginTop="45px" width="100%">
-          <Box backgroundColor="white" padding="15px" width="60%" borderRadius="8px" marginRight="25px">
+          <Box backgroundColor="#f6f6f7" padding="15px" width="60%" borderRadius="8px" marginRight="25px">
             {roomURL}
           </Box>
           <BrandButton onClick={handleCopy}>
@@ -53,6 +55,7 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
       <Box width="60%" marginTop="30px">
         <Flex justifyContent="space-between">
           <Box
+            backgroundColor="#fff"
             width="60%"
             height="243px"
             boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
@@ -66,7 +69,11 @@ const DoctorLanding = ({ roomName, userName, handleJoin }:PropTypes) => {
             <Image src={ConsultingImage} margin="0 auto" />
             <Text fontSize="20px" fontWeight="500">Enter Your Consulting Room</Text>
           </Box>
+
           <Box
+            as={Link}
+            backgroundColor="#fff"
+            to="/calls/edit-room"
             width="35%"
             height="243px"
             boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"

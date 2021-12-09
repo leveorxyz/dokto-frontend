@@ -46,7 +46,7 @@ export default function VideoCalls() {
   const isPatient = useMemo(() => authState?.user?.userType === "PATIENT", [authState]);
 
   const [searchParams] = useSearchParams();
-  const queryRoomName = isDoctor ? authState.user?.fullName : searchParams.get("doctor");
+  const queryRoomName = isDoctor ? authState.user?.username : searchParams.get("doctor");
 
   const {
     isOpen: isChatWindowOpen,
