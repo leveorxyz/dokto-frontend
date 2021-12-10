@@ -7,9 +7,9 @@ import PatientlistIcon from "../static/Patientlist.svg";
 import LogOutIcon from "../static/account_logout.svg";
 import ChatIcon from "../static/messages.svg";
 import AccountSettingsIcon from "../static/supervised_user_circle.svg";
-import AppointmentBookingIcon from "../static/Schedulesettings.svg";
 import PayoutIcon from "../static/Payout.svg";
 import InvoiceIcon from "../static/invoice.svg";
+import VideoConf from "../static/video_conference.svg";
 
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
@@ -131,13 +131,6 @@ const routes: RouteType[] = [
     showInNavbar: false,
   },
   {
-    displayName: "Video Call",
-    path: "/calls",
-    component: <VideoCalls />,
-    isProtected: true,
-    showInNavbar: false,
-  },
-  {
     displayName: "Edit Waiting Room",
     path: "/calls/edit-room",
     component: <EditRoom />,
@@ -177,6 +170,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     icon: SpecialtiesIcon,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Appointments",
@@ -194,7 +188,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
-    icon: SettingsIcon,
+    icon: AccountSettingsIcon,
   },
   {
     displayName: "Patients",
@@ -204,6 +198,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     icon: PatientlistIcon,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Encounters",
@@ -212,6 +207,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Patient encounters",
@@ -220,6 +216,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Assessment & Diagnosis",
@@ -228,6 +225,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Plan of Care",
@@ -236,6 +234,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Patient Procedure",
@@ -244,6 +243,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Functional And Cognitive Status",
@@ -252,6 +252,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Chief Complaints and HPI(History Of Present Illness)",
@@ -260,6 +261,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Vitals",
@@ -268,6 +270,46 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Inbox",
+    path: "/inbox",
+    component: <NotImplemented />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+    icon: ChatIcon,
+  },
+  {
+    displayName: "Video Conference",
+    path: "/calls",
+    component: <VideoCalls />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+    icon: VideoConf,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Payout Settings",
+    path: "/payout",
+    component: <NotImplemented />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+    icon: PayoutIcon,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Invoices",
+    path: "/invoices",
+    component: <NotImplemented />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+    icon: InvoiceIcon,
+    allowedRoles: ["DOCTOR", "PATIENT"],
   },
   {
     displayName: "Logout",

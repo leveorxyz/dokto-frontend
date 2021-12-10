@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   Box,
-  Flex,
   Text,
 } from "@chakra-ui/react";
 
@@ -16,8 +15,12 @@ export default function CardDashboardHome({ icon, title, path }: PropTypes) {
   return (
     <Link to={path}>
       <Box
-        w="100%"
-        height="100%"
+        d="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        boxSize={["40vw", "40vw", "10rem", "15rem"]}
+        m={6}
         bg="white"
         borderRadius="3xl"
         cursor="pointer"
@@ -26,18 +29,14 @@ export default function CardDashboardHome({ icon, title, path }: PropTypes) {
           filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
         }}
       >
-        <Flex
-          direction="column"
-          alignItems="center"
-          py={{
-            base: 12, sm: 12, md: 20, lg: 20, xl: 20,
-          }}
-        >
+        <Box>
           {icon}
+        </Box>
+        <Box>
           <Text fontSize="xl" textAlign="center" color="#11142D" mt="4">
             {title}
           </Text>
-        </Flex>
+        </Box>
       </Box>
     </Link>
   );
