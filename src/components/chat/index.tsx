@@ -118,7 +118,7 @@ export default function Chat({
       isOpen={isOpen}
       placement="right"
       onClose={onClose}
-      size="md"
+      size="sm"
     >
       <DrawerOverlay />
       <DrawerContent>
