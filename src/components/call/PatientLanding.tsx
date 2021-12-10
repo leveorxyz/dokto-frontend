@@ -25,13 +25,21 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
           <Image
             rounded="full"
             boxSize="160px"
+            objectFit="cover"
             src={data?.data?.result?.profile_photo || DoctorImage}
             alt={roomName}
             boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
             marginRight="30px"
           />
           <Box as="p" fontSize="30px" color="black" fontWeight="600">
-            {callEnded ? "The call has been ended! " : `Welcome to Dr. ${roomName}'s waiting  room. Your specialist will see you shortly.`}
+            {callEnded ? "The call has been ended! " : (
+              <span>
+                Welcome to Dr.
+                {" "}
+                <Box as="span" textTransform="capitalize">{roomName}</Box>
+                &apos;s waiting  room. Your specialist will see you shortly.
+              </span>
+            )}
           </Box>
         </Flex>
       </Box>
