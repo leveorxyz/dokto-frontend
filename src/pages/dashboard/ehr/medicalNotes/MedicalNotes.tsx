@@ -9,14 +9,15 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { medNotes } from "../../../data/MedicalNotes";
-import CustomAccordion from "../../../components/common/CustomAccordion";
-import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
-import LoadingPage from "../../../components/common/fallback/LoadingPage";
+import { medNotes } from "../../../../data/MedicalNotes";
+import CustomAccordion from "../../../../components/common/CustomAccordion";
+import PatientEncountersLayout from "../../../../components/common/PatientEncountersLayout";
+import LoadingPage from "../../../../components/common/fallback/LoadingPage";
+import CustomCheckboxField from "./CustomCheckbox";
 
 export default function MedicalNotes() {
   const {
-    register, handleSubmit, formState: { isSubmitting, errors },
+    register, handleSubmit, setValue, formState: { isSubmitting, errors },
   } = useForm(
     { mode: "onBlur" },
   );
@@ -47,24 +48,31 @@ export default function MedicalNotes() {
             <CustomAccordion title="Review of Systems">
               <Box>
                 {medNotes.map((medicalNote) => (
-                  <FormControl
-                    key={medicalNote.title}
-                    isInvalid={!!errors.medicalNote?.input}
-                    my={6}
-                  >
+                  <Box key={medicalNote.title}>
                     <Flex>
                       <FormLabel htmlFor={medicalNote.title} color="primary.dark" w="10%" minW="160px">{medicalNote.title}</FormLabel>
-                      <Box>Checkboxes go here</Box>
+                      <Box>
+                        <CustomCheckboxField
+                          name={medicalNote.title}
+                          options={medicalNote.checkBoxes}
+                          errors={errors}
+                          direction="row"
+                          setValue={setValue}
+                        />
+                      </Box>
                     </Flex>
+                    <FormControl
+                      key={medicalNote.title}
+                      isInvalid={!!errors.medicalNote?.input}
+                      mb={6}
+                    >
+                      <Input
+                        type="text"
+                        {...register(medicalNote.input)}
+                      />
 
-                    <Input
-                      type="text"
-                      {...register(medicalNote.input)}
-                    />
-                    <FormErrorMessage>
-                      {errors.medicalNote?.input && errors.medicalNote.input.message}
-                    </FormErrorMessage>
-                  </FormControl>
+                    </FormControl>
+                  </Box>
                 ))}
               </Box>
             </CustomAccordion>

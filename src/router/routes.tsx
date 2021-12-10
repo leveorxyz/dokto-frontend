@@ -39,7 +39,7 @@ const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/F
 const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
-const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/MedicalNotes"));
+const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
 
