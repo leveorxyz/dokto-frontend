@@ -144,7 +144,7 @@ export default function VideoCalls() {
             setCurrentConversationRoom={setCurrentConversationRoom}
             openChatWindow={openChatWindow}
           />
-          <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} />
+          {/* <RoomBreadcrumb doctor={roomName} isPatient={isPatient} openChatWindow={openChatWindow} /> */}
         </>
       )}
       {/* Show topbar for patient  */}

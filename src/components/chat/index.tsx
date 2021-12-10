@@ -5,6 +5,7 @@ import { Conversation, Message } from "@twilio/conversations";
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { uniqBy } from "lodash";
+import { format } from "date-fns";
 import {
   Box,
   Flex,
@@ -65,7 +66,7 @@ const ParticipantText = ({ text, isLocal, dateCreated }: ParticipantTextType) =>
         {...styles}
       >
         {text}
-        <Box><sub {...styles}>{dateCreated.toLocaleString()}</sub></Box>
+        <Box><sub {...styles}>{format(dateCreated, "MMM dd, yyyy hh:mm aa").toLocaleString()}</sub></Box>
       </Box>
     </Box>
   );
@@ -117,7 +118,7 @@ export default function Chat({
       isOpen={isOpen}
       placement="right"
       onClose={onClose}
-      size="md"
+      size="sm"
     >
       <DrawerOverlay />
       <DrawerContent>
