@@ -35,6 +35,10 @@ const encountersData = [
     title: "Social History",
   },
   {
+    url: `${baseUrl}/medical-notes`,
+    title: "Medical Notes",
+  },
+  {
     url: `${baseUrl}/plan-of-care`,
     title: "Plan of Care",
   },
