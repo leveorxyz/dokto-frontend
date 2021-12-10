@@ -18,7 +18,7 @@ const Sidebar = () => {
     <Flex
       justifyContent="flex-start"
       direction="column"
-      minHeight="calc(100vh - 4rem)"
+      height="calc(100vh - 4rem)"
       overflowY="scroll"
       overflowX="hidden"
       bg="white"
@@ -46,7 +46,7 @@ const Sidebar = () => {
             <Flex
               wrap="nowrap"
               py={3}
-              px={6}
+              px={2}
               my={2}
               mx={6}
               bg={location.pathname.includes(route.path) ? "brand.dark" : "transparent"}
@@ -62,12 +62,10 @@ const Sidebar = () => {
               {route.icon && (
               <Image
                 m={1}
+                mr={2}
                 src={route.icon}
                 alt={route.displayName}
                 boxSize="1.2rem"
-                sx={{
-                  fill: "brand.darkPink",
-                }}
               />
               )}
               <Box>
