@@ -1,5 +1,6 @@
 import format from "date-fns/format";
 import subYears from "date-fns/subYears";
+import differenceInYears from "date-fns/differenceInYears";
 
 import {
   FieldTypes, FormDataType,
@@ -85,6 +86,11 @@ const firstColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+        validate: (v) => (
+          differenceInYears(new Date(), new Date(v)) >= 18
+            ? true
+            : "You need to be 18 years or older to sign up"
+        ),
       },
     },
     {
