@@ -50,7 +50,7 @@ const Videos = ({ room }: PropTypes) => {
   }, [addParticipant, participants, removeParticipant, room]);
 
   return (
-    <Flex direction="row" wrap="nowrap" w="100%" justifyContent="stretch" paddingTop="10" paddingRight="3">
+    <Flex direction="row" wrap="nowrap" w="100%" justifyContent="stretch" paddingRight="3">
       <Flex direction="column" flexGrow={1}>
         {/* Local screen share preview show only when screen share state is active */}
         {isScreenSharingActive
