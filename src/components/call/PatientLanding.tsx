@@ -32,7 +32,13 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
             marginRight="2rem"
           />
           <Box width="70%" fontSize="30px" color="black" fontWeight="600">
-            {callEnded ? "The call has been ended!" : (
+            {callEnded ? (
+              <span>
+                This call has now ended.
+                <br />
+                Thank you.
+              </span>
+            ) : (
               <span>
                 Welcome to Dr.
                 {" "}
