@@ -5,12 +5,15 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { useLocation, Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
+import authAtom from "../../atoms/auth.atom";
 import routes from "../../router/routes";
 import DashboardTopBar from "./DashboardTopBar";
 
 const Sidebar = () => {
   const location = useLocation();
+  const authState = useRecoilValue(authAtom);
   return (
     <Flex
       justifyContent="flex-start"
@@ -27,6 +30,7 @@ const Sidebar = () => {
     >
       {routes
         .filter((route) => route.showInDashboard)
+        .filter(({ allowedRoles }) => (allowedRoles ? allowedRoles.includes(authState.user?.userType ?? "") : true))
         .map((route) => (
           <ChakraLink
             as={Link}
