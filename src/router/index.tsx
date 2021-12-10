@@ -17,24 +17,37 @@ export default function CustomRoutes() {
     <Routes>
       {
         routes
-          .map(({ path, component, isProtected }) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                // eslint-disable-next-line no-nested-ternary
-                !authState.isLoggedIn && isProtected
-                  ? (
-                    <Navigate to="/" />
-                  )
-                  : (
-                    <Suspense fallback={<Loading />}>
-                      {component}
-                    </Suspense>
-                  )
-              }
-            />
-          ))
+          .map(({
+            path,
+            component,
+            isProtected,
+            allowedRoles,
+          }) => {
+            const hashAuth = !(!authState.isLoggedIn && isProtected);
+            const hashRole = allowedRoles
+              ? allowedRoles.includes(authState?.user?.userType ?? "")
+              : true;
+            const shouldDisplay = hashAuth && hashRole;
+
+            return (
+              <Route
+                key={path}
+                path={path}
+                element={
+                  // eslint-disable-next-line no-nested-ternary
+                  !shouldDisplay
+                    ? (
+                      <Navigate to={hashAuth ? "/dashboard" : "/"} />
+                    )
+                    : (
+                      <Suspense fallback={<Loading />}>
+                        {component}
+                      </Suspense>
+                    )
+                }
+              />
+            );
+          })
       }
     </Routes>
   );
