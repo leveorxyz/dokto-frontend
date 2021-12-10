@@ -1,25 +1,34 @@
 import {
   Heading,
   Box,
-  Accordion,
-  AccordionButton,
-  AccordionItem,
-  AccordionPanel,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Flex,
 } from "@chakra-ui/react";
-import { RiArrowUpSFill, RiArrowDownSFill } from "react-icons/ri";
-import { GoPrimitiveDot } from "react-icons/go";
+import { useForm } from "react-hook-form";
+import { medNotes } from "../../../data/MedicalNotes";
 import CustomAccordion from "../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
-import doctorProfileAtom from "../../../atoms/doctorProfile";
-import useProfile from "../../../hooks/profile/useProfile";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
 
 export default function MedicalNotes() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const {
+    register, handleSubmit, formState: { isSubmitting, errors },
+  } = useForm(
+    { mode: "onBlur" },
+  );
 
-  if (isLoading) {
+  if (isSubmitting) {
     return <LoadingPage />;
   }
+
+  const onSubmit = (data:any) => {
+    console.log(31);
+    console.log(data);
+  };
 
   return (
     <PatientEncountersLayout>
@@ -34,9 +43,59 @@ export default function MedicalNotes() {
       >
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Medical Notes</Heading>
         <Box p="4" px="6">
-          <CustomAccordion title="Review of Systems">
-            <Box>body</Box>
-          </CustomAccordion>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <CustomAccordion title="Review of Systems">
+              <Box>
+                {medNotes.map((medicalNote) => (
+                  <FormControl
+                    key={medicalNote.title}
+                    isInvalid={!!errors.medicalNote?.input}
+                    my={6}
+                  >
+                    <Flex>
+                      <FormLabel htmlFor={medicalNote.title} color="primary.dark" w="10%" minW="160px">{medicalNote.title}</FormLabel>
+                      <Box>Checkboxes go here</Box>
+                    </Flex>
+
+                    <Input
+                      type="text"
+                      {...register(medicalNote.input)}
+                    />
+                    <FormErrorMessage>
+                      {errors.medicalNote?.input && errors.medicalNote.input.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                ))}
+              </Box>
+            </CustomAccordion>
+
+            <Box display="flex" justifyContent="end" mt={4}>
+
+              <Button
+                type="submit"
+                bg="brand.darkPink"
+                color="white"
+                mr="2"
+                _hover={{ opacity: 0.85 }}
+                _focus={{ opacity: 0.85 }}
+                isLoading={isSubmitting}
+              >
+                Save
+              </Button>
+
+              <Button
+                type="submit"
+                bg="#7002C7"
+                color="white"
+                _hover={{ opacity: 0.85 }}
+                _focus={{ opacity: 0.85 }}
+                isLoading={isSubmitting}
+              >
+                Clear
+              </Button>
+            </Box>
+          </form>
+
         </Box>
       </Box>
     </PatientEncountersLayout>
