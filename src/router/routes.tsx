@@ -9,6 +9,7 @@ import ChatIcon from "../static/messages.svg";
 import AccountSettingsIcon from "../static/supervised_user_circle.svg";
 import PayoutIcon from "../static/Payout.svg";
 import InvoiceIcon from "../static/invoice.svg";
+import VideoConf from "../static/video_conference.svg";
 
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
@@ -127,13 +128,6 @@ const routes: RouteType[] = [
     path: "/email-verification",
     component: <EmailVerification />,
     isProtected: false,
-    showInNavbar: false,
-  },
-  {
-    displayName: "Video Call",
-    path: "/calls",
-    component: <VideoCalls />,
-    isProtected: true,
     showInNavbar: false,
   },
   {
@@ -286,6 +280,16 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     icon: ChatIcon,
+  },
+  {
+    displayName: "Video Conference",
+    path: "/calls",
+    component: <VideoCalls />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
+    icon: VideoConf,
+    allowedRoles: ["DOCTOR"],
   },
   {
     displayName: "Payout Settings",
