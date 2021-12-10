@@ -102,7 +102,7 @@ const Videos = ({ room }: PropTypes) => {
       <Box
         position="fixed"
         width="200px"
-        bottom="2rem"
+        top="7rem"
         right="2rem"
       >
 
