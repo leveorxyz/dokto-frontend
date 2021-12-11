@@ -70,6 +70,8 @@ export default function Form() {
             stepDataAtom={step.atom}
             currentStepAtom={currentStepAtom}
             submitButtonText={step.submitButtonText}
+            showBackButton={false}
+            showResetButton
           />
         );
       }

@@ -139,7 +139,14 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         alignItems="center"
         justifyContent="center"
       >
-        <ChakraLink as={Link} to="/" height="75%" p={3}>
+        <ChakraLink
+          as={Link}
+          to="/"
+          height="75%"
+          p={3}
+          _hover={{ boxShadow: "none", outline: "none" }}
+          _focus={{ boxShadow: "none", outline: "none" }}
+        >
           <Image src={logoSVG} height="100%" alt="logo" fit="contain" />
         </ChakraLink>
       </GridItem>

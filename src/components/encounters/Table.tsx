@@ -42,7 +42,7 @@ function EncountersTable({
   prepareRow,
 }: PropTypes) {
   return (
-    <Table {...getTableProps()} overflowX="scroll">
+    <Table {...getTableProps()}>
       <Thead>
         {headerGroups.map((headerGroup) => (
           <Tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.getHeaderGroupProps().key}>
@@ -51,6 +51,7 @@ function EncountersTable({
                 {...column.getHeaderProps(
                   column.getSortByToggleProps(),
                 )}
+                color="#000"
                 key={column.id}
               >
                 <Box
@@ -81,13 +82,19 @@ function EncountersTable({
             <Tr
               {...row.getRowProps()}
               key={row.id}
+              color="#3E4954"
+              _hover={{
+                cursor: "pointer",
+                bg: "gray.100",
+                color: "#3E4954",
+              }}
             >
               {row.cells.map((cell) => (
                 <Td
                   {...cell.getCellProps()}
                   key={cell.column.id}
                 >
-                  <Link to="/encounters">
+                  <Link to="/patients/encounters-data">
                     {cell.render("Cell")}
                   </Link>
                 </Td>

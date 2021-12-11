@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import {
   Box,
   Flex,
+  Button,
 } from "@chakra-ui/react";
-import { useRecoilState, RecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, RecoilState } from "recoil";
 
 import FormGenerator from "./FieldsGenerator";
 import { FormDataType } from "../types/form";
@@ -15,10 +16,17 @@ type PropTypes = {
   currentStepAtom: RecoilState<number>;
   stepDataAtom: RecoilState<any>;
   submitButtonText: string;
+  showBackButton?: boolean;
+  showResetButton?: boolean;
 };
 
 export default function FormStep({
-  formData, currentStepAtom, stepDataAtom, submitButtonText,
+  formData,
+  currentStepAtom,
+  stepDataAtom,
+  submitButtonText,
+  showBackButton,
+  showResetButton,
 }: PropTypes) {
   const [stepState, setStepState] = useRecoilState(stepDataAtom);
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
@@ -75,7 +83,8 @@ export default function FormStep({
           control={control}
         />
 
-        <Flex justifyContent="space-between" py={6}>
+        <Flex py={6}>
+          {showBackButton && (
           <BrandButton
             isDisabled={currentStep <= 1}
             onClick={() => setCurrentStep(
@@ -84,11 +93,30 @@ export default function FormStep({
           >
             Back
           </BrandButton>
-          <BrandButton type="submit" isLoading={isSubmitting}>
+          )}
+
+          {showResetButton && (
+          <>
+            <Button
+              ml="auto"
+              colorScheme="purple"
+              isLoading={isSubmitting}
+              onClick={() => reset({})}
+            >
+              Clear
+            </Button>
+          </>
+          )}
+          <Button ml={showResetButton ? 2 : "auto"} bgColor="brand.darkPink" color="white" type="submit" isLoading={isSubmitting}>
             {submitButtonText}
-          </BrandButton>
+          </Button>
         </Flex>
       </form>
     </Box>
   );
 }
+
+FormStep.defaultProps = {
+  showBackButton: true,
+  showResetButton: false,
+};

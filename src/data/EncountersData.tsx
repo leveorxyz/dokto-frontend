@@ -1,6 +1,14 @@
+import {
+  Box, Flex, IconButton, Image,
+} from "@chakra-ui/react";
 import faker from "faker";
 import { Column } from "react-table";
+import { FiPrinter, FiTrash2 } from "react-icons/fi";
+import { BiFileBlank } from "react-icons/bi";
+import format from "date-fns/format";
 
+import signed from "../static/signed2.svg";
+import unsigned from "../static/signed1.svg";
 import { Encounters } from "../atoms/ehr/encounters";
 
 export const dummyEncounters: Encounters[] = new Array(100).fill(null)
@@ -50,12 +58,19 @@ export const dummyEncounters: Encounters[] = new Array(100).fill(null)
         ETOHUsage: faker.lorem.sentence(),
       },
     },
+    action: "action",
   }));
 
 export const columns: Column<Encounters>[] = [
   {
-    Header: "Date",
+    Header: "Visit Date",
     accessor: "date",
+    Cell: ({ value }:any) => (
+      <Box as="span" color="#0029FF" mr="4px">
+        {format(new Date(value), "MMM dd, yyyy")}
+      </Box>
+
+    ),
   },
   {
     Header: "Provider",
@@ -72,7 +87,37 @@ export const columns: Column<Encounters>[] = [
   {
     Header: "Signed",
     accessor: "signed",
-    Cell: ({ value }: { value: string}) => (value ? "Signed" : "Not Signed"),
+    Cell: ({ value }: { value: string}) => (value ? <Image src={unsigned} />
+      : <Image src={signed} />),
+  },
+  {
+    Header: "Action",
+    accessor: "action",
+    Cell: () => (
+      <Flex>
+        <IconButton
+          icon={<BiFileBlank size="24" color="#2D28FF" />}
+          backgroundColor="transparent"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+        <IconButton
+          icon={<FiPrinter size="24" color="#2D28FF" />}
+          backgroundColor="transparent"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+        <IconButton
+          icon={<FiTrash2 size="24" color="#A42BAD" />}
+          backgroundColor="transparent"
+          aria-label="mute-unmute"
+          size="md"
+          rounded="full"
+        />
+      </Flex>
+    ),
   },
 ];
 

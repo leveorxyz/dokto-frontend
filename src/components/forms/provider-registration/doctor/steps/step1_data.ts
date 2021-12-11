@@ -1,4 +1,6 @@
 import format from "date-fns/format";
+import subYears from "date-fns/subYears";
+import differenceInYears from "date-fns/differenceInYears";
 
 import {
   FieldTypes, FormDataType,
@@ -121,8 +123,9 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "date_of_birth",
       label: "Date Of Birth",
-      max: format(new Date(), "yyyy-MM-dd"),
+      max: format(subYears(new Date(), 18), "yyyy-MM-dd"),
       inputType: "date",
+      bottomText: "You need to be 18 years or older to sign up",
       customProperties: {
         format: "yyyy/MM/dd",
       },
@@ -131,6 +134,11 @@ const secondColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+        validate: (v) => (
+          differenceInYears(new Date(), new Date(v)) >= 18
+            ? true
+            : "You need to be 18 years or older to sign up"
+        ),
       },
     },
     {
