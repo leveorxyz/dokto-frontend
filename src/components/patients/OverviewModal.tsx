@@ -21,12 +21,12 @@ import { Link } from "react-router-dom";
 import format from "date-fns/format";
 
 import PatientStatus from "./Status";
-import { EncounteredPatient } from "../../hooks/encounteredPatients/useEncounteredPatients";
+import { Patient } from "../../hooks/patients/usePatients";
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  patient: EncounteredPatient | null;
+  patient: Patient | null;
 };
 
 export default function PatientOverViewModal({ isOpen, onClose, patient }: Props) {
@@ -90,7 +90,7 @@ export default function PatientOverViewModal({ isOpen, onClose, patient }: Props
             Close
           </Button>
           <Button mr={2}>View Profile</Button>
-          <Link to={`encounters?name=${patient.name}`}>
+          <Link to={`/patients/encounters/${patient.patient}`}>
             <Button colorScheme="purple">View Encounters</Button>
           </Link>
         </ModalFooter>

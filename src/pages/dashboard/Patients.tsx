@@ -24,12 +24,12 @@ import LoadingPage from "../../components/common/fallback/LoadingPage";
 import PatientTable from "../../components/patients/Table";
 import PatientModal from "../../components/patients/OverviewModal";
 import { SpacedContainer } from "../../components/common/Containers";
-import useEncounteredPatients, { EncounteredPatient, PropTypes } from "../../hooks/encounteredPatients/useEncounteredPatients";
+import usePatients, { Patient, PropTypes } from "../../hooks/patients/usePatients";
 import useDebounce from "../../hooks/common/useDebounce";
 
 export default function Patients() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [currentPatient, setCurrentPatient] = useState<EncounteredPatient | null>(null);
+  const [currentPatient, setCurrentPatient] = useState<Patient| null>(null);
   const [search, setSearch] = useState("");
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(10);
@@ -42,14 +42,15 @@ export default function Patients() {
 
   const {
     isFetching, isError, isSuccess, data,
-  } = useEncounteredPatients(debouncedSearch);
+  } = usePatients(debouncedSearch);
+
   const memoizedColumns = useMemo(() => columns, []);
 
   const memoizedPatientsData = useMemo(
     () => data?.results ?? [], [data],
   );
 
-  const showModal = (patient: EncounteredPatient) => {
+  const showModal = (patient: Patient) => {
     setCurrentPatient(patient);
     onOpen();
   };
@@ -103,6 +104,7 @@ export default function Patients() {
     return (
       <Box backgroundColor="#f7f7fc" minH="100vh">
         <SpacedContainer py={12}>
+
           <Text color="#11142D" fontWeight="800" pb="8"> Appointment</Text>
 
           <Box backgroundColor="#fff" p="6" rounded="lg">
@@ -128,7 +130,6 @@ export default function Patients() {
                     value={search ?? ""}
                     variant="filled"
                     onChange={(e) => setSearch(e.target.value)}
-
                   />
 
                 </InputGroup>
@@ -214,30 +215,30 @@ export default function Patients() {
                   Previous
                 </Button>
                 {offset / limit - 1 > 0 && (
-                  <Button
-                    backgroundColor="#fff"
-                    border="2px"
-                    borderRadius="0px"
-                    borderColor="brand.darkPink"
-                    color="brand.darkPink"
-                    onClick={() => setOffset(
+                <Button
+                  backgroundColor="#fff"
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  color="brand.darkPink"
+                  onClick={() => setOffset(
                     data?.previous_offset! - limit,
-                    )}
-                  >
-                    {offset / limit - 1}
-                  </Button>
+                  )}
+                >
+                  {offset / limit - 1}
+                </Button>
                 )}
                 {offset / limit > 0 && (
-                  <Button
-                    backgroundColor="#fff"
-                    border="2px"
-                    borderRadius="0px"
-                    borderColor="brand.darkPink"
-                    color="brand.darkPink"
-                    onClick={() => setOffset(data?.previous_offset ?? 0)}
-                  >
-                    {offset / limit }
-                  </Button>
+                <Button
+                  backgroundColor="#fff"
+                  border="2px"
+                  borderRadius="0px"
+                  borderColor="brand.darkPink"
+                  color="brand.darkPink"
+                  onClick={() => setOffset(data?.previous_offset ?? 0)}
+                >
+                  {offset / limit }
+                </Button>
                 )}
                 <Button
                   border="2px"
