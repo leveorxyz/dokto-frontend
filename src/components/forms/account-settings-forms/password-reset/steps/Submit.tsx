@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
 import stepAtom from "../../../../../atoms/updateAccountSettings.atom";
-import useUpdateAccountSettings from "../../../../../hooks/account-settings/updateEmailNotification";
+import useUpdatePasswordReset from "../../../../../hooks/account-settings/updatePasswordReset";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -23,7 +23,7 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateAccountSettings(data);
+  } = useUpdatePasswordReset(data);
 
   if (isFetching) {
     return <Loading />;
