@@ -33,16 +33,13 @@ export default function UserComponent({ user }: UserComponentProps) {
 
   // Remove participant from video room and move to waiting room handler
   const handleRemoveMoveToWaiting = (participant:RemoteParticipant) => {
-    handleRemove(participant);
     const participantIdentity = participant.identity.slice(0, 36);
-
     const payload = {
       patient_id: participantIdentity,
     };
-
     axios?.post("twilio/create-conversation/", payload)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        handleRemove(participant);
       })
       .catch((err) => console.log(err));
   };

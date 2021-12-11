@@ -5,7 +5,6 @@ import {
   Avatar,
   Button,
   IconButton,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { Conversation } from "@twilio/conversations";
@@ -25,15 +24,12 @@ export default function SidebarConversation(
     openChatWindow,
   }: ConversationComponentProps,
 ) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
 
   // Remove patient from waiting room
   const handleRemoveParticipant = (channelUniqueName:string): void => {
     axios?.post("twilio/remove-participant-conversation/", { channel_unique_name: channelUniqueName })
-      .then((data) => {
-        console.log(data);
-      })
       .catch((err) => console.log(err));
   };
 

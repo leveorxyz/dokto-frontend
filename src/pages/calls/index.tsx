@@ -54,10 +54,15 @@ export default function VideoCalls() {
     onClose: closeChatWindow,
   } = useDisclosure();
 
+  // handle room disconnection
   room?.on("disconnected", () => {
-    setRoom(null);
-    setCallEnded(true);
-    // TODO: Alert patient that call has ended.
+    if (conversations.length > 1) {
+      setRoom(null);
+      setCallEnded(false);
+    } else {
+      setRoom(null);
+      setCallEnded(true);
+    }
   });
 
   // Conversation initialization handler
@@ -118,6 +123,20 @@ export default function VideoCalls() {
     }
   }, [conversations]);
 
+  useEffect(() => () => {
+    room?.localParticipant.videoTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room?.localParticipant.audioTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room?.disconnect();
+  }, [room]);
+
   const {
     isLoading,
   } = useTwilioToken({
@@ -153,6 +172,7 @@ export default function VideoCalls() {
         doctor={roomName}
         isPatient={isPatient}
         openChatWindow={openChatWindow}
+        showChat={!callEnded}
       />
       )}
       {/* Landing page for patient */}
