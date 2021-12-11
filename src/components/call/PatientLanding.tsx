@@ -22,18 +22,23 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
     <Flex w="100%" justifyContent="center">
       <Box paddingTop="4rem" textAlign="center">
         <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
-          <Box width="20%">
-            <Image
-              rounded="full"
-              boxSize="160px"
-              objectFit="cover"
-              src={data?.data?.result?.profile_photo || DoctorImage}
-              alt={roomName}
-              boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
-            />
-          </Box>
-          <Box width="80%" fontSize="30px" color="black" fontWeight="600">
-            {callEnded ? "The call has been ended! " : (
+          <Image
+            rounded="full"
+            boxSize="160px"
+            objectFit="cover"
+            src={data?.data?.result?.profile_photo || DoctorImage}
+            alt={roomName}
+            boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
+            marginRight="2rem"
+          />
+          <Box width="70%" fontSize="30px" color="black" fontWeight="600">
+            {callEnded ? (
+              <span>
+                This call has now ended.
+                <br />
+                Thank you.
+              </span>
+            ) : (
               <span>
                 Welcome to Dr.
                 {" "}
