@@ -153,11 +153,12 @@ export default function VideoCalls() {
         </>
       )}
       {/* Show topbar for patient  */}
-      {(isPatient && !callEnded) && (
+      {isPatient && (
       <RoomBreadcrumb
         doctor={roomName}
         isPatient={isPatient}
         openChatWindow={openChatWindow}
+        showChat={!callEnded}
       />
       )}
       {/* Landing page for patient */}
