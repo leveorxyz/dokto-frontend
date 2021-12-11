@@ -8,9 +8,17 @@ type PropTypes = {
 
 const LeaveRoomButton = ({ room }: PropTypes) => {
   const handleRoomDisconnection = () => {
-    room.disconnect();
-
-    window.location.href = "/";
+    room.localParticipant.videoTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room.localParticipant.audioTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room?.disconnect();
   };
 
   return (

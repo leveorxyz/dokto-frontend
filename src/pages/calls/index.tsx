@@ -123,6 +123,20 @@ export default function VideoCalls() {
     }
   }, [conversations]);
 
+  useEffect(() => () => {
+    room?.localParticipant.videoTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room?.localParticipant.audioTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room?.disconnect();
+  }, [room]);
+
   const {
     isLoading,
   } = useTwilioToken({
