@@ -4,7 +4,7 @@ interface IMedicalNote{
   input:string
 }
 
-export const medNotes:IMedicalNote[] = [
+export const reviewOfSystems:IMedicalNote[] = [
   {
     title: "General",
     checkBoxes: [
@@ -96,9 +96,10 @@ export const medNotes:IMedicalNote[] = [
   {
     title: "Chest",
     checkBoxes: [
-      { label: "No chest pains", value: "" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No dyspnea", value: "No dyspnea" },
+      { label: "No wheezing", value: "No wheezing" },
+      { label: "No hemoptysis", value: "No hemoptysis" },
+      { label: "No cough", value: "No cough" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
     input: "chestDesc",
@@ -182,4 +183,101 @@ export const medNotes:IMedicalNote[] = [
   },
 ];
 
-export default medNotes;
+export const physicalExam:IMedicalNote[] = [
+  {
+    title: "General Appearance",
+    checkBoxes: [
+      { label: "Well developed ", value: "Well developed " },
+      { label: "Well nourished", value: "Well nourished" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+      { label: "Alert and cooperative", value: "Alert and cooperative" },
+      { label: "Oriented x 3 and appears to be in no acute distress", value: "Oriented x 3 and appears to be in no acute distress" },
+
+    ],
+    input: "generalAppearanceDesc",
+  },
+  {
+    title: "Head",
+    checkBoxes: [
+      { label: "No Headaches", value: "No Headaches" },
+      { label: "No vertigo", value: "No vertigo" },
+      { label: "No injury", value: "No injury" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "headDesc",
+  },
+  {
+    title: "Head",
+    checkBoxes: [
+      { label: "Symmetric", value: "Symmetric" },
+      { label: "Normocephalic", value: "Normocephalic" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "HeadDesc",
+  },
+  {
+    title: "Eyes",
+    checkBoxes: [
+      { label: "PERRL", value: "PERRL" },
+      { label: "EOMI", value: "EOMI" },
+      { label: "Fundi normal", value: "Fundi normal" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+      { label: "Vision is grossly intact", value: "Vision is grossly intact" },
+
+    ],
+    input: "EyesDesc",
+  },
+  {
+    title: "Ears",
+    checkBoxes: [
+      { label: "External auditory canals and tympanic membranes clear", value: "External auditory canals and tympanic membranes clear" },
+      { label: "Hearing grossly normal", value: "Hearing grossly normal" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+
+    ],
+    input: "EarsDesc",
+  },
+  {
+    title: "Nose",
+    checkBoxes: [
+      { label: "No nasal discharge", value: "No nasal discharge" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "NoseDesc",
+  },
+  {
+    title: "Throat",
+    checkBoxes: [
+      { label: "Oral cavity and pharynx normal", value: "Oral cavity and pharynx normal" },
+      { label: "No inflammation swelling exudate, or lesions condition", value: "No inflammation swelling exudate, or lesions condition" },
+      { label: "Teeth and gingiva in good general", value: "Teeth and gingiva in good general" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "ThroatDesc",
+  },
+  {
+    title: "Neck",
+    checkBoxes: [
+      { label: "Neck Supple", value: "Neck Supple" },
+      { label: "Non-tender without lymphodenopathy, masses or thyromegaly", value: "Non-tender without lymphodenopathy, masses or thyromegaly" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+
+    ],
+    input: "NeckDesc",
+  },
+  {
+    title: "Cardiac",
+    checkBoxes: [
+      { label: "Normal S1 and 52", value: "Normal S1 and 52 " },
+      { label: "No 53. 54 or murmurs ", value: "No 53. 54 or murmurs " },
+      { label: "Rhythm is regular", value: "Rhythm is regular" },
+      { label: "There is no peripherol edema. cyanosis or polon", value: "There is no peripherol edema. cyanosis or polon" },
+      { label: "Extremities are warm and well perfused", value: "Extremities are warm and well perfused" },
+      { label: "Copiliory refill is less than 2 seconds", value: "Copiliory refill is less than 2 seconds" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "CardiacDesc",
+  },
+];
+
+export default { reviewOfSystems, physicalExam };

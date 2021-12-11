@@ -8,7 +8,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { medNotes } from "../../../../data/MedicalNotes";
+import { reviewOfSystems, physicalExam } from "../../../../data/MedicalNotes";
 import CustomAccordion from "../../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../../components/common/PatientEncountersLayout";
 import LoadingPage from "../../../../components/common/fallback/LoadingPage";
@@ -46,7 +46,39 @@ export default function MedicalNotes() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <CustomAccordion title="Review of Systems">
               <Box>
-                {medNotes.map((medicalNote) => (
+                {reviewOfSystems.map((medicalNote) => (
+                  <Box key={medicalNote.title}>
+                    <Flex>
+                      <FormLabel htmlFor={medicalNote.title} color="primary.dark" w="10%" minW="160px">{medicalNote.title}</FormLabel>
+                      <Box>
+                        <CustomCheckboxField
+                          name={medicalNote.title}
+                          options={medicalNote.checkBoxes}
+                          errors={errors}
+                          direction="row"
+                          setValue={setValue}
+                        />
+                      </Box>
+                    </Flex>
+                    <FormControl
+                      key={medicalNote.title}
+                      isInvalid={!!errors.medicalNote?.input}
+                      mb={6}
+                    >
+                      <Input
+                        type="text"
+                        {...register(medicalNote.input)}
+                      />
+
+                    </FormControl>
+                  </Box>
+                ))}
+              </Box>
+            </CustomAccordion>
+
+            <CustomAccordion title="Physical Exam">
+              <Box>
+                {physicalExam.map((medicalNote) => (
                   <Box key={medicalNote.title}>
                     <Flex>
                       <FormLabel htmlFor={medicalNote.title} color="primary.dark" w="10%" minW="160px">{medicalNote.title}</FormLabel>
