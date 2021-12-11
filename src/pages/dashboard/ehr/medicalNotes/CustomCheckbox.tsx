@@ -6,6 +6,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Flex,
 } from "@chakra-ui/react";
 
 import { CheckboxFieldType, FieldTypes } from "../../../../components/forms/types/form";
@@ -33,9 +34,8 @@ type PropTypes = {
 export default function CustomCheckboxField({
   name,
   options,
-  errors,
+  errors, direction,
   setValue,
-  direction,
 }: PropTypes) {
   const [localValue, setLocalValue] = useState<(string | number)[]>([]);
 
@@ -46,13 +46,14 @@ export default function CustomCheckboxField({
   return (
     <FormControl id={name} isInvalid={errors && errors[name]}>
       <CheckboxGroup colorScheme="purple" value={localValue} onChange={(value) => setLocalValue(value)}>
-        <Stack direction={direction ?? "row"} spacing={6} wrap="wrap">
+        <Stack direction={direction ?? "row"} spacing={0} wrap="wrap">
           {options.map(
             ({ value, label: fieldLabel }) => (
               <Checkbox
                 key={value}
                 value={value}
                 whiteSpace="nowrap"
+                pr={8}
               >
                 {fieldLabel}
               </Checkbox>

@@ -84,18 +84,19 @@ export const medNotes:IMedicalNote[] = [
   {
     title: "Breast",
     checkBoxes: [
-      { label: "No noted lumps", value: "No noted lumps" },
-      { label: "No tenderness", value: "No tenderness" },
-      { label: "No swelling", value: "No swelling" },
-      { label: "No nipple discharge", value: "No nipple discharge" },
+      { label: "No dyspnea", value: "No dyspnea" },
+      { label: "No wheezing", value: "No wheezing" },
+      { label: "No hemoptysis", value: "No hemoptysis" },
+      { label: "No cough", value: "No cough" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
+
     ],
     input: "breastDesc",
   },
   {
     title: "Chest",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
+      { label: "No chest pains", value: "" },
       { label: "Fatigue", value: "Fatigue" },
       { label: "Generally well", value: "Generally well" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
@@ -105,19 +106,24 @@ export const medNotes:IMedicalNote[] = [
   {
     title: "Heart",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No chest pains", value: "No chest pains" },
+      { label: "No palpitations", value: "No palpitations" },
+      { label: "No syncope", value: "No syncope" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
+      { label: "No orthopnea", value: "No orthopnea" },
+
     ],
     input: "heartDesc",
   },
   {
     title: "Abdomen",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No change in appetite", value: "No change in appetite" },
+      { label: "No dysphagia", value: "No dysphagia" },
+      { label: "No abdominal pains", value: "No abdominal pains" },
+      { label: "No emesis", value: "No emesis" },
+      { label: "No bowel habit changes", value: "No bowel habit changes" },
+      { label: "No melena", value: "No melena" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
     input: "abdomenDesc",
@@ -125,19 +131,21 @@ export const medNotes:IMedicalNote[] = [
   {
     title: "GU",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No urinary urgency", value: "No urinary urgency" },
+      { label: "No dysuria", value: "No dysuria" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
+      { label: "No change in nature of urine", value: "No change in nature of urine" },
+
     ],
     input: "GUDesc",
   },
   {
     title: "Gyn",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No change in menses", value: "No change in menses" },
+      { label: "No dysmenorrhea ", value: "No dysmenorrhea " },
+      { label: "No vaginal discharge", value: "No vaginal discharge" },
+      { label: "No pelvic pain", value: "No pelvic pain" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
     input: "GynDesc",
@@ -145,32 +153,33 @@ export const medNotes:IMedicalNote[] = [
   {
     title: "Musculoskeletal",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No pain in muscles or joints ", value: "No pain in muscles or joints " },
+      { label: "No limitation of range of motion ", value: "No limitation of range of motion " },
+      { label: "No paresthesias or numbness", value: "No paresthesias or numbness" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
     input: "MusculoskeletalDesc",
   }, {
     title: "Neurologic",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
-      { label: "Other (please specify below)", value: "Other (please specify below)" },
+      { label: "No weakness", value: "No weakness" },
+      { label: "No tremors", value: "No tremors" },
+      { label: "No seizures", value: "No seizures" },
+      { label: "Other (please specify below).", value: "Other (please specify below)." },
+      { label: "No changes in mentation", value: "No changes in mentation" },
+      { label: "No ataxia", value: "No ataxia" },
     ],
     input: "NeurologicDesc",
   }, {
     title: "Psychiatric",
     checkBoxes: [
-      { label: "No weight change", value: "No weight change" },
-      { label: "Fatigue", value: "Fatigue" },
-      { label: "Generally well", value: "Generally well" },
+      { label: "No depressive symptoms ", value: "No depressive symptoms " },
+      { label: "No changes in step habits", value: "No changes in step habits" },
+      { label: "No changes in thought content", value: "No changes in thought content" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
     input: "PsychiatricDesc",
   },
 ];
 
-export const generalCheckboxOptions:string[] = ["No weight change", "Fatigue", "Generally well", "Other (please specify below)"];
-export default { generalCheckboxOptions };
+export default medNotes;
