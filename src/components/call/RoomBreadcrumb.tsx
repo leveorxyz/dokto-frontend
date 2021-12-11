@@ -9,7 +9,9 @@ type PropTypes ={
   isPatient: boolean,
   openChatWindow: () => void,
 }
-const RoomBreadcrumb = ({ doctor, isPatient, openChatWindow }:PropTypes) => (
+const RoomBreadcrumb = ({
+  doctor, isPatient, openChatWindow,
+}:PropTypes) => (
   <>
     <Breadcrumb
       position="absolute"
@@ -28,6 +30,7 @@ const RoomBreadcrumb = ({ doctor, isPatient, openChatWindow }:PropTypes) => (
         <Box>Telehealth Appointment</Box>
       </BreadcrumbItem>
     </Breadcrumb>
+
     <Box position="absolute" right="10" top="4.5rem" color="black">
       <Icon as={IoChatboxEllipsesOutline} fontSize="30" _hover={{ color: "purple" }} onClick={openChatWindow} />
     </Box>

@@ -153,7 +153,7 @@ export default function VideoCalls() {
         </>
       )}
       {/* Show topbar for patient  */}
-      {isPatient && (
+      {(isPatient && !callEnded) && (
       <RoomBreadcrumb
         doctor={roomName}
         isPatient={isPatient}
