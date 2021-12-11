@@ -26,7 +26,6 @@ export default function MedicalNotes() {
   }
 
   const onSubmit = (data:any) => {
-    console.log(31);
     console.log(data);
   };
 
@@ -106,6 +105,21 @@ export default function MedicalNotes() {
                   </Box>
                 ))}
               </Box>
+            </CustomAccordion>
+            <CustomAccordion title="Plan of Care">
+              <Box>Plan of Care</Box>
+            </CustomAccordion>
+
+            <CustomAccordion title="Orders">
+              <Box>Orders</Box>
+            </CustomAccordion>
+
+            <CustomAccordion title="Imaging Orders">
+              <Box>Imaging Orders</Box>
+            </CustomAccordion>
+
+            <CustomAccordion title="Next Visit">
+              <Box>Next Visit</Box>
             </CustomAccordion>
 
             <Box display="flex" justifyContent="end" mt={4}>
