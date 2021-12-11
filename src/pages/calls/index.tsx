@@ -54,10 +54,15 @@ export default function VideoCalls() {
     onClose: closeChatWindow,
   } = useDisclosure();
 
+  // handle room disconnection
   room?.on("disconnected", () => {
-    setRoom(null);
-    setCallEnded(true);
-    // TODO: Alert patient that call has ended.
+    if (conversations.length > 1) {
+      setRoom(null);
+      setCallEnded(false);
+    } else {
+      setRoom(null);
+      setCallEnded(true);
+    }
   });
 
   // Conversation initialization handler
