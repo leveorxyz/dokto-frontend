@@ -289,7 +289,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     icon: VideoConf,
-    allowedRoles: ["DOCTOR"],
+    allowedRoles: ["DOCTOR", "PATIENT"],
   },
   {
     displayName: "Payout Settings",
