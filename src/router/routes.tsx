@@ -202,7 +202,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Encounters",
-    path: "/patients/encounters/:patientId",
+    path: "/patients/encounters-data/:patientId",
     component: <Encounters />,
     isProtected: true,
     showInNavbar: false,
