@@ -5,7 +5,7 @@ import { useSetRecoilState, RecoilState } from "recoil";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import AccountSettingsAtom, { AccountSettings } from "../../atoms/accountSettings.atom";
 
-const getEmailNotification = async (axios: AxiosInstance) => axios.get("dashboard/doctor/account-settings")
+const getEmailNotification = async (axios: AxiosInstance) => axios.get("dashboard/doctor/account-settings/")
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
