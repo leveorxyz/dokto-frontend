@@ -14,6 +14,8 @@ RUN cp .env.example .env
 RUN yarn build
 RUN cp -R ./build/* /usr/share/nginx/html
 RUN cp /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-RUN service nginx restart
+# RUN service nginx restart
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+RUN /etc/init.d/nginx restart
+RUN /etc/init.d/nginx status
