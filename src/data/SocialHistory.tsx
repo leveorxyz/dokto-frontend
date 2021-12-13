@@ -17,6 +17,28 @@ export const higherEducationOptions = [
 
 ];
 
+export const sexualOrientationOptions = [
+  { label: "Heterosexual (not lesbian, gay, or bisexual)", value: "Heterosexual (not lesbian, gay, or bisexual)" },
+  { label: "Homosexual", value: "Homosexual" },
+  { label: "Bisexual", value: "Bisexual" },
+  { label: "Other", value: "Other" },
+  { label: "Unknown", value: "Unknown" },
+  { label: "Choose not to disclose", value: "Choose not to disclose" },
+
+];
+
+export const genderIdentityOptions = [
+  { label: "Male", value: "Male" },
+  { label: "Female", value: "Female" },
+  { label: "Male-to-Female (MTF)/Transgender Female/Trans Woman", value: "Male-to-Female (MTF)/Transgender Female/Trans Woman" },
+  { label: "Female-to-Male (FTM)/Transgender Male/Trans Man", value: "Female-to-Male (FTM)/Transgender Male/Trans Man" },
+  { label: "Genderqueer, neither exclusively male nor female", value: "Genderqueer, neither exclusively male nor female" },
+  { label: "Other", value: "Other" },
+  { label: "Unknown", value: "Unknown" },
+  { label: "Choose not to disclose", value: "Choose not to disclose" },
+
+];
+
 export const tobaccoStatusOptions = [
   { label: "Current everyday smoker", value: "Current everyday smoker" },
   { label: "Former smoker", value: "Former smoker" },
@@ -45,10 +67,56 @@ export const tobaccoPacksPerDayOptions = [
 
 ];
 
+export const exerciseOptions = [
+  { label: "Never", value: "Never" },
+  { label: "0-1 times/week", value: "0-1 times/week" },
+  { label: "2-5 times/week", value: "2-5 times/week" },
+  { label: "2-5 times/week", value: "2-5 times/week" },
+];
+
+export const seatbeltOptions = [
+  { label: "Never", value: "Never" },
+  { label: "0-1 times/week", value: "0-1 times/week" },
+  { label: "2-5 times/week", value: "2-5 times/week" },
+  { label: "2-5 times/week", value: "2-5 times/week" },
+];
+
+export const exposureOptions = [
+  { label: "None", value: "None" },
+  { label: "Asbestos", value: "Asbestos" },
+  { label: "Hepatitis", value: "Hepatitis" },
+  { label: "Hepatitis", value: "Hepatitis" },
+  { label: "Chemicals", value: "Chemicals" },
+  { label: "Tuberculosis", value: "Tuberculosis" },
+  { label: "Toxins", value: "Toxins" },
+
+];
+
+export const alcoholUseOptions = [
+  { label: "No", value: "No" },
+  { label: "Social drinker", value: "Social drinker" },
+  { label: "Occassionally", value: "Occassionally" },
+  { label: "1-2 drinks/day", value: "1-2 drinks/day" },
+  { label: "3-5 drinks/day", value: "3-5 drinks/day" },
+  { label: "More than 5 drinks/day", value: "More than 5 drinks/day" },
+
+];
+
+export const etohOptions = [
+  { label: "Never", value: "Never" },
+  { label: "Occasional", value: "Occasional" },
+  { label: "Daily", value: "No" },
+
+];
+
 export default {
   homeEnvironmentOptions,
   higherEducationOptions,
+  sexualOrientationOptions,
+  genderIdentityOptions,
   tobaccoStatusOptions,
   tobaccoTypeOptions,
   tobaccoPacksPerDayOptions,
+  exerciseOptions,
+  seatbeltOptions,
 };
