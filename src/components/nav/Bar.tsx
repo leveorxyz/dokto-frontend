@@ -130,12 +130,13 @@ type MenuProps = {
 
 function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
   return (
-    <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
-      <GridItem
-        display="flex"
+    <Flex alignItems="center" height="4rem" wrap="nowrap">
+      <Flex
+        flexShrink={0}
+        flexGrow={0}
         bg="brand.dark"
         h="100%"
-        w="auto"
+        w="15rem"
         alignItems="center"
         justifyContent="center"
       >
@@ -143,16 +144,15 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
           as={Link}
           to="/"
           height="75%"
-          p={3}
+          px={3}
           _hover={{ boxShadow: "none", outline: "none" }}
           _focus={{ boxShadow: "none", outline: "none" }}
         >
           <Image src={logoSVG} height="100%" alt="logo" fit="contain" />
         </ChakraLink>
-      </GridItem>
+      </Flex>
 
-      <GridItem
-        display="flex"
+      <Flex
         w="100%"
         h="100%"
         bg="primary.light"
@@ -160,7 +160,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         alignItems="center"
         pr={[3, 3, 3, 8, 8]}
       >
-        <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]} py={4}>
+        <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]}>
           {routes
             .filter((route) => route.showInNavbar)
             .map((route) => (
@@ -215,12 +215,16 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
         </Box>
-      </GridItem>
-    </Grid>
+      </Flex>
+    </Flex>
   );
 }
 
-export default function MenuBar() {
+type MenuBarProps = {
+  showUpperMenu?: boolean;
+};
+
+export default function MenuBar({ showUpperMenu }: MenuBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const setLoginModalState = useSetRecoilState(loginModalAtom);
   const {
@@ -232,11 +236,21 @@ export default function MenuBar() {
   setLoginModalState({ isLoginModalOpen, openLoginModal, closeLoginModal });
 
   return (
-    <FullWidthContainer pt={{ base: 2 }}>
-      <UpperMenu />
-      <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} openLoginModal={openLoginModal} />
-      {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}
-      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
-    </FullWidthContainer>
+    <Box position="sticky" top={0} left={0} zIndex={999}>
+      <FullWidthContainer>
+        {showUpperMenu && <UpperMenu />}
+        <Menu
+          setIsMenuOpen={setIsMenuOpen}
+          isMenuOpen={isMenuOpen}
+          openLoginModal={openLoginModal}
+        />
+        {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}
+        <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
+      </FullWidthContainer>
+    </Box>
   );
 }
+
+MenuBar.defaultProps = {
+  showUpperMenu: true,
+};
