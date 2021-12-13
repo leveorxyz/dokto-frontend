@@ -26,7 +26,6 @@ const Sidebar = () => {
       overflowX="hidden"
       bg="white"
       pointerEvents={isCallSideBarDisabled ? "none" : "all"}
-      cursor={isCallSideBarDisabled ? "not-allowed" : "auto"}
       sx={{
         "&::-webkit-scrollbar": {
           display: "none",
