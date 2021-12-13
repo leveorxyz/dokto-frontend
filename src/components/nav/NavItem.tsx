@@ -20,7 +20,7 @@ export default function NavItem({
   );
 
   return (
-    <Center p={[2, 2, 3, 3, 3]}>
+    <Center px={[2, 2, 3, 3, 3]} py={[2, 2, 0, 0, 0]}>
       <Link
         as={RouteLink}
         to={href}

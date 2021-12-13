@@ -9,7 +9,7 @@ import { useRecoilValue } from "recoil";
 
 import authAtom from "../../atoms/auth.atom";
 import routes from "../../router/routes";
-import DashboardTopBar from "./DashboardTopBar";
+import Bar from "./Bar";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -81,7 +81,7 @@ const Sidebar = () => {
 export default function SidebarContainer({ children }: {children: React.ReactNode}) {
   return (
     <Box>
-      <DashboardTopBar />
+      <Bar showUpperMenu={false} />
       <Flex wrap="nowrap" justifyContent="flex-end" position="relative">
         <Box w="15rem" position="fixed" top="4rem" left={0}>
           <Sidebar />
