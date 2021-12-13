@@ -7,6 +7,7 @@ COPY . .
 # RUN git clone https://olawale121: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@github.com/ToybethSystems/Dokto-Frontend.git
 # RUN cd Dokto-Frontend/
 RUN apt install nginx -y
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install nodejs -y
 RUN npm install npm@latest -g
 RUN npm install -g yarn
