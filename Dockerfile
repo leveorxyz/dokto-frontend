@@ -17,5 +17,3 @@ RUN cp /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 # RUN service nginx restart
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-RUN /etc/init.d/nginx restart
-RUN /etc/init.d/nginx status
