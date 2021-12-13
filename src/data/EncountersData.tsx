@@ -40,8 +40,8 @@ export const columns: Column<EncounteredPatient>[] = [
   },
   {
     Header: "Action",
-    accessor: "provider",
-    Cell: () => (
+    accessor: "id",
+    Cell: ({ value }: { value: string}) => (
       <Flex>
         <IconButton
           icon={<BiFileBlank size="24" color="#2D28FF" />}
@@ -58,6 +58,7 @@ export const columns: Column<EncounteredPatient>[] = [
           rounded="full"
         />
         <IconButton
+          onClick={() => console.log(value)}
           icon={<FiTrash2 size="24" color="#A42BAD" />}
           backgroundColor="transparent"
           aria-label="mute-unmute"
