@@ -1,4 +1,6 @@
 FROM ubuntu:20.04
+RUN apt update
+RUN apt upgrade -y
 RUN apt install git
 RUN git clone https://olawale121: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@github.com/ToybethSystems/Dokto-Frontend.git
 RUN cd Dokto-Frontend/
