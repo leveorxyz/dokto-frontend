@@ -15,6 +15,8 @@ RUN npm install -g yarn
 RUN yarn install
 RUN cp .env.example .env
 RUN yarn build
+RUN pwd
+RUN ls -al
 COPY build /usr/share/nginx/html
 COPY /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 RUN service nginx restart
