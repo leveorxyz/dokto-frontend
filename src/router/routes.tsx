@@ -39,6 +39,7 @@ const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/PatientProced
 const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/FunctionalAndCognitiveStatus"));
 const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
+const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 
 export type RouteType = {
@@ -211,7 +212,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient encounters",
-    path: "/patients/encounters-data",
+    path: "/patients/encounters/:id",
     component: <PatientEncounters />,
     isProtected: true,
     showInNavbar: false,
@@ -222,6 +223,15 @@ const routes: RouteType[] = [
     displayName: "Assessment & Diagnosis",
     path: "/patients/encounters-data/assessment-and-diagnosis",
     component: <AssessmentAndDiagnosis />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Social History",
+    path: "/patients/encounters-data/social-history/:id",
+    component: <SocialHistory />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
