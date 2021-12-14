@@ -46,7 +46,7 @@ const DashboardHome = () => (
     <Box py="4" color="#11142D" fontSize="2xl" fontWeight="semibold" mx={6}>Dashboard</Box>
     <Flex wrap={["wrap-reverse", "wrap-reverse", "wrap-reverse", "wrap", "wrap"]}>
 
-      <Box w={["100%", "100%", "100%", "65%", "80%"]}>
+      <Box w={["100%", "100%", "100%", "60%", "75%"]}>
         <WelcomeCard
           description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
           readMoreLink="#"
@@ -56,7 +56,7 @@ const DashboardHome = () => (
         <Row2 />
       </Box>
 
-      <Box px={3} w={["100%", "100%", "100%", "35%", "20%"]}>
+      <Box px={3} w={["100%", "100%", "100%", "40%", "25%"]}>
         <MyProfile />
         <Box p={6} my={6} bg="#2E3192" rounded="3xl">
           <Heading as="h3" fontSize="xl" fontWeight="bold" color="white">
