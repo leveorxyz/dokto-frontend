@@ -314,6 +314,32 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
+      type: FieldTypes.MULTISELECT,
+      name: "services",
+      label: "Services",
+      options: [
+        {
+          label: "option1",
+          value: "option1",
+        },
+        {
+          label: "option2",
+          value: "option2",
+        },
+        {
+          label: "option3",
+          value: "option3",
+        },
+      ],
+      placeholder: "Select",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
       type: FieldTypes.FILE,
       name: "license_file",
       label: "Current License",
