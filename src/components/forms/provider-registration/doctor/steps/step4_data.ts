@@ -355,7 +355,11 @@ const firstColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       inputType: "date",
       name: "license_expiration",
+      min: format(new Date(), "yyyy-MM-dd"),
       label: "Current License Expiration Date",
+      customProperties: {
+        format: "yyyy/MM/dd",
+      },
       rules: {
         required: {
           value: true,
