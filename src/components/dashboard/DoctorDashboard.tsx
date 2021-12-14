@@ -1,11 +1,12 @@
 import {
-  Box, Flex, Image,
+  Box, Flex, Heading, Image,
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../common/Containers";
 import Card from "./Card";
 import WelcomeCard from "./WelcomeCard";
 import MyProfile from "./MyProfile";
+import Calendar from "./Calendar";
 import { row1, row2 } from "./DashboardData/Doctor";
 
 const Row1 = () => (
@@ -45,7 +46,7 @@ const DashboardHome = () => (
     <Box py="4" color="#11142D" fontSize="2xl" fontWeight="semibold" mx={6}>Dashboard</Box>
     <Flex wrap={["wrap-reverse", "wrap-reverse", "wrap-reverse", "wrap", "wrap"]}>
 
-      <Box w="85%">
+      <Box w={["100%", "100%", "100%", "65%", "80%"]}>
         <WelcomeCard
           description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
           readMoreLink="#"
@@ -55,8 +56,14 @@ const DashboardHome = () => (
         <Row2 />
       </Box>
 
-      <Box flexGrow={1} px={3}>
+      <Box px={3} w={["100%", "100%", "100%", "35%", "20%"]}>
         <MyProfile />
+        <Box p={6} mt={6} bg="#2E3192" rounded="3xl">
+          <Heading as="h3" fontSize="xl" fontWeight="bold" color="white">
+            My Appointments
+          </Heading>
+          <Calendar />
+        </Box>
       </Box>
 
     </Flex>
