@@ -28,7 +28,7 @@ export default function WelcomeCard({
       pb={12}
       mx={7}
       position="relative"
-      rounded="lg"
+      rounded="3xl"
       boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
     >
       <Heading as="h2" fontSize="2xl" fontWeight={600}>
