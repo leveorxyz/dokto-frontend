@@ -3,13 +3,18 @@ import {
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../common/Containers";
-
 import Card from "./Card";
+import WelcomeCard from "./WelcomeCard";
 import { Row1, Row2 } from "./DashboardData/Doctor";
 
 const DashboardHome = () => (
-  <SpacedContainer mx={12}>
-    <Box pb="10" color="#11142D" fontSize="2xl" fontWeight="bold" mx={6}>Dashboard</Box>
+  <SpacedContainer mx={4}>
+    <Box py="4" color="#11142D" fontSize="2xl" fontWeight="semibold" mx={6}>Dashboard</Box>
+    <WelcomeCard
+      description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
+      readMoreLink="#"
+      img={null}
+    />
     <Flex wrap="wrap">
       {Row1
         .map(({
