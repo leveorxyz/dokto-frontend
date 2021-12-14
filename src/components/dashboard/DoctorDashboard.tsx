@@ -8,7 +8,7 @@ import WelcomeCard from "./WelcomeCard";
 import MyProfile from "./MyProfile";
 import Calendar from "./Calendar";
 import { row1, row2 } from "./DashboardData/Doctor";
-import events, { CalendarEvent } from "./DashboardData/CalendarEvents";
+import events from "./DashboardData/CalendarEvents";
 import EventsList from "./EventsList";
 
 const Row1 = () => (
