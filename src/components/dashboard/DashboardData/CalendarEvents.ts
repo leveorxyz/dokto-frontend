@@ -12,7 +12,7 @@ export const Events: CalendarEvent[] = [
   {
     id: 1,
     type: "Dentist",
-    doctorName: "Dr. John Doe",
+    doctorName: "John Doe",
     date: "2020-12-01",
     time: "10:00 PM",
     bgColor: "#16D090",
@@ -21,7 +21,7 @@ export const Events: CalendarEvent[] = [
   {
     id: 2,
     type: "Radiography",
-    doctorName: "Dr. John Doe",
+    doctorName: "John Doe",
     date: "2020-12-05",
     time: "10:00 PM",
     bgColor: "#FF6760",
@@ -30,7 +30,7 @@ export const Events: CalendarEvent[] = [
   {
     id: 3,
     type: "Orphopedic",
-    doctorName: "Dr. John Doe",
+    doctorName: "John Doe",
     date: "2020-12-20",
     time: "10:00 PM",
     bgColor: "#FAC032",
