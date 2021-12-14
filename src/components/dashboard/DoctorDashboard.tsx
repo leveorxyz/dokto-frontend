@@ -12,8 +12,8 @@ import authAtom from "../../atoms/auth.atom";
 const DashboardHome = () => {
   const authState = useRecoilValue(authAtom);
   return (
-    <SpacedContainer py={12} mx={12}>
-      <Box pb="10" color="#11142D" fontSize="4xl" fontWeight="bold" mx={6}>Dashboard</Box>
+    <SpacedContainer py={6} mx={12}>
+      <Box pb="10" color="#11142D" fontSize="4xl" fontWeight="bold" mx={6}>Doctor Dashboard</Box>
       <Flex wrap="wrap">
         {routes
           .filter((route) => route.showInDashboard)
