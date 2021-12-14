@@ -1,37 +1,42 @@
 import {
   Box, Flex, Image,
 } from "@chakra-ui/react";
-import { useRecoilValue } from "recoil";
 
 import { SpacedContainer } from "../common/Containers";
 
 import Card from "./Card";
-import routes from "../../router/routes";
-import authAtom from "../../atoms/auth.atom";
+import { Row1, Row2 } from "./DashboardData/Doctor";
 
-const DashboardHome = () => {
-  const authState = useRecoilValue(authAtom);
-  return (
-    <SpacedContainer py={6} mx={12}>
-      <Box pb="10" color="#11142D" fontSize="4xl" fontWeight="bold" mx={6}>Doctor Dashboard</Box>
-      <Flex wrap="wrap">
-        {routes
-          .filter((route) => route.showInDashboard)
-          .filter(({ allowedRoles }) => (allowedRoles ? allowedRoles.includes(authState.user?.userType ?? "") : true))
-          .slice(1)
-          .map(({
-            displayName, path, icon,
-          }) => (
-            <Card
-              key={path}
-              icon={<Image src={icon} />}
-              title={displayName}
-              path={path}
-            />
-          ))}
-      </Flex>
-    </SpacedContainer>
-  );
-};
+const DashboardHome = () => (
+  <SpacedContainer mx={12}>
+    <Box pb="10" color="#11142D" fontSize="2xl" fontWeight="bold" mx={6}>Dashboard</Box>
+    <Flex wrap="wrap">
+      {Row1
+        .map(({
+          title, path, icon,
+        }) => (
+          <Card
+            key={path}
+            icon={<Image src={icon} />}
+            title={title}
+            path={path}
+          />
+        ))}
+    </Flex>
+    <Flex wrap="wrap">
+      {Row2
+        .map(({
+          title, path, icon,
+        }) => (
+          <Card
+            key={path}
+            icon={<Image src={icon} />}
+            title={title}
+            path={path}
+          />
+        ))}
+    </Flex>
+  </SpacedContainer>
+);
 
 export default DashboardHome;
