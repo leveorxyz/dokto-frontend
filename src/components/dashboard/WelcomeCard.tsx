@@ -21,7 +21,7 @@ export default function WelcomeCard({
 
   return (
     <Box
-      w="100%"
+      w="95%"
       bg="white"
       p={6}
       pt={32}
