@@ -8,6 +8,7 @@ import WelcomeCard from "./WelcomeCard";
 import MyProfile from "./MyProfile";
 import Calendar from "./Calendar";
 import { row1, row2 } from "./DashboardData/Doctor";
+import events, { CalendarEvent } from "./DashboardData/CalendarEvents";
 
 const Row1 = () => (
   <Flex wrap="wrap">
@@ -62,7 +63,7 @@ const DashboardHome = () => (
           <Heading as="h3" fontSize="xl" fontWeight="bold" color="white">
             My Appointments
           </Heading>
-          <Calendar />
+          <Calendar events={events} />
         </Box>
       </Box>
 

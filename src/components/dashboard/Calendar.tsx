@@ -17,13 +17,19 @@ import { format } from "date-fns";
 import locale from "date-fns/locale/en-US";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 
-export default function Calendar() {
+import { CalendarEvent } from "./DashboardData/CalendarEvents";
+
+type Props = {
+  events: CalendarEvent[];
+};
+
+export default function Calendar({ events }: Props) {
   const {
     cursorDate, headers, body, navigation,
   } = useCalendar({
     defaultWeekStart: 1,
   });
-  const yyMM = format(cursorDate, "yy-MM");
+  const yyMM = format(cursorDate, "yyyy-MM");
 
   return (
     <Table variant="unstyled" size="xs" maxW="100%">
@@ -87,10 +93,15 @@ export default function Calendar() {
                   isWeekend,
                 } = day;
 
+                const fullDate = `${yyMM}-${String(date).padStart(
+                  2,
+                  "0",
+                )}`;
+
                 return (
                   <Td
                     key={dayKey}
-                    opacity={isCurrentMonth ? 1 : 0.2}
+                    opacity={isCurrentMonth ? 1 : 0.4}
                     p={2}
                   >
                     {isCurrentDate ? (
@@ -99,21 +110,18 @@ export default function Calendar() {
                         color="primary.light"
                       >
                         <time
-                          dateTime={`${yyMM}-${String(date).padStart(
+                          dateTime={fullDate}
+                        >
+                          {String(date).padStart(
                             2,
                             "0",
-                          )}`}
-                        >
-                          {date}
+                          )}
                         </time>
                       </Text>
                     ) : (
                       <Text fontWeight={300} color={isWeekend ? "gray.300" : "white"}>
                         <time
-                          dateTime={`${yyMM}-${String(date).padStart(
-                            2,
-                            "0",
-                          )}`}
+                          dateTime={fullDate}
                         >
                           {date}
                         </time>
