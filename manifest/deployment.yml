@@ -50,4 +50,5 @@ spec:
           periodSeconds: 300
           timeoutSeconds: 300
           failureThreshold: 90
-        
+    restartPolicy: OnFailure
+    terminationGracePeriodSeconds: 300
