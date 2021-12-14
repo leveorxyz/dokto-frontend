@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dokto-frontend  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dokto-frontend
+  template:
+    metadata:
+      labels:
+        app: dokto-frontend
+    spec:
+      containers:
+      - name: dokto-frontend
+        image: dokto.azurecr.io/toybethsystems/dokto-frontend:latest
+        ports:
+        - containerPort: 80
+        
