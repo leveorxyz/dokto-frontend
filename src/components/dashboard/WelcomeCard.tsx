@@ -21,14 +21,14 @@ export default function WelcomeCard({
 
   return (
     <Box
-      w="95%"
+      w="100%"
+      h="100%"
       bg="white"
       p={6}
       pt={32}
       pb={12}
-      mx={7}
       position="relative"
-      rounded="3xl"
+      rounded="lg"
       boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
     >
       <Heading as="h2" fontSize="2xl" fontWeight={600}>
