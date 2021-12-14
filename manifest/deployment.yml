@@ -17,4 +17,24 @@ spec:
         image: dokto.azurecr.io/toybethsystems/dokto-frontend:latest
         ports:
         - containerPort: 80
-        
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: 100m
+            memory: 500Mi
+        livenessProbe:
+          periodSeconds: 300
+          timeoutSeconds: 300
+          successThreshold: 1
+          failureThreshold: 5       
+        readinessProbe:
+          periodSeconds: 300
+          timeoutSeconds: 300
+          successThreshold: 1
+          failureThreshold: 5    
+        startupProbe:
+          periodSeconds: 300
+          timeoutSeconds: 300
+          failureThreshold: 90
