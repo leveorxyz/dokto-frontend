@@ -58,7 +58,7 @@ const DashboardHome = () => (
 
       <Box px={3} w={["100%", "100%", "100%", "35%", "20%"]}>
         <MyProfile />
-        <Box p={6} mt={6} bg="#2E3192" rounded="3xl">
+        <Box p={6} my={6} bg="#2E3192" rounded="3xl">
           <Heading as="h3" fontSize="xl" fontWeight="bold" color="white">
             My Appointments
           </Heading>
