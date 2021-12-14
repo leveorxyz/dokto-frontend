@@ -6,7 +6,7 @@ import { SpacedContainer } from "../common/Containers";
 import Card from "./Card";
 import WelcomeCard from "./WelcomeCard";
 import MyProfile from "./MyProfile";
-import { Row1, Row2 } from "./DashboardData/Doctor";
+import { row1, row2 } from "./DashboardData/Doctor";
 
 const DashboardHome = () => (
   <SpacedContainer mx={4}>
@@ -19,7 +19,7 @@ const DashboardHome = () => (
           img={null}
         />
         <Flex wrap="wrap">
-          {Row1
+          {row1
             .map(({
               title, path, icon,
             }) => (
@@ -32,7 +32,7 @@ const DashboardHome = () => (
             ))}
         </Flex>
         <Flex wrap="wrap">
-          {Row2
+          {row2
             .map(({
               title, path, icon,
             }) => (

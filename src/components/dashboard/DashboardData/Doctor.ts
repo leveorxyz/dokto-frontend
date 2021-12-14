@@ -6,7 +6,7 @@ import MyServices from "../../../static/DoctorDashboardIcons/MyServices.png";
 import VideoConferenceRoom from "../../../static/DoctorDashboardIcons/VideoConferenceRoom.png";
 import ViewMyProfile from "../../../static/DoctorDashboardIcons/ViewMyProfile.png";
 
-export const Row1 = [
+export const row1 = [
   {
     title: "New Messages",
     path: "/inbox",
@@ -29,7 +29,7 @@ export const Row1 = [
   },
 ];
 
-export const Row2 = [
+export const row2 = [
   {
     title: "My Services",
     path: "/services",
@@ -47,4 +47,4 @@ export const Row2 = [
   },
 ];
 
-export default { Row1, Row2 };
+export default { row1, row2 };
