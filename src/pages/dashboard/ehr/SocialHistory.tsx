@@ -10,8 +10,12 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import MessagePage from "../../../components/common/fallback/MessagePage";
+import useSocialHistoryAdd, { ISocialHistory } from "../../../hooks/socialHistory.tsx/useSocialHistoryAdd";
 import {
   alcoholUseOptions,
+  caffeineUseOptions,
   etohOptions,
   exerciseOptions,
   exposureOptions,
@@ -23,51 +27,35 @@ import {
 } from "../../../data/SocialHistory";
 import CustomAccordion from "../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
-import doctorProfileAtom from "../../../atoms/doctorProfile";
-import useProfile from "../../../hooks/profile/useProfile";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
 
-interface IAssessmentCreate{
-  home_environment:string,
-  highest_education:string,
-  sexual_orientation:string,
-  gender_identity:string,
-  occupation:string,
-  children:string,
-  marital_status:string,
-  status:string,
-  tobacco_status:string,
-  tobacco_type:string,
-  tobacco_packs_per_day:string,
-  tobacco_start_date:string,
-  tobacco_cessation:string
-  exercise:string,
-  seatbelts:string,
-  drug_use:string,
-  quit_date:string
-  exposure:string
-  alcohol_use: string,
-  caffeine_use: string,
-  etoh: string,
-}
-
 export default function SocialHistory() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { id } = useParams();
+  const {
+    mutate: socialHistory,
+    error,
+    isLoading,
+    isError,
+  } = useSocialHistoryAdd();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<IAssessmentCreate>();
+  } = useForm<ISocialHistory>();
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+    const dataWithId:ISocialHistory = { ...data, ...{ patient_encounter: id } };
 
-    // useSocialHistoryAdd(data);
+    socialHistory(dataWithId);
   });
 
   if (isLoading) {
     return <LoadingPage />;
+  }
+
+  if (isError) {
+    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
   return (
@@ -450,7 +438,7 @@ export default function SocialHistory() {
                       placeholder="Select"
                       {...register("caffeine_use")}
                     >
-                      {seatbeltOptions.map(({ label, value }) => (
+                      {caffeineUseOptions.map(({ label, value }) => (
                         <option
                           key={value}
                           value={value}
@@ -491,9 +479,10 @@ export default function SocialHistory() {
 
               </Box>
             </CustomAccordion>
+
             <Flex justifyContent="end" mt={8}>
               <Button>Cancel</Button>
-              <Button type="submit" ml={2} colorScheme="purple">Save</Button>
+              <Button type="submit" ml={2} colorScheme="purple" disabled={isSubmitting}>Save</Button>
             </Flex>
           </form>
 

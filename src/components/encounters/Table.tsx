@@ -96,11 +96,11 @@ function EncountersTable({
                 >
                   {cell.column.Header === "Action" ? cell.render("Cell")
                     : (
-                      <Link to={`/patients/encounters/${row.id}`}>
+
+                      <Link to={`/patients/encounters/${row.original.id}`}>
                         {cell.render("Cell")}
                       </Link>
                     )}
-
                 </Td>
               ))}
             </Tr>

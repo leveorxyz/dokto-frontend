@@ -1,5 +1,5 @@
 export const homeEnvironmentOptions = [
-  { label: "apartment", value: "apartment" },
+  { label: "Apartment", value: "Apartment" },
   { label: "Assisted living", value: "Assisted living" },
   { label: "Private home", value: "Private home" },
   { label: "Stairs Inside", value: "Stairs Inside" },
@@ -76,15 +76,13 @@ export const exerciseOptions = [
 
 export const seatbeltOptions = [
   { label: "Never", value: "Never" },
-  { label: "0-1 times/week", value: "0-1 times/week" },
-  { label: "2-5 times/week", value: "2-5 times/week" },
-  { label: "2-5 times/week", value: "2-5 times/week" },
+  { label: "Always", value: "Always" },
+  { label: "Sometimes", value: "Sometimes" },
 ];
 
 export const exposureOptions = [
   { label: "None", value: "None" },
   { label: "Asbestos", value: "Asbestos" },
-  { label: "Hepatitis", value: "Hepatitis" },
   { label: "Hepatitis", value: "Hepatitis" },
   { label: "Chemicals", value: "Chemicals" },
   { label: "Tuberculosis", value: "Tuberculosis" },
@@ -105,7 +103,16 @@ export const alcoholUseOptions = [
 export const etohOptions = [
   { label: "Never", value: "Never" },
   { label: "Occasional", value: "Occasional" },
-  { label: "Daily", value: "No" },
+  { label: "Cigar", value: "No" },
+
+];
+
+export const caffeineUseOptions = [
+  { label: "No", value: "No" },
+  { label: "Cigarette", value: "Cigarette" },
+  { label: "Cigar", value: "Cigar" },
+  { label: "Chewing tobacco", value: "Chewing tobacco" },
+  { label: "Cigrate & Chewing", value: "Cigrate & Chewing" },
 
 ];
 
