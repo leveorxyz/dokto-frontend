@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import {
   Flex,
   Box,
@@ -23,6 +24,22 @@ type Props = {
   events: CalendarEvent[];
 };
 
+const EventsIndicator = ({ events }: {events: CalendarEvent[]}) => (
+  <Flex justify="center" align="center">
+    {events?.map(
+      ({ id, bgColor }) => (
+        <Box
+          key={id}
+          boxSize="5px"
+          rounded="full"
+          bg={bgColor}
+          mx="2px"
+        />
+      ),
+    )}
+  </Flex>
+);
+
 export default function Calendar({ events }: Props) {
   const {
     cursorDate, headers, body, navigation,
@@ -30,6 +47,17 @@ export default function Calendar({ events }: Props) {
     defaultWeekStart: 1,
   });
   const yyMM = format(cursorDate, "yyyy-MM");
+
+  const eventsByDate = useMemo(() => events.reduce(
+    (acc: Record<string, CalendarEvent[]>, event: CalendarEvent) => {
+      const date = format(new Date(event.date), "yyyy-MM-dd");
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(event);
+      return acc;
+    }, {},
+  ), [events]);
 
   return (
     <Table variant="unstyled" size="xs" maxW="100%">
@@ -104,29 +132,37 @@ export default function Calendar({ events }: Props) {
                     opacity={isCurrentMonth ? 1 : 0.4}
                     p={2}
                   >
-                    {isCurrentDate ? (
-                      <Text
-                        fontWeight={300}
-                        color="primary.light"
-                      >
-                        <time
-                          dateTime={fullDate}
+                    <Flex direction="column" alignItems="center">
+                      {isCurrentDate ? (
+                        <Text
+                          fontWeight={300}
+                          color="primary.light"
                         >
-                          {String(date).padStart(
-                            2,
-                            "0",
-                          )}
-                        </time>
-                      </Text>
-                    ) : (
-                      <Text fontWeight={300} color={isWeekend ? "gray.300" : "white"}>
-                        <time
-                          dateTime={fullDate}
-                        >
-                          {date}
-                        </time>
-                      </Text>
-                    )}
+                          <time
+                            dateTime={fullDate}
+                          >
+                            {String(date).padStart(
+                              2,
+                              "0",
+                            )}
+                          </time>
+                        </Text>
+                      ) : (
+                        <Text fontWeight={300} color={isWeekend ? "gray.300" : "white"}>
+                          <time
+                            dateTime={fullDate}
+                          >
+                            {date}
+                          </time>
+                        </Text>
+                      )}
+
+                      {eventsByDate[fullDate] && (
+                        <EventsIndicator
+                          events={eventsByDate[fullDate]}
+                        />
+                      )}
+                    </Flex>
                   </Td>
                 );
               })}
