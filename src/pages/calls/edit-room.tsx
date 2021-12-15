@@ -3,17 +3,26 @@ import {
   Box, Text, Flex,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
+import useCustomizeRoom from "../../hooks/calls/useCustomizeRoom";
 import MessageInput from "../../components/call/edit-room/MessageInput";
 import FileInput from "../../components/call/edit-room/FileInput";
 import BacktoDashboard from "../../components/call/edit-room/BacktoDashboard";
 import authAtom from "../../atoms/auth.atom";
-import BrandButton from "../../components/common/buttons/BrandButton";
 import WhiteButton from "../../components/common/buttons/WhiteButton";
 import EditIcons from "../../components/call/edit-room/EditIcons";
 
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
   const [showInput, setShowInput] = useState<""|"image"|"text"|"video">("");
+
+  const {
+    mutate,
+    isLoading,
+  } = useCustomizeRoom();
+
+  const handleSetDefault = () => {
+    mutate({ text: "", room_media: null });
+  };
 
   const hideInput = () => setShowInput("");
 
@@ -36,14 +45,9 @@ const EditRoom = () => {
           <Text fontSize="25px">{`Waiting Rooms of ${authState?.user?.fullName}`}</Text>
           <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Rooms</Text>
           <Flex marginTop="45px" justifyContent="flex-end" alignItems="center">
-            <Box marginRight="20px">
-              <WhiteButton>
-                Revert to Default
-              </WhiteButton>
-            </Box>
-            <BrandButton width="100px">
-              Save
-            </BrandButton>
+            <WhiteButton onClick={() => handleSetDefault()} isLoading={isLoading}>
+              Revert to Default
+            </WhiteButton>
           </Flex>
         </Box>
         {!showInput && (
