@@ -5,6 +5,7 @@ import authAtom from "../../atoms/auth.atom";
 import NotImplemented from "../../components/NotImplemented";
 import DoctorDashboard from "../../components/dashboard/DoctorDashboard";
 import HospitalDashboard from "../../components/dashboard/HospitalDashboard";
+import PharmacyDashboard from "../../components/dashboard/PharmacyDashboard";
 
 export default function DashboardHome() {
   const authState = useRecoilValue(authAtom);
@@ -18,7 +19,7 @@ export default function DashboardHome() {
         case "CLINIC":
           return <HospitalDashboard />;
         case "PHARMACY":
-          return <NotImplemented />;
+          return <PharmacyDashboard />;
         default:
           return <></>;
       }
