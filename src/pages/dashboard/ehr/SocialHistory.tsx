@@ -49,14 +49,11 @@ export default function SocialHistory() {
   } = useForm<ISocialHistory>();
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
     const dataWithId:ISocialHistory = { ...data, ...{ patient_encounter: id } };
     socialHistory(dataWithId);
   });
 
   const { data } = useGetPrevSocialHistory(id!);
-
-  console.log(57, data);
 
   const handleCopyPreviousEncounter = () => {
     if (data) {
