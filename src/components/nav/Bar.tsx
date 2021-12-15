@@ -30,8 +30,9 @@ import authAtom, { AuthStateType } from "../../atoms/auth.atom";
 import LoginModal from "../login/LoginModal";
 import loginModalAtom from "../../atoms/loginModal.atom";
 
-function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
+function NavButtons() {
   const authState = useRecoilValue<AuthStateType>(authAtom);
+  const loginModalState = useRecoilValue(loginModalAtom);
 
   return (
     <Flex
@@ -43,7 +44,6 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       borderLeftColor="black"
     >
       {!authState.isLoggedIn && (
-        // <NavItem href="/patient-registration" title="Patient Registration" />
         <Link to="/patient-registration">
           <Box
             as={Button}
@@ -73,7 +73,7 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
           rounded="full"
           ml={2}
           _hover={{ bg: "brand.dark", color: "white" }}
-          onClick={authState.isLoggedIn ? () => {} : openLoginModal}
+          onClick={authState.isLoggedIn ? () => {} : loginModalState?.openLoginModal}
         >
           <Box d="flex" justifyContent="center">
             <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
@@ -91,10 +91,9 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
 
 type MobileProps = {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  openLoginModal: () => void;
 }
 
-function MobileMenu({ setIsMenuOpen, openLoginModal }: MobileProps) {
+function MobileMenu({ setIsMenuOpen }: MobileProps) {
   return (
     <Flex direction="column" minHeight="90vh" justifyContent="space-around" display={["flex", "flex", "none", "none"]}>
       {routes
@@ -116,7 +115,7 @@ function MobileMenu({ setIsMenuOpen, openLoginModal }: MobileProps) {
       </Center>
 
       <Center>
-        <NavButtons openLoginModal={openLoginModal} />
+        <NavButtons />
       </Center>
     </Flex>
   );
@@ -126,7 +125,7 @@ type MenuProps = {
   isMenuOpen: boolean;
 } & MobileProps;
 
-function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
+function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
   return (
     <Flex alignItems="center" height="4rem" wrap="nowrap">
       <Flex
@@ -202,7 +201,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         </Flex>
 
         <Box display={["none", "none", "block", "block"]}>
-          <NavButtons openLoginModal={openLoginModal} />
+          <NavButtons />
         </Box>
 
         <Box display={["flex", "flex", "none", "none"]}>
@@ -240,9 +239,8 @@ export default function MenuBar({ showUpperMenu }: MenuBarProps) {
         <Menu
           setIsMenuOpen={setIsMenuOpen}
           isMenuOpen={isMenuOpen}
-          openLoginModal={openLoginModal}
         />
-        {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}
+        {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} />}
         <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
       </FullWidthContainer>
     </Box>
