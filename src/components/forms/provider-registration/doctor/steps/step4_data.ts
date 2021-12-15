@@ -346,6 +346,86 @@ const firstColumn = () :FormDataType => ({
           label: "Bariatric Surgeon",
           value: "Bariatric Surgeon",
         },
+        {
+          label: "Bell's Palsy",
+          value: "Bell's Palsy",
+        },
+        {
+          label: "Bloodletting",
+          value: "Bloodletting",
+        },
+        {
+          label: "Chinese Herbal Medicine Consultation",
+          value: "Chinese Herbal Medicine Consultation",
+        },
+        {
+          label: "Chinese Medicine Massage / Tui Na",
+          value: "Chinese Medicine Massage / Tui Na",
+        },
+        {
+          label: "Cupping",
+          value: "Cupping",
+        },
+        {
+          label: "Depression",
+          value: "Depression",
+        },
+        {
+          label: "Facial Cosmetic Acupuncturen",
+          value: "Facial Cosmetic Acupuncture",
+        },
+        {
+          label: "Functional Medicine Consultation",
+          value: "Functional Medicine Consultation",
+        },
+        {
+          label: "Gua Sha",
+          value: "Gua Sha",
+        },
+        {
+          label: "Headache",
+          value: "Headache",
+        },
+        {
+          label: "Hip Pain",
+          value: "Hip Pain",
+        },
+        {
+          label: "Infertility Consultation",
+          value: "Infertility Consultation",
+        },
+        {
+          label: "Knee Pain",
+          value: "Knee Pain",
+        },
+        {
+          label: "KyoJung Therapy",
+          value: "KyoJung Therapy",
+        },
+        {
+          label: "Migraine",
+          value: "Migraine",
+        },
+        {
+          label: "Moxibustion",
+          value: "Moxibustion",
+        },
+        {
+          label: "Neck Pain",
+          value: "Neck Pain",
+        },
+        {
+          label: "Painful Menstruation / Dysmenorrhea",
+          value: "Painful Menstruation / Dysmenorrhea",
+        },
+        {
+          label: "Qigong Exercise",
+          value: "Qigong Exercise",
+        },
+        {
+          label: "Shoulder Pain",
+          value: "Shoulder Pain",
+        },
       ],
       placeholder: "Select",
       rules: {
