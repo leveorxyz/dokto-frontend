@@ -86,7 +86,7 @@ export default function SidebarContainer({ children }: {children: React.ReactNod
         <Box w="15rem" position="fixed" top="4rem" left={0}>
           <Sidebar />
         </Box>
-        <Box w="calc(100% - 15rem)" minH="100vh" pt="4rem" bgColor="#F7F7FC">
+        <Box w="calc(100% - 15rem)" minH="100vh" bgColor="#F7F7FC">
           {children}
         </Box>
       </Flex>
