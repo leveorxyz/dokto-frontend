@@ -128,8 +128,10 @@ export default function VideoCalls() {
   }, [conversations]);
 
   useEffect(() => {
-    setCallSidebarStatus(true);
-  }, [isPatient, setCallSidebarStatus]);
+    if (room) {
+      setCallSidebarStatus(true);
+    }
+  }, [room, isPatient, setCallSidebarStatus]);
 
   useEffect(() => () => {
     room?.localParticipant.videoTracks.forEach((publication) => {
