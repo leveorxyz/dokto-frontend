@@ -24,7 +24,6 @@ const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
-const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"));
 const AccountSettings = lazy(() => import("../pages/dashboard/AccountSettings"));
 const SpecialtiesServices = lazy(() => import("../pages/dashboard/SpecialtiesServices"));
 const VideoCalls = lazy(() => import("../pages/calls"));
@@ -41,7 +40,7 @@ const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefCom
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
-const PatientProfileSettings = lazy(() => import("../pages/dashboard/patient-dashboard/PatientProfileSettings"));
+const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
 
 export type RouteType = {
     displayName: string;
@@ -158,7 +157,7 @@ const routes: RouteType[] = [
   {
     displayName: "Profile Settings",
     path: "/profile-settings",
-    component: <PatientProfileSettings />,
+    component: <ProfileSettings />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
