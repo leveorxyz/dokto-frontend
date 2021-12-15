@@ -15,7 +15,7 @@ export default function DashboardHome() {
           return <DoctorDashboard />;
         case "PATIENT":
           return <NotImplemented />;
-        case "HOSPITAL":
+        case "CLINIC":
           return <HospitalDashboard />;
         case "PHARMACY":
           return <NotImplemented />;
