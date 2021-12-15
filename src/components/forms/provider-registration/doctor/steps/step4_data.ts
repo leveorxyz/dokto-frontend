@@ -319,16 +319,32 @@ const firstColumn = () :FormDataType => ({
       label: "Services",
       options: [
         {
-          label: "option1",
-          value: "option1",
+          label: "Acupressure",
+          value: "Acupressure",
         },
         {
-          label: "option2",
-          value: "option2",
+          label: "Acupuncture",
+          value: "Acupuncture",
         },
         {
-          label: "option3",
-          value: "option3",
+          label: "Anxiety",
+          value: "Anxiety",
+        },
+        {
+          label: "Aromatherapy",
+          value: "Aromatherapy",
+        },
+        {
+          label: "Back Pain",
+          value: "Back Pain",
+        },
+        {
+          label: "Bariatric Surgery",
+          value: "Bariatric Surgery",
+        },
+        {
+          label: "Bariatric Surgeon",
+          value: "Bariatric Surgeon",
         },
       ],
       placeholder: "Select",
