@@ -4,7 +4,8 @@ import { AxiosInstance } from "axios";
 import { useNavigate } from "react-router-dom";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
-interface IPatientProcedure{
+export interface IPatientProcedure{
+  id?:string;
   procedure_type: string,
   code: string,
   description: string,

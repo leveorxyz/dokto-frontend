@@ -184,11 +184,7 @@ const PatientEncounters = () => {
                 key={url}
                 mb={6}
               >
-                <ChakraLink
-                  as={Link}
-                  to={`${url}/${id}`}
-                  _hover={{ textDecoration: "none" }}
-                >
+                <Box>
                   <Flex
                     justifyContent="space-between"
                     alignItems="center"
@@ -198,16 +194,25 @@ const PatientEncounters = () => {
                     fontWeight="semibold"
                   >
                     <Box>{title}</Box>
-                    <Flex alignItems="center" color="brand.darkPurple">
-                      <Box
-                        as={FiEdit}
-                        size="1.2rem"
-                        mr={2}
-                      />
-                      <Box>Edit</Box>
-                    </Flex>
+                    <ChakraLink
+                      as={Link}
+                      to={`${url}/${id}`}
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      <Flex alignItems="center" color="brand.darkPurple">
+                        <Box
+                          as={FiEdit}
+                          size="1.2rem"
+                          mr={2}
+                        />
+                        <Box>
+                          Edit
+                        </Box>
+                      </Flex>
+
+                    </ChakraLink>
                   </Flex>
-                </ChakraLink>
+                </Box>
 
                 <Box
                   minH="8rem"
@@ -217,7 +222,14 @@ const PatientEncounters = () => {
                   borderColor="brand.darkPink"
                   p={6}
                 >
-                  No result found
+                  <ChakraLink
+                    as={Link}
+                    to={`${url}/${id}/view`}
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    View
+
+                  </ChakraLink>
                 </Box>
               </Box>
             ),

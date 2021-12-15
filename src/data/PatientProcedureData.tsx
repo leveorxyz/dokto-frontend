@@ -1,21 +1,11 @@
 import {
   Box, Flex, IconButton,
 } from "@chakra-ui/react";
-import faker from "faker";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Column } from "react-table";
-import { PatientEncounters } from "../atoms/ehr/patientEncounters";
+import { IPatientProcedure } from "../hooks/patientProcedure/usePatientProcedureAdd";
 
-export const dummyPatientEncounters: PatientEncounters[] = new Array(5).fill(null)
-  .map(() => ({
-    date: faker.date.past().toDateString(),
-    code: faker.lorem.word(),
-    description: faker.lorem.paragraph(3),
-    status: faker.random.arrayElement(["Active", "Inactive"]),
-    action: "",
-  }));
-
-export const columns: Column<PatientEncounters>[] = [
+export const columns: Column<IPatientProcedure>[] = [
   {
     Header: "",
     accessor: "date",
@@ -63,7 +53,7 @@ export const columns: Column<PatientEncounters>[] = [
 
   {
     Header: "",
-    accessor: "action",
+    accessor: "id",
     Cell: () => (
       <Flex>
         <IconButton
@@ -86,4 +76,4 @@ export const columns: Column<PatientEncounters>[] = [
 
 ];
 
-export default { dummyPatientEncounters, columns };
+export default { columns };

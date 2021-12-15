@@ -35,7 +35,8 @@ const Patients = lazy(() => import("../pages/dashboard/Patients"));
 const Encounters = lazy(() => import("../pages/dashboard/ehr/Encounters"));
 const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/ehr/Assessment&Diagnosis"));
 const PlanOfCare = lazy(() => import("../pages/dashboard/ehr/PlanOfCare"));
-const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/PatientProcedure"));
+const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/patientProcedure/PatientProcedure"));
+const ViewPatientProcedures = lazy(() => import("../pages/dashboard/ehr/patientProcedure/View"));
 const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/FunctionalAndCognitiveStatus"));
 const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
@@ -250,6 +251,15 @@ const routes: RouteType[] = [
     displayName: "Patient Procedure",
     path: "/patients/encounters-data/patient-procedure/:id",
     component: <PatientProcedure />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Patient Procedure",
+    path: "/patients/encounters-data/patient-procedure/:id/view",
+    component: <ViewPatientProcedures />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,

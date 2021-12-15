@@ -23,14 +23,14 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { PatientEncounters } from "../../../atoms/ehr/patientEncounters";
+import { IPatientProcedure } from "../../../hooks/patientProcedure/usePatientProcedureAdd";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<PatientEncounters> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<PatientEncounters> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<PatientEncounters>[];
-  rows: Row<PatientEncounters>[];
-  prepareRow: (row: Row<PatientEncounters>) => void;
+  getTableProps: (propGetter?: TablePropGetter<IPatientProcedure> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<IPatientProcedure> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<IPatientProcedure>[];
+  rows: Row<IPatientProcedure>[];
+  prepareRow: (row: Row<IPatientProcedure>) => void;
 }
 
 function EncountersTable({
