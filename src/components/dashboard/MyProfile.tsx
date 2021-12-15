@@ -1,9 +1,99 @@
 import {
-  Flex, Box, Avatar, Heading,
+  Flex, Box, Avatar, Heading, Image,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 
 import authAtom from "../../atoms/auth.atom";
+import GreenPlus from "../../static/DoctorDashboardIcons/GreenPlus.png";
+import OrangePlus from "../../static/DoctorDashboardIcons/OrangePlus.png";
+import YellowPlus from "../../static/DoctorDashboardIcons/YellowPlus.png";
+
+const PlusButtons = () => (
+  <>
+    <Box
+      top="-1.5rem"
+      left="-2rem"
+      position="absolute"
+      p={1}
+      cursor="pointer"
+      opacity={0.9}
+      _hover={{
+        opacity: 1,
+      }}
+    >
+      <Image src={GreenPlus} alt="Green Plus" boxSize="0.85rem" />
+    </Box>
+    <Box
+      top="-1.5rem"
+      right="-2rem"
+      position="absolute"
+      p={1}
+      cursor="pointer"
+      opacity={0.9}
+      _hover={{
+        opacity: 1,
+      }}
+    >
+      <Image src={GreenPlus} alt="Green Plus" boxSize="0.85rem" />
+    </Box>
+
+    <Box
+      top="50%"
+      left="-4rem"
+      transform="translateY(-50%)"
+      position="absolute"
+      p={1}
+      cursor="pointer"
+      opacity={0.9}
+      _hover={{
+        opacity: 1,
+      }}
+    >
+      <Image src={OrangePlus} alt="Green Plus" boxSize="0.85rem" />
+    </Box>
+    <Box
+      top="50%"
+      right="-4rem"
+      transform="translateY(-50%)"
+      position="absolute"
+      p={1}
+      cursor="pointer"
+      opacity={0.9}
+      _hover={{
+        opacity: 1,
+      }}
+    >
+      <Image src={OrangePlus} alt="Green Plus" boxSize="0.85rem" />
+    </Box>
+
+    <Box
+      bottom="-1.5rem"
+      left="-1rem"
+      position="absolute"
+      p={1}
+      cursor="pointer"
+      opacity={0.9}
+      _hover={{
+        opacity: 1,
+      }}
+    >
+      <Image src={YellowPlus} alt="Green Plus" boxSize="0.85rem" />
+    </Box>
+    <Box
+      bottom="-1.5rem"
+      right="-1rem"
+      position="absolute"
+      p={1}
+      cursor="pointer"
+      opacity={0.9}
+      _hover={{
+        opacity: 1,
+      }}
+    >
+      <Image src={YellowPlus} alt="Green Plus" boxSize="0.85rem" />
+    </Box>
+  </>
+);
 
 export default function MyProfile() {
   const authState = useRecoilValue(authAtom);
@@ -15,12 +105,11 @@ export default function MyProfile() {
       alignItems="center"
       w="100%"
       h="100%"
-      p={12}
       bg="white"
       rounded="lg"
       boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
     >
-      <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={6}>My Profile</Heading>
+      <Heading as="h3" fontSize="2xl" fontWeight="semibold" mb={12}>My Profile</Heading>
       <Box
         p="3px"
         rounded="full"
@@ -47,6 +136,7 @@ export default function MyProfile() {
           bgGradient="linear(to-b, #2D96EB, #1DAE83)"
           clipPath="polygon(0% 0%,50% 0%,50% 100%,0% 100%);"
         />
+        <PlusButtons />
       </Box>
     </Flex>
   );
