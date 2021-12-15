@@ -8,7 +8,6 @@ import {
   Image,
   Divider,
 } from "@chakra-ui/react";
-import format from "date-fns/format";
 
 import { SpacedContainer } from "../common/Containers";
 import WelcomeCard from "./WelcomeCard";
@@ -42,7 +41,7 @@ export default function HospitalDashboard() {
         </GridItem>
 
         <GridItem rowSpan={1} colSpan={1} bg="#DCEBFB" rounded="lg" p={3}>
-          <Flex
+          {/* <Flex
             direction="column"
             justifyContent="space-around"
             alignItems="flex-end"
@@ -51,11 +50,11 @@ export default function HospitalDashboard() {
           >
             <Text fontWeight={300}>{format(new Date(), "hh:MM a")}</Text>
             <Text fontSize="lg" fontWeight="semibold" color="brand.darkPink">Good Evening</Text>
-          </Flex>
+          </Flex> */}
         </GridItem>
 
         <GridItem rowSpan={1} colSpan={1} bg="#6672FB" color="white" rounded="lg" p={3}>
-          <Flex
+          {/* <Flex
             direction="column"
             justifyContent="space-around"
             w="100%"
@@ -69,7 +68,7 @@ export default function HospitalDashboard() {
               <Text fontSize="lg">Temperature</Text>
               <Text fontSize="3xl" fontWeight="bold">37.5 C</Text>
             </Flex>
-          </Flex>
+          </Flex> */}
         </GridItem>
 
         <GridItem rowSpan={1} colSpan={1} bg="#6200EE" color="white" rounded="lg" p={3}>
