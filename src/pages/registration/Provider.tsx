@@ -66,6 +66,7 @@ export default function Provider() {
                       mr={4}
                       _selected={{
                         color: "brand.darkPink",
+                        outline: "none",
                         _after: {
                           content: "''",
                           bg: "brand.darkPurple",
@@ -75,6 +76,12 @@ export default function Provider() {
                           width: "50%",
                           height: "2px",
                         },
+                      }}
+                      _active={{
+                        outline: "none",
+                      }}
+                      _focus={{
+                        outline: "none",
                       }}
                     >
                       <Image src={icon} w="100%" h="auto" />
