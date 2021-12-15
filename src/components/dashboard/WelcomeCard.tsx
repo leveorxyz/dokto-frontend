@@ -53,7 +53,7 @@ export default function WelcomeCard({
         </Link>
       </Box>
       {img && (
-      <Box position="absolute" bottom={0} right={0} height="125%">
+      <Box position="absolute" bottom={0} right={0} height="115%">
         <Image src={img} height="100%" width="auto" fit="contain" />
       </Box>
       )}
