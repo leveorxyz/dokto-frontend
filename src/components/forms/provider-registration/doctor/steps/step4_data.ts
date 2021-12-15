@@ -1,4 +1,5 @@
 import format from "date-fns/format";
+import { differenceInDays } from "date-fns";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
@@ -314,136 +315,6 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.MULTISELECT,
-      name: "services",
-      label: "Services",
-      options: [
-        {
-          label: "Acupressure",
-          value: "Acupressure",
-        },
-        {
-          label: "Acupuncture",
-          value: "Acupuncture",
-        },
-        {
-          label: "Anxiety",
-          value: "Anxiety",
-        },
-        {
-          label: "Aromatherapy",
-          value: "Aromatherapy",
-        },
-        {
-          label: "Back Pain",
-          value: "Back Pain",
-        },
-        {
-          label: "Bariatric Surgery",
-          value: "Bariatric Surgery",
-        },
-        {
-          label: "Bariatric Surgeon",
-          value: "Bariatric Surgeon",
-        },
-        {
-          label: "Bell's Palsy",
-          value: "Bell's Palsy",
-        },
-        {
-          label: "Bloodletting",
-          value: "Bloodletting",
-        },
-        {
-          label: "Chinese Herbal Medicine Consultation",
-          value: "Chinese Herbal Medicine Consultation",
-        },
-        {
-          label: "Chinese Medicine Massage / Tui Na",
-          value: "Chinese Medicine Massage / Tui Na",
-        },
-        {
-          label: "Cupping",
-          value: "Cupping",
-        },
-        {
-          label: "Depression",
-          value: "Depression",
-        },
-        {
-          label: "Facial Cosmetic Acupuncturen",
-          value: "Facial Cosmetic Acupuncture",
-        },
-        {
-          label: "Functional Medicine Consultation",
-          value: "Functional Medicine Consultation",
-        },
-        {
-          label: "Gua Sha",
-          value: "Gua Sha",
-        },
-        {
-          label: "Headache",
-          value: "Headache",
-        },
-        {
-          label: "Hip Pain",
-          value: "Hip Pain",
-        },
-        {
-          label: "Infertility Consultation",
-          value: "Infertility Consultation",
-        },
-        {
-          label: "Knee Pain",
-          value: "Knee Pain",
-        },
-        {
-          label: "KyoJung Therapy",
-          value: "KyoJung Therapy",
-        },
-        {
-          label: "Migraine",
-          value: "Migraine",
-        },
-        {
-          label: "Moxibustion",
-          value: "Moxibustion",
-        },
-        {
-          label: "Neck Pain",
-          value: "Neck Pain",
-        },
-        {
-          label: "Painful Menstruation / Dysmenorrhea",
-          value: "Painful Menstruation / Dysmenorrhea",
-        },
-        {
-          label: "Qigong Exercise",
-          value: "Qigong Exercise",
-        },
-        {
-          label: "Shoulder Pain",
-          value: "Shoulder Pain",
-        },
-        {
-          label: "Pulmonolist",
-          value: "Pulmonolist",
-        },
-        {
-          label: "Radiologist",
-          value: "Radiologist",
-        },
-      ],
-      placeholder: "Select",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
-    },
-    {
       type: FieldTypes.FILE,
       name: "license_file",
       label: "Current License",
@@ -469,6 +340,11 @@ const firstColumn = () :FormDataType => ({
           value: true,
           message: "This field is required",
         },
+        validate: (v) => (
+          differenceInDays(new Date(), new Date(v)) < 0
+            ? true
+            : "You licence is expired"
+        ),
       },
     },
     {
