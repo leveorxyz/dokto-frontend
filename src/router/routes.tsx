@@ -41,6 +41,7 @@ const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefCom
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
+const PatientProfileSettings = lazy(() => import("../pages/dashboard/patient-dashboard/PatientProfileSettings"));
 
 export type RouteType = {
     displayName: string;
@@ -157,7 +158,7 @@ const routes: RouteType[] = [
   {
     displayName: "Profile Settings",
     path: "/profile-settings",
-    component: <ProfileSettings />,
+    component: <PatientProfileSettings />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
