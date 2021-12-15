@@ -67,6 +67,7 @@ export type SelectFieldType = {
   options: {
     value: string;
     label: string;
+    profession_code?: string;
   }[];
 } & CommonType;
 
