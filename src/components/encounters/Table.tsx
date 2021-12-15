@@ -24,14 +24,14 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { Encounters } from "../../atoms/ehr/encounters";
+import { EncounteredPatient } from "../../hooks/encounteredPatients/useEncounteredPatients";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<Encounters> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<Encounters> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<Encounters>[];
-  rows: Row<Encounters>[];
-  prepareRow: (row: Row<Encounters>) => void;
+  getTableProps: (propGetter?: TablePropGetter<EncounteredPatient> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<EncounteredPatient> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<EncounteredPatient>[];
+  rows: Row<EncounteredPatient>[];
+  prepareRow: (row: Row<EncounteredPatient>) => void;
 }
 
 function EncountersTable({
@@ -94,9 +94,13 @@ function EncountersTable({
                   {...cell.getCellProps()}
                   key={cell.column.id}
                 >
-                  <Link to="/patients/encounters-data">
-                    {cell.render("Cell")}
-                  </Link>
+                  {cell.column.Header === "Action" ? cell.render("Cell")
+                    : (
+
+                      <Link to={`/patients/encounters/${row.original.id}`}>
+                        {cell.render("Cell")}
+                      </Link>
+                    )}
                 </Td>
               ))}
             </Tr>
