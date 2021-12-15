@@ -248,7 +248,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient Procedure",
-    path: "/patients/encounters-data/patient-procedure",
+    path: "/patients/encounters-data/patient-procedure/:id",
     component: <PatientProcedure />,
     isProtected: true,
     showInNavbar: false,

@@ -1,13 +1,14 @@
 import { useMemo } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../common/fallback/LoadingPage";
 import { stepAtom } from "../atoms";
-import usePatientReg from "../../../../hooks/register/usePatientReg";
+import usePatientProcedureAdd from "../../../../hooks/patientProcedure/usePatientProcedureAdd";
 import MessagePage from "../../../common/fallback/MessagePage";
 
 export default function Submit() {
+  const { id } = useParams();
   const stepData = useRecoilValue<any>(stepAtom);
 
   const data = useMemo(() => ({
@@ -36,15 +37,11 @@ export default function Submit() {
   }), [stepData]);
 
   const {
-    error, isError, isSuccess, isFetching,
-  } = usePatientReg(data);
+    error, isError, isFetching,
+  } = usePatientProcedureAdd({ ...data, ...{ patient_encounter: id } });
 
   if (isFetching) {
     return <Loading />;
-  }
-
-  if (isSuccess) {
-    return <MessagePage status="success" title="Success!" message="You have successfully registered to Dokto! Please check your email and verify your email to log in to Dokto" />;
   }
 
   if (isError) {

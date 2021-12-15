@@ -9,7 +9,7 @@ const firstRow = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.SELECT,
-      name: "gender",
+      name: "procedure_type",
       label: "Type",
       options: [{
         value: "MALE",
@@ -25,7 +25,7 @@ const firstColumn = () :FormDataType => ({
 
     {
       type: FieldTypes.INPUT,
-      name: "contact_no",
+      name: "code",
       label: "Code",
       rules: {
         required: {
@@ -61,7 +61,7 @@ const secondColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "description",
       label: "Description",
       rules: {
         required: {
@@ -72,7 +72,7 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "date_of_birth",
+      name: "date",
       label: "Date",
       max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
