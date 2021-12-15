@@ -8,12 +8,15 @@ import { useLocation, Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import authAtom from "../../atoms/auth.atom";
+import { callSidebarAtom } from "../call/atoms";
 import routes from "../../router/routes";
 import Bar from "./Bar";
 
 const Sidebar = () => {
   const location = useLocation();
   const authState = useRecoilValue(authAtom);
+  const isCallSideBarDisabled = useRecoilValue(callSidebarAtom);
+
   return (
     <Flex
       justifyContent="flex-start"
@@ -22,6 +25,7 @@ const Sidebar = () => {
       overflowY="scroll"
       overflowX="hidden"
       bg="white"
+      pointerEvents={isCallSideBarDisabled ? "none" : "all"}
       sx={{
         "&::-webkit-scrollbar": {
           display: "none",
