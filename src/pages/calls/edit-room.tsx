@@ -10,20 +10,12 @@ import authAtom from "../../atoms/auth.atom";
 import BrandButton from "../../components/common/buttons/BrandButton";
 import WhiteButton from "../../components/common/buttons/WhiteButton";
 import EditIcons from "../../components/call/edit-room/EditIcons";
-import ImagePreview from "../../components/call/edit-room/ImagePreview";
 
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
   const [showInput, setShowInput] = useState<""|"image"|"text"|"video">("");
-  const [isPreview, setIsPreview] = useState<boolean>(false);
 
   const hideInput = () => setShowInput("");
-
-  const showPreview = () => {
-    setShowInput("");
-    setIsPreview(true);
-  };
-  const hidePreview = () => setIsPreview(false);
 
   return (
     <div>
@@ -84,8 +76,7 @@ const EditRoom = () => {
         </Box>
         )}
         {showInput === "text" && <MessageInput handleClose={hideInput} />}
-        {(showInput === "image" || showInput === "video") && <FileInput handleAdd={showPreview} />}
-        {isPreview && <ImagePreview handleClose={hidePreview} />}
+        {showInput === "image" && <FileInput handleClose={hideInput} />}
       </Box>
     </div>
   );

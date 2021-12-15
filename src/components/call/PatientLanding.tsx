@@ -60,7 +60,7 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
           </Box>
         </Flex>
       </Box>
-      <Image src={roomData?.data?.room_media ? roomData?.data?.room_media : BottomImage} width="40%" position="absolute" bottom="0" />
+      <Image src={roomData?.data?.result?.room_media ? roomData?.data?.result?.room_media : BottomImage} width="40%" position="absolute" bottom="0" />
     </Flex>
   );
 };
