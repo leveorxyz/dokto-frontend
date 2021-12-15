@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Flex,
-  Grid,
-  GridItem,
   Box,
   Image,
   Button,
