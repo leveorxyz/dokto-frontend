@@ -6,6 +6,7 @@ import {
   Heading,
   Text,
   Image,
+  Divider,
 } from "@chakra-ui/react";
 import format from "date-fns/format";
 
@@ -119,8 +120,20 @@ export default function HospitalDashboard() {
         my={6}
         minHeight="50vh"
       >
-        <GridItem colSpan={3} bg="white" color="white" rounded="lg" p={3} />
-        <GridItem colSpan={3} bg="white" color="white" rounded="lg" p={3} />
+        <GridItem colSpan={3} bg="white" color="white" rounded="lg">
+          <Box p={6}>
+            <Text color="brand.darkPink" fontWeight="semibold">Popular Doctors</Text>
+            <Text color="#A6ACBE" fontSize="xs">Authors with 500k + avg. View</Text>
+          </Box>
+          <Divider />
+        </GridItem>
+        <GridItem colSpan={3} bg="white" color="white" rounded="lg">
+          <Box p={6}>
+            <Text color="brand.darkPink" fontWeight="semibold">Popular Services</Text>
+            <Text color="#A6ACBE" fontSize="xs">Authors with 500k + avg. View</Text>
+          </Box>
+          <Divider />
+        </GridItem>
         <GridItem colSpan={2} color="white" rounded="lg">
           <Box bg="#2E3192" p={6} w="100%" rounded="lg">
             <Heading as="h4" fontSize="xl" fontWeight="semibold" mb={4}>Calendar</Heading>
