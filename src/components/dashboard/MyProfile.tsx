@@ -14,9 +14,10 @@ export default function MyProfile() {
       justifyContent="center"
       alignItems="center"
       w="100%"
+      h="100%"
       p={12}
       bg="white"
-      rounded="3xl"
+      rounded="lg"
       boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
     >
       <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={6}>My Profile</Heading>

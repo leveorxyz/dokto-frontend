@@ -1,5 +1,5 @@
 import {
-  Box, Flex, Heading, Image,
+  Flex, Box, Grid, GridItem, Heading, Image,
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../common/Containers";
@@ -45,32 +45,40 @@ const Row2 = () => (
 );
 
 const DashboardHome = () => (
-  <SpacedContainer mx={4}>
-    <Box py="4" color="#11142D" fontSize="2xl" fontWeight="semibold" mx={6}>Dashboard</Box>
-    <Flex wrap={["wrap-reverse", "wrap-reverse", "wrap-reverse", "wrap", "wrap"]}>
-
-      <Box w={["100%", "100%", "100%", "60%", "75%"]}>
+  <SpacedContainer mx={4} pb={12}>
+    <Box py="4" color="#11142D" fontSize="2xl" fontWeight="semibold">Dashboard</Box>
+    <Grid
+      templateColumns="repeat(17, 1fr)"
+      gap={6}
+    >
+      <GridItem colStart={1} colEnd={14} rowStart={1} rowEnd={4}>
         <WelcomeCard
           description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
           readMoreLink="#"
           img={Banner}
         />
+      </GridItem>
+
+      <GridItem colStart={14} colEnd={18} rowStart={1} rowEnd={4}>
+        <MyProfile />
+      </GridItem>
+
+      <GridItem colStart={1} colEnd={14} rowStart={4} rowEnd={10}>
         <Row1 />
         <Row2 />
-      </Box>
+      </GridItem>
 
-      <Box px={3} w={["100%", "100%", "100%", "40%", "25%"]}>
-        <MyProfile />
-        <Box p={6} my={6} bg="#2E3192" rounded="3xl">
+      <GridItem colStart={14} colEnd={18} rowStart={4} rowEnd={10}>
+        <Box p={6} bg="#2E3192" rounded="lg" w="100%">
           <Heading as="h3" fontSize="xl" fontWeight="bold" color="white">
             My Appointments
           </Heading>
           <Calendar events={events} />
           <EventsList events={events} />
         </Box>
-      </Box>
+      </GridItem>
 
-    </Flex>
+    </Grid>
   </SpacedContainer>
 );
 

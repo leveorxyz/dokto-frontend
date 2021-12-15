@@ -21,9 +21,9 @@ export default function CardDashboardHome({ icon, title, path }: PropTypes) {
       alignItems="center"
       justifyContent="center"
       boxSize={["40vw", "40vw", "10rem", "15rem"]}
-      m={6}
+      m={3}
       bg="white"
-      borderRadius="3xl"
+      borderRadius="lg"
       cursor="pointer"
       boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
       _hover={{
