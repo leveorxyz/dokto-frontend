@@ -10,6 +10,7 @@ import Calendar from "./Calendar";
 import { row1, row2 } from "./DashboardData/Doctor";
 import events from "./DashboardData/CalendarEvents";
 import EventsList from "./EventsList";
+import Banner from "../../static/DoctorDashboardIcons/Banner.png";
 
 const Row1 = () => (
   <Flex wrap="wrap">
@@ -52,7 +53,7 @@ const DashboardHome = () => (
         <WelcomeCard
           description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
           readMoreLink="#"
-          img={null}
+          img={Banner}
         />
         <Row1 />
         <Row2 />

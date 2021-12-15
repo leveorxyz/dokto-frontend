@@ -21,6 +21,7 @@ import bars from "../../static/HospitalDashboard/bars.png";
 import pie from "../../static/HospitalDashboard/pie.png";
 import graph from "../../static/HospitalDashboard/graph.png";
 import donut from "../../static/HospitalDashboard/donut.png";
+import Banner from "../../static/HospitalDashboard/Banner.png";
 
 export default function HospitalDashboard() {
   return (
@@ -36,7 +37,7 @@ export default function HospitalDashboard() {
           <WelcomeCard
             description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
             readMoreLink="#"
-            img={null}
+            img={Banner}
           />
         </GridItem>
 
