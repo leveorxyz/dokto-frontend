@@ -18,7 +18,7 @@ import getBase64 from "../../../../utils/getBase64";
 
 const ProfileDetails = () => {
   const [profilePhotoUrl, setProfilePhotoUrl] = useState<string | null>(null);
-
+  // TODO [afia]: this base64 data is what we should send to the server when submitting the form
   const [profilePhotoBase64, setProfilePhotoBase64] = useState<string | null>(null);
 
   const profile = useRecoilValue(profileAtom);
