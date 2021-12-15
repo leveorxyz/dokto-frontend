@@ -57,29 +57,31 @@ export default function SocialHistory() {
 
   const handleCopyPreviousEncounter = () => {
     if (data) {
+      const index = data.length - 1;
+
       reset({
-        home_environment: data[0].home_environment,
-        highest_education: data[0].highest_education,
-        sexual_orientation: data[0].sexual_orientation,
-        gender_identity: data[0].gender_identity,
-        occupation: data[0].occupation,
-        children: data[0].children,
-        marital_status: data[0].marital_status,
-        status: data[0].status,
-        tobacco_status: data[0].tobacco_status,
-        tobacco_type: data[0].tobacco_type,
-        tobacco_packs_per_day: data[0].tobacco_packs_per_day,
-        tobacco_start_date: data[0].tobacco_start_date,
-        tobacco_cessation: data[0].tobacco_cessation,
-        exercise: data[0].exercise,
-        seatbelts: data[0].seatbelts,
-        drug_use: data[0].drug_use,
-        quit_date: data[0].quit_date,
-        exposure: data[0].exposure,
-        alcohol_use: data[0].alcohol_use,
-        caffeine_use: data[0].caffeine_use,
-        etoh: data[0].etoh,
-        patient_encounter: data[0].patient_encounter,
+        home_environment: data[index].home_environment,
+        highest_education: data[index].highest_education,
+        sexual_orientation: data[index].sexual_orientation,
+        gender_identity: data[index].gender_identity,
+        occupation: data[index].occupation,
+        children: data[index].children,
+        marital_status: data[index].marital_status,
+        status: data[index].status,
+        tobacco_status: data[index].tobacco_status,
+        tobacco_type: data[index].tobacco_type,
+        tobacco_packs_per_day: data[index].tobacco_packs_per_day,
+        tobacco_start_date: data[index].tobacco_start_date,
+        tobacco_cessation: data[index].tobacco_cessation,
+        exercise: data[index].exercise,
+        seatbelts: data[index].seatbelts,
+        drug_use: data[index].drug_use,
+        quit_date: data[index].quit_date,
+        exposure: data[index].exposure,
+        alcohol_use: data[index].alcohol_use,
+        caffeine_use: data[index].caffeine_use,
+        etoh: data[index].etoh,
+        patient_encounter: data[index].patient_encounter,
       });
     }
   };
