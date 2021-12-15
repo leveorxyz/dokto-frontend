@@ -1,5 +1,5 @@
 import {
-  Flex, Box, Grid, GridItem, Heading, Image,
+  Box, Grid, GridItem, Heading, Image,
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../common/Containers";
