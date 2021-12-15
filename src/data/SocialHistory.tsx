@@ -71,7 +71,6 @@ export const exerciseOptions = [
   { label: "Never", value: "Never" },
   { label: "0-1 times/week", value: "0-1 times/week" },
   { label: "2-5 times/week", value: "2-5 times/week" },
-  { label: "2-5 times/week", value: "2-5 times/week" },
 ];
 
 export const seatbeltOptions = [

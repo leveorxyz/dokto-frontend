@@ -10,7 +10,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MessagePage from "../../../components/common/fallback/MessagePage";
 import useSocialHistoryAdd, { ISocialHistory } from "../../../hooks/socialHistory.tsx/useSocialHistoryAdd";
 import {
@@ -28,9 +28,12 @@ import {
 import CustomAccordion from "../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
+import useGetPrevSocialHistory from "../../../hooks/socialHistory.tsx/useGetPrevSocialHistory";
 
 export default function SocialHistory() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const {
     mutate: socialHistory,
     error,
@@ -41,14 +44,48 @@ export default function SocialHistory() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<ISocialHistory>();
 
   const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
     const dataWithId:ISocialHistory = { ...data, ...{ patient_encounter: id } };
-
     socialHistory(dataWithId);
   });
+
+  const { data } = useGetPrevSocialHistory(id!);
+
+  console.log(57, data);
+
+  const handleCopyPreviousEncounter = () => {
+    if (data) {
+      reset({
+        home_environment: data[0].home_environment,
+        highest_education: data[0].highest_education,
+        sexual_orientation: data[0].sexual_orientation,
+        gender_identity: data[0].gender_identity,
+        occupation: data[0].occupation,
+        children: data[0].children,
+        marital_status: data[0].marital_status,
+        status: data[0].status,
+        tobacco_status: data[0].tobacco_status,
+        tobacco_type: data[0].tobacco_type,
+        tobacco_packs_per_day: data[0].tobacco_packs_per_day,
+        tobacco_start_date: data[0].tobacco_start_date,
+        tobacco_cessation: data[0].tobacco_cessation,
+        exercise: data[0].exercise,
+        seatbelts: data[0].seatbelts,
+        drug_use: data[0].drug_use,
+        quit_date: data[0].quit_date,
+        exposure: data[0].exposure,
+        alcohol_use: data[0].alcohol_use,
+        caffeine_use: data[0].caffeine_use,
+        etoh: data[0].etoh,
+        patient_encounter: data[0].patient_encounter,
+      });
+    }
+  };
 
   if (isLoading) {
     return <LoadingPage />;
@@ -136,7 +173,7 @@ export default function SocialHistory() {
                     <FormLabel htmlFor="sexual_orientation" color="primary.dark">Sexual Orientation</FormLabel>
                     <Select
                       placeholder="Select"
-                      {...register("tobacco_status")}
+                      {...register("sexual_orientation")}
                     >
                       {sexualOrientationOptions.map(({ label, value }) => (
                         <option
@@ -480,9 +517,11 @@ export default function SocialHistory() {
               </Box>
             </CustomAccordion>
 
-            <Flex justifyContent="end" mt={8}>
-              <Button>Cancel</Button>
-              <Button type="submit" ml={2} colorScheme="purple" disabled={isSubmitting}>Save</Button>
+            <Flex justifyContent="end" mt={8} experimental_spaceX={4}>
+              <Button background="#7002C7" onClick={() => reset()}>Clear</Button>
+              <Button onClick={() => navigate(`/patients/encounters/${id}`)} background="#3DE0FF">Cancel</Button>
+              <Button background="#006A82" onClick={handleCopyPreviousEncounter}>Copy From Previous Encounter</Button>
+              <Button type="submit" colorScheme="purple" disabled={isSubmitting}>Save</Button>
             </Flex>
           </form>
 

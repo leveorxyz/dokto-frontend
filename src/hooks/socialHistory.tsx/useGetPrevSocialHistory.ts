@@ -1,8 +1,6 @@
 import { useContext } from "react";
-import { useMutation, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { AxiosInstance } from "axios";
-
-import { useNavigate } from "react-router-dom";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
 export type ISocialHistory={
@@ -30,25 +28,18 @@ export type ISocialHistory={
   patient_encounter?:string
 }
 
-const socialHistory = async (axios: AxiosInstance, data: ISocialHistory) => axios.post("/ehr/encounters/social-history/", data)
+const socialHistory = async (axios: AxiosInstance, encounterId:string) => axios.get(`ehr/encounters/social-history/${encounterId}`)
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
-export default function useSocialHistoryAdd() {
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
+export default function useGetPrevSocialHistory(encounterId:string) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-
-  return useMutation(
-    (data: ISocialHistory) => socialHistory(axios as AxiosInstance, data),
+  return useQuery<ISocialHistory[]>(
+    ["prev-socialHistory", encounterId],
+    () => socialHistory(axios as AxiosInstance, encounterId),
     {
-      mutationKey: "socialHistory",
       retry: false,
-      onSuccess: (data:ISocialHistory) => {
-        navigate(`/patients/encounters/${data.patient_encounter}`);
-        queryClient.invalidateQueries("prev-socialHistory");
-      },
-
+      enabled: !!encounterId,
     },
   );
 }
