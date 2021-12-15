@@ -426,6 +426,10 @@ const firstColumn = () :FormDataType => ({
           label: "Shoulder Pain",
           value: "Shoulder Pain",
         },
+        {
+          label: "Pulmonolist",
+          value: "Pulmonolist",
+        },
       ],
       placeholder: "Select",
       rules: {
