@@ -8,7 +8,7 @@ const firstColumn = (watch: any) :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "remember_password",
+      name: "old_password",
       label: "Last Remember Password",
       placeholder: "Last Remember Password",
       inputType: "password",
@@ -21,7 +21,7 @@ const firstColumn = (watch: any) :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "password",
+      name: "new_password",
       label: "Choose a new Password",
       placeholder: "New Password",
       inputType: "password",
@@ -39,8 +39,8 @@ const firstColumn = (watch: any) :FormDataType => ({
       inputType: "password",
       placeholder: "Confirm new Password",
       rules: {
-        validate: (v) => (v === watch("password") ? true : "Passwords do not match"),
-        deps: ["password"],
+        validate: (v) => (v === watch("new_password") ? true : "Passwords do not match"),
+        deps: ["new_password"],
       },
     },
   ],

@@ -17,6 +17,7 @@ export type DoctorProfile = {
   professional_bio: string;
   country: string;
   gender: string;
+  notification_email?: string;
   date_of_birth: string;
   education: {
     college: string;
