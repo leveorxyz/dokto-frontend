@@ -33,7 +33,7 @@ const Sidebar = () => {
       }}
     >
       {routes
-        .filter((route) => route.showInDashboard)
+        .filter((route) => (route.showInDashboard && (authState?.user?.userType === "PATIENT" ? route.path !== "/calls" : true)))
         .filter(({ allowedRoles }) => (allowedRoles ? allowedRoles.includes(authState.user?.userType ?? "") : true))
         .map((route) => (
           <ChakraLink
