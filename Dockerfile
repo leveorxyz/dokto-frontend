@@ -13,7 +13,6 @@ RUN yarn install
 RUN cp .env.example .env
 RUN yarn build
 RUN cp -R ./build/* /usr/share/nginx/html
-RUN cp /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-# RUN service nginx restart
+RUN cp ./nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
