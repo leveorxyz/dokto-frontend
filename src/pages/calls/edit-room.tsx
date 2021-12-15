@@ -54,6 +54,7 @@ const EditRoom = () => {
             </BrandButton>
           </Flex>
         </Box>
+        {!showInput && (
         <Box
           backgroundColor="#fff"
           boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
@@ -81,6 +82,7 @@ const EditRoom = () => {
             </Box>
           </Flex>
         </Box>
+        )}
         {showInput === "text" && <MessageInput handleClose={hideInput} />}
         {(showInput === "image" || showInput === "video") && <FileInput handleAdd={showPreview} />}
         {isPreview && <ImagePreview handleClose={hidePreview} />}
