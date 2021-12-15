@@ -11,7 +11,7 @@ import AssessmentAndDiagnosisForm from "../../../components/forms/assessment-and
 import AssessmentAndDiagnosisTable from "../../../components/common/assessmentAndDiagnosis";
 
 export default function AssessmentAndDiagnosis() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;

@@ -10,7 +10,7 @@ import LoadingPage from "../../../components/common/fallback/LoadingPage";
 import ChiefComplaintsAndHPIForm from "../../../components/forms/chief-complaints-and-HPI";
 
 export default function ChiefComplaintsAndHPI() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;
