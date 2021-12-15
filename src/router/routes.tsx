@@ -275,7 +275,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Vitals",
-    path: "/patients/encounters-data/vitals",
+    path: "/patients/encounters-data/vitals/:id",
     component: <Vitals />,
     isProtected: true,
     showInNavbar: false,
