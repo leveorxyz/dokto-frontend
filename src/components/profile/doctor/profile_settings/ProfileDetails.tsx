@@ -3,6 +3,7 @@ import {
   Box,
   Heading,
   Flex,
+  Avatar,
   Image,
   Button,
   Input,
@@ -28,8 +29,8 @@ const ProfileDetails = () => {
     <Box>
       <Heading as="h2" fontWeight="600" fontSize="2xl" color="brand.dark">Your Details</Heading>
       <Flex direction="row" alignItems="center" py="12" px="6">
-        <Image src={profilePhotoUrl ?? ""} fit="cover" boxSize="10rem" borderRadius="50%" mr="10" />
-        <form>
+        <Avatar size="2xl" name={profile?.full_name} src={profilePhotoUrl ?? ""} mr="10" />
+        <Box as="form" transform="translateY(-20%)">
           <FormControl>
             <Input
               id="upload-photo"
@@ -61,7 +62,7 @@ const ProfileDetails = () => {
               </Button>
             </FormLabel>
           </FormControl>
-        </form>
+        </Box>
       </Flex>
       <ProfileDetailsForm />
     </Box>
