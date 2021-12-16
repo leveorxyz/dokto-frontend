@@ -1,5 +1,5 @@
 import {
-  Flex, Box, Grid, GridItem, Heading, Image,
+  Box, Grid, GridItem, Heading, Image,
 } from "@chakra-ui/react";
 
 import { SpacedContainer } from "../common/Containers";
@@ -13,45 +13,74 @@ import EventsList from "./EventsList";
 import Banner from "../../static/DoctorDashboardIcons/Banner.png";
 
 const Row1 = () => (
-  <Flex wrap="wrap">
+  <>
     {row1
       .map(({
         title, path, icon,
       }) => (
-        <Card
+        <GridItem
           key={path}
-          icon={<Image src={icon} />}
-          title={title}
-          path={path}
-        />
+          rowSpan={1}
+          colSpan={1}
+          bg="white"
+          borderRadius="lg"
+          cursor="pointer"
+          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
+          _hover={{
+            filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
+          }}
+        >
+          <Card
+            icon={<Image src={icon} />}
+            title={title}
+            path={path}
+          />
+        </GridItem>
       ))}
-  </Flex>
+  </>
 );
 
 const Row2 = () => (
-  <Flex wrap="wrap">
+  <>
     {row2
       .map(({
         title, path, icon,
       }) => (
-        <Card
+        <GridItem
           key={path}
-          icon={<Image src={icon} />}
-          title={title}
-          path={path}
-        />
+          rowSpan={1}
+          colSpan={1}
+          bg="white"
+          borderRadius="lg"
+          cursor="pointer"
+          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
+          _hover={{
+            filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
+          }}
+        >
+          <Card
+            icon={<Image src={icon} />}
+            title={title}
+            path={path}
+          />
+        </GridItem>
       ))}
-  </Flex>
+  </>
 );
 
 const DashboardHome = () => (
-  <SpacedContainer mx={4} pb={12}>
+  <SpacedContainer mx={4} mb={13}>
     <Box py="4" color="#11142D" fontSize="2xl" fontWeight="semibold">Dashboard</Box>
     <Grid
       templateColumns="repeat(17, 1fr)"
       gap={6}
     >
-      <GridItem colStart={1} colEnd={14} rowStart={1} rowEnd={4}>
+      <GridItem
+        colStart={1}
+        colEnd={[18, 18, 10, 10, 13]}
+        rowStart={1}
+        rowEnd={4}
+      >
         <WelcomeCard
           description="Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor."
           readMoreLink="#"
@@ -59,17 +88,52 @@ const DashboardHome = () => (
         />
       </GridItem>
 
-      <GridItem colStart={14} colEnd={18} rowStart={1} rowEnd={4}>
+      <GridItem
+        colStart={[1, 1, 10, 10, 13]}
+        colEnd={18}
+        rowStart={[4, 4, 1, 1, 1]}
+        rowEnd={[8, 8, 4, 4, 4]}
+      >
         <MyProfile />
       </GridItem>
 
-      <GridItem colStart={1} colEnd={14} rowStart={4} rowEnd={10}>
-        <Row1 />
-        <Row2 />
+      <GridItem
+        colStart={1}
+        colEnd={[18, 18, 10, 10, 13]}
+        rowStart={[8, 8, 4, 4, 4]}
+        rowEnd={[26, 26, 12, 10, 10]}
+      >
+        <Grid
+          h={["calc(60% - 1.5rem)", "calc(60% - 1.5rem)", "calc(60% - 1.5rem)", "calc(40% - 1.5rem)", "calc(40% - 1.5rem)"]}
+          mb={6}
+          gap={6}
+          templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"]}
+          templateRows={["repeat(4, 1fr)", "repeat(4, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(1, 1fr)"]}
+        >
+          <Row1 />
+        </Grid>
+        <Grid
+          h={["calc(40% - 1.5rem)", "calc(40% - 1.5rem)", "calc(40% - 1.5rem)", "calc(60% - 1.5rem)", "calc(60% - 1.5rem)"]}
+          mt={6}
+          gap={6}
+          templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(3, 1fr)"]}
+          templateRows={["repeat(3, 1fr)", "repeat(3, 1fr)", "repeat(3, 1fr)", "repeat(3, 1fr)", "repeat(1, 1fr)"]}
+        >
+          <Row2 />
+        </Grid>
       </GridItem>
 
-      <GridItem colStart={14} colEnd={18} rowStart={4} rowEnd={10}>
-        <Box p={6} bg="#2E3192" rounded="lg" w="100%">
+      <GridItem
+        colStart={[1, 1, 10, 10, 13]}
+        colEnd={18}
+        rowStart={[26, 26, 4, 4, 4]}
+        rowEnd={[34, 34, 12, 10, 10]}
+        bg="#2E3192"
+        p={6}
+        rounded="lg"
+        overflowX="scroll"
+      >
+        <Box w="100%">
           <Heading as="h3" fontSize="xl" fontWeight="bold" color="white">
             My Appointments
           </Heading>

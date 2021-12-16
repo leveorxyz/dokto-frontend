@@ -11,7 +11,7 @@ import PatientProcedureForm from "../../../components/forms/patient-procedure";
 import PatientProcedureTable from "../../../components/common/patientProcedure";
 
 export default function PatientProcedure() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;

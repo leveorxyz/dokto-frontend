@@ -30,7 +30,7 @@ import LoadingPage from "../../components/common/fallback/LoadingPage";
 
 export default function Profile() {
   const doctorProfile = useRecoilValue(doctorProfileAtom);
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
   const [stars, setStars] = useState(5);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
