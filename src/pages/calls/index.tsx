@@ -123,7 +123,7 @@ export default function VideoCalls() {
       setCurrentConversationRoom(conversations[0]);
     }
     return () => {
-      if (conversations.length > 0) {
+      if (isPatient && conversations.length > 0) {
         axios?.post("twilio/conversation-remove-doctor/", { channel_unique_name: conversations[0].uniqueName })
           .catch((err) => console.log(err));
       }
