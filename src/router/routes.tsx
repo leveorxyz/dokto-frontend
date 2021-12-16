@@ -222,7 +222,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Assessment & Diagnosis",
-    path: "/patients/encounters-data/assessment-and-diagnosis",
+    path: "/patients/encounters-data/assessment-and-diagnosis/:id",
     component: <AssessmentAndDiagnosis />,
     isProtected: true,
     showInNavbar: false,
@@ -240,7 +240,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Plan of Care",
-    path: "/patients/encounters-data/plan-of-care",
+    path: "/patients/encounters-data/plan-of-care/:id",
     component: <PlanOfCare />,
     isProtected: true,
     showInNavbar: false,
@@ -249,7 +249,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient Procedure",
-    path: "/patients/encounters-data/patient-procedure",
+    path: "/patients/encounters-data/patient-procedure/:id",
     component: <PatientProcedure />,
     isProtected: true,
     showInNavbar: false,
@@ -258,7 +258,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Functional And Cognitive Status",
-    path: "/patients/encounters-data/functional-and-cognitive-status",
+    path: "/patients/encounters-data/functional-and-cognitive-status/:id",
     component: <FunctionalAndCognitiveStatus />,
     isProtected: true,
     showInNavbar: false,
@@ -267,7 +267,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Chief Complaints and HPI(History Of Present Illness)",
-    path: "/patients/encounters-data/chief-complaints-and-HPI",
+    path: "/patients/encounters-data/chief-complaints-and-HPI/:id",
     component: <ChiefComplaintsAndHPI />,
     isProtected: true,
     showInNavbar: false,

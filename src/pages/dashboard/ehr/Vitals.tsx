@@ -41,7 +41,7 @@ export default function Vitals() {
               <Tbody>
                 <Tr>
                   <Td>Reading Date/Time</Td>
-                  <Td>lol</Td>
+                  <Td />
 
                 </Tr>
                 <Tr>
