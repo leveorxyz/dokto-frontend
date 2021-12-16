@@ -39,6 +39,7 @@ const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/F
 const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
+const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
 
@@ -272,6 +273,14 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: false,
     allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Medical Notes",
+    path: "/patients/encounters-data/medical-notes/:id",
+    component: <MedicalNotes />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
   },
   {
     displayName: "Vitals",
