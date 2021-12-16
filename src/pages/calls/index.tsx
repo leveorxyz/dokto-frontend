@@ -124,7 +124,7 @@ export default function VideoCalls() {
   }, [conversations]);
 
   useEffect(() => {
-    if (room) {
+    if (room && isPatient) {
       setCallSidebarStatus(true);
     }
   }, [room, isPatient, setCallSidebarStatus]);
