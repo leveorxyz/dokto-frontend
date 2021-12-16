@@ -65,6 +65,7 @@ export default function VideoCalls() {
     } else {
       setRoom(null);
       setCallEnded(true);
+      setCallSidebarStatus(false);
     }
   });
 
@@ -78,6 +79,10 @@ export default function VideoCalls() {
     client.on("conversationJoined", (conversation) => {
       setConversations((prevState) => uniqBy([...prevState, conversation], "sid"));
     });
+
+    // TODO: Remove Doctor from room & check number of participants on conversation Left event
+    // If number of participant is 1, Don't join the patient to video room else join the patient
+    // to the video conference room
 
     client.on("conversationLeft", (thisConversation) => {
       setConversations(
