@@ -278,6 +278,7 @@ export const physicalExam:IMedicalNote[] = [
     ],
     input: "CardiacDesc",
   },
+  // REPEATING
   {
     title: "General Appearance",
     checkBoxes: [
