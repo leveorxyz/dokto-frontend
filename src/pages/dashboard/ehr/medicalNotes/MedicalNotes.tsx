@@ -13,6 +13,7 @@ import CustomAccordion from "../../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../../components/common/PatientEncountersLayout";
 import LoadingPage from "../../../../components/common/fallback/LoadingPage";
 import CustomCheckboxField from "./CustomCheckbox";
+import TextFormatter from "./TextFormatter";
 
 export default function MedicalNotes() {
   const {
@@ -107,19 +108,19 @@ export default function MedicalNotes() {
               </Box>
             </CustomAccordion>
             <CustomAccordion title="Plan of Care">
-              <Box>Plan of Care</Box>
+              <Box><TextFormatter /></Box>
             </CustomAccordion>
 
             <CustomAccordion title="Orders">
-              <Box>Orders</Box>
+              <Box><TextFormatter /></Box>
             </CustomAccordion>
 
             <CustomAccordion title="Imaging Orders">
-              <Box>Imaging Orders</Box>
+              <Box><TextFormatter /></Box>
             </CustomAccordion>
 
             <CustomAccordion title="Next Visit">
-              <Box>Next Visit</Box>
+              <Box><TextFormatter /></Box>
             </CustomAccordion>
 
             <Box display="flex" justifyContent="end" mt={4}>
