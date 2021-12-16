@@ -4,12 +4,21 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
+import { useRecoilValue } from "recoil";
+import { Navigate } from "react-router-dom";
 
+import authAtom from "../../atoms/auth.atom";
 import { SpacedContainer } from "../../components/common/Containers";
 import PatientRegistration from "../../components/forms/patient-registration";
 import PatientRegIMG from "../../static/reg/PatientReg.png";
 
 export default function Provider() {
+  const authState = useRecoilValue(authAtom);
+
+  if (authState.isLoggedIn) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <>
       <Box bgColor="#F7F7FC" pt={12}>

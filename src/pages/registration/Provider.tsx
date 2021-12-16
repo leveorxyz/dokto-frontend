@@ -9,7 +9,10 @@ import {
   Image,
   Heading,
 } from "@chakra-ui/react";
+import { useRecoilValue } from "recoil";
+import { Navigate } from "react-router-dom";
 
+import authAtom from "../../atoms/auth.atom";
 import { SpacedContainer } from "../../components/common/Containers";
 import DoctorRegistration from "../../components/forms/provider-registration/doctor";
 import ClinicRegistration from "../../components/forms/provider-registration/clinic";
@@ -20,6 +23,12 @@ import HospitalTabIMG from "../../static/reg/HospitalTab.png";
 import PharmacyTabIMG from "../../static/reg/PharmacyTab.png";
 
 export default function Provider() {
+  const authState = useRecoilValue(authAtom);
+
+  if (authState.isLoggedIn) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <>
       <Box bgColor="#F7F7FC" pt={12}>
