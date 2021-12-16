@@ -4,9 +4,9 @@ import {
   Box,
   Avatar,
   Button,
-  IconButton,
+  // IconButton,
 } from "@chakra-ui/react";
-import { IoEllipsisVertical } from "react-icons/io5";
+// import { IoEllipsisVertical } from "react-icons/io5";
 import { Conversation } from "@twilio/conversations";
 import { AxiosInstance } from "axios";
 import { AxiosContext } from "../../contexts/AxiosContext";
@@ -78,13 +78,13 @@ export default function SidebarConversation(
         </Flex>
       </Flex>
 
-      <IconButton
+      {/* <IconButton
         aria-label={`User actions for ${conversation.friendlyName}`}
         icon={<Box as={IoEllipsisVertical} color="brand.light" />}
         variant="ghost"
         _hover={{ bg: "brand.light" }}
         _active={{ bg: "brand.pink" }}
-      />
+      /> */}
       {/* <UserActionModal user={user} isOpen={isOpen} onClose={onClose} /> */}
     </Flex>
   );
