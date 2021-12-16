@@ -1,47 +1,34 @@
-import { useContext } from "react";
-import { AxiosInstance } from "axios";
-import { useMutation } from "react-query";
 import {
-  Box, Text, Flex, Textarea, Icon, useToast,
+  Box, Text, Flex, Textarea, Icon,
 } from "@chakra-ui/react";
 import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5";
 import { useForm } from "react-hook-form";
-import { AxiosContext } from "../../../contexts/AxiosContext";
 import BrandButton from "../../common/buttons/BrandButton";
 import WhiteButton from "../../common/buttons/WhiteButton";
+import useCustomizeRoom from "../../../hooks/calls/useCustomizeRoom";
 
 type PropTypes = {
   handleClose: ()=>void
 }
 
 const MessageInput = ({ handleClose }:PropTypes) => {
-  const axios = useContext<AxiosInstance | null>(AxiosContext);
+  const {
+    mutate,
+    isLoading,
+    isSuccess,
+  } = useCustomizeRoom();
   const { register, handleSubmit } = useForm();
-  const toast = useToast();
 
   type formDataType ={
     text: string|""
   }
 
-  const updateRoomText = async (data: formDataType) => axios?.patch("/twilio/waiting-room/", data)
-    .then(({ data: { result } }) => Promise.resolve(result))
-    .catch(({ response: { data: response } }) => Promise.reject(response));
-
-  const mutation = useMutation(updateRoomText, {
-    mutationKey: "update-room-settings",
-    retry: false,
-    onSuccess: () => {
-      toast({ title: "Success!", description: "Text updated successfully!", status: "success" });
-    },
-    onError: (error) => {
-      toast({ title: "Error!", description: JSON.stringify(error), status: "error" });
-    },
-  });
-
   const handleFormSubmit = (data:formDataType) => {
-    mutation.mutate(data);
-    handleClose();
+    mutate(data);
   };
+  if (isSuccess) {
+    handleClose();
+  }
 
   return (
     <Box
@@ -66,7 +53,7 @@ const MessageInput = ({ handleClose }:PropTypes) => {
             </WhiteButton>
           </Box>
           <Box>
-            <BrandButton type="submit" isLoading={mutation.isLoading}>
+            <BrandButton type="submit" isLoading={isLoading}>
               <Icon as={IoCheckmarkSharp} fontSize="20" />
             </BrandButton>
           </Box>

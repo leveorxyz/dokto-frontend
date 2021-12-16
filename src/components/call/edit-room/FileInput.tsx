@@ -1,38 +1,23 @@
 import {
-  useContext, useRef, useState,
+  useRef, useState,
 } from "react";
-import { AxiosInstance } from "axios";
-import { useMutation } from "react-query";
 import {
-  Box, Icon, Input, Text, useToast,
+  Box, Icon, Input, Text,
 } from "@chakra-ui/react";
 import { IoAddSharp } from "react-icons/io5";
-import { AxiosContext } from "../../../contexts/AxiosContext";
 import ImagePreview from "./ImagePreview";
+import useCustomizeRoom from "../../../hooks/calls/useCustomizeRoom";
 
 type PropTypes = {
   handleClose: ()=>void
 }
 
 const FileInput = ({ handleClose }:PropTypes) => {
-  const toast = useToast();
-  const axios = useContext<AxiosInstance | null>(AxiosContext);
-  const updateRoomImage = async (data: any) => axios?.patch("/twilio/waiting-room/", data)
-    .then(({ data: { result } }) => Promise.resolve(result))
-    .catch(({ response: { data: response } }) => Promise.reject(response));
-
-  const mutation = useMutation(updateRoomImage, {
-    mutationKey: "update-room-image",
-    retry: false,
-    onSuccess: () => {
-      toast({ title: "Success!", description: "Image updated successfully!", status: "success" });
-      handleClose();
-    },
-    onError: (error) => {
-      toast({ title: "Error!", description: JSON.stringify(error), status: "error" });
-      handleClose();
-    },
-  });
+  const {
+    mutate,
+    isLoading,
+    isSuccess,
+  } = useCustomizeRoom();
 
   const [file, setFile] = useState(null);
   const ref:any = useRef<HTMLInputElement>();
@@ -41,8 +26,12 @@ const FileInput = ({ handleClose }:PropTypes) => {
     if (!file) return;
     const formData = new FormData();
     formData.append("room_media", file);
-    mutation.mutate(formData);
+    mutate(formData);
   };
+
+  if (isSuccess) {
+    handleClose();
+  }
 
   return (
     <>
@@ -51,7 +40,7 @@ const FileInput = ({ handleClose }:PropTypes) => {
           handleClose={handleClose}
           handleUpload={handleUpload}
           file={file}
-          loading={mutation.isLoading}
+          loading={isLoading}
         />
       ) : (
         <Box

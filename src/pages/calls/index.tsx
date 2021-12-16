@@ -60,9 +60,8 @@ export default function VideoCalls() {
   room?.on("disconnected", () => {
     setCallEnded(false);
 
-    if (conversations.length > 1) {
+    if (conversations.length === 1) {
       setRoom(null);
-      setCallEnded(false);
     } else {
       setRoom(null);
       setCallEnded(true);
@@ -113,9 +112,6 @@ export default function VideoCalls() {
         initConversations();
         // Create conversation room for patient waiting
         axios?.post("twilio/create-conversation/", { doctor_username: queryRoomName })
-          .then((data) => {
-            console.log(data);
-          })
           .catch((err) => console.log(err));
       }
     }
@@ -128,7 +124,7 @@ export default function VideoCalls() {
   }, [conversations]);
 
   useEffect(() => {
-    if (room) {
+    if (room && isPatient) {
       setCallSidebarStatus(true);
     }
   }, [room, isPatient, setCallSidebarStatus]);
