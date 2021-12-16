@@ -276,7 +276,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Medical Notes",
-    path: "/patients/encounters-data/medical-notes",
+    path: "/patients/encounters-data/medical-notes/:id",
     component: <MedicalNotes />,
     isProtected: true,
     showInNavbar: false,
