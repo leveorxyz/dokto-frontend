@@ -80,10 +80,6 @@ export default function VideoCalls() {
       setConversations((prevState) => uniqBy([...prevState, conversation], "sid"));
     });
 
-    // TODO: Remove Doctor from room & check number of participants on conversation Left event
-    // If number of participant is 1, Don't join the patient to video room else join the patient
-    // to the video conference room
-
     client.on("conversationLeft", (thisConversation) => {
       setConversations(
         (prevState) => [...prevState.filter((it) => it.sid !== thisConversation.sid)],
@@ -126,6 +122,12 @@ export default function VideoCalls() {
     if (conversations.length > 0) {
       setCurrentConversationRoom(conversations[0]);
     }
+    return () => {
+      if (conversations.length > 0) {
+        axios?.post("twilio/conversation-remove-doctor/", { channel_unique_name: conversations[0].uniqueName })
+          .catch((err) => console.log(err));
+      }
+    };
   }, [conversations]);
 
   useEffect(() => {
