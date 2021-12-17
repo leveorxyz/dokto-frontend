@@ -12,8 +12,12 @@ const firstRow = () :FormDataType => ({
       name: "procedure_type",
       label: "Type",
       options: [{
-        value: "MALE",
-        label: "Type 1",
+        value: "Acute",
+        label: "Acute",
+      },
+      {
+        value: "Chronic",
+        label: "Chronic",
       }],
     }],
 });
@@ -40,12 +44,12 @@ const firstColumn = () :FormDataType => ({
       name: "status",
       label: "Status",
       options: [{
-        value: "MALE",
-        label: "Type 1",
+        value: "Active",
+        label: "Active",
       },
       {
-        value: "FEMALE",
-        label: "Type 2",
+        value: "Resolved",
+        label: "Resolved",
       },
       ],
       placeholder: "Select",
