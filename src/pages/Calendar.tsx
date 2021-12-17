@@ -212,7 +212,7 @@ function SelectableCalendar({ dateLocalizer }:props) {
 
 export default function Availability() {
   return (
-    <SpacedContainer py={6}>
+    <SpacedContainer mx={12} py={6}>
       <Heading mb={6}>Appointments</Heading>
       <Box height="90vh">
         <SelectableCalendar dateLocalizer={localizer} />

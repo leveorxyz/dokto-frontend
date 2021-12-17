@@ -11,7 +11,7 @@ import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 
 const SpecialtiesServices = () => {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;

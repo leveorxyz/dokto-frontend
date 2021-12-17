@@ -3,27 +3,28 @@ import {
   Box, Text, Flex,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
+import useCustomizeRoom from "../../hooks/calls/useCustomizeRoom";
 import MessageInput from "../../components/call/edit-room/MessageInput";
 import FileInput from "../../components/call/edit-room/FileInput";
 import BacktoDashboard from "../../components/call/edit-room/BacktoDashboard";
 import authAtom from "../../atoms/auth.atom";
-import BrandButton from "../../components/common/buttons/BrandButton";
 import WhiteButton from "../../components/common/buttons/WhiteButton";
 import EditIcons from "../../components/call/edit-room/EditIcons";
-import ImagePreview from "../../components/call/edit-room/ImagePreview";
 
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
   const [showInput, setShowInput] = useState<""|"image"|"text"|"video">("");
-  const [isPreview, setIsPreview] = useState<boolean>(false);
+
+  const {
+    mutate,
+    isLoading,
+  } = useCustomizeRoom();
+
+  const handleSetDefault = () => {
+    mutate({ text: "", room_media: null });
+  };
 
   const hideInput = () => setShowInput("");
-
-  const showPreview = () => {
-    setShowInput("");
-    setIsPreview(true);
-  };
-  const hidePreview = () => setIsPreview(false);
 
   return (
     <div>
@@ -44,16 +45,12 @@ const EditRoom = () => {
           <Text fontSize="25px">{`Waiting Rooms of ${authState?.user?.fullName}`}</Text>
           <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Rooms</Text>
           <Flex marginTop="45px" justifyContent="flex-end" alignItems="center">
-            <Box marginRight="20px">
-              <WhiteButton>
-                Revert to Default
-              </WhiteButton>
-            </Box>
-            <BrandButton width="100px">
-              Save
-            </BrandButton>
+            <WhiteButton onClick={() => handleSetDefault()} isLoading={isLoading}>
+              Revert to Default
+            </WhiteButton>
           </Flex>
         </Box>
+        {!showInput && (
         <Box
           backgroundColor="#fff"
           boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
@@ -81,9 +78,9 @@ const EditRoom = () => {
             </Box>
           </Flex>
         </Box>
+        )}
         {showInput === "text" && <MessageInput handleClose={hideInput} />}
-        {(showInput === "image" || showInput === "video") && <FileInput handleAdd={showPreview} />}
-        {isPreview && <ImagePreview handleClose={hidePreview} />}
+        {showInput === "image" && <FileInput handleClose={hideInput} />}
       </Box>
     </div>
   );

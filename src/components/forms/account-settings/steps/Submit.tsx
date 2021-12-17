@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import Loading from "../../../common/fallback/LoadingPage";
 import stepAtom from "../../../../atoms/updateAccountSettings.atom";
-import useUpdateAccountSettings from "../../../../hooks/account-settings/updateAccountSettings";
+import useUpdateAccountSettings from "../../../../hooks/account-settings/updateEmailNotification";
 import MessagePage from "../../../common/fallback/MessagePage";
 
 export default function Submit() {

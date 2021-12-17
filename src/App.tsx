@@ -30,7 +30,12 @@ function AppContent() {
   const authState = useRecoilValue(authAtom);
 
   const shouldRenderSidebar = useMemo(() => {
-    const currentRoute = RoutesData.find((route) => route.path === currentURL);
+    const currentRoute = RoutesData.find((route) => {
+      if (route.path.includes(":")) {
+        return currentURL.includes(route.path.split(":")[0]);
+      }
+      return route.path === currentURL;
+    });
     return currentRoute?.isProtected;
   }, [currentURL]);
 

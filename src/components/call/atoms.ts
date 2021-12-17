@@ -28,4 +28,9 @@ export const twilioTokenAtom = atom<TokenDataType>({
   },
 });
 
-export default { callListAtom, waitingListAtom };
+export const callSidebarAtom = atom({
+  key: "call_sidebar",
+  default: false,
+});
+
+export default { callListAtom, waitingListAtom, callSidebarAtom };

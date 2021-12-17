@@ -8,12 +8,15 @@ import { useLocation, Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import authAtom from "../../atoms/auth.atom";
+import { callSidebarAtom } from "../call/atoms";
 import routes from "../../router/routes";
 import Bar from "./Bar";
 
 const Sidebar = () => {
   const location = useLocation();
   const authState = useRecoilValue(authAtom);
+  const isCallSideBarDisabled = useRecoilValue(callSidebarAtom);
+
   return (
     <Flex
       justifyContent="flex-start"
@@ -22,6 +25,7 @@ const Sidebar = () => {
       overflowY="scroll"
       overflowX="hidden"
       bg="white"
+      pointerEvents={isCallSideBarDisabled ? "none" : "all"}
       sx={{
         "&::-webkit-scrollbar": {
           display: "none",
@@ -29,7 +33,7 @@ const Sidebar = () => {
       }}
     >
       {routes
-        .filter((route) => route.showInDashboard)
+        .filter((route) => (route.showInDashboard && (authState?.user?.userType === "PATIENT" ? route.path !== "/calls" : true)))
         .filter(({ allowedRoles }) => (allowedRoles ? allowedRoles.includes(authState.user?.userType ?? "") : true))
         .map((route) => (
           <ChakraLink
@@ -86,7 +90,7 @@ export default function SidebarContainer({ children }: {children: React.ReactNod
         <Box w="15rem" position="fixed" top="4rem" left={0}>
           <Sidebar />
         </Box>
-        <Box w="calc(100% - 15rem)" minH="100vh" pt="4rem" bgColor="#F7F7FC">
+        <Box w="calc(100% - 15rem)" minH="100vh" bgColor="#F7F7FC">
           {children}
         </Box>
       </Flex>

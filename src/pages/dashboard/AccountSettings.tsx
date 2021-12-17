@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Heading, Box,
   Divider,
@@ -6,12 +5,12 @@ import {
 import { SpacedContainer } from "../../components/common/Containers";
 
 import AccountSettingsTabs from "../../components/profile/doctor/account_settings/AccountSettingsTabs";
-import doctorProfileAtom from "../../atoms/doctorProfile";
+import profileAtom from "../../atoms/doctorProfile";
 import useProfile from "../../hooks/profile/useProfile";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 
 const AccountSettings = () => {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(profileAtom);
 
   if (isLoading) {
     return <LoadingPage />;

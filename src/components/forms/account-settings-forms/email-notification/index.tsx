@@ -8,7 +8,7 @@ import { RecoilState, useRecoilState } from "recoil";
 import MessagePage from "../../../common/fallback/MessagePage";
 import Loading from "../../../common/fallback/LoadingPage";
 import stepAtom, { currentStepAtom } from "../../../../atoms/accountSettings.atom";
-import useAccountSettings from "../../../../hooks/account-settings/useAccountSettings";
+import useEmailNotification from "../../../../hooks/account-settings/useEmailNotification";
 
 import FormStep from "../../common/FormStep";
 import {
@@ -59,7 +59,7 @@ const getStepsData = (): StepTypes[] => (
 export default function Form() {
   const {
     error, isError, isSuccess, isFetching, data,
-  } = useAccountSettings();
+  } = useEmailNotification();
   console.log(data);
   const steps = getStepsData();
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);

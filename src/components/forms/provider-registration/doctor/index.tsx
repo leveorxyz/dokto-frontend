@@ -56,7 +56,7 @@ const getStepsData = (): StepTypes[] => (
     },
     {
       id: 3,
-      title: "Education & Specialties",
+      title: "Education Profile",
       data: step3Data,
       isFormStep: true,
       atom: stepAtom,

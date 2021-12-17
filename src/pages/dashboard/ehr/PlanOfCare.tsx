@@ -11,7 +11,7 @@ import "react-quill/dist/quill.snow.css";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 
 export default function PlanOfCare() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
   const [value, setValue] = useState("");
 
   if (isLoading) {

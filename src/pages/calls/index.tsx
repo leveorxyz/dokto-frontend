@@ -9,7 +9,7 @@ import { Flex, useDisclosure } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 import { Client as ConversationsClient, Conversation } from "@twilio/conversations";
 import { Room as RoomType } from "twilio-video";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { uniqBy } from "lodash";
 import { AxiosInstance } from "axios";
 import Chat from "../../components/chat";
@@ -22,7 +22,7 @@ import useTwilioToken from "../../hooks/twilio/useTwilioToken";
 import SideBar from "../../components/call/SideBar";
 import Videos from "../../components/call/Videos";
 import authAtom from "../../atoms/auth.atom";
-import { twilioTokenAtom } from "../../components/call/atoms";
+import { twilioTokenAtom, callSidebarAtom } from "../../components/call/atoms";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
 import useUpdateConnectionState, { ConnectionStateType } from "../../hooks/calls/useUpdateConnectionState";
 
@@ -39,6 +39,8 @@ export default function VideoCalls() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [currentConversationRoom, setCurrentConversationRoom] = useState<Conversation | null>(null);
   const { token, roomName } = useRecoilValue(twilioTokenAtom);
+  const setCallSidebarStatus = useSetRecoilState(callSidebarAtom);
+
   const authState = useRecoilValue(authAtom);
   // Check user is doctor
   const isDoctor = useMemo(() => authState?.user?.userType === "DOCTOR", [authState]);
@@ -56,12 +58,14 @@ export default function VideoCalls() {
 
   // handle room disconnection
   room?.on("disconnected", () => {
-    if (conversations.length > 1) {
+    setCallEnded(false);
+
+    if (conversations.length === 1) {
       setRoom(null);
-      setCallEnded(false);
     } else {
       setRoom(null);
       setCallEnded(true);
+      setCallSidebarStatus(false);
     }
   });
 
@@ -109,9 +113,6 @@ export default function VideoCalls() {
         initConversations();
         // Create conversation room for patient waiting
         axios?.post("twilio/create-conversation/", { doctor_username: queryRoomName })
-          .then((data) => {
-            console.log(data);
-          })
           .catch((err) => console.log(err));
       }
     }
@@ -121,7 +122,19 @@ export default function VideoCalls() {
     if (conversations.length > 0) {
       setCurrentConversationRoom(conversations[0]);
     }
+    return () => {
+      if (isPatient && conversations.length > 0) {
+        axios?.post("twilio/conversation-remove-doctor/", { channel_unique_name: conversations[0].uniqueName })
+          .catch((err) => console.log(err));
+      }
+    };
   }, [conversations]);
+
+  useEffect(() => {
+    if (room && isPatient) {
+      setCallSidebarStatus(true);
+    }
+  }, [room, isPatient, setCallSidebarStatus]);
 
   useEffect(() => () => {
     room?.localParticipant.videoTracks.forEach((publication) => {

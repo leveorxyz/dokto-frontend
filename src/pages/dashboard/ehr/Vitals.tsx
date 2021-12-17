@@ -15,7 +15,7 @@ import useProfile from "../../../hooks/profile/useProfile";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
 
 export default function Vitals() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;
@@ -34,64 +34,67 @@ export default function Vitals() {
       >
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Vitals</Heading>
         <Box mt={-6}>
-          <Table variant="mytable" colorScheme="teal">
-            <Thead>
-              <Tr>
-                <Th color="brand.darkPink" fontSize="16" backgroundColor="#BAFAF5">Vitals for this Encounter</Th>
-                <Th color="brand.darkPink" fontSize="16" backgroundColor="#BAFAF5">Date/ Time</Th>
+          <form>
 
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>Height</Td>
-                <Td />
+            <Table variant="mytable" colorScheme="teal">
+              <Thead />
+              <Tbody>
+                <Tr>
+                  <Td>Reading Date/Time</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>Weight</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>Height</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>Temperature</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>Weight</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>Pulse</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>Temperature</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>Respiratory rate</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>Pulse</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>O2 Saturation</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>Respiratory rate</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>Pain</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>O2 Saturation</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>BMI</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>Pain</Td>
+                  <Td />
 
-              </Tr>
-              <Tr>
-                <Td>Blood pressure</Td>
-                <Td />
+                </Tr>
+                <Tr>
+                  <Td>BMI</Td>
+                  <Td />
 
-              </Tr>
+                </Tr>
+                <Tr>
+                  <Td>Blood pressure</Td>
+                  <Td />
 
-            </Tbody>
+                </Tr>
 
-          </Table>
+              </Tbody>
+
+            </Table>
+          </form>
+
         </Box>
       </Box>
 

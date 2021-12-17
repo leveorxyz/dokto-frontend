@@ -8,15 +8,15 @@ import {
 
 import { Link } from "react-router-dom";
 
-import BrandButton from "../../components/common/buttons/BrandButton";
-import { SpacedContainer } from "../../components/common/Containers";
-import ProfileSettingsTabs from "../../components/profile/doctor/profile_settings/ProfileSettingsTabs";
-import doctorProfileAtom from "../../atoms/doctorProfile";
-import useProfile from "../../hooks/profile/useProfile";
-import LoadingPage from "../../components/common/fallback/LoadingPage";
+import BrandButton from "../../../components/common/buttons/BrandButton";
+import { SpacedContainer } from "../../../components/common/Containers";
+import ProfileSettingsTabs from "../../../components/profile/doctor/profile_settings/ProfileSettingsTabs";
+import doctorProfileAtom from "../../../atoms/doctorProfile";
+import useProfile from "../../../hooks/profile/useProfile";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
 
 export default function Profile() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;

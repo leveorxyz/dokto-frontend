@@ -10,7 +10,7 @@ import LoadingPage from "../../../components/common/fallback/LoadingPage";
 import FunctionalAndCognitiveStatusForm from "../../../components/forms/functional-and-cognitive-status";
 
 export default function FunctionalAndCognitiveStatus() {
-  const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useProfile(doctorProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;
