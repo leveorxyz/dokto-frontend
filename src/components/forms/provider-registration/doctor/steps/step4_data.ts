@@ -11,299 +11,242 @@ const firstColumn = () :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.SELECT,
-      name: "profession_name",
-      label: "Profession Name",
+      type: FieldTypes.MULTISELECT,
+      name: "profession",
+      label: "Professions",
+      optionalText: "(Pick as many as applies)",
       options: [
         {
           label: "Acupuncturist",
           value: "Acupuncturist",
-          profession_code: "1",
         },
         {
           label: "Allergist",
           value: "Allergist",
-          profession_code: "2",
         },
         {
           label: "Audiologist",
           value: "Audiologist",
-          profession_code: "3",
         },
         {
           label: "Cardiologist",
           value: "Cardiologist",
-          profession_code: "4",
         },
         {
           label: "Chiropractor",
           value: "Chiropractor",
-          profession_code: "5",
         },
         {
           label: "Dentist",
           value: "Dentist",
-          profession_code: "6",
         },
         {
           label: "Dermatologist",
           value: "Dermatologist",
-          profession_code: "7",
         },
         {
           label: "Dietitian",
           value: "Dietitian",
-          profession_code: "8",
         },
         {
           label: "Ear, Nose & Throat Doctor",
           value: "Ear, Nose & Throat Doctor",
-          profession_code: "9",
         },
         {
           label: "Emergency Medicine Physician",
           value: "Emergency Medicine Physician",
-          profession_code: "10",
         },
         {
           label: "Endocrinologist",
           value: "Endocrinologist",
-          profession_code: "11",
         },
         {
           label: "Endodontist",
           value: "Endodontist",
-          profession_code: "12",
         },
         {
           label: "Eye Doctor",
           value: "Eye Doctor",
-          profession_code: "13",
         },
         {
           label: "Family Physician",
           value: "Family Physician",
-          profession_code: "14",
         },
         {
           label: "Gastroenterologist",
           value: "Gastroenterologist",
-          profession_code: "15",
         },
         {
           label: "Hand Surgeon",
           value: "Hand Surgeon",
-          profession_code: "16",
         },
         {
           label: "Hearing Specialist",
           value: "Hearing Specialist",
-          profession_code: "17",
         },
         {
           label: "Hematologist",
           value: "Hematologist",
-          profession_code: "18",
         },
         {
           label: "Infectious Disease Specialist",
           value: "Infectious Disease Specialist",
-          profession_code: "19",
         },
         {
           label: "Infertility Specialist",
           value: "Infertility Specialist",
-          profession_code: "20",
         },
         {
           label: "Internist",
           value: "Internist",
-          profession_code: "21",
         },
         {
           label: "Naturopathic Doctor",
           value: "Naturopathic Doctor",
-          profession_code: "22",
         },
         {
           label: "Nephrologist",
           value: "Nephrologist",
-          profession_code: "23",
         },
         {
           label: "Neurologist",
           value: "Neurologist",
-          profession_code: "24",
         },
         {
           label: "Neurosurgeon",
           value: "Neurosurgeon",
-          profession_code: "25",
         },
         {
           label: "Nurse Practitioner",
           value: "Nurse Practitioner",
-          profession_code: "26",
         },
         {
           label: "Nutritionist",
           value: "Nutritionist",
-          profession_code: "27",
         },
         {
           label: "OB-GYN",
           value: "OB-GYN",
-          profession_code: "28",
         },
         {
           label: "Oncologist",
           value: "Oncologist",
-          profession_code: "29",
         },
         {
           label: "Ophthalmologist",
           value: "Ophthalmologist",
-          profession_code: "30",
         },
         {
           label: "Optometrist",
           value: "Optometrist",
-          profession_code: "31",
         },
         {
           label: "Oral Surgeon",
           value: "Oral Surgeon",
-          profession_code: "32",
         },
         {
           label: "Orthodontist",
           value: "Orthodontist",
-          profession_code: "33",
         },
         {
           label: "Orthopedic Surgeon",
           value: "Orthopedic Surgeon",
-          profession_code: "34",
         },
         {
           label: "Pain Management Specialist",
           value: "Pain Management Specialist",
-          profession_code: "35",
         },
         {
           label: "Pediatric Dentist",
           value: "Pediatric Dentist",
-          profession_code: "36",
         },
         {
           label: "Pediatric Urgent Care Specialist",
           value: "Pediatric Urgent Care Specialist",
-          profession_code: "37",
         },
         {
           label: "Pediatrician",
           value: "Pediatrician",
-          profession_code: "38",
         },
         {
           label: "Periodontist",
           value: "Periodontist",
-          profession_code: "39",
         },
         {
           label: "Physiatrist",
           value: "Physiatrist",
-          profession_code: "40",
         },
         {
           label: "Physical Therapist",
           value: "Physical Therapist",
-          profession_code: "41",
         },
         {
           label: "Plastic Surgeon",
           value: "Plastic Surgeon",
-          profession_code: "42",
         },
         {
           label: "Podiatrist",
           value: "Podiatrist",
-          profession_code: "43",
         },
         {
           label: "Primary Care Doctor",
           value: "Primary Care Doctor",
-          profession_code: "44",
         },
         {
           label: "Prosthodontist",
           value: "Prosthodontist",
-          profession_code: "45",
         },
         {
           label: "Psychiatrist",
           value: "Psychiatrist",
-          profession_code: "46",
         },
         {
           label: "Psychologist",
           value: "Psychologist",
-          profession_code: "47",
         },
         {
           label: "Psychotherapist",
           value: "Psychotherapist",
-          profession_code: "48",
         },
         {
           label: "Pulmonologist",
           value: "Pulmonologist",
-          profession_code: "49",
         },
         {
           label: "Radiologist",
           value: "Radiologist",
-          profession_code: "50",
         },
         {
           label: "Rheumatologist",
           value: "Rheumatologist",
-          profession_code: "51",
         },
         {
           label: "Sleep Medicine Specialist",
           value: "Sleep Medicine Specialist",
-          profession_code: "52",
         },
         {
           label: "Sports Medicine Specialist",
           value: "Sports Medicine Specialist",
-          profession_code: "53",
         },
         {
           label: "Surgeon",
           value: "Surgeon",
-          profession_code: "54",
         },
         {
           label: "Therapist / Counselor",
           value: "Therapist / Counselor",
-          profession_code: "55",
         },
         {
           label: "Travel Medicine Specialist",
           value: "Travel Medicine Specialist",
-          profession_code: "56",
         },
         {
           label: "Urgent Care Specialist",
           value: "Urgent Care Specialist",
-          profession_code: "57",
         },
         {
           label: "Urologist",
           value: "Urologist",
-          profession_code: "58",
         },
       ],
       placeholder: "Select",
