@@ -8,19 +8,10 @@ const firstColumn = () :FormDataType => ({
   fields: [
 
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.INPUT,
       name: "chiefComplaint",
       label: "Chief Complaint *",
-      options: [{
-        value: "MALE",
-        label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
+
     },
     {
       type: FieldTypes.INPUT,
@@ -34,19 +25,10 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.INPUT,
       name: "duration",
       label: "Duration",
-      options: [{
-        value: "MALE",
-        label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
+
     },
     {
       type: FieldTypes.INPUT,
@@ -83,30 +65,25 @@ const secondColumn = ():FormDataType => ({
       name: "severity",
       label: "Severity",
       options: [{
-        value: "MALE",
-        label: "Type 1",
+        value: "Mild",
+        label: "Mild",
       },
       {
-        value: "FEMALE",
-        label: "Type 2",
+        value: "Moderate",
+        label: "Moderate",
+      },
+      {
+        value: "Severe",
+        label: "Severe",
       },
       ],
       placeholder: "Select",
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.INPUT,
       name: "modifying_factors",
       label: "Modifying Factors",
-      options: [{
-        value: "MALE",
-        label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
+
     },
   ],
 });
