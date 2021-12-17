@@ -20,7 +20,7 @@ export default function ChiefComplaintsAndHPI() {
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Chief Complaints and HPI(History Of Present Illness)</Heading>
         <Box p="4" px="6">
           <ChiefComplaintsAndHPIForm />
-          {/* // ! TODO  ADD RICH TEXT EDITOR */}
+          {/* TODO  ADD RICH TEXT EDITOR */}
         </Box>
       </Box>
     </PatientEncountersLayout>
