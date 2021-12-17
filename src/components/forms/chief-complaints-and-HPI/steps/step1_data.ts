@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
@@ -10,7 +9,7 @@ const firstColumn = () :FormDataType => ({
 
     {
       type: FieldTypes.SELECT,
-      name: "gender",
+      name: "chiefComplaint",
       label: "Chief Complaint *",
       options: [{
         value: "MALE",
@@ -25,7 +24,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "timing",
       label: "Timing",
       rules: {
         required: {
@@ -36,7 +35,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "gender",
+      name: "duration",
       label: "Duration",
       options: [{
         value: "MALE",
@@ -51,7 +50,7 @@ const firstColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "associated_symptons",
       label: "Associated Symptoms",
       rules: {
         required: {
@@ -70,7 +69,7 @@ const secondColumn = ():FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "location",
       label: "Location",
       rules: {
         required: {
@@ -81,7 +80,7 @@ const secondColumn = ():FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "gender",
+      name: "severity",
       label: "Severity",
       options: [{
         value: "MALE",
@@ -96,7 +95,7 @@ const secondColumn = ():FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "gender",
+      name: "modifying_factors",
       label: "Modifying Factors",
       options: [{
         value: "MALE",
@@ -118,7 +117,7 @@ const row = ():FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "description",
       label: "Description",
       rules: {
         required: {
@@ -128,7 +127,7 @@ const row = ():FormDataType => ({
       },
     }, {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "context",
       label: "Context",
       rules: {
         required: {
