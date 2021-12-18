@@ -34,11 +34,12 @@ const Patients = lazy(() => import("../pages/dashboard/Patients"));
 const Encounters = lazy(() => import("../pages/dashboard/ehr/Encounters"));
 const AssessmentAndDiagnosis = lazy(() => import("../pages/dashboard/ehr/Assessment&Diagnosis"));
 const PlanOfCare = lazy(() => import("../pages/dashboard/ehr/PlanOfCare"));
-const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/patientProcedure/PatientProcedure"));
+const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/PatientProcedure"));
 const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/FunctionalAndCognitiveStatus"));
 const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
+const Medication = lazy(() => import("../pages/dashboard/ehr/Medication"));
 const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
@@ -215,6 +216,15 @@ const routes: RouteType[] = [
     displayName: "Patient encounters",
     path: "/patients/encounters/:id",
     component: <PatientEncounters />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
+    displayName: "Medication",
+    path: "/patients/encounters-data/medication/:id",
+    component: <Medication />,
     isProtected: true,
     showInNavbar: false,
     showInDashboard: false,
