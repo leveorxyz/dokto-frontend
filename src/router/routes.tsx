@@ -40,6 +40,7 @@ const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefCom
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
 const Medication = lazy(() => import("../pages/dashboard/ehr/Medication"));
+const Allergies = lazy(() => import("../pages/dashboard/ehr/Allergies"));
 const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
@@ -230,6 +231,16 @@ const routes: RouteType[] = [
     showInDashboard: false,
     allowedRoles: ["DOCTOR"],
   },
+  {
+    displayName: "Allergies",
+    path: "/patients/encounters-data/allergies/:id",
+    component: <Allergies />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
+  },
+
   {
     displayName: "Assessment & Diagnosis",
     path: "/patients/encounters-data/assessment-and-diagnosis/:id",

@@ -12,7 +12,6 @@ const firstColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "date",
       label: "Date",
-      max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",
@@ -96,7 +95,6 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "Expires",
       label: "Expires",
-      max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",
@@ -112,7 +110,7 @@ const secondColumn = () :FormDataType => ({
 });
 
 const data = () :FormDataType => ({
-  type: FieldTypes.COLUMN,
+  type: FieldTypes.ROW,
   name: "step1",
   fields: [
     firstColumn(),

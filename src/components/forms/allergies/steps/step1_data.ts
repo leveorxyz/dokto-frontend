@@ -7,23 +7,32 @@ const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
   fields: [
-
+    {
+      type: FieldTypes.INPUT,
+      name: "Allergy Name",
+      label: "Allergy Name",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
     {
       type: FieldTypes.SELECT,
-      name: "moduleType",
-      label: "Module Type",
+      name: "Provider",
+      label: "Provider",
       options: [{
-        value: "Functional Status",
-        label: "Functional Status",
+        value: "Active",
+        label: "Active",
       },
       {
-        value: "Cognitive status",
-        label: "Cognitive status",
+        value: "Resolved",
+        label: "Resolved",
       },
       ],
       placeholder: "Select",
     },
-
     {
       type: FieldTypes.SELECT,
       name: "status",
@@ -33,22 +42,43 @@ const firstColumn = () :FormDataType => ({
         label: "Active",
       },
       {
-        value: "InActive",
-        label: "InActive",
-      },
-      {
         value: "Resolved",
         label: "Resolved",
       },
       ],
       placeholder: "Select",
     },
-
     {
+      type: FieldTypes.SELECT,
+      name: "severity",
+      label: "Severity",
+      options: [{
+        value: "Mild",
+        label: "Mild",
+      },
+      {
+        value: "Moderate",
+        label: "Moderate",
+      },
+      {
+        value: "Severe",
+        label: "Severe",
+      },
+      ],
+      placeholder: "Select",
+    },
+  ],
+});
 
+const secondColumn = () :FormDataType => ({
+  type: FieldTypes.COLUMN,
+  name: "second",
+
+  fields: [
+    {
       type: FieldTypes.INPUT,
-      name: "start_date",
-      label: "Start Date",
+      name: "Set Date",
+      label: "Set Date",
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",
@@ -60,40 +90,46 @@ const firstColumn = () :FormDataType => ({
         },
       },
     },
-
-  ],
-});
-
-const secondColumn = ():FormDataType => ({
-  type: FieldTypes.COLUMN,
-  name: "date",
-  fields: [
     {
       type: FieldTypes.SELECT,
-      name: "codeType",
-      label: "Code Type",
+      name: "Allergy Type",
+      label: "Allergy Type",
       options: [{
-        value: "ICD",
-        label: "ICD",
+        value: "Mild",
+        label: "Mild",
       },
       {
-        value: "CPT",
-        label: "CPT",
+        value: "Moderate",
+        label: "Moderate",
+      },
+      {
+        value: "Severe",
+        label: "Severe",
       },
       ],
       placeholder: "Select",
     },
     {
-      type: FieldTypes.INPUT,
-      name: "code",
-      label: "Code",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
+      type: FieldTypes.SELECT,
+      name: "Reaction",
+      label: "Reaction",
+      options: [{
+        value: "Mild",
+        label: "Mild",
       },
-    }],
+      {
+        value: "Moderate",
+        label: "Moderate",
+      },
+      {
+        value: "Severe",
+        label: "Severe",
+      },
+      ],
+      placeholder: "Select",
+    },
+
+  ],
 });
 
 const row = ():FormDataType => ({
@@ -101,8 +137,8 @@ const row = ():FormDataType => ({
   name: "description",
   fields: [{
     type: FieldTypes.TEXTAREA,
-    name: "description",
-    label: "Description",
+    name: "Comments",
+    label: "Comments",
     resize: "vertical",
     rules: {
       maxLength: {

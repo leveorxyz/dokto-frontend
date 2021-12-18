@@ -78,7 +78,6 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "date",
       label: "Date",
-      max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",

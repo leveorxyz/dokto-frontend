@@ -59,7 +59,6 @@ const dates = ():FormDataType => ({
       type: FieldTypes.INPUT,
       name: "date_of_birth",
       label: "Start Date",
-      max: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",

@@ -4,7 +4,7 @@ import {
 } from "@chakra-ui/react";
 import PatientProcedureTable from "../../../components/common/patientProcedure";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
-import MedicationForm from "../../../components/forms/medication";
+import AllergiesForm from "../../../components/forms/allergies";
 
 export default function Medication() {
   return (
@@ -18,9 +18,9 @@ export default function Medication() {
         pt="8"
         backgroundColor="#fff"
       >
-        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Medication</Heading>
+        <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Allergies</Heading>
         <Box p="4" px="6">
-          <MedicationForm />
+          <AllergiesForm />
           <PatientProcedureTable />
 
         </Box>
