@@ -2,10 +2,13 @@ import {
   Heading,
   Box,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import ReactQuill from "react-quill";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 import ChiefComplaintsAndHPIForm from "../../../components/forms/chief-complaints-and-HPI";
 
 export default function ChiefComplaintsAndHPI() {
+  const [value, setValue] = useState("");
   return (
     <PatientEncountersLayout>
       <Box
@@ -21,6 +24,7 @@ export default function ChiefComplaintsAndHPI() {
         <Box p="4" px="6">
           <ChiefComplaintsAndHPIForm />
           {/* TODO  ADD RICH TEXT EDITOR */}
+          <ReactQuill theme="snow" value={value} onChange={setValue} />
         </Box>
       </Box>
     </PatientEncountersLayout>

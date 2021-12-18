@@ -32,7 +32,7 @@ export default function usePatientProcedureAdd(data: any) {
       enabled: !!data.patient_encounter,
       onSuccess: (newData:IPatientProcedure) => {
         navigate(`/patients/encounters/${newData.patient_encounter}`);
-        queryClient.invalidateQueries("prev-patientProcedure");
+        queryClient.invalidateQueries("patient_procedures");
       },
     },
   );

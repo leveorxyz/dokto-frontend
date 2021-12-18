@@ -2,7 +2,7 @@ import {
   Heading,
   Box,
 } from "@chakra-ui/react";
-
+import PatientProcedureTable from "../../../../components/common/patientProcedure";
 import PatientEncountersLayout from "../../../../components/common/PatientEncountersLayout";
 import PatientProcedureForm from "../../../../components/forms/patient-procedure";
 
@@ -21,6 +21,8 @@ export default function PatientProcedure() {
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Patient Procedure</Heading>
         <Box p="4" px="6">
           <PatientProcedureForm />
+          <PatientProcedureTable />
+
         </Box>
       </Box>
     </PatientEncountersLayout>
