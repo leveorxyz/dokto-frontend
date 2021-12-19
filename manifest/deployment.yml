@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
       - name: dokto-frontend
-        image: dokto.azurecr.io/toybethsystems/dokto-frontend:latest
+        image: dokto.azurecr.io/toybethsystems/dokto-frontend:prod
         ports:
         - containerPort: 80
         resources:
           limits:
-            cpu: "1"
+            cpu: "500m"
             memory: 2Gi
           requests:
             cpu: 100m
@@ -29,8 +29,8 @@ spec:
             path: /
             port: 80
             scheme: HTTP
-          periodSeconds: 300
-          timeoutSeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 60
           successThreshold: 1
           failureThreshold: 5       
         readinessProbe:
@@ -38,8 +38,8 @@ spec:
             path: /
             port: 80
             scheme: HTTP
-          periodSeconds: 300
-          timeoutSeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 60
           successThreshold: 1
           failureThreshold: 5    
         startupProbe:
@@ -47,6 +47,6 @@ spec:
             path: /
             port: 80
             scheme: HTTP
-          periodSeconds: 300
-          timeoutSeconds: 300
-          failureThreshold: 90
+          periodSeconds: 60
+          timeoutSeconds: 60
+          failureThreshold: 10
