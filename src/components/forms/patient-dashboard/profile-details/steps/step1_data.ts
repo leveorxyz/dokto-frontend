@@ -1,4 +1,3 @@
-import { Country, State, City } from "country-state-city";
 import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
@@ -98,37 +97,25 @@ const data = (watch: any) :FormDataType => ({
           placeholder: "Street Address",
         },
         {
-          type: FieldTypes.SELECT,
+          type: FieldTypes.INPUT,
           name: "country",
           label: "Country",
-          options: Country.getAllCountries().map((country) => ({
-            label: country.name,
-            value: country.isoCode,
-          })),
-          placeholder: "Select",
+          placeholder: "Country",
         },
         {
-          type: FieldTypes.SELECT,
+          type: FieldTypes.INPUT,
           name: "state",
           label: "State",
-          placeholder: "Select",
-          options: State.getStatesOfCountry(watch("country")).map((state) => ({
-            label: state.name,
-            value: state.isoCode,
-          })),
+          placeholder: "State",
           rules: {
             deps: ["country"],
           },
         },
         {
-          type: FieldTypes.SELECT,
+          type: FieldTypes.INPUT,
           name: "city",
           label: "City",
-          placeholder: "Select",
-          options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
-            label: city.name,
-            value: city.name,
-          })),
+          placeholder: "City",
           rules: {
             deps: ["state"],
           },
