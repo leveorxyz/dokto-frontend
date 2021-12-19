@@ -96,7 +96,6 @@ export default function Vitals() {
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
-                  <Td />
 
                 </Tr>
                 <Tr>
