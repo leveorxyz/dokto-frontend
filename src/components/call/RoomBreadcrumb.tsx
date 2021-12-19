@@ -34,7 +34,7 @@ const RoomBreadcrumb = ({
     </Breadcrumb>
 
     {showChat && (
-    <Box position="absolute" right="10" top="4.5rem" color="black">
+    <Box position="absolute" right="10" top="4.5rem" color="black" zIndex={10}>
       <Icon as={IoChatboxEllipsesOutline} fontSize="30" _hover={{ color: "purple" }} onClick={openChatWindow} />
     </Box>
     )}

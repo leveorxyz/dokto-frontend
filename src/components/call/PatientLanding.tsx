@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import {
   Flex, Box, Image,
 } from "@chakra-ui/react";
@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import BottomImage from "../../static/waiting_room_frame.png";
 import DoctorImage from "../../static/doctor.jpeg";
+import BackgroundVideo from "./BackgroundVideo";
 
 type PropTypes = {
   callEnded: boolean;
@@ -20,6 +21,8 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
 
   const { data: roomData } = useQuery(["room-settings", roomName],
     async () => (roomName ? axios?.get(`/twilio/waiting-room/${roomName}`) : { data: {} }));
+
+  const isVideo = useMemo(() => roomData?.data?.result?.room_media_mime_type?.split("/")[0] === "video", [roomData]);
 
   const Greetings = () => {
     if (roomData?.data?.result?.text) {
@@ -37,7 +40,9 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
 
   return (
     <Flex w="100%" justifyContent="center">
+      {isVideo && <BackgroundVideo videoSrc={roomData?.data?.result?.room_media} />}
       <Box paddingTop="4rem" textAlign="center">
+        {!isVideo && (
         <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
           <Box width="160px" height="160px">
             <Image
@@ -59,8 +64,9 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
             ) : <Greetings />}
           </Box>
         </Flex>
+        )}
       </Box>
-      <Image src={roomData?.data?.result?.room_media ? roomData?.data?.result?.room_media : BottomImage} width="40%" position="absolute" bottom="0" />
+      {!isVideo && <Image src={roomData?.data?.result?.room_media ? roomData?.data?.result?.room_media : BottomImage} width="40%" position="absolute" bottom="0" />}
     </Flex>
   );
 };
