@@ -7,10 +7,9 @@ const firstColumn = (watch: any) :FormDataType => ({
   name: "first",
   fields: [
     {
-      type: FieldTypes.SECTION,
+      type: FieldTypes.COLUMN,
       name: "password_reset",
       label: "Password Reset",
-      submitButtonText: "Save & Update",
       fields: [
         {
           type: FieldTypes.INPUT,
@@ -72,11 +71,9 @@ const secondColumn = (watch: any) :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.SECTION,
+      type: FieldTypes.COLUMN,
       name: "delete_account",
       label: "Delete Account",
-      iconDelete: true,
-      submitButtonText: "Delete Account",
       fields: [
         {
           type: FieldTypes.INPUT,

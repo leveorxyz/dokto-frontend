@@ -86,7 +86,7 @@ const data = () :FormDataType => ({
     secondRow(),
     thirdRow(),
     {
-      type: FieldTypes.SECTION,
+      type: FieldTypes.COLUMN,
       name: "address",
       label: "Address",
       fields: [
