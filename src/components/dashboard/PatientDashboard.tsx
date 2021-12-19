@@ -81,12 +81,14 @@ export default function PatientDashboard() {
           <Divider />
           <Appointments />
         </GridItem>
+
         <GridItem colSpan={[24, 24, 12, 8, 9]} bg="white" color="white" rounded="lg">
           <Box p={6}>
             <Text color="brand.darkPink" fontWeight="semibold">Latest Messages</Text>
           </Box>
           <Divider />
         </GridItem>
+
         <GridItem colSpan={[24, 24, 12, 8, 6]} color="white" rounded="lg">
           <Flex direction="column" justify="center" p={6} w="100%" rounded="lg">
             <Image src={Appointment} alt="Book an appointment" width="100%" height="auto" fit="contain" />
@@ -99,7 +101,7 @@ export default function PatientDashboard() {
               QUICKLY BOOK A DOCTOR
             </Button>
 
-            <Box mt={2}>
+            <Box mt={2} fontSize="sm" color="black" textAlign="center">
               Our Doctors and specialists are waiting
             </Box>
           </Flex>
