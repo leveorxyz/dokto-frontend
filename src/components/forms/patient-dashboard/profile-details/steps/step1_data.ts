@@ -67,7 +67,7 @@ const thirdRow = () :FormDataType => ({
   ],
 });
 
-const data = (watch: any) :FormDataType => ({
+const data = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "step1",
   fields: [

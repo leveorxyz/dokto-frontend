@@ -64,7 +64,7 @@ const firstColumn = () :FormDataType => ({
   ],
 });
 
-const secondColumn = (watch: any) :FormDataType => ({
+const secondColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "second",
   label: "Address",
@@ -82,14 +82,10 @@ const secondColumn = (watch: any) :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.INPUT,
       name: "country",
       label: "Country",
-      options: Country.getAllCountries().map((country) => ({
-        label: country.name,
-        value: country.isoCode,
-      })),
-      placeholder: "Select",
+      placeholder: "Country",
       rules: {
         required: {
           value: true,
@@ -98,34 +94,26 @@ const secondColumn = (watch: any) :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.INPUT,
       name: "state",
       label: "State",
-      placeholder: "Select",
-      options: State.getStatesOfCountry(watch("country")).map((state) => ({
-        label: state.name,
-        value: state.isoCode,
-      })),
+      placeholder: "State",
       rules: {
         required: {
-          value: State.getStatesOfCountry(watch("country")).length > 0,
+          value: true,
           message: "This field is required",
         },
         deps: ["country"],
       },
     },
     {
-      type: FieldTypes.SELECT,
+      type: FieldTypes.INPUT,
       name: "city",
       label: "City",
-      placeholder: "Select",
-      options: City.getCitiesOfState(watch("country"), watch("state")).map((city) => ({
-        label: city.name,
-        value: city.name,
-      })),
+      placeholder: "City",
       rules: {
         required: {
-          value: City.getCitiesOfState(watch("country"), watch("state")).length > 0,
+          value: true,
           message: "This field is required",
         },
         deps: ["state"],
@@ -140,12 +128,12 @@ const secondColumn = (watch: any) :FormDataType => ({
   ],
 });
 
-const data = (watch: any) :FormDataType => ({
+const data = () :FormDataType => ({
   type: FieldTypes.ROW,
   name: "step2",
   fields: [
     firstColumn(),
-    secondColumn(watch),
+    secondColumn(),
   ],
 });
 
