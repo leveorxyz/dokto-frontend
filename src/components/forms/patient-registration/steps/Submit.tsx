@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { Country, State } from "country-state-city";
 
 import Loading from "../../../common/fallback/LoadingPage";
 import { stepAtom } from "../atoms";
@@ -19,13 +18,6 @@ export default function Submit() {
         }
         if (curr === "contact_no-value") {
           return { ...prev, contact_no: (prev.contact_no ?? "") + stepData[curr] };
-        }
-        if (curr === "country") {
-          return { ...prev, [curr]: Country.getCountryByCode(stepData[curr])?.name };
-        }
-        if (curr === "state") {
-          if (stepData[curr] === "") return prev;
-          return { ...prev, [curr]: State.getStateByCode(stepData[curr])?.name };
         }
         if (curr === "first_name") {
           return { ...prev, full_name: `${stepData[curr]} ${prev.full_name.trim()}` };

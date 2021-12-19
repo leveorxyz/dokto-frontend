@@ -1,4 +1,3 @@
-import { Country, State, City } from "country-state-city";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
