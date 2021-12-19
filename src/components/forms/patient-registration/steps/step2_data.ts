@@ -120,7 +120,7 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "zip_code",
       label: "Zip Code",
-      placeholder: "Code",
+      placeholder: "Zip Code",
     },
   ],
 });
