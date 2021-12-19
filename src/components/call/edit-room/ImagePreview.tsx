@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Box, Text, Flex, Icon, Image,
 } from "@chakra-ui/react";
@@ -15,46 +16,59 @@ type PropTypes = {
 
 const ImagePreview = ({
   handleClose, handleUpload, file, loading,
-}:PropTypes) => (
-  <Box
-    backgroundColor="#fff"
-    boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
-    width="60%"
-    minHeight="320px"
-    marginTop="15px"
-    borderRadius="10px"
-    border="1px solid #dddddd"
-    padding="30px"
-    paddingLeft="25px"
-    paddingRight="25px"
-  >
-    <Text color="#9A9AB0">Preview</Text>
-    <Flex justifyContent="center">
-      <Image src={file ? URL.createObjectURL(file) : DoctorImage} width="20rem" />
-    </Flex>
-    <Flex justifyContent="space-around" alignItems="center" marginTop="5">
-      <Text
-        marginRight="10"
-        color="red"
-        fontSize="15px"
-      >
-        Ensure your image is minimum 1280*720 pixels for High Quality display
+}:PropTypes) => {
+  const fileType = useMemo(() => file?.type?.split("/")[0], [file]);
 
-      </Text>
-      <Flex alignItems="center">
-        <Box marginRight="10">
-          <WhiteButton onClick={handleClose}>
-            <Icon as={IoCloseSharp} fontSize="#A42BAD" fontStyle="italic" />
-          </WhiteButton>
-        </Box>
-        <Box>
-          <BrandButton onClick={handleUpload} isLoading={loading}>
-            <Icon as={IoCheckmarkSharp} fontSize="20" />
-          </BrandButton>
-        </Box>
+  return (
+    <Box
+      backgroundColor="#fff"
+      boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
+      width="60%"
+      minHeight="320px"
+      marginTop="15px"
+      borderRadius="10px"
+      border="1px solid #dddddd"
+      padding="30px"
+      paddingLeft="25px"
+      paddingRight="25px"
+    >
+      <Text color="#9A9AB0">Preview</Text>
+      <Flex justifyContent="center">
+        {fileType === "image" && <Image src={file ? URL.createObjectURL(file) : DoctorImage} width="20rem" />}
+        {/* eslint-disable */}
+        {fileType  === "video" && (
+        <video
+          width="400"
+          height="auto"
+          src={file && URL.createObjectURL(file)}
+          controls
+        />
+        )}
       </Flex>
-    </Flex>
-  </Box>
-);
+      <Flex justifyContent="space-around" alignItems="center" marginTop="5">
+        <Text
+          marginRight="10"
+          color="red"
+          fontSize="15px"
+        >
+          Ensure your {fileType} is minimum 1280*720 pixels for High Quality display
+
+        </Text>
+        <Flex alignItems="center">
+          <Box marginRight="10">
+            <WhiteButton onClick={handleClose}>
+              <Icon as={IoCloseSharp} fontSize="#A42BAD" fontStyle="italic" />
+            </WhiteButton>
+          </Box>
+          <Box>
+            <BrandButton onClick={handleUpload} isLoading={loading}>
+              <Icon as={IoCheckmarkSharp} fontSize="20" />
+            </BrandButton>
+          </Box>
+        </Flex>
+      </Flex>
+    </Box>
+  );
+};
 
 export default ImagePreview;
