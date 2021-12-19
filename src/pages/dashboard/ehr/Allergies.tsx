@@ -2,7 +2,7 @@ import {
   Heading,
   Box,
 } from "@chakra-ui/react";
-import PatientProcedureTable from "../../../components/common/patientProcedure";
+import AllergiesTable from "../../../components/common/allergies";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 import AllergiesForm from "../../../components/forms/allergies";
 
@@ -21,7 +21,7 @@ export default function Medication() {
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Allergies</Heading>
         <Box p="4" px="6">
           <AllergiesForm />
-          <PatientProcedureTable />
+          <AllergiesTable />
 
         </Box>
       </Box>
