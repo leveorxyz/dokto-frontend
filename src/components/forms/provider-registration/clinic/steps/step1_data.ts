@@ -1,4 +1,3 @@
-import { State, City, Country } from "country-state-city";
 import { FieldTypes, FormDataType } from "../../../types/form";
 import MobileNo from "../../custom/MobileNo";
 import TnC from "../../custom/TnC";
@@ -179,7 +178,7 @@ const secondColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       name: "zip_code",
       label: "Zip Code",
-      placeholder: "Code",
+      placeholder: "Zip Code",
     },
 
     {
