@@ -29,6 +29,7 @@ type CommonType = {
   label: string;
   defaultValue?: string;
   placeholder?: string;
+  optionalText?: string;
   bottomText?: string;
   size?: "xs" | "sm" | "md" | "lg";
   visibilityDependencies?: VisibilityDependenciesWithValue[];
@@ -73,6 +74,7 @@ export type SelectFieldType = {
 
 export type MultiSelectFieldType = {
   type: FieldTypes.MULTISELECT;
+  optionalText?: string;
   options: {
     value: string;
     label: string;

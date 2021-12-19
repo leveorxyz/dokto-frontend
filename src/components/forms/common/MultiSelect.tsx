@@ -5,6 +5,7 @@ import {
   FormControl,
   FormLabel,
   Heading,
+  Box,
   FormErrorMessage,
   Tag,
   TagLabel,
@@ -26,6 +27,7 @@ export default function MultiSelect({
   errors,
   label,
   bottomText,
+  optionalText,
   options,
   setValue,
   setError,
@@ -59,7 +61,10 @@ export default function MultiSelect({
   return (
     <Flex direction="column">
       <FormControl isInvalid={errors[shadowFieldName]} py={4}>
-        <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
+        <Flex>
+          <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
+          <Box color="#c2cace">{optionalText}</Box>
+        </Flex>
         <Select
           placeholder="Select"
           name={shadowFieldName}
