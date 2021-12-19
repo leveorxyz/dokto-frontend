@@ -13,6 +13,7 @@ import format from "date-fns/format";
 
 import { SpacedContainer } from "../common/Containers";
 import WelcomeCard from "./WelcomeCard";
+import Appointments from "./Appointments";
 
 import Banner from "../../static/PatientDashboard/Banner.png";
 import Appointment from "../../static/PatientDashboard/Appointment.png";
@@ -78,6 +79,7 @@ export default function PatientDashboard() {
             <Text color="brand.darkPink" fontWeight="semibold">Previous Appointments</Text>
           </Box>
           <Divider />
+          <Appointments />
         </GridItem>
         <GridItem colSpan={[24, 24, 12, 8, 9]} bg="white" color="white" rounded="lg">
           <Box p={6}>
