@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
 
 import authAtom from "../../atoms/auth.atom";
-import NotImplemented from "../../components/NotImplemented";
 import DoctorDashboard from "../../components/dashboard/DoctorDashboard";
+import PatientDashboard from "../../components/dashboard/PatientDashboard";
 import HospitalDashboard from "../../components/dashboard/HospitalDashboard";
 import PharmacyDashboard from "../../components/dashboard/PharmacyDashboard";
 
@@ -15,7 +15,7 @@ export default function DashboardHome() {
         case "DOCTOR":
           return <DoctorDashboard />;
         case "PATIENT":
-          return <NotImplemented />;
+          return <PatientDashboard />;
         case "CLINIC":
           return <HospitalDashboard />;
         case "PHARMACY":
