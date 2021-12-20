@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { atom } from "recoil";
 
 export type DoctorProfile = {
@@ -19,6 +20,8 @@ export type DoctorProfile = {
   gender: string;
   notification_email?: string;
   date_of_birth: string;
+  accepted_insurance?: string[];
+  accept_all_insurance?: string[];
   education: {
     college: string;
     course: string;

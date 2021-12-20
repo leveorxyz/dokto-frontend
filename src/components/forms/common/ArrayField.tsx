@@ -27,6 +27,7 @@ type PropTypes = {
   watch: any;
   control: any;
   isDirty: boolean;
+  stepData: any;
 };
 
 export default function ArrayField({

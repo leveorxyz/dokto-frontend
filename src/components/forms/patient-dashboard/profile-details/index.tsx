@@ -1,14 +1,8 @@
 import { useMemo } from "react";
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-} from "@chakra-ui/react";
-import { RecoilState, useRecoilState } from "recoil";
-import MessagePage from "../../../common/fallback/MessagePage";
-import Loading from "../../../common/fallback/LoadingPage";
-import stepAtom, { currentStepAtom } from "../../../../atoms/profileDetails.atom";
-import useProfileDetails from "../../../../hooks/profile-settings/useProfileDetails";
+import { Box } from "@chakra-ui/react";
+import { RecoilState, useRecoilValue } from "recoil";
+import stepAtom from "../../../../atoms/patientProfileSettings";
+import { currentStepAtom } from "../../../../atoms/profileDetails.atom";
 
 import FormStep from "../../common/FormStep";
 import {
@@ -58,7 +52,7 @@ const getStepsData = (): StepTypes[] => (
 
 export default function Form() {
   const steps = getStepsData();
-  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
+  const currentStep = useRecoilValue(currentStepAtom);
 
   const CurrentStep = useMemo(
     () => {
@@ -78,22 +72,8 @@ export default function Form() {
     [currentStep, steps],
   );
   return (
-    <>
-      <Breadcrumb>
-        {steps
-          .filter((step) => step.isFormStep)
-          .map((step) => (
-            <BreadcrumbItem key={step.id}>
-              <Box
-                onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-              />
-            </BreadcrumbItem>
-          ))}
-      </Breadcrumb>
-
-      <Box>
-        {CurrentStep}
-      </Box>
-    </>
+    <Box mt={3}>
+      {CurrentStep}
+    </Box>
   );
 }

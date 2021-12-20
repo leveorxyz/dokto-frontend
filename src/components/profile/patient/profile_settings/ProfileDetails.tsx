@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import ProfileDetailsForm from "../../../forms/patient-dashboard/profile-details";
-import profileAtom from "../../../../atoms/profileDetails.atom";
+import profileAtom from "../../../../atoms/patientProfileSettings";
 import editIcon from "../../../../static/edit_image.svg";
 import getBase64 from "../../../../utils/getBase64";
 
