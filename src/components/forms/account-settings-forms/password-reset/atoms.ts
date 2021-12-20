@@ -1,15 +1,8 @@
 import { atom } from "recoil";
 
-export const currentStepAtom = atom<number>({
-  key: "accountSettingsStep",
+const currentStepAtom = atom<number>({
+  key: "passwordResetStep",
   default: 1,
 });
 
-export const stepAtom = atom({
-  key: "account_settings_data",
-  default: {},
-});
-
-export default {
-  currentStepAtom, stepAtom,
-};
+export default currentStepAtom;
