@@ -23,17 +23,17 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { Allergies } from "../../../atoms/ehr/allergies";
+import { Medication } from "../../../atoms/ehr/medication";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<Allergies> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<Allergies> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<Allergies>[];
-  rows: Row<Allergies>[];
-  prepareRow: (row: Row<Allergies>) => void;
+  getTableProps: (propGetter?: TablePropGetter<Medication> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<Medication> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<Medication>[];
+  rows: Row<Medication>[];
+  prepareRow: (row: Row<Medication>) => void;
 }
 
-function AllergiesTable({
+function MedicationTable({
   getTableProps,
   getTableBodyProps,
   headerGroups,
@@ -102,4 +102,4 @@ function AllergiesTable({
   );
 }
 
-export default memo(AllergiesTable);
+export default memo(MedicationTable);
