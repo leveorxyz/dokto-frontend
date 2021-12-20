@@ -9,7 +9,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { AxiosContext } from "../contexts/AxiosContext";
 import { IPatientProcedure } from "../hooks/patientProcedure/usePatientProcedureAdd";
 
-const deletePatientProcedure = async (axios: AxiosInstance, id:string) => axios.delete(`ehr/encounters/patient-procedure/${id}`)
+const deletePatientProcedure = async (axios: AxiosInstance, id:string) => axios.delete(`ehr/encounters/patient-procedure-update/${id}`)
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
