@@ -6,14 +6,14 @@ import {
 } from "@chakra-ui/react";
 import { RecoilState, useRecoilState } from "recoil";
 
-import { currentStepAtom } from "../../../atoms/profileDetails.atom";
-import stepAtom from "../../../atoms/dashboard/doctorProfileSettings.atom";
+import { currentStepAtom } from "../../../../atoms/profileDetails.atom";
+import stepAtom from "../../../../atoms/dashboard/doctorProfileSettings.atom";
 
-import FormStep from "../common/FormStep";
+import FormStep from "../../common/FormStep";
 import {
   step1Data,
 } from "./steps";
-import { FormDataType } from "../types/form";
+import { FormDataType } from "../../types/form";
 import Submit from "./steps/Submit";
 
 type CommonStepType = {

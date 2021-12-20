@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
-} from "../../types/form";
+} from "../../../types/form";
 
 const secondRow = () :FormDataType => ({
   type: FieldTypes.ROW,

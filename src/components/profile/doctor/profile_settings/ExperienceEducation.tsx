@@ -1,5 +1,5 @@
 import { Box, Heading } from "@chakra-ui/react";
-import ExperienceEducationForm from "../../../forms/experience-education";
+import ExperienceEducationForm from "../../../forms/doctor-profile-settings/experience-education";
 
 const ExperienceEducation = () => (
   <Box>

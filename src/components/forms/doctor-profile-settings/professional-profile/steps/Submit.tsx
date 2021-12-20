@@ -2,10 +2,10 @@ import { useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
-import Loading from "../../../common/fallback/LoadingPage";
+import Loading from "../../../../common/fallback/LoadingPage";
 import { stepAtom } from "../atoms";
-import usePatientReg from "../../../../hooks/register/usePatientReg";
-import MessagePage from "../../../common/fallback/MessagePage";
+import usePatientReg from "../../../../../hooks/register/usePatientReg";
+import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);

@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import { Box } from "@chakra-ui/react";
 import { RecoilState, useRecoilValue } from "recoil";
 
-import stepAtom from "../../../atoms/dashboard/doctorProfileSettings.atom";
+import stepAtom from "../../../../atoms/dashboard/doctorProfileSettings.atom";
 import { currentStepAtom } from "./atoms";
-import FormStep from "../common/FormStep";
+import FormStep from "../../common/FormStep";
 import { step1Data } from "./steps";
-import { FormDataType } from "../types/form";
+import { FormDataType } from "../../types/form";
 import Submit from "./steps/Submit";
 
 type CommonStepType = {

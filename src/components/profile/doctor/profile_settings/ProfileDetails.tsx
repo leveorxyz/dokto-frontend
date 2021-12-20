@@ -11,7 +11,7 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
-import ProfileDetailsForm from "../../../forms/profile-details";
+import ProfileDetailsForm from "../../../forms/doctor-profile-settings/profile-details";
 import profileAtom from "../../../../atoms/doctorProfile";
 import editIcon from "../../../../static/edit_image.svg";
 import getBase64 from "../../../../utils/getBase64";

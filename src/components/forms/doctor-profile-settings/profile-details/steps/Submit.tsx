@@ -2,10 +2,10 @@ import { useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
-import Loading from "../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../atoms/dashboard/doctorProfileSettings.atom";
-import useUpdateEducationExperience from "../../../../hooks/profile-settings/updateEducationExperiences";
-import MessagePage from "../../../common/fallback/MessagePage";
+import Loading from "../../../../common/fallback/LoadingPage";
+import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
+import useUpdateProfileDetails from "../../../../../hooks/profile-settings/updateProfileDetails";
+import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
@@ -17,23 +17,22 @@ export default function Submit() {
         return { ...prev, [curr]: stepData[curr] };
       },
       {
-
+        contact_no: "",
+        full_name: "",
       },
     ),
   }), [stepData]);
 
-  console.log(data);
-
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateEducationExperience(data);
+  } = useUpdateProfileDetails(data);
 
   if (isFetching) {
     return <Loading />;
   }
 
   if (isSuccess) {
-    return <MessagePage status="success" title="Success!" message="Successfully updated education and experience data" />;
+    return <MessagePage status="success" title="Success!" message="Successfully updated profile data" />;
   }
 
   if (isError) {

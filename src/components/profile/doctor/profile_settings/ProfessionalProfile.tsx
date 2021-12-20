@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
-import ProfessionalProfileForm from "../../../forms/professional-profile";
+import ProfessionalProfileForm from "../../../forms/doctor-profile-settings/professional-profile";
 
 const ProfessionalProfile = () => (
   <Box>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
-import InsurancesForm from "../../../forms/insurances";
+import InsurancesForm from "../../../forms/doctor-profile-settings/insurances";
 
 const Insurances = () => (
   <Box>
