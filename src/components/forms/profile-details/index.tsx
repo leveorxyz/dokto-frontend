@@ -7,7 +7,7 @@ import {
 import { RecoilState, useRecoilState } from "recoil";
 
 import { currentStepAtom } from "../../../atoms/profileDetails.atom";
-import stepAtom from "../../../atoms/doctorProfileSettings";
+import stepAtom from "../../../atoms/dashboard/doctorProfileSettings.atom";
 
 import FormStep from "../common/FormStep";
 import {

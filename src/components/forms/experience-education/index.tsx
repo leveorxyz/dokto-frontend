@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Box } from "@chakra-ui/react";
 import { RecoilState, useRecoilValue } from "recoil";
 
-import stepAtom from "../../../atoms/doctorProfileSettings";
+import stepAtom from "../../../atoms/dashboard/doctorProfileSettings.atom";
 import { currentStepAtom } from "../../../atoms/educationExperience.atom";
 import FormStep from "../common/FormStep";
 import { step1Data } from "./steps";
