@@ -9,13 +9,13 @@ const firstColumn = (watch: any) :FormDataType => ({
     {
       type: FieldTypes.INPUT,
       name: "old_password",
-      label: "Last Remember Password",
-      placeholder: "Last Remember Password",
+      label: "Last Remembered Password",
+      placeholder: "Last Remembered Password",
       inputType: "password",
       rules: {
-        pattern: {
-          value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
-          message: "Minimum eight characters, at least one letter and one number",
+        required: {
+          value: true,
+          message: "This field is required",
         },
       },
     },
