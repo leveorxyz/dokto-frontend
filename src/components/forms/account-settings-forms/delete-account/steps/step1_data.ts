@@ -13,6 +13,10 @@ const firstColumn = (watch: any) :FormDataType => ({
       placeholder: "Enter Password",
       inputType: "password",
       rules: {
+        required: {
+          value: true,
+          message: "Password is required",
+        },
         pattern: {
           value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
           message: "Minimum eight characters, at least one letter and one number",
@@ -26,6 +30,10 @@ const firstColumn = (watch: any) :FormDataType => ({
       inputType: "password",
       placeholder: "Retype Password",
       rules: {
+        required: {
+          value: true,
+          message: "Password is required",
+        },
         validate: (v) => (v === watch("account_delete_password") ? true : "Passwords do not match"),
         deps: ["account_delete_password"],
       },
@@ -56,6 +64,12 @@ const data = (watch: any) :FormDataType => ({
         label: "Others",
       }],
       placeholder: "Select",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
     },
     {
       type: FieldTypes.TEXTAREA,
@@ -63,6 +77,10 @@ const data = (watch: any) :FormDataType => ({
       label: "",
       placeholder: "Description (Optional)",
       resize: "vertical",
+      rules: {
+        validate: (v) => (watch("reason_to_delete") === "OTHER" && v?.length < 1 ? "Description is required" : true),
+        deps: ["reason_to_delete"],
+      },
     },
   ],
 });
