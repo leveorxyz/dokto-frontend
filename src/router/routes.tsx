@@ -40,8 +40,10 @@ const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefCom
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
 const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
 const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
-const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
+const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
+const DoctorListings = lazy(() => import("../pages/DoctorListings"));
+const PaymentSuccess = lazy(() => import("../pages/PaymentSuccess"));
 
 export type RouteType = {
     displayName: string;
@@ -69,6 +71,7 @@ const routes: RouteType[] = [
     isProtected: false,
     showInNavbar: true,
   },
+
   {
     displayName: "Available Care",
     path: "/available-care",
@@ -329,6 +332,20 @@ const routes: RouteType[] = [
     showInDashboard: true,
     icon: InvoiceIcon,
     allowedRoles: ["DOCTOR", "PATIENT"],
+  },
+  {
+    displayName: "Find a Doctor",
+    path: "/doctors",
+    component: <DoctorListings />,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Payment Successful",
+    path: "/payment-verified",
+    component: <PaymentSuccess />,
+    isProtected: false,
+    showInNavbar: false,
   },
   {
     displayName: "Logout",
