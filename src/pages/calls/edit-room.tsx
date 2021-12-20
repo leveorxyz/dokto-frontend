@@ -72,7 +72,7 @@ const EditRoom = () => {
               <EditIcons.ImageIcon />
               <Text fontSize="20px" marginTop="10px">Image</Text>
             </Box>
-            <Box textAlign="center" cursor="pointer" onClick={() => setShowInput("video")}>
+            <Box textAlign="center" cursor="pointer" onClick={() => setShowInput("image")}>
               <EditIcons.VideoIcon />
               <Text fontSize="20px" marginTop="10px">Video</Text>
             </Box>

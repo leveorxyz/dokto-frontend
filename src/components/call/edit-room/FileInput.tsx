@@ -63,7 +63,7 @@ const FileInput = ({ handleClose }:PropTypes) => {
             <Input
               type="file"
               ref={ref}
-              accept="image/*"
+              accept="image/*,video/*"
               onChange={() => {
                 setFile(ref.current.files[0]);
                 ref.current.value = "";
