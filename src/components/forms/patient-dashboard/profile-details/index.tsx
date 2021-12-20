@@ -1,11 +1,8 @@
 import { useMemo } from "react";
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-} from "@chakra-ui/react";
-import { RecoilState, useRecoilState } from "recoil";
-import stepAtom, { currentStepAtom } from "../../../../atoms/profileDetails.atom";
+import { Box } from "@chakra-ui/react";
+import { RecoilState, useRecoilValue } from "recoil";
+import stepAtom from "../../../../atoms/patientProfileSettings";
+import { currentStepAtom } from "../../../../atoms/profileDetails.atom";
 
 import FormStep from "../../common/FormStep";
 import {
@@ -55,7 +52,7 @@ const getStepsData = (): StepTypes[] => (
 
 export default function Form() {
   const steps = getStepsData();
-  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
+  const currentStep = useRecoilValue(currentStepAtom);
 
   const CurrentStep = useMemo(
     () => {

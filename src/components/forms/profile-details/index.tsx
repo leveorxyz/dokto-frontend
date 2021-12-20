@@ -5,8 +5,9 @@ import {
   BreadcrumbItem,
 } from "@chakra-ui/react";
 import { RecoilState, useRecoilState } from "recoil";
+
 import { currentStepAtom } from "../../../atoms/profileDetails.atom";
-import stepAtom from "../../../atoms/doctorProfile";
+import stepAtom from "../../../atoms/doctorProfileSettings";
 
 import FormStep from "../common/FormStep";
 import {

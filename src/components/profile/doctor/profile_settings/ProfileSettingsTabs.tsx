@@ -2,7 +2,7 @@ import {
   Tabs, TabList, TabPanels, Tab, TabPanel,
 } from "@chakra-ui/react";
 
-import doctorProfile from "../../../../atoms/doctorProfile";
+import doctorProfile from "../../../../atoms/doctorProfileSettings";
 import useProfile from "../../../../hooks/profile/useProfile";
 import MessagePage from "../../../common/fallback/MessagePage";
 import LoadingPage from "../../../common/fallback/LoadingPage";
