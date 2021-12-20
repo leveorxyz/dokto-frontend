@@ -1,10 +1,9 @@
 import { useMemo } from "react";
-import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../../atoms/updateAccountSettings.atom";
-import useUpdateSecuritySettings from "../../../../../hooks/account-settings/updateSecuritySettings";
+import stepAtom from "../../../../../atoms/dashboard/accountSettings.atom";
+import { useUpdateAccountSettings } from "../../../../../hooks/account-settings/useAccountSettings";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -23,7 +22,7 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateSecuritySettings(data);
+  } = useUpdateAccountSettings(data);
 
   if (isFetching) {
     return <Loading />;
@@ -37,5 +36,5 @@ export default function Submit() {
     return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
-  return <Navigate to="/account-settings" />;
+  return <></>;
 }
