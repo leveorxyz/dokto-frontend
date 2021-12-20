@@ -10,3 +10,4 @@ spec:
     kind: Deployment
     name: dokto-frontend
   targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 70
