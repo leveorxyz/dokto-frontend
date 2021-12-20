@@ -5,11 +5,4 @@ export const currentStepAtom = atom<number>({
   default: 1,
 });
 
-export const stepAtom = atom({
-  key: "profile_details_data",
-  default: {},
-});
-
-export default {
-  currentStepAtom, stepAtom,
-};
+export default { currentStepAtom };

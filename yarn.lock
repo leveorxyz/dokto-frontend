@@ -3284,6 +3284,11 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
+"@veccu/react-calendar@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@veccu/react-calendar/-/react-calendar-2.3.4.tgz#b250a2f326582bb5ba2ce10653a827d19b3648c9"
+  integrity sha512-sPMSQE7yHH8cYgwfj+zqyw17KvVGc+Sv9azpbH7JTD4HUGVMtOvcwAm3Bti1J+77m4uw54sc8kaXgpeJ9j8jEA==
+
 "@visx/curve@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@visx/curve/-/curve-2.1.0.tgz#f614bfe3db66df7db7382db7a75ced1506b94602"

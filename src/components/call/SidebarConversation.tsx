@@ -4,10 +4,9 @@ import {
   Box,
   Avatar,
   Button,
-  IconButton,
-  useDisclosure,
+  // IconButton,
 } from "@chakra-ui/react";
-import { IoEllipsisVertical } from "react-icons/io5";
+import { IoCallSharp, IoChatboxSharp, IoCloseSharp } from "react-icons/io5";
 import { Conversation } from "@twilio/conversations";
 import { AxiosInstance } from "axios";
 import { AxiosContext } from "../../contexts/AxiosContext";
@@ -25,15 +24,17 @@ export default function SidebarConversation(
     openChatWindow,
   }: ConversationComponentProps,
 ) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
 
   // Remove patient from waiting room
   const handleRemoveParticipant = (channelUniqueName:string): void => {
     axios?.post("twilio/remove-participant-conversation/", { channel_unique_name: channelUniqueName })
-      .then((data) => {
-        console.log(data);
-      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleRemoveDoctor = (channelUniqueName:string):void => {
+    axios?.post("twilio/conversation-remove-doctor/", { channel_unique_name: channelUniqueName })
       .catch((err) => console.log(err));
   };
 
@@ -65,7 +66,7 @@ export default function SidebarConversation(
             _hover={{ bg: "brand.darkPink", color: "white" }}
             onClick={() => handleRemoveParticipant(conversation.uniqueName)}
           >
-            Start Call
+            <IoCallSharp size={18} />
           </Button>
           <Button
             id="call-button"
@@ -77,18 +78,27 @@ export default function SidebarConversation(
               openChatWindow();
             }}
           >
-            Chat
+            <IoChatboxSharp size={18} />
+          </Button>
+          <Button
+            id="call-button"
+            bg="brand.pink"
+            size="xs"
+            _hover={{ bg: "brand.darkPink", color: "white" }}
+            onClick={() => handleRemoveDoctor(conversation.uniqueName)}
+          >
+            <IoCloseSharp size={18} />
           </Button>
         </Flex>
       </Flex>
 
-      <IconButton
+      {/* <IconButton
         aria-label={`User actions for ${conversation.friendlyName}`}
         icon={<Box as={IoEllipsisVertical} color="brand.light" />}
         variant="ghost"
         _hover={{ bg: "brand.light" }}
         _active={{ bg: "brand.pink" }}
-      />
+      /> */}
       {/* <UserActionModal user={user} isOpen={isOpen} onClose={onClose} /> */}
     </Flex>
   );

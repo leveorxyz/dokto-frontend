@@ -1,18 +1,11 @@
 import { useMemo } from "react";
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-} from "@chakra-ui/react";
-import { RecoilState, useRecoilState } from "recoil";
+import { Box } from "@chakra-ui/react";
+import { RecoilState, useRecoilValue } from "recoil";
 
-import {
-  stepAtom, currentStepAtom,
-} from "./atoms";
+import stepAtom from "../../../atoms/doctorProfileSettings";
+import { currentStepAtom } from "./atoms";
 import FormStep from "../common/FormStep";
-import {
-  step1Data,
-} from "./steps";
+import { step1Data } from "./steps";
 import { FormDataType } from "../types/form";
 import Submit from "./steps/Submit";
 
@@ -57,7 +50,7 @@ const getStepsData = (): StepTypes[] => (
 
 export default function Form() {
   const steps = getStepsData();
-  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
+  const currentStep = useRecoilValue(currentStepAtom);
 
   const CurrentStep = useMemo(
     () => {
@@ -78,22 +71,8 @@ export default function Form() {
   );
 
   return (
-    <>
-      <Breadcrumb>
-        {steps
-          .filter((step) => step.isFormStep)
-          .map((step) => (
-            <BreadcrumbItem key={step.id}>
-              <Box
-                onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-              />
-            </BreadcrumbItem>
-          ))}
-      </Breadcrumb>
-
-      <Box>
-        {CurrentStep}
-      </Box>
-    </>
+    <Box mt={3}>
+      {CurrentStep}
+    </Box>
   );
 }

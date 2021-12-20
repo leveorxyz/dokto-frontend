@@ -1,4 +1,5 @@
 import format from "date-fns/format";
+import { differenceInDays } from "date-fns";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
@@ -9,6 +10,253 @@ const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
   fields: [
+    {
+      type: FieldTypes.MULTISELECT,
+      name: "profession",
+      label: "Professions",
+      optionalText: "(Pick as many as applies)",
+      options: [
+        {
+          label: "Acupuncturist",
+          value: "Acupuncturist",
+        },
+        {
+          label: "Allergist",
+          value: "Allergist",
+        },
+        {
+          label: "Audiologist",
+          value: "Audiologist",
+        },
+        {
+          label: "Cardiologist",
+          value: "Cardiologist",
+        },
+        {
+          label: "Chiropractor",
+          value: "Chiropractor",
+        },
+        {
+          label: "Dentist",
+          value: "Dentist",
+        },
+        {
+          label: "Dermatologist",
+          value: "Dermatologist",
+        },
+        {
+          label: "Dietitian",
+          value: "Dietitian",
+        },
+        {
+          label: "Ear, Nose & Throat Doctor",
+          value: "Ear, Nose & Throat Doctor",
+        },
+        {
+          label: "Emergency Medicine Physician",
+          value: "Emergency Medicine Physician",
+        },
+        {
+          label: "Endocrinologist",
+          value: "Endocrinologist",
+        },
+        {
+          label: "Endodontist",
+          value: "Endodontist",
+        },
+        {
+          label: "Eye Doctor",
+          value: "Eye Doctor",
+        },
+        {
+          label: "Family Physician",
+          value: "Family Physician",
+        },
+        {
+          label: "Gastroenterologist",
+          value: "Gastroenterologist",
+        },
+        {
+          label: "Hand Surgeon",
+          value: "Hand Surgeon",
+        },
+        {
+          label: "Hearing Specialist",
+          value: "Hearing Specialist",
+        },
+        {
+          label: "Hematologist",
+          value: "Hematologist",
+        },
+        {
+          label: "Infectious Disease Specialist",
+          value: "Infectious Disease Specialist",
+        },
+        {
+          label: "Infertility Specialist",
+          value: "Infertility Specialist",
+        },
+        {
+          label: "Internist",
+          value: "Internist",
+        },
+        {
+          label: "Naturopathic Doctor",
+          value: "Naturopathic Doctor",
+        },
+        {
+          label: "Nephrologist",
+          value: "Nephrologist",
+        },
+        {
+          label: "Neurologist",
+          value: "Neurologist",
+        },
+        {
+          label: "Neurosurgeon",
+          value: "Neurosurgeon",
+        },
+        {
+          label: "Nurse Practitioner",
+          value: "Nurse Practitioner",
+        },
+        {
+          label: "Nutritionist",
+          value: "Nutritionist",
+        },
+        {
+          label: "OB-GYN",
+          value: "OB-GYN",
+        },
+        {
+          label: "Oncologist",
+          value: "Oncologist",
+        },
+        {
+          label: "Ophthalmologist",
+          value: "Ophthalmologist",
+        },
+        {
+          label: "Optometrist",
+          value: "Optometrist",
+        },
+        {
+          label: "Oral Surgeon",
+          value: "Oral Surgeon",
+        },
+        {
+          label: "Orthodontist",
+          value: "Orthodontist",
+        },
+        {
+          label: "Orthopedic Surgeon",
+          value: "Orthopedic Surgeon",
+        },
+        {
+          label: "Pain Management Specialist",
+          value: "Pain Management Specialist",
+        },
+        {
+          label: "Pediatric Dentist",
+          value: "Pediatric Dentist",
+        },
+        {
+          label: "Pediatric Urgent Care Specialist",
+          value: "Pediatric Urgent Care Specialist",
+        },
+        {
+          label: "Pediatrician",
+          value: "Pediatrician",
+        },
+        {
+          label: "Periodontist",
+          value: "Periodontist",
+        },
+        {
+          label: "Physiatrist",
+          value: "Physiatrist",
+        },
+        {
+          label: "Physical Therapist",
+          value: "Physical Therapist",
+        },
+        {
+          label: "Plastic Surgeon",
+          value: "Plastic Surgeon",
+        },
+        {
+          label: "Podiatrist",
+          value: "Podiatrist",
+        },
+        {
+          label: "Primary Care Doctor",
+          value: "Primary Care Doctor",
+        },
+        {
+          label: "Prosthodontist",
+          value: "Prosthodontist",
+        },
+        {
+          label: "Psychiatrist",
+          value: "Psychiatrist",
+        },
+        {
+          label: "Psychologist",
+          value: "Psychologist",
+        },
+        {
+          label: "Psychotherapist",
+          value: "Psychotherapist",
+        },
+        {
+          label: "Pulmonologist",
+          value: "Pulmonologist",
+        },
+        {
+          label: "Radiologist",
+          value: "Radiologist",
+        },
+        {
+          label: "Rheumatologist",
+          value: "Rheumatologist",
+        },
+        {
+          label: "Sleep Medicine Specialist",
+          value: "Sleep Medicine Specialist",
+        },
+        {
+          label: "Sports Medicine Specialist",
+          value: "Sports Medicine Specialist",
+        },
+        {
+          label: "Surgeon",
+          value: "Surgeon",
+        },
+        {
+          label: "Therapist / Counselor",
+          value: "Therapist / Counselor",
+        },
+        {
+          label: "Travel Medicine Specialist",
+          value: "Travel Medicine Specialist",
+        },
+        {
+          label: "Urgent Care Specialist",
+          value: "Urgent Care Specialist",
+        },
+        {
+          label: "Urologist",
+          value: "Urologist",
+        },
+      ],
+      placeholder: "Select",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
     {
       type: FieldTypes.FILE,
       name: "license_file",
@@ -25,12 +273,21 @@ const firstColumn = () :FormDataType => ({
       type: FieldTypes.INPUT,
       inputType: "date",
       name: "license_expiration",
+      min: format(new Date(), "yyyy-MM-dd"),
       label: "Current License Expiration Date",
+      customProperties: {
+        format: "yyyy/MM/dd",
+      },
       rules: {
         required: {
           value: true,
           message: "This field is required",
         },
+        validate: (v) => (
+          differenceInDays(new Date(), new Date(v)) < 0
+            ? true
+            : "You licence is expired"
+        ),
       },
     },
     {

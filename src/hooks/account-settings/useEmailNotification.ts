@@ -3,23 +3,23 @@ import { useQuery } from "react-query";
 import { AxiosInstance } from "axios";
 import { useSetRecoilState, RecoilState } from "recoil";
 import { AxiosContext } from "../../contexts/AxiosContext";
-import ProfileDetailsAtom, { ProfileDetails } from "../../atoms/profileDetails.atom";
+import AccountSettingsAtom, { AccountSettings } from "../../atoms/accountSettings.atom";
 
-const getProfileDetails = async (axios: AxiosInstance) => axios.get("dashboard/doctor/profile-settings/profile-detail")
+const getEmailNotification = async (axios: AxiosInstance) => axios.get("dashboard/doctor/account-settings/")
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
-export default function useProfileDetails() {
+export default function useEmailNotification() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-  const setProfileDetails = useSetRecoilState(ProfileDetailsAtom);
+  const setEmailNotification = useSetRecoilState(AccountSettingsAtom);
   return useQuery(
-    ["profile-settings/profile-detail"],
-    () => getProfileDetails(axios as AxiosInstance),
+    ["account-settings"],
+    () => getEmailNotification(axios as AxiosInstance),
     {
       retry: false,
       staleTime: Infinity,
       onSuccess: (data) => {
-        setProfileDetails(data as ProfileDetails);
+        setEmailNotification(data as AccountSettings);
       },
     },
   );

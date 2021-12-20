@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
 import stepAtom from "../../../../../atoms/updateAccountSettings.atom";
-import useUpdateAccountSettings from "../../../../../hooks/account-settings/updateAccountSettings";
+import useUpdateEmailNotification from "../../../../../hooks/account-settings/updateEmailNotification";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -21,9 +21,11 @@ export default function Submit() {
     ),
   }), [stepData]);
 
+  console.log(data);
+
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateAccountSettings(data);
+  } = useUpdateEmailNotification(data);
 
   if (isFetching) {
     return <Loading />;

@@ -29,6 +29,7 @@ type CommonType = {
   label: string;
   defaultValue?: string;
   placeholder?: string;
+  optionalText?: string;
   bottomText?: string;
   size?: "xs" | "sm" | "md" | "lg";
   visibilityDependencies?: VisibilityDependenciesWithValue[];
@@ -67,11 +68,13 @@ export type SelectFieldType = {
   options: {
     value: string;
     label: string;
+    profession_code?: string;
   }[];
 } & CommonType;
 
 export type MultiSelectFieldType = {
   type: FieldTypes.MULTISELECT;
+  optionalText?: string;
   options: {
     value: string;
     label: string;
@@ -132,13 +135,6 @@ export type ArrayFieldType = {
   addButtonText: string;
 } & CommonType;
 
-export type SectionFieldType = {
-  type: FieldTypes.SECTION;
-  fields: FormFieldType[];
-  submitButtonText?: string;
-  iconDelete?: boolean;
-} & CommonType;
-
 export type FormFieldType = InputFieldType
                             | TextareaFieldType
                             | SelectFieldType
@@ -148,7 +144,6 @@ export type FormFieldType = InputFieldType
                             | FileFieldType
                             | SwitchFieldType
                             | CustomFieldType
-                            | SectionFieldType
                             | ArrayFieldType;
 
 export type FormRowType = {

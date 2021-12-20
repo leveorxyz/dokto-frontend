@@ -24,7 +24,6 @@ const PatientRegistration = lazy(() => import("../pages/registration/Patient"));
 const EmailVerification = lazy(() => import("../pages/EmailVerification"));
 const DashboardHome = lazy(() => import("../pages/dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
-const ProfileSettings = lazy(() => import("../pages/dashboard/ProfileSettings"));
 const AccountSettings = lazy(() => import("../pages/dashboard/AccountSettings"));
 const SpecialtiesServices = lazy(() => import("../pages/dashboard/SpecialtiesServices"));
 const VideoCalls = lazy(() => import("../pages/calls"));
@@ -39,7 +38,12 @@ const PatientProcedure = lazy(() => import("../pages/dashboard/ehr/PatientProced
 const FunctionalAndCognitiveStatus = lazy(() => import("../pages/dashboard/ehr/FunctionalAndCognitiveStatus"));
 const ChiefComplaintsAndHPI = lazy(() => import("../pages/dashboard/ehr/ChiefComplaintsAndHPI"));
 const Vitals = lazy(() => import("../pages/dashboard/ehr/Vitals"));
+const SocialHistory = lazy(() => import("../pages/dashboard/ehr/SocialHistory"));
+const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
+const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
+const DoctorListings = lazy(() => import("../pages/DoctorListings"));
+const PaymentSuccess = lazy(() => import("../pages/PaymentSuccess"));
 
 export type RouteType = {
     displayName: string;
@@ -67,6 +71,7 @@ const routes: RouteType[] = [
     isProtected: false,
     showInNavbar: true,
   },
+
   {
     displayName: "Available Care",
     path: "/available-care",
@@ -202,7 +207,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Encounters",
-    path: "/patients/encounters",
+    path: "/patients/encounters-data/:patientId",
     component: <Encounters />,
     isProtected: true,
     showInNavbar: false,
@@ -211,7 +216,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient encounters",
-    path: "/patients/encounters-data",
+    path: "/patients/encounters/:id",
     component: <PatientEncounters />,
     isProtected: true,
     showInNavbar: false,
@@ -220,7 +225,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Assessment & Diagnosis",
-    path: "/patients/encounters-data/assessment-and-diagnosis",
+    path: "/patients/encounters-data/assessment-and-diagnosis/:id",
     component: <AssessmentAndDiagnosis />,
     isProtected: true,
     showInNavbar: false,
@@ -228,8 +233,17 @@ const routes: RouteType[] = [
     allowedRoles: ["DOCTOR"],
   },
   {
+    displayName: "Social History",
+    path: "/patients/encounters-data/social-history/:id",
+    component: <SocialHistory />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+    allowedRoles: ["DOCTOR"],
+  },
+  {
     displayName: "Plan of Care",
-    path: "/patients/encounters-data/plan-of-care",
+    path: "/patients/encounters-data/plan-of-care/:id",
     component: <PlanOfCare />,
     isProtected: true,
     showInNavbar: false,
@@ -238,7 +252,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Patient Procedure",
-    path: "/patients/encounters-data/patient-procedure",
+    path: "/patients/encounters-data/patient-procedure/:id",
     component: <PatientProcedure />,
     isProtected: true,
     showInNavbar: false,
@@ -247,7 +261,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Functional And Cognitive Status",
-    path: "/patients/encounters-data/functional-and-cognitive-status",
+    path: "/patients/encounters-data/functional-and-cognitive-status/:id",
     component: <FunctionalAndCognitiveStatus />,
     isProtected: true,
     showInNavbar: false,
@@ -256,7 +270,7 @@ const routes: RouteType[] = [
   },
   {
     displayName: "Chief Complaints and HPI(History Of Present Illness)",
-    path: "/patients/encounters-data/chief-complaints-and-HPI",
+    path: "/patients/encounters-data/chief-complaints-and-HPI/:id",
     component: <ChiefComplaintsAndHPI />,
     isProtected: true,
     showInNavbar: false,
@@ -264,8 +278,16 @@ const routes: RouteType[] = [
     allowedRoles: ["DOCTOR"],
   },
   {
+    displayName: "Medical Notes",
+    path: "/patients/encounters-data/medical-notes/:id",
+    component: <MedicalNotes />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: false,
+  },
+  {
     displayName: "Vitals",
-    path: "/patients/encounters-data/vitals",
+    path: "/patients/encounters-data/vitals/:id",
     component: <Vitals />,
     isProtected: true,
     showInNavbar: false,
@@ -289,7 +311,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     icon: VideoConf,
-    allowedRoles: ["DOCTOR"],
+    allowedRoles: ["DOCTOR", "PATIENT"],
   },
   {
     displayName: "Payout Settings",
@@ -310,6 +332,20 @@ const routes: RouteType[] = [
     showInDashboard: true,
     icon: InvoiceIcon,
     allowedRoles: ["DOCTOR", "PATIENT"],
+  },
+  {
+    displayName: "Find a Doctor",
+    path: "/doctors",
+    component: <DoctorListings />,
+    isProtected: false,
+    showInNavbar: false,
+  },
+  {
+    displayName: "Payment Successful",
+    path: "/payment-verified",
+    component: <PaymentSuccess />,
+    isProtected: false,
+    showInNavbar: false,
   },
   {
     displayName: "Logout",

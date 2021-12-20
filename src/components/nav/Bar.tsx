@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Flex,
-  Grid,
-  GridItem,
   Box,
   Image,
   Button,
@@ -32,8 +30,9 @@ import authAtom, { AuthStateType } from "../../atoms/auth.atom";
 import LoginModal from "../login/LoginModal";
 import loginModalAtom from "../../atoms/loginModal.atom";
 
-function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
+function NavButtons() {
   const authState = useRecoilValue<AuthStateType>(authAtom);
+  const loginModalState = useRecoilValue(loginModalAtom);
 
   return (
     <Flex
@@ -45,7 +44,6 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
       borderLeftColor="black"
     >
       {!authState.isLoggedIn && (
-        // <NavItem href="/patient-registration" title="Patient Registration" />
         <Link to="/patient-registration">
           <Box
             as={Button}
@@ -75,7 +73,7 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
           rounded="full"
           ml={2}
           _hover={{ bg: "brand.dark", color: "white" }}
-          onClick={authState.isLoggedIn ? () => {} : openLoginModal}
+          onClick={authState.isLoggedIn ? () => {} : loginModalState?.openLoginModal}
         >
           <Box d="flex" justifyContent="center">
             <Icon as={IoPersonCircleOutline} fontSize="1.2rem" />
@@ -93,10 +91,9 @@ function NavButtons({ openLoginModal }: {openLoginModal: () => void}) {
 
 type MobileProps = {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  openLoginModal: () => void;
 }
 
-function MobileMenu({ setIsMenuOpen, openLoginModal }: MobileProps) {
+function MobileMenu({ setIsMenuOpen }: MobileProps) {
   return (
     <Flex direction="column" minHeight="90vh" justifyContent="space-around" display={["flex", "flex", "none", "none"]}>
       {routes
@@ -118,7 +115,7 @@ function MobileMenu({ setIsMenuOpen, openLoginModal }: MobileProps) {
       </Center>
 
       <Center>
-        <NavButtons openLoginModal={openLoginModal} />
+        <NavButtons />
       </Center>
     </Flex>
   );
@@ -128,14 +125,15 @@ type MenuProps = {
   isMenuOpen: boolean;
 } & MobileProps;
 
-function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
+function Menu({ setIsMenuOpen, isMenuOpen }: MenuProps) {
   return (
-    <Grid templateColumns="1.5fr 8.5fr" templateRows="1fr" gap={0} alignItems="center">
-      <GridItem
-        display="flex"
+    <Flex alignItems="center" height="4rem" wrap="nowrap">
+      <Flex
+        flexShrink={0}
+        flexGrow={0}
         bg="brand.dark"
         h="100%"
-        w="auto"
+        w="15rem"
         alignItems="center"
         justifyContent="center"
       >
@@ -143,16 +141,15 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
           as={Link}
           to="/"
           height="75%"
-          p={3}
+          px={3}
           _hover={{ boxShadow: "none", outline: "none" }}
           _focus={{ boxShadow: "none", outline: "none" }}
         >
           <Image src={logoSVG} height="100%" alt="logo" fit="contain" />
         </ChakraLink>
-      </GridItem>
+      </Flex>
 
-      <GridItem
-        display="flex"
+      <Flex
         w="100%"
         h="100%"
         bg="primary.light"
@@ -160,7 +157,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         alignItems="center"
         pr={[3, 3, 3, 8, 8]}
       >
-        <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]} py={4}>
+        <Flex direction="row" justifyContent="space-around" grow={1} display={["none", "none", "flex", "flex"]}>
           {routes
             .filter((route) => route.showInNavbar)
             .map((route) => (
@@ -204,7 +201,7 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
         </Flex>
 
         <Box display={["none", "none", "block", "block"]}>
-          <NavButtons openLoginModal={openLoginModal} />
+          <NavButtons />
         </Box>
 
         <Box display={["flex", "flex", "none", "none"]}>
@@ -215,12 +212,16 @@ function Menu({ setIsMenuOpen, isMenuOpen, openLoginModal }: MenuProps) {
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
         </Box>
-      </GridItem>
-    </Grid>
+      </Flex>
+    </Flex>
   );
 }
 
-export default function MenuBar() {
+type MenuBarProps = {
+  showUpperMenu?: boolean;
+};
+
+export default function MenuBar({ showUpperMenu }: MenuBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const setLoginModalState = useSetRecoilState(loginModalAtom);
   const {
@@ -232,11 +233,20 @@ export default function MenuBar() {
   setLoginModalState({ isLoginModalOpen, openLoginModal, closeLoginModal });
 
   return (
-    <FullWidthContainer pt={{ base: 2 }}>
-      <UpperMenu />
-      <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} openLoginModal={openLoginModal} />
-      {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} openLoginModal={openLoginModal} />}
-      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
-    </FullWidthContainer>
+    <Box position="sticky" top={0} left={0} zIndex={999}>
+      <FullWidthContainer>
+        {showUpperMenu && <UpperMenu />}
+        <Menu
+          setIsMenuOpen={setIsMenuOpen}
+          isMenuOpen={isMenuOpen}
+        />
+        {isMenuOpen && <MobileMenu setIsMenuOpen={setIsMenuOpen} />}
+        <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
+      </FullWidthContainer>
+    </Box>
   );
 }
+
+MenuBar.defaultProps = {
+  showUpperMenu: true,
+};

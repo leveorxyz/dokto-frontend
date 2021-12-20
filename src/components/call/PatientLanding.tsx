@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import {
   Flex, Box, Image,
 } from "@chakra-ui/react";
@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import BottomImage from "../../static/waiting_room_frame.png";
 import DoctorImage from "../../static/doctor.jpeg";
+import BackgroundVideo from "./BackgroundVideo";
 
 type PropTypes = {
   callEnded: boolean;
@@ -16,13 +17,34 @@ type PropTypes = {
 const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const { data } = useQuery(["profile", roomName],
-    async () => axios?.get(`/dashboard/public/doctor/profile/${roomName}/`));
+    async () => (roomName ? axios?.get(`/dashboard/public/doctor/profile/${roomName}/`) : { data: {} }));
+
+  const { data: roomData } = useQuery(["room-settings", roomName],
+    async () => (roomName ? axios?.get(`/twilio/waiting-room/${roomName}`) : { data: {} }));
+
+  const isVideo = useMemo(() => roomData?.data?.result?.room_media_mime_type?.split("/")[0] === "video", [roomData]);
+
+  const Greetings = () => {
+    if (roomData?.data?.result?.text) {
+      return <span>{roomData?.data?.result?.text}</span>;
+    }
+    return (
+      <span>
+        Welcome to Dr.
+        {" "}
+        <Box as="span" textTransform="capitalize">{roomName}</Box>
+        &apos;s waiting  room. Your specialist will see you shortly.
+      </span>
+    );
+  };
 
   return (
     <Flex w="100%" justifyContent="center">
+      {isVideo && <BackgroundVideo videoSrc={roomData?.data?.result?.room_media} />}
       <Box paddingTop="4rem" textAlign="center">
+        {!isVideo && (
         <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
-          <Box width="20%">
+          <Box width="160px" height="160px">
             <Image
               rounded="full"
               boxSize="160px"
@@ -32,19 +54,19 @@ const PatientLanding = ({ callEnded, roomName }:PropTypes) => {
               boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
             />
           </Box>
-          <Box width="80%" fontSize="30px" color="black" fontWeight="600">
-            {callEnded ? "The call has been ended! " : (
+          <Box width="60%" fontSize="30px" color="black" fontWeight="600" marginLeft="20px">
+            {callEnded ? (
               <span>
-                Welcome to Dr.
-                {" "}
-                <Box as="span" textTransform="capitalize">{roomName}</Box>
-                &apos;s waiting  room. Your specialist will see you shortly.
+                This call has now ended.
+                <br />
+                Thank you.
               </span>
-            )}
+            ) : <Greetings />}
           </Box>
         </Flex>
+        )}
       </Box>
-      <Image src={BottomImage} width="40%" position="absolute" bottom="0" />
+      {!isVideo && <Image src={roomData?.data?.result?.room_media ? roomData?.data?.result?.room_media : BottomImage} width="40%" position="absolute" bottom="0" />}
     </Flex>
   );
 };

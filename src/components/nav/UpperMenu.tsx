@@ -70,7 +70,7 @@ export function UpperMenuActions() {
 
 export default function UpperNavBar() {
   return (
-    <Box px={[3, 3, 3, "5%", "5%"]} py={1}>
+    <Box px={[3, 3, 3, "5%", "5%"]} py={1} bg="white">
       <Flex
         w="100%"
         direction="row"

@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../common/fallback/LoadingPage";
-import { stepAtom } from "../atoms";
-import usePatientReg from "../../../../hooks/register/usePatientReg";
+import stepAtom from "../../../../atoms/doctorProfileSettings";
+import useUpdateInsurance from "../../../../hooks/profile-settings/updateInsurance";
 import MessagePage from "../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -13,38 +13,30 @@ export default function Submit() {
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
-        if (curr === "contact_no-prefix") {
-          return { ...prev, contact_no: stepData[curr] + prev.contact_no ?? "" };
+        if (curr === "accept_all_insurance"
+          && stepData.accepted_insurance
+          && stepData.accepted_insurance.length > 0
+        ) {
+          return prev;
         }
-        if (curr === "contact_no-value") {
-          return { ...prev, contact_no: (prev.contact_no ?? "") + stepData[curr] };
-        }
-        if (curr === "first_name") {
-          return { ...prev, full_name: `${stepData[curr]} ${prev.full_name.trim()}` };
-        }
-        if (curr === "last_name") {
-          return { ...prev, full_name: `${prev.full_name.trim()} ${stepData[curr]}` };
-        }
+
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };
       },
-      {
-        contact_no: "",
-        full_name: "",
-      },
+      {},
     ),
   }), [stepData]);
 
   const {
     error, isError, isSuccess, isFetching,
-  } = usePatientReg(data);
+  } = useUpdateInsurance(data);
 
   if (isFetching) {
     return <Loading />;
   }
 
   if (isSuccess) {
-    return <MessagePage status="success" title="Success!" message="You have successfully registered to Dokto! Please check your email and verify your email to log in to Dokto" />;
+    return <MessagePage status="success" title="Success!" message="You have successfully updated your data" />;
   }
 
   if (isError) {

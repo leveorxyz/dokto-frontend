@@ -5,6 +5,7 @@ import {
   FormControl,
   FormLabel,
   Heading,
+  Box,
   FormErrorMessage,
   Tag,
   TagLabel,
@@ -15,10 +16,10 @@ import { SelectFieldType } from "../types/form";
 
 type DefaultProps = {
   errors: any;
-  watch: any;
   setValue: any;
   clearErrors: any;
   setError: any;
+  stepData: any;
 } & Omit<SelectFieldType, "type">;
 
 export default function MultiSelect({
@@ -26,13 +27,16 @@ export default function MultiSelect({
   errors,
   label,
   bottomText,
+  optionalText,
   options,
   setValue,
   setError,
-  watch,
   clearErrors,
+  stepData,
 }: DefaultProps) {
-  const [currentValues, setCurrentValues] = useState<string[] | undefined>(watch(name) ?? []);
+  const [currentValues, setCurrentValues] = useState<string[] | undefined>(
+    stepData && stepData[name] ? stepData[name] : [],
+  );
   const shadowFieldName = useMemo(() => `${name}-shadow`, [name]);
   const labels: { [key: string]: string } = useMemo(
     () => options.reduce(
@@ -59,7 +63,10 @@ export default function MultiSelect({
   return (
     <Flex direction="column">
       <FormControl isInvalid={errors[shadowFieldName]} py={4}>
-        <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
+        <Flex>
+          <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
+          <Box color="#c2cace">{optionalText}</Box>
+        </Flex>
         <Select
           placeholder="Select"
           name={shadowFieldName}

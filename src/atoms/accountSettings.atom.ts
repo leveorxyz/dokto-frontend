@@ -2,7 +2,6 @@ import { atom } from "recoil";
 
 export type AccountSettings = {
   notification_email: string;
-  temporary_disable: boolean;
 }
 
 export const currentStepAtom = atom<number>({

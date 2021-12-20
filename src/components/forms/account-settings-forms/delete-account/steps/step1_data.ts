@@ -8,15 +8,11 @@ const firstColumn = (watch: any) :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "enter_password",
+      name: "account_delete_password",
       label: "Enter Password",
       placeholder: "Enter Password",
       inputType: "password",
       rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
         pattern: {
           value: /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/,
           message: "Minimum eight characters, at least one letter and one number",
@@ -30,12 +26,8 @@ const firstColumn = (watch: any) :FormDataType => ({
       inputType: "password",
       placeholder: "Retype Password",
       rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-        validate: (v) => (v === watch("enter_password") ? true : "Passwords do not match"),
-        deps: ["password"],
+        validate: (v) => (v === watch("account_delete_password") ? true : "Passwords do not match"),
+        deps: ["account_delete_password"],
       },
     },
   ],
@@ -48,7 +40,7 @@ const data = (watch: any) :FormDataType => ({
     firstColumn(watch),
     {
       type: FieldTypes.RADIO,
-      name: "leaving_reason",
+      name: "reason_to_delete",
       label: "Select Reason for Leaving",
       direction: "column",
       options: [{
@@ -64,12 +56,6 @@ const data = (watch: any) :FormDataType => ({
         label: "Others",
       }],
       placeholder: "Select",
-      rules: {
-        required: {
-          value: true,
-          message: "This field is required",
-        },
-      },
     },
     {
       type: FieldTypes.TEXTAREA,

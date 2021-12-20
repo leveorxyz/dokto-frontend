@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../atoms/profileDetails.atom";
+import stepAtom from "../../../../atoms/doctorProfileSettings";
 import useUpdateProfileDetails from "../../../../hooks/profile-settings/updateProfileDetails";
 import MessagePage from "../../../common/fallback/MessagePage";
 

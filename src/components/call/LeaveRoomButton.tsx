@@ -1,16 +1,27 @@
 import { Room } from "twilio-video";
 import { IconButton } from "@chakra-ui/react";
 import { MdCallEnd } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 type PropTypes = {
   room: Room
 }
 
 const LeaveRoomButton = ({ room }: PropTypes) => {
+  const navigate = useNavigate();
   const handleRoomDisconnection = () => {
-    room.disconnect();
-
-    window.location.href = "/";
+    room.localParticipant.videoTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room.localParticipant.audioTracks.forEach((publication) => {
+      publication.track.stop();
+      const attachedElements = publication.track.detach();
+      attachedElements.forEach((element) => element.remove());
+    });
+    room?.disconnect();
+    navigate("/dashboard");
   };
 
   return (
