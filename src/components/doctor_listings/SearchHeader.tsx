@@ -67,20 +67,14 @@ export default function SearchHeader() {
             my={[2, 2, 0, 0]}
             _hover={{ opacity: "1" }}
             _active={{ opacity: "1" }}
-            pr="14"
-          >
-            Search
-          </Button>
-          <IconButton
-            variant="solid"
-            bgColor="brand.dark"
-            aria-label="Search doctors, clinics, hospitals, etc."
-            icon={<IoSearch size="1.2rem" color="white" />}
-            _hover={{ opacity: "1" }}
-            _active={{ opacity: "1" }}
-            ml="-4"
 
-          />
+          >
+            <Flex>
+              <Box mr="38px">Search </Box>
+              <IoSearch size="1.2rem" color="white" />
+            </Flex>
+          </Button>
+
         </Flex>
         <Flex
           my={2}
@@ -140,19 +134,13 @@ export default function SearchHeader() {
             my={[2, 2, 0, 0]}
             _hover={{ opacity: "1" }}
             _active={{ opacity: "1" }}
-            pr="14"
           >
-            Reset
+            <Flex>
+              <Box mr="50px">Reset</Box>
+              <IoRefresh size="1.2rem" color="white" />
+            </Flex>
           </Button>
-          <IconButton
-            variant="solid"
-            bgColor="primary.light"
-            aria-label="Search doctors, clinics, hospitals, etc."
-            icon={<IoRefresh size="1.5rem" color="white" />}
-            _hover={{ opacity: "1" }}
-            _active={{ opacity: "1" }}
-            ml="-2"
-          />
+
         </Flex>
       </SpacedContainer>
 
