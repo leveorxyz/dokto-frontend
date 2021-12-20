@@ -19,7 +19,7 @@ const DoctorLists = () => {
   return (
     <SpacedContainer py="8" px={[4, 8, 8, 8]}>
       <Flex>
-        <Box width="50%">
+        <Box width="60%">
           <Text as="h1" fontWeight={600} color="brand.dark" mb="6">60 Matches found</Text>
           {data.map((v) => (
             <Flex
@@ -28,7 +28,7 @@ const DoctorLists = () => {
               borderColor="gray.300"
               borderRadius="20"
               height="60"
-              mb="14"
+              mb="24"
               boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
               _hover={{
                 boxShadow: "0 10px 30px 0 rgb(205 204 219 / 25%)",
@@ -93,7 +93,7 @@ const DoctorLists = () => {
                   </Button>
                 </Flex>
               </Box>
-              <Box pt="4" pr="4" w="35%">
+              <Box pt="4" pr="4" pb={8} w="35%">
 
                 <Box backgroundColor="primary.dark" rounded="lg">
                   <Box fontSize="md" px="4" pt="4" d="flex" flexDir="row" mr="8" mb="4">
@@ -160,7 +160,7 @@ const DoctorLists = () => {
           mt="12"
           ml="8"
           as="iframe"
-          width="50%"
+          width="40%"
           height="100ve"
           frameBorder="0"
           scrolling="no"
