@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: dokto-frontend
-        image: {{frontendimage}}
+        image: dokto.azurecr.io/toybethsystems/dokto-frontend:prod
         ports:
         - containerPort: 80
         resources:
