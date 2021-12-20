@@ -25,6 +25,7 @@ type PropTypes = {
   clearErrors: any;
   watch: any;
   control: any;
+  stepData: any;
   isDirty: boolean;
 }
 

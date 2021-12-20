@@ -81,6 +81,7 @@ export default function FormStep({
           isDirty={isDirty}
           watch={watch}
           control={control}
+          stepData={stepState}
         />
 
         <Flex py={6}>

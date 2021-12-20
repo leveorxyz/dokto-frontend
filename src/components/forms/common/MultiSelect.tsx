@@ -16,10 +16,10 @@ import { SelectFieldType } from "../types/form";
 
 type DefaultProps = {
   errors: any;
-  watch: any;
   setValue: any;
   clearErrors: any;
   setError: any;
+  stepData: any;
 } & Omit<SelectFieldType, "type">;
 
 export default function MultiSelect({
@@ -31,10 +31,12 @@ export default function MultiSelect({
   options,
   setValue,
   setError,
-  watch,
   clearErrors,
+  stepData,
 }: DefaultProps) {
-  const [currentValues, setCurrentValues] = useState<string[] | undefined>(watch(name) ?? []);
+  const [currentValues, setCurrentValues] = useState<string[] | undefined>(
+    stepData && stepData[name] ? stepData[name] : [],
+  );
   const shadowFieldName = useMemo(() => `${name}-shadow`, [name]);
   const labels: { [key: string]: string } = useMemo(
     () => options.reduce(

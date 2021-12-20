@@ -15,6 +15,7 @@ type PropTypes = {
   setValue: any;
   setError: any;
   clearErrors: any;
+  stepData: any;
 } & Omit<CheckboxFieldType, "type">;
 
 export default function CheckboxField({
@@ -28,8 +29,10 @@ export default function CheckboxField({
   rules,
   setError,
   clearErrors,
+  stepData,
 }: PropTypes) {
-  const [localValue, setLocalValue] = useState<(string | number)[]>([]);
+  const [localValue, setLocalValue] = useState<(string | number)[]>(
+    stepData && stepData[name] ? stepData[name] : []);
 
   useEffect(() => {
     setValue(name, localValue);
