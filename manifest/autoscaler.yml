@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: dokto-frontend
+  name: dokto-frontendhpa-cpu
 spec:
   maxReplicas: 10
   minReplicas: 1
@@ -10,4 +10,4 @@ spec:
     kind: Deployment
     name: dokto-frontend
   targetCPUUtilizationPercentage: 70
-  targetMemoryUtilizationPercentage: 70
+  
