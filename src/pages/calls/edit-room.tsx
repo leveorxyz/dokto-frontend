@@ -42,8 +42,8 @@ const EditRoom = () => {
           paddingLeft="25px"
           paddingRight="25px"
         >
-          <Text fontSize="25px">{`Waiting Rooms of ${authState?.user?.fullName}`}</Text>
-          <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Rooms</Text>
+          <Text fontSize="25px">{`Waiting Room of ${authState?.user?.fullName}`}</Text>
+          <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Room</Text>
           <Flex marginTop="45px" justifyContent="flex-end" alignItems="center">
             <WhiteButton onClick={() => handleSetDefault()} isLoading={isLoading}>
               Revert to Default
