@@ -5,10 +5,7 @@ import {
   BreadcrumbItem,
 } from "@chakra-ui/react";
 import { RecoilState, useRecoilState } from "recoil";
-import MessagePage from "../../../common/fallback/MessagePage";
-import Loading from "../../../common/fallback/LoadingPage";
 import stepAtom, { currentStepAtom } from "../../../../atoms/profileDetails.atom";
-import useProfileDetails from "../../../../hooks/profile-settings/useProfileDetails";
 
 import FormStep from "../../common/FormStep";
 import {
@@ -78,22 +75,8 @@ export default function Form() {
     [currentStep, steps],
   );
   return (
-    <>
-      <Breadcrumb>
-        {steps
-          .filter((step) => step.isFormStep)
-          .map((step) => (
-            <BreadcrumbItem key={step.id}>
-              <Box
-                onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-              />
-            </BreadcrumbItem>
-          ))}
-      </Breadcrumb>
-
-      <Box>
-        {CurrentStep}
-      </Box>
-    </>
+    <Box mt={3}>
+      {CurrentStep}
+    </Box>
   );
 }

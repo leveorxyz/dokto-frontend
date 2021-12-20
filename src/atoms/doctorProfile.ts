@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { atom } from "recoil";
 
 export type DoctorProfile = {
