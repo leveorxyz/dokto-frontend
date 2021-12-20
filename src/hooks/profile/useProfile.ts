@@ -29,7 +29,9 @@ export default function useProfile(
       retry: false,
       staleTime: Infinity,
       onSuccess: (data) => {
-        setProfile(data as DoctorProfile);
+        const mutableData: DoctorProfile = data;
+        mutableData.accept_all_insurance = mutableData.accepted_insurance && mutableData.accepted_insurance.length > 0 ? [] : ["all"];
+        setProfile(mutableData);
       },
     },
   );
