@@ -27,6 +27,7 @@ export default function useProfile(
     () => getProfile(axios as AxiosInstance, userType),
     {
       retry: false,
+      staleTime: Infinity,
       onSuccess: (data) => {
         setProfile(data as DoctorProfile);
       },
