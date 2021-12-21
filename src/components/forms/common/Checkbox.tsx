@@ -34,6 +34,11 @@ export default function CheckboxField({
   const [localValue, setLocalValue] = useState<(string | number)[]>(
     stepData && stepData[name] ? stepData[name] : []);
 
+  useEffect(
+    () => setLocalValue(stepData && stepData[name] ? stepData[name] : []),
+    [stepData, name],
+  );
+
   useEffect(() => {
     setValue(name, localValue);
     if (rules?.required?.value && localValue.length === 0) {
