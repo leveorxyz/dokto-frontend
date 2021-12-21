@@ -20,7 +20,7 @@ export default function useTwilioToken(data: Data) {
 
   return useQuery(
     ["twilio/video-token", data],
-    () => getToken(axios as AxiosInstance, data),
+    () => data.roomName && getToken(axios as AxiosInstance, data),
     {
       retry: false,
       staleTime: Infinity,

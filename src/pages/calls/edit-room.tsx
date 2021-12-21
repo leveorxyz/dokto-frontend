@@ -21,7 +21,7 @@ const EditRoom = () => {
   } = useCustomizeRoom();
 
   const handleSetDefault = () => {
-    mutate({ text: "", room_media: null });
+    mutate({ text: "", room_media: null, room_media_mime_type: null });
   };
 
   const hideInput = () => setShowInput("");
@@ -45,7 +45,7 @@ const EditRoom = () => {
           <Text fontSize="25px">{`Waiting Room of ${authState?.user?.fullName}`}</Text>
           <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Room</Text>
           <Flex marginTop="45px" justifyContent="flex-end" alignItems="center">
-            <WhiteButton onClick={() => handleSetDefault()} isLoading={isLoading}>
+            <WhiteButton onClick={handleSetDefault} isLoading={isLoading}>
               Revert to Default
             </WhiteButton>
           </Flex>
