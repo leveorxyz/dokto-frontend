@@ -155,7 +155,7 @@ export default function VideoCalls() {
   } = useTwilioToken({
     identity: `${authState.user?.id}_${authState.user?.fullName}`,
     // roomName: `${authState.user?.id}_${authState.user?.fullName}` ?? "",
-    roomName: queryRoomName || "doctor",
+    roomName: queryRoomName ?? "",
   });
 
   if (isLoading) {

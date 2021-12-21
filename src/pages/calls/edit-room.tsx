@@ -3,6 +3,7 @@ import {
   Box, Text, Flex,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
+import RoomPreview from "../../components/call/edit-room/RoomPreview";
 import useCustomizeRoom from "../../hooks/calls/useCustomizeRoom";
 import MessageInput from "../../components/call/edit-room/MessageInput";
 import FileInput from "../../components/call/edit-room/FileInput";
@@ -14,6 +15,7 @@ import EditIcons from "../../components/call/edit-room/EditIcons";
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
   const [showInput, setShowInput] = useState<""|"image"|"text"|"video">("");
+  const [previewRoom, setPreviewRoom] = useState(false);
 
   const {
     mutate,
@@ -21,10 +23,14 @@ const EditRoom = () => {
   } = useCustomizeRoom();
 
   const handleSetDefault = () => {
-    mutate({ text: "", room_media: null });
+    setPreviewRoom(false);
+    mutate({ text: "", room_media: null, room_media_mime_type: null });
   };
 
-  const hideInput = () => setShowInput("");
+  const hideInput = () => {
+    setShowInput("");
+    setPreviewRoom(false);
+  };
 
   return (
     <div>
@@ -42,12 +48,18 @@ const EditRoom = () => {
           paddingLeft="25px"
           paddingRight="25px"
         >
-          <Text fontSize="25px">{`Waiting Rooms of ${authState?.user?.fullName}`}</Text>
-          <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Rooms</Text>
+          <Text fontSize="25px">{`Waiting Room of ${authState?.user?.fullName}`}</Text>
+          <Text color="#9A9AB0" size="18px" marginTop="5px">Customize your Waiting Room</Text>
           <Flex marginTop="45px" justifyContent="flex-end" alignItems="center">
-            <WhiteButton onClick={() => handleSetDefault()} isLoading={isLoading}>
+            <WhiteButton onClick={handleSetDefault} isLoading={isLoading}>
               Revert to Default
             </WhiteButton>
+            <Box marginLeft={5}>
+              <WhiteButton onClick={() => setPreviewRoom((prev) => !prev)}>
+                Preview Waiting Room
+              </WhiteButton>
+
+            </Box>
           </Flex>
         </Box>
         {!showInput && (
@@ -81,6 +93,8 @@ const EditRoom = () => {
         )}
         {showInput === "text" && <MessageInput handleClose={hideInput} />}
         {showInput === "image" && <FileInput handleClose={hideInput} />}
+
+        {previewRoom && <RoomPreview />}
       </Box>
     </div>
   );
