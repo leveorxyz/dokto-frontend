@@ -62,6 +62,9 @@ export default function InputField({
       isInvalid={errors[name]}
       isReadOnly={isReadOnly}
       isDisabled={isReadOnly}
+      opacity={isReadOnly ? 0 : 1}
+      height={isReadOnly ? 0 : "auto"}
+      width={isReadOnly ? 0 : "auto"}
     >
       <Flex>
         <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
