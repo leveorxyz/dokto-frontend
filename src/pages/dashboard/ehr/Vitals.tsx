@@ -4,22 +4,56 @@ import {
   Table,
   Tbody,
   Td,
-  Th,
   Thead,
   Tr,
+  FormControl,
+  FormErrorMessage,
+  Input,
+  Flex,
+  Button,
 } from "@chakra-ui/react";
+import {
+  AiOutlineCheck, AiOutlineClose, AiOutlineCopy, AiOutlineReload,
+} from "react-icons/ai";
 
+import { useForm } from "react-hook-form";
+import { FiCopy } from "react-icons/fi";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
-import doctorProfileAtom from "../../../atoms/doctorProfile";
-import useProfile from "../../../hooks/profile/useProfile";
-import LoadingPage from "../../../components/common/fallback/LoadingPage";
+
+interface IVitals{
+  ReadingDateTime:string,
+  Height:string,
+  Weight:string,
+  BMI:string,
+  Temperature:string,
+  Pulse:string,
+  RespiratoryRate:string,
+  O2Saturation:string,
+  Pain:string,
+  Bloodpressure:{
+    mm:string,
+    hg:string,
+  }
+}
 
 export default function Vitals() {
-  const { isLoading } = useProfile(doctorProfileAtom);
+  // const { isLoading } = useProfile(doctorProfileAtom);
 
-  if (isLoading) {
-    return <LoadingPage />;
-  }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<IVitals>();
+
+  const onSubmit = handleSubmit(async (data) => {
+    // const dataWithId:ISocialHistory = { ...data, ...{ patient_encounter: id } };
+    // socialHistory(dataWithId);
+  });
+
+  // if (isLoading) {
+  //   return <LoadingPage />;
+  // }
 
   return (
     <PatientEncountersLayout>
@@ -36,63 +70,298 @@ export default function Vitals() {
         <Box mt={-6}>
           <form>
 
-            <Table variant="mytable" colorScheme="teal">
+            <Table variant="mytable" colorScheme="teal" w="100%">
               <Thead />
               <Tbody>
                 <Tr>
                   <Td>Reading Date/Time</Td>
-                  <Td />
+                  <Td>
+                    <FormControl w="350px" isInvalid={!!errors.ReadingDateTime}>
+                      <Input
+                        w="290px"
+                        border="2px"
+                        mr="2"
+                        borderColor="brand.darkPink"
+                        type="datetime-local"
+                        {...register("ReadingDateTime", {
+                          required: {
+                            value: true,
+                            message: "This field is required",
+                          },
+                        })}
+                        name="ReadingDateTime"
+                      />
+                      <FormErrorMessage>
+                        {errors.ReadingDateTime && errors.ReadingDateTime.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
 
                 </Tr>
                 <Tr>
                   <Td>Height</Td>
-                  <Td />
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Height}>
+                      <Flex alignItems="center">
+                        <Input
+                          w="290px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          {...register("Height", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          name="Height"
+                        />
+                        <Box color="brand.darkPink">cm</Box>
+                      </Flex>
+                      <FormErrorMessage>
+                        {errors.Height && errors.Height.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
 
                 </Tr>
                 <Tr>
                   <Td>Weight</Td>
-                  <Td />
-
-                </Tr>
-                <Tr>
-                  <Td>Temperature</Td>
-                  <Td />
-
-                </Tr>
-                <Tr>
-                  <Td>Pulse</Td>
-                  <Td />
-
-                </Tr>
-                <Tr>
-                  <Td>Respiratory rate</Td>
-                  <Td />
-
-                </Tr>
-                <Tr>
-                  <Td>O2 Saturation</Td>
-                  <Td />
-
-                </Tr>
-                <Tr>
-                  <Td>Pain</Td>
-                  <Td />
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Weight}>
+                      <Flex alignItems="center">
+                        <Input
+                          w="290px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          {...register("Weight", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          name="Weight"
+                        />
+                        <Box color="brand.darkPink">lbs</Box>
+                      </Flex>
+                      <FormErrorMessage>
+                        {errors.Weight && errors.Weight.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
 
                 </Tr>
                 <Tr>
                   <Td>BMI</Td>
-                  <Td />
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.BMI}>
+                      <Input
+                        w="290px"
+                        border="2px"
+                        mr="2"
+                        borderColor="brand.darkPink"
+                        type="number"
+                        {...register("BMI", {
+                          required: {
+                            value: true,
+                            message: "This field is required",
+                          },
+                        })}
+                        name="BMI"
+                      />
+                      <FormErrorMessage>
+                        {errors.BMI && errors.BMI.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>Temperature</Td>
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Temperature}>
+                      <Flex alignItems="center">
+                        <Input
+                          w="290px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          {...register("Temperature", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          name="Temperature"
+                        />
+                        <Box color="brand.darkPink">F</Box>
+                      </Flex>
+                      <FormErrorMessage>
+                        {errors.Temperature && errors.Temperature.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
+
+                </Tr>
+                <Tr>
+                  <Td>Pulse</Td>
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Pulse}>
+                      <Flex alignItems="center">
+                        <Input
+                          w="290px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          {...register("Temperature", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          name="Temperature"
+                        />
+                        <Box color="brand.darkPink">bpm</Box>
+                      </Flex>
+                      <FormErrorMessage>
+                        {errors.Pulse && errors.Pulse.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
+
+                </Tr>
+                <Tr>
+                  <Td>Respiratory rate</Td>
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.RespiratoryRate}>
+                      <Flex alignItems="center">
+                        <Input
+                          w="290px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          {...register("RespiratoryRate", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          name="RespiratoryRate"
+                        />
+                        <Box color="brand.darkPink">rpm</Box>
+                      </Flex>
+                      <FormErrorMessage>
+                        {errors.RespiratoryRate && errors.RespiratoryRate.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
+
+                </Tr>
+                <Tr>
+                  <Td>O2 Saturation</Td>
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.O2Saturation}>
+                      <Flex alignItems="center">
+                        <Input
+                          w="290px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          {...register("O2Saturation", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          name="O2Saturation"
+                        />
+                        <Box color="brand.darkPink">%</Box>
+                      </Flex>
+                      <FormErrorMessage>
+                        {errors.O2Saturation && errors.O2Saturation.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
+
+                </Tr>
+                <Tr>
+                  <Td>Pain</Td>
+                  <Td>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Pain}>
+                      <Input
+                        w="290px"
+                        border="2px"
+                        borderColor="brand.darkPink"
+                        type="number"
+                        {...register("Pain", {
+                          required: {
+                            value: true,
+                            message: "This field is required",
+                          },
+                        })}
+                        name="Pain"
+                      />
+                      <FormErrorMessage>
+                        {errors.Pain && errors.Pain.message}
+                      </FormErrorMessage>
+                    </FormControl>
+                  </Td>
 
                 </Tr>
                 <Tr>
                   <Td>Blood pressure</Td>
-                  <Td />
+                  <Td>
+                    <Flex w="350px" alignItems="center">
+                      <FormControl w="48%" isInvalid={!!errors.Bloodpressure?.mm}>
+                        <Input
+                          w="140px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          name="Bloodpressure"
+                        />
+                        <FormErrorMessage>
+                          {errors.Bloodpressure?.mm && errors.Bloodpressure.mm.message}
+                        </FormErrorMessage>
+                      </FormControl>
+                      <FormControl w="48%" isInvalid={!!errors.Bloodpressure?.hg}>
+                        <Input
+                          w="140px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="number"
+                          name="Bloodpressure"
+                        />
+                        <FormErrorMessage>
+                          {errors.Bloodpressure?.hg && errors.Bloodpressure.hg.message}
+                        </FormErrorMessage>
+                      </FormControl>
+                      <Box color="brand.darkPink">mm/Hg</Box>
+
+                    </Flex>
+
+                  </Td>
 
                 </Tr>
 
               </Tbody>
 
             </Table>
+
+            <Flex justifyContent="end" mt={8} p={4} experimental_spaceX={4}>
+              <Button leftIcon={<AiOutlineReload />} colorScheme="pink" onClick={() => reset()}>Clear</Button>
+              <Button leftIcon={<AiOutlineClose />} colorScheme="blue">Cancel</Button>
+              <Button leftIcon={<FiCopy />} colorScheme="teal">Copy From Previous Encounter</Button>
+              <Button leftIcon={<AiOutlineCheck />} type="submit" colorScheme="purple" disabled={isSubmitting}>Save</Button>
+            </Flex>
           </form>
 
         </Box>

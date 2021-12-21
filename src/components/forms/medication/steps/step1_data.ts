@@ -3,25 +3,6 @@ import {
   FieldTypes, FormDataType,
 } from "../../types/form";
 
-const firstRow = () :FormDataType => ({
-  type: FieldTypes.COLUMN,
-  name: "first",
-  fields: [
-    {
-      type: FieldTypes.SELECT,
-      name: "procedure_type",
-      label: "Type",
-      options: [{
-        value: "Acute",
-        label: "Acute",
-      },
-      {
-        value: "Chronic",
-        label: "Chronic",
-      }],
-    }],
-});
-
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,
   name: "first",
@@ -29,8 +10,12 @@ const firstColumn = () :FormDataType => ({
 
     {
       type: FieldTypes.INPUT,
-      name: "code",
-      label: "Code",
+      name: "date",
+      label: "Date",
+      inputType: "date",
+      customProperties: {
+        format: "yyyy/MM/dd",
+      },
       rules: {
         required: {
           value: true,
@@ -54,7 +39,28 @@ const firstColumn = () :FormDataType => ({
       ],
       placeholder: "Select",
     },
-
+    {
+      type: FieldTypes.INPUT,
+      name: "directions",
+      label: "Directions",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "refills",
+      label: "Refills",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
   ],
 });
 
@@ -65,8 +71,8 @@ const secondColumn = () :FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "description",
-      label: "Description",
+      name: "Prescription",
+      label: "Prescription",
       rules: {
         required: {
           value: true,
@@ -76,8 +82,19 @@ const secondColumn = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "date",
-      label: "Date",
+      name: "Quantity",
+      label: "Quantity",
+      rules: {
+        required: {
+          value: true,
+          message: "This field is required",
+        },
+      },
+    },
+    {
+      type: FieldTypes.INPUT,
+      name: "Expires",
+      label: "Expires",
       inputType: "date",
       customProperties: {
         format: "yyyy/MM/dd",
@@ -93,17 +110,11 @@ const secondColumn = () :FormDataType => ({
 });
 
 const data = () :FormDataType => ({
-  type: FieldTypes.COLUMN,
+  type: FieldTypes.ROW,
   name: "step1",
   fields: [
-    firstRow(),
-    {
-      type: FieldTypes.ROW,
-      name: "first row",
-      fields: [
-        firstColumn(),
-        secondColumn()],
-    },
+    firstColumn(),
+    secondColumn(),
   ],
 
 });

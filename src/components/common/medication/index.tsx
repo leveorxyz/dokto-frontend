@@ -5,12 +5,12 @@ import {
   Alert, AlertIcon, AlertTitle, AlertDescription,
 } from "@chakra-ui/react";
 import usePatientProcedures from "../../../hooks/patientProcedure/usePatientProcedures";
-import { columns } from "../../../data/PatientProcedureData";
+import { columns, dummyMedication } from "../../../data/Medication";
 import EncountersTable from "./Table";
 import LoadingPage from "../fallback/LoadingPage";
 import { SpacedContainer } from "../Containers";
 
-export default function PatientProcedureTable() {
+export default function MedicationTable() {
   const { id } = useParams();
   const {
     isFetching, isError, isSuccess, data,
@@ -18,7 +18,7 @@ export default function PatientProcedureTable() {
 
   const memoizedColumns = useMemo(() => columns, []);
   const memoizedData = useMemo(
-    () => data ?? [], [data],
+    () => dummyMedication ?? [], [dummyMedication],
   );
 
   const {

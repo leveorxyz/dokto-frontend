@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import {
   FieldTypes, FormDataType,
 } from "../../types/form";
@@ -9,23 +8,14 @@ const firstColumn = () :FormDataType => ({
   fields: [
 
     {
-      type: FieldTypes.SELECT,
-      name: "gender",
+      type: FieldTypes.INPUT,
+      name: "chiefComplaint",
       label: "Chief Complaint *",
-      options: [{
-        value: "MALE",
-        label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
+
     },
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "timing",
       label: "Timing",
       rules: {
         required: {
@@ -35,23 +25,14 @@ const firstColumn = () :FormDataType => ({
       },
     },
     {
-      type: FieldTypes.SELECT,
-      name: "gender",
+      type: FieldTypes.INPUT,
+      name: "duration",
       label: "Duration",
-      options: [{
-        value: "MALE",
-        label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
+
     },
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "associated_symptons",
       label: "Associated Symptoms",
       rules: {
         required: {
@@ -70,7 +51,7 @@ const secondColumn = ():FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "location",
       label: "Location",
       rules: {
         required: {
@@ -81,33 +62,28 @@ const secondColumn = ():FormDataType => ({
     },
     {
       type: FieldTypes.SELECT,
-      name: "gender",
+      name: "severity",
       label: "Severity",
       options: [{
-        value: "MALE",
-        label: "Type 1",
+        value: "Mild",
+        label: "Mild",
       },
       {
-        value: "FEMALE",
-        label: "Type 2",
+        value: "Moderate",
+        label: "Moderate",
+      },
+      {
+        value: "Severe",
+        label: "Severe",
       },
       ],
       placeholder: "Select",
     },
     {
-      type: FieldTypes.SELECT,
-      name: "gender",
+      type: FieldTypes.INPUT,
+      name: "modifying_factors",
       label: "Modifying Factors",
-      options: [{
-        value: "MALE",
-        label: "Type 1",
-      },
-      {
-        value: "FEMALE",
-        label: "Type 2",
-      },
-      ],
-      placeholder: "Select",
+
     },
   ],
 });
@@ -118,7 +94,7 @@ const row = ():FormDataType => ({
   fields: [
     {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "description",
       label: "Description",
       rules: {
         required: {
@@ -128,7 +104,7 @@ const row = ():FormDataType => ({
       },
     }, {
       type: FieldTypes.INPUT,
-      name: "street",
+      name: "context",
       label: "Context",
       rules: {
         required: {

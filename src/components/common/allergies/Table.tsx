@@ -23,17 +23,17 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { IPatientProcedure } from "../../../hooks/patientProcedure/usePatientProcedureAdd";
+import { Allergies } from "../../../atoms/ehr/allergies";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<IPatientProcedure> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<IPatientProcedure> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<IPatientProcedure>[];
-  rows: Row<IPatientProcedure>[];
-  prepareRow: (row: Row<IPatientProcedure>) => void;
+  getTableProps: (propGetter?: TablePropGetter<Allergies> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<Allergies> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<Allergies>[];
+  rows: Row<Allergies>[];
+  prepareRow: (row: Row<Allergies>) => void;
 }
 
-function EncountersTable({
+function AllergiesTable({
   getTableProps,
   getTableBodyProps,
   headerGroups,
@@ -102,4 +102,4 @@ function EncountersTable({
   );
 }
 
-export default memo(EncountersTable);
+export default memo(AllergiesTable);

@@ -23,17 +23,17 @@ import {
   IoCaretDown,
 } from "react-icons/io5";
 
-import { IPatientProcedure } from "../../../hooks/patientProcedure/usePatientProcedureAdd";
+import { Medication } from "../../../atoms/ehr/medication";
 
 type PropTypes = {
-  getTableProps: (propGetter?: TablePropGetter<IPatientProcedure> | undefined) => TableProps;
-  getTableBodyProps: (propGetter?: TableBodyPropGetter<IPatientProcedure> | undefined) => TableBodyProps;
-  headerGroups: HeaderGroup<IPatientProcedure>[];
-  rows: Row<IPatientProcedure>[];
-  prepareRow: (row: Row<IPatientProcedure>) => void;
+  getTableProps: (propGetter?: TablePropGetter<Medication> | undefined) => TableProps;
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<Medication> | undefined) => TableBodyProps;
+  headerGroups: HeaderGroup<Medication>[];
+  rows: Row<Medication>[];
+  prepareRow: (row: Row<Medication>) => void;
 }
 
-function EncountersTable({
+function MedicationTable({
   getTableProps,
   getTableBodyProps,
   headerGroups,
@@ -102,4 +102,4 @@ function EncountersTable({
   );
 }
 
-export default memo(EncountersTable);
+export default memo(MedicationTable);

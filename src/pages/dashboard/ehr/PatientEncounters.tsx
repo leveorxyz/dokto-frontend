@@ -19,37 +19,51 @@ const baseUrl = "/patients/encounters-data";
 
 const encountersData = [
   {
+    url: `${baseUrl}/medication`,
+    title: "Medication",
+    type: "multiple entry",
+  },
+  {
+    url: `${baseUrl}/allergies`,
+    title: "Allergies",
+    type: "multiple entry",
+  },
+  {
     url: `${baseUrl}/vitals`,
     title: "Vitals",
-  },
-  {
-    url: `${baseUrl}/functional-and-cognitive-status`,
-    title: "Functional And Cognitive Status",
-  },
-  {
-    url: `${baseUrl}/chief-complaints-and-HPI`,
-    title: "Chief Complaints and HPI",
-  },
-  {
-    url: `${baseUrl}/social-history`,
-    title: "Social History",
-  },
-  {
-    url: `${baseUrl}/medical-notes`,
-    title: "Medical Notes",
-  },
-  {
-    url: `${baseUrl}/plan-of-care`,
-    title: "Plan of Care",
+    type: "single entry",
   },
   {
     url: `${baseUrl}/assessment-and-diagnosis`,
     title: "Assessment and Diagnosis",
+    type: "multiple entry",
   },
   {
     url: `${baseUrl}/patient-procedure`,
     title: "Patient Procedure",
+    type: "multiple entry",
   },
+  {
+    url: `${baseUrl}/chief-complaints-and-HPI`,
+    title: "Chief Complaints and HPI",
+    type: "single entry",
+  },
+  {
+    url: `${baseUrl}/medical-notes`,
+    title: "Medical Notes",
+    type: "single entry",
+  },
+  {
+    url: `${baseUrl}/social-history`,
+    title: "Social History",
+    type: "single entry",
+  },
+  {
+    url: `${baseUrl}/functional-and-cognitive-status`,
+    title: "Functional And Cognitive Status",
+    type: "single entry",
+  },
+
 ];
 
 const PatientEncounters = () => {
@@ -183,16 +197,12 @@ const PatientEncounters = () => {
 
         <Box pb={6}>
           {encountersData.map(
-            ({ url, title }) => (
+            ({ url, title, type }) => (
               <Box
                 key={url}
                 mb={6}
               >
-                <ChakraLink
-                  as={Link}
-                  to={`${url}/${id}`}
-                  _hover={{ textDecoration: "none" }}
-                >
+                <Box>
                   <Flex
                     justifyContent="space-between"
                     alignItems="center"
@@ -202,16 +212,25 @@ const PatientEncounters = () => {
                     fontWeight="semibold"
                   >
                     <Box>{title}</Box>
-                    <Flex alignItems="center" color="brand.darkPurple">
-                      <Box
-                        as={FiEdit}
-                        size="1.2rem"
-                        mr={2}
-                      />
-                      <Box>Edit</Box>
-                    </Flex>
+                    <ChakraLink
+                      as={Link}
+                      to={`${url}/${id}`}
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      <Flex alignItems="center" color="brand.darkPurple">
+                        <Box
+                          as={FiEdit}
+                          size="1.2rem"
+                          mr={2}
+                        />
+                        <Box>
+                          {type === "multiple entry" ? "Add" : "Edit"}
+                        </Box>
+                      </Flex>
+
+                    </ChakraLink>
                   </Flex>
-                </ChakraLink>
+                </Box>
 
                 <Box
                   minH="8rem"
@@ -221,7 +240,14 @@ const PatientEncounters = () => {
                   borderColor="brand.darkPink"
                   p={6}
                 >
-                  No result found
+                  <ChakraLink
+                    as={Link}
+                    to={`${url}/${id}/view`}
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    View
+
+                  </ChakraLink>
                 </Box>
               </Box>
             ),

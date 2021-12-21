@@ -1,21 +1,19 @@
 import {
-  Box, Flex, IconButton,
+  Box, Flex, IconButton, Link, useToast,
 } from "@chakra-ui/react";
-import faker from "faker";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Column } from "react-table";
-import { PatientEncounters } from "../atoms/ehr/patientEncounters";
+import { AxiosInstance } from "axios";
+import { useContext } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { AxiosContext } from "../contexts/AxiosContext";
+import { IPatientProcedure } from "../hooks/patientProcedure/usePatientProcedureAdd";
 
-export const dummyPatientEncounters: PatientEncounters[] = new Array(5).fill(null)
-  .map(() => ({
-    date: faker.date.past().toDateString(),
-    code: faker.lorem.word(),
-    description: faker.lorem.paragraph(3),
-    status: faker.random.arrayElement(["Active", "Inactive"]),
-    action: "",
-  }));
+const deletePatientProcedure = async (axios: AxiosInstance, id:string) => axios.delete(`ehr/encounters/patient-procedure-update/${id}`)
+  .then(({ data: { result } }) => Promise.resolve(result))
+  .catch(({ response: { data: response } }) => Promise.reject(response));
 
-export const columns: Column<PatientEncounters>[] = [
+export const columns: Column<IPatientProcedure>[] = [
   {
     Header: "",
     accessor: "date",
@@ -63,27 +61,59 @@ export const columns: Column<PatientEncounters>[] = [
 
   {
     Header: "",
-    accessor: "action",
-    Cell: () => (
-      <Flex>
-        <IconButton
-          icon={<FiEdit size="24" color="#0029FF" />}
-          backgroundColor="transparent"
-          aria-label="mute-unmute"
-          size="md"
-          rounded="full"
-        />
-        <IconButton
-          icon={<FiTrash2 size="24" color="#A42BAD" />}
-          backgroundColor="transparent"
-          aria-label="mute-unmute"
-          size="md"
-          rounded="full"
-        />
-      </Flex>
-    ),
+    accessor: "id",
+    Cell: ({ value }: { value: string}) => {
+      const queryClient = useQueryClient();
+      const axios = useContext<AxiosInstance | null>(AxiosContext);
+      const toast = useToast();
+
+      const usePatientProcedureDelete = () => useMutation(
+        (id:string) => deletePatientProcedure(axios as AxiosInstance, id),
+        {
+          mutationKey: "patientProcedureDelete",
+          retry: false,
+          onSuccess: () => {
+            queryClient.invalidateQueries("patient_procedures");
+            toast({ title: "Success!", description: "Data deleted successfully!", status: "success" });
+          },
+          onError: (error:any) => {
+            toast({ title: "Failed!", description: error.message || "Data delete unsuccessful!", status: "error" });
+          },
+        },
+      );
+
+      const {
+        mutate: deletePatient,
+
+      } = usePatientProcedureDelete();
+
+      return (
+        <Flex>
+          <Link href={`/patients/encounters-data/patient-procedure/${value}/edit`}>
+            <IconButton
+              icon={<FiEdit size="24" color="#0029FF" />}
+              backgroundColor="transparent"
+              aria-label="mute-unmute"
+              size="md"
+              rounded="full"
+            />
+
+          </Link>
+          <IconButton
+            onClick={() => {
+              deletePatient(value);
+            }}
+            icon={<FiTrash2 size="24" color="#A42BAD" />}
+            backgroundColor="transparent"
+            aria-label="mute-unmute"
+            size="md"
+            rounded="full"
+          />
+        </Flex>
+      );
+    },
   },
 
 ];
 
-export default { dummyPatientEncounters, columns };
+export default { columns };
