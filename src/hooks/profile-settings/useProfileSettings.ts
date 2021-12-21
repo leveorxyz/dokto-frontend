@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { AxiosInstance } from "axios";
 import { RecoilState, useSetRecoilState } from "recoil";
 
@@ -29,7 +29,6 @@ const updateProfileSettings = async (
 
 export const useUpdateProfileSettings = (url: ProfileSettingsURLs, data: unknown) => {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
-  const queryClient = useQueryClient();
 
   return useQuery(
     [`put/${url}`, url, data],
@@ -37,7 +36,6 @@ export const useUpdateProfileSettings = (url: ProfileSettingsURLs, data: unknown
     {
       retry: false,
       staleTime: Infinity,
-      onSuccess: () => queryClient.invalidateQueries(`get/${url}`),
     },
   );
 };
