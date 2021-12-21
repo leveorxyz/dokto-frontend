@@ -30,7 +30,7 @@ export default function SearchHeader() {
             _placeholder={{
               color: "#4D4C4C",
             }}
-            width={["100%", "50%", "50%", "50%"]}
+            width="40%"
             sx={{
               backgroundColor: "white",
             }}
@@ -42,7 +42,7 @@ export default function SearchHeader() {
             color="#4D4C4C"
             variant="filled"
             colorScheme="white"
-            width={["100%", "48%", "40%", "35%"]}
+            width="40%"
             sx={{
               backgroundColor: "white",
             }}
@@ -88,7 +88,7 @@ export default function SearchHeader() {
             color="#4D4C4C"
             variant="filled"
             colorScheme="white"
-            width={["100%", "50%", "50%", "50%"]}
+            width="40%"
             sx={{
               backgroundColor: "white",
             }}
@@ -109,7 +109,7 @@ export default function SearchHeader() {
             color="#4D4C4C"
             variant="filled"
             colorScheme="white"
-            width={["100%", "48%", "40%", "35%"]}
+            width="40%"
             sx={{
               backgroundColor: "white",
             }}
