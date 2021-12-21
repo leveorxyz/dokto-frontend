@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import { Box } from "@chakra-ui/react";
 import { RecoilState, useRecoilValue } from "recoil";
 
-import stepAtom from "../../../atoms/doctorProfileSettings";
-import { currentStepAtom } from "./atoms";
-import FormStep from "../common/FormStep";
+import stepAtom from "../../../../atoms/dashboard/doctorProfileSettings.atom";
+import { currentStepAtom } from "../../../../atoms/educationExperience.atom";
+import FormStep from "../../common/FormStep";
 import { step1Data } from "./steps";
-import { FormDataType } from "../types/form";
+import { FormDataType } from "../../types/form";
 import Submit from "./steps/Submit";
 
 type CommonStepType = {
@@ -32,7 +32,7 @@ const getStepsData = (): StepTypes[] => (
   [
     {
       id: 1,
-      title: "Personal Details",
+      title: "Education & Experience",
       data: step1Data,
       isFormStep: true,
       atom: stepAtom,

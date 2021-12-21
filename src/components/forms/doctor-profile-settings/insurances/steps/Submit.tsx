@@ -1,17 +1,25 @@
 import { useMemo } from "react";
+import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../../atoms/dashboard/accountSettings.atom";
-import { useUpdateAccountSettings } from "../../../../../hooks/account-settings/useAccountSettings";
+import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
+import { useUpdateProfileSettings, ProfileSettingsURLs } from "../../../../../hooks/profile-settings/useProfileSettings";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
 
   const data = useMemo(() => ({
-    ...Object.keys(stepData || {})?.reduce(
+    ...Object.keys(stepData).reduce(
       (prev, curr) => {
+        if (curr === "accept_all_insurance"
+          && stepData.accepted_insurance
+          && stepData.accepted_insurance.length > 0
+        ) {
+          return prev;
+        }
+
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };
       },
@@ -21,19 +29,19 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateAccountSettings(data);
+  } = useUpdateProfileSettings(ProfileSettingsURLs.insurance, data);
 
   if (isFetching) {
     return <Loading />;
   }
 
   if (isSuccess) {
-    return <MessagePage status="success" title="Success!" message="Successfully updated account settings data" />;
+    return <MessagePage status="success" title="Success!" message="You have successfully updated your data" />;
   }
 
   if (isError) {
     return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
-  return <></>;
+  return <Navigate to="/" />;
 }

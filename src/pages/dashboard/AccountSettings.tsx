@@ -5,16 +5,22 @@ import {
 import { SpacedContainer } from "../../components/common/Containers";
 
 import AccountSettingsTabs from "../../components/profile/doctor/account_settings/AccountSettingsTabs";
-import profileAtom from "../../atoms/doctorProfile";
-import useProfile from "../../hooks/profile/useProfile";
+import accountSettingsAtom from "../../atoms/dashboard/accountSettings.atom";
+import useAccountSettings from "../../hooks/account-settings/useAccountSettings";
 import LoadingPage from "../../components/common/fallback/LoadingPage";
+import MessagePage from "../../components/common/fallback/MessagePage";
 
 const AccountSettings = () => {
-  const { isLoading } = useProfile(profileAtom);
+  const { isLoading, isError, error } = useAccountSettings(accountSettingsAtom);
 
   if (isLoading) {
     return <LoadingPage />;
   }
+
+  if (isError) {
+    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
+  }
+
   return (
     <SpacedContainer py={10} mx={12}>
       <Box

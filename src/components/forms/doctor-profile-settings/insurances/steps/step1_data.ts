@@ -1,6 +1,6 @@
 import {
   FieldTypes, FormDataType,
-} from "../../types/form";
+} from "../../../types/form";
 
 const firstColumn = () :FormDataType => ({
   type: FieldTypes.COLUMN,

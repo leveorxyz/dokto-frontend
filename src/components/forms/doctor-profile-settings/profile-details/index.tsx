@@ -5,16 +5,15 @@ import {
   BreadcrumbItem,
 } from "@chakra-ui/react";
 import { RecoilState, useRecoilState } from "recoil";
-import MessagePage from "../../common/fallback/MessagePage";
-import Loading from "../../common/fallback/LoadingPage";
-import stepAtom, { currentStepAtom } from "../../../atoms/accountSettings.atom";
-import useAccountSettings from "../../../hooks/account-settings/useEmailNotification";
 
-import FormStep from "../common/FormStep";
+import { currentStepAtom } from "../../../../atoms/profileDetails.atom";
+import stepAtom from "../../../../atoms/dashboard/doctorProfileSettings.atom";
+
+import FormStep from "../../common/FormStep";
 import {
   step1Data,
 } from "./steps";
-import { FormDataType } from "../types/form";
+import { FormDataType } from "../../types/form";
 import Submit from "./steps/Submit";
 
 type CommonStepType = {
@@ -57,18 +56,11 @@ const getStepsData = (): StepTypes[] => (
 );
 
 export default function Form() {
-  const {
-    error, isError, isSuccess, isFetching, data,
-  } = useAccountSettings();
-  console.log(data);
   const steps = getStepsData();
   const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
 
   const CurrentStep = useMemo(
     () => {
-      if (!isSuccess) {
-        return <Loading />;
-      }
       if (steps[currentStep - 1].isFormStep) {
         const step = steps[currentStep - 1] as FormStepType;
         return (
@@ -82,37 +74,26 @@ export default function Form() {
       }
       return (steps[currentStep - 1] as SubmitStepType).component;
     },
-    [currentStep, steps, isSuccess],
+    [currentStep, steps],
   );
 
-  if (isFetching) {
-    return <Loading />;
-  }
+  return (
+    <>
+      <Breadcrumb>
+        {steps
+          .filter((step) => step.isFormStep)
+          .map((step) => (
+            <BreadcrumbItem key={step.id}>
+              <Box
+                onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
+              />
+            </BreadcrumbItem>
+          ))}
+      </Breadcrumb>
 
-  if (isError) {
-    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
-  }
-  if (isSuccess) {
-    return (
-      <>
-        <Breadcrumb>
-          {steps
-            .filter((step) => step.isFormStep)
-            .map((step) => (
-              <BreadcrumbItem key={step.id}>
-                <Box
-                  onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-                />
-              </BreadcrumbItem>
-            ))}
-        </Breadcrumb>
-
-        <Box>
-          {CurrentStep}
-        </Box>
-      </>
-    );
-  }
-
-  return <></>;
+      <Box>
+        {CurrentStep}
+      </Box>
+    </>
+  );
 }

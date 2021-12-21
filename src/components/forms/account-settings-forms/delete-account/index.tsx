@@ -1,15 +1,9 @@
 import { useMemo } from "react";
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-} from "@chakra-ui/react";
-import { RecoilState, useRecoilState } from "recoil";
-import MessagePage from "../../../common/fallback/MessagePage";
-import Loading from "../../../common/fallback/LoadingPage";
-import stepAtom, { currentStepAtom } from "../../../../atoms/accountSettings.atom";
-import useAccountSettings from "../../../../hooks/account-settings/useEmailNotification";
+import { Box } from "@chakra-ui/react";
+import { RecoilState, useRecoilValue } from "recoil";
 
+import stepAtom from "../../../../atoms/dashboard/accountSettings.atom";
+import currentStepAtom from "./atoms";
 import FormStep from "../../common/FormStep";
 import {
   step1Data,
@@ -57,18 +51,11 @@ const getStepsData = (): StepTypes[] => (
 );
 
 export default function Form() {
-  const {
-    error, isError, isSuccess, isFetching, data,
-  } = useAccountSettings();
-  console.log(data);
   const steps = getStepsData();
-  const [currentStep, setCurrentStep] = useRecoilState(currentStepAtom);
+  const currentStep = useRecoilValue(currentStepAtom);
 
   const CurrentStep = useMemo(
     () => {
-      if (!isSuccess) {
-        return <Loading />;
-      }
       if (steps[currentStep - 1].isFormStep) {
         const step = steps[currentStep - 1] as FormStepType;
         return (
@@ -82,37 +69,12 @@ export default function Form() {
       }
       return (steps[currentStep - 1] as SubmitStepType).component;
     },
-    [currentStep, steps, isSuccess],
+    [currentStep, steps],
   );
 
-  if (isFetching) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
-  }
-  if (isSuccess) {
-    return (
-      <>
-        <Breadcrumb>
-          {steps
-            .filter((step) => step.isFormStep)
-            .map((step) => (
-              <BreadcrumbItem key={step.id}>
-                <Box
-                  onClick={() => setCurrentStep((prev) => (prev > step.id ? step.id : prev))}
-                />
-              </BreadcrumbItem>
-            ))}
-        </Breadcrumb>
-
-        <Box>
-          {CurrentStep}
-        </Box>
-      </>
-    );
-  }
-
-  return <></>;
+  return (
+    <Box mt={3}>
+      {CurrentStep}
+    </Box>
+  );
 }

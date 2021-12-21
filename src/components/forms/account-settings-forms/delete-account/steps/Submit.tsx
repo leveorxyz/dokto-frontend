@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../../atoms/updateAccountSettings.atom";
-import useUpdateDeleteAccount from "../../../../../hooks/account-settings/updateDeleteAccount";
+import stepAtom from "../../../../../atoms/dashboard/accountSettings.atom";
+import { useUpdateAccountSettings } from "../../../../../hooks/account-settings/useAccountSettings";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -13,6 +13,10 @@ export default function Submit() {
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
+        if (curr === "reason_to_delete" && stepData[curr] === "OTHER") {
+          return { ...prev, [curr]: stepData.description };
+        }
+
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };
       },
@@ -23,19 +27,19 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateDeleteAccount(data);
+  } = useUpdateAccountSettings(data);
 
   if (isFetching) {
     return <Loading />;
   }
 
   if (isSuccess) {
-    return <MessagePage status="success" title="Success!" message="Successfully updated account settings data" />;
+    return <Navigate to="/logout" />;
   }
 
   if (isError) {
     return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
-  return <Navigate to="/account-settings" />;
+  return <></>;
 }
