@@ -16,9 +16,9 @@ const secondRow = () :FormDataType => ({
     },
     {
       type: FieldTypes.INPUT,
-      name: "end_date",
+      name: "license_expiration",
       label: "Current License Expiration Date",
-      max: format(new Date(), "yyyy-MM-dd"),
+      min: format(new Date(), "yyyy-MM-dd"),
       inputType: "date",
     },
   ],
