@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
 import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
-import useUpdateProfileDetails from "../../../../../hooks/profile-settings/updateProfileDetails";
+import { useUpdateProfileSettings, ProfileSettingsURLs } from "../../../../../hooks/profile-settings/useProfileSettings";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -16,16 +16,13 @@ export default function Submit() {
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };
       },
-      {
-        contact_no: "",
-        full_name: "",
-      },
+      {},
     ),
   }), [stepData]);
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateProfileDetails(data);
+  } = useUpdateProfileSettings(ProfileSettingsURLs.profileDetail, data);
 
   if (isFetching) {
     return <Loading />;
@@ -39,5 +36,5 @@ export default function Submit() {
     return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
-  return <Navigate to="/profile-settings" />;
+  return <></>;
 }
