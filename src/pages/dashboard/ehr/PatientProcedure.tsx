@@ -5,6 +5,7 @@ import {
 import PatientProcedureTable from "../../../components/common/patientProcedure";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 import PatientProcedureForm from "../../../components/forms/patient-procedure";
+import "react-quill/dist/quill.snow.css";
 
 export default function PatientProcedure() {
   return (

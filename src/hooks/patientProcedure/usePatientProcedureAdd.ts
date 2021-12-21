@@ -31,7 +31,7 @@ export default function usePatientProcedureAdd(data: any) {
       staleTime: Infinity,
       enabled: !!data.patient_encounter,
       onSuccess: (newData:IPatientProcedure) => {
-        navigate(`/patients/encounters/${newData.patient_encounter}`);
+        // navigate(`/patients/encounters/${newData.patient_encounter}`);
         queryClient.invalidateQueries("patient_procedures");
       },
     },
