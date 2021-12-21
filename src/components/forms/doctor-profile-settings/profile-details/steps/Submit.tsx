@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
@@ -13,6 +12,14 @@ export default function Submit() {
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
+        if (curr === "profile_photo"
+          && (
+            stepData[curr].endsWith(".png")
+            || stepData[curr].endsWith(".jpg")
+            || stepData[curr].endsWith(".svg")
+          )) {
+          return prev;
+        }
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };
       },
