@@ -357,10 +357,10 @@ export default function Vitals() {
             </Table>
 
             <Flex justifyContent="end" mt={8} p={4} experimental_spaceX={4}>
-              <Button leftIcon={<AiOutlineReload />} colorScheme="pink" onClick={() => reset()}>Clear</Button>
-              <Button leftIcon={<AiOutlineClose />} colorScheme="blue">Cancel</Button>
-              <Button leftIcon={<FiCopy />} colorScheme="teal">Copy From Previous Encounter</Button>
-              <Button leftIcon={<AiOutlineCheck />} type="submit" colorScheme="purple" disabled={isSubmitting}>Save</Button>
+              <Button background="#7002C7" color="#fff" _hover={{ background: "#7002C7" }} leftIcon={<AiOutlineReload />}>Clear</Button>
+              <Button background="#3DE0FF" color="#fff" _hover={{ background: "#3DE0FF" }} leftIcon={<AiOutlineClose />}>Cancel</Button>
+              <Button background="#006A82" color="#fff" _hover={{ background: "#006A82" }} leftIcon={<FiCopy />}>Copy From Previous Encounter</Button>
+              <Button type="submit" background="#A42BAD" color="#fff" _hover={{ background: "#A42BAD" }} leftIcon={<AiOutlineCheck />} disabled={isSubmitting}>Save</Button>
             </Flex>
           </form>
 
