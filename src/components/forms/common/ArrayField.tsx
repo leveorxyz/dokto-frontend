@@ -125,24 +125,26 @@ export default function ArrayField({
 
           <Table size="sm">
             <Tbody>
-              {fieldsDetails.map((data) => (
-                <Tr
+              {fieldsDetails
+                .filter((data) => !data.isReadOnly)
+                .map((data) => (
+                  <Tr
                   // eslint-disable-next-line react/no-array-index-key
-                  key={`${name}.${index}.${data.name}`}
-                >
-                  <Td p={0}>
-                    <chakra.span fontWeight="600">
-                      {data.label}
+                    key={`${name}.${index}.${data.name}`}
+                  >
+                    <Td p={0}>
+                      <chakra.span fontWeight="600">
+                        {data.label}
                       &nbsp;:
-                    </chakra.span>
-                  </Td>
-                  <Td>
-                    <chakra.span>
-                      {fields[index] && (fields[index] as any)[data.name]}
-                    </chakra.span>
-                  </Td>
-                </Tr>
-              ))}
+                      </chakra.span>
+                    </Td>
+                    <Td>
+                      <chakra.span>
+                        {fields[index] && (fields[index] as any)[data.name]}
+                      </chakra.span>
+                    </Td>
+                  </Tr>
+                ))}
             </Tbody>
           </Table>
         </Box>

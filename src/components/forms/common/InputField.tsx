@@ -37,6 +37,7 @@ export default function InputField({
   errors,
   register,
   rules,
+  isReadOnly,
 }: PropTypes) {
   const borderStyles = useMemo(() => {
     if (leftAddon || leftElement) {
@@ -55,7 +56,13 @@ export default function InputField({
   }, [leftAddon, rightAddon, leftElement, rightElement]);
 
   return (
-    <FormControl id={name} isInvalid={errors[name]} pb={4}>
+    <FormControl
+      id={name}
+      pb={4}
+      isInvalid={errors[name]}
+      isReadOnly={isReadOnly}
+      isDisabled={isReadOnly}
+    >
       <Flex>
         <FormLabel htmlFor="name" color="brand.dark">{label}</FormLabel>
         <Box color="#c2cace">{optionalText}</Box>
@@ -82,7 +89,7 @@ export default function InputField({
       <FormErrorMessage>
         {errors[name] && errors[name].message}
       </FormErrorMessage>
-      <Heading as="h2" size="sm" fontWeight="normal" mt="3" color="brand.darkPink">{bottomText}</Heading>
+      <Heading as="h2" size="sm" fontWeight="normal" mt="3" color={isReadOnly ? "gray.500" : "brand.darkPink"}>{bottomText}</Heading>
     </FormControl>
   );
 }
