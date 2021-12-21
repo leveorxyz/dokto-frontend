@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { useMemo, Suspense, lazy } from "react";
 import { useRecoilValue } from "recoil";
 
 import authAtom from "../../atoms/auth.atom";
-import DoctorDashboard from "../../components/dashboard/DoctorDashboard";
-import PatientDashboard from "../../components/dashboard/PatientDashboard";
-import HospitalDashboard from "../../components/dashboard/HospitalDashboard";
-import PharmacyDashboard from "../../components/dashboard/PharmacyDashboard";
+import LoadingPage from "../../components/common/fallback/LoadingPage";
+
+const DoctorDashboard = lazy(() => import("../../components/dashboard/DoctorDashboard"));
+const PatientDashboard = lazy(() => import("../../components/dashboard/PatientDashboard"));
+const HospitalDashboard = lazy(() => import("../../components/dashboard/HospitalDashboard"));
+const PharmacyDashboard = lazy(() => import("../../components/dashboard/PharmacyDashboard"));
 
 export default function DashboardHome() {
   const authState = useRecoilValue(authAtom);
@@ -13,13 +15,29 @@ export default function DashboardHome() {
     () => {
       switch (authState?.user?.userType) {
         case "DOCTOR":
-          return <DoctorDashboard />;
+          return (
+            <Suspense fallback={<LoadingPage />}>
+              <DoctorDashboard />
+            </Suspense>
+          );
         case "PATIENT":
-          return <PatientDashboard />;
+          return (
+            <Suspense fallback={<LoadingPage />}>
+              <PatientDashboard />
+            </Suspense>
+          );
         case "CLINIC":
-          return <HospitalDashboard />;
+          return (
+            <Suspense fallback={<LoadingPage />}>
+              <HospitalDashboard />
+            </Suspense>
+          );
         case "PHARMACY":
-          return <PharmacyDashboard />;
+          return (
+            <Suspense fallback={<LoadingPage />}>
+              <PharmacyDashboard />
+            </Suspense>
+          );
         default:
           return <></>;
       }
