@@ -39,8 +39,9 @@ export default function ProfileSettingsTabs() {
             fontSize={["xs", "sm", "md", "lg", "lg"]}
             fontFamily="sora"
             borderColor="brand.dark"
-            _hover={{ bgColor: "brand.darkPink", color: "white" }}
-            _selected={{ color: "white", bg: "brand.darkPink" }}
+            _hover={{ bgColor: "brand.darkPink", color: "white", outline: "none" }}
+            _selected={{ color: "white", bg: "brand.darkPink", outline: "none" }}
+            _focus={{ outline: "none" }}
           >
             {title}
           </Tab>
