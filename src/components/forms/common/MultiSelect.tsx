@@ -37,6 +37,12 @@ export default function MultiSelect({
   const [currentValues, setCurrentValues] = useState<string[] | undefined>(
     stepData && stepData[name] ? stepData[name] : [],
   );
+
+  useEffect(
+    () => setCurrentValues(stepData && stepData[name] ? stepData[name] : []),
+    [stepData, name],
+  );
+
   const shadowFieldName = useMemo(() => `${name}-shadow`, [name]);
   const labels: { [key: string]: string } = useMemo(
     () => options.reduce(
