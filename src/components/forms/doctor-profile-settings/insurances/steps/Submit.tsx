@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
 import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
-import useUpdateInsurance from "../../../../../hooks/profile-settings/updateInsurance";
+import { useUpdateProfileSettings, ProfileSettingsURLs } from "../../../../../hooks/profile-settings/useProfileSettings";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -29,7 +29,7 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateInsurance(data);
+  } = useUpdateProfileSettings(ProfileSettingsURLs.insurance, data);
 
   if (isFetching) {
     return <Loading />;
