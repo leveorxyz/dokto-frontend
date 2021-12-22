@@ -3,9 +3,10 @@ import {
 } from "@chakra-ui/react";
 
 import HospitalDetails from "./HospitalDetails";
+import ProfessionalProfile from "./ProfessionalProfile";
 
 export default function ProfileSettingsTabs() {
-  const tabs = ["Hospital Details", "Licenses"];
+  const tabs = ["Hospital Details", "License"];
   return (
     <Tabs
       align="start"
@@ -51,6 +52,10 @@ export default function ProfileSettingsTabs() {
       >
         <TabPanel>
           <HospitalDetails />
+        </TabPanel>
+
+        <TabPanel>
+          <ProfessionalProfile />
         </TabPanel>
       </TabPanels>
     </Tabs>
