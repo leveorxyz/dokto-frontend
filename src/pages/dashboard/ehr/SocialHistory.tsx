@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import { AiOutlineReload, AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
+import { FiCopy } from "react-icons/fi";
 import MessagePage from "../../../components/common/fallback/MessagePage";
 import useSocialHistoryAdd, { ISocialHistory } from "../../../hooks/socialHistory.tsx/useSocialHistoryAdd";
 import {
@@ -517,10 +519,10 @@ export default function SocialHistory() {
             </CustomAccordion>
 
             <Flex justifyContent="end" mt={8} experimental_spaceX={4}>
-              <Button background="#7002C7" onClick={() => reset()}>Clear</Button>
-              <Button onClick={() => navigate(`/patients/encounters/${id}`)} background="#3DE0FF">Cancel</Button>
-              <Button background="#006A82" onClick={handleCopyPreviousEncounter}>Copy From Previous Encounter</Button>
-              <Button type="submit" colorScheme="purple" disabled={isSubmitting}>Save</Button>
+              <Button background="#7002C7" color="#fff" _hover={{ background: "#7002C7" }} leftIcon={<AiOutlineReload />} onClick={() => reset()}>Clear</Button>
+              <Button background="#3DE0FF" color="#fff" _hover={{ background: "#3DE0FF" }} leftIcon={<AiOutlineClose />} onClick={() => navigate(`/patients/encounters/${id}`)}>Cancel</Button>
+              <Button background="#006A82" color="#fff" _hover={{ background: "#006A82" }} leftIcon={<FiCopy />} onClick={handleCopyPreviousEncounter}>Copy From Previous Encounter</Button>
+              <Button type="submit" background="#A42BAD" color="#fff" _hover={{ background: "#A42BAD" }} leftIcon={<AiOutlineCheck />} disabled={isSubmitting}>Save</Button>
             </Flex>
           </form>
 

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import { AxiosInstance } from "axios";
-import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
 export interface IPatientProcedure{
@@ -19,9 +19,9 @@ const registerPatient = async (axios: AxiosInstance, data: any) => axios.post("e
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
 export default function usePatientProcedureAdd(data: any) {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
+  const toast = useToast();
 
   return useQuery(
     ["patient_procedure_add", data],
@@ -30,9 +30,13 @@ export default function usePatientProcedureAdd(data: any) {
       retry: false,
       staleTime: Infinity,
       enabled: !!data.patient_encounter,
-      onSuccess: (newData:IPatientProcedure) => {
-        navigate(`/patients/encounters/${newData.patient_encounter}`);
+      onSuccess: () => {
+        toast({ title: "Success!", description: "Data added successfully!", status: "success" });
+
         queryClient.invalidateQueries("patient_procedures");
+      },
+      onError: (error:any) => {
+        toast({ title: "Failed!", description: error.message || "Data add unsuccessful!", status: "error" });
       },
     },
   );

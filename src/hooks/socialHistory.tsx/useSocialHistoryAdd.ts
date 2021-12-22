@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { AxiosInstance } from "axios";
 
-import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
 export type ISocialHistory={
@@ -35,18 +35,23 @@ const socialHistory = async (axios: AxiosInstance, data: ISocialHistory) => axio
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
 export default function useSocialHistoryAdd() {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const axios = useContext<AxiosInstance | null>(AxiosContext);
+  const toast = useToast();
 
   return useMutation(
     (data: ISocialHistory) => socialHistory(axios as AxiosInstance, data),
     {
       mutationKey: "socialHistory",
       retry: false,
-      onSuccess: (data:ISocialHistory) => {
-        navigate(`/patients/encounters/${data.patient_encounter}`);
+
+      onSuccess: () => {
+        toast({ title: "Success!", description: "Data added successfully!", status: "success" });
+
         queryClient.invalidateQueries("prev-socialHistory");
+      },
+      onError: (error:any) => {
+        toast({ title: "Failed!", description: error.message || "Data add unsuccessful!", status: "error" });
       },
 
     },

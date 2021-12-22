@@ -240,14 +240,7 @@ const PatientEncounters = () => {
                   borderColor="brand.darkPink"
                   p={6}
                 >
-                  <ChakraLink
-                    as={Link}
-                    to={`${url}/${id}/view`}
-                    _hover={{ textDecoration: "none" }}
-                  >
-                    View
-
-                  </ChakraLink>
+                  No results found.
                 </Box>
               </Box>
             ),
