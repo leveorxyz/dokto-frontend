@@ -109,6 +109,7 @@ export default function MedicalNotes() {
                 ))}
               </Box>
             </CustomAccordion>
+
             <CustomAccordion title="Plan of Care">
               <Box><TextFormatter /></Box>
             </CustomAccordion>
