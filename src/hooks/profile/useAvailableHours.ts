@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useQuery } from "react-query";
 import { AxiosInstance } from "axios";
-import { useSetRecoilState, RecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { AxiosContext } from "../../contexts/AxiosContext";
 import AvailableHoursAtom, { AvailableHours } from "../../atoms/availableHours.atom";
 
@@ -13,13 +13,13 @@ export default function useAvailableHours() {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   const setAvailableHours = useSetRecoilState(AvailableHoursAtom);
   return useQuery(
-    ["profile-settings/available-hours"],
+    ["get:available-hours"],
     () => getAvailableHours(axios as AxiosInstance),
     {
-      retry: false,
+      retry: 2,
       staleTime: Infinity,
       onSuccess: (data) => {
-        setAvailableHours(data as AvailableHours);
+        setAvailableHours(data as AvailableHours[]);
       },
     },
   );

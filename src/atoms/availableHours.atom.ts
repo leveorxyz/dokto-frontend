@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { atom } from "recoil";
 
 export type AvailableHours = {
@@ -7,12 +8,7 @@ export type AvailableHours = {
   end_time: string;
 }
 
-export const currentStepAtom = atom<number>({
-  key: "AvailableHoursStep",
-  default: 1,
-});
-
-export default atom<AvailableHours | null>({
+export default atom<AvailableHours[]>({
   key: "AvailableHours",
-  default: null,
+  default: [],
 });
