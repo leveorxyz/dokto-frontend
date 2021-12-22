@@ -1,16 +1,10 @@
-import { useRecoilValue } from "recoil";
 import {
   Box,
   Flex,
   Heading,
 } from "@chakra-ui/react";
 
-import doctorProfile from "../../../atoms/doctorProfile";
-
 export default function Tab2() {
-  const doctorProfileData = useRecoilValue(doctorProfile);
-  console.log(doctorProfileData);
-
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const times = ["9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "1:00pm", "1:30pm", "2:00pm", "3:00pm"];
 
