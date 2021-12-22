@@ -44,6 +44,7 @@ const Allergies = lazy(() => import("../pages/dashboard/ehr/Allergies"));
 const MedicalNotes = lazy(() => import("../pages/dashboard/ehr/medicalNotes/MedicalNotes"));
 const ProfileSettings = lazy(() => import("../pages/dashboard/profile-settings"));
 const ManageTeam = lazy(() => import("../pages/dashboard/ManageTeam"));
+const HospitalServices = lazy(() => import("../pages/dashboard/HospitalServices"));
 const PatientEncounters = lazy(() => import("../pages/dashboard/ehr/PatientEncounters"));
 const DoctorListings = lazy(() => import("../pages/DoctorListings"));
 const PaymentSuccess = lazy(() => import("../pages/PaymentSuccess"));
@@ -334,6 +335,14 @@ const routes: RouteType[] = [
     showInDashboard: true,
     icon: VideoConf,
     allowedRoles: ["DOCTOR", "PATIENT"],
+  },
+  {
+    displayName: "Services",
+    path: "/services",
+    component: <HospitalServices />,
+    isProtected: true,
+    showInNavbar: false,
+    showInDashboard: true,
   },
   {
     displayName: "Manage Team",
