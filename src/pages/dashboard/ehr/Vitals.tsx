@@ -13,31 +13,23 @@ import {
   Button,
 } from "@chakra-ui/react";
 import {
-  AiOutlineCheck, AiOutlineClose, AiOutlineCopy, AiOutlineReload,
+  AiOutlineCheck, AiOutlineClose, AiOutlineReload,
 } from "react-icons/ai";
-
 import { useForm } from "react-hook-form";
 import { FiCopy } from "react-icons/fi";
+import { useParams } from "react-router-dom";
+import useVitalsAdd, { IVitals } from "../../../hooks/vitals.tsx/useVitalsAdd";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
+import MessagePage from "../../../components/common/fallback/MessagePage";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 
-interface IVitals{
-  ReadingDateTime:string,
-  Height:string,
-  Weight:string,
-  BMI:string,
-  Temperature:string,
-  Pulse:string,
-  RespiratoryRate:string,
-  O2Saturation:string,
-  Pain:string,
-  Bloodpressure:{
-    mm:string,
-    hg:string,
-  }
-}
-
 export default function Vitals() {
-  // const { isLoading } = useProfile(doctorProfileAtom);
+  const { id } = useParams();
+
+  const {
+    mutate: vitalsAdd,
+    isLoading,
+  } = useVitalsAdd();
 
   const {
     register,
@@ -47,13 +39,13 @@ export default function Vitals() {
   } = useForm<IVitals>();
 
   const onSubmit = handleSubmit(async (data) => {
-    // const dataWithId:ISocialHistory = { ...data, ...{ patient_encounter: id } };
-    // socialHistory(dataWithId);
+    const dataWithId:IVitals = { ...data, ...{ patient_encounter: id } };
+    vitalsAdd(dataWithId);
   });
 
-  // if (isLoading) {
-  //   return <LoadingPage />;
-  // }
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <PatientEncountersLayout>
@@ -68,7 +60,7 @@ export default function Vitals() {
       >
         <Heading as="h2" fontSize="xl" fontWeight={500} color="primary.dark" mb="5" background="primary.light" p="2" px="6">Vitals</Heading>
         <Box mt={-6}>
-          <form>
+          <form onSubmit={onSubmit}>
 
             <Table variant="mytable" colorScheme="teal" w="100%">
               <Thead />
@@ -318,30 +310,42 @@ export default function Vitals() {
                   <Td>Blood pressure</Td>
                   <Td>
                     <Flex w="350px" alignItems="center">
-                      <FormControl w="48%" isInvalid={!!errors.Bloodpressure?.mm}>
+                      <FormControl w="48%" isInvalid={!!errors.BloodpressureMm}>
                         <Input
+                          {...register("BloodpressureMm", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
                           w="140px"
                           border="2px"
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          name="Bloodpressure"
+                          name="BloodpressureMm"
                         />
                         <FormErrorMessage>
-                          {errors.Bloodpressure?.mm && errors.Bloodpressure.mm.message}
+                          {errors.BloodpressureMm && errors.BloodpressureMm.message}
                         </FormErrorMessage>
                       </FormControl>
-                      <FormControl w="48%" isInvalid={!!errors.Bloodpressure?.hg}>
+                      <FormControl w="48%" isInvalid={!!errors.BloodpressureHg}>
                         <Input
+                          {...register("BloodpressureHg", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
                           w="140px"
                           border="2px"
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          name="Bloodpressure"
+                          name="BloodpressureHg"
                         />
                         <FormErrorMessage>
-                          {errors.Bloodpressure?.hg && errors.Bloodpressure.hg.message}
+                          {errors.BloodpressureHg && errors.BloodpressureHg.message}
                         </FormErrorMessage>
                       </FormControl>
                       <Box color="brand.darkPink">mm/Hg</Box>
@@ -357,7 +361,7 @@ export default function Vitals() {
             </Table>
 
             <Flex justifyContent="end" mt={8} p={4} experimental_spaceX={4}>
-              <Button background="#7002C7" color="#fff" _hover={{ background: "#7002C7" }} leftIcon={<AiOutlineReload />}>Clear</Button>
+              <Button background="#7002C7" color="#fff" _hover={{ background: "#7002C7" }} leftIcon={<AiOutlineReload />} onClick={() => reset()}>Clear</Button>
               <Button background="#3DE0FF" color="#fff" _hover={{ background: "#3DE0FF" }} leftIcon={<AiOutlineClose />}>Cancel</Button>
               <Button background="#006A82" color="#fff" _hover={{ background: "#006A82" }} leftIcon={<FiCopy />}>Copy From Previous Encounter</Button>
               <Button type="submit" background="#A42BAD" color="#fff" _hover={{ background: "#A42BAD" }} leftIcon={<AiOutlineCheck />} disabled={isSubmitting}>Save</Button>
