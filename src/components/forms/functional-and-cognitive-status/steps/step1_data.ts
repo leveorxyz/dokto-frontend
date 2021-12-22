@@ -33,8 +33,8 @@ const firstColumn = () :FormDataType => ({
         label: "Active",
       },
       {
-        value: "InActive",
-        label: "InActive",
+        value: "Inactive",
+        label: "Inactive",
       },
       {
         value: "Resolved",
