@@ -2,25 +2,40 @@ import {
   useRef, useState,
 } from "react";
 import {
-  Box, Icon, Input, Text,
+  Box, Icon, Input, Text, useToast,
 } from "@chakra-ui/react";
 import { IoAddSharp } from "react-icons/io5";
 import ImagePreview from "./ImagePreview";
 import useCustomizeRoom from "../../../hooks/calls/useCustomizeRoom";
 
 type PropTypes = {
-  handleClose: ()=>void
+  handleClose: ()=>void,
+  setMedia: React.Dispatch<any>,
+  clearMedia: ()=>void
 }
 
-const FileInput = ({ handleClose }:PropTypes) => {
+const FileInput = ({ handleClose, setMedia, clearMedia }:PropTypes) => {
   const {
     mutate,
     isLoading,
     isSuccess,
   } = useCustomizeRoom();
-
-  const [file, setFile] = useState(null);
+  const toast = useToast();
+  const [file, setFile] = useState<any>(null);
   const ref:any = useRef<HTMLInputElement>();
+
+  const handleFileChange = () => {
+    const mediaFile = ref.current.files[0];
+    const fileSizeMb = mediaFile.size / 1000000;
+
+    if (fileSizeMb > 50) {
+      toast({ title: "Error!", description: "File size must be lower than 50MB", status: "error" });
+      return;
+    }
+    setFile(mediaFile);
+    setMedia(mediaFile);
+    ref.current.value = "";
+  };
 
   const handleUpload = () => {
     if (!file) return;
@@ -41,6 +56,7 @@ const FileInput = ({ handleClose }:PropTypes) => {
           handleUpload={handleUpload}
           file={file}
           loading={isLoading}
+          clearMedia={clearMedia}
         />
       ) : (
         <Box
@@ -64,10 +80,7 @@ const FileInput = ({ handleClose }:PropTypes) => {
               type="file"
               ref={ref}
               accept="image/*,video/*"
-              onChange={() => {
-                setFile(ref.current.files[0]);
-                ref.current.value = "";
-              }}
+              onChange={handleFileChange}
             />
             <Text color="#9A9AB0" fontSize="20px">Click to Add Files</Text>
           </Box>

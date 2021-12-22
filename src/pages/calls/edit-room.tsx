@@ -15,21 +15,27 @@ import EditIcons from "../../components/call/edit-room/EditIcons";
 const EditRoom = () => {
   const authState = useRecoilValue(authAtom);
   const [showInput, setShowInput] = useState<""|"image"|"text"|"video">("");
-  const [previewRoom, setPreviewRoom] = useState(false);
+  const [text, setText] = useState<string>("");
+  const [media, setMedia] = useState<File>();
 
   const {
     mutate,
     isLoading,
   } = useCustomizeRoom();
 
-  const handleSetDefault = () => {
-    setPreviewRoom(false);
-    mutate({ text: "", room_media: null, room_media_mime_type: null });
+  const clearMedia = () => {
+    setMedia(undefined);
+    setText("");
   };
 
   const hideInput = () => {
     setShowInput("");
-    setPreviewRoom(false);
+  };
+
+  const handleSetDefault = () => {
+    mutate({ text: "", room_media: null, room_media_mime_type: null });
+    clearMedia();
+    hideInput();
   };
 
   return (
@@ -54,12 +60,11 @@ const EditRoom = () => {
             <WhiteButton onClick={handleSetDefault} isLoading={isLoading}>
               Revert to Default
             </WhiteButton>
-            <Box marginLeft={5}>
+            {/* <Box marginLeft={5}>
               <WhiteButton onClick={() => setPreviewRoom((prev) => !prev)}>
                 Preview Waiting Room
               </WhiteButton>
-
-            </Box>
+            </Box> */}
           </Flex>
         </Box>
         {!showInput && (
@@ -91,10 +96,11 @@ const EditRoom = () => {
           </Flex>
         </Box>
         )}
-        {showInput === "text" && <MessageInput handleClose={hideInput} />}
-        {showInput === "image" && <FileInput handleClose={hideInput} />}
 
-        {previewRoom && <RoomPreview />}
+        {showInput === "text" && <MessageInput handleClose={hideInput} setText={setText} clearMedia={clearMedia} />}
+        {showInput === "image" && <FileInput handleClose={hideInput} setMedia={setMedia} clearMedia={clearMedia} />}
+
+        <RoomPreview text={text} mediaFile={media} />
       </Box>
     </div>
   );

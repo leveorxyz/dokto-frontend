@@ -1,21 +1,21 @@
 import { useMemo } from "react";
 import {
-  Box, Text, Flex, Icon, Image,
+  Box, Text, Flex, Icon,
 } from "@chakra-ui/react";
 import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5";
 import BrandButton from "../../common/buttons/BrandButton";
 import WhiteButton from "../../common/buttons/WhiteButton";
-import DoctorImage from "../../../static/doctor-preview.png";
 
 type PropTypes = {
   handleClose: ()=>void,
   handleUpload: ()=>void,
-  file: any,
-  loading: boolean
+  file: File,
+  loading: boolean,
+  clearMedia: ()=>void
 }
 
 const ImagePreview = ({
-  handleClose, handleUpload, file, loading,
+  handleClose, handleUpload, file, loading, clearMedia,
 }:PropTypes) => {
   const fileType = useMemo(() => file?.type?.split("/")[0], [file]);
 
@@ -24,7 +24,7 @@ const ImagePreview = ({
       backgroundColor="#fff"
       boxShadow="0px 4px 4px rgba(0, 0, 0, 0.07)"
       width="60%"
-      minHeight="320px"
+      minHeight="180px"
       marginTop="15px"
       borderRadius="10px"
       border="1px solid #dddddd"
@@ -32,31 +32,25 @@ const ImagePreview = ({
       paddingLeft="25px"
       paddingRight="25px"
     >
-      <Text color="#9A9AB0">Preview</Text>
-      <Flex justifyContent="center">
-        {fileType === "image" && <Image src={file ? URL.createObjectURL(file) : DoctorImage} width="20rem" />}
-        {/* eslint-disable */}
-        {fileType  === "video" && (
-        <video
-          width="400"
-          height="auto"
-          src={file && URL.createObjectURL(file)}
-          controls
-        />
-        )}
-      </Flex>
+      <Text color="#9A9AB0">Room Media</Text>
       <Flex justifyContent="space-around" alignItems="center" marginTop="5">
         <Text
           marginRight="10"
           color="red"
           fontSize="15px"
         >
-          Ensure your {fileType} is minimum 1280*720 pixels for High Quality display
+          {fileType === "image"
+            ? "Ensure your image is minimum 1280*720 pixels for High Quality display"
+            : "Ensure your video size is maximum 50mb"}
 
         </Text>
         <Flex alignItems="center">
           <Box marginRight="10">
-            <WhiteButton onClick={handleClose}>
+            <WhiteButton onClick={() => {
+              handleClose();
+              clearMedia();
+            }}
+            >
               <Icon as={IoCloseSharp} fontSize="#A42BAD" fontStyle="italic" />
             </WhiteButton>
           </Box>

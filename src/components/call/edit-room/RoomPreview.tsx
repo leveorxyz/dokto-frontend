@@ -1,7 +1,7 @@
 import {
   Flex, Box, Image,
 } from "@chakra-ui/react";
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { AxiosInstance } from "axios";
 import { useQuery } from "react-query";
@@ -10,8 +10,14 @@ import BottomImage from "../../../static/waiting_room_frame.png";
 import DoctorImage from "../../../static/doctor.jpeg";
 import authAtom from "../../../atoms/auth.atom";
 
-const RoomPreview = () => {
+type PropTypes = {
+  text: string,
+  mediaFile: File|undefined,
+}
+
+const RoomPreview = ({ text, mediaFile }:PropTypes) => {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
+  const fileType = useMemo(() => mediaFile?.type?.split("/")[0], [mediaFile]);
 
   const authState = useRecoilValue(authAtom);
   const userName = authState?.user?.username;
@@ -26,7 +32,9 @@ const RoomPreview = () => {
   && roomData?.data?.result?.room_media_mime_type?.split("/")[0] === "video", [roomData]);
 
   const Greetings = () => {
-    if (roomData?.data?.result?.text) {
+    if (text) {
+      return <span>{text}</span>;
+    } if (roomData?.data?.result?.text) {
       return <span>{roomData?.data?.result?.text}</span>;
     }
     return (
@@ -51,10 +59,23 @@ const RoomPreview = () => {
       padding="40px"
       paddingLeft="25px"
       paddingRight="25px"
+      position="relative"
     >
       <h2>Waiting Room Preview</h2>
       <Flex w="100%" justifyContent="center">
-        {isVideo
+        {(mediaFile && fileType === "video") && (
+        <Box
+          as="video"
+          minWidth="100%"
+          minHeight="100%"
+          objectFit="cover"
+          src={URL.createObjectURL(mediaFile)}
+          autoPlay
+          loop
+          muted
+        />
+        )}
+        {(isVideo && !mediaFile)
         && (
         <Box
           as="video"
@@ -68,7 +89,7 @@ const RoomPreview = () => {
         />
         )}
         <Box paddingTop="4rem" textAlign="center">
-          {!isVideo && (
+          {(!isVideo && fileType !== "video") && (
           <Flex alignItems="center" paddingLeft="5rem" paddingRight="5rem">
             <Box width="100px" height="100px">
               <Image
@@ -80,13 +101,29 @@ const RoomPreview = () => {
                 boxShadow="0px 4px 5px 5px rgba(0, 0, 0, 0.09)"
               />
             </Box>
-            <Box width="60%" fontSize="18px" color="black" fontWeight="600" marginLeft="20px">
+            <Box width="60%" fontSize="18px" color="black" fontWeight="600" marginLeft="20px" zIndex={12}>
               <Greetings />
             </Box>
           </Flex>
           )}
         </Box>
-        {!isVideo && <Image src={roomData?.data?.result?.room_media ? roomData?.data?.result?.room_media : BottomImage} width="30%" position="absolute" bottom="10" />}
+        {mediaFile && fileType === "image" && (
+          <Image
+            src={URL.createObjectURL(mediaFile)}
+            width="25rem"
+            position="absolute"
+            bottom="0"
+          />
+        )}
+        {((!isVideo || fileType === "image") && !mediaFile) && (
+          <Image
+            src={roomData?.data?.result?.room_media
+              ? roomData?.data?.result?.room_media : BottomImage}
+            width="25rem"
+            position="absolute"
+            bottom="0"
+          />
+        )}
       </Flex>
     </Box>
   );
