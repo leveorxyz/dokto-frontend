@@ -2,23 +2,29 @@ import { useContext } from "react";
 import { useQuery } from "react-query";
 import { AxiosInstance } from "axios";
 import { useSetRecoilState } from "recoil";
+
 import { AxiosContext } from "../../contexts/AxiosContext";
 import ReviewsAtom, { Review, ReviewSearchParamsAtom } from "../../atoms/doctor-profile/reviews.atom";
 
 type SearchParams = { offset: number, limit: number, search?: string };
 
-const getReviews = async (axios: AxiosInstance, { offset, limit, search }: SearchParams) => {
+const getReviews = async (
+  axios: AxiosInstance,
+  username: string,
+  { offset, limit, search }: SearchParams,
+) => {
   const queryParams: Record<string, string | number> = { offset, limit };
   if (search) {
     queryParams.search = search;
   }
 
-  return axios.get("dashboard/doctor/reviews/", { params: queryParams })
+  return axios.get(`dashboard/doctor/review/${username}`, { params: queryParams })
     .then(({ data: { result } }) => Promise.resolve(result))
     .catch(({ response: { data: response } }) => Promise.reject(response));
 };
 
 export default function useReviews(
+  username: string,
   searchParams: SearchParams,
 ) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
@@ -26,8 +32,8 @@ export default function useReviews(
   const setSearchParams = useSetRecoilState(ReviewSearchParamsAtom);
 
   return useQuery(
-    ["get:reviews", axios, searchParams],
-    () => getReviews(axios as AxiosInstance, searchParams),
+    ["get:reviews", axios, username, searchParams],
+    () => getReviews(axios as AxiosInstance, username, searchParams),
     {
       retry: false,
       staleTime: Infinity,
