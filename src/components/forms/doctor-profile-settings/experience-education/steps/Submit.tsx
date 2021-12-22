@@ -1,34 +1,62 @@
-import { useMemo } from "react";
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
-import Loading from "../../../../common/fallback/LoadingPage";
 import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
-import useUpdateEducationExperience from "../../../../../hooks/profile-settings/updateEducationExperiences";
 import MessagePage from "../../../../common/fallback/MessagePage";
+import Loading from "../../../../common/fallback/LoadingPage";
+import { useEducationAndExperience, useUpdateEducationExperiences } from "../../../../../hooks/profile-settings/useEducationExperiences";
 
 export default function Submit() {
   const stepData = useRecoilValue<any>(stepAtom);
-
-  const data = useMemo(() => ({
-    ...Object.keys(stepData).reduce(
-      (prev, curr) => {
-        if (!stepData[curr] || stepData[curr] === "") return prev;
-        return { ...prev, [curr]: stepData[curr] };
-      },
-      {
-
-      },
-    ),
-  }), [stepData]);
-
-  console.log(data);
-
+  const { mutateAsync: getCurrentData } = useEducationAndExperience();
   const {
-    error, isError, isSuccess, isFetching,
-  } = useUpdateEducationExperience(data);
+    mutateAsync: updateData,
+    error,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useUpdateEducationExperiences();
 
-  if (isFetching) {
+  useEffect(() => {
+    getCurrentData()
+      .then((currentData) => {
+        const newData = {
+          education: [
+            ...stepData.education.map((item: any) => ({
+              ...item,
+              operation: item.id ? "update" : "add",
+            })),
+            ...currentData.education
+              .filter(
+                (item: any) => !stepData.education.find((i: any) => i.id === item.id),
+              )
+              .map((item: any) => ({
+                ...item,
+                operation: "delete",
+              })),
+          ],
+          experience: [
+            ...stepData.experience.map((item: any) => ({
+              ...item,
+              operation: item.id ? "update" : "add",
+            })),
+            ...currentData.experience
+              .filter(
+                (item: any) => !stepData.experience.find((i: any) => i.id === item.id),
+              )
+              .map((item: any) => ({
+                ...item,
+                operation: "delete",
+              })),
+          ],
+        };
+
+        updateData(newData);
+      })
+      .catch((err) => console.error(err.message));
+  }, [stepData, getCurrentData, updateData]);
+
+  if (isLoading) {
     return <Loading />;
   }
 
@@ -40,5 +68,5 @@ export default function Submit() {
     return <MessagePage status="error" title="Oops!" message={(error as any).message} />;
   }
 
-  return <Navigate to="/profile-settings" />;
+  return <Loading />;
 }
