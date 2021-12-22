@@ -10,6 +10,8 @@ import {
 import { useForm } from "react-hook-form";
 import { AiOutlineReload, AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
 import { FiCopy } from "react-icons/fi";
+import { useParams } from "react-router-dom";
+import useMedicalNotesAdd, { IMedicalNotes } from "../../../../hooks/medicalNotes.tsx/useMedicalNotesAdd";
 import { reviewOfSystems, physicalExam } from "../../../../data/MedicalNotes";
 import CustomAccordion from "../../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../../components/common/PatientEncountersLayout";
@@ -18,18 +20,25 @@ import CustomCheckboxField from "./CustomCheckbox";
 import TextFormatter from "./TextFormatter";
 
 export default function MedicalNotes() {
+  const { id } = useParams();
   const {
     register, handleSubmit, setValue, formState: { isSubmitting, errors },
   } = useForm(
     { mode: "onBlur" },
   );
 
+  const {
+    mutate: medicalNotes,
+
+  } = useMedicalNotesAdd();
+
   if (isSubmitting) {
     return <LoadingPage />;
   }
 
   const onSubmit = (data:any) => {
-    console.log(data);
+    const dataWithId:IMedicalNotes = { ...data, ...{ patient_encounter: id } };
+    medicalNotes(dataWithId);
   };
 
   return (
