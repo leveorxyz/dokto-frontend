@@ -10,6 +10,8 @@ import AccountSettingsIcon from "../static/supervised_user_circle.svg";
 import PayoutIcon from "../static/Payout.svg";
 import InvoiceIcon from "../static/invoice.svg";
 import VideoConf from "../static/video_conference.svg";
+import TeamIcon from "../static/Team.png";
+import HeartIcon from "../static/Heart.png";
 
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
@@ -345,6 +347,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     allowedRoles: ["PATIENT"],
+    icon: HeartIcon,
   },
   {
     displayName: "Services",
@@ -363,6 +366,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     allowedRoles: ["CLINIC"],
+    icon: TeamIcon,
   },
   {
     displayName: "Payout Settings",
