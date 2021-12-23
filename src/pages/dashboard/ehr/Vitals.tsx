@@ -20,7 +20,6 @@ import { FiCopy } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import useVitalsAdd, { IVitals } from "../../../hooks/vitals.tsx/useVitalsAdd";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
-import MessagePage from "../../../components/common/fallback/MessagePage";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 
 export default function Vitals() {
@@ -68,23 +67,23 @@ export default function Vitals() {
                 <Tr>
                   <Td>Reading Date/Time</Td>
                   <Td>
-                    <FormControl w="350px" isInvalid={!!errors.ReadingDateTime}>
+                    <FormControl w="350px" isInvalid={!!errors.reading_date}>
                       <Input
                         w="290px"
                         border="2px"
                         mr="2"
                         borderColor="brand.darkPink"
                         type="datetime-local"
-                        {...register("ReadingDateTime", {
+                        {...register("reading_date", {
                           required: {
                             value: true,
                             message: "This field is required",
                           },
                         })}
-                        name="ReadingDateTime"
+                        name="reading_date"
                       />
                       <FormErrorMessage>
-                        {errors.ReadingDateTime && errors.ReadingDateTime.message}
+                        {errors.reading_date && errors.reading_date.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -93,7 +92,7 @@ export default function Vitals() {
                 <Tr>
                   <Td>Height</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Height}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.height}>
                       <Flex alignItems="center">
                         <Input
                           w="290px"
@@ -101,18 +100,18 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          {...register("Height", {
+                          {...register("height", {
                             required: {
                               value: true,
                               message: "This field is required",
                             },
                           })}
-                          name="Height"
+                          name="height"
                         />
                         <Box color="brand.darkPink">cm</Box>
                       </Flex>
                       <FormErrorMessage>
-                        {errors.Height && errors.Height.message}
+                        {errors.height && errors.height.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -121,7 +120,7 @@ export default function Vitals() {
                 <Tr>
                   <Td>Weight</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Weight}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.weight}>
                       <Flex alignItems="center">
                         <Input
                           w="290px"
@@ -129,18 +128,18 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          {...register("Weight", {
+                          {...register("weight", {
                             required: {
                               value: true,
                               message: "This field is required",
                             },
                           })}
-                          name="Weight"
+                          name="weight"
                         />
                         <Box color="brand.darkPink">lbs</Box>
                       </Flex>
                       <FormErrorMessage>
-                        {errors.Weight && errors.Weight.message}
+                        {errors.weight && errors.weight.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -149,23 +148,23 @@ export default function Vitals() {
                 <Tr>
                   <Td>BMI</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.BMI}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.bmi}>
                       <Input
                         w="290px"
                         border="2px"
                         mr="2"
                         borderColor="brand.darkPink"
                         type="number"
-                        {...register("BMI", {
+                        {...register("bmi", {
                           required: {
                             value: true,
                             message: "This field is required",
                           },
                         })}
-                        name="BMI"
+                        name="bmi"
                       />
                       <FormErrorMessage>
-                        {errors.BMI && errors.BMI.message}
+                        {errors.bmi && errors.bmi.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -173,7 +172,7 @@ export default function Vitals() {
                 <Tr>
                   <Td>Temperature</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Temperature}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.temperature}>
                       <Flex alignItems="center">
                         <Input
                           w="290px"
@@ -181,18 +180,18 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          {...register("Temperature", {
+                          {...register("temperature", {
                             required: {
                               value: true,
                               message: "This field is required",
                             },
                           })}
-                          name="Temperature"
+                          name="temperature"
                         />
                         <Box color="brand.darkPink">F</Box>
                       </Flex>
                       <FormErrorMessage>
-                        {errors.Temperature && errors.Temperature.message}
+                        {errors.temperature && errors.temperature.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -201,7 +200,7 @@ export default function Vitals() {
                 <Tr>
                   <Td>Pulse</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Pulse}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.pulse}>
                       <Flex alignItems="center">
                         <Input
                           w="290px"
@@ -209,18 +208,18 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          {...register("Temperature", {
+                          {...register("pulse", {
                             required: {
                               value: true,
                               message: "This field is required",
                             },
                           })}
-                          name="Temperature"
+                          name="pulse"
                         />
                         <Box color="brand.darkPink">bpm</Box>
                       </Flex>
                       <FormErrorMessage>
-                        {errors.Pulse && errors.Pulse.message}
+                        {errors.pulse && errors.pulse.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -229,7 +228,7 @@ export default function Vitals() {
                 <Tr>
                   <Td>Respiratory rate</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.RespiratoryRate}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.respiratory_rate}>
                       <Flex alignItems="center">
                         <Input
                           w="290px"
@@ -237,18 +236,18 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          {...register("RespiratoryRate", {
+                          {...register("respiratory_rate", {
                             required: {
                               value: true,
                               message: "This field is required",
                             },
                           })}
-                          name="RespiratoryRate"
+                          name="respiratory_rate"
                         />
                         <Box color="brand.darkPink">rpm</Box>
                       </Flex>
                       <FormErrorMessage>
-                        {errors.RespiratoryRate && errors.RespiratoryRate.message}
+                        {errors.respiratory_rate && errors.respiratory_rate.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -257,7 +256,7 @@ export default function Vitals() {
                 <Tr>
                   <Td>O2 Saturation</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.O2Saturation}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.o2_saturation}>
                       <Flex alignItems="center">
                         <Input
                           w="290px"
@@ -265,18 +264,18 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          {...register("O2Saturation", {
+                          {...register("o2_saturation", {
                             required: {
                               value: true,
                               message: "This field is required",
                             },
                           })}
-                          name="O2Saturation"
+                          name="o2_saturation"
                         />
                         <Box color="brand.darkPink">%</Box>
                       </Flex>
                       <FormErrorMessage>
-                        {errors.O2Saturation && errors.O2Saturation.message}
+                        {errors.o2_saturation && errors.o2_saturation.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -285,22 +284,22 @@ export default function Vitals() {
                 <Tr>
                   <Td>Pain</Td>
                   <Td>
-                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.Pain}>
+                    <FormControl w="350px" justifyContent="center" isInvalid={!!errors.pain}>
                       <Input
                         w="290px"
                         border="2px"
                         borderColor="brand.darkPink"
                         type="number"
-                        {...register("Pain", {
+                        {...register("pain", {
                           required: {
                             value: true,
                             message: "This field is required",
                           },
                         })}
-                        name="Pain"
+                        name="pain"
                       />
                       <FormErrorMessage>
-                        {errors.Pain && errors.Pain.message}
+                        {errors.pain && errors.pain.message}
                       </FormErrorMessage>
                     </FormControl>
                   </Td>
@@ -310,9 +309,9 @@ export default function Vitals() {
                   <Td>Blood pressure</Td>
                   <Td>
                     <Flex w="350px" alignItems="center">
-                      <FormControl w="48%" isInvalid={!!errors.BloodpressureMm}>
+                      <FormControl w="48%" isInvalid={!!errors.blood_pressure_mm}>
                         <Input
-                          {...register("BloodpressureMm", {
+                          {...register("blood_pressure_mm", {
                             required: {
                               value: true,
                               message: "This field is required",
@@ -323,15 +322,15 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          name="BloodpressureMm"
+                          name="blood_pressure_mm"
                         />
                         <FormErrorMessage>
-                          {errors.BloodpressureMm && errors.BloodpressureMm.message}
+                          {errors.blood_pressure_mm && errors.blood_pressure_mm.message}
                         </FormErrorMessage>
                       </FormControl>
-                      <FormControl w="48%" isInvalid={!!errors.BloodpressureHg}>
+                      <FormControl w="48%" isInvalid={!!errors.blood_pressure_hg}>
                         <Input
-                          {...register("BloodpressureHg", {
+                          {...register("blood_pressure_hg", {
                             required: {
                               value: true,
                               message: "This field is required",
@@ -342,10 +341,10 @@ export default function Vitals() {
                           mr="2"
                           borderColor="brand.darkPink"
                           type="number"
-                          name="BloodpressureHg"
+                          name="blood_pressure_hg"
                         />
                         <FormErrorMessage>
-                          {errors.BloodpressureHg && errors.BloodpressureHg.message}
+                          {errors.blood_pressure_hg && errors.blood_pressure_hg.message}
                         </FormErrorMessage>
                       </FormControl>
                       <Box color="brand.darkPink">mm/Hg</Box>

@@ -5,17 +5,17 @@ import { useToast } from "@chakra-ui/react";
 import { AxiosContext } from "../../contexts/AxiosContext";
 
 export interface IVitals{
-  ReadingDateTime:string,
-  Height:string,
-  Weight:string,
-  BMI:string,
-  Temperature:string,
-  Pulse:string,
-  RespiratoryRate:string,
-  O2Saturation:string,
-  Pain:string,
-  BloodpressureMm:string,
-  BloodpressureHg:string,
+  reading_date:string,
+  height:string,
+  weight:string,
+  bmi:string,
+  temperature:string,
+  pulse:string,
+  respiratory_rate:string,
+  o2_saturation:string,
+  pain:string,
+  blood_pressure_mm:string,
+  blood_pressure_hg:string,
   patient_encounter?:string
 }
 
