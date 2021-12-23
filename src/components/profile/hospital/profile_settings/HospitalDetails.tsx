@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import {
   Flex,
   Box,
@@ -13,24 +13,33 @@ import {
 } from "@chakra-ui/react";
 
 import HospitalDetailsForm from "../../../forms/hospital-dashboard/hospital-details";
-import profileAtom from "../../../../atoms/patientProfileSettings";
+import profileAtom from "../../../../atoms/hospitalProfile";
 import editIcon from "../../../../static/edit_image.svg";
 import getBase64 from "../../../../utils/getBase64";
 
 const ProfileDetails = () => {
+  const [profileSettings, setProfileSettings] = useRecoilState(profileAtom);
   const [profilePhotoUrl, setProfilePhotoUrl] = useState<string | null>(null);
-  // TODO [afia]: this base64 data is what we should send to the server when submitting the form
   const [profilePhotoBase64, setProfilePhotoBase64] = useState<string | null>(null);
 
-  const profile = useRecoilValue(profileAtom);
+  useEffect(
+    () => setProfileSettings(
+      (prev) => (
+        prev
+          ? ({ ...prev, profile_photo: profilePhotoBase64 as string })
+          : prev
+      ),
+    ),
+    [profilePhotoBase64, setProfileSettings],
+  );
 
-  useEffect(() => setProfilePhotoUrl(profile?.profile_photo ?? null), [profile]);
+  useEffect(() => setProfilePhotoUrl(profileSettings?.profile_photo ?? null), [profileSettings]);
 
   return (
     <Box>
       <Heading as="h2" fontWeight="600" fontSize="2xl" color="brand.dark">Your Hospital Details</Heading>
       <Flex direction="row" alignItems="center" py="12" px="6">
-        <Avatar size="2xl" name={profile?.full_name} src={profilePhotoUrl ?? ""} mr="10" />
+        <Avatar size="2xl" name={profileSettings?.full_name} src={profilePhotoUrl ?? ""} mr="10" />
         <Box as="form" transform="translateY(-20%)">
           <FormControl>
             <Input

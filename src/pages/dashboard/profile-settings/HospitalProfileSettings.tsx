@@ -10,20 +10,18 @@ import {
 
 import { Link } from "react-router-dom";
 
-import BrandButton from "../../../components/common/buttons/BrandButton";
 import { SpacedContainer } from "../../../components/common/Containers";
 import ProfileSettingsTabs from "../../../components/profile/hospital/profile_settings/ProfileSettingsTabs";
-
-{ /* import doctorProfileAtom from "../../../atoms/doctorProfile";
-import useProfile from "../../../hooks/profile/useProfile";
-import LoadingPage from "../../../components/common/fallback/LoadingPage"; */ }
+import hospitalProfileAtom from "../../../atoms/hospitalProfile";
+import useHospitalProfile from "../../../hooks/profile-settings/useHospitalProfile";
+import LoadingPage from "../../../components/common/fallback/LoadingPage";
 
 const HospitalProfileSettings = () => {
-  { /* const { isLoading } = useProfile("doctor", doctorProfileAtom);
+  const { isLoading } = useHospitalProfile("clinic", hospitalProfileAtom);
 
   if (isLoading) {
     return <LoadingPage />;
-  } */ }
+  }
 
   return (
     <Box>
