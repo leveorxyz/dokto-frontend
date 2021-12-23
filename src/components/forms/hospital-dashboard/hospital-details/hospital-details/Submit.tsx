@@ -1,31 +1,22 @@
-import { useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
-import useUpdateProfileDetails from "../../../../../hooks/profile-settings/updateProfileDetails";
+import hospitalAtom from "../../../../../atoms/hospitalProfile";
+import useUpdateHospitalDetails from "../../../../../hooks/profile-settings/useUpdateHospitalDetails";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
-  const stepData = useRecoilValue<any>(stepAtom);
+  const { profile_photo: ProfilePhoto, ...rest } = useRecoilValue<any>(hospitalAtom);
+  const payload = rest;
 
-  const data = useMemo(() => ({
-    ...Object.keys(stepData).reduce(
-      (prev, curr) => {
-        if (!stepData[curr] || stepData[curr] === "") return prev;
-        return { ...prev, [curr]: stepData[curr] };
-      },
-      {
-        contact_no: "",
-        full_name: "",
-      },
-    ),
-  }), [stepData]);
+  if (ProfilePhoto) {
+    payload.profile_photo = ProfilePhoto;
+  }
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateProfileDetails(data);
+  } = useUpdateHospitalDetails(payload);
 
   if (isFetching) {
     return <Loading />;

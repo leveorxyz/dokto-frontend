@@ -1,4 +1,3 @@
-import format from "date-fns/format";
 import {
   FieldTypes, FormDataType,
 } from "../../../types/form";
@@ -30,7 +29,7 @@ const secondRow = () :FormDataType => ({
 
 const data = () :FormDataType => ({
   type: FieldTypes.COLUMN,
-  name: "step1",
+  name: "hospital_details",
   fields: [
     {
       type: FieldTypes.INPUT,
@@ -98,4 +97,4 @@ const data = () :FormDataType => ({
 });
 
 export default data;
-export const step1Data = data;
+export const hospitalDetailsData = data;
