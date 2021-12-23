@@ -144,7 +144,7 @@ export default function Tab4() {
             />
             <Box fontSize="md" mb="2">{comment}</Box>
             <Box color="rgba(51, 51, 51, 0.5)" fontSize="sm" d="flex" alignItems="center">
-              <Box>{format(new Date(createdAt), "")}</Box>
+              <Box>{format(new Date(createdAt), "MMM, dd yyyy")}</Box>
               <Box mx="4">|</Box>
               <Box>{patientName}</Box>
             </Box>
