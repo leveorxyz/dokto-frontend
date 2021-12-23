@@ -4,14 +4,14 @@ import { AxiosInstance } from "axios";
 
 import { AxiosContext } from "../../contexts/AxiosContext";
 
-const updateDetails = async (axios: AxiosInstance, data: any) => axios.put("dashboard/clinic/profile-settings/", data)
+const updateDetails = async (axios: AxiosInstance, data: any) => axios.put("dashboard/clinic/license/", data)
   .then(({ data: { result } }) => Promise.resolve(result))
   .catch(({ response: { data: response } }) => Promise.reject(response));
 
-export default function useUpdateHospitalDetails(data:any) {
+export default function useUpdateHospitalLicense(data:any) {
   const axios = useContext<AxiosInstance | null>(AxiosContext);
   return useQuery(
-    ["profile-settings/hospital-profile-detail", data],
+    ["profile-settings/hospital-license", data],
     () => updateDetails(axios as AxiosInstance, data),
     { retry: false, staleTime: Infinity },
   );

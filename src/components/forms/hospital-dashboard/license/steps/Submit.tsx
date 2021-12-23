@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
-import { useUpdateProfileSettings, ProfileSettingsURLs } from "../../../../../hooks/profile-settings/useProfileSettings";
+import stepAtom from "../../../../../atoms/dashboard/hospitalLicense.atom";
+import useUpdateHospitalLicense from "../../../../../hooks/profile-settings/useUpdateHospitalLicense";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -22,7 +22,7 @@ export default function Submit() {
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateProfileSettings(ProfileSettingsURLs.professionalProfile, data);
+  } = useUpdateHospitalLicense(data);
 
   if (isFetching) {
     return <Loading />;
