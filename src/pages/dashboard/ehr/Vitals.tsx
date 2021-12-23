@@ -40,6 +40,7 @@ export default function Vitals() {
   const onSubmit = handleSubmit(async (data) => {
     const dataWithId:IVitals = { ...data, ...{ patient_encounter: id } };
     vitalsAdd(dataWithId);
+    reset();
   });
 
   if (isLoading) {
@@ -67,25 +68,49 @@ export default function Vitals() {
                 <Tr>
                   <Td>Reading Date/Time</Td>
                   <Td>
-                    <FormControl w="350px" isInvalid={!!errors.reading_date}>
-                      <Input
-                        w="290px"
-                        border="2px"
-                        mr="2"
-                        borderColor="brand.darkPink"
-                        type="datetime-local"
-                        {...register("reading_date", {
-                          required: {
-                            value: true,
-                            message: "This field is required",
-                          },
-                        })}
-                        name="reading_date"
-                      />
-                      <FormErrorMessage>
-                        {errors.reading_date && errors.reading_date.message}
-                      </FormErrorMessage>
-                    </FormControl>
+                    <Flex w="350px" alignItems="center">
+                      <FormControl w="48%" isInvalid={!!errors.reading_date}>
+                        <Input
+                          {...register("reading_date", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          w="140px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="date"
+                          name="reading_date"
+                        />
+                        <FormErrorMessage>
+                          {errors.reading_date && errors.reading_date.message}
+                        </FormErrorMessage>
+                      </FormControl>
+                      <FormControl w="48%" isInvalid={!!errors.reading_time}>
+                        <Input
+                          {...register("reading_time", {
+                            required: {
+                              value: true,
+                              message: "This field is required",
+                            },
+                          })}
+                          w="140px"
+                          border="2px"
+                          mr="2"
+                          borderColor="brand.darkPink"
+                          type="time"
+                          name="reading_time"
+                        />
+                        <FormErrorMessage>
+                          {errors.reading_time && errors.reading_time.message}
+                        </FormErrorMessage>
+                      </FormControl>
+                      <Box color="brand.darkPink">mm/Hg</Box>
+
+                    </Flex>
+
                   </Td>
 
                 </Tr>

@@ -6,6 +6,7 @@ import { AxiosContext } from "../../contexts/AxiosContext";
 
 export interface IVitals{
   reading_date:string,
+  reading_time:string,
   height:string,
   weight:string,
   bmi:string,
