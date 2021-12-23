@@ -27,9 +27,8 @@ const SavedDoctorsList = () => {
           flexDir={["column", "column", "column", "row"]}
           borderRadius="xl"
           mb="6"
-          boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
           _hover={{
-            boxShadow: "0 10px 30px 0 rgb(205 204 219 / 25%)",
+            boxShadow: "0 10px 30px 0 rgb(205 204 219 / 75%)",
             filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
           }}
         >
