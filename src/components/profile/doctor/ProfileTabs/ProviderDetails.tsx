@@ -4,9 +4,9 @@ import {
 } from "@chakra-ui/react";
 import format from "date-fns/format";
 
-import doctorProfile from "../../../atoms/doctorProfile";
+import doctorProfile from "../../../../atoms/doctorProfile";
 
-export default function Tab1() {
+export default function ProviderDetails() {
   const doctorProfileData = useRecoilValue(doctorProfile);
   return (
     <Box>

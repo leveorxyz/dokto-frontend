@@ -44,7 +44,7 @@ export type DoctorProfile = {
     patient_name: string;
     star_count: number;
     comment: string;
-  }[];
+  };
 };
 
 export default atom<DoctorProfile | null>({

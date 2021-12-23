@@ -2,10 +2,10 @@ import {
   Tabs, TabList, TabPanels, Tab, TabPanel, Heading, Box,
 } from "@chakra-ui/react";
 
-import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
-import Tab3 from "./Tab3";
-import Tab4 from "./Tab4";
+import ProviderDetails from "./ProviderDetails";
+import AvailableHours from "./AvailableHours";
+import Services from "./Services";
+import Reviews from "./Reviews";
 
 export default function ProfileTabs() {
   const tabs = ["Provider Details", "Available Hours", "Services", "Reviews"];
@@ -37,19 +37,19 @@ export default function ProfileTabs() {
 
       <Box as={TabPanels} bgColor="white" rounded="2xl" overflow="hidden">
         <TabPanel>
-          <Tab1 />
+          <ProviderDetails />
         </TabPanel>
 
         <TabPanel>
-          <Tab2 />
+          <AvailableHours />
         </TabPanel>
 
         <TabPanel>
-          <Tab3 />
+          <Services />
         </TabPanel>
 
         <TabPanel>
-          <Tab4 />
+          <Reviews />
         </TabPanel>
       </Box>
     </Tabs>

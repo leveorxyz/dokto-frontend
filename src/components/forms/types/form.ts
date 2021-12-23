@@ -32,6 +32,7 @@ type CommonType = {
   optionalText?: string;
   bottomText?: string;
   size?: "xs" | "sm" | "md" | "lg";
+  isReadOnly?: boolean;
   visibilityDependencies?: VisibilityDependenciesWithValue[];
   rules?: {
     deps?: string[];

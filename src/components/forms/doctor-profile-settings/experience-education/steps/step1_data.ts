@@ -15,6 +15,13 @@ const firstColumn = () :FormDataType => ({
       fields: [
         {
           type: FieldTypes.INPUT,
+          isReadOnly: true,
+          name: "id",
+          label: "Internal ID",
+          bottomText: "This is an internal ID, no need to worry about it",
+        },
+        {
+          type: FieldTypes.INPUT,
           name: "college",
           label: "College",
           placeholder: "College",
@@ -59,6 +66,13 @@ const secondColumn = () :FormDataType => ({
       label: "Experience Profile",
       addButtonText: "Add Experience +",
       fields: [
+        {
+          type: FieldTypes.INPUT,
+          isReadOnly: true,
+          name: "id",
+          label: "Internal ID",
+          bottomText: "This is an internal ID, no need to worry about it",
+        },
         {
           type: FieldTypes.INPUT,
           name: "establishment_name",

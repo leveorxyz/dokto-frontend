@@ -63,7 +63,7 @@ export default function Profile() {
             <Box mx="3">12 reviews</Box>
           </Box>
           <Box color="rgba(51, 51, 51, .5)" mb={3}>
-            {doctorProfile?.review}
+            {doctorProfile?.review?.star_count}
           </Box>
           <Text fontSize="lg" color="rgba(51, 51, 51, .5)">
             {doctorProfile?.professional_bio}

@@ -34,7 +34,7 @@ export const useUpdateProfileSettings = (url: ProfileSettingsURLs, data: unknown
     [`put/${url}`, url, data],
     () => updateProfileSettings(axios as AxiosInstance, url, data),
     {
-      retry: false,
+      retry: 1,
       staleTime: Infinity,
     },
   );
@@ -48,7 +48,7 @@ export const useProfileSettings = (url: ProfileSettingsURLs, dataAtom: RecoilSta
     [`get/${url}`, url],
     () => getProfileSettins(axios as AxiosInstance, url),
     {
-      retry: false,
+      retry: 3,
       staleTime: Infinity,
       onSuccess: (data) => setData((prev: any) => ({ ...prev, ...data })),
     },

@@ -8,8 +8,8 @@ import {
   AccordionPanel,
 } from "@chakra-ui/react";
 
-import AddIcon from "../../../static/Plus.svg";
-import MinusIcon from "../../../static/Minus.svg";
+import AddIcon from "../../../../static/Plus.svg";
+import MinusIcon from "../../../../static/Minus.svg";
 
 export default function Tab3() {
   const titles = [
