@@ -353,6 +353,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
+    allowedRoles: ["CLINIC"],
   },
   {
     displayName: "Manage Team",
@@ -361,6 +362,7 @@ const routes: RouteType[] = [
     isProtected: true,
     showInNavbar: false,
     showInDashboard: true,
+    allowedRoles: ["CLINIC"],
   },
   {
     displayName: "Payout Settings",

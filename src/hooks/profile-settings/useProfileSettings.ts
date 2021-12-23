@@ -10,6 +10,7 @@ export enum ProfileSettingsURLs {
   educationAndExperience = "dashboard/doctor/profile-settings/education-experience/",
   insurance = "dashboard/doctor/insurance/",
   professionalProfile = "dashboard/doctor/professional-profile/",
+  patientProfileSettings = "dashboard/patient/profile-settings/",
 }
 
 const getProfileSettins = async (

@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import Loading from "../../../../common/fallback/LoadingPage";
-import stepAtom from "../../../../../atoms/dashboard/doctorProfileSettings.atom";
-import useUpdateProfileDetails from "../../../../../hooks/profile-settings/updateProfileDetails";
+import stepAtom from "../../../../../atoms/patientProfileSettings";
+import { useUpdateProfileSettings, ProfileSettingsURLs } from "../../../../../hooks/profile-settings/useProfileSettings";
 import MessagePage from "../../../../common/fallback/MessagePage";
 
 export default function Submit() {
@@ -13,19 +13,19 @@ export default function Submit() {
   const data = useMemo(() => ({
     ...Object.keys(stepData).reduce(
       (prev, curr) => {
+        if (curr === "profile_photo" && stepData[curr]?.startsWith("http")) {
+          return prev;
+        }
         if (!stepData[curr] || stepData[curr] === "") return prev;
         return { ...prev, [curr]: stepData[curr] };
       },
-      {
-        contact_no: "",
-        full_name: "",
-      },
+      {},
     ),
   }), [stepData]);
 
   const {
     error, isError, isSuccess, isFetching,
-  } = useUpdateProfileDetails(data);
+  } = useUpdateProfileSettings(ProfileSettingsURLs.patientProfileSettings, data);
 
   if (isFetching) {
     return <Loading />;
