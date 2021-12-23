@@ -12,6 +12,7 @@ import InvoiceIcon from "../static/invoice.svg";
 import VideoConf from "../static/video_conference.svg";
 import TeamIcon from "../static/Team.png";
 import HeartIcon from "../static/Heart.png";
+import MedKitIcon from "../static/MedKit.png";
 
 const Home = lazy(() => import("../pages/Home"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks"));
@@ -357,6 +358,7 @@ const routes: RouteType[] = [
     showInNavbar: false,
     showInDashboard: true,
     allowedRoles: ["CLINIC"],
+    icon: MedKitIcon,
   },
   {
     displayName: "Manage Team",
