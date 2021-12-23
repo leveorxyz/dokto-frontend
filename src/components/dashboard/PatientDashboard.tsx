@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 import format from "date-fns/format";
 
+import { IoEllipsisHorizontal } from "react-icons/io5";
+import { BiEnvelope } from "react-icons/bi";
 import { SpacedContainer } from "../common/Containers";
 import WelcomeCard from "./WelcomeCard";
 import Appointments from "./Appointments";
@@ -79,7 +81,7 @@ export default function PatientDashboard() {
             <Text color="brand.darkPink" fontWeight="semibold">Previous Appointments</Text>
           </Box>
           <Divider />
-          <Appointments />
+          <Appointments icon={<IoEllipsisHorizontal />} />
         </GridItem>
 
         <GridItem colSpan={[24, 24, 12, 8, 9]} bg="white" color="white" rounded="lg">
@@ -87,6 +89,7 @@ export default function PatientDashboard() {
             <Text color="brand.darkPink" fontWeight="semibold">Latest Messages</Text>
           </Box>
           <Divider />
+          <Appointments icon={<BiEnvelope color="#A42BAD" size="26" />} />
         </GridItem>
 
         <GridItem colSpan={[24, 24, 12, 8, 6]} color="white" rounded="lg">
