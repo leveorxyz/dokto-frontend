@@ -6,6 +6,7 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
 import ChiefComplaintsAndHPIForm from "../../../components/forms/chief-complaints-and-HPI";
+import "react-quill/dist/quill.snow.css";
 
 export default function ChiefComplaintsAndHPI() {
   const [value, setValue] = useState("");
