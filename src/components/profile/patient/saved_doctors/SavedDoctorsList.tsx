@@ -18,11 +18,13 @@ const SavedDoctorsList = () => {
   return (
     <Box>
       {data.map((v) => (
-        <Flex
+        <Box
           key={v.code}
           border="1px solid"
           borderColor="gray.300"
           p="6"
+          d="flex"
+          flexDir={["column", "column", "column", "row"]}
           borderRadius="xl"
           mb="6"
           boxShadow="0 10px 30px 0 rgb(205 204 219 / 25%)"
@@ -31,8 +33,8 @@ const SavedDoctorsList = () => {
             filter: "drop-shadow(15px 70px 90px rgba(164, 43, 173, 0.08))",
           }}
         >
-          <Box w="55%">
-            <Flex alignItems="center" direction="row">
+          <Box minW={["100%", "100%", "55%", "55%"]} mb="2">
+            <Flex alignItems="center" direction={["column", "column", "column", "row"]}>
               <Avatar name="dummy" src={Profile} size="4xl" />
               <Flex direction="column" ml="6">
                 <Flex alignItems="flex-end" mb="4">
@@ -56,13 +58,11 @@ const SavedDoctorsList = () => {
                 <Flex>
                   <Button
                     variant="solid"
-                    px="12"
                     aria-label="Search doctors, clinics, hospitals, etc."
                     bgColor="brand.dark"
                     color="#fff"
                     fontWeight="600"
                     mr="2"
-                    my={[2, 2, 0, 0]}
                     _hover={{ opacity: ".85" }}
                     _active={{ opacity: ".85" }}
                   >
@@ -70,12 +70,10 @@ const SavedDoctorsList = () => {
                   </Button>
                   <Button
                     variant="solid"
-                    px="12"
                     aria-label="Search doctors, clinics, hospitals, etc."
                     bgColor="red"
                     color="#fff"
                     fontWeight="600"
-                    my={[2, 2, 0, 0]}
                     _hover={{ opacity: ".85" }}
                     _active={{ opacity: ".85" }}
                   >
@@ -85,7 +83,7 @@ const SavedDoctorsList = () => {
               </Flex>
             </Flex>
           </Box>
-          <Box w="45%">
+          <Box minW={["100%", "100%", "45%", "45%"]}>
             <Box backgroundColor="primary.dark" rounded="lg" p="6">
               <Flex alignItems="flex-start" wrap="wrap">
                 <Box flex="1" d="flex" alignItems="flex-start">
@@ -145,7 +143,7 @@ const SavedDoctorsList = () => {
             </Box>
 
           </Box>
-        </Flex>
+        </Box>
       ))}
     </Box>
   );
