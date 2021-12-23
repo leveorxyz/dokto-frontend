@@ -18,5 +18,5 @@
     "eslint.format.enable": true,
     "git.ignoreLimitWarning": true,
     "editor.tabSize": 2,
-    "editor.detectIndentation": true
+    "editor.detectIndentation": true,
 }
