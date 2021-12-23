@@ -62,8 +62,9 @@ const SavedDoctorsList = () => {
                     color="#fff"
                     fontWeight="600"
                     mr="2"
-                    _hover={{ opacity: ".85" }}
-                    _active={{ opacity: ".85" }}
+                    _hover={{ opacity: ".85", outline: "none" }}
+                    _active={{ opacity: ".85", outline: "none" }}
+                    _focus={{ opacity: ".85", outline: "none" }}
                   >
                     Schedule Appointment
                   </Button>
@@ -73,8 +74,9 @@ const SavedDoctorsList = () => {
                     bgColor="red"
                     color="#fff"
                     fontWeight="600"
-                    _hover={{ opacity: ".85" }}
-                    _active={{ opacity: ".85" }}
+                    _hover={{ opacity: ".85", outline: "none" }}
+                    _active={{ opacity: ".85", outline: "none" }}
+                    _focus={{ opacity: ".85", outline: "none" }}
                   >
                     Remove
                   </Button>
