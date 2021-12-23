@@ -4,13 +4,18 @@ import {
   Text,
   Avatar,
   Icon,
-  IconButton,
+  Button,
+  Divider,
 } from "@chakra-ui/react";
-import { IoTimeOutline, IoEllipsisHorizontal } from "react-icons/io5";
+import { IoTimeOutline } from "react-icons/io5";
 
 import DummyAppointments from "./DashboardData/DummyAppointments";
 
-export default function Appointment() {
+type PropTypes = {
+  icon: string | React.ReactNode;
+}
+
+export default function Appointment({ icon }: PropTypes) {
   return (
     <Box
       overflowY="scroll"
@@ -24,35 +29,38 @@ export default function Appointment() {
       {DummyAppointments.map(({
         name, id, date, appointmentType,
       }) => (
-        <Flex
-          key={id}
-          p={4}
-          borderBottom="1px solid gray.100"
-          wrap="nowrap"
-        >
-          <Avatar size="md" name={name} src={name} />
-          <Box ml={4}>
-            <Text color="brand.darkPink">{name}</Text>
-            <Text color="black" mb={1}>{appointmentType}</Text>
+        <Box key={id}>
+          <Flex
+            p={4}
+            borderBottom="1px solid gray.100"
+            wrap="nowrap"
+          >
+            <Avatar size="md" name={name} src={name} />
+            <Box ml={4}>
+              <Text color="brand.darkPink">{name}</Text>
+              <Text color="black" mb={1}>{appointmentType}</Text>
 
-            <Flex color="gray.500">
-              <Icon as={IoTimeOutline} size="0.8rem" />
-              <Text fontSize="sm">{date}</Text>
-            </Flex>
-          </Box>
+              <Flex color="gray.500">
+                <Icon as={IoTimeOutline} size="0.8rem" />
+                <Text fontSize="sm">{date}</Text>
+              </Flex>
+            </Box>
 
-          <IconButton
-            ml="auto"
-            variant="ghost"
-            color="gray.300"
-            _hover={{
-              bg: "gray.100",
-              color: "gray.500",
-            }}
-            icon={<IoEllipsisHorizontal size="1.5rem" />}
-            aria-label={`View actions for appointment with ${name} on ${date}`}
-          />
-        </Flex>
+            <Button
+              ml="auto"
+              variant="ghost"
+              color="gray.300"
+              _hover={{
+                bg: "gray.100",
+                color: "gray.500",
+              }}
+              aria-label={`View actions for appointment with ${name} on ${date}`}
+            >
+              {icon}
+            </Button>
+          </Flex>
+          <Divider />
+        </Box>
       ))}
     </Box>
   );
