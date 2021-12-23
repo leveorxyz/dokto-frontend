@@ -37,7 +37,7 @@ const SavedDoctorsList = () => {
             <Flex alignItems="center" direction={["column", "column", "column", "row"]}>
               <Avatar name="dummy" src={Profile} size="4xl" />
               <Flex direction="column" ml="6">
-                <Flex alignItems="flex-end" mb="4">
+                <Flex alignItems="flex-end" mb="4" direction={["column", "column", "column", "row"]}>
                   <Box alignItems="center" color="brand.dark">
                     <Text as="h1" fontSize="xl" fontWeight={700} whiteSpace="nowrap">
                       Dr. Rita Ora, MD
@@ -55,7 +55,7 @@ const SavedDoctorsList = () => {
                   </Box>
                 </Flex>
                 <Divider mb="4" />
-                <Flex>
+                <Flex direction={["column", "column", "column", "row"]}>
                   <Button
                     variant="solid"
                     aria-label="Search doctors, clinics, hospitals, etc."
