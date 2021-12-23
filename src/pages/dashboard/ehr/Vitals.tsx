@@ -18,9 +18,10 @@ import {
 import { useForm } from "react-hook-form";
 import { FiCopy } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import useVitalsAdd, { IVitals } from "../../../hooks/vitals.tsx/useVitalsAdd";
+import useVitalsAdd, { IVitals } from "../../../hooks/vitals/useVitalsAdd";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
 import PatientEncountersLayout from "../../../components/common/PatientEncountersLayout";
+import useGetPrevVitals from "../../../hooks/vitals/useGetPrevVitals";
 
 export default function Vitals() {
   const { id } = useParams();
@@ -43,9 +44,34 @@ export default function Vitals() {
     reset();
   });
 
+  const { data } = useGetPrevVitals(id!);
+
   if (isLoading) {
     return <LoadingPage />;
   }
+
+  console.log(data);
+
+  const handleCopyPreviousEncounter = () => {
+    if (data) {
+      const index = data.length - 1;
+
+      reset({
+        reading_date: data[index].reading_date,
+        reading_time: data[index].reading_time,
+        height: data[index].height,
+        weight: data[index].weight,
+        bmi: data[index].bmi,
+        temperature: data[index].temperature,
+        pulse: data[index].pulse,
+        respiratory_rate: data[index].respiratory_rate,
+        o2_saturation: data[index].o2_saturation,
+        pain: data[index].pain,
+        blood_pressure_mm: data[index].blood_pressure_mm,
+        blood_pressure_hg: data[index].blood_pressure_hg,
+      });
+    }
+  };
 
   return (
     <PatientEncountersLayout>
@@ -387,7 +413,7 @@ export default function Vitals() {
             <Flex justifyContent="end" mt={8} p={4} experimental_spaceX={4}>
               <Button background="#7002C7" color="#fff" _hover={{ background: "#7002C7" }} leftIcon={<AiOutlineReload />} onClick={() => reset()}>Clear</Button>
               <Button background="#3DE0FF" color="#fff" _hover={{ background: "#3DE0FF" }} leftIcon={<AiOutlineClose />}>Cancel</Button>
-              <Button background="#006A82" color="#fff" _hover={{ background: "#006A82" }} leftIcon={<FiCopy />}>Copy From Previous Encounter</Button>
+              <Button background="#006A82" color="#fff" _hover={{ background: "#006A82" }} leftIcon={<FiCopy />} onClick={handleCopyPreviousEncounter}>Copy From Previous Encounter</Button>
               <Button type="submit" background="#A42BAD" color="#fff" _hover={{ background: "#A42BAD" }} leftIcon={<AiOutlineCheck />} disabled={isSubmitting}>Save</Button>
             </Flex>
           </form>
