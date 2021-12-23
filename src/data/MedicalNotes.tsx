@@ -199,16 +199,6 @@ export const physicalExam:IMedicalNote[] = [
   {
     title: "Head",
     checkBoxes: [
-      { label: "No Headaches", value: "No Headaches" },
-      { label: "No vertigo", value: "No vertigo" },
-      { label: "No injury", value: "No injury" },
-      { label: "Other (please specify below)", value: "Other (please specify below)" },
-    ],
-    input: "headDesc",
-  },
-  {
-    title: "Head",
-    checkBoxes: [
       { label: "Symmetric", value: "Symmetric" },
       { label: "Normocephalic", value: "Normocephalic" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
@@ -280,98 +270,112 @@ export const physicalExam:IMedicalNote[] = [
   },
   // REPEATING
   {
-    title: "General Appearance",
+    title: "Abdomen",
     checkBoxes: [
-      { label: "Well developed ", value: "Well developed " },
-      { label: "Well nourished", value: "Well nourished" },
-      { label: "Other (please specify below)", value: "Other (please specify below)" },
-      { label: "Alert and cooperative", value: "Alert and cooperative" },
-      { label: "Oriented x 3 and appears to be in no acute distress", value: "Oriented x 3 and appears to be in no acute distress" },
-
-    ],
-    input: "generalAppearanceDesc",
-  },
-  {
-    title: "Head",
-    checkBoxes: [
-      { label: "No Headaches", value: "No Headaches" },
-      { label: "No vertigo", value: "No vertigo" },
-      { label: "No injury", value: "No injury" },
-      { label: "Other (please specify below)", value: "Other (please specify below)" },
-    ],
-    input: "headDesc",
-  },
-  {
-    title: "Head",
-    checkBoxes: [
-      { label: "Symmetric", value: "Symmetric" },
-      { label: "Normocephalic", value: "Normocephalic" },
-      { label: "Other (please specify below)", value: "Other (please specify below)" },
-    ],
-    input: "HeadDesc",
-  },
-  {
-    title: "Eyes",
-    checkBoxes: [
-      { label: "PERRL", value: "PERRL" },
-      { label: "EOMI", value: "EOMI" },
-      { label: "Fundi normal", value: "Fundi normal" },
-      { label: "Other (please specify below)", value: "Other (please specify below)" },
-      { label: "Vision is grossly intact", value: "Vision is grossly intact" },
-
-    ],
-    input: "EyesDesc",
-  },
-  {
-    title: "Ears",
-    checkBoxes: [
-      { label: "External auditory canals and tympanic membranes clear", value: "External auditory canals and tympanic membranes clear" },
-      { label: "Hearing grossly normal", value: "Hearing grossly normal" },
+      { label: "Redness of anterior abdominal wall and positive bowel sounds ", value: "Redness of anterior abdominal wall and positive bowel sounds " },
+      { label: "Soft, nondistended, nontender", value: "Soft, nondistended, nontender" },
+      { label: "No hepatosplenomegaly", value: "No hepatosplenomegaly" },
+      { label: "No guarding or rebound ", value: "No guarding or rebound " },
+      { label: "No masses", value: "No masses" },
+      { label: "Bowel sounds present", value: "Bowel sounds present" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
 
     ],
-    input: "EarsDesc",
+    input: "AbdomenDesc",
   },
   {
-    title: "Nose",
+    title: "Musculoskeletal",
     checkBoxes: [
-      { label: "No nasal discharge", value: "No nasal discharge" },
+      { label: "Examination of the spine reveals normal gait and posture", value: "Examination of the spine reveals normal gait and posture" },
+      { label: "ROM intact spine and extremities", value: "ROM intact spine and extremities" },
+      { label: "No joint erythema or tenderness", value: "No joint erythema or tenderness" },
+      { label: "Normal muscular development", value: "Normal muscular development" },
+      { label: "Normal gait", value: "Normal gait" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
-    input: "NoseDesc",
+    input: "MusculoskeletalDesc",
   },
   {
-    title: "Throat",
+    title: "Back",
     checkBoxes: [
-      { label: "Oral cavity and pharynx normal", value: "Oral cavity and pharynx normal" },
-      { label: "No inflammation swelling exudate, or lesions condition", value: "No inflammation swelling exudate, or lesions condition" },
-      { label: "Teeth and gingiva in good general", value: "Teeth and gingiva in good general" },
+      { label: "Examination of the spine reveals normal gait and posture", value: "Examination of the spine reveals normal gait and posture" },
+      { label: "No spinal deformity", value: "No spinal deformity" },
+      { label: "Symmetry of spinal muscles", value: "Symmetry of spinal muscles" },
+      { label: "Without tenderness", value: "Without tenderness" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
+      { label: "Decreased range of motion or muscular spasm", value: "Decreased range of motion or muscular spasm" },
     ],
-    input: "ThroatDesc",
+    input: "BackDesc",
   },
   {
-    title: "Neck",
+    title: "Extremities",
     checkBoxes: [
-      { label: "Neck Supple", value: "Neck Supple" },
-      { label: "Non-tender without lymphodenopathy, masses or thyromegaly", value: "Non-tender without lymphodenopathy, masses or thyromegaly" },
+      { label: "No significant deformity or joint abnormality", value: "No significant deformity or joint abnormality" },
+      { label: "No edema", value: "No edema" },
+      { label: "Peripheral pulses intact", value: "Peripheral pulses intact" },
+      { label: "No varicosities", value: "No varicosities" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
 
     ],
-    input: "NeckDesc",
+    input: "ExtremitiesDesc",
   },
   {
-    title: "Cardiac",
+    title: "LowerExtremities",
     checkBoxes: [
-      { label: "Normal S1 and 52", value: "Normal S1 and 52 " },
-      { label: "No 53. 54 or murmurs ", value: "No 53. 54 or murmurs " },
-      { label: "Rhythm is regular", value: "Rhythm is regular" },
-      { label: "There is no peripherol edema. cyanosis or polon", value: "There is no peripherol edema. cyanosis or polon" },
-      { label: "Extremities are warm and well perfused", value: "Extremities are warm and well perfused" },
-      { label: "Copiliory refill is less than 2 seconds", value: "Copiliory refill is less than 2 seconds" },
+      { label: "Examination of both feet reveals all toes to be normal in size and symmetry", value: "Examination of both feet reveals all toes to be normal in size and symmetry" },
+      { label: "Normal sensation with distal capillary filling of less than 2 seconds without tenderness, swelling, discoloration, nodules, weakness or deformity", value: "Normal sensation with distal capillary filling of less than 2 seconds without tenderness, swelling, discoloration, nodules, weakness or deformity" },
+      { label: "Examination of both ankles, knees, legs, and hips reveals normal range of motion", value: "Examination of both ankles, knees, legs, and hips reveals normal range of motion" },
+      { label: "Normal sensation without tenderness, swelling, discoloration, crepitus, weakness or deformity", value: "Normal sensation without tenderness, swelling, discoloration, crepitus, weakness or deformity" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+
+    ],
+    input: "LowerExtremitiesDesc",
+  },
+  {
+    title: "Neurological",
+    checkBoxes: [
+      { label: "CN II-XII intact", value: "CN II-XII intact" },
+      { label: "Strength and sensation symmetric and intact throughout", value: "Strength and sensation symmetric and intact throughout" },
+      { label: "Reflexes 2+ throughout", value: "Reflexes 2+ throughout" },
+      { label: "Cerebellar testing normal", value: "Cerebellar testing normal" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" }],
+    input: "NeurologicalDesc",
+  },
+  {
+    title: "Skin",
+    checkBoxes: [
+      { label: "Skin normal color", value: "Skin normal color" },
+      { label: "Texture and turgor with no lesions or eruptions", value: "Texture and turgor with no lesions or eruptions" },
       { label: "Other (please specify below)", value: "Other (please specify below)" },
     ],
-    input: "CardiacDesc",
+    input: "SkinDesc",
+  },
+  {
+    title: "Res",
+    checkBoxes: [
+      { label: "No lymphadenopathy", value: "No lymphadenopathy" },
+
+    ],
+    input: "ResDesc",
+  },
+  {
+    title: "Psychiatric",
+    checkBoxes: [
+      { label: "The mental examination revealed the patient was oriented to person, place, and time", value: "The mental examination revealed the patient was oriented to person, place, and time " },
+      { label: "The patient was able to demonstrate good judgement and reason, without hallucinations, abnormal affect or abnormal behaviors during the examination ", value: "The patient was able to demonstrate good judgement and reason, without hallucinations, abnormal affect or abnormal behaviors during the examination " },
+      { label: "Patient is not suicidal.", value: "Patient is not suicidal." },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "PsychiatricDesc",
+  },
+  {
+    title: "Rectal",
+    checkBoxes: [
+      { label: "Stool guaiacs were negative", value: "Stool guaiacs were negative " },
+      { label: "There were no masses in the rectum", value: "There were no masses in the rectum" },
+      { label: "Other (please specify below)", value: "Other (please specify below)" },
+    ],
+    input: "RectalDesc",
   },
 ];
 

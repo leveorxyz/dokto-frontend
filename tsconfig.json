@@ -22,6 +22,6 @@
     "outDir": "dist",
     "noImplicitAny": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "./customs.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "./customs.d.ts", "src/hooks/vitals"],
   "exclude": ["node_modules", "**/*.spec.ts", "*.scss", "*.css"]
 }

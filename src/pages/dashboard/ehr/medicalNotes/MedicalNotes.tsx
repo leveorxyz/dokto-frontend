@@ -8,6 +8,10 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { AiOutlineReload, AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
+import { FiCopy } from "react-icons/fi";
+import { useParams } from "react-router-dom";
+import useMedicalNotesAdd, { IMedicalNotes } from "../../../../hooks/medicalNotes.tsx/useMedicalNotesAdd";
 import { reviewOfSystems, physicalExam } from "../../../../data/MedicalNotes";
 import CustomAccordion from "../../../../components/common/CustomAccordion";
 import PatientEncountersLayout from "../../../../components/common/PatientEncountersLayout";
@@ -16,18 +20,25 @@ import CustomCheckboxField from "./CustomCheckbox";
 import TextFormatter from "./TextFormatter";
 
 export default function MedicalNotes() {
+  const { id } = useParams();
   const {
     register, handleSubmit, setValue, formState: { isSubmitting, errors },
   } = useForm(
     { mode: "onBlur" },
   );
 
+  const {
+    mutate: medicalNotes,
+
+  } = useMedicalNotesAdd();
+
   if (isSubmitting) {
     return <LoadingPage />;
   }
 
   const onSubmit = (data:any) => {
-    console.log(data);
+    const dataWithId:IMedicalNotes = { ...data, ...{ patient_encounter: id } };
+    medicalNotes(dataWithId);
   };
 
   return (
@@ -107,6 +118,7 @@ export default function MedicalNotes() {
                 ))}
               </Box>
             </CustomAccordion>
+
             <CustomAccordion title="Plan of Care">
               <Box><TextFormatter /></Box>
             </CustomAccordion>
@@ -125,28 +137,13 @@ export default function MedicalNotes() {
 
             <Box display="flex" justifyContent="end" mt={4}>
 
-              <Button
-                type="submit"
-                bg="brand.darkPink"
-                color="white"
-                mr="2"
-                _hover={{ opacity: 0.85 }}
-                _focus={{ opacity: 0.85 }}
-                isLoading={isSubmitting}
-              >
-                Save
-              </Button>
+              <Flex justifyContent="end" mt={8} p={4} experimental_spaceX={4}>
+                <Button background="#7002C7" color="#fff" _hover={{ background: "#7002C7" }} leftIcon={<AiOutlineReload />}>Clear</Button>
+                <Button background="#3DE0FF" color="#fff" _hover={{ background: "#3DE0FF" }} leftIcon={<AiOutlineClose />}>Cancel</Button>
+                <Button background="#006A82" color="#fff" _hover={{ background: "#006A82" }} leftIcon={<FiCopy />}>Copy From Previous Encounter</Button>
+                <Button type="submit" background="#A42BAD" color="#fff" _hover={{ background: "#A42BAD" }} leftIcon={<AiOutlineCheck />} disabled={isSubmitting}>Save</Button>
+              </Flex>
 
-              <Button
-                type="submit"
-                bg="#7002C7"
-                color="white"
-                _hover={{ opacity: 0.85 }}
-                _focus={{ opacity: 0.85 }}
-                isLoading={isSubmitting}
-              >
-                Clear
-              </Button>
             </Box>
           </form>
 
