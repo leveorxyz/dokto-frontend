@@ -13,11 +13,14 @@ import { Link } from "react-router-dom";
 import { SpacedContainer } from "../../../components/common/Containers";
 import ProfileSettingsTabs from "../../../components/profile/hospital/profile_settings/ProfileSettingsTabs";
 import hospitalProfileAtom from "../../../atoms/hospitalProfile";
+import hospitalLicenseAtom from "../../../atoms/hospitalLicense";
 import useHospitalProfile from "../../../hooks/profile-settings/useHospitalProfile";
+import useHospitalLicense from "../../../hooks/profile-settings/useHospitalLicense";
 import LoadingPage from "../../../components/common/fallback/LoadingPage";
 
 const HospitalProfileSettings = () => {
   const { isLoading } = useHospitalProfile("clinic", hospitalProfileAtom);
+  useHospitalLicense("clinic", hospitalLicenseAtom);
 
   if (isLoading) {
     return <LoadingPage />;
